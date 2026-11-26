@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
     private volatile boolean ttsReady = false;
     private String pendingExportContent = null;
     private ValueCallback<Uri[]> fileChooserCallback = null;
+    private AppIconBridge appIconBridge = null;
 
     // Pending PKCE OAuth state for Android system-browser Sign in with Google
     private String pendingOAuthClientId = null;
@@ -212,7 +213,8 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new TtsBridge(), "AndroidTTS");
         webView.addJavascriptInterface(new BackupBridge(), "AndroidBackup");
         webView.addJavascriptInterface(new GoogleAuthBridge(), "AndroidGoogleAuth");
-        webView.addJavascriptInterface(new AppIconBridge(), "AndroidAppIcon");
+        appIconBridge = new AppIconBridge();
+        webView.addJavascriptInterface(appIconBridge, "AndroidAppIcon");
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -368,7 +370,21 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        if (appIconBridge != null
+                && !isChangingConfigurations()
+                && pendingOAuthClientId == null
+                && fileChooserCallback == null) {
+            appIconBridge.applyPendingAppIcon();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
+        if (appIconBridge != null && !isChangingConfigurations()) {
+            appIconBridge.applyPendingAppIcon();
+        }
         if (tts != null) {
             tts.stop();
             tts.shutdown();
@@ -492,6 +508,7 @@ public class MainActivity extends Activity {
     private final class AppIconBridge {
         private static final String ICON_PREFS = "openlingo_icon_prefs";
         private static final String KEY_ACTIVE_ICON = "active_icon";
+        private static final String KEY_PENDING_ICON = "pending_icon";
         private final Map<String, String> aliasMap = new LinkedHashMap<>();
 
         AppIconBridge() {
@@ -514,42 +531,81 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public String getAppIcon() {
+            SharedPreferences prefs = getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE);
+            String pending = prefs.getString(KEY_PENDING_ICON, null);
+            if (pending != null && aliasMap.containsKey(pending)) {
+                return pending;
+            }
+            try {
+                PackageManager pm = getPackageManager();
+                String pkg = getPackageName();
+                for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
+                    ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
+                    if (pm.getComponentEnabledSetting(cn) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
+                        prefs.edit().putString(KEY_ACTIVE_ICON, entry.getKey()).commit();
+                        return entry.getKey();
+                    }
+                }
+            } catch (Exception ignored) {
+            }
+            String active = prefs.getString(KEY_ACTIVE_ICON, "ml");
+            return aliasMap.containsKey(active) ? active : "ml";
+        }
+
+        @JavascriptInterface
         public boolean setAppIcon(final String rawIconId) {
             final String targetId = (rawIconId != null && aliasMap.containsKey(rawIconId)) ? rawIconId : "ml";
             final SharedPreferences prefs = getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE);
-            final String currentId = prefs.getString(KEY_ACTIVE_ICON, "ml");
-            if (targetId.equals(currentId)) {
-                return true;
+            final String activeId = prefs.getString(KEY_ACTIVE_ICON, "ml");
+            if (targetId.equals(activeId)) {
+                prefs.edit().remove(KEY_PENDING_ICON).commit();
+            } else {
+                prefs.edit().putString(KEY_PENDING_ICON, targetId).commit();
             }
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        PackageManager pm = getPackageManager();
-                        String pkg = getPackageName();
-                        String targetAlias = aliasMap.get(targetId);
-                        if (targetAlias == null) return;
+            return true;
+        }
 
+        void applyPendingAppIcon() {
+            final SharedPreferences prefs = getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE);
+            final String pendingId = prefs.getString(KEY_PENDING_ICON, null);
+            final String activeId = prefs.getString(KEY_ACTIVE_ICON, "ml");
+            if (pendingId == null || !aliasMap.containsKey(pendingId) || pendingId.equals(activeId)) {
+                return;
+            }
+            final String targetAlias = aliasMap.get(pendingId);
+            if (targetAlias == null) return;
+
+            // Commit synchronously BEFORE toggling components so state persists even if OS recycles the process.
+            prefs.edit()
+                    .putString(KEY_ACTIVE_ICON, pendingId)
+                    .remove(KEY_PENDING_ICON)
+                    .commit();
+
+            try {
+                PackageManager pm = getPackageManager();
+                String pkg = getPackageName();
+
+                pm.setComponentEnabledSetting(
+                        new ComponentName(pkg, pkg + targetAlias),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                        PackageManager.DONT_KILL_APP
+                );
+
+                for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
+                    if (entry.getKey().equals(pendingId)) continue;
+                    ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
+                    int st = pm.getComponentEnabledSetting(cn);
+                    if (entry.getKey().equals(activeId) || st == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
                         pm.setComponentEnabledSetting(
-                                new ComponentName(pkg, pkg + targetAlias),
-                                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                cn,
+                                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                                 PackageManager.DONT_KILL_APP
                         );
-
-                        for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
-                            if (entry.getKey().equals(targetId)) continue;
-                            pm.setComponentEnabledSetting(
-                                    new ComponentName(pkg, pkg + entry.getValue()),
-                                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                                    PackageManager.DONT_KILL_APP
-                            );
-                        }
-                        prefs.edit().putString(KEY_ACTIVE_ICON, targetId).apply();
-                    } catch (Exception ignored) {
                     }
                 }
-            });
-            return true;
+            } catch (Exception ignored) {
+            }
         }
     }
 }

@@ -401,6 +401,20 @@ function loadLocalState() {
     if (savedProfile && typeof savedProfile === 'object') {
       state.profile = { ...state.profile, ...savedProfile };
     }
+    if (
+      typeof window !== 'undefined' &&
+      window.AndroidAppIcon &&
+      typeof window.AndroidAppIcon.getAppIcon === 'function'
+    ) {
+      const nativeIcon = String(window.AndroidAppIcon.getAppIcon() || '').trim();
+      if (nativeIcon) {
+        const nativePreset = getAppIconPreset(nativeIcon);
+        if (state.profile.appIcon !== nativePreset.id) {
+          state.profile.appIcon = nativePreset.id;
+          localStorage.setItem(STORAGE_KEYS.PROFILE, JSON.stringify(state.profile));
+        }
+      }
+    }
     const savedPrefs = JSON.parse(localStorage.getItem(STORAGE_KEYS.PREFS) || 'null');
     if (savedPrefs && typeof savedPrefs === 'object') {
       if (typeof savedPrefs.showRomaji === 'boolean') state.showRomaji = savedPrefs.showRomaji;
@@ -2980,7 +2994,10 @@ function attachEvents(course) {
       const iconId = setAppIconBtn.dataset.setAppIcon || DEFAULT_APP_ICON_ID;
       state.profile.appIcon = iconId;
       const preset = applyAppIcon({ syncNative: true });
-      state.profileMessage = `App icon updated to ${preset.label} (${preset.glyph})!`;
+      const isAndroid = Boolean(window.AndroidAppIcon);
+      state.profileMessage = isAndroid
+        ? `App icon updated to ${preset.label} (${preset.glyph})! Home screen icon will refresh when you minimize the app.`
+        : `App icon updated to ${preset.label} (${preset.glyph})!`;
       saveLocalState();
       autoBackupToGoogleDrive(false);
       render();
@@ -2992,7 +3009,10 @@ function attachEvents(course) {
     resetAppIconBtn.addEventListener('click', () => {
       state.profile.appIcon = DEFAULT_APP_ICON_ID;
       const preset = applyAppIcon({ syncNative: true });
-      state.profileMessage = `App icon reset to default ${preset.label} (${preset.glyph}).`;
+      const isAndroid = Boolean(window.AndroidAppIcon);
+      state.profileMessage = isAndroid
+        ? `App icon reset to default ${preset.label} (${preset.glyph}). Home screen icon will refresh when you minimize the app.`
+        : `App icon reset to default ${preset.label} (${preset.glyph}).`;
       saveLocalState();
       autoBackupToGoogleDrive(false);
       render();
