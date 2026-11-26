@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v26';
+const CACHE_NAME = 'openlingo-v27';
 const ASSETS = [
   './',
   './index.html',
