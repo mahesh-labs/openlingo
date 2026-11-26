@@ -1409,6 +1409,67 @@ body {
   border-color: var(--danger);
 }
 
+/* Onboarding Course Picker & Add Course Panel */
+.onboarding-card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.onboarding-course-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.onboarding-course-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.15s, background 0.15s;
+}
+
+.onboarding-course-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.add-course-panel {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px dashed var(--accent);
+  display: grid;
+  gap: 10px;
+}
+
+.add-course-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border-radius: 11px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+}
+
 /* Mobile Bottom Nav */
 .mobile-nav {
   display: none;

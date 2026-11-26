@@ -22,7 +22,8 @@ const STORAGE_KEYS = {
   GUEST: 'openlingo_guest_mode_v1',
   SYNC_META: 'openlingo_sync_meta_v1',
   PROFILE: 'openlingo_profile_v1',
-  PREFS: 'openlingo_prefs_v1'
+  PREFS: 'openlingo_prefs_v1',
+  ENROLLED: 'openlingo_enrolled_courses_v1'
 };
 
 const AVATAR_PRESETS = ['🦊', '🐼', '🦉', '🐱', '🌸', '🗻', '🚀', '🎯'];
@@ -30,7 +31,9 @@ const AVATAR_PRESETS = ['🦊', '🐼', '🦉', '🐱', '🌸', '🗻', '🚀', 
 const state = {
   view: 'syllabus', // 'syllabus' | 'characters' | 'lesson' | 'placement' | 'guidebook' | 'flashcards' | 'studio' | 'profile' | 'settings' | 'backup'
   courses: [],
-  activeCourseId: 'en-ja',
+  enrolledCourseIds: [],
+  activeCourseId: '',
+  showAddCoursePicker: false,
   selectedSectionId: 'sec-n5',
   activeScriptTab: null,
   scriptDrill: null,
@@ -102,8 +105,56 @@ function shuffle(list) {
   return arr;
 }
 
+function getCourseFlag(course) {
+  const map = { ja: '🇯🇵', es: '🇪🇸', ml: '🇮🇳', ko: '🇰🇷', fr: '🇫🇷', de: '🇩🇪', zh: '🇨🇳' };
+  return map[course?.targetLang?.code] || '🌐';
+}
+
+function getEnrolledCourses() {
+  return state.enrolledCourseIds
+    .map((id) => state.courses.find((c) => c.id === id))
+    .filter(Boolean);
+}
+
+function getAvailableCoursesToAdd() {
+  return state.courses.filter((c) => !state.enrolledCourseIds.includes(c.id));
+}
+
 function getActiveCourse() {
-  return state.courses.find((c) => c.id === state.activeCourseId) || state.courses[0];
+  const enrolled = getEnrolledCourses();
+  if (!enrolled.length) return null;
+  return enrolled.find((c) => c.id === state.activeCourseId) || enrolled[0];
+}
+
+function enrollCourse(courseId, openPath = false) {
+  const target = state.courses.find((c) => c.id === courseId);
+  if (!target) return;
+  if (!state.enrolledCourseIds.includes(courseId)) {
+    state.enrolledCourseIds = [...state.enrolledCourseIds, courseId];
+  }
+  if (openPath || !state.activeCourseId || !state.enrolledCourseIds.includes(state.activeCourseId)) {
+    state.activeCourseId = courseId;
+    state.selectedSectionId = getSections(target)[0]?.id || 'all';
+    state.flashcardFilter = 'ALL';
+    state.activeScriptTab = null;
+  }
+  state.showAddCoursePicker = false;
+  saveLocalState();
+  autoBackupToGoogleDrive(false);
+  if (openPath) state.view = 'syllabus';
+  render();
+}
+
+function unenrollCourse(courseId) {
+  state.enrolledCourseIds = state.enrolledCourseIds.filter((id) => id !== courseId);
+  if (state.activeCourseId === courseId) {
+    const remaining = getEnrolledCourses();
+    state.activeCourseId = remaining[0]?.id || '';
+    state.selectedSectionId = remaining[0] ? getSections(remaining[0])[0]?.id || 'all' : 'all';
+  }
+  saveLocalState();
+  autoBackupToGoogleDrive(false);
+  render();
 }
 
 function getStandardLabel(course) {
@@ -295,6 +346,23 @@ function loadLocalState() {
     state.guestMode = localStorage.getItem(STORAGE_KEYS.GUEST) === 'true';
     const savedSyncMeta = JSON.parse(localStorage.getItem(STORAGE_KEYS.SYNC_META) || 'null');
     if (savedSyncMeta) state.syncMeta = savedSyncMeta;
+
+    const rawEnrolled = localStorage.getItem(STORAGE_KEYS.ENROLLED);
+    if (rawEnrolled !== null) {
+      const parsed = JSON.parse(rawEnrolled);
+      if (Array.isArray(parsed)) state.enrolledCourseIds = parsed;
+    } else {
+      // Legacy migration: returning users with completed lessons keep their active courses; new users start with 0 courses.
+      const inferred = new Set();
+      Object.keys(state.progress.completedLessons || {}).forEach((k) => {
+        const cid = k.split(':')[0];
+        if (cid) inferred.add(cid);
+      });
+      state.enrolledCourseIds = [...inferred];
+    }
+    if (state.enrolledCourseIds.length && !state.activeCourseId) {
+      state.activeCourseId = state.enrolledCourseIds[0];
+    }
   } catch {
     // Ignore storage errors
   }
@@ -305,6 +373,7 @@ function saveLocalState() {
   localStorage.setItem(STORAGE_KEYS.PROGRESS, JSON.stringify(state.progress));
   localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(state.srs));
   localStorage.setItem(STORAGE_KEYS.PROFILE, JSON.stringify(state.profile));
+  localStorage.setItem(STORAGE_KEYS.ENROLLED, JSON.stringify(state.enrolledCourseIds));
   localStorage.setItem(
     STORAGE_KEYS.PREFS,
     JSON.stringify({
@@ -643,6 +712,7 @@ function buildBackupPayload() {
     schemaVersion: 2,
     appVersion: APP_CONFIG.appVersion,
     exportedAt: new Date().toISOString(),
+    enrolledCourseIds: state.enrolledCourseIds,
     activeCourseId: state.activeCourseId,
     theme: state.theme,
     showRomaji: state.showRomaji,
@@ -716,8 +786,23 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
   if (typeof data.showRomaji === 'boolean') state.showRomaji = data.showRomaji;
   if (typeof data.audioRate === 'number') state.audioRate = data.audioRate;
   if (typeof data.autoSync === 'boolean') state.autoSync = data.autoSync;
-  if (data.activeCourseId && state.courses.some((c) => c.id === data.activeCourseId)) {
+  if (Array.isArray(data.enrolledCourseIds)) {
+    state.enrolledCourseIds = data.enrolledCourseIds.filter((id) => state.courses.some((c) => c.id === id));
+  } else {
+    const inferred = new Set();
+    Object.keys(state.progress.completedLessons || {}).forEach((k) => {
+      const cid = k.split(':')[0];
+      if (cid && state.courses.some((c) => c.id === cid)) inferred.add(cid);
+    });
+    if (data.activeCourseId && state.courses.some((c) => c.id === data.activeCourseId)) {
+      inferred.add(data.activeCourseId);
+    }
+    if (inferred.size > 0) state.enrolledCourseIds = [...inferred];
+  }
+  if (data.activeCourseId && state.enrolledCourseIds.includes(data.activeCourseId)) {
     state.activeCourseId = data.activeCourseId;
+  } else {
+    state.activeCourseId = state.enrolledCourseIds[0] || '';
   }
 
   saveLocalState();
@@ -931,6 +1016,66 @@ function renderAuthGate() {
   `;
 }
 
+function renderCourseOnboarding() {
+  const googleSession = getGoogleSession();
+  const greetingName = getDisplayName();
+  return `
+    <div class="auth-screen">
+      <div class="onboarding-card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:46px;height:46px;border-radius:12px;display:block;box-shadow:0 6px 16px rgba(16,185,129,0.25);" />
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;">Welcome, ${escapeHtml(greetingName)}</div>
+            <h1 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-0.01em;">Pick a course to start</h1>
+          </div>
+        </div>
+        <p style="margin:6px 0 0;font-size:13px;color:var(--text-muted);">
+          Choose your first language below. You can add or switch extra courses anytime from your <strong>Profile</strong> screen.
+        </p>
+
+        <div class="onboarding-course-grid">
+          ${state.courses
+            .map((c) => {
+              const unitsCount = getAllUnits(c).length;
+              const itemsCount = getAllItems(c).length;
+              const sections = getSections(c);
+              const firstLvl = sections[0]?.jlptLevel || '';
+              const lastLvl = sections[sections.length - 1]?.jlptLevel || '';
+              const lvlRange = firstLvl && lastLvl && firstLvl !== lastLvl ? `${firstLvl} → ${lastLvl}` : firstLvl || 'Full Course';
+              return `
+                <button type="button" class="onboarding-course-btn" data-onboarding-pick="${escapeHtml(c.id)}">
+                  <div style="display:flex;align-items:center;gap:14px;min-width:0;">
+                    <span style="font-size:32px;line-height:1;">${getCourseFlag(c)}</span>
+                    <div style="min-width:0;">
+                      <div style="font-size:16px;font-weight:800;">
+                        ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}
+                        ${c.targetLang.nativeName ? `<span style="color:var(--accent);font-weight:700;margin-left:4px;">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
+                      </div>
+                      <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
+                        ${escapeHtml(lvlRange)} · ${unitsCount} units · ${itemsCount} items
+                      </div>
+                    </div>
+                  </div>
+                  <span class="pill accent">Start →</span>
+                </button>
+              `;
+            })
+            .join('')}
+        </div>
+
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--text-muted);">
+          <span>${googleSession ? `☁️ Signed in as ${escapeHtml(googleSession.user?.email || googleSession.user?.name || 'Google')}` : 'Offline Guest Mode'}</span>
+          ${
+            googleSession
+              ? `<button type="button" class="btn btn-sm" id="onboarding-logout-btn">🚪 Log Out</button>`
+              : `<button type="button" class="btn btn-sm" id="onboarding-signin-btn">🔐 Sign in with Google</button>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 /* ---------- Render Chrome ---------- */
 function renderSidebar(course) {
   const ordered = getOrderedLessons(course);
@@ -951,12 +1096,13 @@ function renderSidebar(course) {
         <button class="icon-btn" data-toggle-theme title="Cycle theme (${escapeHtml(state.theme)})">${getThemeIcon()}</button>
       </div>
 
-      <select id="course-select" class="course-picker" aria-label="Select course">
-        ${state.courses
+      <select id="course-select" class="course-picker" aria-label="Select active course">
+        ${getEnrolledCourses()
           .map(
-            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
+            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${getCourseFlag(c)} ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
           )
           .join('')}
+        <option value="__add__">➕ Add course (Profile)...</option>
       </select>
 
       <nav class="nav-list">
@@ -1011,12 +1157,13 @@ function renderMobileTopbar(course) {
     <header class="mobile-topbar">
       <div style="display:flex;align-items:center;gap:6px;">
         <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:26px;height:26px;border-radius:7px;display:block;" />
-        <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 7px;font-size:12px;font-weight:800;" aria-label="Select course">
-          ${state.courses
+        <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 7px;font-size:12px;font-weight:800;" aria-label="Select active course">
+          ${getEnrolledCourses()
             .map(
               (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(shortCodes[c.targetLang.code] || c.targetLang.name)}</option>`
             )
             .join('')}
+          <option value="__add__">➕ Add...</option>
         </select>
       </div>
       <div class="mobile-hud-inline">
@@ -2092,7 +2239,9 @@ function renderProfileView(course) {
   const googleSession = getGoogleSession();
   const displayName = getDisplayName();
   const completedLessonsCount = Object.keys(state.progress.completedLessons || {}).length;
-  const totalLessonsAll = state.courses.reduce((sum, c) => sum + getOrderedLessons(c).length, 0);
+  const enrolledCourses = getEnrolledCourses();
+  const availableCourses = getAvailableCoursesToAdd();
+  const totalLessonsAll = enrolledCourses.reduce((sum, c) => sum + getOrderedLessons(c).length, 0);
   const srsCount = Object.keys(state.srs || {}).length;
   const masteredChars = Object.values(state.progress.charMastery || {}).filter((v) => v >= 3).length;
   const goalXp = Number(state.profile.dailyGoalXp) || 50;
@@ -2228,10 +2377,61 @@ function renderProfileView(course) {
       </div>
     </section>
 
-    <section class="card">
-      <h3 style="margin-top:0;">Courses Progress</h3>
+    <section class="card" id="profile-courses-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+        <div>
+          <h3 style="margin:0;">📚 Active Courses (${enrolledCourses.length})</h3>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+            Switch between your active courses or add new languages to learn.
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" id="toggle-add-course-btn">
+          ${state.showAddCoursePicker ? '✕ Close' : '+ Add Course'}
+        </button>
+      </div>
+
+      ${
+        state.showAddCoursePicker
+          ? `
+            <div class="add-course-panel" style="margin-bottom:14px;">
+              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);">Available Courses to Add</div>
+              ${
+                availableCourses.length
+                  ? availableCourses
+                      .map((c) => {
+                        const unitsCount = getAllUnits(c).length;
+                        const itemsCount = getAllItems(c).length;
+                        return `
+                          <div class="add-course-row">
+                            <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                              <span style="font-size:24px;line-height:1;">${getCourseFlag(c)}</span>
+                              <div>
+                                <div style="font-weight:700;font-size:14px;">
+                                  ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}
+                                  ${c.targetLang.nativeName ? `<span style="color:var(--accent);font-weight:600;">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
+                                </div>
+                                <div style="font-size:12px;color:var(--text-muted);">${unitsCount} units · ${itemsCount} items</div>
+                              </div>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(c.id)}">+ Add</button>
+                          </div>
+                        `;
+                      })
+                      .join('')
+                  : `
+                    <div style="font-size:13px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+                      <span>You've added all built-in courses! Want more languages?</span>
+                      <button type="button" class="btn btn-sm" data-nav="studio">🛠️ Open Course Studio</button>
+                    </div>
+                  `
+              }
+            </div>
+          `
+          : ''
+      }
+
       <div style="display:grid;gap:10px;">
-        ${state.courses
+        ${enrolledCourses
           .map((c) => {
             const ordered = getOrderedLessons(c);
             const done = ordered.filter((e) => state.progress.completedLessons[e.key]).length;
@@ -2239,11 +2439,15 @@ function renderProfileView(course) {
             return `
               <div class="course-progress-item">
                 <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-                  <div>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-size:18px;">${getCourseFlag(c)}</span>
                     <strong>${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</strong>
-                    <span style="font-size:12px;color:var(--text-muted);margin-left:6px;">${done}/${ordered.length} lessons (${pct}%)</span>
+                    <span style="font-size:12px;color:var(--text-muted);">${done}/${ordered.length} lessons (${pct}%)</span>
                   </div>
-                  <button class="btn btn-sm" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : 'Continue →'}</button>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <button class="btn btn-sm ${c.id === course.id ? 'btn-primary' : ''}" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : 'Continue →'}</button>
+                    <button type="button" class="btn btn-sm" data-unenroll-course="${escapeHtml(c.id)}" title="Remove from active courses">Remove</button>
+                  </div>
                 </div>
                 <div class="mini-progress-track">
                   <div class="mini-progress-fill" style="width:${pct}%;"></div>
@@ -2483,8 +2687,20 @@ function renderSettingsView(course) {
 
 /* ---------- Events ---------- */
 function switchCourse(newId) {
+  if (newId === '__add__') {
+    state.view = 'profile';
+    state.showAddCoursePicker = true;
+    render();
+    return;
+  }
+  if (!state.enrolledCourseIds.includes(newId) && state.courses.some((c) => c.id === newId)) {
+    state.enrolledCourseIds = [...state.enrolledCourseIds, newId];
+    saveLocalState();
+    autoBackupToGoogleDrive(false);
+  }
   state.activeCourseId = newId;
   const nextCourse = getActiveCourse();
+  if (!nextCourse) return;
   const nextSections = getSections(nextCourse);
   state.selectedSectionId = nextSections[0]?.id || 'all';
   state.flashcardFilter = 'ALL';
@@ -2639,6 +2855,34 @@ function attachEvents(course) {
       render();
     });
   }
+
+  const toggleAddCourseBtn = document.getElementById('toggle-add-course-btn');
+  if (toggleAddCourseBtn) {
+    toggleAddCourseBtn.addEventListener('click', () => {
+      state.showAddCoursePicker = !state.showAddCoursePicker;
+      render();
+    });
+  }
+
+  document.querySelectorAll('[data-enroll-course]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cid = btn.dataset.enrollCourse;
+      const target = state.courses.find((c) => c.id === cid);
+      state.profileMessage = target ? `Added "${target.sourceLang.name} → ${target.targetLang.name}" to your active courses!` : '';
+      enrollCourse(cid, false);
+    });
+  });
+
+  document.querySelectorAll('[data-unenroll-course]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cid = btn.dataset.unenrollCourse;
+      const target = state.courses.find((c) => c.id === cid);
+      const label = target ? `${target.sourceLang.name} → ${target.targetLang.name}` : cid;
+      if (!confirm(`Remove "${label}" from your active courses? (Your saved lesson progress will be kept if you re-add it later.)`)) return;
+      state.profileMessage = `Removed "${label}" from active courses.`;
+      unenrollCourse(cid);
+    });
+  });
 
   document.querySelectorAll('[data-select-section]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -3137,6 +3381,9 @@ function attachEvents(course) {
         const idx = state.courses.findIndex((c) => c.id === downloaded.id);
         if (idx >= 0) state.courses[idx] = downloaded;
         else state.courses.push(downloaded);
+        if (!state.enrolledCourseIds.includes(downloaded.id)) {
+          state.enrolledCourseIds = [...state.enrolledCourseIds, downloaded.id];
+        }
         saveLocalState();
         state.studioMessage = `Installed "${downloaded.title}" (v${downloaded.version || '1.0.0'}) from GitHub — saved offline on this device!`;
         state.catalogStatus = `Successfully pulled ${downloaded.id} (${getAllItems(downloaded).length} items).`;
@@ -3279,6 +3526,9 @@ function attachEvents(course) {
       };
 
       state.courses.push(newCourse);
+      if (!state.enrolledCourseIds.includes(newCourse.id)) {
+        state.enrolledCourseIds = [...state.enrolledCourseIds, newCourse.id];
+      }
       state.activeCourseId = newCourse.id;
       state.selectedSectionId = 'sec-starter';
       state.studioMessage = `Created new course "${newCourse.title}". Add items below or export its JSON!`;
@@ -3412,6 +3662,8 @@ function attachEvents(course) {
         chillMode: false
       };
       state.srs = {};
+      state.enrolledCourseIds = [];
+      state.activeCourseId = '';
       state.backupCodePreview = '';
       saveLocalState();
       state.backupMessage = 'Local progress cleared. You can restore anytime from a backup file or code.';
@@ -3432,6 +3684,9 @@ function attachEvents(course) {
         const existingIdx = state.courses.findIndex((c) => c.id === parsed.id);
         if (existingIdx >= 0) state.courses[existingIdx] = parsed;
         else state.courses.push(parsed);
+        if (!state.enrolledCourseIds.includes(parsed.id)) {
+          state.enrolledCourseIds = [...state.enrolledCourseIds, parsed.id];
+        }
         state.activeCourseId = parsed.id;
         state.selectedSectionId = getSections(parsed)[0]?.id || 'all';
         state.studioMessage = `Imported course "${parsed.title || parsed.id}" successfully.`;
@@ -3472,8 +3727,7 @@ function renderLessonSheet(course) {
 }
 
 function render() {
-  const course = getActiveCourse();
-  if (!course) return;
+  if (!state.courses.length) return;
 
   // Cloud pre-sync screen: pull latest Google Drive progress BEFORE loading main UI
   if (state.syncingCloud) {
@@ -3506,6 +3760,31 @@ function render() {
     }
     return;
   }
+
+  // New user onboarding: start with 0 courses and ask which course to begin
+  if (getEnrolledCourses().length === 0) {
+    document.getElementById('app').innerHTML = renderCourseOnboarding();
+    document.querySelectorAll('[data-onboarding-pick]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        enrollCourse(btn.dataset.onboardingPick, true);
+      });
+    });
+    const onbSignIn = document.getElementById('onboarding-signin-btn');
+    if (onbSignIn) onbSignIn.addEventListener('click', handleGoogleSignInAndSync);
+    const onbLogout = document.getElementById('onboarding-logout-btn');
+    if (onbLogout) {
+      onbLogout.addEventListener('click', () => {
+        signOutGoogle();
+        state.guestMode = false;
+        localStorage.removeItem(STORAGE_KEYS.GUEST);
+        render();
+      });
+    }
+    return;
+  }
+
+  const course = getActiveCourse();
+  if (!course) return;
 
   let mainContent = '';
   if (state.view === 'syllabus') mainContent = renderSyllabusView(course);
