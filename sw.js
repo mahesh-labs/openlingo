@@ -1,9 +1,13 @@
-const CACHE_NAME = 'openlingo-v13';
+const CACHE_NAME = 'openlingo-v14';
 const ASSETS = [
   './',
   './index.html',
+  './privacy.html',
   './styles.css',
   './app.js',
+  './assets/icons/openlingo-icon.svg',
+  './assets/icons/openlingo-192.png',
+  './assets/icons/openlingo-512.png',
   './src/srs.js',
   './src/exercises.js',
   './src/scripts.js',

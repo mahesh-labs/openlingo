@@ -19,7 +19,8 @@ const STORAGE_KEYS = {
   SRS: 'openlingo_srs_v2',
   THEME: 'openlingo_theme_v1',
   SETTINGS: 'openlingo_sync_settings_v1',
-  GUEST: 'openlingo_guest_mode_v1'
+  GUEST: 'openlingo_guest_mode_v1',
+  SYNC_META: 'openlingo_sync_meta_v1'
 };
 
 const state = {
@@ -65,6 +66,7 @@ const state = {
   syncingCloud: false,
   authError: '',
   guestMode: false,
+  syncMeta: { lastSyncedAt: null, source: '' },
   audioToast: ''
 };
 
@@ -165,6 +167,8 @@ function loadLocalState() {
       };
     }
     state.guestMode = localStorage.getItem(STORAGE_KEYS.GUEST) === 'true';
+    const savedSyncMeta = JSON.parse(localStorage.getItem(STORAGE_KEYS.SYNC_META) || 'null');
+    if (savedSyncMeta) state.syncMeta = savedSyncMeta;
   } catch {
     // Ignore storage errors
   }
@@ -532,7 +536,7 @@ function decodeBackupInput(rawInput) {
   return JSON.parse(trimmed);
 }
 
-function restoreBackupPayload(rawText) {
+function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime = null) {
   const data = decodeBackupInput(rawText);
   if (!data || typeof data !== 'object' || (!data.progress && !data.srs)) {
     throw new Error('Not a valid OpenLingo backup file or code.');
@@ -570,9 +574,10 @@ function restoreBackupPayload(rawText) {
   }
 
   saveLocalState();
+  recordSyncTimestamp(sourceLabel, remoteTime || data.exportedAt || new Date().toISOString());
   const doneCount = Object.keys(state.progress.completedLessons || {}).length;
   const srsCount = Object.keys(state.srs || {}).length;
-  state.backupMessage = `Restored backup: ${doneCount} completed lessons, ${state.progress.xp} XP, ${srsCount} flashcard records.`;
+  state.backupMessage = `Restored backup (${sourceLabel}): ${doneCount} completed lessons, ${state.progress.xp} XP, ${srsCount} flashcard records.`;
   render();
 }
 
@@ -637,6 +642,35 @@ window.onAndroidBackupLoaded = (base64Payload) => {
   }
 };
 
+function recordSyncTimestamp(source = 'Google Drive', isoTime = null) {
+  state.syncMeta = {
+    lastSyncedAt: isoTime || new Date().toISOString(),
+    source
+  };
+  try {
+    localStorage.setItem(STORAGE_KEYS.SYNC_META, JSON.stringify(state.syncMeta));
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+function formatLastSynced(shortMode = false) {
+  const iso = state.syncMeta?.lastSyncedAt;
+  if (!iso) return 'Not synced yet';
+  const dt = new Date(iso);
+  if (Number.isNaN(dt.getTime())) return 'Not synced yet';
+  const diffSec = Math.max(0, Math.round((Date.now() - dt.getTime()) / 1000));
+  let when = '';
+  if (diffSec < 60) when = 'Just now';
+  else if (diffSec < 3600) when = `${Math.floor(diffSec / 60)}m ago`;
+  else if (diffSec < 86400) when = `${Math.floor(diffSec / 3600)}h ago`;
+  else when = dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+
+  const clock = dt.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  const src = state.syncMeta?.source ? ` · ${state.syncMeta.source}` : '';
+  return shortMode ? `${when} (${clock})` : `${when} · ${clock}${src}`;
+}
+
 let autoBackupTimer = null;
 
 function autoBackupToGoogleDrive(immediate = false) {
@@ -644,7 +678,14 @@ function autoBackupToGoogleDrive(immediate = false) {
   clearTimeout(autoBackupTimer);
   const run = () => {
     backupToGoogleDrive(buildBackupPayload())
-      .then(() => showAudioToast('☁️ Progress synced to Google Drive'))
+      .then((res) => {
+        recordSyncTimestamp('Google Drive', res?.savedAt);
+        showAudioToast(`☁️ Synced to Google Drive (${formatLastSynced(true)})`);
+        const syncEl = document.getElementById('sync-status-label');
+        if (syncEl) syncEl.textContent = `☁️ Last synced: ${formatLastSynced(true)}`;
+        const mobSyncEl = document.getElementById('mobile-sync-strip');
+        if (mobSyncEl) mobSyncEl.textContent = `☁️ Last synced: ${formatLastSynced(false)}`;
+      })
       .catch(() => {
         // Silent fallback if temporarily offline; local progress is safe
       });
@@ -658,8 +699,8 @@ async function syncFromCloudBeforeUi() {
   state.syncingCloud = true;
   render();
   try {
-    const { text } = await restoreFromGoogleDrive();
-    restoreBackupPayload(text);
+    const { text, modifiedTime } = await restoreFromGoogleDrive();
+    restoreBackupPayload(text, 'Google Drive', modifiedTime);
   } catch {
     // No remote backup yet or offline — continue smoothly with local data
   } finally {
@@ -685,12 +726,13 @@ async function handleGoogleSignInAndSync() {
     state.syncingCloud = true;
     render();
     try {
-      const { text } = await restoreFromGoogleDrive();
-      restoreBackupPayload(text);
+      const { text, modifiedTime } = await restoreFromGoogleDrive();
+      restoreBackupPayload(text, 'Google Drive', modifiedTime);
       showAudioToast(`Welcome back, ${session.user?.name || 'Learner'}! Synced from Google Drive.`);
     } catch {
       if (state.progress.xp > 0 || Object.keys(state.progress.completedLessons || {}).length > 0) {
-        backupToGoogleDrive(buildBackupPayload()).catch(() => {});
+        const res = await backupToGoogleDrive(buildBackupPayload()).catch(() => null);
+        if (res) recordSyncTimestamp('Google Drive', res.savedAt);
       }
       state.backupMessage = `Signed in as ${session.user?.email || session.user?.name || 'Google user'}. Auto-sync to Google Drive is active!`;
       showAudioToast(`Welcome, ${session.user?.name || 'Learner'}! Auto-sync active.`);
@@ -711,7 +753,7 @@ function renderAuthGate() {
   return `
     <div class="auth-screen">
       <div class="auth-card">
-        <div class="auth-logo">あ</div>
+        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:72px;height:72px;border-radius:18px;margin:0 auto 14px;display:block;box-shadow:0 8px 20px rgba(16,185,129,0.28);" />
         <h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.02em;">OpenLingo</h1>
         <p style="margin:8px 0 0;font-size:14px;color:var(--text-muted);">
           Free &amp; open-source language learning. Sign in with Google to sync your progress privately across desktop, web, and Android via your own Google Drive.
@@ -753,7 +795,7 @@ function renderSidebar(course) {
     <aside class="sidebar">
       <div class="brand-row">
         <div class="brand">
-          <div class="brand-mark">あ</div>
+          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:38px;height:38px;border-radius:10px;display:block;" />
           <div>
             <div class="brand-name">OpenLingo</div>
             <div class="brand-tag">FOSS Cross-Platform</div>
@@ -797,6 +839,7 @@ function renderSidebar(course) {
                </div>`
             : `<button class="btn btn-primary btn-sm" id="sidebar-signin-btn" style="width:100%;">🔐 Sign in with Google</button>`
         }
+        <div id="sync-status-label" style="font-size:11px;color:var(--text-muted);text-align:center;">☁️ Last synced: ${escapeHtml(formatLastSynced(true))}</div>
         <div class="stat-row"><span>Streak</span><strong>🔥 ${state.progress.streak}d</strong></div>
         <div class="stat-row"><span>Total XP</span><strong>⚡ ${state.progress.xp} XP</strong></div>
         <div class="stat-row"><span>Lessons Done</span><strong>${doneCount}/${ordered.length}</strong></div>
@@ -818,23 +861,29 @@ function renderMobileTopbar(course) {
   const shortCodes = { ja: '🇯🇵 JA', es: '🇪🇸 ES', ml: '🇮🇳 ML' };
   return `
     <header class="mobile-topbar">
-      <select id="mobile-course-select" class="course-picker" style="width:auto;padding:6px 8px;font-size:12px;font-weight:800;" aria-label="Select course">
-        ${state.courses
-          .map(
-            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(shortCodes[c.targetLang.code] || c.targetLang.name)}</option>`
-          )
-          .join('')}
-      </select>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:26px;height:26px;border-radius:7px;display:block;" />
+        <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 7px;font-size:12px;font-weight:800;" aria-label="Select course">
+          ${state.courses
+            .map(
+              (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(shortCodes[c.targetLang.code] || c.targetLang.name)}</option>`
+            )
+            .join('')}
+        </select>
+      </div>
       <div class="mobile-hud-inline">
         <span style="color:#f97316;">🔥 ${state.progress.streak}</span>
         <span style="color:#eab308;">⚡ ${state.progress.xp}</span>
         <span style="color:#f43f5e;">❤️ ${state.progress.chillMode ? '∞' : state.progress.hearts}</span>
       </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <button class="icon-btn" data-nav="backup" title="Backup & Restore" style="width:32px;height:32px;font-size:14px;">💾</button>
-        <button class="icon-btn" data-toggle-theme title="Toggle theme" style="width:32px;height:32px;font-size:14px;">${state.theme === 'light' ? '🌙' : '☀️'}</button>
+      <div style="display:flex;align-items:center;gap:5px;">
+        <button class="icon-btn" data-nav="backup" title="Backup & Restore" style="width:30px;height:30px;font-size:13px;">💾</button>
+        <button class="icon-btn" data-toggle-theme title="Toggle theme" style="width:30px;height:30px;font-size:13px;">${state.theme === 'light' ? '🌙' : '☀️'}</button>
       </div>
     </header>
+    <button id="mobile-sync-strip" class="mobile-sync-strip" data-nav="backup">
+      ☁️ Last synced: ${escapeHtml(formatLastSynced(false))}
+    </button>
   `;
 }
 
@@ -1899,7 +1948,7 @@ function renderBackupView(course) {
     <div class="header-bar">
       <div>
         <h1 class="page-title">Backup &amp; Restore Progress</h1>
-        <p class="page-sub">Back up your progress to your personal Google Drive, a local .json file, or a copy-paste code — zero backend servers.</p>
+        <p class="page-sub">☁️ Last synced: <strong>${escapeHtml(formatLastSynced(false))}</strong></p>
       </div>
       <span class="pill accent">${isAndroidNative ? 'Android Ready' : 'Web / Desktop Ready'}</span>
     </div>
@@ -2628,7 +2677,8 @@ function attachEvents(course) {
       render();
       try {
         const res = await backupToGoogleDrive(buildBackupPayload());
-        state.backupMessage = `Backed up to your Google Drive (${res.updated ? 'updated' : 'created'} openlingo-backup.json).`;
+        recordSyncTimestamp('Google Drive', res.savedAt);
+        state.backupMessage = `Backed up to your Google Drive (${formatLastSynced(false)}).`;
       } catch (err) {
         state.backupMessage = `Google Drive backup failed: ${err.message}`;
       } finally {
@@ -2645,9 +2695,9 @@ function attachEvents(course) {
       state.backupMessage = 'Downloading backup from your Google Drive...';
       render();
       try {
-        const { text } = await restoreFromGoogleDrive();
+        const { text, modifiedTime } = await restoreFromGoogleDrive();
         state.googleBusy = false;
-        restoreBackupPayload(text);
+        restoreBackupPayload(text, 'Google Drive', modifiedTime);
       } catch (err) {
         state.googleBusy = false;
         state.backupMessage = `Google Drive restore failed: ${err.message}`;

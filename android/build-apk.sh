@@ -4,7 +4,7 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 ANDROID_DIR="$PROJECT_DIR/android"
 BUILD_DIR="$ANDROID_DIR/build"
-VERSION_NAME="${APP_VERSION:-0.0.3-beta}"
+VERSION_NAME="${APP_VERSION:-0.0.4-beta}"
 
 SDK_DIR="${ANDROID_HOME:-/home/mahesh/Android/Sdk}"
 BUILD_TOOLS="$SDK_DIR/build-tools/36.0.0"
@@ -16,10 +16,11 @@ export PATH="$JAVA_HOME/bin:$BUILD_TOOLS:$SDK_DIR/platform-tools:$PATH"
 rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR/gen" "$BUILD_DIR/classes" "$BUILD_DIR/dex" "$BUILD_DIR/res_flat" "$BUILD_DIR/assets/www" "$BUILD_DIR/out"
 
-# 1. Bundle all web/course assets into assets/www/
-cp "$PROJECT_DIR/index.html" "$PROJECT_DIR/styles.css" "$PROJECT_DIR/app.js" "$PROJECT_DIR/manifest.webmanifest" "$BUILD_DIR/assets/www/"
+# 1. Bundle all web/course/icon assets into assets/www/
+cp "$PROJECT_DIR/index.html" "$PROJECT_DIR/privacy.html" "$PROJECT_DIR/styles.css" "$PROJECT_DIR/app.js" "$PROJECT_DIR/manifest.webmanifest" "$BUILD_DIR/assets/www/"
 cp -r "$PROJECT_DIR/src" "$BUILD_DIR/assets/www/"
 cp -r "$PROJECT_DIR/courses" "$BUILD_DIR/assets/www/"
+cp -r "$PROJECT_DIR/assets" "$BUILD_DIR/assets/www/"
 
 # 2. Compile Android XML resources with aapt2
 "$BUILD_TOOLS/aapt2" compile --dir "$ANDROID_DIR/res" -o "$BUILD_DIR/res_flat/resources.zip"

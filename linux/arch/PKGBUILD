@@ -1,0 +1,29 @@
+# Maintainer: mahesh-labs <mahesh.makes.it@gmail.com>
+pkgname=openlingo
+pkgver=0.0.4.beta
+pkgrel=1
+pkgdesc="Free and open-source cross-platform language learning app (Japanese, Spanish, Malayalam)"
+arch=('any')
+url="https://mahesh-labs.github.io/openlingo/"
+license=('MIT' 'CC-BY-SA-4.0')
+depends=('python')
+optdepends=('chromium: native standalone app window mode')
+source=("openlingo::git+https://github.com/mahesh-labs/openlingo.git#branch=main")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir/openlingo"
+  install -dm755 "$pkgdir/usr/share/openlingo/www"
+  cp index.html privacy.html styles.css app.js sw.js manifest.webmanifest "$pkgdir/usr/share/openlingo/www/"
+  cp -r src courses assets "$pkgdir/usr/share/openlingo/www/"
+  install -Dm755 linux/openlingo-desktop.py "$pkgdir/usr/share/openlingo/openlingo-desktop.py"
+
+  install -dm755 "$pkgdir/usr/bin"
+  printf '#!/bin/sh\nexec python3 /usr/share/openlingo/openlingo-desktop.py "$@"\n' > "$pkgdir/usr/bin/openlingo"
+  chmod 755 "$pkgdir/usr/bin/openlingo"
+
+  install -Dm644 linux/org.openlingo.app.desktop "$pkgdir/usr/share/applications/org.openlingo.app.desktop"
+  install -Dm644 assets/icons/openlingo-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.openlingo.app.svg"
+  install -Dm644 assets/icons/openlingo-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.openlingo.app.png"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,61 @@
+name: Build & Attach Linux Release Packages (AppImage, Flatpak, Deb, Tar, Zip)
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to attach Linux packages to (e.g. v0.0.4-beta)'
+        required: true
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine release tag
+        id: meta
+        run: |
+          TAG="${{ github.event.release.tag_name || inputs.tag }}"
+          VER="${TAG#v}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+
+      - name: Install appimagetool & flatpak-builder
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder wget
+          wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /tmp/appimagetool
+          chmod +x /tmp/appimagetool
+          sudo mv /tmp/appimagetool /usr/local/bin/appimagetool
+
+      - name: Build tar.gz, zip, deb, and AppImage
+        env:
+          APP_VERSION: ${{ steps.meta.outputs.version }}
+          APPIMAGE_EXTRACT_AND_RUN: "1"
+        run: |
+          chmod +x linux/build-linux.sh
+          bash linux/build-linux.sh
+
+      - name: Build Flatpak bundle (.flatpak)
+        run: |
+          flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y flathub org.freedesktop.Platform//24.08 org.freedesktop.Sdk//24.08
+          flatpak-builder --user --force-clean --repo=flatpak-repo build-flatpak linux/flatpak/org.openlingo.app.yml
+          flatpak build-bundle flatpak-repo "linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}.flatpak" org.openlingo.app
+
+      - name: Upload Linux packages to GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ steps.meta.outputs.tag }}" \
+            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux.tar.gz \
+            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux.zip \
+            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux_all.deb \
+            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-x86_64.AppImage \
+            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}.flatpak \
+            --clobber

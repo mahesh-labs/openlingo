@@ -1,12 +1,21 @@
 # Build artifacts & local signing keys
 android/build/
 android/debug.keystore
+linux/dist/
+linux/build/
+build-flatpak/
+flatpak-repo/
 *.apk
 *.aab
+*.deb
+*.AppImage
+*.flatpak
 *.keystore
 *.jks
 
 # Dependencies & OS files
+__pycache__/
+*.pyc
 node_modules/
 dist/
 .DS_Store

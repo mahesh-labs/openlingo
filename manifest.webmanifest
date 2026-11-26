@@ -1,16 +1,29 @@
 {
   "name": "OpenLingo — Free & Open-Source Language Learning",
   "short_name": "OpenLingo",
-  "description": "Community-driven, cross-platform language learning app with structured syllabi and spaced-repetition flashcards.",
+  "description": "Community-driven, cross-platform language learning app with structured syllabi, handwriting canvas, spaced-repetition flashcards, and private Google Drive sync.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#0b1120",
   "theme_color": "#10b981",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310b981'/><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-size='54' fill='white' font-family='sans-serif' font-weight='bold'>あ</text></svg>",
+      "src": "./assets/icons/openlingo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/openlingo-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icons/openlingo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

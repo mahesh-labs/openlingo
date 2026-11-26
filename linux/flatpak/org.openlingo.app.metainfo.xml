@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.openlingo.app</id>
+  <name>OpenLingo</name>
+  <summary>Free and open-source language learning app</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      OpenLingo is a lightweight, offline-first, community-driven language learning application
+      featuring Duolingo-style progressive learning paths for Japanese (JLPT N5-N1), Spanish (CEFR A1-C1),
+      and Malayalam (Stage 1-5), an interactive handwriting canvas (Hiragana, Katakana, 86 Basic Kanji,
+      Malayalam, Spanish, and full words/sentences), spaced-repetition flashcards, GitHub course catalog sync,
+      and private zero-server Google Drive backup.
+    </p>
+  </description>
+  <launchable type="desktop-id">org.openlingo.app.desktop</launchable>
+  <url type="homepage">https://mahesh-labs.github.io/openlingo/</url>
+  <url type="bugtracker">https://github.com/mahesh-labs/openlingo/issues</url>
+  <developer id="io.github.mahesh-labs">
+    <name>OpenLingo Contributors</name>
+  </developer>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="0.0.4-beta" date="2026-11-26">
+      <description>
+        <p>Unified cross-platform icon and theme, last-synced indicator, GitHub Pages web app, and Linux desktop packages.</p>
+      </description>
+    </release>
+  </releases>
+</component>
