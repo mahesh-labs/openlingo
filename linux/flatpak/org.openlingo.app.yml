@@ -1,6 +1,6 @@
 app-id: org.openlingo.app
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: openlingo
 finish-args:
@@ -16,7 +16,7 @@ modules:
   - name: openlingo
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/share/openlingo/www
+      - mkdir -p /app/bin /app/share/openlingo/www
       - cp index.html privacy.html styles.css app.js sw.js manifest.webmanifest /app/share/openlingo/www/
       - cp -r src courses assets /app/share/openlingo/www/
       - install -Dm755 linux/openlingo-desktop.py /app/share/openlingo/openlingo-desktop.py

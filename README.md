@@ -86,6 +86,7 @@ All Linux builds share the exact same icon, dark/light theme, offline cache, and
 | Format | Artifact / Source | How to Run / Install |
 | :--- | :--- | :--- |
 | **Debian / Ubuntu (`.deb`)** | `OpenLingo-v*-linux_all.deb` | `sudo apt install ./OpenLingo-v*-linux_all.deb` |
+| **Fedora / RHEL / openSUSE (`.rpm`)** | `OpenLingo-v*-linux.noarch.rpm` | `sudo dnf install ./OpenLingo-v*-linux.noarch.rpm` |
 | **AppImage (Universal)** | `OpenLingo-v*-x86_64.AppImage` | `chmod +x OpenLingo-*.AppImage && ./OpenLingo-*.AppImage` |
 | **Flatpak / Flathub** | `OpenLingo-v*.flatpak` & [`linux/flatpak/org.openlingo.app.yml`](linux/flatpak/org.openlingo.app.yml) | `flatpak install --user OpenLingo-v*.flatpak && flatpak run org.openlingo.app` |
 | **Tarball (`.tar.gz`)** | `OpenLingo-v*-linux.tar.gz` | `tar -xzf OpenLingo-*-linux.tar.gz && ./OpenLingo-*/openlingo` |
