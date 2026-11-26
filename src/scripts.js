@@ -5,7 +5,7 @@
 
 export const SCRIPT_SETS = {
   ja: {
-    title: 'Japanese Scripts (Kana)',
+    title: 'Japanese Scripts (Kana & Kanji)',
     subtitle: 'Tap any character to hear its pronunciation, then run a quick recognition drill.',
     speechLocale: 'ja-JP',
     tabs: [
@@ -82,6 +82,42 @@ export const SCRIPT_SETS = {
             { glyph: 'ワ', romaji: 'wa' }, { glyph: 'ヲ', romaji: 'wo' }, { glyph: 'ン', romaji: 'n' }
           ]}
         ]
+      },
+      {
+        id: 'kanji',
+        label: 'Basic Kanji (基本漢字)',
+        note: '86 essential JLPT N5 foundational Kanji grouped by theme. Tap any Kanji to trace and master it in 3 passes.',
+        rows: [
+          { group: 'Numbers & Money', chars: [
+            { glyph: '一', romaji: 'ichi · 1' }, { glyph: '二', romaji: 'ni · 2' }, { glyph: '三', romaji: 'san · 3' }, { glyph: '四', romaji: 'yon · 4' }, { glyph: '五', romaji: 'go · 5' },
+            { glyph: '六', romaji: 'roku · 6' }, { glyph: '七', romaji: 'nana · 7' }, { glyph: '八', romaji: 'hachi · 8' }, { glyph: '九', romaji: 'kyuu · 9' }, { glyph: '十', romaji: 'juu · 10' },
+            { glyph: '百', romaji: 'hyaku · 100' }, { glyph: '千', romaji: 'sen · 1000' }, { glyph: '万', romaji: 'man · 10k' }, { glyph: '円', romaji: 'en · yen' }
+          ]},
+          { group: 'Time & Days', chars: [
+            { glyph: '日', romaji: 'nichi · sun/day' }, { glyph: '月', romaji: 'tsuki · moon/month' }, { glyph: '火', romaji: 'hi · fire' }, { glyph: '水', romaji: 'mizu · water' }, { glyph: '木', romaji: 'ki · tree' },
+            { glyph: '金', romaji: 'kane · gold/money' }, { glyph: '土', romaji: 'tsuchi · earth' }, { glyph: '年', romaji: 'toshi · year' }, { glyph: '時', romaji: 'toki · time' }, { glyph: '分', romaji: 'fun · minute' },
+            { glyph: '半', romaji: 'han · half' }, { glyph: '今', romaji: 'ima · now' }, { glyph: '週', romaji: 'shuu · week' }, { glyph: '毎', romaji: 'mai · every' }
+          ]},
+          { group: 'People & Body', chars: [
+            { glyph: '人', romaji: 'hito · person' }, { glyph: '私', romaji: 'watashi · I' }, { glyph: '子', romaji: 'ko · child' }, { glyph: '女', romaji: 'onna · woman' }, { glyph: '男', romaji: 'otoko · man' },
+            { glyph: '父', romaji: 'chichi · father' }, { glyph: '母', romaji: 'haha · mother' }, { glyph: '友', romaji: 'tomo · friend' }, { glyph: '先', romaji: 'saki · ahead' }, { glyph: '生', romaji: 'sei · life' },
+            { glyph: '名', romaji: 'na · name' }, { glyph: '目', romaji: 'me · eye' }, { glyph: '口', romaji: 'kuchi · mouth' }, { glyph: '手', romaji: 'te · hand' }, { glyph: '足', romaji: 'ashi · foot' }, { glyph: '耳', romaji: 'mimi · ear' }
+          ]},
+          { group: 'Nature & Directions', chars: [
+            { glyph: '山', romaji: 'yama · mountain' }, { glyph: '川', romaji: 'kawa · river' }, { glyph: '雨', romaji: 'ame · rain' }, { glyph: '天', romaji: 'ten · heaven' }, { glyph: '気', romaji: 'ki · spirit/air' },
+            { glyph: '花', romaji: 'hana · flower' }, { glyph: '空', romaji: 'sora · sky' }, { glyph: '上', romaji: 'ue · up' }, { glyph: '下', romaji: 'shita · down' }, { glyph: '左', romaji: 'hidari · left' },
+            { glyph: '右', romaji: 'migi · right' }, { glyph: '中', romaji: 'naka · inside' }, { glyph: '外', romaji: 'soto · outside' }, { glyph: '北', romaji: 'kita · north' }, { glyph: '南', romaji: 'minami · south' },
+            { glyph: '東', romaji: 'higashi · east' }, { glyph: '西', romaji: 'nishi · west' }
+          ]},
+          { group: 'Places, Verbs & Adjectives', chars: [
+            { glyph: '国', romaji: 'kuni · country' }, { glyph: '学', romaji: 'gaku · study' }, { glyph: '校', romaji: 'kou · school' }, { glyph: '駅', romaji: 'eki · station' }, { glyph: '店', romaji: 'mise · shop' },
+            { glyph: '家', romaji: 'ie · house' }, { glyph: '道', romaji: 'michi · road' }, { glyph: '車', romaji: 'kuruma · car' }, { glyph: '電', romaji: 'den · electric' }, { glyph: '本', romaji: 'hon · book' },
+            { glyph: '語', romaji: 'go · language' }, { glyph: '見', romaji: 'miru · see' }, { glyph: '聞', romaji: 'kiku · hear' }, { glyph: '行', romaji: 'iku · go' }, { glyph: '来', romaji: 'kuru · come' },
+            { glyph: '食', romaji: 'taberu · eat' }, { glyph: '飲', romaji: 'nomu · drink' }, { glyph: '読', romaji: 'yomu · read' }, { glyph: '書', romaji: 'kaku · write' },
+            { glyph: '大', romaji: 'ookii · big' }, { glyph: '小', romaji: 'chiisai · small' }, { glyph: '新', romaji: 'atarashii · new' }, { glyph: '古', romaji: 'furui · old' },
+            { glyph: '高', romaji: 'takai · tall/high' }, { glyph: '安', romaji: 'yasui · cheap' }
+          ]}
+        ]
       }
     ]
   },
@@ -122,20 +158,36 @@ export const SCRIPT_SETS = {
     ]
   },
   es: {
-    title: 'Spanish Special Letters & Sounds',
-    subtitle: 'Master Spanish accents, ñ, rr, ll, and distinctive consonant sounds.',
+    title: 'Spanish Letters, Accents & Handwriting',
+    subtitle: 'Practice writing Spanish special letters, accents, words, and full sentences.',
     speechLocale: 'es-ES',
     tabs: [
       {
         id: 'es-special',
         label: 'Accents & Unique Sounds',
-        note: 'Spanish spelling is highly phonetic once you master these key letters and stress marks.',
+        note: 'Spanish spelling is highly phonetic once you master ñ, rolled rr, ll, and accent marks.',
         rows: [
           { group: 'Distinctive Letters', chars: [
-            { glyph: 'ñ', romaji: 'ny (mañana)' }, { glyph: 'll', romaji: 'y (llamo)' }, { glyph: 'rr', romaji: 'rolled r' }, { glyph: 'j', romaji: 'h (jugo)' }, { glyph: 'h', romaji: 'silent (hola)' }
+            { glyph: 'ñ', romaji: 'ny (mañana)' }, { glyph: 'll', romaji: 'y (llamo)' }, { glyph: 'rr', romaji: 'rolled r' }, { glyph: 'j', romaji: 'h (jugo)' }, { glyph: 'h', romaji: 'silent (hola)' }, { glyph: '¿', romaji: 'open question' }, { glyph: '¡', romaji: 'open exclaim' }
           ]},
           { group: 'Stressed Vowels', chars: [
-            { glyph: 'á', romaji: 'stressed a' }, { glyph: 'é', romaji: 'stressed e' }, { glyph: 'í', romaji: 'stressed i' }, { glyph: 'ó', romaji: 'stressed o' }, { glyph: 'ú', romaji: 'stressed u' }, { glyph: 'ü', romaji: 'pronounced u (pingüino)' }
+            { glyph: 'á', romaji: 'stressed a' }, { glyph: 'é', romaji: 'stressed e' }, { glyph: 'í', romaji: 'stressed i' }, { glyph: 'ó', romaji: 'stressed o' }, { glyph: 'ú', romaji: 'stressed u' }, { glyph: 'ü', romaji: 'pronounced u' }
+          ]}
+        ]
+      },
+      {
+        id: 'es-alphabet',
+        label: 'Alphabet (A–Z)',
+        note: 'Practice crisp handwriting across the Spanish alphabet.',
+        rows: [
+          { group: 'A–I', chars: [
+            { glyph: 'A', romaji: 'ah' }, { glyph: 'B', romaji: 'beh' }, { glyph: 'C', romaji: 'seh' }, { glyph: 'D', romaji: 'deh' }, { glyph: 'E', romaji: 'eh' }, { glyph: 'F', romaji: 'efe' }, { glyph: 'G', romaji: 'heh' }, { glyph: 'H', romaji: 'hache' }, { glyph: 'I', romaji: 'ee' }
+          ]},
+          { group: 'J–R', chars: [
+            { glyph: 'J', romaji: 'hota' }, { glyph: 'K', romaji: 'kah' }, { glyph: 'L', romaji: 'ele' }, { glyph: 'M', romaji: 'eme' }, { glyph: 'N', romaji: 'ene' }, { glyph: 'Ñ', romaji: 'eñe' }, { glyph: 'O', romaji: 'oh' }, { glyph: 'P', romaji: 'peh' }, { glyph: 'Q', romaji: 'koo' }, { glyph: 'R', romaji: 'ere' }
+          ]},
+          { group: 'S–Z', chars: [
+            { glyph: 'S', romaji: 'ese' }, { glyph: 'T', romaji: 'teh' }, { glyph: 'U', romaji: 'oo' }, { glyph: 'V', romaji: 'oo-beh' }, { glyph: 'W', romaji: 'doble u' }, { glyph: 'X', romaji: 'equis' }, { glyph: 'Y', romaji: 'ye' }, { glyph: 'Z', romaji: 'seta' }
           ]}
         ]
       }

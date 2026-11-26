@@ -1,7 +1,49 @@
 {
+  "catalogVersion": 2,
+  "repo": "mahesh-labs/openlingo",
+  "branch": "main",
   "courses": [
-    "./courses/en-ja/course.json",
-    "./courses/en-es/course.json",
-    "./courses/en-ml/course.json"
+    {
+      "id": "en-ja",
+      "path": "courses/en-ja/course.json",
+      "title": "Japanese Complete Path (JLPT N5 → N1)",
+      "sourceLang": "English",
+      "targetLang": "Japanese",
+      "nativeName": "日本語",
+      "standard": "JLPT N5–N1",
+      "version": "2.1.0",
+      "units": 24,
+      "lessons": 72,
+      "items": 360,
+      "bundled": true
+    },
+    {
+      "id": "en-es",
+      "path": "courses/en-es/course.json",
+      "title": "Spanish Complete Path (CEFR A1 → C1)",
+      "sourceLang": "English",
+      "targetLang": "Spanish",
+      "nativeName": "Español",
+      "standard": "CEFR A1–C1",
+      "version": "2.0.0",
+      "units": 24,
+      "lessons": 72,
+      "items": 360,
+      "bundled": true
+    },
+    {
+      "id": "en-ml",
+      "path": "courses/en-ml/course.json",
+      "title": "Malayalam Complete Path (Stage 1 → Stage 5)",
+      "sourceLang": "English",
+      "targetLang": "Malayalam",
+      "nativeName": "മലയാളം",
+      "standard": "Stage 1–5",
+      "version": "2.0.0",
+      "units": 18,
+      "lessons": 54,
+      "items": 270,
+      "bundled": true
+    }
   ]
 }

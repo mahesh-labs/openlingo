@@ -1,12 +1,24 @@
 import { RATINGS, createCardState, scheduleReview, formatIntervalLabel, isDue } from './src/srs.js';
 import { generateLessonExercises, normalizeAnswer } from './src/exercises.js';
 import { getScriptSetForCourse } from './src/scripts.js';
+import { mountDrawBoard } from './src/drawboard.js';
+import { APP_CONFIG } from './src/config.js';
+import { normalizeRegistryEntries, fetchGitHubCatalog, fetchCourseFromGitHub } from './src/catalog.js';
+import {
+  getGoogleSession,
+  signInWithGoogle,
+  signOutGoogle,
+  backupToGoogleDrive,
+  restoreFromGoogleDrive
+} from './src/googleSync.js';
 
 const STORAGE_KEYS = {
   COURSES: 'openlingo_custom_courses_v2',
+  GITHUB_COURSES: 'openlingo_github_courses_v1',
   PROGRESS: 'openlingo_progress_v2',
   SRS: 'openlingo_srs_v2',
-  THEME: 'openlingo_theme_v1'
+  THEME: 'openlingo_theme_v1',
+  SETTINGS: 'openlingo_sync_settings_v1'
 };
 
 const state = {
@@ -16,6 +28,8 @@ const state = {
   selectedSectionId: 'sec-n5',
   activeScriptTab: null,
   scriptDrill: null,
+  drawSession: null, // { tabId, chars, index, guideMode, strokes, result }
+  drawController: null,
   flashcardFilter: 'ALL',
   theme: 'dark',
   progress: {
@@ -37,7 +51,16 @@ const state = {
   flashcardSession: { queue: [], index: 0, flipped: false },
   studioMessage: '',
   backupMessage: '',
-  backupCodePreview: ''
+  backupCodePreview: '',
+  syncSettings: {
+    githubRepo: APP_CONFIG.githubRepo,
+    githubBranch: APP_CONFIG.githubBranch,
+    googleClientId: APP_CONFIG.googleClientId
+  },
+  catalogEntries: [],
+  catalogLoading: false,
+  catalogStatus: '',
+  googleBusy: false
 };
 
 function escapeHtml(str) {
@@ -128,6 +151,14 @@ function loadLocalState() {
     if (savedSrs) state.srs = savedSrs;
     const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
     if (savedTheme === 'light' || savedTheme === 'dark') state.theme = savedTheme;
+    const savedSettings = JSON.parse(localStorage.getItem(STORAGE_KEYS.SETTINGS) || 'null');
+    if (savedSettings) {
+      state.syncSettings = {
+        githubRepo: savedSettings.githubRepo || APP_CONFIG.githubRepo,
+        githubBranch: savedSettings.githubBranch || APP_CONFIG.githubBranch,
+        googleClientId: savedSettings.googleClientId || APP_CONFIG.googleClientId
+      };
+    }
   } catch {
     // Ignore storage errors
   }
@@ -139,6 +170,9 @@ function saveLocalState() {
   localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(state.srs));
   const custom = state.courses.filter((c) => c._custom);
   localStorage.setItem(STORAGE_KEYS.COURSES, JSON.stringify(custom));
+  const ghSynced = state.courses.filter((c) => c._source === 'github');
+  localStorage.setItem(STORAGE_KEYS.GITHUB_COURSES, JSON.stringify(ghSynced));
+  localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(state.syncSettings));
 }
 
 function recordStudyActivity() {
@@ -787,12 +821,212 @@ function renderSyllabusView(course) {
   `;
 }
 
+function openDrawSession(scriptSet, tabId, startGlyph = null) {
+  const tab = scriptSet.tabs.find((t) => t.id === tabId) || scriptSet.tabs[0];
+  const chars = tab.rows.flatMap((r) => r.chars);
+  const idx = startGlyph ? Math.max(0, chars.findIndex((c) => c.glyph === startGlyph)) : 0;
+  const target = chars[idx];
+  const mastery = state.progress.charMastery[target.glyph] || 0;
+  const guideMode = mastery >= 2 ? 'off' : mastery === 1 ? 'faint' : 'full';
+
+  state.scriptDrill = null;
+  state.drawSession = {
+    mode: 'trace', // 'trace' | 'write-test' | 'word-write'
+    tabId: tab.id,
+    tabLabel: tab.label,
+    speechLocale: scriptSet.speechLocale,
+    items: chars.map((c) => ({ glyph: c.glyph, romaji: c.romaji, translation: '' })),
+    index: idx,
+    guideMode,
+    strokes: [],
+    result: null,
+    passedCount: 0,
+    completed: false
+  };
+  speakText(target.glyph, scriptSet.speechLocale);
+  render();
+}
+
+function openRandomWriteTest(scriptSet, tabId) {
+  const tab = scriptSet.tabs.find((t) => t.id === tabId) || scriptSet.tabs[0];
+  const chars = tab.rows.flatMap((r) => r.chars);
+  const sample = shuffle(chars).slice(0, Math.min(5, chars.length));
+
+  state.scriptDrill = null;
+  state.drawSession = {
+    mode: 'write-test',
+    tabId: tab.id,
+    tabLabel: `${tab.label} — Random Write Test`,
+    speechLocale: scriptSet.speechLocale,
+    items: sample.map((c) => ({ glyph: c.glyph, romaji: c.romaji, translation: '' })),
+    index: 0,
+    guideMode: 'off', // Memory test! User can tap Peek if needed
+    strokes: [],
+    result: null,
+    passedCount: 0,
+    completed: false
+  };
+  speakText(sample[0].glyph, scriptSet.speechLocale);
+  render();
+}
+
+function openWordWriteSession(course) {
+  const allItems = getAllItems(course);
+  // Pick a balanced mix of short words and full example sentences from the active course
+  const words = shuffle(allItems.filter((it) => it.term.length <= 14)).slice(0, 4);
+  const sentences = shuffle(allItems.filter((it) => it.example && it.example.term && it.example.term.length <= 24)).slice(0, 2);
+
+  const combined = [
+    ...words.map((it) => ({
+      glyph: it.term,
+      romaji: it.transliteration || '',
+      translation: it.translation,
+      kind: 'Word'
+    })),
+    ...sentences.map((it) => ({
+      glyph: it.example.term,
+      romaji: it.example.transliteration || '',
+      translation: it.example.translation,
+      kind: 'Sentence'
+    }))
+  ];
+
+  if (!combined.length) return;
+  state.scriptDrill = null;
+  state.drawSession = {
+    mode: 'word-write',
+    tabId: 'words',
+    tabLabel: `${course.targetLang.name} Word & Sentence Pad`,
+    speechLocale: course.targetLang.speechLocale,
+    items: combined,
+    index: 0,
+    guideMode: 'full',
+    strokes: [],
+    result: null,
+    passedCount: 0,
+    completed: false
+  };
+  speakText(combined[0].glyph, course.targetLang.speechLocale);
+  render();
+}
+
 function renderCharactersView(course) {
   const scriptSet = getScriptSetForCourse(course);
   if (!state.activeScriptTab || !scriptSet.tabs.some((t) => t.id === state.activeScriptTab)) {
     state.activeScriptTab = scriptSet.tabs[0].id;
   }
   const activeTab = scriptSet.tabs.find((t) => t.id === state.activeScriptTab) || scriptSet.tabs[0];
+
+  /* Duolingo-Style Character, Random Test & Word/Sentence Drawing Board */
+  if (state.drawSession) {
+    const ds = state.drawSession;
+    const isWordMode = ds.mode === 'word-write';
+    const isTestMode = ds.mode === 'write-test';
+
+    if (ds.completed) {
+      const pct = Math.round((ds.passedCount / ds.items.length) * 100);
+      return `
+        ${renderHudBar(course)}
+        <section class="card" style="text-align:center;padding:38px 24px;">
+          <div style="font-size:48px;margin-bottom:8px;">✍️</div>
+          <h1 class="page-title">${isTestMode ? 'Writing Test Complete!' : 'Word & Sentence Practice Done!'}</h1>
+          <p class="page-sub">${escapeHtml(ds.tabLabel)} · ${ds.passedCount}/${ds.items.length} passed (${pct}%) · +30 XP</p>
+          <div style="display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap;">
+            <button class="btn btn-primary" id="close-draw-btn">Back to Characters</button>
+            <button class="btn" id="restart-draw-mode-btn">Practice New Set</button>
+          </div>
+        </section>
+      `;
+    }
+
+    const ch = ds.items[ds.index];
+    const mastery = Math.min(3, state.progress.charMastery[ch.glyph] || 0);
+    const guideLabels = { full: 'Guide: Trace', faint: 'Guide: Faint', off: 'Guide: Memory' };
+
+    return `
+      ${renderHudBar(course)}
+      <div class="header-bar" style="margin-bottom:14px;">
+        <div>
+          <span class="pill accent">${escapeHtml(ds.tabLabel)} · ${ds.index + 1}/${ds.items.length}</span>
+          <h1 class="page-title" style="margin-top:6px;">
+            ${
+              isTestMode
+                ? `Write the character for "${escapeHtml(ch.romaji)}"`
+                : isWordMode
+                  ? `Write this ${escapeHtml(ch.kind || 'Word')}`
+                  : `Draw "${escapeHtml(ch.glyph)}" (${escapeHtml(ch.romaji)})`
+            }
+          </h1>
+          <p class="page-sub">
+            ${
+              isTestMode
+                ? 'Memory test — listen and draw from memory (tap Guide to peek if stuck).'
+                : isWordMode
+                  ? `${escapeHtml(ch.translation)}${ch.romaji ? ` · ${escapeHtml(ch.romaji)}` : ''}`
+                  : 'Complete 3 accurate passes (Trace → Faint → Memory) to master this character.'
+            }
+          </p>
+        </div>
+        <button class="btn btn-sm" id="close-draw-btn">← Chart</button>
+      </div>
+
+      <section class="card draw-studio">
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:${isWordMode ? '540px' : '360px'};gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            ${
+              isTestMode && !(ds.result && ds.result.passed) && ds.guideMode === 'off'
+                ? `<div style="font-size:28px;font-weight:800;color:var(--accent);">"${escapeHtml(ch.romaji)}"</div>`
+                : `<div style="font-size:${isWordMode ? '22px' : '38px'};font-weight:800;line-height:1.15;">${escapeHtml(ch.glyph)}</div>`
+            }
+            <div>
+              ${!isTestMode ? `<div style="font-size:14px;font-weight:800;color:var(--accent);">${escapeHtml(isWordMode ? ch.translation : ch.romaji)}</div>` : ''}
+              ${
+                !isWordMode && !isTestMode
+                  ? `<div style="display:flex;align-items:center;gap:8px;margin-top:3px;">
+                      <div class="mastery-dots">
+                        <span class="mastery-dot ${mastery >= 1 ? 'filled' : ''}"></span>
+                        <span class="mastery-dot ${mastery >= 2 ? 'filled' : ''}"></span>
+                        <span class="mastery-dot ${mastery >= 3 ? 'filled' : ''}"></span>
+                      </div>
+                      <span style="font-size:12px;color:var(--text-muted);">${mastery >= 3 ? 'Mastered!' : `${mastery}/3 passes`}</span>
+                    </div>`
+                  : ''
+              }
+            </div>
+          </div>
+          <button class="btn btn-sm" data-speak="${escapeHtml(ch.glyph)}" data-speak-locale="${escapeHtml(ds.speechLocale)}">🔊 Hear</button>
+        </div>
+
+        <div class="draw-canvas-wrap ${isWordMode ? 'wide' : ''}">
+          <canvas id="char-draw-canvas"></canvas>
+        </div>
+
+        ${
+          ds.result
+            ? `<div class="draw-feedback ${ds.result.passed ? 'pass' : 'retry'}">${escapeHtml(ds.result.feedback)}</div>`
+            : `<div style="font-size:12px;color:var(--text-muted);">${isWordMode ? 'Write across the ruled lines with your finger or mouse' : 'Draw inside the square with your finger or mouse'}</div>`
+        }
+
+        <div class="draw-toolbar">
+          <button class="btn btn-sm" id="draw-undo-btn">↩ Undo</button>
+          <button class="btn btn-sm" id="draw-clear-btn">🧹 Clear</button>
+          <button class="btn btn-sm" id="draw-guide-btn">👁 ${escapeHtml(guideLabels[ds.guideMode])}</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 2fr 1fr;gap:8px;width:100%;max-width:${isWordMode ? '540px' : '360px'};">
+          <button class="btn btn-sm" id="draw-prev-btn" ${ds.index <= 0 ? 'disabled' : ''}>← Prev</button>
+          ${
+            ds.result && ds.result.passed && !isTestMode && !isWordMode && mastery < 3
+              ? `<button class="btn btn-primary" id="draw-repeat-btn">✍️ Repeat (Pass ${mastery + 1}/3)</button>`
+              : ds.result && ds.result.passed
+                ? `<button class="btn btn-primary" id="draw-next-btn">${ds.index >= ds.items.length - 1 ? 'Finish ✓' : 'Next →'}</button>`
+                : `<button class="btn btn-primary" id="draw-check-btn">✓ Check Writing</button>`
+          }
+          <button class="btn btn-sm" id="draw-next-btn-side" ${!isTestMode && !isWordMode && ds.index >= ds.items.length - 1 ? 'disabled' : ''}>${ds.index >= ds.items.length - 1 ? 'Done' : 'Next →'}</button>
+        </div>
+      </section>
+    `;
+  }
 
   if (state.scriptDrill) {
     const d = state.scriptDrill;
@@ -867,9 +1101,14 @@ function renderCharactersView(course) {
     <div class="header-bar">
       <div>
         <h1 class="page-title">${escapeHtml(scriptSet.title)}</h1>
-        <p class="page-sub">${escapeHtml(scriptSet.subtitle)}</p>
+        <p class="page-sub">Tap any character to draw &amp; master it in 3 passes, take a random Write Test, or write full words &amp; sentences.</p>
       </div>
-      <button class="btn btn-primary" id="start-script-drill-btn">🎯 Practice ${escapeHtml(activeTab.label.split(' ')[0])} (8 Qs)</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-primary btn-sm" id="start-draw-mode-btn">✏️ Trace ${escapeHtml(activeTab.label.split(' ')[0])}</button>
+        <button class="btn btn-sm" id="start-write-test-btn">🎲 Write Test (5)</button>
+        <button class="btn btn-sm" id="start-word-write-btn">📝 Words &amp; Sentences</button>
+        <button class="btn btn-sm" id="start-script-drill-btn">🎯 Quiz</button>
+      </div>
     </div>
 
     <div class="filter-row">
@@ -1291,12 +1530,26 @@ function renderFlashcardsView(course) {
 
 function renderStudioView(course) {
   const allUnits = getAllUnits(course);
+  const repoUrl = `https://github.com/${state.syncSettings.githubRepo}/tree/${state.syncSettings.githubBranch}/courses`;
+  const catalogList = state.catalogEntries.length
+    ? state.catalogEntries
+    : state.courses.map((c) => ({
+        id: c.id,
+        path: `courses/${c.id}/course.json`,
+        title: c.title,
+        targetLang: c.targetLang?.name || c.id,
+        nativeName: c.targetLang?.nativeName || '',
+        standard: c.standardName || '',
+        version: c.version || '1.0.0',
+        items: getAllItems(c).length
+      }));
+
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
-        <h1 class="page-title">Community Course Studio</h1>
-        <p class="page-sub">Add a new language course, append vocabulary items, or export open JSON.</p>
+        <h1 class="page-title">Course Catalog &amp; Studio</h1>
+        <p class="page-sub">Sync community courses live from GitHub, create local courses, or export open JSON for PRs.</p>
       </div>
       <button class="btn btn-sm" id="export-course-btn">⬇ Export Current JSON</button>
     </div>
@@ -1304,7 +1557,72 @@ function renderStudioView(course) {
     ${state.studioMessage ? `<div class="grammar-box">${escapeHtml(state.studioMessage)}</div>` : ''}
 
     <section class="card">
-      <h3 style="margin-top:0;">Add a New Language Course</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <div>
+          <h3 style="margin:0;">🌐 GitHub Community Course Catalog</h3>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+            Reads <code>courses/registry.json</code> directly from your GitHub repo so community PRs appear live.
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-primary btn-sm" id="sync-github-catalog-btn" ${state.catalogLoading ? 'disabled' : ''}>
+            ${state.catalogLoading ? '⏳ Syncing...' : '🔄 Sync from GitHub'}
+          </button>
+          <a class="btn btn-sm" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Contribute on GitHub ↗</a>
+        </div>
+      </div>
+
+      <form id="github-repo-form" class="form-grid" style="margin-bottom:12px;">
+        <div>
+          <label class="field-label">GitHub Repository (owner/repo)</label>
+          <input class="input" name="githubRepo" value="${escapeHtml(state.syncSettings.githubRepo)}" placeholder="mahesh-labs/openlingo" required />
+        </div>
+        <div>
+          <label class="field-label">Branch</label>
+          <input class="input" name="githubBranch" value="${escapeHtml(state.syncSettings.githubBranch)}" placeholder="main" required />
+        </div>
+        <div style="display:flex;align-items:flex-end;">
+          <button class="btn btn-sm" type="submit">Save Repo Source</button>
+        </div>
+      </form>
+
+      ${state.catalogStatus ? `<div style="font-size:12px;color:var(--blue);margin-bottom:10px;font-weight:600;">${escapeHtml(state.catalogStatus)}</div>` : ''}
+
+      <div style="display:grid;gap:10px;">
+        ${catalogList
+          .map((entry) => {
+            const installed = state.courses.find((c) => c.id === entry.id);
+            const hasUpdate = installed && entry.version && installed.version && installed.version !== entry.version;
+            const badge = !installed
+              ? 'Available on GitHub'
+              : hasUpdate
+                ? `Update: v${entry.version}`
+                : installed._source === 'github'
+                  ? `Synced v${installed.version || entry.version}`
+                  : `Installed v${installed.version || entry.version}`;
+            return `
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px;border-radius:12px;background:var(--surface-elevated);border:1px solid var(--border);">
+              <div>
+                <div style="font-weight:700;font-size:14px;">${escapeHtml(entry.title || entry.id)} ${entry.nativeName ? `<span style="color:var(--accent);font-weight:600;">(${escapeHtml(entry.nativeName)})</span>` : ''}</div>
+                <div style="font-size:12px;color:var(--text-muted);">
+                  <code>${escapeHtml(entry.path)}</code>${entry.items ? ` · ${entry.items} items` : ''} · ${escapeHtml(badge)}
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                ${installed ? `<button class="btn btn-sm" data-switch-course="${escapeHtml(entry.id)}">Open</button>` : ''}
+                <button class="btn btn-primary btn-sm" data-install-github="${escapeHtml(entry.id)}" ${state.catalogLoading ? 'disabled' : ''}>
+                  ${installed ? (hasUpdate ? '⬆ Update' : '⬇ Pull Latest') : '⬇ Install'}
+                </button>
+              </div>
+            </div>
+          `;
+          })
+          .join('')}
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">Add a New Language Course (Local Draft)</h3>
       <form id="create-course-form">
         <div class="form-grid">
           <div>
@@ -1377,18 +1695,65 @@ function renderBackupView(course) {
   const masteredChars = Object.values(state.progress.charMastery || {}).filter((v) => v >= 3).length;
   const customCount = state.courses.filter((c) => c._custom).length;
   const isAndroidNative = Boolean(window.AndroidBackup);
+  const googleSession = getGoogleSession();
 
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
         <h1 class="page-title">Backup &amp; Restore Progress</h1>
-        <p class="page-sub">100% offline, server-free backup for your lessons, streak, XP, flashcards, and custom courses.</p>
+        <p class="page-sub">Back up your progress to your personal Google Drive, a local .json file, or a copy-paste code — zero backend servers.</p>
       </div>
-      <span class="pill accent">${isAndroidNative ? 'Android Files Ready' : 'Web / Desktop Ready'}</span>
+      <span class="pill accent">${isAndroidNative ? 'Android Ready' : 'Web / Desktop Ready'}</span>
     </div>
 
     ${state.backupMessage ? `<div class="grammar-box">${escapeHtml(state.backupMessage)}</div>` : ''}
+
+    <section class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;">
+        <div>
+          <h3 style="margin:0;">☁️ Sign in with Google (Personal Drive Backup)</h3>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+            Saves <code>openlingo-backup.json</code> privately inside your own Google account's hidden AppData folder.
+          </div>
+        </div>
+        ${googleSession ? `<span class="pill accent">Signed in</span>` : `<span class="pill">Zero-server OAuth</span>`}
+      </div>
+
+      ${
+        googleSession
+          ? `
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:12px;border-radius:12px;background:var(--surface-elevated);border:1px solid var(--border);margin-bottom:12px;">
+          <div>
+            <strong>${escapeHtml(googleSession.user?.name || 'Google Account')}</strong>
+            <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(googleSession.user?.email || '')}</div>
+          </div>
+          <button class="btn btn-sm" id="google-signout-btn">Sign Out</button>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-primary" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>☁️ Backup to Google Drive</button>
+          <button class="btn" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>⬇️ Restore from Google Drive</button>
+        </div>
+      `
+          : `
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+          <button class="btn btn-primary" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>
+            ${state.googleBusy ? '⏳ Signing in...' : '🔐 Sign in with Google'}
+          </button>
+        </div>
+        <form id="google-client-form" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
+          <div style="flex:1;min-width:220px;">
+            <label class="field-label">Google OAuth 2.0 Web Client ID (or set in src/config.js)</label>
+            <input class="input" name="googleClientId" value="${escapeHtml(state.syncSettings.googleClientId)}" placeholder="123456789-xxxx.apps.googleusercontent.com" />
+          </div>
+          <button class="btn btn-sm" type="submit">Save Client ID</button>
+        </form>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">
+          One-time free setup: Google Cloud Console → Enable <strong>Google Drive API</strong> → Create <strong>OAuth Web Client ID</strong> (add <code>http://localhost:8080</code> &amp; your GitHub Pages URL as authorized JS origins) → paste above or in <code>src/config.js</code>.
+        </div>
+      `
+      }
+    </section>
 
     <section class="card">
       <h3 style="margin-top:0;">Current Device Progress</h3>
@@ -1457,6 +1822,8 @@ function switchCourse(newId) {
   state.flashcardFilter = 'ALL';
   state.activeScriptTab = null;
   state.scriptDrill = null;
+  state.drawSession = null;
+  state.drawController = null;
   state.placementSession = null;
   state.lessonSession = null;
   state.view = 'syllabus';
@@ -1472,6 +1839,8 @@ function attachEvents(course) {
     btn.addEventListener('click', () => {
       const target = btn.dataset.nav;
       state.scriptDrill = null;
+      state.drawSession = null;
+      state.drawController = null;
       if (target === 'flashcards') openFlashcards();
       else {
         state.view = target;
@@ -1557,10 +1926,11 @@ function attachEvents(course) {
     });
   });
 
-  /* Characters Tab Events */
+  /* Characters Tab & Drawing Board Events */
   document.querySelectorAll('[data-script-tab]').forEach((btn) => {
     btn.addEventListener('click', () => {
       state.activeScriptTab = btn.dataset.scriptTab;
+      state.drawSession = null;
       render();
     });
   });
@@ -1568,12 +1938,171 @@ function attachEvents(course) {
   document.querySelectorAll('[data-char-tap]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const glyph = btn.dataset.charTap;
-      speakText(glyph, btn.dataset.speakLocale || course.targetLang.speechLocale);
-      state.progress.charMastery[glyph] = Math.min(3, (state.progress.charMastery[glyph] || 0) + 1);
-      saveLocalState();
-      render();
+      openDrawSession(getScriptSetForCourse(course), state.activeScriptTab, glyph);
     });
   });
+
+  const startDrawModeBtn = document.getElementById('start-draw-mode-btn');
+  if (startDrawModeBtn) {
+    startDrawModeBtn.addEventListener('click', () => {
+      openDrawSession(getScriptSetForCourse(course), state.activeScriptTab, null);
+    });
+  }
+
+  const startWriteTestBtn = document.getElementById('start-write-test-btn');
+  if (startWriteTestBtn) {
+    startWriteTestBtn.addEventListener('click', () => {
+      openRandomWriteTest(getScriptSetForCourse(course), state.activeScriptTab);
+    });
+  }
+
+  const startWordWriteBtn = document.getElementById('start-word-write-btn');
+  if (startWordWriteBtn) {
+    startWordWriteBtn.addEventListener('click', () => {
+      openWordWriteSession(course);
+    });
+  }
+
+  if (state.view === 'characters' && state.drawSession) {
+    const ds = state.drawSession;
+    const isWordMode = ds.mode === 'word-write';
+    const isTestMode = ds.mode === 'write-test';
+
+    const closeDrawBtn = document.getElementById('close-draw-btn');
+    if (closeDrawBtn) {
+      closeDrawBtn.addEventListener('click', () => {
+        state.drawSession = null;
+        state.drawController = null;
+        render();
+      });
+    }
+
+    const restartDrawBtn = document.getElementById('restart-draw-mode-btn');
+    if (restartDrawBtn) {
+      restartDrawBtn.addEventListener('click', () => {
+        if (isWordMode) openWordWriteSession(course);
+        else openRandomWriteTest(getScriptSetForCourse(course), state.activeScriptTab);
+      });
+    }
+
+    if (!ds.completed) {
+      const ch = ds.items[ds.index];
+      const canvasWrap = document.querySelector('.draw-canvas-wrap');
+      if (canvasWrap) {
+        state.drawController = mountDrawBoard(canvasWrap, {
+          glyph: ch.glyph,
+          width: isWordMode ? 520 : 280,
+          height: isWordMode ? 170 : 280,
+          ruled: isWordMode,
+          guideMode: ds.guideMode,
+          strokes: ds.strokes,
+          onStrokesChange: (updated) => {
+            ds.strokes = updated;
+          }
+        });
+        if (ds.result && state.drawController) {
+          state.drawController.showOverlay();
+        }
+      }
+
+      const undoBtn = document.getElementById('draw-undo-btn');
+      if (undoBtn) {
+        undoBtn.addEventListener('click', () => {
+          ds.result = null;
+          state.drawController?.undo();
+          render();
+        });
+      }
+
+      const clearBtn = document.getElementById('draw-clear-btn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          ds.strokes = [];
+          ds.result = null;
+          state.drawController?.clear();
+          render();
+        });
+      }
+
+      const guideBtn = document.getElementById('draw-guide-btn');
+      if (guideBtn) {
+        guideBtn.addEventListener('click', () => {
+          const order = ['full', 'faint', 'off'];
+          ds.guideMode = order[(order.indexOf(ds.guideMode) + 1) % order.length];
+          state.drawController?.setGuide(ds.guideMode);
+          render();
+        });
+      }
+
+      const checkBtn = document.getElementById('draw-check-btn');
+      if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+          if (!state.drawController) return;
+          const res = state.drawController.evaluate();
+          ds.result = res;
+          if (res.passed) {
+            ds.passedCount += 1;
+            if (!isWordMode) {
+              state.progress.charMastery[ch.glyph] = Math.min(3, (state.progress.charMastery[ch.glyph] || 0) + 1);
+            }
+            state.progress.xp += isWordMode ? 10 : 5;
+            recordStudyActivity();
+            saveLocalState();
+            speakText(ch.glyph, ds.speechLocale);
+          }
+          render();
+        });
+      }
+
+      const repeatBtn = document.getElementById('draw-repeat-btn');
+      if (repeatBtn) {
+        repeatBtn.addEventListener('click', () => {
+          const nextMastery = state.progress.charMastery[ch.glyph] || 0;
+          ds.guideMode = nextMastery >= 2 ? 'off' : nextMastery === 1 ? 'faint' : 'full';
+          ds.strokes = [];
+          ds.result = null;
+          speakText(ch.glyph, ds.speechLocale);
+          render();
+        });
+      }
+
+      const stepItem = (delta) => {
+        const nextIdx = ds.index + delta;
+        if (nextIdx < 0) return;
+        if (nextIdx >= ds.items.length) {
+          if (isTestMode || isWordMode) {
+            ds.completed = true;
+            state.progress.xp += 30;
+            recordStudyActivity();
+            saveLocalState();
+            render();
+          }
+          return;
+        }
+        ds.index = nextIdx;
+        const nextCh = ds.items[nextIdx];
+        if (isTestMode) {
+          ds.guideMode = 'off';
+        } else if (isWordMode) {
+          ds.guideMode = 'full';
+        } else {
+          const nextMastery = state.progress.charMastery[nextCh.glyph] || 0;
+          ds.guideMode = nextMastery >= 2 ? 'off' : nextMastery === 1 ? 'faint' : 'full';
+        }
+        ds.strokes = [];
+        ds.result = null;
+        speakText(nextCh.glyph, ds.speechLocale);
+        render();
+      };
+
+      const prevBtn = document.getElementById('draw-prev-btn');
+      if (prevBtn) prevBtn.addEventListener('click', () => stepItem(-1));
+      const nextBtn = document.getElementById('draw-next-btn');
+      if (nextBtn) nextBtn.addEventListener('click', () => stepItem(1));
+      const nextSideBtn = document.getElementById('draw-next-btn-side');
+      if (nextSideBtn) nextSideBtn.addEventListener('click', () => stepItem(1));
+    }
+  }
 
   const startScriptBtn = document.getElementById('start-script-drill-btn');
   if (startScriptBtn) {
@@ -1779,6 +2308,151 @@ function attachEvents(course) {
       }
       state.flashcardSession = { queue: [...items], index: 0, flipped: false };
       render();
+    });
+  }
+
+  /* GitHub Community Course Catalog Events */
+  const ghRepoForm = document.getElementById('github-repo-form');
+  if (ghRepoForm) {
+    ghRepoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(ghRepoForm);
+      state.syncSettings.githubRepo = String(fd.get('githubRepo')).trim();
+      state.syncSettings.githubBranch = String(fd.get('githubBranch')).trim() || 'main';
+      saveLocalState();
+      state.catalogStatus = `Saved GitHub source: ${state.syncSettings.githubRepo} (${state.syncSettings.githubBranch})`;
+      render();
+    });
+  }
+
+  const syncCatalogBtn = document.getElementById('sync-github-catalog-btn');
+  if (syncCatalogBtn) {
+    syncCatalogBtn.addEventListener('click', async () => {
+      state.catalogLoading = true;
+      state.catalogStatus = `Fetching courses/registry.json from ${state.syncSettings.githubRepo}...`;
+      render();
+      try {
+        const result = await fetchGitHubCatalog(state.syncSettings.githubRepo, state.syncSettings.githubBranch);
+        state.catalogEntries = result.entries;
+        state.catalogStatus = `Synced ${result.entries.length} courses from github.com/${result.repo} (${result.branch}).`;
+      } catch (err) {
+        state.catalogStatus = `Sync error: ${err.message}`;
+      } finally {
+        state.catalogLoading = false;
+        render();
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-switch-course]').forEach((btn) => {
+    btn.addEventListener('click', () => switchCourse(btn.dataset.switchCourse));
+  });
+
+  document.querySelectorAll('[data-install-github]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.installGithub;
+      const entry =
+        state.catalogEntries.find((e) => e.id === id) ||
+        { id, path: `courses/${id}/course.json` };
+      state.catalogLoading = true;
+      state.catalogStatus = `Downloading ${id} from GitHub...`;
+      render();
+      try {
+        const downloaded = await fetchCourseFromGitHub(
+          entry,
+          state.syncSettings.githubRepo,
+          state.syncSettings.githubBranch
+        );
+        const idx = state.courses.findIndex((c) => c.id === downloaded.id);
+        if (idx >= 0) state.courses[idx] = downloaded;
+        else state.courses.push(downloaded);
+        saveLocalState();
+        state.studioMessage = `Installed "${downloaded.title}" (v${downloaded.version || '1.0.0'}) from GitHub — saved offline on this device!`;
+        state.catalogStatus = `Successfully pulled ${downloaded.id} (${getAllItems(downloaded).length} items).`;
+      } catch (err) {
+        state.catalogStatus = `Download failed: ${err.message}`;
+      } finally {
+        state.catalogLoading = false;
+        render();
+      }
+    });
+  });
+
+  /* Google Sign-In & Drive AppData Sync Events */
+  const googleClientForm = document.getElementById('google-client-form');
+  if (googleClientForm) {
+    googleClientForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(googleClientForm);
+      state.syncSettings.googleClientId = String(fd.get('googleClientId')).trim();
+      saveLocalState();
+      state.backupMessage = state.syncSettings.googleClientId
+        ? 'Saved Google OAuth Client ID. Click "Sign in with Google" to connect your Drive!'
+        : 'Cleared Google OAuth Client ID.';
+      render();
+    });
+  }
+
+  const googleSignInBtn = document.getElementById('google-signin-btn');
+  if (googleSignInBtn) {
+    googleSignInBtn.addEventListener('click', async () => {
+      state.googleBusy = true;
+      state.backupMessage = 'Opening Google Sign-In...';
+      render();
+      try {
+        const session = await signInWithGoogle(state.syncSettings.googleClientId);
+        state.backupMessage = `Signed in as ${session.user?.email || session.user?.name || 'Google user'}. Ready to back up or restore from Google Drive!`;
+      } catch (err) {
+        state.backupMessage = `Google Sign-In: ${err.message}`;
+      } finally {
+        state.googleBusy = false;
+        render();
+      }
+    });
+  }
+
+  const googleSignOutBtn = document.getElementById('google-signout-btn');
+  if (googleSignOutBtn) {
+    googleSignOutBtn.addEventListener('click', () => {
+      signOutGoogle();
+      state.backupMessage = 'Signed out of Google. Your local device progress remains intact.';
+      render();
+    });
+  }
+
+  const googleBackupBtn = document.getElementById('google-backup-btn');
+  if (googleBackupBtn) {
+    googleBackupBtn.addEventListener('click', async () => {
+      state.googleBusy = true;
+      state.backupMessage = 'Uploading progress to your private Google Drive AppData...';
+      render();
+      try {
+        const res = await backupToGoogleDrive(buildBackupPayload());
+        state.backupMessage = `Backed up to your Google Drive (${res.updated ? 'updated' : 'created'} openlingo-backup.json).`;
+      } catch (err) {
+        state.backupMessage = `Google Drive backup failed: ${err.message}`;
+      } finally {
+        state.googleBusy = false;
+        render();
+      }
+    });
+  }
+
+  const googleRestoreBtn = document.getElementById('google-restore-btn');
+  if (googleRestoreBtn) {
+    googleRestoreBtn.addEventListener('click', async () => {
+      state.googleBusy = true;
+      state.backupMessage = 'Downloading backup from your Google Drive...';
+      render();
+      try {
+        const { text } = await restoreFromGoogleDrive();
+        state.googleBusy = false;
+        restoreBackupPayload(text);
+      } catch (err) {
+        state.googleBusy = false;
+        state.backupMessage = `Google Drive restore failed: ${err.message}`;
+        render();
+      }
     });
   }
 
@@ -2073,8 +2747,10 @@ async function init() {
     const regRes = await fetch('./courses/registry.json');
     if (regRes.ok) {
       const reg = await regRes.json();
-      if (Array.isArray(reg.courses) && reg.courses.length) {
-        courseManifestUrls = reg.courses;
+      const normalized = normalizeRegistryEntries(reg);
+      if (normalized.length) {
+        state.catalogEntries = normalized;
+        courseManifestUrls = normalized.map((e) => `./${e.path}`);
       }
     }
   } catch {
@@ -2083,10 +2759,14 @@ async function init() {
 
   const loadedCourses = await Promise.all(courseManifestUrls.map(loadCourseManifest));
   state.courses = loadedCourses;
-  const active = getActiveCourse();
-  state.selectedSectionId = active?.sections?.[0]?.id || 'all';
 
   try {
+    const ghCourses = JSON.parse(localStorage.getItem(STORAGE_KEYS.GITHUB_COURSES) || '[]');
+    ghCourses.forEach((c) => {
+      const idx = state.courses.findIndex((x) => x.id === c.id);
+      if (idx >= 0) state.courses[idx] = c;
+      else state.courses.push(c);
+    });
     const customCourses = JSON.parse(localStorage.getItem(STORAGE_KEYS.COURSES) || '[]');
     customCourses.forEach((c) => {
       const idx = state.courses.findIndex((x) => x.id === c.id);
@@ -2096,6 +2776,9 @@ async function init() {
   } catch {
     // Ignore storage errors
   }
+
+  const active = getActiveCourse();
+  state.selectedSectionId = active?.sections?.[0]?.id || 'all';
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(() => {});

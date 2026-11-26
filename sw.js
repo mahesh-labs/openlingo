@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v6';
+const CACHE_NAME = 'openlingo-v9';
 const ASSETS = [
   './',
   './index.html',
@@ -7,6 +7,10 @@ const ASSETS = [
   './src/srs.js',
   './src/exercises.js',
   './src/scripts.js',
+  './src/drawboard.js',
+  './src/config.js',
+  './src/catalog.js',
+  './src/googleSync.js',
   './manifest.webmanifest',
   './courses/registry.json',
   './courses/schema.json',
@@ -47,6 +51,10 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) {
+    return; // Let GitHub catalog & Google OAuth/Drive requests pass straight through
+  }
   event.respondWith(
     fetch(event.request)
       .then((res) => {
