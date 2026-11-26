@@ -40,6 +40,7 @@
             </intent-filter>
         </activity>
 
+        <!-- AUTO-GENERATED ICON ALIASES START -->
         <!-- Default launcher icon: Malayalam (അ) -->
         <activity-alias
             android:name=".IconAliasMl"
@@ -264,5 +265,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+        <!-- AUTO-GENERATED ICON ALIASES END -->
     </application>
 </manifest>

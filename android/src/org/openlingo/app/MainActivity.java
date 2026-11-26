@@ -512,6 +512,7 @@ public class MainActivity extends Activity {
         private final Map<String, String> aliasMap = new LinkedHashMap<>();
 
         AppIconBridge() {
+            // AUTO-GENERATED ICON ALIASES START
             aliasMap.put("ml", ".IconAliasMl");
             aliasMap.put("en", ".IconAliasEn");
             aliasMap.put("ta", ".IconAliasTa");
@@ -528,6 +529,7 @@ public class MainActivity extends Activity {
             aliasMap.put("star", ".IconAliasStar");
             aliasMap.put("diamond", ".IconAliasDiamond");
             aliasMap.put("triangle", ".IconAliasTriangle");
+            // AUTO-GENERATED ICON ALIASES END
         }
 
         @JavascriptInterface

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v29';
+const CACHE_NAME = 'openlingo-v30';
 const ASSETS = [
   './',
   './index.html',
@@ -22,6 +22,7 @@ const ASSETS = [
   './courses/registry.json',
   './courses/schema.json',
   './courses/matrix/syllabus.json',
+  // AUTO-GENERATED MATRIX LANGS START
   './courses/langs/en.json',
   './courses/langs/ml.json',
   './courses/langs/ta.json',
@@ -35,6 +36,7 @@ const ASSETS = [
   './courses/langs/es.json',
   './courses/langs/fr.json',
   './courses/langs/ru.json'
+  // AUTO-GENERATED MATRIX LANGS END
 ];
 
 self.addEventListener('install', (event) => {

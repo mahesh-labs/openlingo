@@ -134,6 +134,39 @@ export const APP_ICON_PRESETS = [
 
 const iconUrlCache = new Map();
 
+export function syncLanguageAppIcons(languages = []) {
+  if (!Array.isArray(languages) || !languages.length) return APP_ICON_PRESETS;
+  const symbolIds = new Set(['star', 'diamond', 'triangle']);
+  let insertIdx = APP_ICON_PRESETS.findIndex((p) => symbolIds.has(p.id));
+  if (insertIdx < 0) insertIdx = APP_ICON_PRESETS.length;
+
+  languages.forEach((lang) => {
+    const code = String(lang?.code || '').trim();
+    const ic = lang?.icon;
+    if (!code || !ic?.glyph) return;
+    const existing = APP_ICON_PRESETS.find((p) => p.id === code);
+    if (existing) {
+      existing.glyph = ic.glyph;
+      existing.label = lang.name || existing.label;
+      if (ic.fontFamily) existing.fontFamily = ic.fontFamily;
+      if (ic.fontSize) existing.fontSize = Number(ic.fontSize);
+      if (ic.y) existing.y = Number(ic.y);
+      iconUrlCache.delete(code);
+    } else {
+      APP_ICON_PRESETS.splice(insertIdx, 0, {
+        id: code,
+        glyph: ic.glyph,
+        label: lang.name || code.toUpperCase(),
+        fontFamily: ic.fontFamily || "'Fredoka', 'Nunito', 'Noto Sans', sans-serif",
+        fontSize: Number(ic.fontSize) || 224,
+        y: Number(ic.y) || 322
+      });
+      insertIdx += 1;
+    }
+  });
+  return APP_ICON_PRESETS;
+}
+
 export function getAppIconPreset(idOrGlyph) {
   if (!idOrGlyph) return APP_ICON_PRESETS[0];
   const found = APP_ICON_PRESETS.find((p) => p.id === idOrGlyph || p.glyph === idOrGlyph);

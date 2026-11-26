@@ -1,77 +1,22 @@
-name: Validate Community Courses
+name: Validate Community Courses & Pipeline
 
 on:
   pull_request:
     paths:
       - 'courses/**'
+      - 'scripts/sync-course-pipeline.py'
+      - 'android/AndroidManifest.xml'
+      - 'sw.js'
   push:
     branches: [main]
     paths:
       - 'courses/**'
+      - 'scripts/sync-course-pipeline.py'
 
 jobs:
   validate-courses:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate registry and all course JSON files
-        run: |
-          python3 - <<'PY'
-          import json, os, sys
-
-          reg = json.load(open('courses/registry.json', encoding='utf-8'))
-          assert isinstance(reg.get('courses'), list) and reg['courses'], 'registry.json must contain a non-empty courses list'
-
-          seen_course_ids = set()
-          seen_item_ids = set()
-
-          for entry in reg['courses']:
-              path = entry if isinstance(entry, str) else entry['path']
-              path = path.lstrip('./')
-              assert os.path.exists(path), f'Missing course manifest: {path}'
-              course = json.load(open(path, encoding='utf-8'))
-              cid = course['id']
-              assert cid not in seen_course_ids, f'Duplicate course id: {cid}'
-              seen_course_ids.add(cid)
-
-              sections = []
-              if 'sectionFiles' in course:
-                  for sf in course['sectionFiles']:
-                      sf_clean = sf.lstrip('./')
-                      assert os.path.exists(sf_clean), f'Missing level file: {sf_clean}'
-                      sections.append(json.load(open(sf_clean, encoding='utf-8')))
-              elif 'sections' in course:
-                  sections = course['sections']
-              elif 'units' in course:
-                  sections = [{'units': course['units']}]
-              else:
-                  raise AssertionError(f'Course {cid} has no sectionFiles, sections, or units')
-
-              count = 0
-              for sec in sections:
-                  for unit in sec.get('units', []):
-                      for lesson in unit.get('lessons', []):
-                          for item in lesson.get('items', []):
-                              iid = item.get('id')
-                              assert iid, f'Item missing id in {cid}'
-                              assert iid not in seen_item_ids, f'Duplicate item id: {iid}'
-                              assert item.get('term') and item.get('translation'), f'Item {iid} missing term/translation'
-                              seen_item_ids.add(iid)
-                              count += 1
-              print(f'OK {cid}: {count} items validated')
-
-          print(f'ALL COURSES VALID! Total unique items: {len(seen_item_ids)}')
-
-          # Also validate universal 13-language course matrix (156 any-to-any pairs)
-          syl = json.load(open('courses/matrix/syllabus.json', encoding='utf-8'))
-          cids = [cid for t in syl['tiers'] for u in t['units'] for l in u['lessons'] for cid in l['concepts']]
-          assert len(cids) == 375, f'Expected 375 matrix concepts, got {len(cids)}'
-          for lang in syl['languages']:
-              lp = f"courses/langs/{lang['code']}.json"
-              assert os.path.exists(lp), f'Missing language pack: {lp}'
-              pack = json.load(open(lp, encoding='utf-8'))
-              for cid in cids:
-                  assert cid in pack['items'] and pack['items'][cid].get('t') and pack['items'][cid].get('x'), f'Invalid {cid} in {lp}'
-              print(f"OK matrix lang {lang['code']}: {len(pack['items'])} concepts")
-          print(f"ALL {len(syl['languages'])} MATRIX LANGUAGES VALID ({len(syl['languages']) * (len(syl['languages']) - 1)} pairs)!")
-          PY
+      - name: Validate all matrix languages, standalone courses, icons, and pipeline sync
+        run: python3 scripts/sync-course-pipeline.py --check

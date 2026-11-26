@@ -18,7 +18,15 @@
         "B1",
         "B2",
         "C1-C2"
-      ]
+      ],
+      "icon": {
+        "glyph": "A",
+        "fontFamily": "'Fredoka', 'Nunito', 'Noto Sans', sans-serif",
+        "fontSize": 248,
+        "y": 332,
+        "fgSize": 156,
+        "fgY": 272
+      }
     },
     {
       "code": "ml",
@@ -34,7 +42,15 @@
         "Stage 3",
         "Stage 4",
         "Stage 5"
-      ]
+      ],
+      "icon": {
+        "glyph": "അ",
+        "fontFamily": "'Noto Sans Malayalam', 'Manjari', 'Noto Sans', sans-serif",
+        "fontSize": 184,
+        "y": 298,
+        "fgSize": 116,
+        "fgY": 248
+      }
     },
     {
       "code": "ta",
@@ -50,7 +66,15 @@
         "Stage 3",
         "Stage 4",
         "Stage 5"
-      ]
+      ],
+      "icon": {
+        "glyph": "அ",
+        "fontFamily": "'Noto Sans Tamil', 'Noto Sans', sans-serif",
+        "fontSize": 204,
+        "y": 318,
+        "fgSize": 128,
+        "fgY": 260
+      }
     },
     {
       "code": "kn",
@@ -66,7 +90,15 @@
         "Stage 3",
         "Stage 4",
         "Stage 5"
-      ]
+      ],
+      "icon": {
+        "glyph": "ಅ",
+        "fontFamily": "'Noto Sans Kannada', 'Noto Sans', sans-serif",
+        "fontSize": 216,
+        "y": 310,
+        "fgSize": 136,
+        "fgY": 256
+      }
     },
     {
       "code": "te",
@@ -82,7 +114,15 @@
         "Stage 3",
         "Stage 4",
         "Stage 5"
-      ]
+      ],
+      "icon": {
+        "glyph": "అ",
+        "fontFamily": "'Noto Sans Telugu', 'Noto Sans', sans-serif",
+        "fontSize": 216,
+        "y": 310,
+        "fgSize": 136,
+        "fgY": 256
+      }
     },
     {
       "code": "hi",
@@ -98,7 +138,15 @@
         "Stage 3",
         "Stage 4",
         "Stage 5"
-      ]
+      ],
+      "icon": {
+        "glyph": "अ",
+        "fontFamily": "'Noto Sans Devanagari', 'Noto Sans', sans-serif",
+        "fontSize": 224,
+        "y": 322,
+        "fgSize": 142,
+        "fgY": 264
+      }
     },
     {
       "code": "ja",
@@ -114,7 +162,15 @@
         "N3",
         "N2",
         "N1"
-      ]
+      ],
+      "icon": {
+        "glyph": "あ",
+        "fontFamily": "'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN', 'Noto Sans', sans-serif",
+        "fontSize": 232,
+        "y": 328,
+        "fgSize": 146,
+        "fgY": 268
+      }
     },
     {
       "code": "zh",
@@ -130,7 +186,15 @@
         "HSK 4",
         "HSK 5",
         "HSK 6"
-      ]
+      ],
+      "icon": {
+        "glyph": "中",
+        "fontFamily": "'Noto Sans CJK SC', 'PingFang SC', 'Noto Sans', sans-serif",
+        "fontSize": 234,
+        "y": 328,
+        "fgSize": 148,
+        "fgY": 268
+      }
     },
     {
       "code": "ko",
@@ -146,7 +210,15 @@
         "TOPIK 3",
         "TOPIK 4",
         "TOPIK 5-6"
-      ]
+      ],
+      "icon": {
+        "glyph": "한",
+        "fontFamily": "'Noto Sans CJK KR', 'Apple SD Gothic Neo', 'Noto Sans', sans-serif",
+        "fontSize": 230,
+        "y": 328,
+        "fgSize": 144,
+        "fgY": 268
+      }
     },
     {
       "code": "ar",
@@ -162,7 +234,15 @@
         "B1",
         "B2",
         "C1-C2"
-      ]
+      ],
+      "icon": {
+        "glyph": "ع",
+        "fontFamily": "'Noto Sans Arabic', 'Noto Sans', sans-serif",
+        "fontSize": 214,
+        "y": 266,
+        "fgSize": 138,
+        "fgY": 232
+      }
     },
     {
       "code": "es",
@@ -178,7 +258,15 @@
         "B1",
         "B2",
         "C1-C2"
-      ]
+      ],
+      "icon": {
+        "glyph": "Ñ",
+        "fontFamily": "'Fredoka', 'Nunito', 'Noto Sans', sans-serif",
+        "fontSize": 234,
+        "y": 336,
+        "fgSize": 146,
+        "fgY": 274
+      }
     },
     {
       "code": "fr",
@@ -194,7 +282,15 @@
         "B1",
         "B2",
         "C1-C2"
-      ]
+      ],
+      "icon": {
+        "glyph": "É",
+        "fontFamily": "'Fredoka', 'Nunito', 'Noto Sans', sans-serif",
+        "fontSize": 232,
+        "y": 340,
+        "fgSize": 146,
+        "fgY": 278
+      }
     },
     {
       "code": "ru",
@@ -210,7 +306,15 @@
         "B1",
         "B2",
         "C1-C2"
-      ]
+      ],
+      "icon": {
+        "glyph": "Я",
+        "fontFamily": "'Fredoka', 'Nunito', 'Noto Sans', sans-serif",
+        "fontSize": 242,
+        "y": 332,
+        "fgSize": 150,
+        "fgY": 272
+      }
     }
   ],
   "tiers": [

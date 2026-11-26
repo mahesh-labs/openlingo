@@ -10,10 +10,12 @@ import {
   getAppIconPreset,
   findPresetByGlyph,
   getAppIconDataUrl,
-  applyDocumentAppIcon
+  applyDocumentAppIcon,
+  syncLanguageAppIcons
 } from './src/appIcons.js';
 import {
   loadMatrixSyllabus,
+  syncMatrixFromGitHub,
   getMatrixLanguages,
   parseMatrixCourseId,
   buildMatrixCourse
@@ -1341,13 +1343,10 @@ function renderSidebar(course) {
         <button class="nav-btn ${state.view === 'flashcards' ? 'active' : ''}" data-nav="flashcards">
           ${uiIcon('layers', 22)} <span>Flashcards (${dueCount})</span>
         </button>
-        <button class="nav-btn ${state.view === 'studio' ? 'active' : ''}" data-nav="studio">
-          ${uiIcon('wrench', 22)} <span>Course Studio</span>
-        </button>
         <button class="nav-btn ${state.view === 'profile' ? 'active' : ''}" data-nav="profile">
           ${uiIcon('user', 22)} <span>Profile</span>
         </button>
-        <button class="nav-btn ${state.view === 'settings' || state.view === 'backup' ? 'active' : ''}" data-nav="settings">
+        <button class="nav-btn ${state.view === 'settings' || state.view === 'studio' || state.view === 'backup' ? 'active' : ''}" data-nav="settings">
           ${uiIcon('settings', 22)} <span>Settings</span>
         </button>
       </nav>
@@ -1426,9 +1425,6 @@ function renderMobileNav(course) {
       </button>
       <button class="nav-btn ${state.view === 'flashcards' ? 'active' : ''}" data-nav="flashcards">
         ${uiIcon('layers', 22)}<span>Cards (${dueCount})</span>
-      </button>
-      <button class="nav-btn ${state.view === 'studio' ? 'active' : ''}" data-nav="studio">
-        ${uiIcon('wrench', 22)}<span>Studio</span>
       </button>
       <button class="nav-btn ${state.view === 'profile' ? 'active' : ''}" data-nav="profile">
         ${uiIcon('user', 22)}<span>Profile</span>
@@ -2301,28 +2297,23 @@ function renderFlashcardsView(course) {
 
 function renderStudioView(course) {
   const allUnits = getAllUnits(course);
+  const matrixLangs = getMatrixLanguages();
+  const pairCount = matrixLangs.length * Math.max(matrixLangs.length - 1, 0);
   const repoUrl = `https://github.com/${state.syncSettings.githubRepo}/tree/${state.syncSettings.githubBranch}/courses`;
-  const catalogList = state.catalogEntries.length
-    ? state.catalogEntries
-    : state.courses.map((c) => ({
-        id: c.id,
-        path: `courses/${c.id}/course.json`,
-        title: c.title,
-        targetLang: c.targetLang?.name || c.id,
-        nativeName: c.targetLang?.nativeName || '',
-        standard: c.standardName || '',
-        version: c.version || '1.0.0',
-        items: getAllItems(c).length
-      }));
+  const guideUrl = `https://github.com/${state.syncSettings.githubRepo}/blob/${state.syncSettings.githubBranch}/CONTRIBUTING_COURSES.md`;
+  const standaloneCatalog = state.catalogEntries || [];
 
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
-        <h1 class="page-title">Course Catalog &amp; Studio</h1>
-        <p class="page-sub">Sync community courses live from GitHub, create local courses, or export open JSON for PRs.</p>
+        <h1 class="page-title">Course Studio</h1>
+        <p class="page-sub">Sync community languages &amp; courses live from GitHub, draft custom courses, or export open JSON for PRs.</p>
       </div>
-      <button class="btn btn-sm" id="export-course-btn">⬇ Export Current JSON</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-sm" data-nav="settings">← Back to Settings</button>
+        <button class="btn btn-sm" id="export-course-btn">${uiIcon('download', 15)} Export Current JSON</button>
+      </div>
     </div>
 
     ${state.studioMessage ? `<div class="grammar-box">${escapeHtml(state.studioMessage)}</div>` : ''}
@@ -2330,16 +2321,17 @@ function renderStudioView(course) {
     <section class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
         <div>
-          <h3 style="margin:0;">🌐 GitHub Community Course Catalog</h3>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
-            Reads <code>courses/registry.json</code> directly from your GitHub repo so community PRs appear live.
+          <h3 style="margin:0;">${uiIcon('globe', 20)} GitHub Community Languages &amp; Courses</h3>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
+            Syncs <code>courses/matrix/syllabus.json</code> (${matrixLangs.length} languages · ${pairCount} pairs) and standalone courses in <code>courses/registry.json</code> directly from GitHub.
           </div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button class="btn btn-primary btn-sm" id="sync-github-catalog-btn" ${state.catalogLoading ? 'disabled' : ''}>
-            ${state.catalogLoading ? '⏳ Syncing...' : '🔄 Sync from GitHub'}
+            ${uiIcon('refresh', 15)} ${state.catalogLoading ? 'Syncing...' : 'Sync from GitHub'}
           </button>
-          <a class="btn btn-sm" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Contribute on GitHub ↗</a>
+          <a class="btn btn-sm" href="${escapeHtml(guideUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('book', 15)} Contribution Guide ↗</a>
+          <a class="btn btn-sm" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Browse Courses ↗</a>
         </div>
       </div>
 
@@ -2357,39 +2349,67 @@ function renderStudioView(course) {
         </div>
       </form>
 
-      ${state.catalogStatus ? `<div style="font-size:12px;color:var(--blue);margin-bottom:10px;font-weight:600;">${escapeHtml(state.catalogStatus)}</div>` : ''}
+      ${state.catalogStatus ? `<div style="font-size:13px;color:var(--accent-text);margin-bottom:12px;font-weight:700;">${escapeHtml(state.catalogStatus)}</div>` : ''}
 
-      <div style="display:grid;gap:10px;">
-        ${catalogList
-          .map((entry) => {
-            const installed = state.courses.find((c) => c.id === entry.id);
-            const hasUpdate = installed && entry.version && installed.version && installed.version !== entry.version;
-            const badge = !installed
-              ? 'Available on GitHub'
-              : hasUpdate
-                ? `Update: v${entry.version}`
-                : installed._source === 'github'
-                  ? `Synced v${installed.version || entry.version}`
-                  : `Installed v${installed.version || entry.version}`;
-            return `
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px;border-radius:12px;background:var(--surface-elevated);border:1px solid var(--border);">
-              <div>
-                <div style="font-weight:700;font-size:14px;">${escapeHtml(entry.title || entry.id)} ${entry.nativeName ? `<span style="color:var(--accent);font-weight:600;">(${escapeHtml(entry.nativeName)})</span>` : ''}</div>
-                <div style="font-size:12px;color:var(--text-muted);">
-                  <code>${escapeHtml(entry.path)}</code>${entry.items ? ` · ${entry.items} items` : ''} · ${escapeHtml(badge)}
+      <div style="margin-bottom:14px;">
+        <div class="field-label" style="margin-bottom:8px;">Universal Matrix Languages (${matrixLangs.length} languages · ${pairCount} any-to-any pairs)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          ${matrixLangs
+            .map(
+              (l) => `
+              <span class="pill" style="display:inline-flex;align-items:center;gap:6px;">
+                <strong style="color:var(--accent-text);">${escapeHtml(l.icon?.glyph || l.code.toUpperCase())}</strong>
+                ${escapeHtml(l.name)} <span style="opacity:0.75;">(${escapeHtml(l.nativeName)})</span>
+              </span>
+            `
+            )
+            .join('')}
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">
+          Enroll in any of the ${pairCount} pairs from <button type="button" class="btn btn-sm" data-nav="profile" style="padding:3px 9px;font-size:12px;margin-left:4px;">Profile → + Add Course</button>
+        </div>
+      </div>
+
+      ${
+        standaloneCatalog.length
+          ? `
+        <div class="field-label" style="margin-bottom:8px;">Community Standalone Courses (${standaloneCatalog.length})</div>
+        <div style="display:grid;gap:10px;">
+          ${standaloneCatalog
+            .map((entry) => {
+              const installed = state.courses.find((c) => c.id === entry.id);
+              const hasUpdate = installed && entry.version && installed.version && installed.version !== entry.version;
+              const badge = !installed
+                ? 'Available on GitHub'
+                : hasUpdate
+                  ? `Update: v${entry.version}`
+                  : installed._source === 'github'
+                    ? `Synced v${installed.version || entry.version}`
+                    : `Installed v${installed.version || entry.version}`;
+              return `
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px;border-radius:12px;background:var(--surface-elevated);border:2px solid var(--border);">
+                <div>
+                  <div style="font-weight:700;font-size:14px;">${escapeHtml(entry.title || entry.id)} ${entry.nativeName ? `<span style="color:var(--accent-text);font-weight:600;">(${escapeHtml(entry.nativeName)})</span>` : ''}</div>
+                  <div style="font-size:12px;color:var(--text-muted);">
+                    <code>${escapeHtml(entry.path)}</code>${entry.items ? ` · ${entry.items} items` : ''} · ${escapeHtml(badge)}
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  ${installed ? `<button class="btn btn-sm" data-switch-course="${escapeHtml(entry.id)}">Open</button>` : ''}
+                  <button class="btn btn-primary btn-sm" data-install-github="${escapeHtml(entry.id)}" ${state.catalogLoading ? 'disabled' : ''}>
+                    ${uiIcon('download', 14)} ${installed ? (hasUpdate ? 'Update' : 'Pull Latest') : 'Install'}
+                  </button>
                 </div>
               </div>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                ${installed ? `<button class="btn btn-sm" data-switch-course="${escapeHtml(entry.id)}">Open</button>` : ''}
-                <button class="btn btn-primary btn-sm" data-install-github="${escapeHtml(entry.id)}" ${state.catalogLoading ? 'disabled' : ''}>
-                  ${installed ? (hasUpdate ? '⬆ Update' : '⬇ Pull Latest') : '⬇ Install'}
-                </button>
-              </div>
-            </div>
-          `;
-          })
-          .join('')}
-      </div>
+            `;
+            })
+            .join('')}
+        </div>
+      `
+          : `<div style="font-size:13px;color:var(--text-muted);padding:10px 12px;border-radius:12px;background:var(--surface-elevated);border:2px solid var(--border);">
+              No extra standalone courses in <code>courses/registry.json</code> yet — all ${matrixLangs.length} core languages live in the unified Universal Matrix. Want to add a new language or specialized course? See <strong>CONTRIBUTING_COURSES.md</strong>!
+            </div>`
+      }
     </section>
 
     <section class="card">
@@ -2883,6 +2903,21 @@ function renderSettingsView(course) {
             <button type="button" class="seg-btn ${state.audioRate === 0.9 ? 'active' : ''}" data-set-audio-rate="0.9">0.9× Normal</button>
             <button type="button" class="seg-btn ${state.audioRate === 1.1 ? 'active' : ''}" data-set-audio-rate="1.1">1.1× Fast</button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="settings-studio-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h3 style="margin:0;">${uiIcon('wrench', 20)} Course Studio &amp; Community Courses</h3>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
+            Sync newly contributed languages &amp; community courses live from GitHub, create local custom courses, or export syllabus JSON for Pull Requests.
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="btn btn-primary btn-sm" id="open-course-studio-btn" data-nav="studio">${uiIcon('wrench', 16)} Open Course Studio ${uiIcon('arrowRight', 15)}</button>
+          <a class="btn btn-sm" href="https://github.com/${escapeHtml(state.syncSettings.githubRepo)}/blob/${escapeHtml(state.syncSettings.githubBranch)}/CONTRIBUTING_COURSES.md" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('book', 15)} Course Guide ↗</a>
         </div>
       </div>
     </section>
@@ -3788,12 +3823,19 @@ function attachEvents(course) {
   if (syncCatalogBtn) {
     syncCatalogBtn.addEventListener('click', async () => {
       state.catalogLoading = true;
-      state.catalogStatus = `Fetching courses/registry.json from ${state.syncSettings.githubRepo}...`;
+      state.catalogStatus = `Syncing matrix & community catalog from ${state.syncSettings.githubRepo}...`;
       render();
       try {
-        const result = await fetchGitHubCatalog(state.syncSettings.githubRepo, state.syncSettings.githubBranch);
+        const [remoteSyl, result] = await Promise.all([
+          syncMatrixFromGitHub(state.syncSettings.githubRepo, state.syncSettings.githubBranch).catch(() => null),
+          fetchGitHubCatalog(state.syncSettings.githubRepo, state.syncSettings.githubBranch)
+        ]);
+        if (remoteSyl?.languages) {
+          syncLanguageAppIcons(remoteSyl.languages);
+        }
         state.catalogEntries = result.entries;
-        state.catalogStatus = `Synced ${result.entries.length} courses from github.com/${result.repo} (${result.branch}).`;
+        const langCount = getMatrixLanguages().length;
+        state.catalogStatus = `Synced ${langCount} matrix languages (${langCount * Math.max(langCount - 1, 0)} pairs) & ${result.entries.length} standalone course(s) from github.com/${result.repo} (${result.branch}).`;
       } catch (err) {
         state.catalogStatus = `Sync error: ${err.message}`;
       } finally {
@@ -4288,6 +4330,7 @@ async function init() {
 
   try {
     await loadMatrixSyllabus();
+    syncLanguageAppIcons(getMatrixLanguages());
   } catch (err) {
     console.error('Matrix syllabus load failed:', err);
   }

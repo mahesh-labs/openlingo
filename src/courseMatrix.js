@@ -4,8 +4,11 @@
  * to synthesize any `(sourceLang -> targetLang)` course from Absolute Beginner to Mastery.
  */
 
+import { getGitHubRawBase } from './config.js';
+
 let syllabusCache = null;
 const langPackCache = new Map();
+let remoteMatrixSource = null; // { repo, branch } when synced live from GitHub
 
 export async function loadMatrixSyllabus() {
   if (syllabusCache) return syllabusCache;
@@ -13,6 +16,22 @@ export async function loadMatrixSyllabus() {
   if (!res.ok) throw new Error(`Could not load course matrix syllabus (HTTP ${res.status}).`);
   syllabusCache = await res.json();
   return syllabusCache;
+}
+
+export async function syncMatrixFromGitHub(repo, branch) {
+  const base = getGitHubRawBase(repo, branch);
+  const res = await fetch(`${base}/courses/matrix/syllabus.json?t=${Date.now()}`, { cache: 'no-store' });
+  if (!res.ok) {
+    throw new Error(`Could not fetch matrix syllabus from GitHub (HTTP ${res.status}).`);
+  }
+  const remoteSyllabus = await res.json();
+  if (!Array.isArray(remoteSyllabus?.languages) || !Array.isArray(remoteSyllabus?.tiers)) {
+    throw new Error('Remote syllabus.json is invalid.');
+  }
+  syllabusCache = remoteSyllabus;
+  langPackCache.clear();
+  remoteMatrixSource = { repo, branch };
+  return remoteSyllabus;
 }
 
 export function getMatrixLanguages() {
@@ -35,6 +54,19 @@ export function parseMatrixCourseId(courseId) {
 
 export async function loadLanguagePack(code) {
   if (langPackCache.has(code)) return langPackCache.get(code);
+  if (remoteMatrixSource) {
+    try {
+      const base = getGitHubRawBase(remoteMatrixSource.repo, remoteMatrixSource.branch);
+      const rRes = await fetch(`${base}/courses/langs/${encodeURIComponent(code)}.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (rRes.ok) {
+        const pack = await rRes.json();
+        langPackCache.set(code, pack);
+        return pack;
+      }
+    } catch {
+      // Fall back to bundled local pack
+    }
+  }
   const res = await fetch(`./courses/langs/${encodeURIComponent(code)}.json`);
   if (!res.ok) throw new Error(`Could not load language pack "${code}" (HTTP ${res.status}).`);
   const pack = await res.json();

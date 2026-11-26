@@ -1,49 +1,120 @@
 {
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "repo": "mahesh-labs/openlingo",
   "branch": "main",
-  "courses": [
-    {
-      "id": "en-ja",
-      "path": "courses/en-ja/course.json",
-      "title": "Japanese Complete Path (JLPT N5 → N1)",
-      "sourceLang": "English",
-      "targetLang": "Japanese",
-      "nativeName": "日本語",
-      "standard": "JLPT N5–N1",
-      "version": "2.1.0",
-      "units": 24,
-      "lessons": 72,
-      "items": 360,
-      "bundled": true
-    },
-    {
-      "id": "en-es",
-      "path": "courses/en-es/course.json",
-      "title": "Spanish Complete Path (CEFR A1 → C1)",
-      "sourceLang": "English",
-      "targetLang": "Spanish",
-      "nativeName": "Español",
-      "standard": "CEFR A1–C1",
-      "version": "2.0.0",
-      "units": 24,
-      "lessons": 72,
-      "items": 360,
-      "bundled": true
-    },
-    {
-      "id": "en-ml",
-      "path": "courses/en-ml/course.json",
-      "title": "Malayalam Complete Path (Stage 1 → Stage 5)",
-      "sourceLang": "English",
-      "targetLang": "Malayalam",
-      "nativeName": "മലയാളം",
-      "standard": "Stage 1–5",
-      "version": "2.0.0",
-      "units": 18,
-      "lessons": 54,
-      "items": 270,
-      "bundled": true
-    }
-  ]
+  "matrix": {
+    "version": "3.0.0",
+    "syllabusPath": "courses/matrix/syllabus.json",
+    "conceptCount": 375,
+    "unitCount": 25,
+    "lessonCount": 75,
+    "pairCount": 156,
+    "languages": [
+      {
+        "code": "en",
+        "name": "English",
+        "nativeName": "English",
+        "standard": "CEFR A1–C1-C2",
+        "iconGlyph": "A",
+        "path": "courses/langs/en.json"
+      },
+      {
+        "code": "ml",
+        "name": "Malayalam",
+        "nativeName": "മലയാളം",
+        "standard": "Stage 1–Stage 5",
+        "iconGlyph": "അ",
+        "path": "courses/langs/ml.json"
+      },
+      {
+        "code": "ta",
+        "name": "Tamil",
+        "nativeName": "தமிழ்",
+        "standard": "Stage 1–Stage 5",
+        "iconGlyph": "அ",
+        "path": "courses/langs/ta.json"
+      },
+      {
+        "code": "kn",
+        "name": "Kannada",
+        "nativeName": "ಕನ್ನಡ",
+        "standard": "Stage 1–Stage 5",
+        "iconGlyph": "ಅ",
+        "path": "courses/langs/kn.json"
+      },
+      {
+        "code": "te",
+        "name": "Telugu",
+        "nativeName": "తెలుగు",
+        "standard": "Stage 1–Stage 5",
+        "iconGlyph": "అ",
+        "path": "courses/langs/te.json"
+      },
+      {
+        "code": "hi",
+        "name": "Hindi",
+        "nativeName": "हिन्दी",
+        "standard": "Stage 1–Stage 5",
+        "iconGlyph": "अ",
+        "path": "courses/langs/hi.json"
+      },
+      {
+        "code": "ja",
+        "name": "Japanese",
+        "nativeName": "日本語",
+        "standard": "JLPT N5–N1",
+        "iconGlyph": "あ",
+        "path": "courses/langs/ja.json"
+      },
+      {
+        "code": "zh",
+        "name": "Chinese (Mandarin)",
+        "nativeName": "中文",
+        "standard": "HSK 1–HSK 6",
+        "iconGlyph": "中",
+        "path": "courses/langs/zh.json"
+      },
+      {
+        "code": "ko",
+        "name": "Korean",
+        "nativeName": "한국어",
+        "standard": "TOPIK 1–TOPIK 5-6",
+        "iconGlyph": "한",
+        "path": "courses/langs/ko.json"
+      },
+      {
+        "code": "ar",
+        "name": "Arabic",
+        "nativeName": "العربية",
+        "standard": "CEFR A1–C1-C2",
+        "iconGlyph": "ع",
+        "path": "courses/langs/ar.json"
+      },
+      {
+        "code": "es",
+        "name": "Spanish",
+        "nativeName": "Español",
+        "standard": "CEFR A1–C1-C2",
+        "iconGlyph": "Ñ",
+        "path": "courses/langs/es.json"
+      },
+      {
+        "code": "fr",
+        "name": "French",
+        "nativeName": "Français",
+        "standard": "CEFR A1–C1-C2",
+        "iconGlyph": "É",
+        "path": "courses/langs/fr.json"
+      },
+      {
+        "code": "ru",
+        "name": "Russian",
+        "nativeName": "Русский",
+        "standard": "TRKI A1–C1-C2",
+        "iconGlyph": "Я",
+        "path": "courses/langs/ru.json"
+      }
+    ]
+  },
+  "courses": []
 }
