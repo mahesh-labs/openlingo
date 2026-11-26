@@ -1,0 +1,15 @@
+{
+  "appId": "org.openlingo.app",
+  "appName": "OpenLingo",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#0b1120"
+    }
+  }
+}

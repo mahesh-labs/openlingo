@@ -1,0 +1,739 @@
+{
+  "id": "sec-ml-4",
+  "jlptLevel": "S4",
+  "tier": "Upper-Intermediate",
+  "title": "Stage 4 — Formal & Media Malayalam",
+  "description": "Granthabhasha (written register), news & technology vocabulary, formal connectors, and persuasive prose.",
+  "color": "#ec4899",
+  "units": [
+    {
+      "id": "ml-s4-u1",
+      "title": "News, Tech & Society",
+      "subtitle": "വാർത്തകളും സമൂഹവും · Reading Malayalam newspapers and tech articles",
+      "cefrLevel": "S4",
+      "color": "#ec4899",
+      "lessons": [
+        {
+          "id": "ml-s4-u1-l1",
+          "title": "Education & Technology",
+          "objective": "Decode formal journalism and science vocabulary.",
+          "grammarNote": "Formal written Malayalam (ഗ്രന്ഥഭാഷ) uses Sanskrit-rooted compounds like സാങ്കേതികവിദ്യ (technology).",
+          "items": [
+            {
+              "id": "ml_s4_sankethika",
+              "term": "സാങ്കേതികവിദ്യ",
+              "transliteration": "Saankethikavidya",
+              "translation": "Technology",
+              "tags": [
+                "S4",
+                "media"
+              ],
+              "example": {
+                "term": "പുതിയ സാങ്കേതികവിദ്യ പഠനം ലളിതമാക്കുന്നു.",
+                "translation": "New technology simplifies learning."
+              }
+            },
+            {
+              "id": "ml_s4_vidyabhyasam",
+              "term": "വിദ്യാഭ്യാസം",
+              "transliteration": "Vidyaabhyaasam",
+              "translation": "Education",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "സൗജന്യ വിദ്യാഭ്യാസം എല്ലാവരുടെയും അവകാശമാണ്.",
+                "translation": "Free education is everyone's right."
+              }
+            },
+            {
+              "id": "ml_s4_samooham",
+              "term": "സമൂഹം",
+              "transliteration": "Samooham",
+              "translation": "Society / Community",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "സമൂഹത്തിന്റെ കൂട്ടായ്മ വലിയ ശക്തിയാണ്.",
+                "translation": "Community togetherness is a great force."
+              }
+            },
+            {
+              "id": "ml_s4_vishakalanam",
+              "term": "വിശകലനം",
+              "transliteration": "Vishakalanam",
+              "translation": "Analysis",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "വിശദമായ വിശകലനം നടത്തി.",
+                "translation": "Conducted a detailed analysis."
+              }
+            },
+            {
+              "id": "ml_s4_parishkaram",
+              "term": "പരിഷ്കാരം",
+              "transliteration": "Parishkaaram",
+              "translation": "Reform / Modernization",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "വിദ്യാഭ്യാസ രംഗത്ത് വലിയ പരിഷ്കാരങ്ങൾ വന്നു.",
+                "translation": "Major reforms arrived in education."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ml-s4-u1-l2",
+          "title": "Public Discourse & Policy",
+          "objective": "Follow debates on development, environment, and rights.",
+          "grammarNote": "Words ending in -ത്വം (-thwam) correspond to English '-ness / -ship': നേതൃത്വം (leadership).",
+          "items": [
+            {
+              "id": "ml_s4_vikasanam",
+              "term": "വികസനം",
+              "transliteration": "Vikasanam",
+              "translation": "Development / Growth",
+              "tags": [
+                "S4",
+                "media"
+              ],
+              "example": {
+                "term": "സുസ്ഥിര വികസനമാണ് ലക്ഷ്യം.",
+                "translation": "Sustainable development is the goal."
+              }
+            },
+            {
+              "id": "ml_s4_parishithi",
+              "term": "പരിസ്ഥിതി",
+              "transliteration": "Paristhithi",
+              "translation": "Environment",
+              "tags": [
+                "S4",
+                "media"
+              ],
+              "example": {
+                "term": "പരിസ്ഥിതി സംരക്ഷണം എല്ലാവരുടെയും കടമയാണ്.",
+                "translation": "Environmental protection is everyone's duty."
+              }
+            },
+            {
+              "id": "ml_s4_avakasham",
+              "term": "അവകാശം",
+              "transliteration": "Avakaasham",
+              "translation": "Right / Entitlement",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "സ്വന്തം ഡാറ്റയിൽ ഉപയോക്താവിന് പൂർണ്ണ അവകാശമുണ്ട്.",
+                "translation": "Users have full rights over their own data."
+              }
+            },
+            {
+              "id": "ml_s4_nethrithwam",
+              "term": "നേതൃത്വം",
+              "transliteration": "Nethrithwam",
+              "translation": "Leadership",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "മികച്ച നേതൃത്വം ടീമിനെ മുന്നോട്ട് നയിക്കും.",
+                "translation": "Strong leadership guides the team forward."
+              }
+            },
+            {
+              "id": "ml_s4_swathandryam",
+              "term": "സ്വാതന്ത്ര്യം",
+              "transliteration": "Swaathanthryam",
+              "translation": "Freedom / Liberty",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "ഓപ്പൺ സോഴ്സ് ഉപയോക്താക്കൾക്ക് സ്വാതന്ത്ര്യം നൽകുന്നു.",
+                "translation": "Open source gives users freedom."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ml-s4-u1-l3",
+          "title": "Media & Reporting Verbs",
+          "objective": "Understand broadcast phrasing like പ്രഖ്യാപിച്ചു and വിലയിരുത്തി.",
+          "grammarNote": "Malayalam news headlines often end in passive/formal past verbs: പ്രഖ്യാപിച്ചു (announced).",
+          "items": [
+            {
+              "id": "ml_s4_prakyapichu",
+              "term": "പ്രഖ്യാപിച്ചു",
+              "transliteration": "Prakhyaapichu",
+              "translation": "Announced / Declared",
+              "tags": [
+                "S4",
+                "news"
+              ],
+              "example": {
+                "term": "പുതിയ പതിപ്പ് ഇന്ന് പ്രഖ്യാപിച്ചു.",
+                "translation": "The new release was announced today."
+              }
+            },
+            {
+              "id": "ml_s4_vilayiruthi",
+              "term": "വിലയിരുത്തി",
+              "transliteration": "Vilayiruthi",
+              "translation": "Evaluated / Assessed",
+              "tags": [
+                "S4",
+                "news"
+              ],
+              "example": {
+                "term": "വിദഗ്ധർ രൂപകൽപ്പനയെ മികച്ചതായി വിലയിരുത്തി.",
+                "translation": "Experts evaluated the design as excellent."
+              }
+            },
+            {
+              "id": "ml_s4_vyakthamakkuka",
+              "term": "വ്യക്തമാക്കുക",
+              "transliteration": "Vyakthamaakkuka",
+              "translation": "To clarify / make clear",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "ലക്ഷ്യം തുടക്കത്തിലേ വ്യക്തമാക്കണം.",
+                "translation": "Should clarify the goal from the start."
+              }
+            },
+            {
+              "id": "ml_s4_nadappilakkuka",
+              "term": "നടപ്പിലാക്കുക",
+              "transliteration": "Nadappilaakkuka",
+              "translation": "To implement / execute",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "പുതിയ നിർദ്ദേശങ്ങൾ വേഗം നടപ്പിലാക്കി.",
+                "translation": "Quickly implemented the new proposals."
+              }
+            },
+            {
+              "id": "ml_s4_sambhavana",
+              "term": "സംഭാവന",
+              "transliteration": "Sambhaavana",
+              "translation": "Contribution",
+              "tags": [
+                "S4",
+                "formal"
+              ],
+              "example": {
+                "term": "ഓരോരുത്തരുടെയും സംഭാവന വിലപ്പെട്ടതാണ്.",
+                "translation": "Everyone's contribution is valuable."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ml-s4-u2",
+      "title": "Formal Connectors & Structure",
+      "subtitle": "ഔപചാരിക ശൈലി · Writing polished essays and explanations",
+      "cefrLevel": "S4",
+      "color": "#d946ef",
+      "lessons": [
+        {
+          "id": "ml-s4-u2-l1",
+          "title": "Logical Transitions",
+          "objective": "Connect formal arguments with മാത്രമല്ല and എന്നിരുന്നാലും.",
+          "grammarNote": "These transitions turn conversational Malayalam into crisp written essays and speeches.",
+          "items": [
+            {
+              "id": "ml_s4_mathramalla",
+              "term": "മാത്രമല്ല",
+              "transliteration": "Maathramalla",
+              "translation": "Moreover / Not only that",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "ഇത് വേഗതയുള്ളതാണ്, മാത്രമല്ല സുരക്ഷിതവുമാണ്.",
+                "translation": "It is fast, and moreover, secure."
+              }
+            },
+            {
+              "id": "ml_s4_ennirunnalum",
+              "term": "എന്നിരുന്നാലും",
+              "transliteration": "Ennirunnaalum",
+              "translation": "Nevertheless / Even so",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "വെല്ലുവിളികൾ ഉണ്ട്; എന്നിരുന്നാലും മുന്നോട്ട് പോകാം.",
+                "translation": "There are challenges; nevertheless let's move ahead."
+              }
+            },
+            {
+              "id": "ml_s4_udaharana",
+              "term": "ഉദാഹരണത്തിന്",
+              "transliteration": "Udaaharanathinu",
+              "translation": "For example",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "ഉദാഹരണത്തിന്, ജാപ്പനീസും സ്പാനിഷും ഇതിലുണ്ട്.",
+                "translation": "For example, Japanese and Spanish are included."
+              }
+            },
+            {
+              "id": "ml_s4_athinaal",
+              "term": "അതിനാൽ",
+              "transliteration": "Athinaal",
+              "translation": "Therefore / Consequently",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "അതിനാൽ ഇന്റർനെറ്റ് ഇല്ലാതെയും പ്രവർത്തിക്കും.",
+                "translation": "Consequently, it runs even without internet."
+              }
+            },
+            {
+              "id": "ml_s4_marichu",
+              "term": "മറിച്ച്",
+              "transliteration": "Marichu",
+              "translation": "On the contrary / Rather",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "ഇത് സങ്കീർണ്ണമല്ല; മറിച്ച് വളരെ ലളിതമാണ്.",
+                "translation": "It isn't complex; rather, it is very simple."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ml-s4-u2-l2",
+          "title": "Precision & Emphasis",
+          "objective": "Highlight key criteria with പ്രധാനപ്പെട്ട and അനിവാര്യം.",
+          "grammarNote": "Use അനിവാര്യം (indispensable) and കൃത്യത (precision) for strong formal writing.",
+          "items": [
+            {
+              "id": "ml_s4_pradhanappetta",
+              "term": "പ്രധാനപ്പെട്ട",
+              "transliteration": "Pradhaanappetta",
+              "translation": "Important / Key",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "ഇതൊരു പ്രധാനപ്പെട്ട നാഴികക്കല്ലാണ്.",
+                "translation": "This is an important milestone."
+              }
+            },
+            {
+              "id": "ml_s4_anivaryam",
+              "term": "അനിവാര്യം",
+              "transliteration": "Anivaaryam",
+              "translation": "Indispensable / Essential",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "തുടർച്ചയായ പരിശീലനം അനിവാര്യമാണ്.",
+                "translation": "Continuous practice is indispensable."
+              }
+            },
+            {
+              "id": "ml_s4_lalitham",
+              "term": "ലളിതം",
+              "transliteration": "Lalitham",
+              "translation": "Simple / Elegant",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "ലളിതമായ രൂപകൽപ്പന എല്ലാവർക്കും ഇഷ്ടമാകും.",
+                "translation": "An elegant simple design appeals to all."
+              }
+            },
+            {
+              "id": "ml_s4_vyaktham",
+              "term": "വ്യക്തം",
+              "transliteration": "Vyaktham",
+              "translation": "Clear / Explicit",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "വ്യക്തമായ ഘടന പഠനം എളുപ്പമാക്കും.",
+                "translation": "A clear structure makes learning easy."
+              }
+            },
+            {
+              "id": "ml_s4_saadhyatha",
+              "term": "സാധ്യത",
+              "transliteration": "Saadhyatha",
+              "translation": "Possibility / Potential",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "ഈ പ്ലാറ്റ്ഫോമിന് വലിയ സാധ്യതയുണ്ട്.",
+                "translation": "This platform has huge potential."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ml-s4-u2-l3",
+          "title": "Abstract Reasoning",
+          "objective": "Discuss perspective, balance, and comparison.",
+          "grammarNote": "Notice how formal nouns like കാഴ്ചപ്പാട് (perspective) sharpen debates.",
+          "items": [
+            {
+              "id": "ml_s4_kazhchappadu",
+              "term": "കാഴ്ചപ്പാട്",
+              "transliteration": "Kaazhchappaadu",
+              "translation": "Perspective / Vision",
+              "tags": [
+                "S4",
+                "abstract"
+              ],
+              "example": {
+                "term": "ഉപയോക്താവിന്റെ കാഴ്ചപ്പാടിൽ ചിന്തിക്കുക.",
+                "translation": "Think from the user's perspective."
+              }
+            },
+            {
+              "id": "ml_s4_samathulam",
+              "term": "സന്തുലിതാവസ്ഥ",
+              "transliteration": "Santhulithaavastha",
+              "translation": "Balance / Equilibrium",
+              "tags": [
+                "S4",
+                "abstract"
+              ],
+              "example": {
+                "term": "സവിശേഷതകളും ലാളിത്യവും തമ്മിൽ സന്തുലിതാവസ്ഥ വേണം.",
+                "translation": "Need balance between features and simplicity."
+              }
+            },
+            {
+              "id": "ml_s4_tharatamyam",
+              "term": "താരതമ്യം",
+              "transliteration": "Thaarathamyam",
+              "translation": "Comparison",
+              "tags": [
+                "S4",
+                "abstract"
+              ],
+              "example": {
+                "term": "മറ്റ് ആപ്പുകളുമായി താരതമ്യം ചെയ്യുമ്പോൾ ഇത് ചെറുതാണ്.",
+                "translation": "Compared to other apps, this is tiny."
+              }
+            },
+            {
+              "id": "ml_s4_aadharam",
+              "term": "ആധാരം",
+              "transliteration": "Aadhaaram",
+              "translation": "Basis / Foundation",
+              "tags": [
+                "S4",
+                "abstract"
+              ],
+              "example": {
+                "term": "ശാസ്ത്രീയമായ ആധാരത്തോടെയാണ് ഫ്ലാഷ് കാർഡുകൾ.",
+                "translation": "Flashcards are built on a scientific basis."
+              }
+            },
+            {
+              "id": "ml_s4_samagra",
+              "term": "സമഗ്രം",
+              "transliteration": "Samagram",
+              "translation": "Comprehensive / Holistic",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "സമഗ്രമായ ഒരു പാഠ്യപദ്ധതി തയ്യാറാക്കി.",
+                "translation": "Prepared a comprehensive curriculum."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ml-s4-u3",
+      "title": "Persuasion & Nuance",
+      "subtitle": "ആശയവിനിമയം · Tactful disagreement and clear presentation",
+      "cefrLevel": "S4",
+      "color": "#a855f7",
+      "lessons": [
+        {
+          "id": "ml-s4-u3-l1",
+          "title": "Building a Case",
+          "objective": "Present reasons, evidence, and conclusions convincingly.",
+          "grammarNote": "Use 'ചുരുക്കത്തിൽ' (in brief) to summarize multi-point explanations.",
+          "items": [
+            {
+              "id": "ml_s4_churukkathil",
+              "term": "ചുരുക്കത്തിൽ",
+              "transliteration": "Churukkathil",
+              "translation": "In short / In brief",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "ചുരുക്കത്തിൽ, മൂന്ന് ഭാഷകളും ഒരേ ആപ്പിലുണ്ട്.",
+                "translation": "In short, all three languages are in one app."
+              }
+            },
+            {
+              "id": "ml_s4_thelivu",
+              "term": "തെളിവ്",
+              "transliteration": "Thelivu",
+              "translation": "Evidence / Proof",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "പ്രവർത്തിക്കുന്ന പ്രോട്ടോടൈപ്പ് മികച്ച തെളിവാണ്.",
+                "translation": "A working prototype is the best proof."
+              }
+            },
+            {
+              "id": "ml_s4_lakshyam",
+              "term": "ലക്ഷ്യം",
+              "transliteration": "Lakshyam",
+              "translation": "Goal / Aim",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "വ്യക്തമായ ലക്ഷ്യബോധത്തോടെ മുന്നേറുക.",
+                "translation": "Move forward with a clear sense of purpose."
+              }
+            },
+            {
+              "id": "ml_s4_sahakaranam",
+              "term": "സഹകരണം",
+              "transliteration": "Sahakaranam",
+              "translation": "Collaboration",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "കമ്മ്യൂണിറ്റിയുടെ സഹകരണത്തോടെ വളരാം.",
+                "translation": "Let's grow with community collaboration."
+              }
+            },
+            {
+              "id": "ml_s4_aathmavishwasam",
+              "term": "ആത്മവിശ്വാസം",
+              "transliteration": "Aathmavishwasam",
+              "translation": "Self-confidence",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "ആത്മവിശ്വാസത്തോടെ സംസാരിച്ചു തുടങ്ങൂ.",
+                "translation": "Start speaking with self-confidence."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ml-s4-u3-l2",
+          "title": "Qualifying Claims",
+          "objective": "Avoid absolutes with പൊതുവെ and നിർബന്ധമില്ല.",
+          "grammarNote": "Polite nuance keeps discussions collaborative rather than rigid.",
+          "items": [
+            {
+              "id": "ml_s4_pothuve",
+              "term": "പൊതുവെ",
+              "transliteration": "Pothuve",
+              "translation": "Generally / In general",
+              "tags": [
+                "S4",
+                "adverb"
+              ],
+              "example": {
+                "term": "പൊതുവെ ആളുകൾ ചെറിയ പാഠങ്ങളാണ് ഇഷ്ടപ്പെടുന്നത്.",
+                "translation": "Generally people prefer short lessons."
+              }
+            },
+            {
+              "id": "ml_s4_nirbandhamilla",
+              "term": "നിർബന്ധമില്ല",
+              "transliteration": "Nirbandhamilla",
+              "translation": "Not mandatory / Optional",
+              "tags": [
+                "S4",
+                "phrase"
+              ],
+              "example": {
+                "term": "അക്കൗണ്ട് തുടങ്ങേണ്ട നിർബന്ധമില്ല.",
+                "translation": "Creating an account is not mandatory."
+              }
+            },
+            {
+              "id": "ml_s4_pakaram",
+              "term": "പകരം",
+              "transliteration": "Pakaram",
+              "translation": "Instead of",
+              "tags": [
+                "S4",
+                "connector"
+              ],
+              "example": {
+                "term": "ക്ലൗഡിന് പകരം ഫോണിൽ തന്നെ ഫയൽ സേവ് ചെയ്യാം.",
+                "translation": "Save the file on the phone instead of the cloud."
+              }
+            },
+            {
+              "id": "ml_s4_anuyojyam",
+              "term": "അനുയോജ്യം",
+              "transliteration": "Anuyojyam",
+              "translation": "Suitable / Appropriate",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "മൊബൈൽ സ്ക്രീനിന് അനുയോജ്യമായ ലേഔട്ട്.",
+                "translation": "A layout suitable for mobile screens."
+              }
+            },
+            {
+              "id": "ml_s4_prasaktham",
+              "term": "പ്രസക്തം",
+              "transliteration": "Prasaktham",
+              "translation": "Relevant / Pertinent",
+              "tags": [
+                "S4",
+                "adj"
+              ],
+              "example": {
+                "term": "ഇന്നത്തെ കാലത്ത് ഈ ആശയം വളരെ പ്രസക്തമാണ്.",
+                "translation": "This idea is very relevant today."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ml-s4-u3-l3",
+          "title": "Encouragement & Praise",
+          "objective": "Compliment craft, skill, and thoughtful work.",
+          "grammarNote": "Rich Malayalam praise words like അഭിനന്ദനങ്ങൾ (congratulations) and മികവ് (excellence) feel natural and warm.",
+          "items": [
+            {
+              "id": "ml_s4_abhinandanam",
+              "term": "അഭിനന്ദനങ്ങൾ",
+              "transliteration": "Abhinandanangal",
+              "translation": "Congratulations",
+              "tags": [
+                "S4",
+                "polite"
+              ],
+              "example": {
+                "term": "ഈ ഘട്ടം പൂർത്തിയാക്കിയതിന് അഭിനന്ദനങ്ങൾ!",
+                "translation": "Congratulations on completing this stage!"
+              }
+            },
+            {
+              "id": "ml_s4_mikavu",
+              "term": "മികവ്",
+              "transliteration": "Mikavu",
+              "translation": "Excellence / Quality",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "ഡിസൈനിലെ മികവ് ശ്രദ്ധേയമാണ്.",
+                "translation": "The excellence in design is notable."
+              }
+            },
+            {
+              "id": "ml_s4_prashamsa",
+              "term": "പ്രശംസ",
+              "transliteration": "Prashamsa",
+              "translation": "Praise / Appreciation",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "നല്ല പ്രവർത്തനത്തിന് പ്രശംസ ലഭിച്ചു.",
+                "translation": "Received praise for good work."
+              }
+            },
+            {
+              "id": "ml_s4_protsahanam",
+              "term": "പ്രോത്സാഹനം",
+              "transliteration": "Protsaahanam",
+              "translation": "Encouragement",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "ചെറിയ പ്രോത്സാഹനം വലിയ മാറ്റമുണ്ടാക്കും.",
+                "translation": "A little encouragement makes a big difference."
+              }
+            },
+            {
+              "id": "ml_s4_arppanam",
+              "term": "അർപ്പണബോധം",
+              "transliteration": "Arppanabodham",
+              "translation": "Dedication",
+              "tags": [
+                "S4",
+                "noun"
+              ],
+              "example": {
+                "term": "അർപ്പണബോധത്തോടെ പഠിച്ചാൽ ഏത് ഭാഷയും വഴങ്ങും.",
+                "translation": "With dedication, any language can be mastered."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

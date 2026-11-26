@@ -1,0 +1,14 @@
+# Build artifacts & local signing keys
+android/build/
+android/debug.keystore
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# Dependencies & OS files
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+*.log

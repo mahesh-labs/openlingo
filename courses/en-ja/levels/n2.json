@@ -1,0 +1,1102 @@
+{
+  "id": "sec-n2",
+  "jlptLevel": "N2",
+  "tier": "Upper-Intermediate",
+  "title": "JLPT N2 — Business & Media",
+  "description": "Keigo honorifics, proposals & strategy, technology & economy vocabulary, formal grammar, and essay reading.",
+  "color": "#ec4899",
+  "units": [
+    {
+      "id": "n2-u1",
+      "title": "Keigo & Formal Communication",
+      "subtitle": "けいご · Mastering respectful (Sonkeigo) and humble (Kenjougo) speech",
+      "cefrLevel": "N2",
+      "color": "#ec4899",
+      "lessons": [
+        {
+          "id": "n2-u1-l1",
+          "title": "Respectful Speech (Sonkeigo)",
+          "objective": "Elevate the actions of clients, elders, and superiors.",
+          "grammarNote": "Sonkeigo (いらっしゃる, おっしゃる, ご覧になる) is ONLY used for other people's actions, never your own.",
+          "items": [
+            {
+              "id": "ja_n2_irassharu",
+              "term": "いらっしゃる",
+              "reading": "いらっしゃる",
+              "transliteration": "irassharu",
+              "translation": "To be / come / go (respectful)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "社長は会議室にいらっしゃいます。",
+                "transliteration": "Shachou wa kaigishitsu ni irasshaimasu.",
+                "translation": "The president is in the meeting room."
+              }
+            },
+            {
+              "id": "ja_n2_ossharu",
+              "term": "おっしゃる",
+              "reading": "おっしゃる",
+              "transliteration": "ossharu",
+              "translation": "To say (respectful)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "先生がおっしゃった通りです。",
+                "transliteration": "Sensei ga osshatta toori desu.",
+                "translation": "It is just as the teacher said."
+              }
+            },
+            {
+              "id": "ja_n2_goranninaru",
+              "term": "ご覧になる",
+              "reading": "ごらんになる",
+              "transliteration": "goran ni naru",
+              "translation": "To look / see (respectful)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "こちらの資料をご覧ください。",
+                "transliteration": "Kochira no shiryou o goran kudasai.",
+                "translation": "Please look at this document."
+              }
+            },
+            {
+              "id": "ja_n2_meshiagaru",
+              "term": "召し上がる",
+              "reading": "めしあがる",
+              "transliteration": "meshiagaru",
+              "translation": "To eat / drink (respectful)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "どうぞお召し上がりください。",
+                "transliteration": "Douzo omeshiagari kudasai.",
+                "translation": "Please enjoy your meal."
+              }
+            },
+            {
+              "id": "ja_n2_gozonji",
+              "term": "ご存じ",
+              "reading": "ごぞんじ",
+              "transliteration": "gozonji",
+              "translation": "To know (respectful)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "この仕組みをご存じですか。",
+                "transliteration": "Kono shikumi o gozonji desu ka.",
+                "translation": "Are you familiar with this system?"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u1-l2",
+          "title": "Humble Speech (Kenjougo)",
+          "objective": "Lower your own actions politely when addressing outsiders or seniors.",
+          "grammarNote": "Kenjougo (参る, 拝見する, 伺う) shows humility for your own or your in-group's actions.",
+          "items": [
+            {
+              "id": "ja_n2_haiken",
+              "term": "拝見する",
+              "reading": "はいけんする",
+              "transliteration": "haiken suru",
+              "translation": "To read / review (humble)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "メールを拝見いたしました。",
+                "transliteration": "Meeru o haiken itashimashita.",
+                "translation": "I have reviewed your email."
+              }
+            },
+            {
+              "id": "ja_n2_ukagau",
+              "term": "伺う",
+              "reading": "うかがう",
+              "transliteration": "ukagau",
+              "translation": "To visit / ask / hear (humble)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "明日そちらに伺います。",
+                "transliteration": "Ashita sochira ni ukagaimasu.",
+                "translation": "I will visit your office tomorrow."
+              }
+            },
+            {
+              "id": "ja_n2_mairu",
+              "term": "参る",
+              "reading": "まいる",
+              "transliteration": "mairu",
+              "translation": "To go / come (humble)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "ただいま参ります。",
+                "transliteration": "Tadaima mairimasu.",
+                "translation": "I will be right there."
+              }
+            },
+            {
+              "id": "ja_n2_zonjiageru",
+              "term": "存じ上げる",
+              "reading": "ぞんじあげる",
+              "transliteration": "zonjiageru",
+              "translation": "To know someone (humble)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "お名前は存じ上げております。",
+                "transliteration": "Onamae wa zonjiagete orimasu.",
+                "translation": "I am acquainted with your name."
+              }
+            },
+            {
+              "id": "ja_n2_itasu",
+              "term": "いたす",
+              "reading": "いたす",
+              "transliteration": "itasu",
+              "translation": "To do (humble)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "私が対応いたします。",
+                "transliteration": "Watashi ga taiou itashimasu.",
+                "translation": "I will handle it."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u1-l3",
+          "title": "Formal Business Courtesies",
+          "objective": "Use polished email and client-facing expressions.",
+          "grammarNote": "Memorize fixed polite chunks like 承知いたしました and 申し訳ございません for instant fluency.",
+          "items": [
+            {
+              "id": "ja_n2_shouchi",
+              "term": "承知いたしました",
+              "reading": "しょうちいたしました",
+              "transliteration": "shouchi itashimashita",
+              "translation": "Understood / Certainly (formal)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "ご依頼の件、承知いたしました。",
+                "transliteration": "Goirai no ken, shouchi itashimashita.",
+                "translation": "Certainly, I understand your request."
+              }
+            },
+            {
+              "id": "ja_n2_moushiwake",
+              "term": "申し訳ございません",
+              "reading": "もうしわけございません",
+              "transliteration": "moushiwake gozaimasen",
+              "translation": "I deeply apologize",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "お待たせして申し訳ございません。",
+                "transliteration": "Omatase shite moushiwake gozaimasen.",
+                "translation": "I sincerely apologize for the wait."
+              }
+            },
+            {
+              "id": "ja_n2_osoreirimasu",
+              "term": "恐れ入りますが",
+              "reading": "おそれいりますが",
+              "transliteration": "osoreirimasu ga",
+              "translation": "Excuse me, but ... (very polite)",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "恐れ入りますが、もう一度お願いします。",
+                "transliteration": "Osoreirimasu ga, mou ichido onegai shimasu.",
+                "translation": "Excuse me, could you please repeat that?"
+              }
+            },
+            {
+              "id": "ja_n2_sashitsukae",
+              "term": "差し支えなければ",
+              "reading": "さしつかえなければ",
+              "transliteration": "sashitsukae nakereba",
+              "translation": "If you don't mind",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "差し支えなければご意見をお聞かせください。",
+                "transliteration": "Sashitsukae nakereba goiken o okikase kudasai.",
+                "translation": "If you don't mind, please share your thoughts."
+              }
+            },
+            {
+              "id": "ja_n2_yoroshiku_onegai",
+              "term": "何卒よろしくお願いします",
+              "reading": "なにとぞよろしくおねがいします",
+              "transliteration": "nanitozo yoroshiku onegai shimasu",
+              "translation": "Thank you kindly in advance",
+              "tags": [
+                "N2",
+                "keigo"
+              ],
+              "example": {
+                "term": "今後とも何卒よろしくお願いします。",
+                "transliteration": "Kongo tomo nanitozo yoroshiku onegai shimasu.",
+                "translation": "We kindly ask for your continued support."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-u2",
+      "title": "Proposals, Strategy & Evaluation",
+      "subtitle": "きかくとひょうか · Running projects and evaluating outcomes",
+      "cefrLevel": "N2",
+      "color": "#d946ef",
+      "lessons": [
+        {
+          "id": "n2-u2-l1",
+          "title": "Planning & Proposals",
+          "objective": "Pitch ideas, examine options, and launch projects.",
+          "grammarNote": "Two-kanji compounds (熟語) make business and engineering discussions concise.",
+          "items": [
+            {
+              "id": "ja_n2_teian",
+              "term": "提案",
+              "reading": "ていあん",
+              "transliteration": "teian",
+              "translation": "Proposal / Suggestion",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "改善案をチームに提案した。",
+                "transliteration": "Kaizen-an o chiimu ni teian shita.",
+                "translation": "I proposed an improvement plan to the team."
+              }
+            },
+            {
+              "id": "ja_n2_kentou",
+              "term": "検討",
+              "reading": "けんとう",
+              "transliteration": "kentou",
+              "translation": "Consideration / Review",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "導入について慎重に検討する。",
+                "transliteration": "Dounyuu ni tsuite shinchou ni kentou suru.",
+                "translation": "Carefully consider the adoption."
+              }
+            },
+            {
+              "id": "ja_n2_sekkei",
+              "term": "設計",
+              "reading": "せっけい",
+              "transliteration": "sekkei",
+              "translation": "Design / Architecture",
+              "tags": [
+                "N2",
+                "tech"
+              ],
+              "example": {
+                "term": "拡張しやすい設計を目指した。",
+                "transliteration": "Kakuchou shiyasui sekkei o mezashita.",
+                "translation": "Aimed for an extensible architecture."
+              }
+            },
+            {
+              "id": "ja_n2_jitsugen",
+              "term": "実現",
+              "reading": "じつげん",
+              "transliteration": "jitsugen",
+              "translation": "Realization / Implementation",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "理想の学習体験を実現する。",
+                "transliteration": "Risou no gakushuu taiken o jitsugen suru.",
+                "translation": "Realize the ideal learning experience."
+              }
+            },
+            {
+              "id": "ja_n2_houshin",
+              "term": "方針",
+              "reading": "ほうしん",
+              "transliteration": "houshin",
+              "translation": "Policy / Direction",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "オープンソースの方針を維持する。",
+                "transliteration": "Oopunsoosu no houshin o iji suru.",
+                "translation": "Maintain the open-source policy."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u2-l2",
+          "title": "Quality & Improvement",
+          "objective": "Discuss metrics, feedback, and iterative refinement.",
+          "grammarNote": "Notice the root 改 (change/improve) in 改善 (kaizen) and 改良 (improvement).",
+          "items": [
+            {
+              "id": "ja_n2_kaizen",
+              "term": "改善",
+              "reading": "かいぜん",
+              "transliteration": "kaizen",
+              "translation": "Improvement / Kaizen",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "使い勝手を大幅に改善した。",
+                "transliteration": "Tsukaigatte o oohaba ni kaizen shita.",
+                "translation": "Significantly improved usability."
+              }
+            },
+            {
+              "id": "ja_n2_hyouka",
+              "term": "評価",
+              "reading": "ひょうか",
+              "transliteration": "hyouka",
+              "translation": "Evaluation / Rating",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "高い評価を得ることができた。",
+                "transliteration": "Takai hyouka o eru koto ga dekita.",
+                "translation": "We earned high ratings."
+              }
+            },
+            {
+              "id": "ja_n2_hinshitsu",
+              "term": "品質",
+              "reading": "ひんしつ",
+              "transliteration": "hinshitsu",
+              "translation": "Quality",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "教材の品質を保つ仕組み。",
+                "transliteration": "Kyouzai no hinshitsu o tamotsu shikumi.",
+                "translation": "A system to maintain material quality."
+              }
+            },
+            {
+              "id": "ja_n2_kouritsu",
+              "term": "効率",
+              "reading": "こうりつ",
+              "transliteration": "kouritsu",
+              "translation": "Efficiency",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "記憶の効率を高める復習法。",
+                "transliteration": "Kioku no kouritsu o takameru fukushuuhou.",
+                "translation": "A review method that boosts memory efficiency."
+              }
+            },
+            {
+              "id": "ja_n2_seika",
+              "term": "成果",
+              "reading": "せいか",
+              "transliteration": "seika",
+              "translation": "Outcome / Achievement",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "日々の積み重ねが成果につながる。",
+                "transliteration": "Hibi no tsumikasane ga seika ni tsunagaru.",
+                "translation": "Daily accumulation leads to results."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u2-l3",
+          "title": "Negotiation & Consensus",
+          "objective": "Reach agreements and handle constraints professionally.",
+          "grammarNote": "Use 調整 (coordinate) and 合意 (consensus) when aligning stakeholders.",
+          "items": [
+            {
+              "id": "ja_n2_chousei",
+              "term": "調整",
+              "reading": "ちょうせい",
+              "transliteration": "chousei",
+              "translation": "Adjustment / Coordination",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "日程を調整してご連絡します。",
+                "transliteration": "Nittei o chousei shite gorenraku shimasu.",
+                "translation": "I'll coordinate the schedule and reach out."
+              }
+            },
+            {
+              "id": "ja_n2_goui",
+              "term": "合意",
+              "reading": "ごうい",
+              "transliteration": "goui",
+              "translation": "Agreement / Consensus",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "全員の合意を得て決定した。",
+                "transliteration": "Zenin no goui o ete kettei shita.",
+                "translation": "Decided after gaining everyone's consensus."
+              }
+            },
+            {
+              "id": "ja_n2_seigen",
+              "term": "制限",
+              "reading": "せいげん",
+              "transliteration": "seigen",
+              "translation": "Restriction / Limit",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "容量の制限を意識して設計する。",
+                "transliteration": "Youryou no seigen o ishiki shite sekkei suru.",
+                "translation": "Design with storage limits in mind."
+              }
+            },
+            {
+              "id": "ja_n2_yuusen",
+              "term": "優先",
+              "reading": "ゆうせん",
+              "transliteration": "yuusen",
+              "translation": "Priority",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "モバイル対応を優先しましょう。",
+                "transliteration": "Mobairu taiou o yuusen shimashou.",
+                "translation": "Let's prioritize mobile support."
+              }
+            },
+            {
+              "id": "ja_n2_kakuho",
+              "term": "確保",
+              "reading": "かくほ",
+              "transliteration": "kakuho",
+              "translation": "Securing / Ensuring",
+              "tags": [
+                "N2",
+                "business"
+              ],
+              "example": {
+                "term": "毎日の学習時間を確保する。",
+                "transliteration": "Mainichi no gakushuu jikan o kakuho suru.",
+                "translation": "Secure daily study time."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-u3",
+      "title": "Technology, Economy & Media",
+      "subtitle": "ぎじゅつとけいざい · Reading articles on innovation and society",
+      "cefrLevel": "N2",
+      "color": "#a855f7",
+      "lessons": [
+        {
+          "id": "n2-u3-l1",
+          "title": "Innovation & Adoption",
+          "objective": "Follow tech news, trends, and global diffusion.",
+          "grammarNote": "N2 news passages rely heavily on compounds like 普及 (widespread adoption) and 発展 (development).",
+          "items": [
+            {
+              "id": "ja_n2_fukyuu",
+              "term": "普及",
+              "reading": "ふきゅう",
+              "transliteration": "fukyuu",
+              "translation": "Widespread adoption",
+              "tags": [
+                "N2",
+                "media"
+              ],
+              "example": {
+                "term": "スマートフォンが急速に普及した。",
+                "transliteration": "Sumaatofon ga kyuusoku ni fukyuu shita.",
+                "translation": "Smartphones spread rapidly."
+              }
+            },
+            {
+              "id": "ja_n2_hatten",
+              "term": "発展",
+              "reading": "はってん",
+              "transliteration": "hatten",
+              "translation": "Development / Growth",
+              "tags": [
+                "N2",
+                "media"
+              ],
+              "example": {
+                "term": "技術の発展が学びを変える。",
+                "transliteration": "Gijutsu no hatten ga manabi o kaeru.",
+                "translation": "Technological growth transforms learning."
+              }
+            },
+            {
+              "id": "ja_n2_kadai",
+              "term": "課題",
+              "reading": "かだい",
+              "transliteration": "kadai",
+              "translation": "Challenge / Issue",
+              "tags": [
+                "N2",
+                "media"
+              ],
+              "example": {
+                "term": "残された課題を整理する。",
+                "transliteration": "Nokosareta kadai o seiri suru.",
+                "translation": "Organize the remaining challenges."
+              }
+            },
+            {
+              "id": "ja_n2_keikou",
+              "term": "傾向",
+              "reading": "けいこう",
+              "transliteration": "keikou",
+              "translation": "Trend / Tendency",
+              "tags": [
+                "N2",
+                "media"
+              ],
+              "example": {
+                "term": "独学する人が増える傾向にある。",
+                "transliteration": "Dokugaku suru hito ga fueru keikou ni aru.",
+                "translation": "There is a trend toward self-study."
+              }
+            },
+            {
+              "id": "ja_n2_konkyo",
+              "term": "根拠",
+              "reading": "こんきょ",
+              "transliteration": "konkyo",
+              "translation": "Basis / Evidence",
+              "tags": [
+                "N2",
+                "media"
+              ],
+              "example": {
+                "term": "科学的な根拠に基づく方法。",
+                "transliteration": "Kagakuteki na konkyo ni motozuku houhou.",
+                "translation": "A method grounded in scientific evidence."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u3-l2",
+          "title": "Economy & Resources",
+          "objective": "Understand economic concepts, demand, and sustainability.",
+          "grammarNote": "Pay attention to paired opposites: 需要 (demand) vs. 供給 (supply), 増加 (increase) vs. 減少 (decrease).",
+          "items": [
+            {
+              "id": "ja_n2_juyou",
+              "term": "需要",
+              "reading": "じゅよう",
+              "transliteration": "juyou",
+              "translation": "Demand",
+              "tags": [
+                "N2",
+                "economy"
+              ],
+              "example": {
+                "term": "語学アプリの需要が高まっている。",
+                "transliteration": "Gogaku apuri no juyou ga takamatte iru.",
+                "translation": "Demand for language apps is rising."
+              }
+            },
+            {
+              "id": "ja_n2_futan",
+              "term": "負担",
+              "reading": "ふたん",
+              "transliteration": "futan",
+              "translation": "Burden / Cost",
+              "tags": [
+                "N2",
+                "economy"
+              ],
+              "example": {
+                "term": "ユーザーの負担を減らす設計。",
+                "transliteration": "Yuuzaa no futan o herasu sekkei.",
+                "translation": "A design that reduces user burden."
+              }
+            },
+            {
+              "id": "ja_n2_shigen",
+              "term": "資源",
+              "reading": "しげん",
+              "transliteration": "shigen",
+              "translation": "Resources",
+              "tags": [
+                "N2",
+                "economy"
+              ],
+              "example": {
+                "term": "限られた資源を有効活用する。",
+                "transliteration": "Kagirareta shigen o yuukou katsuyou suru.",
+                "translation": "Use limited resources effectively."
+              }
+            },
+            {
+              "id": "ja_n2_zouka",
+              "term": "増加",
+              "reading": "ぞうか",
+              "transliteration": "zouka",
+              "translation": "Increase",
+              "tags": [
+                "N2",
+                "economy"
+              ],
+              "example": {
+                "term": "海外からの訪問者が増加した。",
+                "transliteration": "Kaigai kara no houmonsha ga zouka shita.",
+                "translation": "Visitors from abroad increased."
+              }
+            },
+            {
+              "id": "ja_n2_antei",
+              "term": "安定",
+              "reading": "あんてい",
+              "transliteration": "antei",
+              "translation": "Stability",
+              "tags": [
+                "N2",
+                "economy"
+              ],
+              "example": {
+                "term": "オフラインでも安定して動作する。",
+                "transliteration": "Ofurain demo antei shite dousa suru.",
+                "translation": "Operates stably even offline."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u3-l3",
+          "title": "Data & Communication",
+          "objective": "Describe sharing, accuracy, and digital tools.",
+          "grammarNote": "Combine nouns like 共有 (sharing) and 変換 (conversion) with する.",
+          "items": [
+            {
+              "id": "ja_n2_kyouyuu",
+              "term": "共有",
+              "reading": "きょうゆう",
+              "transliteration": "kyouyuu",
+              "translation": "Sharing (knowledge/files)",
+              "tags": [
+                "N2",
+                "tech"
+              ],
+              "example": {
+                "term": "知識を世界中で共有する。",
+                "transliteration": "Chishiki o sekaijuu de kyouyuu suru.",
+                "translation": "Share knowledge around the world."
+              }
+            },
+            {
+              "id": "ja_n2_seikaku",
+              "term": "正確",
+              "reading": "せいかく",
+              "transliteration": "seikaku",
+              "translation": "Accurate / Exact",
+              "tags": [
+                "N2",
+                "adj"
+              ],
+              "example": {
+                "term": "正確な翻訳を心がける。",
+                "transliteration": "Seikaku na honyaku o kokorogakeru.",
+                "translation": "Strive for accurate translation."
+              }
+            },
+            {
+              "id": "ja_n2_kousei",
+              "term": "構成",
+              "reading": "こうせい",
+              "transliteration": "kousei",
+              "translation": "Structure / Composition",
+              "tags": [
+                "N2",
+                "tech"
+              ],
+              "example": {
+                "term": "モジュール構成で管理しやすい。",
+                "transliteration": "Mojuuru kousei de kanri shiyasui.",
+                "translation": "Easy to manage with modular structure."
+              }
+            },
+            {
+              "id": "ja_n2_taiou",
+              "term": "対応",
+              "reading": "たいおう",
+              "transliteration": "taiou",
+              "translation": "Support / Compatibility",
+              "tags": [
+                "N2",
+                "tech"
+              ],
+              "example": {
+                "term": "多言語対応を標準装備した。",
+                "transliteration": "Tagengo taiou o hyoujun soubi shita.",
+                "translation": "Built in multi-language support as standard."
+              }
+            },
+            {
+              "id": "ja_n2_katsuyou",
+              "term": "活用",
+              "reading": "かつよう",
+              "transliteration": "katsuyou",
+              "translation": "Practical use / Conjugation",
+              "tags": [
+                "N2",
+                "tech"
+              ],
+              "example": {
+                "term": "空き時間を上手に活用しよう。",
+                "transliteration": "Akijikan o jouzu ni katsuyou shiyou.",
+                "translation": "Make smart use of spare time."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-u4",
+      "title": "Formal Grammar & Essay Reading",
+      "subtitle": "ろんせつとどっかい · Written conjunctions and abstract reasoning",
+      "cefrLevel": "N2",
+      "color": "#9333ea",
+      "lessons": [
+        {
+          "id": "n2-u4-l1",
+          "title": "Signature N2 Grammar",
+          "objective": "Master contrast, parallel change, and conditional scope.",
+          "grammarNote": "〜にもかかわらず ('despite'), 〜に伴って ('along with'), 〜に応じて ('depending on').",
+          "items": [
+            {
+              "id": "ja_n2_nimokakawarazu",
+              "term": "〜にもかかわらず",
+              "reading": "にもかかわらず",
+              "transliteration": "ni mo kakawarazu",
+              "translation": "Despite / In spite of",
+              "tags": [
+                "N2",
+                "grammar"
+              ],
+              "example": {
+                "term": "軽量にもかかわらず多機能だ。",
+                "transliteration": "Keiryou ni mo kakawarazu takinou da.",
+                "translation": "Despite being lightweight, it is feature-rich."
+              }
+            },
+            {
+              "id": "ja_n2_nitomonatte",
+              "term": "〜に伴って",
+              "reading": "にともなって",
+              "transliteration": "ni tomonatte",
+              "translation": "Along with / Accompanying",
+              "tags": [
+                "N2",
+                "grammar"
+              ],
+              "example": {
+                "term": "進歩に伴って課題も変わる。",
+                "transliteration": "Shinpo ni tomonatte kadai mo kawaru.",
+                "translation": "Challenges change along with progress."
+              }
+            },
+            {
+              "id": "ja_n2_nioujite",
+              "term": "〜に応じて",
+              "reading": "におうじて",
+              "transliteration": "ni oujite",
+              "translation": "Depending on / According to",
+              "tags": [
+                "N2",
+                "grammar"
+              ],
+              "example": {
+                "term": "実力に応じて飛び級できる。",
+                "transliteration": "Jitsuryoku ni oujite tobikyuu dekiru.",
+                "translation": "You can jump ahead according to your level."
+              }
+            },
+            {
+              "id": "ja_n2_wakedewanai",
+              "term": "〜わけではない",
+              "reading": "わけではない",
+              "transliteration": "wake de wa nai",
+              "translation": "It doesn't mean that ...",
+              "tags": [
+                "N2",
+                "grammar"
+              ],
+              "example": {
+                "term": "大きいから良いわけではない。",
+                "transliteration": "Ookii kara yoi wake de wa nai.",
+                "translation": "Just because it's big doesn't mean it's better."
+              }
+            },
+            {
+              "id": "ja_n2_kagiri",
+              "term": "〜限り",
+              "reading": "かぎり",
+              "transliteration": "kagiri",
+              "translation": "As long as / As far as",
+              "tags": [
+                "N2",
+                "grammar"
+              ],
+              "example": {
+                "term": "私が知る限り問題はない。",
+                "transliteration": "Watashi ga shiru kagiri mondai wa nai.",
+                "translation": "As far as I know, there's no problem."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u4-l2",
+          "title": "Written Conjunctions",
+          "objective": "Follow logical flow across essays and long readings.",
+          "grammarNote": "一方 (on the other hand), したがって (therefore), すなわち (namely).",
+          "items": [
+            {
+              "id": "ja_n2_ippou",
+              "term": "一方で",
+              "reading": "いっぽうで",
+              "transliteration": "ippou de",
+              "translation": "On the other hand",
+              "tags": [
+                "N2",
+                "connector"
+              ],
+              "example": {
+                "term": "便利な一方で注意点もある。",
+                "transliteration": "Benri na ippou de chuuiten mo aru.",
+                "translation": "While convenient, on the other hand there are caveats."
+              }
+            },
+            {
+              "id": "ja_n2_shitagatte",
+              "term": "したがって",
+              "reading": "したがって",
+              "transliteration": "shitagatte",
+              "translation": "Therefore / Consequently",
+              "tags": [
+                "N2",
+                "connector"
+              ],
+              "example": {
+                "term": "したがってバックアップが重要だ。",
+                "transliteration": "Shitagatte bakkuappu ga juuyou da.",
+                "translation": "Therefore, backups are important."
+              }
+            },
+            {
+              "id": "ja_n2_sunawachi",
+              "term": "すなわち",
+              "reading": "すなわち",
+              "transliteration": "sunawachi",
+              "translation": "Namely / That is to say",
+              "tags": [
+                "N2",
+                "connector"
+              ],
+              "example": {
+                "term": "継続、すなわち習慣化が鍵だ。",
+                "transliteration": "Keizoku, sunawachi shuukanka ga kagi da.",
+                "translation": "Continuity—namely habit-building—is key."
+              }
+            },
+            {
+              "id": "ja_n2_mushiro",
+              "term": "むしろ",
+              "reading": "むしろ",
+              "transliteration": "mushiro",
+              "translation": "Rather / Instead",
+              "tags": [
+                "N2",
+                "connector"
+              ],
+              "example": {
+                "term": "複雑どころか、むしろ簡潔だ。",
+                "transliteration": "Fukuzatsu dokoro ka, mushiro kanketsu da.",
+                "translation": "Far from complex—rather, it is concise."
+              }
+            },
+            {
+              "id": "ja_n2_youyaku",
+              "term": "要約",
+              "reading": "ようやく",
+              "transliteration": "youyaku",
+              "translation": "Summary / Abstract",
+              "tags": [
+                "N2",
+                "reading"
+              ],
+              "example": {
+                "term": "長文の要点を短く要約した。",
+                "transliteration": "Choubun no youten o mijikaku youyaku shita.",
+                "translation": "Briefly summarized the long passage's key points."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n2-u4-l3",
+          "title": "Abstract Reasoning",
+          "objective": "Discuss premises, perspectives, and interpretations.",
+          "grammarNote": "N2 reading comprehension centers on author intent (主張), premise (前提), and perspective (視点).",
+          "items": [
+            {
+              "id": "ja_n2_zentei",
+              "term": "前提",
+              "reading": "ぜんてい",
+              "transliteration": "zentei",
+              "translation": "Premise / Assumption",
+              "tags": [
+                "N2",
+                "abstract"
+              ],
+              "example": {
+                "term": "共通の前提から議論を始める。",
+                "transliteration": "Kyoutsuu no zentei kara giron o hajimeru.",
+                "translation": "Start the discussion from a shared premise."
+              }
+            },
+            {
+              "id": "ja_n2_shiten",
+              "term": "視点",
+              "reading": "してん",
+              "transliteration": "shiten",
+              "translation": "Perspective / Point of view",
+              "tags": [
+                "N2",
+                "abstract"
+              ],
+              "example": {
+                "term": "学習者の視点でUIを見直す。",
+                "transliteration": "Gakushuusha no shiten de UI o minaosu.",
+                "translation": "Revisit the UI from the learner's perspective."
+              }
+            },
+            {
+              "id": "ja_n2_fukaketsu",
+              "term": "不可欠",
+              "reading": "ふかけつ",
+              "transliteration": "fukaketsu",
+              "translation": "Indispensable",
+              "tags": [
+                "N2",
+                "abstract"
+              ],
+              "example": {
+                "term": "音声と反復は語学に不可欠だ。",
+                "transliteration": "Onsei to hanpuku wa gogaku ni fukaketsu da.",
+                "translation": "Audio and repetition are indispensable to language learning."
+              }
+            },
+            {
+              "id": "ja_n2_mujun",
+              "term": "矛盾",
+              "reading": "むじゅん",
+              "transliteration": "mujun",
+              "translation": "Contradiction",
+              "tags": [
+                "N2",
+                "abstract"
+              ],
+              "example": {
+                "term": "その説明には矛盾がない。",
+                "transliteration": "Sono setsumei ni wa mujun ga nai.",
+                "translation": "There is no contradiction in that explanation."
+              }
+            },
+            {
+              "id": "ja_n2_kaishaku",
+              "term": "解釈",
+              "reading": "かいしゃく",
+              "transliteration": "kaishaku",
+              "translation": "Interpretation",
+              "tags": [
+                "N2",
+                "abstract"
+              ],
+              "example": {
+                "term": "文脈によって解釈が変わる。",
+                "transliteration": "Bunmyaku ni yotte kaishaku ga kawaru.",
+                "translation": "Interpretation changes with context."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

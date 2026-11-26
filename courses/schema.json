@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openlingo.dev/schemas/course.v1.json",
+  "title": "OpenLingo Course Syllabus Schema",
+  "description": "Language-agnostic, community-editable syllabus format for free and open-source language courses.",
+  "type": "object",
+  "required": ["id", "version", "title", "sourceLang", "targetLang", "units"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}-[a-z]{2,3}(-[a-z0-9]+)?$",
+      "description": "Unique course identifier, e.g. 'en-ja' or 'en-ml'."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the syllabus."
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string",
+      "default": "CC-BY-SA-4.0"
+    },
+    "sourceLang": {
+      "type": "object",
+      "required": ["code", "name"],
+      "properties": {
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "dir": { "type": "string", "enum": ["ltr", "rtl"], "default": "ltr" }
+      }
+    },
+    "targetLang": {
+      "type": "object",
+      "required": ["code", "name", "speechLocale"],
+      "properties": {
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "nativeName": { "type": "string" },
+        "speechLocale": { "type": "string", "description": "BCP-47 locale for TTS fallback, e.g. 'ja-JP'." },
+        "dir": { "type": "string", "enum": ["ltr", "rtl"], "default": "ltr" },
+        "usesTransliteration": { "type": "boolean", "default": true }
+      }
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "lessons"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "cefrLevel": { "type": "string", "enum": ["A0", "A1", "A2", "B1", "B2", "C1"] },
+          "lessons": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "title", "items"],
+              "properties": {
+                "id": { "type": "string" },
+                "title": { "type": "string" },
+                "objective": { "type": "string" },
+                "grammarNote": { "type": "string" },
+                "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "term", "translation"],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Permanent unique ID preserved across course edits for spaced-repetition history."
+                      },
+                      "term": { "type": "string", "description": "Target language word or phrase." },
+                      "reading": { "type": "string", "description": "Phonetic script reading (e.g. hiragana for kanji)." },
+                      "transliteration": { "type": "string", "description": "Latin transliteration (e.g. romaji)." },
+                      "translation": { "type": "string", "description": "Meaning in source language." },
+                      "audio": { "type": "string", "description": "Optional relative path to native audio clip." },
+                      "tags": { "type": "array", "items": { "type": "string" } },
+                      "example": {
+                        "type": "object",
+                        "properties": {
+                          "term": { "type": "string" },
+                          "transliteration": { "type": "string" },
+                          "translation": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

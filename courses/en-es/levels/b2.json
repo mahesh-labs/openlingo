@@ -1,0 +1,982 @@
+{
+  "id": "sec-b2",
+  "jlptLevel": "B2",
+  "tier": "Upper-Intermediate",
+  "title": "CEFR B2 — Business & Media",
+  "description": "Formal proposals, conditionals & subjunctive clauses, media/tech analysis, idioms, and nuanced verbs.",
+  "color": "#ec4899",
+  "units": [
+    {
+      "id": "es-b2-u1",
+      "title": "Business & Formal Proposals",
+      "subtitle": "Empresa y propuestas · Professional meetings and formal register",
+      "cefrLevel": "B2",
+      "color": "#ec4899",
+      "lessons": [
+        {
+          "id": "es-b2-u1-l1",
+          "title": "Presenting Proposals",
+          "objective": "Pitch ideas and discuss execution formally.",
+          "grammarNote": "Use conditional forms ('podría', 'convendría') to make professional suggestions tactfully.",
+          "items": [
+            {
+              "id": "es_b2_propuesta",
+              "term": "La propuesta",
+              "transliteration": "lah proh-PWEHS-tah",
+              "translation": "Proposal",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Presentamos una propuesta detallada.",
+                "translation": "We presented a detailed proposal."
+              }
+            },
+            {
+              "id": "es_b2_plantear",
+              "term": "Plantear",
+              "transliteration": "plahn-teh-AHR",
+              "translation": "To raise (an issue) / propose",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Quisiera plantear una mejora.",
+                "translation": "I would like to propose an improvement."
+              }
+            },
+            {
+              "id": "es_b2_evaluar",
+              "term": "Evaluar",
+              "transliteration": "eh-bah-LWAHR",
+              "translation": "To evaluate / assess",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Debemos evaluar el impacto real.",
+                "translation": "We must evaluate the real impact."
+              }
+            },
+            {
+              "id": "es_b2_llevar_a_cabo",
+              "term": "Llevar a cabo",
+              "transliteration": "yeh-BAHR ah KAH-boh",
+              "translation": "To carry out / execute",
+              "tags": [
+                "B2",
+                "phrase"
+              ],
+              "example": {
+                "term": "Vamos a llevar a cabo pruebas en Android.",
+                "translation": "We are going to carry out tests on Android."
+              }
+            },
+            {
+              "id": "es_b2_imprescindible",
+              "term": "Imprescindible",
+              "transliteration": "eem-prehs-seen-DEE-bleh",
+              "translation": "Essential / Indispensable",
+              "tags": [
+                "B2",
+                "adj"
+              ],
+              "example": {
+                "term": "La simplicidad es imprescindible en móvil.",
+                "translation": "Simplicity is indispensable on mobile."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u1-l2",
+          "title": "Formal Emails & Politeness",
+          "objective": "Write crisp business emails and formal responses.",
+          "grammarNote": "Close formal letters with 'Atentamente' (Sincerely) or 'Quedo a su disposición'.",
+          "items": [
+            {
+              "id": "es_b2_agradecer",
+              "term": "Agradecer de antemano",
+              "transliteration": "ah-grah-deh-SEHR",
+              "translation": "To thank in advance",
+              "tags": [
+                "B2",
+                "formal"
+              ],
+              "example": {
+                "term": "Agradezco de antemano su colaboración.",
+                "translation": "I thank you in advance for your collaboration."
+              }
+            },
+            {
+              "id": "es_b2_adjuntar",
+              "term": "Adjuntar",
+              "transliteration": "ahd-hoon-TAHR",
+              "translation": "To attach (a file)",
+              "tags": [
+                "B2",
+                "formal"
+              ],
+              "example": {
+                "term": "Adjunto el temario en formato JSON.",
+                "translation": "I attach the syllabus in JSON format."
+              }
+            },
+            {
+              "id": "es_b2_disposicion",
+              "term": "Quedar a su disposición",
+              "transliteration": "keh-DAHR ah soo dees-poh-see-SYOHN",
+              "translation": "Remain at your disposal",
+              "tags": [
+                "B2",
+                "formal"
+              ],
+              "example": {
+                "term": "Quedo a su disposición para cualquier duda.",
+                "translation": "I remain at your disposal for any question."
+              }
+            },
+            {
+              "id": "es_b2_compromiso",
+              "term": "El compromiso",
+              "transliteration": "ehl kohm-proh-MEE-soh",
+              "translation": "Commitment",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Mantenemos un compromiso con el software libre.",
+                "translation": "We maintain a commitment to free software."
+              }
+            },
+            {
+              "id": "es_b2_rendimiento",
+              "term": "El rendimiento",
+              "transliteration": "ehl rehn-dee-MYEHN-toh",
+              "translation": "Performance / Efficiency",
+              "tags": [
+                "B2",
+                "tech"
+              ],
+              "example": {
+                "term": "El rendimiento en dispositivos antiguos es excelente.",
+                "translation": "Performance on older devices is excellent."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u1-l3",
+          "title": "Negotiation & Strategy",
+          "objective": "Align priorities, budgets, and long-term plans.",
+          "grammarNote": "Pairs like 'a corto plazo' (short-term) and 'a largo plazo' (long-term) sharpen strategic talk.",
+          "items": [
+            {
+              "id": "es_b2_largo_plazo",
+              "term": "A largo plazo",
+              "transliteration": "ah LAHR-goh PLAH-soh",
+              "translation": "In the long term",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Pensamos en la sostenibilidad a largo plazo.",
+                "translation": "We think about long-term sustainability."
+              }
+            },
+            {
+              "id": "es_b2_priorizar",
+              "term": "Priorizar",
+              "transliteration": "pryoh-ree-SAHR",
+              "translation": "To prioritize",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Debemos priorizar la experiencia de usuario.",
+                "translation": "We must prioritize user experience."
+              }
+            },
+            {
+              "id": "es_b2_acuerdo",
+              "term": "Llegar a un acuerdo",
+              "transliteration": "yeh-GAHR ah oon ah-KWEHR-doh",
+              "translation": "To reach an agreement",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Llegamos a un acuerdo rápidamente.",
+                "translation": "We reached an agreement quickly."
+              }
+            },
+            {
+              "id": "es_b2_presupuesto",
+              "term": "El presupuesto",
+              "transliteration": "ehl preh-soo-PWEHS-toh",
+              "translation": "Budget",
+              "tags": [
+                "B2",
+                "business"
+              ],
+              "example": {
+                "term": "Sin servidores el presupuesto es cero.",
+                "translation": "Without servers the budget is zero."
+              }
+            },
+            {
+              "id": "es_b2_viable",
+              "term": "Viable",
+              "transliteration": "BYAH-bleh",
+              "translation": "Viable / Feasible",
+              "tags": [
+                "B2",
+                "adj"
+              ],
+              "example": {
+                "term": "Es una arquitectura totalmente viable.",
+                "translation": "It is a completely viable architecture."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-b2-u2",
+      "title": "Conditionals & Complex Subjunctive",
+      "subtitle": "Hipótesis · Hypothetical situations and advanced conjunctions",
+      "cefrLevel": "B2",
+      "color": "#d946ef",
+      "lessons": [
+        {
+          "id": "es-b2-u2-l1",
+          "title": "Hypotheticals (Si + Imperfect Subjunctive)",
+          "objective": "Build 'If I had..., I would...' sentences cleanly.",
+          "grammarNote": "Never put conditional directly after 'si': say 'Si tuviera tiempo, aprendería', NOT 'Si tendría'.",
+          "items": [
+            {
+              "id": "es_b2_si_tuviera",
+              "term": "Si tuviera",
+              "transliteration": "see too-BYEH-rah",
+              "translation": "If I had (hypothetical)",
+              "tags": [
+                "B2",
+                "conditional"
+              ],
+              "example": {
+                "term": "Si tuviera más horas, estudiaría tres idiomas.",
+                "translation": "If I had more hours, I'd study three languages."
+              }
+            },
+            {
+              "id": "es_b2_siempre_y_cuando",
+              "term": "Siempre y cuando",
+              "transliteration": "SYEHM-preh ee KWAHN-doh",
+              "translation": "Provided that / As long as",
+              "tags": [
+                "B2",
+                "subjunctive"
+              ],
+              "example": {
+                "term": "Puedes compartirlo siempre y cuando sea libre.",
+                "translation": "You may share it provided that it stays free."
+              }
+            },
+            {
+              "id": "es_b2_a_menos_que",
+              "term": "A menos que",
+              "transliteration": "ah MEH-nohs keh",
+              "translation": "Unless",
+              "tags": [
+                "B2",
+                "subjunctive"
+              ],
+              "example": {
+                "term": "Funciona offline a menos que borres los datos.",
+                "translation": "It works offline unless you clear data."
+              }
+            },
+            {
+              "id": "es_b2_en_caso_de",
+              "term": "En caso de que",
+              "transliteration": "ehn KAH-soh deh keh",
+              "translation": "In case / In the event that",
+              "tags": [
+                "B2",
+                "subjunctive"
+              ],
+              "example": {
+                "term": "Exporta el JSON en caso de que cambies de móvil.",
+                "translation": "Export the JSON in case you change phones."
+              }
+            },
+            {
+              "id": "es_b2_con_tal_de",
+              "term": "Con tal de que",
+              "transliteration": "kohn tahl deh keh",
+              "translation": "So long as",
+              "tags": [
+                "B2",
+                "subjunctive"
+              ],
+              "example": {
+                "term": "Ayudo con tal de que sea útil.",
+                "translation": "I'll help so long as it's useful."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u2-l2",
+          "title": "Concession & Contrast",
+          "objective": "Express 'despite' and 'even if' accurately.",
+          "grammarNote": "'A pesar de + noun/infinitive' vs. 'A pesar de que + clause'.",
+          "items": [
+            {
+              "id": "es_b2_a_pesar_de",
+              "term": "A pesar de que",
+              "transliteration": "ah peh-SAHR deh keh",
+              "translation": "Despite the fact that",
+              "tags": [
+                "B2",
+                "grammar"
+              ],
+              "example": {
+                "term": "A pesar de que pesa 90 KB, incluye 900 ítems.",
+                "translation": "Despite weighing 90 KB, it includes 900 items."
+              }
+            },
+            {
+              "id": "es_b2_aunque_subj",
+              "term": "Aunque + subjuntivo",
+              "transliteration": "OWN-keh",
+              "translation": "Even if (hypothetical)",
+              "tags": [
+                "B2",
+                "subjunctive"
+              ],
+              "example": {
+                "term": "Aunque sea difícil al inicio, seguiré.",
+                "translation": "Even if it's hard at first, I'll continue."
+              }
+            },
+            {
+              "id": "es_b2_mientras_que",
+              "term": "Mientras que",
+              "transliteration": "MYEHN-trahs keh",
+              "translation": "Whereas / While (contrast)",
+              "tags": [
+                "B2",
+                "connector"
+              ],
+              "example": {
+                "term": "Flutter pesa 20 MB, mientras que WebView pesa menos.",
+                "translation": "Flutter weighs 20 MB, whereas WebView weighs less."
+              }
+            },
+            {
+              "id": "es_b2_al_contrario",
+              "term": "Al contrario",
+              "transliteration": "ahl kohn-TRAH-ryoh",
+              "translation": "On the contrary",
+              "tags": [
+                "B2",
+                "connector"
+              ],
+              "example": {
+                "term": "No es lento; al contrario, vuela.",
+                "translation": "It's not slow; on the contrary, it flies."
+              }
+            },
+            {
+              "id": "es_b2_pese_a",
+              "term": "Pese a",
+              "transliteration": "PEH-seh ah",
+              "translation": "Despite (formal)",
+              "tags": [
+                "B2",
+                "grammar"
+              ],
+              "example": {
+                "term": "Pese a los retos, terminamos a tiempo.",
+                "translation": "Despite the challenges, we finished on time."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u2-l3",
+          "title": "Cause, Effect & Synthesis",
+          "objective": "Summarize arguments and show logical consequence.",
+          "grammarNote": "'Debido a' precedes a noun; 'debido a que' precedes a conjugated verb.",
+          "items": [
+            {
+              "id": "es_b2_debido_a",
+              "term": "Debido a",
+              "transliteration": "deh-BEE-doh ah",
+              "translation": "Due to / Owing to",
+              "tags": [
+                "B2",
+                "connector"
+              ],
+              "example": {
+                "term": "Debido a la demanda, añadimos español.",
+                "translation": "Due to demand, we added Spanish."
+              }
+            },
+            {
+              "id": "es_b2_por_lo_tanto",
+              "term": "Por lo tanto",
+              "transliteration": "pohr loh TAHN-toh",
+              "translation": "Therefore / Consequently",
+              "tags": [
+                "B2",
+                "connector"
+              ],
+              "example": {
+                "term": "El contenido es local; por lo tanto, es instantáneo.",
+                "translation": "Content is local; therefore, it is instant."
+              }
+            },
+            {
+              "id": "es_b2_en_cuanto_a",
+              "term": "En cuanto a",
+              "transliteration": "ehn KWAHN-toh ah",
+              "translation": "As for / Regarding",
+              "tags": [
+                "B2",
+                "connector"
+              ],
+              "example": {
+                "term": "En cuanto al audio, usamos TTS nativo.",
+                "translation": "As for audio, we use native TTS."
+              }
+            },
+            {
+              "id": "es_b2_resumen",
+              "term": "En resumidas cuentas",
+              "transliteration": "ehn reh-soo-MEE-dahs KWEHN-tahs",
+              "translation": "In short / To sum up",
+              "tags": [
+                "B2",
+                "phrase"
+              ],
+              "example": {
+                "term": "En resumidas cuentas, la constancia gana.",
+                "translation": "In short, consistency wins."
+              }
+            },
+            {
+              "id": "es_b2_dar_por_hecho",
+              "term": "Dar por hecho",
+              "transliteration": "dahr pohr EH-choh",
+              "translation": "To take for granted",
+              "tags": [
+                "B2",
+                "idiom"
+              ],
+              "example": {
+                "term": "No des por hecho una conexión estable.",
+                "translation": "Don't take a stable connection for granted."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-b2-u3",
+      "title": "Media, Tech & Society",
+      "subtitle": "Sociedad y tecnología · Reading journalism and global trends",
+      "cefrLevel": "B2",
+      "color": "#a855f7",
+      "lessons": [
+        {
+          "id": "es-b2-u3-l1",
+          "title": "Innovation & Trends",
+          "objective": "Discuss open-source, digital reach, and challenges.",
+          "grammarNote": "Journalistic Spanish favors precise abstract nouns like desafío, alcance, and tendencia.",
+          "items": [
+            {
+              "id": "es_b2_desafio",
+              "term": "El desafío",
+              "transliteration": "ehl deh-sah-FEE-oh",
+              "translation": "Challenge",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "El gran desafío es el diseño móvil.",
+                "translation": "The big challenge is mobile design."
+              }
+            },
+            {
+              "id": "es_b2_desarrollo",
+              "term": "El desarrollo",
+              "transliteration": "ehl deh-sah-ROH-yoh",
+              "translation": "Development",
+              "tags": [
+                "B2",
+                "tech"
+              ],
+              "example": {
+                "term": "El desarrollo abierto acelera la innovación.",
+                "translation": "Open development accelerates innovation."
+              }
+            },
+            {
+              "id": "es_b2_tendencia",
+              "term": "La tendencia",
+              "transliteration": "lah tehn-DEHN-syah",
+              "translation": "Trend / Tendency",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "Crece la tendencia hacia apps ligeras.",
+                "translation": "The trend toward lightweight apps is growing."
+              }
+            },
+            {
+              "id": "es_b2_alcance",
+              "term": "El alcance",
+              "transliteration": "ehl ahl-KAHN-seh",
+              "translation": "Reach / Scope",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "Tiene un alcance internacional.",
+                "translation": "It has an international reach."
+              }
+            },
+            {
+              "id": "es_b2_sostenible",
+              "term": "Sostenible",
+              "transliteration": "sohs-teh-NEE-bleh",
+              "translation": "Sustainable",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "Un proyecto comunitario sostenible.",
+                "translation": "A sustainable community project."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u3-l2",
+          "title": "Information & Media Literacy",
+          "objective": "Evaluate sources, privacy, and reliability.",
+          "grammarNote": "Use 'fuente' for both 'fountain' and 'source' (fuente fiable = reliable source).",
+          "items": [
+            {
+              "id": "es_b2_fuente",
+              "term": "La fuente fiable",
+              "transliteration": "lah FWEHN-teh FYAH-bleh",
+              "translation": "Reliable source",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "Verifica siempre con fuentes fiables.",
+                "translation": "Always verify with reliable sources."
+              }
+            },
+            {
+              "id": "es_b2_privacidad",
+              "term": "La privacidad",
+              "transliteration": "lah pree-bah-see-DAHD",
+              "translation": "Privacy",
+              "tags": [
+                "B2",
+                "tech"
+              ],
+              "example": {
+                "term": "El almacenamiento local protege tu privacidad.",
+                "translation": "Local storage protects your privacy."
+              }
+            },
+            {
+              "id": "es_b2_difundir",
+              "term": "Difundir",
+              "transliteration": "dee-foon-DEER",
+              "translation": "To spread / disseminate",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "Ayuda a difundir idiomas regionales.",
+                "translation": "It helps spread regional languages."
+              }
+            },
+            {
+              "id": "es_b2_accesibilidad",
+              "term": "La accesibilidad",
+              "transliteration": "lah ahk-seh-see-bee-lee-DAHD",
+              "translation": "Accessibility",
+              "tags": [
+                "B2",
+                "tech"
+              ],
+              "example": {
+                "term": "Mejoramos la accesibilidad en móviles.",
+                "translation": "We improved mobile accessibility."
+              }
+            },
+            {
+              "id": "es_b2_evidencia",
+              "term": "La evidencia",
+              "transliteration": "lah eh-bee-DEHN-syah",
+              "translation": "Evidence",
+              "tags": [
+                "B2",
+                "media"
+              ],
+              "example": {
+                "term": "Hay evidencia clara de que el repaso espaciado funciona.",
+                "translation": "There is clear evidence that spaced repetition works."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u3-l3",
+          "title": "Culture & Globalization",
+          "objective": "Talk about linguistic diversity and cultural exchange.",
+          "grammarNote": "Notice the suffix -dad (-ty): diversidad (diversity), identidad (identity), comunidad (community).",
+          "items": [
+            {
+              "id": "es_b2_diversidad",
+              "term": "La diversidad",
+              "transliteration": "lah dee-behr-see-DAHD",
+              "translation": "Diversity",
+              "tags": [
+                "B2",
+                "culture"
+              ],
+              "example": {
+                "term": "Celebramos la diversidad lingüística.",
+                "translation": "We celebrate linguistic diversity."
+              }
+            },
+            {
+              "id": "es_b2_identidad",
+              "term": "La identidad",
+              "transliteration": "lah ee-dehn-tee-DAHD",
+              "translation": "Identity",
+              "tags": [
+                "B2",
+                "culture"
+              ],
+              "example": {
+                "term": "El idioma es parte de nuestra identidad.",
+                "translation": "Language is part of our identity."
+              }
+            },
+            {
+              "id": "es_b2_intercambio",
+              "term": "El intercambio",
+              "transliteration": "ehl een-tehr-KAHM-byoh",
+              "translation": "Exchange",
+              "tags": [
+                "B2",
+                "culture"
+              ],
+              "example": {
+                "term": "Participo en un intercambio cultural.",
+                "translation": "I participate in a cultural exchange."
+              }
+            },
+            {
+              "id": "es_b2_patrimonio",
+              "term": "El patrimonio",
+              "transliteration": "ehl pah-tree-MOH-nyoh",
+              "translation": "Heritage",
+              "tags": [
+                "B2",
+                "culture"
+              ],
+              "example": {
+                "term": "Cada lengua es patrimonio humano.",
+                "translation": "Every language is human heritage."
+              }
+            },
+            {
+              "id": "es_b2_fomentar",
+              "term": "Fomentar",
+              "transliteration": "foh-mehn-TAHR",
+              "translation": "To foster / encourage",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Fomentamos la colaboración abierta.",
+                "translation": "We foster open collaboration."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-b2-u4",
+      "title": "Idioms & Nuanced Verbs",
+      "subtitle": "Modismos y matices · Sounding genuinely natural in Spanish",
+      "cefrLevel": "B2",
+      "color": "#9333ea",
+      "lessons": [
+        {
+          "id": "es-b2-u4-l1",
+          "title": "Everyday Idioms",
+          "objective": "Use lively expressions understood across the Hispanic world.",
+          "grammarNote": "Idioms rarely translate literally—absorb them as full expressions.",
+          "items": [
+            {
+              "id": "es_b2_darse_cuenta",
+              "term": "Darse cuenta",
+              "transliteration": "DAHR-seh KWEHN-tah",
+              "translation": "To realize",
+              "tags": [
+                "B2",
+                "idiom"
+              ],
+              "example": {
+                "term": "Me di cuenta de que ya leo sin traducir.",
+                "translation": "I realized I already read without translating."
+              }
+            },
+            {
+              "id": "es_b2_ponerse_pilas",
+              "term": "Ponerse las pilas",
+              "transliteration": "poh-NEHR-seh lahs PEE-lahs",
+              "translation": "To buckle down / get energized",
+              "tags": [
+                "B2",
+                "idiom"
+              ],
+              "example": {
+                "term": "Me puse las pilas con los kanji.",
+                "translation": "I buckled down with kanji."
+              }
+            },
+            {
+              "id": "es_b2_echar_mano",
+              "term": "Echar una mano",
+              "transliteration": "eh-CHAHR OO-nah MAH-noh",
+              "translation": "To lend a hand",
+              "tags": [
+                "B2",
+                "idiom"
+              ],
+              "example": {
+                "term": "¿Me echas una mano revisando el curso?",
+                "translation": "Can you lend a hand reviewing the course?"
+              }
+            },
+            {
+              "id": "es_b2_de_vez_en_cuando",
+              "term": "De vez en cuando",
+              "transliteration": "deh behs ehn KWAHN-doh",
+              "translation": "From time to time",
+              "tags": [
+                "B2",
+                "phrase"
+              ],
+              "example": {
+                "term": "Repaso el vocabulario básico de vez en cuando.",
+                "translation": "I review basic vocabulary from time to time."
+              }
+            },
+            {
+              "id": "es_b2_tomar_pelo",
+              "term": "Tomar el pelo",
+              "transliteration": "toh-MAHR ehl PEH-loh",
+              "translation": "To pull someone's leg / tease",
+              "tags": [
+                "B2",
+                "idiom"
+              ],
+              "example": {
+                "term": "¿En serio pesa 90 KB o me tomas el pelo?",
+                "translation": "Does it really weigh 90 KB or are you teasing me?"
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u4-l2",
+          "title": "Verbs of Becoming",
+          "objective": "Choose between ponerse, hacerse, convertirse en, and llegar a ser.",
+          "grammarNote": "'Ponerse' = sudden mood/state; 'convertirse en' = transformation; 'llegar a ser' = achieved over time.",
+          "items": [
+            {
+              "id": "es_b2_llegar_a_ser",
+              "term": "Llegar a ser",
+              "transliteration": "yeh-GAHR ah sehr",
+              "translation": "To become (over time)",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Puedes llegar a ser fluido con práctica.",
+                "translation": "You can become fluent with practice."
+              }
+            },
+            {
+              "id": "es_b2_ponerse_nervioso",
+              "term": "Ponerse nervioso",
+              "transliteration": "poh-NEHR-seh nehr-BYOH-soh",
+              "translation": "To get nervous",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "No te pongas nervioso al hablar.",
+                "translation": "Don't get nervous when speaking."
+              }
+            },
+            {
+              "id": "es_b2_convertirse",
+              "term": "Convertirse en",
+              "transliteration": "kohm-behr-TEER-seh ehn",
+              "translation": "To turn into",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Un prototipo se convirtió en una app completa.",
+                "translation": "A prototype turned into a full app."
+              }
+            },
+            {
+              "id": "es_b2_hacerse",
+              "term": "Hacerse costumbre",
+              "transliteration": "ah-SEHR-seh kohs-TOOM-breh",
+              "translation": "To become a habit",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Repasar cinco minutos se hace costumbre.",
+                "translation": "Reviewing five minutes becomes a habit."
+              }
+            },
+            {
+              "id": "es_b2_volverse",
+              "term": "Volverse",
+              "transliteration": "bohl-BEHR-seh",
+              "translation": "To become (lasting shift)",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "La navegación se volvió mucho más clara.",
+                "translation": "Navigation became much clearer."
+              }
+            }
+          ]
+        },
+        {
+          "id": "es-b2-u4-l3",
+          "title": "Precision Action Verbs",
+          "objective": "Replace generic verbs with vivid, exact ones.",
+          "grammarNote": "Using 'aprovechar', 'lograr', and 'destacar' makes your Spanish crisp and natural.",
+          "items": [
+            {
+              "id": "es_b2_lograr",
+              "term": "Lograr",
+              "transliteration": "loh-GRAHR",
+              "translation": "To achieve / manage to",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Logramos un diseño móvil limpio.",
+                "translation": "We achieved a clean mobile layout."
+              }
+            },
+            {
+              "id": "es_b2_aprovechar",
+              "term": "Aprovechar",
+              "transliteration": "ah-proh-beh-CHAHR",
+              "translation": "To make the most of",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Aprovecho el viaje en metro para estudiar.",
+                "translation": "I make the most of the subway ride to study."
+              }
+            },
+            {
+              "id": "es_b2_destacar",
+              "term": "Destacar",
+              "transliteration": "dehs-tah-KAHR",
+              "translation": "To stand out / highlight",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Destaca por su velocidad y claridad.",
+                "translation": "It stands out for its speed and clarity."
+              }
+            },
+            {
+              "id": "es_b2_superarse",
+              "term": "Superarse",
+              "transliteration": "soo-peh-RAHR-seh",
+              "translation": "To outdo oneself",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Cada semana intento superarme.",
+                "translation": "Each week I try to outdo myself."
+              }
+            },
+            {
+              "id": "es_b2_aportar",
+              "term": "Aportar",
+              "transliteration": "ah-pohr-TAHR",
+              "translation": "To contribute / bring",
+              "tags": [
+                "B2",
+                "verb"
+              ],
+              "example": {
+                "term": "Cada hablante nativo puede aportar ejemplos.",
+                "translation": "Every native speaker can contribute examples."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

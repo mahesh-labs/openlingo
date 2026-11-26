@@ -1,0 +1,7 @@
+{
+  "courses": [
+    "./courses/en-ja/course.json",
+    "./courses/en-es/course.json",
+    "./courses/en-ml/course.json"
+  ]
+}

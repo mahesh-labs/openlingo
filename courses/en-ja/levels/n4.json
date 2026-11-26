@@ -1,0 +1,1375 @@
+{
+  "id": "sec-n4",
+  "jlptLevel": "N4",
+  "tier": "Elementary",
+  "title": "JLPT N4 — Daily Conversations",
+  "description": "Te-form requests, travel, health & home routines, past experiences, potential form, reasons & advice.",
+  "color": "#3b82f6",
+  "units": [
+    {
+      "id": "n4-u1",
+      "title": "Te-Form & Polite Requests",
+      "subtitle": "てけい · Connecting verbs, requests, and ongoing states",
+      "cefrLevel": "N4",
+      "color": "#3b82f6",
+      "lessons": [
+        {
+          "id": "n4-u1-l1",
+          "title": "Making Requests (〜てください)",
+          "objective": "Ask people politely to wait, teach, or help.",
+          "grammarNote": "Verb て-form + ください makes a polite request; 〜ないでください means 'please don't'.",
+          "items": [
+            {
+              "id": "ja_n4_matte",
+              "term": "待ってください",
+              "reading": "まってください",
+              "transliteration": "matte kudasai",
+              "translation": "Please wait",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "少し待ってください。",
+                "transliteration": "Sukoshi matte kudasai.",
+                "translation": "Please wait a little."
+              }
+            },
+            {
+              "id": "ja_n4_oshiete",
+              "term": "教えてください",
+              "reading": "おしえてください",
+              "transliteration": "oshiete kudasai",
+              "translation": "Please tell / teach me",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "読み方を教えてください。",
+                "transliteration": "Yomikata o oshiete kudasai.",
+                "translation": "Please tell me how to read it."
+              }
+            },
+            {
+              "id": "ja_n4_tetsudau",
+              "term": "手伝う",
+              "reading": "てつだう",
+              "transliteration": "tetsudau",
+              "translation": "To help / assist",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "荷物を手伝いましょうか。",
+                "transliteration": "Nimotsu o tetsudaimashou ka.",
+                "translation": "Shall I help with your luggage?"
+              }
+            },
+            {
+              "id": "ja_n4_yukkuri",
+              "term": "ゆっくり話してください",
+              "reading": "ゆっくりはなしてください",
+              "transliteration": "yukkuri hanashite kudasai",
+              "translation": "Please speak slowly",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "もう少しゆっくり話してください。",
+                "transliteration": "Mou sukoshi yukkuri hanashite kudasai.",
+                "translation": "Please speak a bit more slowly."
+              }
+            },
+            {
+              "id": "ja_n4_wasurenaide",
+              "term": "忘れないでください",
+              "reading": "わすれないでください",
+              "transliteration": "wasurenaide kudasai",
+              "translation": "Please don't forget",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "パスポートを忘れないでください。",
+                "transliteration": "Pasupooto o wasurenaide kudasai.",
+                "translation": "Please don't forget your passport."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u1-l2",
+          "title": "Ongoing Actions (〜ています)",
+          "objective": "Express actions in progress and current states.",
+          "grammarNote": "〜ています describes both actions happening right now (食べています) and resulting states (住んでいます = live).",
+          "items": [
+            {
+              "id": "ja_n4_sunde",
+              "term": "住んでいます",
+              "reading": "すんでいます",
+              "transliteration": "sunde imasu",
+              "translation": "Living / Residing",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "大阪に住んでいます。",
+                "transliteration": "Oosaka ni sunde imasu.",
+                "translation": "I live in Osaka."
+              }
+            },
+            {
+              "id": "ja_n4_hataraite",
+              "term": "働いています",
+              "reading": "はたらいています",
+              "transliteration": "hataraite imasu",
+              "translation": "Working",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "IT会社で働いています。",
+                "transliteration": "IT-gaisha de hataraite imasu.",
+                "translation": "I work at an IT company."
+              }
+            },
+            {
+              "id": "ja_n4_shitte",
+              "term": "知っています",
+              "reading": "しっています",
+              "transliteration": "shitte imasu",
+              "translation": "To know (state)",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "その映画を知っていますか。",
+                "transliteration": "Sono eiga o shitte imasu ka.",
+                "translation": "Do you know that movie?"
+              }
+            },
+            {
+              "id": "ja_n4_motte",
+              "term": "持っています",
+              "reading": "もっています",
+              "transliteration": "motte imasu",
+              "translation": "To hold / own",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "新しい辞書を持っています。",
+                "transliteration": "Atarashii jisho o motte imasu.",
+                "translation": "I own a new dictionary."
+              }
+            },
+            {
+              "id": "ja_n4_matteiru",
+              "term": "待っています",
+              "reading": "まっています",
+              "transliteration": "matte imasu",
+              "translation": "Waiting",
+              "tags": [
+                "N4",
+                "te-form"
+              ],
+              "example": {
+                "term": "改札の前で待っています。",
+                "transliteration": "Kaisatsu no mae de matte imasu.",
+                "translation": "I am waiting in front of the ticket gate."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u1-l3",
+          "title": "Permission & Obligation",
+          "objective": "Ask 'May I?', state rules, and express 'must'.",
+          "grammarNote": "〜てもいいですか (may I?), 〜てはいけません (must not), 〜なければなりません (must).",
+          "items": [
+            {
+              "id": "ja_n4_temoii",
+              "term": "〜てもいいですか",
+              "reading": "てもいいですか",
+              "transliteration": "te mo ii desu ka",
+              "translation": "May I ...?",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "ここで写真を撮ってもいいですか。",
+                "transliteration": "Koko de shashin o totte mo ii desu ka.",
+                "translation": "May I take a photo here?"
+              }
+            },
+            {
+              "id": "ja_n4_tewaike",
+              "term": "〜てはいけません",
+              "reading": "てはいけません",
+              "transliteration": "te wa ikemasen",
+              "translation": "Must not / Prohibited",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "美術館で走ってはいけません。",
+                "transliteration": "Bijutsukan de hashitte wa ikemasen.",
+                "translation": "You must not run in the museum."
+              }
+            },
+            {
+              "id": "ja_n4_nakereba",
+              "term": "〜なければなりません",
+              "reading": "なければなりません",
+              "transliteration": "nakereba narimasen",
+              "translation": "Must / Have to",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "明日までに提出しなければなりません。",
+                "transliteration": "Ashita made ni teishutsu shinakereba narimasen.",
+                "translation": "I must submit it by tomorrow."
+              }
+            },
+            {
+              "id": "ja_n4_kiotsukeru",
+              "term": "気をつける",
+              "reading": "きをつける",
+              "transliteration": "ki o tsukeru",
+              "translation": "To be careful",
+              "tags": [
+                "N4",
+                "phrase"
+              ],
+              "example": {
+                "term": "足元に気をつけてください。",
+                "transliteration": "Ashimoto ni ki o tsukete kudasai.",
+                "translation": "Please watch your step."
+              }
+            },
+            {
+              "id": "ja_n4_yakusoku",
+              "term": "約束",
+              "reading": "やくそく",
+              "transliteration": "yakusoku",
+              "translation": "Promise / Appointment",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "友達と約束があります。",
+                "transliteration": "Tomodachi to yakusoku ga arimasu.",
+                "translation": "I have plans with a friend."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n4-u2",
+      "title": "Travel, Transit & Lodging",
+      "subtitle": "りょこうとこうつう · Navigating trains, airports & hotels",
+      "cefrLevel": "N4",
+      "color": "#6366f1",
+      "lessons": [
+        {
+          "id": "n4-u2-l1",
+          "title": "Trains & Transfers",
+          "objective": "Navigate Japanese stations and train transfers.",
+          "grammarNote": "Use に乗る (board), で降りる (get off at), and に乗り換える (transfer to).",
+          "items": [
+            {
+              "id": "ja_n4_norikaeru",
+              "term": "乗り換える",
+              "reading": "のりかえる",
+              "transliteration": "norikaeru",
+              "translation": "To transfer (trains/buses)",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "新宿で山手線に乗り換えます。",
+                "transliteration": "Shinjuku de Yamanote-sen ni norikaemasu.",
+                "translation": "Transfer to the Yamanote Line at Shinjuku."
+              }
+            },
+            {
+              "id": "ja_n4_oriru",
+              "term": "降りる",
+              "reading": "おりる",
+              "transliteration": "oriru",
+              "translation": "To get off (a vehicle)",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "次の駅で降ります。",
+                "transliteration": "Tsugi no eki de orimasu.",
+                "translation": "I get off at the next station."
+              }
+            },
+            {
+              "id": "ja_n4_kippu",
+              "term": "切符",
+              "reading": "きっぷ",
+              "transliteration": "kippu",
+              "translation": "Ticket",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "券売機で切符を買います。",
+                "transliteration": "Kenbaiki de kippu o kaimasu.",
+                "translation": "Buy a ticket at the machine."
+              }
+            },
+            {
+              "id": "ja_n4_kuukou",
+              "term": "空港",
+              "reading": "くうこう",
+              "transliteration": "kuukou",
+              "translation": "Airport",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "空港まで一時間かかります。",
+                "transliteration": "Kuukou made ichi-jikan kakarimasu.",
+                "translation": "It takes one hour to the airport."
+              }
+            },
+            {
+              "id": "ja_n4_nimotsu",
+              "term": "荷物",
+              "reading": "にもつ",
+              "transliteration": "nimotsu",
+              "translation": "Luggage / Baggage",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "荷物をコインロッカーに預けました。",
+                "transliteration": "Nimotsu o koinrokkaa ni azukemashita.",
+                "translation": "I stored my luggage in a coin locker."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u2-l2",
+          "title": "Directions Around Town",
+          "objective": "Follow street directions and landmarks.",
+          "grammarNote": "Pair straight (まっすぐ), corner (角), and crosswalk (横断歩道) with て-form sequences.",
+          "items": [
+            {
+              "id": "ja_n4_massugu",
+              "term": "まっすぐ",
+              "reading": "まっすぐ",
+              "transliteration": "massugu",
+              "translation": "Straight ahead",
+              "tags": [
+                "N4",
+                "direction"
+              ],
+              "example": {
+                "term": "この道をまっすぐ行ってください。",
+                "transliteration": "Kono michi o massugu itte kudasai.",
+                "translation": "Go straight down this road."
+              }
+            },
+            {
+              "id": "ja_n4_magaru",
+              "term": "曲がる",
+              "reading": "まがる",
+              "transliteration": "magaru",
+              "translation": "To turn",
+              "tags": [
+                "N4",
+                "direction"
+              ],
+              "example": {
+                "term": "次の角を左に曲がります。",
+                "transliteration": "Tsugi no kado o hidari ni magarimasu.",
+                "translation": "Turn left at the next corner."
+              }
+            },
+            {
+              "id": "ja_n4_wataru",
+              "term": "渡る",
+              "reading": "わたる",
+              "transliteration": "wataru",
+              "translation": "To cross (bridge/road)",
+              "tags": [
+                "N4",
+                "direction"
+              ],
+              "example": {
+                "term": "橋を渡ると駅が見えます。",
+                "transliteration": "Hashi o wataru to eki ga miemasu.",
+                "translation": "Cross the bridge and you'll see the station."
+              }
+            },
+            {
+              "id": "ja_n4_chizu",
+              "term": "地図",
+              "reading": "ちず",
+              "transliteration": "chizu",
+              "translation": "Map",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "スマホで地図を確認します。",
+                "transliteration": "Sumaho de chizu o kakunin shimasu.",
+                "translation": "I check the map on my phone."
+              }
+            },
+            {
+              "id": "ja_n4_chikaku",
+              "term": "近く",
+              "reading": "ちかく",
+              "transliteration": "chikaku",
+              "translation": "Nearby / Vicinity",
+              "tags": [
+                "N4",
+                "direction"
+              ],
+              "example": {
+                "term": "ホテルの近くにコンビニがあります。",
+                "transliteration": "Hoteru no chikaku ni konbini ga arimasu.",
+                "translation": "There is a convenience store near the hotel."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u2-l3",
+          "title": "Hotels & Reservations",
+          "objective": "Book rooms and manage travel schedules.",
+          "grammarNote": "Use 予約する (to reserve) and 泊まる (to stay overnight).",
+          "items": [
+            {
+              "id": "ja_n4_yoyaku",
+              "term": "予約",
+              "reading": "よやく",
+              "transliteration": "yoyaku",
+              "translation": "Reservation",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "二泊でホテルを予約しました。",
+                "transliteration": "Nihaku de hoteru o yoyaku shimashita.",
+                "translation": "I reserved a hotel for two nights."
+              }
+            },
+            {
+              "id": "ja_n4_tomaru",
+              "term": "泊まる",
+              "reading": "とまる",
+              "transliteration": "tomaru",
+              "translation": "To stay overnight",
+              "tags": [
+                "N4",
+                "travel"
+              ],
+              "example": {
+                "term": "京都の旅館に泊まります。",
+                "transliteration": "Kyouto no ryokan ni tomarimasu.",
+                "translation": "I will stay at a ryokan in Kyoto."
+              }
+            },
+            {
+              "id": "ja_n4_maniau",
+              "term": "間に合う",
+              "reading": "まにあう",
+              "transliteration": "maniau",
+              "translation": "To be on time",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "最終電車に間に合いました。",
+                "transliteration": "Saishuu densha ni maniaimashita.",
+                "translation": "I made it in time for the last train."
+              }
+            },
+            {
+              "id": "ja_n4_okureru",
+              "term": "遅れる",
+              "reading": "おくれる",
+              "transliteration": "okureru",
+              "translation": "To be late / delayed",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "雪で電車が遅れています。",
+                "transliteration": "Yuki de densha ga okurete imasu.",
+                "translation": "Trains are delayed due to snow."
+              }
+            },
+            {
+              "id": "ja_n4_annai",
+              "term": "案内",
+              "reading": "あんない",
+              "transliteration": "annai",
+              "translation": "Guidance / Tour",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "町を案内してくれました。",
+                "transliteration": "Machi o annai shite kuremashita.",
+                "translation": "They showed me around town."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n4-u3",
+      "title": "Home, Health & Routines",
+      "subtitle": "せいかつとけんこう · Everyday living, health, and habits",
+      "cefrLevel": "N4",
+      "color": "#8b5cf6",
+      "lessons": [
+        {
+          "id": "n4-u3-l1",
+          "title": "Around the House",
+          "objective": "Talk about rooms, chores, and daily household tasks.",
+          "grammarNote": "Use 〜ておく to express doing something in advance (片付けておく = tidy up ahead of time).",
+          "items": [
+            {
+              "id": "ja_n4_heya",
+              "term": "部屋",
+              "reading": "へや",
+              "transliteration": "heya",
+              "translation": "Room",
+              "tags": [
+                "N4",
+                "home"
+              ],
+              "example": {
+                "term": "部屋をきれいに掃除します。",
+                "transliteration": "Heya o kirei ni souji shimasu.",
+                "translation": "I clean the room neatly."
+              }
+            },
+            {
+              "id": "ja_n4_souji",
+              "term": "掃除",
+              "reading": "そうじ",
+              "transliteration": "souji",
+              "translation": "Cleaning",
+              "tags": [
+                "N4",
+                "home"
+              ],
+              "example": {
+                "term": "週末に部屋の掃除をします。",
+                "transliteration": "Shuumatsu ni heya no souji o shimasu.",
+                "translation": "I clean my room on weekends."
+              }
+            },
+            {
+              "id": "ja_n4_sentaku",
+              "term": "洗濯",
+              "reading": "せんたく",
+              "transliteration": "sentaku",
+              "translation": "Laundry",
+              "tags": [
+                "N4",
+                "home"
+              ],
+              "example": {
+                "term": "晴れたので洗濯しました。",
+                "transliteration": "Hareta node sentaku shimashita.",
+                "translation": "Since it was sunny, I did laundry."
+              }
+            },
+            {
+              "id": "ja_n4_ryouri",
+              "term": "料理",
+              "reading": "りょうり",
+              "transliteration": "ryouri",
+              "translation": "Cooking / Dish",
+              "tags": [
+                "N4",
+                "home"
+              ],
+              "example": {
+                "term": "家でよく料理を作ります。",
+                "transliteration": "Ie de yoku ryouri o tsukurimasu.",
+                "translation": "I often cook at home."
+              }
+            },
+            {
+              "id": "ja_n4_kagi",
+              "term": "鍵",
+              "reading": "かぎ",
+              "transliteration": "kagi",
+              "translation": "Key",
+              "tags": [
+                "N4",
+                "home"
+              ],
+              "example": {
+                "term": "出かける前に鍵を閉めます。",
+                "transliteration": "Dekakeru mae ni kagi o shimemasu.",
+                "translation": "I lock the door before going out."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u3-l2",
+          "title": "Health & Doctor Visits",
+          "objective": "Describe basic symptoms and recovery.",
+          "grammarNote": "Express pain with [Body Part] が痛いです (頭が痛いです = I have a headache).",
+          "items": [
+            {
+              "id": "ja_n4_byouin",
+              "term": "病院",
+              "reading": "びょういん",
+              "transliteration": "byouin",
+              "translation": "Hospital / Clinic",
+              "tags": [
+                "N4",
+                "health"
+              ],
+              "example": {
+                "term": "熱があるので病院へ行きます。",
+                "transliteration": "Netsu ga aru node byouin e ikimasu.",
+                "translation": "I have a fever, so I'm going to the clinic."
+              }
+            },
+            {
+              "id": "ja_n4_kusuri",
+              "term": "薬",
+              "reading": "くすり",
+              "transliteration": "kusuri",
+              "translation": "Medicine",
+              "tags": [
+                "N4",
+                "health"
+              ],
+              "example": {
+                "term": "食後に薬を飲みます。",
+                "transliteration": "Shokugo ni kusuri o nomimasu.",
+                "translation": "I take medicine after meals."
+              }
+            },
+            {
+              "id": "ja_n4_itai",
+              "term": "痛い",
+              "reading": "いたい",
+              "transliteration": "itai",
+              "translation": "Painful / Hurts",
+              "tags": [
+                "N4",
+                "health"
+              ],
+              "example": {
+                "term": "喉が少し痛いです。",
+                "transliteration": "Nodo ga sukoshi itai desu.",
+                "translation": "My throat hurts a little."
+              }
+            },
+            {
+              "id": "ja_n4_kaze",
+              "term": "風邪",
+              "reading": "かぜ",
+              "transliteration": "kaze",
+              "translation": "A cold",
+              "tags": [
+                "N4",
+                "health"
+              ],
+              "example": {
+                "term": "風邪を引いてしまいました。",
+                "transliteration": "Kaze o hiite shimaimashita.",
+                "translation": "I caught a cold."
+              }
+            },
+            {
+              "id": "ja_n4_yasumu",
+              "term": "休む",
+              "reading": "やすむ",
+              "transliteration": "yasumu",
+              "translation": "To rest / take time off",
+              "tags": [
+                "N4",
+                "health"
+              ],
+              "example": {
+                "term": "今日はゆっくり休みます。",
+                "transliteration": "Kyou wa yukkuri yasumimasu.",
+                "translation": "I will rest well today."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u3-l3",
+          "title": "Habits & Schedules",
+          "objective": "Describe preparations and daily plans.",
+          "grammarNote": "Combine 〜前に (before doing) and 〜後で (after doing) to sequence your day.",
+          "items": [
+            {
+              "id": "ja_n4_yotei",
+              "term": "予定",
+              "reading": "よてい",
+              "transliteration": "yotei",
+              "translation": "Schedule / Plan",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "来週の予定を確認します。",
+                "transliteration": "Raishuu no yotei o kakunin shimasu.",
+                "translation": "I check next week's schedule."
+              }
+            },
+            {
+              "id": "ja_n4_junbi",
+              "term": "準備",
+              "reading": "じゅんび",
+              "transliteration": "junbi",
+              "translation": "Preparation",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "旅行の準備ができました。",
+                "transliteration": "Ryokou no junbi ga dekimashita.",
+                "translation": "Preparations for the trip are ready."
+              }
+            },
+            {
+              "id": "ja_n4_shuukan",
+              "term": "習慣",
+              "reading": "しゅうかん",
+              "transliteration": "shuukan",
+              "translation": "Habit / Custom",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "早起きの習慣をつけたいです。",
+                "transliteration": "Hayaoki no shuukan o tsuketai desu.",
+                "translation": "I want to build an early-rising habit."
+              }
+            },
+            {
+              "id": "ja_n4_nareru",
+              "term": "慣れる",
+              "reading": "なれる",
+              "transliteration": "nareru",
+              "translation": "To get used to",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "日本の生活に慣れました。",
+                "transliteration": "Nihon no seikatsu ni naremashita.",
+                "translation": "I got used to life in Japan."
+              }
+            },
+            {
+              "id": "ja_n4_tsuzukeru",
+              "term": "続ける",
+              "reading": "つづける",
+              "transliteration": "tsuzukeru",
+              "translation": "To continue",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "毎日練習を続けています。",
+                "transliteration": "Mainichi renshuu o tsuzukete imasu.",
+                "translation": "I keep practicing every day."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n4-u4",
+      "title": "Experiences, Abilities & Plans",
+      "subtitle": "けいけんとよてい · Talking about what you can do and plan to do",
+      "cefrLevel": "N4",
+      "color": "#a855f7",
+      "lessons": [
+        {
+          "id": "n4-u4-l1",
+          "title": "Past Experiences (〜たことがある)",
+          "objective": "Share memorable experiences you have had.",
+          "grammarNote": "Plain past verb + ことがあります means 'have done before'.",
+          "items": [
+            {
+              "id": "ja_n4_takoto",
+              "term": "〜たことがある",
+              "reading": "たことがある",
+              "transliteration": "ta koto ga aru",
+              "translation": "Have done before",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "富士山に登ったことがあります。",
+                "transliteration": "Fujisan ni nobotta koto ga arimasu.",
+                "translation": "I have climbed Mt. Fuji."
+              }
+            },
+            {
+              "id": "ja_n4_keiken",
+              "term": "経験",
+              "reading": "けいけん",
+              "transliteration": "keiken",
+              "translation": "Experience",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "素晴らしい経験になりました。",
+                "transliteration": "Subarashii keiken ni narimashita.",
+                "translation": "It became a wonderful experience."
+              }
+            },
+            {
+              "id": "ja_n4_shumi",
+              "term": "趣味",
+              "reading": "しゅみ",
+              "transliteration": "shumi",
+              "translation": "Hobby",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "趣味は写真を撮ることです。",
+                "transliteration": "Shumi wa shashin o toru koto desu.",
+                "translation": "My hobby is taking photos."
+              }
+            },
+            {
+              "id": "ja_n4_omoidasu",
+              "term": "思い出す",
+              "reading": "おもいだす",
+              "transliteration": "omoidasu",
+              "translation": "To recall / remember",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "昔のことを思い出しました。",
+                "transliteration": "Mukashi no koto o omoidashimashita.",
+                "translation": "I remembered old times."
+              }
+            },
+            {
+              "id": "ja_n4_sanka",
+              "term": "参加する",
+              "reading": "さんかする",
+              "transliteration": "sanka suru",
+              "translation": "To participate",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "言語交換会に参加しました。",
+                "transliteration": "Gengo koukankai ni sanka shimashita.",
+                "translation": "I joined a language exchange event."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u4-l2",
+          "title": "Abilities & Potential Form",
+          "objective": "Express what you can read, speak, or do.",
+          "grammarNote": "Dictionary verb + ことができます or potential verbs (話せる = can speak, 読める = can read).",
+          "items": [
+            {
+              "id": "ja_n4_kotogadekiru",
+              "term": "〜ことができる",
+              "reading": "ことができる",
+              "transliteration": "koto ga dekiru",
+              "translation": "Can / Be able to",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "ひらがなを読むことができます。",
+                "transliteration": "Hiragana o yomu koto ga dekimasu.",
+                "translation": "I can read Hiragana."
+              }
+            },
+            {
+              "id": "ja_n4_hanaseru",
+              "term": "話せる",
+              "reading": "はなせる",
+              "transliteration": "hanaseru",
+              "translation": "Can speak",
+              "tags": [
+                "N4",
+                "potential"
+              ],
+              "example": {
+                "term": "三つの言語が話せます。",
+                "transliteration": "Mittsu no gengo ga hanasemasu.",
+                "translation": "I can speak three languages."
+              }
+            },
+            {
+              "id": "ja_n4_jouzu",
+              "term": "上手",
+              "reading": "じょうず",
+              "transliteration": "jouzu",
+              "translation": "Skillful / Good at",
+              "tags": [
+                "N4",
+                "na-adj"
+              ],
+              "example": {
+                "term": "日本語がとても上手ですね。",
+                "transliteration": "Nihongo ga totemo jouzu desu ne.",
+                "translation": "Your Japanese is very good."
+              }
+            },
+            {
+              "id": "ja_n4_kantan",
+              "term": "簡単",
+              "reading": "かんたん",
+              "transliteration": "kantan",
+              "translation": "Simple / Easy",
+              "tags": [
+                "N4",
+                "na-adj"
+              ],
+              "example": {
+                "term": "操作はとても簡単です。",
+                "transliteration": "Sousa wa totemo kantan desu.",
+                "translation": "The controls are very simple."
+              }
+            },
+            {
+              "id": "ja_n4_renshuu",
+              "term": "練習",
+              "reading": "れんしゅう",
+              "transliteration": "renshuu",
+              "translation": "Practice",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "発音の練習をしています。",
+                "transliteration": "Hatsuon no renshuu o shite imasu.",
+                "translation": "I am practicing pronunciation."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u4-l3",
+          "title": "Intentions & Future Goals",
+          "objective": "Talk about plans with 〜つもりです and 〜たいです.",
+          "grammarNote": "Verb stem + たい expresses desire ('want to'); plain verb + つもりです expresses concrete intention.",
+          "items": [
+            {
+              "id": "ja_n4_tsumori",
+              "term": "〜つもりです",
+              "reading": "つもりです",
+              "transliteration": "tsumori desu",
+              "translation": "Plan to / Intend to",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "来年JLPTを受けるつもりです。",
+                "transliteration": "Rainen JLPT o ukeru tsumori desu.",
+                "translation": "I plan to take the JLPT next year."
+              }
+            },
+            {
+              "id": "ja_n4_yume",
+              "term": "夢",
+              "reading": "ゆめ",
+              "transliteration": "yume",
+              "translation": "Dream / Ambition",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "将来の夢はアプリ開発です。",
+                "transliteration": "Shourai no yume wa apuri kaihatsu desu.",
+                "translation": "My dream is app development."
+              }
+            },
+            {
+              "id": "ja_n4_erabu",
+              "term": "選ぶ",
+              "reading": "えらぶ",
+              "transliteration": "erabu",
+              "translation": "To choose / select",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "好きな言語を選んでください。",
+                "transliteration": "Suki na gengo o erande kudasai.",
+                "translation": "Please choose a language you like."
+              }
+            },
+            {
+              "id": "ja_n4_kimeru",
+              "term": "決める",
+              "reading": "きめる",
+              "transliteration": "kimeru",
+              "translation": "To decide",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "出発の日を決めました。",
+                "transliteration": "Shuppatsu no hi o kimemashita.",
+                "translation": "I decided on the departure date."
+              }
+            },
+            {
+              "id": "ja_n4_tame",
+              "term": "〜ために",
+              "reading": "ために",
+              "transliteration": "tame ni",
+              "translation": "In order to / For",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "旅行のために日本語を学びます。",
+                "transliteration": "Ryokou no tame ni Nihongo o manabimasu.",
+                "translation": "I learn Japanese for travel."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n4-u5",
+      "title": "Comparisons, Reasons & Advice",
+      "subtitle": "ひかくとアドバイス · Explaining why and giving friendly recommendations",
+      "cefrLevel": "N4",
+      "color": "#ec4899",
+      "lessons": [
+        {
+          "id": "n4-u5-l1",
+          "title": "Comparing Options",
+          "objective": "Compare two or more things using より and のほうが.",
+          "grammarNote": "Pattern: A は B より [adj] (A is more [adj] than B); A のほうが [adj] (A is more [adj]).",
+          "items": [
+            {
+              "id": "ja_n4_yori",
+              "term": "〜より",
+              "reading": "より",
+              "transliteration": "yori",
+              "translation": "Than (comparison)",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "飛行機は電車より速いです。",
+                "transliteration": "Hikouki wa densha yori hayai desu.",
+                "translation": "Planes are faster than trains."
+              }
+            },
+            {
+              "id": "ja_n4_nohouga",
+              "term": "〜のほうが",
+              "reading": "のほうが",
+              "transliteration": "no hou ga",
+              "translation": "More ... (between two)",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "夏より冬のほうが好きです。",
+                "transliteration": "Natsu yori fuyu no hou ga suki desu.",
+                "translation": "I like winter more than summer."
+              }
+            },
+            {
+              "id": "ja_n4_ichiban",
+              "term": "一番",
+              "reading": "いちばん",
+              "transliteration": "ichiban",
+              "translation": "Most / Number one",
+              "tags": [
+                "N4",
+                "adverb"
+              ],
+              "example": {
+                "term": "この中でどれが一番好きですか。",
+                "transliteration": "Kono naka de dore ga ichiban suki desu ka.",
+                "translation": "Which do you like best among these?"
+              }
+            },
+            {
+              "id": "ja_n4_onaji",
+              "term": "同じ",
+              "reading": "おなじ",
+              "transliteration": "onaji",
+              "translation": "Same",
+              "tags": [
+                "N4",
+                "adj"
+              ],
+              "example": {
+                "term": "スマホとPCで同じ画面です。",
+                "transliteration": "Sumaho to PC de onaji gamen desu.",
+                "translation": "It's the same UI on phone and PC."
+              }
+            },
+            {
+              "id": "ja_n4_chigau",
+              "term": "違う",
+              "reading": "ちがう",
+              "transliteration": "chigau",
+              "translation": "Different / Wrong",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "国によって文化が違います。",
+                "transliteration": "Kuni ni yotte bunka ga chigaimasu.",
+                "translation": "Culture differs by country."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u5-l2",
+          "title": "Explaining Reasons (ので・から)",
+          "objective": "Give polite, natural explanations for actions.",
+          "grammarNote": "ので sounds softer and more objective than から; attach な before ので for nouns and な-adjectives.",
+          "items": [
+            {
+              "id": "ja_n4_node",
+              "term": "〜ので",
+              "reading": "ので",
+              "transliteration": "node",
+              "translation": "Because / Since (polite)",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "雨なので家にいます。",
+                "transliteration": "Ame na node ie ni imasu.",
+                "translation": "Since it's raining, I'm staying home."
+              }
+            },
+            {
+              "id": "ja_n4_riyuu",
+              "term": "理由",
+              "reading": "りゆう",
+              "transliteration": "riyuu",
+              "translation": "Reason",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "理由を教えてもらえますか。",
+                "transliteration": "Riyuu o oshiete moraemasu ka.",
+                "translation": "Could you tell me the reason?"
+              }
+            },
+            {
+              "id": "ja_n4_setsumei",
+              "term": "説明",
+              "reading": "せつめい",
+              "transliteration": "setsumei",
+              "translation": "Explanation",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "丁寧な説明をありがとう。",
+                "transliteration": "Teinei na setsumei o arigatou.",
+                "translation": "Thank you for the clear explanation."
+              }
+            },
+            {
+              "id": "ja_n4_shinpai",
+              "term": "心配",
+              "reading": "しんぱい",
+              "transliteration": "shinpai",
+              "translation": "Worry / Concern",
+              "tags": [
+                "N4",
+                "noun"
+              ],
+              "example": {
+                "term": "心配しないでください。",
+                "transliteration": "Shinpai shinaide kudasai.",
+                "translation": "Please don't worry."
+              }
+            },
+            {
+              "id": "ja_n4_tasukaru",
+              "term": "助かる",
+              "reading": "たすかる",
+              "transliteration": "tasukaru",
+              "translation": "To be saved / helped",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "手伝ってくれて助かりました。",
+                "transliteration": "Tetsudatte kurete tasukarimashita.",
+                "translation": "Your help really saved me."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n4-u5-l3",
+          "title": "Giving Advice & Suggestions",
+          "objective": "Recommend actions gently using ほうがいい and ましょう.",
+          "grammarNote": "Verb た-form + ほうがいいです means 'It's better to / You should'.",
+          "items": [
+            {
+              "id": "ja_n4_hougaii",
+              "term": "〜たほうがいい",
+              "reading": "たほうがいい",
+              "transliteration": "ta hou ga ii",
+              "translation": "Had better / Should",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "バックアップを取ったほうがいいです。",
+                "transliteration": "Bakkuappu o totta hou ga ii desu.",
+                "translation": "You should make a backup."
+              }
+            },
+            {
+              "id": "ja_n4_kamoshirenai",
+              "term": "〜かもしれない",
+              "reading": "かもしれない",
+              "transliteration": "kamo shirenai",
+              "translation": "Might / Maybe",
+              "tags": [
+                "N4",
+                "grammar"
+              ],
+              "example": {
+                "term": "午後は雨が降るかもしれません。",
+                "transliteration": "Gogo wa ame ga furu kamo shirenai.",
+                "translation": "It might rain in the afternoon."
+              }
+            },
+            {
+              "id": "ja_n4_hitsuyou",
+              "term": "必要",
+              "reading": "ひつよう",
+              "transliteration": "hitsuyou",
+              "translation": "Necessary",
+              "tags": [
+                "N4",
+                "na-adj"
+              ],
+              "example": {
+                "term": "インターネットは必要ありません。",
+                "transliteration": "Intaanetto wa hitsuyou arimasen.",
+                "translation": "Internet is not necessary."
+              }
+            },
+            {
+              "id": "ja_n4_taisetsu",
+              "term": "大切",
+              "reading": "たいせつ",
+              "transliteration": "taisetsu",
+              "translation": "Important / Precious",
+              "tags": [
+                "N4",
+                "na-adj"
+              ],
+              "example": {
+                "term": "復習がとても大切です。",
+                "transliteration": "Fukushuu ga totemo taisetsu desu.",
+                "translation": "Reviewing is very important."
+              }
+            },
+            {
+              "id": "ja_n4_tamesu",
+              "term": "試す",
+              "reading": "ためす",
+              "transliteration": "tamesu",
+              "translation": "To try out / test",
+              "tags": [
+                "N4",
+                "verb"
+              ],
+              "example": {
+                "term": "新しい機能を試してみましょう。",
+                "transliteration": "Atarashii kinou o tameshite mimashou.",
+                "translation": "Let's try out the new feature."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

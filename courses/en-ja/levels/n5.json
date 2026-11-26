@@ -1,0 +1,1648 @@
+{
+  "id": "sec-n5",
+  "jlptLevel": "N5",
+  "tier": "Beginner",
+  "title": "JLPT N5 — Complete Foundations",
+  "description": "Greetings, family, numbers, time, food, shopping, daily verbs, particles, adjectives, and directions.",
+  "color": "#10b981",
+  "units": [
+    {
+      "id": "n5-u1",
+      "title": "First Steps & Greetings",
+      "subtitle": "あいさつ · Polite greetings, gratitude & farewells",
+      "cefrLevel": "N5",
+      "color": "#10b981",
+      "lessons": [
+        {
+          "id": "n5-u1-l1",
+          "title": "Morning to Night Greetings",
+          "objective": "Greet people politely at any time of day.",
+          "grammarNote": "Japanese greetings shift by time of day. Adding ございます raises formality.",
+          "items": [
+            {
+              "id": "ja_n5_ohayou",
+              "term": "おはようございます",
+              "reading": "おはようございます",
+              "transliteration": "ohayou gozaimasu",
+              "translation": "Good morning (polite)",
+              "tags": [
+                "N5",
+                "greeting"
+              ],
+              "example": {
+                "term": "先生、おはようございます。",
+                "transliteration": "Sensei, ohayou gozaimasu.",
+                "translation": "Good morning, teacher."
+              }
+            },
+            {
+              "id": "ja_n5_konnichiwa",
+              "term": "こんにちは",
+              "reading": "こんにちは",
+              "transliteration": "konnichiwa",
+              "translation": "Hello / Good afternoon",
+              "tags": [
+                "N5",
+                "greeting"
+              ],
+              "example": {
+                "term": "こんにちは、お元気ですか。",
+                "transliteration": "Konnichiwa, ogenki desu ka.",
+                "translation": "Hello, how are you?"
+              }
+            },
+            {
+              "id": "ja_n5_konbanwa",
+              "term": "こんばんは",
+              "reading": "こんばんは",
+              "transliteration": "konbanwa",
+              "translation": "Good evening",
+              "tags": [
+                "N5",
+                "greeting"
+              ],
+              "example": {
+                "term": "こんばんは、寒いですね。",
+                "transliteration": "Konbanwa, samui desu ne.",
+                "translation": "Good evening, it's cold isn't it?"
+              }
+            },
+            {
+              "id": "ja_n5_oyasumi",
+              "term": "おやすみなさい",
+              "reading": "おやすみなさい",
+              "transliteration": "oyasuminasai",
+              "translation": "Good night (polite)",
+              "tags": [
+                "N5",
+                "greeting"
+              ],
+              "example": {
+                "term": "おやすみなさい、また明日。",
+                "transliteration": "Oyasuminasai, mata ashita.",
+                "translation": "Good night, see you tomorrow."
+              }
+            },
+            {
+              "id": "ja_n5_ogenki",
+              "term": "お元気ですか",
+              "reading": "おげんきですか",
+              "transliteration": "ogenki desu ka",
+              "translation": "How are you?",
+              "tags": [
+                "N5",
+                "greeting"
+              ],
+              "example": {
+                "term": "お久しぶりです。お元気ですか。",
+                "transliteration": "Ohisashiburi desu. Ogenki desu ka.",
+                "translation": "Long time no see. How are you?"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u1-l2",
+          "title": "Gratitude & Apologies",
+          "objective": "Thank others, apologize, and ask politely.",
+          "grammarNote": "すみません covers 'Excuse me', 'I'm sorry', and politely calling a waiter.",
+          "items": [
+            {
+              "id": "ja_n5_arigatou",
+              "term": "ありがとうございます",
+              "reading": "ありがとうございます",
+              "transliteration": "arigatou gozaimasu",
+              "translation": "Thank you very much",
+              "tags": [
+                "N5",
+                "polite"
+              ],
+              "example": {
+                "term": "教えてくれてありがとうございます。",
+                "transliteration": "Oshiete kurete arigatou gozaimasu.",
+                "translation": "Thank you very much for telling me."
+              }
+            },
+            {
+              "id": "ja_n5_douitashimashite",
+              "term": "どういたしまして",
+              "reading": "どういたしまして",
+              "transliteration": "dou itashimashite",
+              "translation": "You're welcome",
+              "tags": [
+                "N5",
+                "polite"
+              ],
+              "example": {
+                "term": "—ありがとうございます。—どういたしまして。",
+                "transliteration": "Arigatou gozaimasu. Dou itashimashite.",
+                "translation": "—Thank you. —You're welcome."
+              }
+            },
+            {
+              "id": "ja_n5_sumimasen",
+              "term": "すみません",
+              "reading": "すみません",
+              "transliteration": "sumimasen",
+              "translation": "Excuse me / I'm sorry",
+              "tags": [
+                "N5",
+                "polite"
+              ],
+              "example": {
+                "term": "すみません、駅はどこですか。",
+                "transliteration": "Sumimasen, eki wa doko desu ka.",
+                "translation": "Excuse me, where is the station?"
+              }
+            },
+            {
+              "id": "ja_n5_onegaishimasu",
+              "term": "お願いします",
+              "reading": "おねがいします",
+              "transliteration": "onegai shimasu",
+              "translation": "Please (requesting)",
+              "tags": [
+                "N5",
+                "polite"
+              ],
+              "example": {
+                "term": "コーヒーをお願いします。",
+                "transliteration": "Koohii o onegai shimasu.",
+                "translation": "Coffee, please."
+              }
+            },
+            {
+              "id": "ja_n5_gomennasai",
+              "term": "ごめんなさい",
+              "reading": "ごめんなさい",
+              "transliteration": "gomen nasai",
+              "translation": "I'm sorry (personal)",
+              "tags": [
+                "N5",
+                "polite"
+              ],
+              "example": {
+                "term": "遅れてごめんなさい。",
+                "transliteration": "Okurete gomen nasai.",
+                "translation": "I'm sorry for being late."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u1-l3",
+          "title": "Yes, No & Farewells",
+          "objective": "Respond naturally and say goodbye.",
+          "grammarNote": "Use また明日 (see you tomorrow) for friends and 失礼します when leaving an office.",
+          "items": [
+            {
+              "id": "ja_n5_hai",
+              "term": "はい",
+              "reading": "はい",
+              "transliteration": "hai",
+              "translation": "Yes",
+              "tags": [
+                "N5",
+                "basic"
+              ],
+              "example": {
+                "term": "はい、分かりました。",
+                "transliteration": "Hai, wakarimashita.",
+                "translation": "Yes, I understood."
+              }
+            },
+            {
+              "id": "ja_n5_iie",
+              "term": "いいえ",
+              "reading": "いいえ",
+              "transliteration": "iie",
+              "translation": "No",
+              "tags": [
+                "N5",
+                "basic"
+              ],
+              "example": {
+                "term": "いいえ、大丈夫です。",
+                "transliteration": "Iie, daijoubu desu.",
+                "translation": "No, I'm fine."
+              }
+            },
+            {
+              "id": "ja_n5_sayounara",
+              "term": "さようなら",
+              "reading": "さようなら",
+              "transliteration": "sayounara",
+              "translation": "Goodbye",
+              "tags": [
+                "N5",
+                "farewell"
+              ],
+              "example": {
+                "term": "先生、さようなら。",
+                "transliteration": "Sensei, sayounara.",
+                "translation": "Goodbye, teacher."
+              }
+            },
+            {
+              "id": "ja_n5_mataashita",
+              "term": "また明日",
+              "reading": "またあした",
+              "transliteration": "mata ashita",
+              "translation": "See you tomorrow",
+              "tags": [
+                "N5",
+                "farewell"
+              ],
+              "example": {
+                "term": "じゃあ、また明日ね。",
+                "transliteration": "Jaa, mata ashita ne.",
+                "translation": "Well then, see you tomorrow."
+              }
+            },
+            {
+              "id": "ja_n5_daijoubu",
+              "term": "大丈夫です",
+              "reading": "だいじょうぶです",
+              "transliteration": "daijoubu desu",
+              "translation": "It's okay / I'm fine",
+              "tags": [
+                "N5",
+                "basic"
+              ],
+              "example": {
+                "term": "手伝いましょうか。いいえ、大丈夫です。",
+                "transliteration": "Tetsudaimashou ka. Iie, daijoubu desu.",
+                "translation": "Shall I help? No, I'm fine."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n5-u2",
+      "title": "Introductions & Family",
+      "subtitle": "じこしょうかいとかぞく · Talking about yourself, people & family",
+      "cefrLevel": "N5",
+      "color": "#14b8a6",
+      "lessons": [
+        {
+          "id": "n5-u2-l1",
+          "title": "Self-Introductions",
+          "objective": "Introduce your name and background politely.",
+          "grammarNote": "Particle は (pronounced 'wa') marks the topic. End polite identity statements with です.",
+          "items": [
+            {
+              "id": "ja_n5_hajimemashite",
+              "term": "はじめまして",
+              "reading": "はじめまして",
+              "transliteration": "hajimemashite",
+              "translation": "Nice to meet you (first time)",
+              "tags": [
+                "N5",
+                "intro"
+              ],
+              "example": {
+                "term": "はじめまして、マヘシュです。",
+                "transliteration": "Hajimemashite, Maheshu desu.",
+                "translation": "Nice to meet you, I'm Mahesh."
+              }
+            },
+            {
+              "id": "ja_n5_watashi",
+              "term": "私",
+              "reading": "わたし",
+              "transliteration": "watashi",
+              "translation": "I / Me",
+              "tags": [
+                "N5",
+                "pronoun"
+              ],
+              "example": {
+                "term": "私はエンジニアです。",
+                "transliteration": "Watashi wa enjinia desu.",
+                "translation": "I am an engineer."
+              }
+            },
+            {
+              "id": "ja_n5_namae",
+              "term": "名前",
+              "reading": "なまえ",
+              "transliteration": "namae",
+              "translation": "Name",
+              "tags": [
+                "N5",
+                "noun"
+              ],
+              "example": {
+                "term": "お名前は何ですか。",
+                "transliteration": "Onamae wa nan desu ka.",
+                "translation": "What is your name?"
+              }
+            },
+            {
+              "id": "ja_n5_yoroshiku",
+              "term": "よろしくお願いします",
+              "reading": "よろしくおねがいします",
+              "transliteration": "yoroshiku onegai shimasu",
+              "translation": "Pleased to meet you",
+              "tags": [
+                "N5",
+                "intro"
+              ],
+              "example": {
+                "term": "どうぞよろしくお願いします。",
+                "transliteration": "Douzo yoroshiku onegai shimasu.",
+                "translation": "Very pleased to meet you."
+              }
+            },
+            {
+              "id": "ja_n5_shusshin",
+              "term": "出身",
+              "reading": "しゅっしん",
+              "transliteration": "shusshin",
+              "translation": "Hometown / Origin",
+              "tags": [
+                "N5",
+                "intro"
+              ],
+              "example": {
+                "term": "インドの出身です。",
+                "transliteration": "Indo no shusshin desu.",
+                "translation": "I am from India."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u2-l2",
+          "title": "People & Occupations",
+          "objective": "Refer to teachers, students, friends, and coworkers.",
+          "grammarNote": "Attach さん (-san) after other people's names, never after your own name.",
+          "items": [
+            {
+              "id": "ja_n5_sensei",
+              "term": "先生",
+              "reading": "せんせい",
+              "transliteration": "sensei",
+              "translation": "Teacher",
+              "tags": [
+                "N5",
+                "people"
+              ],
+              "example": {
+                "term": "山田先生は優しいです。",
+                "transliteration": "Yamada-sensei wa yasashii desu.",
+                "translation": "Teacher Yamada is kind."
+              }
+            },
+            {
+              "id": "ja_n5_gakusei",
+              "term": "学生",
+              "reading": "がくせい",
+              "transliteration": "gakusei",
+              "translation": "Student",
+              "tags": [
+                "N5",
+                "people"
+              ],
+              "example": {
+                "term": "私は大学の学生です。",
+                "transliteration": "Watashi wa daigaku no gakusei desu.",
+                "translation": "I am a university student."
+              }
+            },
+            {
+              "id": "ja_n5_kaishain",
+              "term": "会社員",
+              "reading": "かいしゃいん",
+              "transliteration": "kaishain",
+              "translation": "Company employee",
+              "tags": [
+                "N5",
+                "people"
+              ],
+              "example": {
+                "term": "父は会社員です。",
+                "transliteration": "Chichi wa kaishain desu.",
+                "translation": "My father is a company employee."
+              }
+            },
+            {
+              "id": "ja_n5_tomodachi",
+              "term": "友達",
+              "reading": "ともだち",
+              "transliteration": "tomodachi",
+              "translation": "Friend",
+              "tags": [
+                "N5",
+                "people"
+              ],
+              "example": {
+                "term": "友達と話します。",
+                "transliteration": "Tomodachi to hanashimasu.",
+                "translation": "I talk with a friend."
+              }
+            },
+            {
+              "id": "ja_n5_hito",
+              "term": "人",
+              "reading": "ひと",
+              "transliteration": "hito",
+              "translation": "Person",
+              "tags": [
+                "N5",
+                "people"
+              ],
+              "example": {
+                "term": "あの人は誰ですか。",
+                "transliteration": "Ano hito wa dare desu ka.",
+                "translation": "Who is that person?"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u2-l3",
+          "title": "My Family",
+          "objective": "Talk about family members using humble family words.",
+          "grammarNote": "Japanese uses different words for your own family (母 haha) vs. someone else's family (お母さん okaasan).",
+          "items": [
+            {
+              "id": "ja_n5_kazoku",
+              "term": "家族",
+              "reading": "かぞく",
+              "transliteration": "kazoku",
+              "translation": "Family",
+              "tags": [
+                "N5",
+                "family"
+              ],
+              "example": {
+                "term": "家族は四人です。",
+                "transliteration": "Kazoku wa yonin desu.",
+                "translation": "There are four people in my family."
+              }
+            },
+            {
+              "id": "ja_n5_chichi",
+              "term": "父",
+              "reading": "ちち",
+              "transliteration": "chichi",
+              "translation": "My father",
+              "tags": [
+                "N5",
+                "family"
+              ],
+              "example": {
+                "term": "父は料理が得意です。",
+                "transliteration": "Chichi wa ryouri ga tokui desu.",
+                "translation": "My father is good at cooking."
+              }
+            },
+            {
+              "id": "ja_n5_haha",
+              "term": "母",
+              "reading": "はは",
+              "transliteration": "haha",
+              "translation": "My mother",
+              "tags": [
+                "N5",
+                "family"
+              ],
+              "example": {
+                "term": "母と電話しました。",
+                "transliteration": "Haha to denwa shimashita.",
+                "translation": "I talked on the phone with my mother."
+              }
+            },
+            {
+              "id": "ja_n5_ani",
+              "term": "兄",
+              "reading": "あに",
+              "transliteration": "ani",
+              "translation": "My older brother",
+              "tags": [
+                "N5",
+                "family"
+              ],
+              "example": {
+                "term": "兄は東京に住んでいます。",
+                "transliteration": "Ani wa Toukyou ni sunde imasu.",
+                "translation": "My older brother lives in Tokyo."
+              }
+            },
+            {
+              "id": "ja_n5_imouto",
+              "term": "妹",
+              "reading": "いもうと",
+              "transliteration": "imouto",
+              "translation": "My younger sister",
+              "tags": [
+                "N5",
+                "family"
+              ],
+              "example": {
+                "term": "妹は高校生です。",
+                "transliteration": "Imouto wa koukousei desu.",
+                "translation": "My younger sister is a high school student."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n5-u3",
+      "title": "Numbers, Time & Calendar",
+      "subtitle": "すうじとじかん · Counting, hours, and days of the week",
+      "cefrLevel": "N5",
+      "color": "#0ea5e9",
+      "lessons": [
+        {
+          "id": "n5-u3-l1",
+          "title": "Numbers 1 to 10",
+          "objective": "Read and pronounce essential Sino-Japanese numbers.",
+          "grammarNote": "Combine tens and ones cleanly: 12 is 十二 (juu-ni), 25 is 二十五 (ni-juu-go).",
+          "items": [
+            {
+              "id": "ja_n5_ichi",
+              "term": "一",
+              "reading": "いち",
+              "transliteration": "ichi",
+              "translation": "One (1)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "一つください。",
+                "transliteration": "Hitotsu kudasai.",
+                "translation": "One, please."
+              }
+            },
+            {
+              "id": "ja_n5_ni",
+              "term": "二",
+              "reading": "に",
+              "transliteration": "ni",
+              "translation": "Two (2)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "二番線から乗ります。",
+                "transliteration": "Ni-bansen kara norimasu.",
+                "translation": "Board from platform 2."
+              }
+            },
+            {
+              "id": "ja_n5_san",
+              "term": "三",
+              "reading": "さん",
+              "transliteration": "san",
+              "translation": "Three (3)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "三冊買いました。",
+                "transliteration": "San-satsu kaimashita.",
+                "translation": "I bought three books."
+              }
+            },
+            {
+              "id": "ja_n5_yon",
+              "term": "四",
+              "reading": "よん",
+              "transliteration": "yon",
+              "translation": "Four (4)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "四時に会いましょう。",
+                "transliteration": "Yo-ji ni aimashou.",
+                "translation": "Let's meet at four o'clock."
+              }
+            },
+            {
+              "id": "ja_n5_go",
+              "term": "五",
+              "reading": "ご",
+              "transliteration": "go",
+              "translation": "Five (5)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "五分待ってください。",
+                "transliteration": "Go-fun matte kudasai.",
+                "translation": "Please wait five minutes."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u3-l2",
+          "title": "Higher Numbers & Prices",
+          "objective": "Handle tens, hundreds, and yen prices.",
+          "grammarNote": "Attach 円 (en) to numbers for Japanese yen: 百円 (100 yen), 千円 (1,000 yen).",
+          "items": [
+            {
+              "id": "ja_n5_juu",
+              "term": "十",
+              "reading": "じゅう",
+              "transliteration": "juu",
+              "translation": "Ten (10)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "十分かかります。",
+                "transliteration": "Juppun kakarimasu.",
+                "translation": "It takes ten minutes."
+              }
+            },
+            {
+              "id": "ja_n5_hyaku",
+              "term": "百",
+              "reading": "ひゃく",
+              "transliteration": "hyaku",
+              "translation": "Hundred (100)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "百円ショップで買いました。",
+                "transliteration": "Hyaku-en shoppu de kaimashita.",
+                "translation": "I bought it at a 100-yen shop."
+              }
+            },
+            {
+              "id": "ja_n5_sen",
+              "term": "千",
+              "reading": "せん",
+              "transliteration": "sen",
+              "translation": "Thousand (1,000)",
+              "tags": [
+                "N5",
+                "number"
+              ],
+              "example": {
+                "term": "二千円です。",
+                "transliteration": "Nisen-en desu.",
+                "translation": "It is 2,000 yen."
+              }
+            },
+            {
+              "id": "ja_n5_nanji",
+              "term": "何時",
+              "reading": "なんじ",
+              "transliteration": "nan-ji",
+              "translation": "What time",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "今何時ですか。",
+                "transliteration": "Ima nan-ji desu ka.",
+                "translation": "What time is it now?"
+              }
+            },
+            {
+              "id": "ja_n5_han",
+              "term": "半",
+              "reading": "はん",
+              "transliteration": "han",
+              "translation": "Half (past the hour)",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "七時半に起きます。",
+                "transliteration": "Shichi-ji han ni okimasu.",
+                "translation": "I wake up at 7:30."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u3-l3",
+          "title": "Days & Calendar",
+          "objective": "Refer to yesterday, today, tomorrow, and days of the week.",
+          "grammarNote": "Days of the week end in 曜日 (youbi): 月曜日 (Monday), 日曜日 (Sunday).",
+          "items": [
+            {
+              "id": "ja_n5_kinou",
+              "term": "昨日",
+              "reading": "きのう",
+              "transliteration": "kinou",
+              "translation": "Yesterday",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "昨日は雨でした。",
+                "transliteration": "Kinou wa ame deshita.",
+                "translation": "Yesterday it rained."
+              }
+            },
+            {
+              "id": "ja_n5_kyou",
+              "term": "今日",
+              "reading": "きょう",
+              "transliteration": "kyou",
+              "translation": "Today",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "今日はいい天気ですね。",
+                "transliteration": "Kyou wa ii tenki desu ne.",
+                "translation": "Today is nice weather."
+              }
+            },
+            {
+              "id": "ja_n5_ashita",
+              "term": "明日",
+              "reading": "あした",
+              "transliteration": "ashita",
+              "translation": "Tomorrow",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "明日は休みです。",
+                "transliteration": "Ashita wa yasumi desu.",
+                "translation": "Tomorrow is a day off."
+              }
+            },
+            {
+              "id": "ja_n5_mainichi",
+              "term": "毎日",
+              "reading": "まいにち",
+              "transliteration": "mainichi",
+              "translation": "Every day",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "毎日日本語を勉強します。",
+                "transliteration": "Mainichi Nihongo o benkyou shimasu.",
+                "translation": "I study Japanese every day."
+              }
+            },
+            {
+              "id": "ja_n5_shuumatsu",
+              "term": "週末",
+              "reading": "しゅうまつ",
+              "transliteration": "shuumatsu",
+              "translation": "Weekend",
+              "tags": [
+                "N5",
+                "time"
+              ],
+              "example": {
+                "term": "週末に映画を見ます。",
+                "transliteration": "Shuumatsu ni eiga o mimasu.",
+                "translation": "I watch a movie on the weekend."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n5-u4",
+      "title": "Food, Cafés & Shopping",
+      "subtitle": "たべものとかいもの · Ordering meals and buying items",
+      "cefrLevel": "N5",
+      "color": "#06b6d4",
+      "lessons": [
+        {
+          "id": "n5-u4-l1",
+          "title": "Drinks & Everyday Food",
+          "objective": "Name staple Japanese foods and drinks.",
+          "grammarNote": "Add お (o-) before polite food nouns like お茶 (ocha, tea) and お水 (omizu, water).",
+          "items": [
+            {
+              "id": "ja_n5_mizu",
+              "term": "水",
+              "reading": "みず",
+              "transliteration": "mizu",
+              "translation": "Water",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "冷たい水をください。",
+                "transliteration": "Tsumetai mizu o kudasai.",
+                "translation": "Cold water, please."
+              }
+            },
+            {
+              "id": "ja_n5_ocha",
+              "term": "お茶",
+              "reading": "おちゃ",
+              "transliteration": "ocha",
+              "translation": "Green tea",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "熱いお茶を飲みます。",
+                "transliteration": "Atsui ocha o nomimasu.",
+                "translation": "I drink hot tea."
+              }
+            },
+            {
+              "id": "ja_n5_gohan",
+              "term": "ご飯",
+              "reading": "ごはん",
+              "transliteration": "gohan",
+              "translation": "Cooked rice / Meal",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "朝ご飯を食べましたか。",
+                "transliteration": "Asagohan o tabemashita ka.",
+                "translation": "Did you eat breakfast?"
+              }
+            },
+            {
+              "id": "ja_n5_pan",
+              "term": "パン",
+              "reading": "パン",
+              "transliteration": "pan",
+              "translation": "Bread",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "毎朝パンを食べます。",
+                "transliteration": "Maiasa pan o tabemasu.",
+                "translation": "I eat bread every morning."
+              }
+            },
+            {
+              "id": "ja_n5_sakana",
+              "term": "魚",
+              "reading": "さかな",
+              "transliteration": "sakana",
+              "translation": "Fish",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "新鮮な魚が好きです。",
+                "transliteration": "Shinsen na sakana ga suki desu.",
+                "translation": "I like fresh fish."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u4-l2",
+          "title": "At the Restaurant",
+          "objective": "Order politely and compliment your meal.",
+          "grammarNote": "Say いただきます before eating and ごちそうさまでした after finishing a meal.",
+          "items": [
+            {
+              "id": "ja_n5_kudasai",
+              "term": "ください",
+              "reading": "ください",
+              "transliteration": "kudasai",
+              "translation": "Please give me",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "メニューをください。",
+                "transliteration": "Menyuu o kudasai.",
+                "translation": "The menu, please."
+              }
+            },
+            {
+              "id": "ja_n5_oishii",
+              "term": "おいしい",
+              "reading": "おいしい",
+              "transliteration": "oishii",
+              "translation": "Delicious",
+              "tags": [
+                "N5",
+                "adj"
+              ],
+              "example": {
+                "term": "このラーメンはおいしいです。",
+                "transliteration": "Kono raamen wa oishii desu.",
+                "translation": "This ramen is delicious."
+              }
+            },
+            {
+              "id": "ja_n5_itadakimasu",
+              "term": "いただきます",
+              "reading": "いただきます",
+              "transliteration": "itadakimasu",
+              "translation": "Thank you for the meal (before eating)",
+              "tags": [
+                "N5",
+                "culture"
+              ],
+              "example": {
+                "term": "いただきます！",
+                "transliteration": "Itadakimasu!",
+                "translation": "Let's eat / Thank you for this meal!"
+              }
+            },
+            {
+              "id": "ja_n5_okaikei",
+              "term": "お会計",
+              "reading": "おかいけい",
+              "transliteration": "okaikei",
+              "translation": "The bill / check",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "すみません、お会計をお願いします。",
+                "transliteration": "Sumimasen, okaikei o onegai shimasu.",
+                "translation": "Excuse me, the bill please."
+              }
+            },
+            {
+              "id": "ja_n5_osusume",
+              "term": "おすすめ",
+              "reading": "おすすめ",
+              "transliteration": "osusume",
+              "translation": "Recommendation",
+              "tags": [
+                "N5",
+                "food"
+              ],
+              "example": {
+                "term": "今日のおすすめは何ですか。",
+                "transliteration": "Kyou no osusume wa nan desu ka.",
+                "translation": "What is today's recommendation?"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u4-l3",
+          "title": "Shopping & Prices",
+          "objective": "Ask prices and choose items in a store.",
+          "grammarNote": "Use これ (this near me), それ (that near you), あれ (that over there).",
+          "items": [
+            {
+              "id": "ja_n5_ikura",
+              "term": "いくら",
+              "reading": "いくら",
+              "transliteration": "ikura",
+              "translation": "How much (price)",
+              "tags": [
+                "N5",
+                "shopping"
+              ],
+              "example": {
+                "term": "これはいくらですか。",
+                "transliteration": "Kore wa ikura desu ka.",
+                "translation": "How much is this?"
+              }
+            },
+            {
+              "id": "ja_n5_mise",
+              "term": "店",
+              "reading": "みせ",
+              "transliteration": "mise",
+              "translation": "Shop / Store",
+              "tags": [
+                "N5",
+                "shopping"
+              ],
+              "example": {
+                "term": "この店は安いです。",
+                "transliteration": "Kono mise wa yasui desu.",
+                "translation": "This shop is inexpensive."
+              }
+            },
+            {
+              "id": "ja_n5_kaimasu",
+              "term": "買います",
+              "reading": "かいます",
+              "transliteration": "kaimasu",
+              "translation": "To buy (polite)",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "新しい靴を買います。",
+                "transliteration": "Atarashii kutsu o kaimasu.",
+                "translation": "I will buy new shoes."
+              }
+            },
+            {
+              "id": "ja_n5_yasui",
+              "term": "安い",
+              "reading": "やすい",
+              "transliteration": "yasui",
+              "translation": "Cheap / Inexpensive",
+              "tags": [
+                "N5",
+                "adj"
+              ],
+              "example": {
+                "term": "スーパーの野菜は安いです。",
+                "transliteration": "Suupaa no yasai wa yasui desu.",
+                "translation": "Supermarket vegetables are cheap."
+              }
+            },
+            {
+              "id": "ja_n5_takai",
+              "term": "高い",
+              "reading": "たかい",
+              "transliteration": "takai",
+              "translation": "Expensive / Tall",
+              "tags": [
+                "N5",
+                "adj"
+              ],
+              "example": {
+                "term": "少し高いですね。",
+                "transliteration": "Sukoshi takai desu ne.",
+                "translation": "It's a bit expensive, isn't it?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n5-u5",
+      "title": "Daily Verbs & Core Particles",
+      "subtitle": "どうしとじょし · Polite -ます verbs and sentence particles",
+      "cefrLevel": "N5",
+      "color": "#3b82f6",
+      "lessons": [
+        {
+          "id": "n5-u5-l1",
+          "title": "Action Verbs (-ます)",
+          "objective": "Describe everyday routines in polite form.",
+          "grammarNote": "Polite verbs end in ます (present/future), ません (negative), ました (past).",
+          "items": [
+            {
+              "id": "ja_n5_tabemasu",
+              "term": "食べます",
+              "reading": "たべます",
+              "transliteration": "tabemasu",
+              "translation": "To eat",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "昼ご飯を食べます。",
+                "transliteration": "Hirugohan o tabemasu.",
+                "translation": "I eat lunch."
+              }
+            },
+            {
+              "id": "ja_n5_nomimasu",
+              "term": "飲みます",
+              "reading": "のみます",
+              "transliteration": "nomimasu",
+              "translation": "To drink",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "毎朝コーヒーを飲みます。",
+                "transliteration": "Maiasa koohii o nomimasu.",
+                "translation": "I drink coffee every morning."
+              }
+            },
+            {
+              "id": "ja_n5_yomimasu",
+              "term": "読みます",
+              "reading": "よみます",
+              "transliteration": "yomimasu",
+              "translation": "To read",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "夜に本を読みます。",
+                "transliteration": "Yoru ni hon o yomimasu.",
+                "translation": "I read a book at night."
+              }
+            },
+            {
+              "id": "ja_n5_kakimasu",
+              "term": "書きます",
+              "reading": "かきます",
+              "transliteration": "kakimasu",
+              "translation": "To write",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "漢字をノートに書きます。",
+                "transliteration": "Kanji o nooto ni kakimasu.",
+                "translation": "I write kanji in a notebook."
+              }
+            },
+            {
+              "id": "ja_n5_kikimasu",
+              "term": "聞きます",
+              "reading": "ききます",
+              "transliteration": "kikimasu",
+              "translation": "To listen / ask",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "音楽を聞きます。",
+                "transliteration": "Ongaku o kikimasu.",
+                "translation": "I listen to music."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u5-l2",
+          "title": "Going, Coming & Returning",
+          "objective": "Talk about movement with に and へ.",
+          "grammarNote": "Mark destinations with に or へ, and mode of transport with で (電車で = by train).",
+          "items": [
+            {
+              "id": "ja_n5_ikimasu",
+              "term": "行きます",
+              "reading": "いきます",
+              "transliteration": "ikimasu",
+              "translation": "To go",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "駅に行きます。",
+                "transliteration": "Eki ni ikimasu.",
+                "translation": "I go to the station."
+              }
+            },
+            {
+              "id": "ja_n5_kimasu",
+              "term": "来ます",
+              "reading": "きます",
+              "transliteration": "kimasu",
+              "translation": "To come",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "友達が家に来ます。",
+                "transliteration": "Tomodachi ga ie ni kimasu.",
+                "translation": "My friend is coming to my house."
+              }
+            },
+            {
+              "id": "ja_n5_kaerimasu",
+              "term": "帰ります",
+              "reading": "かえります",
+              "transliteration": "kaerimasu",
+              "translation": "To return home",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "六時に家に帰ります。",
+                "transliteration": "Roku-ji ni ie ni kaerimasu.",
+                "translation": "I return home at six."
+              }
+            },
+            {
+              "id": "ja_n5_mimasu",
+              "term": "見ます",
+              "reading": "みます",
+              "transliteration": "mimasu",
+              "translation": "To see / watch",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "テレビを見ます。",
+                "transliteration": "Terebi o mimasu.",
+                "translation": "I watch TV."
+              }
+            },
+            {
+              "id": "ja_n5_benkyou",
+              "term": "勉強します",
+              "reading": "べんきょうします",
+              "transliteration": "benkyou shimasu",
+              "translation": "To study",
+              "tags": [
+                "N5",
+                "verb"
+              ],
+              "example": {
+                "term": "図書館で勉強します。",
+                "transliteration": "Toshokan de benkyou shimasu.",
+                "translation": "I study at the library."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u5-l3",
+          "title": "Places & Transit",
+          "objective": "Combine places with で (where an action happens) and に (existence).",
+          "grammarNote": "Use で where an action occurs (学校で勉強します) and に where something exists (机の上に本があります).",
+          "items": [
+            {
+              "id": "ja_n5_eki",
+              "term": "駅",
+              "reading": "えき",
+              "transliteration": "eki",
+              "translation": "Train station",
+              "tags": [
+                "N5",
+                "place"
+              ],
+              "example": {
+                "term": "駅まで歩きます。",
+                "transliteration": "Eki made arukimasu.",
+                "translation": "I walk to the station."
+              }
+            },
+            {
+              "id": "ja_n5_gakkou",
+              "term": "学校",
+              "reading": "がっこう",
+              "transliteration": "gakkou",
+              "translation": "School",
+              "tags": [
+                "N5",
+                "place"
+              ],
+              "example": {
+                "term": "バスで学校へ行きます。",
+                "transliteration": "Basu de gakkou e ikimasu.",
+                "translation": "I go to school by bus."
+              }
+            },
+            {
+              "id": "ja_n5_toshokan",
+              "term": "図書館",
+              "reading": "としょかん",
+              "transliteration": "toshokan",
+              "translation": "Library",
+              "tags": [
+                "N5",
+                "place"
+              ],
+              "example": {
+                "term": "図書館で本を借ります。",
+                "transliteration": "Toshokan de hon o karimasu.",
+                "translation": "I borrow a book at the library."
+              }
+            },
+            {
+              "id": "ja_n5_densha",
+              "term": "電車",
+              "reading": "でんしゃ",
+              "transliteration": "densha",
+              "translation": "Train",
+              "tags": [
+                "N5",
+                "transit"
+              ],
+              "example": {
+                "term": "電車は速くて便利です。",
+                "transliteration": "Densha wa hayakute benri desu.",
+                "translation": "Trains are fast and convenient."
+              }
+            },
+            {
+              "id": "ja_n5_ie",
+              "term": "家",
+              "reading": "いえ",
+              "transliteration": "ie",
+              "translation": "House / Home",
+              "tags": [
+                "N5",
+                "place"
+              ],
+              "example": {
+                "term": "今日は家にいます。",
+                "transliteration": "Kyou wa ie ni imasu.",
+                "translation": "I am at home today."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n5-u6",
+      "title": "Adjectives, Weather & Directions",
+      "subtitle": "けいようしとてんき · Describing things and asking where",
+      "cefrLevel": "N5",
+      "color": "#6366f1",
+      "lessons": [
+        {
+          "id": "n5-u6-l1",
+          "title": "I-Adjectives",
+          "objective": "Describe size, age, and speed with い-adjectives.",
+          "grammarNote": "To make an い-adjective negative, change final い to くない (大きい → 大きくない).",
+          "items": [
+            {
+              "id": "ja_n5_ookii",
+              "term": "大きい",
+              "reading": "おおきい",
+              "transliteration": "ookii",
+              "translation": "Big / Large",
+              "tags": [
+                "N5",
+                "i-adj"
+              ],
+              "example": {
+                "term": "大きい公園があります。",
+                "transliteration": "Ookii kouen ga arimasu.",
+                "translation": "There is a big park."
+              }
+            },
+            {
+              "id": "ja_n5_chiisai",
+              "term": "小さい",
+              "reading": "ちいさい",
+              "transliteration": "chiisai",
+              "translation": "Small",
+              "tags": [
+                "N5",
+                "i-adj"
+              ],
+              "example": {
+                "term": "小さい猫がかわいいです。",
+                "transliteration": "Chiisai neko ga kawaii desu.",
+                "translation": "The small cat is cute."
+              }
+            },
+            {
+              "id": "ja_n5_atarashii",
+              "term": "新しい",
+              "reading": "あたらしい",
+              "transliteration": "atarashii",
+              "translation": "New",
+              "tags": [
+                "N5",
+                "i-adj"
+              ],
+              "example": {
+                "term": "新しいアプリを作ります。",
+                "transliteration": "Atarashii apuri o tsukurimasu.",
+                "translation": "I build a new app."
+              }
+            },
+            {
+              "id": "ja_n5_furui",
+              "term": "古い",
+              "reading": "ふるい",
+              "transliteration": "furui",
+              "translation": "Old (things)",
+              "tags": [
+                "N5",
+                "i-adj"
+              ],
+              "example": {
+                "term": "京都には古いお寺が多いです。",
+                "transliteration": "Kyouto ni wa furui otera ga ooi desu.",
+                "translation": "Kyoto has many old temples."
+              }
+            },
+            {
+              "id": "ja_n5_hayai",
+              "term": "速い / 早い",
+              "reading": "はやい",
+              "transliteration": "hayai",
+              "translation": "Fast / Early",
+              "tags": [
+                "N5",
+                "i-adj"
+              ],
+              "example": {
+                "term": "新幹線はとても速いです。",
+                "transliteration": "Shinkansen wa totemo hayai desu.",
+                "translation": "The bullet train is very fast."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u6-l2",
+          "title": "Na-Adjectives",
+          "objective": "Modify nouns with な-adjectives like 静かな and 便利な.",
+          "grammarNote": "Add な when placing a な-adjective directly before a noun: 静かな町 (a quiet town).",
+          "items": [
+            {
+              "id": "ja_n5_shizuka",
+              "term": "静か",
+              "reading": "しずか",
+              "transliteration": "shizuka",
+              "translation": "Quiet",
+              "tags": [
+                "N5",
+                "na-adj"
+              ],
+              "example": {
+                "term": "ここは静かな場所です。",
+                "transliteration": "Koko wa shizuka na basho desu.",
+                "translation": "This is a quiet place."
+              }
+            },
+            {
+              "id": "ja_n5_benri",
+              "term": "便利",
+              "reading": "べんり",
+              "transliteration": "benri",
+              "translation": "Convenient",
+              "tags": [
+                "N5",
+                "na-adj"
+              ],
+              "example": {
+                "term": "駅の近くは便利です。",
+                "transliteration": "Eki no chikaku wa benri desu.",
+                "translation": "Near the station is convenient."
+              }
+            },
+            {
+              "id": "ja_n5_kirei",
+              "term": "きれい",
+              "reading": "きれい",
+              "transliteration": "kirei",
+              "translation": "Beautiful / Clean",
+              "tags": [
+                "N5",
+                "na-adj"
+              ],
+              "example": {
+                "term": "桜がとてもきれいです。",
+                "transliteration": "Sakura ga totemo kirei desu.",
+                "translation": "The cherry blossoms are very pretty."
+              }
+            },
+            {
+              "id": "ja_n5_suki",
+              "term": "好き",
+              "reading": "すき",
+              "transliteration": "suki",
+              "translation": "Like / Favorite",
+              "tags": [
+                "N5",
+                "na-adj"
+              ],
+              "example": {
+                "term": "日本語が好きです。",
+                "transliteration": "Nihongo ga suki desu.",
+                "translation": "I like Japanese."
+              }
+            },
+            {
+              "id": "ja_n5_yuumei",
+              "term": "有名",
+              "reading": "ゆうめい",
+              "transliteration": "yuumei",
+              "translation": "Famous",
+              "tags": [
+                "N5",
+                "na-adj"
+              ],
+              "example": {
+                "term": "富士山は有名な山です。",
+                "transliteration": "Fujisan wa yuumei na yama desu.",
+                "translation": "Mt. Fuji is a famous mountain."
+              }
+            }
+          ]
+        },
+        {
+          "id": "n5-u6-l3",
+          "title": "Weather & Essential Questions",
+          "objective": "Talk about weather and ask basic survival questions.",
+          "grammarNote": "Add か to the end of a polite sentence to form a question without changing word order.",
+          "items": [
+            {
+              "id": "ja_n5_tenki",
+              "term": "天気",
+              "reading": "てんき",
+              "transliteration": "tenki",
+              "translation": "Weather",
+              "tags": [
+                "N5",
+                "weather"
+              ],
+              "example": {
+                "term": "今日の天気は晴れです。",
+                "transliteration": "Kyou no tenki wa hare desu.",
+                "translation": "Today's weather is sunny."
+              }
+            },
+            {
+              "id": "ja_n5_ame",
+              "term": "雨",
+              "reading": "あめ",
+              "transliteration": "ame",
+              "translation": "Rain",
+              "tags": [
+                "N5",
+                "weather"
+              ],
+              "example": {
+                "term": "雨が降っています。",
+                "transliteration": "Ame ga futte imasu.",
+                "translation": "It is raining."
+              }
+            },
+            {
+              "id": "ja_n5_doko",
+              "term": "どこ",
+              "reading": "どこ",
+              "transliteration": "doko",
+              "translation": "Where",
+              "tags": [
+                "N5",
+                "question"
+              ],
+              "example": {
+                "term": "トイレはどこですか。",
+                "transliteration": "Toire wa doko desu ka.",
+                "translation": "Where is the restroom?"
+              }
+            },
+            {
+              "id": "ja_n5_wakarimasen",
+              "term": "分かりません",
+              "reading": "わかりません",
+              "transliteration": "wakarimasen",
+              "translation": "I don't understand",
+              "tags": [
+                "N5",
+                "phrase"
+              ],
+              "example": {
+                "term": "すみません、分かりません。",
+                "transliteration": "Sumimasen, wakarimasen.",
+                "translation": "I'm sorry, I don't understand."
+              }
+            },
+            {
+              "id": "ja_n5_migi",
+              "term": "右 / 左",
+              "reading": "みぎ / ひだり",
+              "transliteration": "migi / hidari",
+              "translation": "Right / Left",
+              "tags": [
+                "N5",
+                "direction"
+              ],
+              "example": {
+                "term": "右に曲がってください。",
+                "transliteration": "Migi ni magatte kudasai.",
+                "translation": "Please turn right."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
