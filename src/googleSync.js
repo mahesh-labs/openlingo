@@ -7,11 +7,42 @@
 const GIS_SCRIPT_URL = 'https://accounts.google.com/gsi/client';
 const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.appdata openid email profile';
 const BACKUP_FILENAME = 'openlingo-backup.json';
+const SESSION_STORAGE_KEY = 'openlingo_google_session_v1';
 
 let gisLoadPromise = null;
 let accessToken = null;
 let tokenExpiresAt = 0;
 let userProfile = null;
+
+function restorePersistedSession() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) || 'null');
+    if (raw && raw.accessToken && raw.tokenExpiresAt && Date.now() < raw.tokenExpiresAt) {
+      accessToken = raw.accessToken;
+      tokenExpiresAt = raw.tokenExpiresAt;
+      userProfile = raw.userProfile || null;
+    }
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+function persistSession() {
+  try {
+    if (accessToken && tokenExpiresAt > Date.now()) {
+      localStorage.setItem(
+        SESSION_STORAGE_KEY,
+        JSON.stringify({ accessToken, tokenExpiresAt, userProfile })
+      );
+    } else {
+      localStorage.removeItem(SESSION_STORAGE_KEY);
+    }
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+restorePersistedSession();
 
 function loadGisScript() {
   if (window.google?.accounts?.oauth2) return Promise.resolve();
@@ -65,6 +96,7 @@ export async function signInWithGoogle(webClientId, androidClientId = '') {
     } catch {
       userProfile = { name: 'Google User', email: '' };
     }
+    persistSession();
     return getGoogleSession();
   }
 
@@ -106,6 +138,7 @@ export async function signInWithGoogle(webClientId, androidClientId = '') {
     userProfile = { name: 'Google User', email: '' };
   }
 
+  persistSession();
   return getGoogleSession();
 }
 
@@ -120,6 +153,7 @@ export function signOutGoogle() {
   accessToken = null;
   tokenExpiresAt = 0;
   userProfile = null;
+  persistSession();
 }
 
 async function findExistingBackupFile(token) {

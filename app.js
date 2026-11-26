@@ -18,7 +18,8 @@ const STORAGE_KEYS = {
   PROGRESS: 'openlingo_progress_v2',
   SRS: 'openlingo_srs_v2',
   THEME: 'openlingo_theme_v1',
-  SETTINGS: 'openlingo_sync_settings_v1'
+  SETTINGS: 'openlingo_sync_settings_v1',
+  GUEST: 'openlingo_guest_mode_v1'
 };
 
 const state = {
@@ -61,6 +62,9 @@ const state = {
   catalogLoading: false,
   catalogStatus: '',
   googleBusy: false,
+  syncingCloud: false,
+  authError: '',
+  guestMode: false,
   audioToast: ''
 };
 
@@ -160,6 +164,7 @@ function loadLocalState() {
         googleClientId: APP_CONFIG.googleClientId || savedSettings.googleClientId || ''
       };
     }
+    state.guestMode = localStorage.getItem(STORAGE_KEYS.GUEST) === 'true';
   } catch {
     // Ignore storage errors
   }
@@ -483,6 +488,7 @@ function rateCurrentFlashcard(rating) {
   state.progress.xp += rating >= RATINGS.GOOD ? 5 : 2;
   recordStudyActivity();
   saveLocalState();
+  autoBackupToGoogleDrive(false);
 
   state.flashcardSession.flipped = false;
   if (rating === RATINGS.AGAIN) queue.push(item);
@@ -631,6 +637,111 @@ window.onAndroidBackupLoaded = (base64Payload) => {
   }
 };
 
+let autoBackupTimer = null;
+
+function autoBackupToGoogleDrive(immediate = false) {
+  if (!getGoogleSession()) return;
+  clearTimeout(autoBackupTimer);
+  const run = () => {
+    backupToGoogleDrive(buildBackupPayload())
+      .then(() => showAudioToast('☁️ Progress synced to Google Drive'))
+      .catch(() => {
+        // Silent fallback if temporarily offline; local progress is safe
+      });
+  };
+  if (immediate) run();
+  else autoBackupTimer = setTimeout(run, 1500);
+}
+
+async function syncFromCloudBeforeUi() {
+  if (!getGoogleSession()) return;
+  state.syncingCloud = true;
+  render();
+  try {
+    const { text } = await restoreFromGoogleDrive();
+    restoreBackupPayload(text);
+  } catch {
+    // No remote backup yet or offline — continue smoothly with local data
+  } finally {
+    state.syncingCloud = false;
+    render();
+  }
+}
+
+async function handleGoogleSignInAndSync() {
+  state.googleBusy = true;
+  state.authError = '';
+  state.backupMessage = 'Opening Google Sign-In...';
+  render();
+  try {
+    const session = await signInWithGoogle(
+      state.syncSettings.googleClientId,
+      APP_CONFIG.googleAndroidClientId
+    );
+    state.guestMode = false;
+    localStorage.removeItem(STORAGE_KEYS.GUEST);
+
+    // Sync FIRST from Google Drive before showing the main UI!
+    state.syncingCloud = true;
+    render();
+    try {
+      const { text } = await restoreFromGoogleDrive();
+      restoreBackupPayload(text);
+      showAudioToast(`Welcome back, ${session.user?.name || 'Learner'}! Synced from Google Drive.`);
+    } catch {
+      if (state.progress.xp > 0 || Object.keys(state.progress.completedLessons || {}).length > 0) {
+        backupToGoogleDrive(buildBackupPayload()).catch(() => {});
+      }
+      state.backupMessage = `Signed in as ${session.user?.email || session.user?.name || 'Google user'}. Auto-sync to Google Drive is active!`;
+      showAudioToast(`Welcome, ${session.user?.name || 'Learner'}! Auto-sync active.`);
+    }
+  } catch (err) {
+    state.authError = err.message || 'Sign in failed.';
+    state.backupMessage = `Google Sign-In: ${err.message}`;
+  } finally {
+    state.googleBusy = false;
+    state.syncingCloud = false;
+    render();
+  }
+}
+
+function renderAuthGate() {
+  const googleLogoSvg = `<svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`;
+
+  return `
+    <div class="auth-screen">
+      <div class="auth-card">
+        <div class="auth-logo">あ</div>
+        <h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.02em;">OpenLingo</h1>
+        <p style="margin:8px 0 0;font-size:14px;color:var(--text-muted);">
+          Free &amp; open-source language learning. Sign in with Google to sync your progress privately across desktop, web, and Android via your own Google Drive.
+        </p>
+
+        <div class="auth-pills">
+          <span class="pill accent">🇯🇵 Japanese N5–N1</span>
+          <span class="pill accent">🇪🇸 Spanish A1–C1</span>
+          <span class="pill accent">🇮🇳 Malayalam S1–S5</span>
+        </div>
+
+        ${state.authError ? `<div class="draw-feedback retry" style="max-width:none;margin-bottom:14px;">${escapeHtml(state.authError)}</div>` : ''}
+
+        <button class="google-btn" id="gate-google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>
+          ${googleLogoSvg}
+          <span>${state.googleBusy ? 'Signing in & syncing...' : 'Continue with Google'}</span>
+        </button>
+
+        <button class="auth-skip-btn" id="gate-continue-offline-btn">
+          Continue offline without signing in →
+        </button>
+
+        <div style="margin-top:18px;font-size:11px;color:var(--text-muted);">
+          Zero servers · Your progress stays privately in your own Google Drive AppData &amp; device.
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 /* ---------- Render Chrome ---------- */
 function renderSidebar(course) {
   const ordered = getOrderedLessons(course);
@@ -678,6 +789,14 @@ function renderSidebar(course) {
       </nav>
 
       <div class="sidebar-stats">
+        ${
+          getGoogleSession()
+            ? `<div class="account-chip">
+                 <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;">☁️ ${escapeHtml(getGoogleSession().user?.name || 'Google Sync')}</span>
+                 <button class="btn btn-sm" id="sidebar-signout-btn" style="padding:3px 7px;font-size:11px;">Out</button>
+               </div>`
+            : `<button class="btn btn-primary btn-sm" id="sidebar-signin-btn" style="width:100%;">🔐 Sign in with Google</button>`
+        }
         <div class="stat-row"><span>Streak</span><strong>🔥 ${state.progress.streak}d</strong></div>
         <div class="stat-row"><span>Total XP</span><strong>⚡ ${state.progress.xp} XP</strong></div>
         <div class="stat-row"><span>Lessons Done</span><strong>${doneCount}/${ordered.length}</strong></div>
@@ -2129,6 +2248,7 @@ function attachEvents(course) {
             state.progress.xp += isWordMode ? 10 : 5;
             recordStudyActivity();
             saveLocalState();
+            autoBackupToGoogleDrive(false);
             speakText(ch.glyph, ds.speechLocale);
           }
           render();
@@ -2289,6 +2409,7 @@ function attachEvents(course) {
           state.progress.xp += 40;
           recordStudyActivity();
           saveLocalState();
+          autoBackupToGoogleDrive(true);
         }
       }
       render();
@@ -2358,6 +2479,7 @@ function attachEvents(course) {
           if (!state.srs[item.id]) state.srs[item.id] = createCardState(item.id);
         });
         saveLocalState();
+        autoBackupToGoogleDrive(true);
       }
       render();
     });
@@ -2476,33 +2598,27 @@ function attachEvents(course) {
 
   const googleSignInBtn = document.getElementById('google-signin-btn');
   if (googleSignInBtn) {
-    googleSignInBtn.addEventListener('click', async () => {
-      state.googleBusy = true;
-      state.backupMessage = 'Opening Google Sign-In...';
-      render();
-      try {
-        const session = await signInWithGoogle(
-          state.syncSettings.googleClientId,
-          APP_CONFIG.googleAndroidClientId
-        );
-        state.backupMessage = `Signed in as ${session.user?.email || session.user?.name || 'Google user'}. Ready to back up or restore from Google Drive!`;
-      } catch (err) {
-        state.backupMessage = `Google Sign-In: ${err.message}`;
-      } finally {
-        state.googleBusy = false;
-        render();
-      }
-    });
+    googleSignInBtn.addEventListener('click', handleGoogleSignInAndSync);
   }
 
-  const googleSignOutBtn = document.getElementById('google-signout-btn');
-  if (googleSignOutBtn) {
-    googleSignOutBtn.addEventListener('click', () => {
-      signOutGoogle();
-      state.backupMessage = 'Signed out of Google. Your local device progress remains intact.';
-      render();
-    });
+  const sidebarSignInBtn = document.getElementById('sidebar-signin-btn');
+  if (sidebarSignInBtn) {
+    sidebarSignInBtn.addEventListener('click', handleGoogleSignInAndSync);
   }
+
+  const doSignOut = () => {
+    signOutGoogle();
+    state.guestMode = false;
+    localStorage.removeItem(STORAGE_KEYS.GUEST);
+    state.backupMessage = 'Signed out of Google. Your local device progress remains intact.';
+    render();
+  };
+
+  const googleSignOutBtn = document.getElementById('google-signout-btn');
+  if (googleSignOutBtn) googleSignOutBtn.addEventListener('click', doSignOut);
+
+  const sidebarSignOutBtn = document.getElementById('sidebar-signout-btn');
+  if (sidebarSignOutBtn) sidebarSignOutBtn.addEventListener('click', doSignOut);
 
   const googleBackupBtn = document.getElementById('google-backup-btn');
   if (googleBackupBtn) {
@@ -2787,6 +2903,38 @@ function render() {
   const course = getActiveCourse();
   if (!course) return;
 
+  // Cloud pre-sync screen: pull latest Google Drive progress BEFORE loading main UI
+  if (state.syncingCloud) {
+    document.getElementById('app').innerHTML = `
+      <div class="auth-screen">
+        <div class="auth-card">
+          <div class="auth-logo">☁️</div>
+          <h1 style="margin:0;font-size:22px;font-weight:800;">Syncing your progress...</h1>
+          <p style="margin:8px 0 0;font-size:14px;color:var(--text-muted);">
+            Loading your latest lessons, streak, and flashcards from Google Drive.
+          </p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Startup Sign in with Google gate (across Web, Desktop, and Android Mobile)
+  if (!getGoogleSession() && !state.guestMode) {
+    document.getElementById('app').innerHTML = renderAuthGate();
+    const gateSignIn = document.getElementById('gate-google-signin-btn');
+    if (gateSignIn) gateSignIn.addEventListener('click', handleGoogleSignInAndSync);
+    const gateSkip = document.getElementById('gate-continue-offline-btn');
+    if (gateSkip) {
+      gateSkip.addEventListener('click', () => {
+        state.guestMode = true;
+        localStorage.setItem(STORAGE_KEYS.GUEST, 'true');
+        render();
+      });
+    }
+    return;
+  }
+
   let mainContent = '';
   if (state.view === 'syllabus') mainContent = renderSyllabusView(course);
   else if (state.view === 'characters') mainContent = renderCharactersView(course);
@@ -2869,7 +3017,11 @@ async function init() {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
 
-  render();
+  if (getGoogleSession()) {
+    await syncFromCloudBeforeUi();
+  } else {
+    render();
+  }
 }
 
 init();
