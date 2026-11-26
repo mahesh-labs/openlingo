@@ -1,6 +1,6 @@
 # Maintainer: mahesh-labs <mahesh.makes.it@gmail.com>
 pkgname=openlingo
-pkgver=0.0.5.beta
+pkgver=0.0.6.beta
 pkgrel=1
 pkgdesc="Free and open-source cross-platform language learning app (Japanese, Spanish, Malayalam)"
 arch=('any')
