@@ -345,13 +345,17 @@ public class MainActivity extends Activity {
 
     private final class TtsBridge {
         @JavascriptInterface
-        public void speak(final String text, final String localeTag) {
-            if (!ttsReady || tts == null || text == null || text.isEmpty()) return;
+        public boolean speak(final String text, final String localeTag) {
+            if (!ttsReady || tts == null || text == null || text.isEmpty()) return false;
+            final Locale loc = Locale.forLanguageTag(localeTag != null ? localeTag : "ja-JP");
+            int avail = tts.isLanguageAvailable(loc);
+            if (avail < TextToSpeech.LANG_AVAILABLE) {
+                return false;
+            }
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Locale loc = Locale.forLanguageTag(localeTag != null ? localeTag : "ja-JP");
                         tts.setLanguage(loc);
                         tts.setSpeechRate(0.9f);
                         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "openlingo_tts");
@@ -359,6 +363,7 @@ public class MainActivity extends Activity {
                     }
                 }
             });
+            return true;
         }
     }
 

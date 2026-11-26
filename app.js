@@ -60,7 +60,8 @@ const state = {
   catalogEntries: [],
   catalogLoading: false,
   catalogStatus: '',
-  googleBusy: false
+  googleBusy: false,
+  audioToast: ''
 };
 
 function escapeHtml(str) {
@@ -190,18 +191,95 @@ function recordStudyActivity() {
   }
 }
 
-function speakText(text, locale) {
-  if (!text) return;
-  if (window.AndroidTTS && typeof window.AndroidTTS.speak === 'function') {
-    window.AndroidTTS.speak(text, locale || 'ja-JP');
-    return;
+let currentAudioEl = null;
+let cachedVoices = [];
+let toastTimer = null;
+
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+  const refreshVoices = () => {
+    cachedVoices = window.speechSynthesis.getVoices() || [];
+  };
+  refreshVoices();
+  window.speechSynthesis.onvoiceschanged = refreshVoices;
+}
+
+function showAudioToast(msg) {
+  state.audioToast = msg;
+  clearTimeout(toastTimer);
+  const existing = document.getElementById('audio-toast');
+  if (existing) {
+    existing.textContent = msg;
+    existing.style.display = 'block';
+  } else {
+    render();
   }
-  if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = locale || 'ja-JP';
-  utter.rate = 0.9;
-  window.speechSynthesis.speak(utter);
+  toastTimer = setTimeout(() => {
+    state.audioToast = '';
+    const el = document.getElementById('audio-toast');
+    if (el) el.style.display = 'none';
+  }, 4000);
+}
+
+function cleanSpeechText(text) {
+  return String(text || '')
+    .replace(/[〜~]/g, '')
+    .replace(/\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function playOnlineTtsFallback(text, langCode) {
+  if (currentAudioEl) {
+    currentAudioEl.pause();
+    currentAudioEl = null;
+  }
+  const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${encodeURIComponent(langCode)}&q=${encodeURIComponent(text)}`;
+  const audio = new Audio();
+  audio.referrerPolicy = 'no-referrer';
+  audio.src = url;
+  currentAudioEl = audio;
+  audio.play().catch(() => {
+    showAudioToast(`No offline "${langCode}" voice installed. Connect online or install a ${langCode.toUpperCase()} TTS voice in system settings.`);
+  });
+}
+
+function speakText(text, locale) {
+  const clean = cleanSpeechText(text);
+  if (!clean) return;
+  const fullLocale = locale || 'ja-JP';
+  const langCode = fullLocale.split('-')[0].toLowerCase();
+
+  // 1. Native Android TextToSpeech bridge (returns false if language pack isn't installed locally)
+  if (window.AndroidTTS && typeof window.AndroidTTS.speak === 'function') {
+    try {
+      const handled = window.AndroidTTS.speak(clean, fullLocale);
+      if (handled !== false) return;
+    } catch {
+      // Fall through to online fallback
+    }
+  }
+
+  // 2. Browser Web Speech API (only if a matching language voice is actually available!)
+  if ('speechSynthesis' in window) {
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length) cachedVoices = voices;
+    const match =
+      cachedVoices.find((v) => v.lang && v.lang.toLowerCase() === fullLocale.toLowerCase()) ||
+      cachedVoices.find((v) => v.lang && v.lang.toLowerCase().startsWith(langCode));
+
+    if (match) {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.voice = match;
+      utter.lang = match.lang;
+      utter.rate = 0.9;
+      window.speechSynthesis.speak(utter);
+      return;
+    }
+  }
+
+  // 3. Lightweight online TTS fallback (works on Linux Chromium & devices without local voice packs)
+  playOnlineTtsFallback(clean, langCode);
 }
 
 function computeUnlockMap(course) {
@@ -2725,6 +2803,7 @@ function render() {
     <main class="main">${mainContent}</main>
     ${renderMobileNav(course)}
     ${renderLessonSheet(course)}
+    <div id="audio-toast" style="display:${state.audioToast ? 'block' : 'none'};position:fixed;bottom:78px;left:50%;transform:translateX(-50%);background:var(--surface-elevated);color:var(--text);border:1px solid var(--border);padding:10px 16px;border-radius:12px;font-size:12px;font-weight:600;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,0.4);max-width:90vw;text-align:center;">${escapeHtml(state.audioToast)}</div>
   `;
   attachEvents(course);
 }
