@@ -3,12 +3,17 @@
    ========================================================================== */
 
 :root {
+  color-scheme: dark;
   --bg: #121024;
   --surface: #1b1736;
   --surface-elevated: #25204a;
   --border: #3d3573;
   --card-lip: #0a0817;
   --btn-lip: #14102c;
+  --scroll-track: #121024;
+  --scroll-thumb: #3d3573;
+  --scroll-thumb-hover: #7c3aed;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23c4b5fd' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   --text: #ffffff;
   --text-muted: #b8b2dc;
   --accent: #7c3aed;
@@ -33,13 +38,19 @@
   --font-body: "Nunito", ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans Malayalam", sans-serif;
 }
 
+:root.theme-light,
 body.theme-light {
+  color-scheme: light;
   --bg: #f5f3ff;
   --surface: #ffffff;
   --surface-elevated: #f3effe;
   --border: #d5ccf2;
   --card-lip: #c4b5fd;
   --btn-lip: #bfb0f5;
+  --scroll-track: #f5f3ff;
+  --scroll-thumb: #c4b5fd;
+  --scroll-thumb-hover: #7c3aed;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236d28d9' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   --text: #1a1433;
   --text-muted: #5b5280;
   --accent: #7c3aed;
@@ -58,6 +69,50 @@ body.theme-light {
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  accent-color: var(--accent);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--scroll-track);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--scroll-track);
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+::placeholder {
+  color: var(--text-muted);
+  opacity: 0.72;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent-border);
+  outline-offset: 2px;
 }
 
 body {
@@ -181,25 +236,113 @@ h1, h2, h3, .brand-name, .page-title, .unit-banner-title, .prompt-main, .stat-ca
   box-shadow: 0 1px 0 var(--btn-lip);
 }
 
-/* Chunky 3D Dropdowns (Course Picker & Level Picker) */
+/* Chunky 3D Theme-Matched Dropdowns (Course Picker, Level Picker & Form Selects) */
+select,
 .course-picker,
 .level-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  flex-shrink: 0;
+  min-height: 44px;
+  align-items: center;
   width: 100%;
-  background: var(--surface-elevated);
+  background-color: var(--surface-elevated);
+  background-image: var(--select-arrow);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
   color: var(--text);
   border: 2.5px solid var(--border);
   border-radius: 15px;
-  padding: 10px 14px;
+  padding: 9px 38px 9px 13px;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   box-shadow: 0 4px 0 var(--btn-lip);
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.08s ease;
+}
+
+select::picker-icon {
+  display: none;
+}
+
+select:hover,
+.course-picker:hover,
+.level-select:hover {
+  border-color: var(--accent);
+}
+
+select option,
+select optgroup {
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+select option:checked {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+@supports (appearance: base-select) {
+  select,
+  select::picker(select) {
+    appearance: base-select;
+  }
+
+  select::picker-icon {
+    display: none;
+  }
+
+  select::picker(select) {
+    background-color: var(--surface);
+    color: var(--text);
+    border: 2.5px solid var(--border);
+    border-radius: 16px;
+    padding: 6px;
+    margin-top: 6px;
+    box-shadow: 0 8px 0 var(--card-lip);
+  }
+
+  select option {
+    padding: 9px 12px;
+    border-radius: 11px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  select option:hover {
+    background-color: var(--accent-soft);
+    color: var(--accent-text);
+  }
+
+  select option:checked {
+    background-color: var(--accent);
+    color: #ffffff;
+  }
+
+  select option::checkmark {
+    color: #ffffff;
+  }
+}
+
+#mobile-course-select {
+  padding: 6px 28px 6px 9px !important;
+  background-position: right 6px center;
+  background-size: 15px 15px;
 }
 
 .level-select {
   width: auto;
-  min-width: 190px;
+  min-width: 210px;
   max-width: 100%;
   border-color: var(--accent);
   box-shadow: 0 4px 0 var(--accent-lip);
@@ -1122,11 +1265,16 @@ h1, h2, h3, .brand-name, .page-title, .unit-banner-title, .prompt-main, .stat-ca
   padding: 13px 15px;
   border-radius: 15px;
   border: 2.5px solid var(--border);
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   font-size: 16px;
   font-weight: 700;
   font-family: inherit;
+}
+
+select.input {
+  padding-right: 40px;
+  background-color: var(--surface-elevated);
 }
 
 .input:focus, textarea:focus {

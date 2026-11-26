@@ -265,9 +265,11 @@ function getEffectiveTheme() {
 
 function applyTheme() {
   const effective = getEffectiveTheme();
-  document.body.classList.toggle('theme-light', effective === 'light');
+  const isLight = effective === 'light';
+  document.documentElement.classList.toggle('theme-light', isLight);
+  document.body.classList.toggle('theme-light', isLight);
   const metaTheme = document.querySelector('meta[name="theme-color"]');
-  if (metaTheme) metaTheme.setAttribute('content', effective === 'light' ? '#f5f3ff' : '#121024');
+  if (metaTheme) metaTheme.setAttribute('content', isLight ? '#f5f3ff' : '#121024');
 }
 
 function setTheme(mode) {
@@ -1174,7 +1176,7 @@ function renderSidebar(course) {
       <select id="course-select" class="course-picker" aria-label="Select active course">
         ${getEnrolledCourses()
           .map(
-            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>[${escapeHtml(getCourseFlag(c))}] ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
+            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
           )
           .join('')}
         <option value="__add__">+ Add course (Profile)...</option>
