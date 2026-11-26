@@ -3,8 +3,11 @@ package org.openlingo.app;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -36,6 +39,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -208,6 +212,7 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new TtsBridge(), "AndroidTTS");
         webView.addJavascriptInterface(new BackupBridge(), "AndroidBackup");
         webView.addJavascriptInterface(new GoogleAuthBridge(), "AndroidGoogleAuth");
+        webView.addJavascriptInterface(new AppIconBridge(), "AndroidAppIcon");
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -481,6 +486,70 @@ public class MainActivity extends Activity {
                     }
                 }
             });
+        }
+    }
+
+    private final class AppIconBridge {
+        private static final String ICON_PREFS = "openlingo_icon_prefs";
+        private static final String KEY_ACTIVE_ICON = "active_icon";
+        private final Map<String, String> aliasMap = new LinkedHashMap<>();
+
+        AppIconBridge() {
+            aliasMap.put("ml", ".IconAliasMl");
+            aliasMap.put("en", ".IconAliasEn");
+            aliasMap.put("ta", ".IconAliasTa");
+            aliasMap.put("kn", ".IconAliasKn");
+            aliasMap.put("te", ".IconAliasTe");
+            aliasMap.put("hi", ".IconAliasHi");
+            aliasMap.put("ja", ".IconAliasJa");
+            aliasMap.put("zh", ".IconAliasZh");
+            aliasMap.put("ko", ".IconAliasKo");
+            aliasMap.put("ar", ".IconAliasAr");
+            aliasMap.put("es", ".IconAliasEs");
+            aliasMap.put("fr", ".IconAliasFr");
+            aliasMap.put("ru", ".IconAliasRu");
+            aliasMap.put("star", ".IconAliasStar");
+            aliasMap.put("diamond", ".IconAliasDiamond");
+            aliasMap.put("triangle", ".IconAliasTriangle");
+        }
+
+        @JavascriptInterface
+        public boolean setAppIcon(final String rawIconId) {
+            final String targetId = (rawIconId != null && aliasMap.containsKey(rawIconId)) ? rawIconId : "ml";
+            final SharedPreferences prefs = getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE);
+            final String currentId = prefs.getString(KEY_ACTIVE_ICON, "ml");
+            if (targetId.equals(currentId)) {
+                return true;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        PackageManager pm = getPackageManager();
+                        String pkg = getPackageName();
+                        String targetAlias = aliasMap.get(targetId);
+                        if (targetAlias == null) return;
+
+                        pm.setComponentEnabledSetting(
+                                new ComponentName(pkg, pkg + targetAlias),
+                                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                PackageManager.DONT_KILL_APP
+                        );
+
+                        for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
+                            if (entry.getKey().equals(targetId)) continue;
+                            pm.setComponentEnabledSetting(
+                                    new ComponentName(pkg, pkg + entry.getValue()),
+                                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                    PackageManager.DONT_KILL_APP
+                            );
+                        }
+                        prefs.edit().putString(KEY_ACTIVE_ICON, targetId).apply();
+                    } catch (Exception ignored) {
+                    }
+                }
+            });
+            return true;
         }
     }
 }

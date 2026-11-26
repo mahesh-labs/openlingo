@@ -1551,6 +1551,7 @@ select.input {
 }
 
 .avatar-preset-btn {
+  position: relative;
   width: 48px;
   height: 48px;
   border-radius: 15px;
@@ -1567,6 +1568,22 @@ select.input {
   transition: transform 0.08s ease, border-color 0.15s ease;
 }
 
+.avatar-preset-btn .app-icon-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface-elevated);
+}
+
+.avatar-preset-btn.active .app-icon-dot {
+  background: #ffffff;
+  border-color: var(--accent);
+}
+
 .avatar-preset-btn:hover,
 .avatar-preset-btn.active {
   border-color: var(--accent);
@@ -1579,6 +1596,41 @@ select.input {
 .avatar-preset-btn:active {
   transform: translateY(3px);
   box-shadow: 0 1px 0 var(--accent-lip);
+}
+
+.app-icon-bar {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 2.5px solid var(--border);
+  background: var(--surface-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-icon-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.app-icon-preview {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+.app-icon-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .profile-hero {

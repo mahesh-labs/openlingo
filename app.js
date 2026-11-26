@@ -5,6 +5,14 @@ import { mountDrawBoard } from './src/drawboard.js';
 import { APP_CONFIG } from './src/config.js';
 import { uiIcon } from './src/icons.js';
 import {
+  APP_ICON_PRESETS,
+  DEFAULT_APP_ICON_ID,
+  getAppIconPreset,
+  findPresetByGlyph,
+  getAppIconDataUrl,
+  applyDocumentAppIcon
+} from './src/appIcons.js';
+import {
   loadMatrixSyllabus,
   getMatrixLanguages,
   parseMatrixCourseId,
@@ -32,8 +40,6 @@ const STORAGE_KEYS = {
   PREFS: 'openlingo_prefs_v1',
   ENROLLED: 'openlingo_enrolled_courses_v1'
 };
-
-const AVATAR_PRESETS = ['あ', '語', 'Ñ', 'അ', 'A', '★', '◆', '▲'];
 
 const state = {
   view: 'syllabus', // 'syllabus' | 'characters' | 'lesson' | 'placement' | 'guidebook' | 'flashcards' | 'studio' | 'profile' | 'settings' | 'backup'
@@ -65,6 +71,7 @@ const state = {
     bio: '',
     avatarDataUrl: '',
     avatarEmoji: '',
+    appIcon: DEFAULT_APP_ICON_ID,
     dailyGoalXp: 50
   },
   srs: {},
@@ -293,6 +300,16 @@ if (systemLightQuery && typeof systemLightQuery.addEventListener === 'function')
   });
 }
 
+function getAppIconSrc(idOrGlyph = state.profile?.appIcon || DEFAULT_APP_ICON_ID) {
+  return getAppIconDataUrl(idOrGlyph);
+}
+
+function applyAppIcon({ syncNative = false } = {}) {
+  const preset = applyDocumentAppIcon(state.profile?.appIcon || DEFAULT_APP_ICON_ID, { syncNative });
+  state.profile.appIcon = preset.id;
+  return preset;
+}
+
 function getThemeIcon(mode = state.theme) {
   if (mode === 'light') return uiIcon('sun', 20);
   if (mode === 'system') return uiIcon('monitor', 20);
@@ -422,6 +439,7 @@ function loadLocalState() {
     // Ignore storage errors
   }
   applyTheme();
+  applyAppIcon({ syncNative: false });
 }
 
 function saveLocalState() {
@@ -836,7 +854,11 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
     applyTheme();
   }
   if (data.profile && typeof data.profile === 'object') {
+    const prevAppIcon = state.profile.appIcon || DEFAULT_APP_ICON_ID;
     state.profile = { ...state.profile, ...data.profile };
+    const nextAppIcon = getAppIconPreset(state.profile.appIcon).id;
+    state.profile.appIcon = nextAppIcon;
+    applyAppIcon({ syncNative: nextAppIcon !== prevAppIcon });
   }
   if (typeof data.showRomaji === 'boolean') state.showRomaji = data.showRomaji;
   if (typeof data.audioRate === 'number') state.audioRate = data.audioRate;
@@ -1049,7 +1071,7 @@ function renderAuthGate() {
   return `
     <div class="auth-screen">
       <div class="auth-card">
-        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:82px;height:82px;border-radius:50%;margin:0 auto 14px;display:block;" />
+        <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:82px;height:82px;border-radius:50%;margin:0 auto 14px;display:block;" />
         <h1 style="margin:0;font-size:32px;font-weight:700;">OpenLingo</h1>
         <p style="margin:8px 0 0;font-size:15px;color:var(--text-muted);">
           Free &amp; open-source language learning. Sign in with Google to sync your progress privately across desktop, web, and Android via your own Google Drive.
@@ -1091,7 +1113,7 @@ function renderCourseOnboarding() {
     <div class="auth-screen">
       <div class="onboarding-card">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:50px;height:50px;border-radius:50%;display:block;" />
+          <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:50px;height:50px;border-radius:50%;display:block;" />
           <div>
             <div style="font-size:12px;font-weight:700;color:var(--accent-text);text-transform:uppercase;letter-spacing:0.05em;">Welcome, ${escapeHtml(greetingName)}</div>
             <h1 style="margin:0;font-size:24px;font-weight:700;">Pick a course to start</h1>
@@ -1164,7 +1186,7 @@ function renderSidebar(course) {
     <aside class="sidebar">
       <div class="brand-row">
         <div class="brand">
-          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:38px;height:38px;border-radius:10px;display:block;" />
+          <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:38px;height:38px;border-radius:50%;display:block;" />
           <div>
             <div class="brand-name">OpenLingo</div>
             <div class="brand-tag">v${escapeHtml(APP_CONFIG.appVersion)} · FOSS</div>
@@ -1232,7 +1254,7 @@ function renderMobileTopbar(course) {
   return `
     <header class="mobile-topbar">
       <div style="display:flex;align-items:center;gap:6px;">
-        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:28px;height:28px;border-radius:8px;display:block;" />
+        <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:28px;height:28px;border-radius:50%;display:block;" />
         <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 8px;font-size:13px;font-weight:700;" aria-label="Select active course">
           ${getEnrolledCourses()
             .map(
@@ -2299,6 +2321,8 @@ function renderProfileView(course) {
   const srsCount = Object.keys(state.srs || {}).length;
   const masteredChars = Object.values(state.progress.charMastery || {}).filter((v) => v >= 3).length;
   const goalXp = Number(state.profile.dailyGoalXp) || 50;
+  const activeAppIcon = getAppIconPreset(state.profile.appIcon);
+  const selectedPreset = !state.profile.avatarDataUrl ? findPresetByGlyph(state.profile.avatarEmoji) : null;
 
   return `
     ${renderHudBar(course)}
@@ -2347,10 +2371,37 @@ function renderProfileView(course) {
           }
         </div>
         <div class="avatar-presets">
-          ${AVATAR_PRESETS.map(
-            (em) =>
-              `<button type="button" class="avatar-preset-btn ${!state.profile.avatarDataUrl && state.profile.avatarEmoji === em ? 'active' : ''}" data-avatar-emoji="${escapeHtml(em)}" title="Use ${escapeHtml(em)} emblem">${escapeHtml(em)}</button>`
-          ).join('')}
+          ${APP_ICON_PRESETS.map((preset) => {
+            const isSelected = !state.profile.avatarDataUrl && state.profile.avatarEmoji === preset.glyph;
+            const isAppIcon = activeAppIcon.id === preset.id;
+            return `<button type="button" class="avatar-preset-btn ${isSelected ? 'active' : ''} ${isAppIcon ? 'is-app-icon' : ''}" data-avatar-emoji="${escapeHtml(preset.glyph)}" data-preset-id="${escapeHtml(preset.id)}" title="${escapeHtml(preset.label)} (${escapeHtml(preset.glyph)})${isAppIcon ? ' · Active App Icon' : ''}">${escapeHtml(preset.glyph)}${isAppIcon ? '<span class="app-icon-dot" aria-hidden="true"></span>' : ''}</button>`;
+          }).join('')}
+        </div>
+
+        <div class="app-icon-bar">
+          <div class="app-icon-bar-info">
+            <img src="${escapeHtml(getAppIconSrc(activeAppIcon.id))}" alt="${escapeHtml(activeAppIcon.label)} App Icon" class="app-icon-preview" />
+            <div>
+              <div style="font-size:14px;font-weight:800;">App Icon</div>
+              <div style="font-size:12px;color:var(--text-muted);">
+                Active: <strong>${escapeHtml(activeAppIcon.label)} (${escapeHtml(activeAppIcon.glyph)})</strong>${activeAppIcon.isDefault ? ' · Default' : ''}
+              </div>
+            </div>
+          </div>
+          <div class="app-icon-bar-actions">
+            ${
+              selectedPreset && selectedPreset.id !== activeAppIcon.id
+                ? `<button type="button" class="btn btn-primary btn-sm" id="profile-set-app-icon-btn" data-set-app-icon="${escapeHtml(selectedPreset.id)}">${uiIcon('palette', 15)} Set "${escapeHtml(selectedPreset.glyph)}" as App Icon</button>`
+                : selectedPreset && selectedPreset.id === activeAppIcon.id
+                  ? `<span class="pill accent">${uiIcon('check', 14)} Active App Icon</span>`
+                  : `<span style="font-size:12px;color:var(--text-muted);">Select an emblem above to use as App Icon</span>`
+            }
+            ${
+              activeAppIcon.id !== DEFAULT_APP_ICON_ID
+                ? `<button type="button" class="btn btn-sm" id="profile-reset-app-icon-btn">${uiIcon('refresh', 15)} Reset Default (അ)</button>`
+                : ''
+            }
+          </div>
         </div>
       </div>
 
@@ -2742,7 +2793,7 @@ function renderSettingsView(course) {
 
     <section class="card">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:42px;height:42px;border-radius:11px;display:block;" />
+        <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:42px;height:42px;border-radius:50%;display:block;" />
         <div>
           <h3 style="margin:0;">About OpenLingo</h3>
           <div style="font-size:12px;color:var(--text-muted);">Free &amp; Open-Source Cross-Platform Language Learning</div>
@@ -2922,6 +2973,31 @@ function attachEvents(course) {
       render();
     });
   });
+
+  const setAppIconBtn = document.getElementById('profile-set-app-icon-btn');
+  if (setAppIconBtn) {
+    setAppIconBtn.addEventListener('click', () => {
+      const iconId = setAppIconBtn.dataset.setAppIcon || DEFAULT_APP_ICON_ID;
+      state.profile.appIcon = iconId;
+      const preset = applyAppIcon({ syncNative: true });
+      state.profileMessage = `App icon updated to ${preset.label} (${preset.glyph})!`;
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  }
+
+  const resetAppIconBtn = document.getElementById('profile-reset-app-icon-btn');
+  if (resetAppIconBtn) {
+    resetAppIconBtn.addEventListener('click', () => {
+      state.profile.appIcon = DEFAULT_APP_ICON_ID;
+      const preset = applyAppIcon({ syncNative: true });
+      state.profileMessage = `App icon reset to default ${preset.label} (${preset.glyph}).`;
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  }
 
   document.querySelectorAll('[data-daily-goal]').forEach((btn) => {
     btn.addEventListener('click', () => {
