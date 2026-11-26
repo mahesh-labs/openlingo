@@ -1049,7 +1049,7 @@ function renderAuthGate() {
   return `
     <div class="auth-screen">
       <div class="auth-card">
-        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:76px;height:76px;border-radius:20px;margin:0 auto 14px;display:block;box-shadow:0 6px 0 var(--accent-lip);" />
+        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:82px;height:82px;border-radius:50%;margin:0 auto 14px;display:block;" />
         <h1 style="margin:0;font-size:32px;font-weight:700;">OpenLingo</h1>
         <p style="margin:8px 0 0;font-size:15px;color:var(--text-muted);">
           Free &amp; open-source language learning. Sign in with Google to sync your progress privately across desktop, web, and Android via your own Google Drive.
@@ -1091,7 +1091,7 @@ function renderCourseOnboarding() {
     <div class="auth-screen">
       <div class="onboarding-card">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:48px;height:48px;border-radius:14px;display:block;box-shadow:0 5px 0 var(--accent-lip);" />
+          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:50px;height:50px;border-radius:50%;display:block;" />
           <div>
             <div style="font-size:12px;font-weight:700;color:var(--accent-text);text-transform:uppercase;letter-spacing:0.05em;">Welcome, ${escapeHtml(greetingName)}</div>
             <h1 style="margin:0;font-size:24px;font-weight:700;">Pick a course to start</h1>

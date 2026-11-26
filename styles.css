@@ -175,10 +175,10 @@ h1, h2, h3, .brand-name, .page-title, .unit-banner-title, .prompt-main, .stat-ca
 }
 
 .brand img {
-  width: 46px !important;
-  height: 46px !important;
-  border-radius: 14px !important;
-  box-shadow: 0 5px 0 var(--accent-lip);
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
 }
 
 .brand-mark {
@@ -1921,9 +1921,9 @@ select.input {
   }
 
   .mobile-topbar img {
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
   }
 
   .mobile-sync-strip {

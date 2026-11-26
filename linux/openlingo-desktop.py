@@ -91,12 +91,11 @@ def render_desktop_auth_page(state_nonce, client_id):
       box-shadow: 0 10px 0 #0a0817;
     }}
     .logo {{
-      width: 68px;
-      height: 68px;
-      border-radius: 18px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
       margin: 0 auto 14px;
       display: block;
-      box-shadow: 0 6px 0 #4c1d95;
     }}
     h1 {{ margin: 0; font-size: 22px; font-weight: 800; }}
     p {{ margin: 8px 0 0; font-size: 13px; color: #94a3b8; line-height: 1.5; }}
