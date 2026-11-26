@@ -1,0 +1,2285 @@
+{
+  "code": "te",
+  "name": "Telugu",
+  "nativeName": "తెలుగు",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Telugu Greetings & Politeness: Telugu is known as an 'Ajanta bhasha' because native words traditionally end in vowels. Use SOV word order and add '-andi' (-అండి) or pronoun 'meeru' (మీరు) for polite speech. 'Namaskaaram' works at any time of day.",
+    "u2": "Pronouns, Inclusivity & Family: Telugu distinguishes inclusive 'manam' (we, including the listener) from exclusive 'memu' (we, excluding the listener). Third-person pronouns distinguish 'atanu/vaadu' (he), 'aame' (she), and respectful 'vaaru'.",
+    "u3": "Numbers, Time & Calendar: Cardinal numbers precede nouns; inanimate plural nouns often take '-lu' ('moodu pustakaalu' three books). Time phrases use locative '-lo' (in) or '-ku/-ki' (at), such as 'aidu nimishaallo' (in five minutes).",
+    "u4": "Food, Dining & Dative Experiencers: Express hunger and thirst using dative 'naaku' (to me) + state + 'undi': 'Naaku aakaligaa undi' (I am hungry). Polite requests pair 'dayachesi' (please) with '-vachchaa?' (may I?) or '-andi' imperatives.",
+    "u5": "Home, Adjectives & Core Verbs: Adjectives precede nouns without inflecting for gender ('pedda nagaram' big city). Verbal nouns ending in '-dam' or '-tam' serve as citation/infinitive forms ('velladam' to go, 'raavadam' to come).",
+    "u6": "Travel, Transport & Spatial Postpositions: Directions use postpositions on oblique stems: 'edamavaipu' (to the left), 'kudivaipu' (to the right), 'daggara' (near), 'dooram' (far). Ask 'Ekkada undi?' for 'Where is it?'",
+    "u7": "Shopping, Prices & Modal 'Kaavaali': Ask prices with 'Deeni dhara enta?' (How much is its price?). Express need/want with dative + 'kaavaali' ('Naaku okka kotu kaavaali' I need a coat) and request items politely with 'ivvandi' (please give).",
+    "u8": "Weather, Seasons & Natural Aspect: General truths and habits use the habitual/future '-tundi' (neuter singular) or '-taayi' (neuter plural), while ongoing weather uses '-tondi' ('varsham padutondi' it is raining).",
+    "u9": "Health, Body & Imperatives: Pain is expressed with 'noppi' (ache/pain): 'Naa tala noppigaa undi' (My head aches). Give polite advice or urgent instructions with '-andi' ('kadukkondi' wash, 'teesukondi' take, 'sahaayam cheyandi' please help).",
+    "u10": "Work, School & Verbal Nouns: Verbal nouns ending in '-dam' function as subjects just like English gerunds: 'Bhaasha nerchukovadam' (learning a language), 'Sangeetam vinadam' (listening to music).",
+    "u11": "Emotions, Traits & Quotative 'Ani': Telugu frames thoughts and opinions with the quotative marker 'ani' (that) before 'anukuntunnaanu' (I think). Adverbs of manner are regularly formed by adding '-gaa' to adjectives ('spashtamgaa' clearly).",
+    "u12": "Social Life & Past Tense Narratives: Past verbs mark person and gender in endings: '-aanu' (I), '-aaru' (polite he/she/they), '-aamu' (we), '-indi' (she/it). Relative participles ('chesina' that was done) neatly condense storytelling clauses.",
+    "u13": "Technology, Media & Compound Verbs: Modern Telugu combines Sanskritized coinages ('antarjaalam' internet, 'gopyata' privacy) and tech loans with auxiliary verbs 'cheyadam' (to do) and 'avvadam' (to become).",
+    "u14": "Culture, Heritage & Participial Clauses: Cultural descriptions use passive/impersonal forms ('paadabadutondi' is being sung, 'svaagatistaaru' welcome) and rich tatsama compounds ('saamskrutika vaarasatvam' cultural heritage).",
+    "u15": "Connectors, Conditionals & Contrast: Subordinate clauses precede the main clause. Form 'if' with verb stem + '-te' ('saadhana cheste' if you practice), 'although' with '-inaa' ('aalasyamainaa' although late), and contrast with 'ayite' (however).",
+    "u16": "Career, Business & Abstract Nouns: Professional Telugu uses abstract suffixes '-tam' / '-tvam' ('naayakatvam' leadership, 'baadhyata' responsibility) alongside formal compound verbs like 'nirvahinchadam' (to manage/execute).",
+    "u17": "Science, Innovation & Causative Verbs: Scientific prose employs causative verbs in '-inchu' ('maarustundi' converts, 'drudheekarinchindi' confirmed, 'vivaristundi' explains) and precise Sanskritic scientific terminology.",
+    "u18": "Environment & Obligation ('-aali'): Express ecological duty with the obligative suffix '-aali' (must/should): 'kaapaadaali' (must protect), 'vaadaali' (must use). Pair with 'koodaa' (also) and 'maatrame' (only) for emphasis.",
+    "u19": "Society, Law & Civic Discourse: Governance vocabulary blends classical institutional nouns ('raajyaangam' constitution, 'prajaasvaamyam' democracy, 'paaradarshakata' transparency) with formal present/habitual verbs.",
+    "u20": "Critical Thinking & Logical Markers: Build persuasive arguments with 'ayinappatikee' (nevertheless), 'kaabatti' (therefore), and 'drukpatham' (perspective). Emphatic '-e' highlights key claims ('nammakame' reliability itself).",
+    "u21": "Literature, Art & Literary Register: Literary Telugu (Graanthika/Shishta style) draws on evocative classical vocabulary ('roopakam' metaphor, 'vyangyam' irony, 'vaakchaaturyam' eloquence) and rich participial modifiers.",
+    "u22": "Philosophy, Ethics & Psychology: Philosophical Telugu uses deep classical concepts ('antahkaranam' conscience, 'sthitaprajnata' equanimity, 'anityata' impermanence, 'aatmaavalokanam' introspection) with concise aphoristic syntax.",
+    "u23": "Telugu Proverbs (Saametalu) & Idioms: Native Telugu wisdom shines in rhythmic proverbs like 'Aikamatyaame mahaabalam' and 'Saadhanamuna panulu samakooru'. Note comparative '-kannaa' (more than) and vivid everyday metaphors like 'manchineella praayam'.",
+    "u24": "Formal, Diplomatic & Legal Discourse: High-register Telugu utilizes formal postpositions ('nepathyamlo' in light of, 'unnaa sare/unnatlu unnaa' notwithstanding) and courteous diplomatic framing ('poorna gauravamto' with due respect).",
+    "u25": "C2 Nuance, Rhetoric & Native Mastery: True Telugu mastery combines concise precision ('samkshiptam'), balanced discourse connectors ('anni vishayaalanu parigananaloki teesukunte'), and effortless command of idiomatic and formal registers."
+  },
+  "items": {
+    "c001": {
+      "t": "నమస్కారం",
+      "r": "Namaskaaram",
+      "x": "నమస్కారం, మిమ్మల్ని కలవడం చాలా సంతోషంగా ఉంది.",
+      "xr": "Namaskaaram, mimmalni kalavadam chaalaa santoshamgaa undi."
+    },
+    "c002": {
+      "t": "శుభోదయం",
+      "r": "Shubhodayam",
+      "x": "శుభోదయం, బాగా నిద్రపోయారా?",
+      "xr": "Shubhodayam, baagaa nidrapoyaaraa?"
+    },
+    "c003": {
+      "t": "శుభ మధ్యాహ్నం",
+      "r": "Shubha madhyaahnam",
+      "x": "అందరికీ శుభ మధ్యాహ్నం.",
+      "xr": "Andarikee shubha madhyaahnam."
+    },
+    "c004": {
+      "t": "శుభ సాయంత్రం",
+      "r": "Shubha saayantram",
+      "x": "శుభ సాయంత్రం, ఇంటికి సుస్వాగతం.",
+      "xr": "Shubha saayantram, intiki susvaagatam."
+    },
+    "c005": {
+      "t": "శుభ రాత్రి",
+      "r": "Shubha raatri",
+      "x": "శుభ రాత్రి, రేపు కలుద్దాం.",
+      "xr": "Shubha raatri, repu kaluddaam."
+    },
+    "c006": {
+      "t": "ధన్యవాదాలు",
+      "r": "Dhanyavaadaalu",
+      "x": "మీ సహాయానికి చాలా ధన్యవాదాలు.",
+      "xr": "Mee sahaayaaniki chaalaa dhanyavaadaalu."
+    },
+    "c007": {
+      "t": "ఫర్వాలేదు",
+      "r": "Pharvaaledu",
+      "x": "ఫర్వాలేదు, ఎప్పుడైనా అడగండి.",
+      "xr": "Pharvaaledu, eppudainaa adagandi."
+    },
+    "c008": {
+      "t": "దయచేసి",
+      "r": "Dayachesi",
+      "x": "దయచేసి లోపలికి వచ్చి కూర్చోండి.",
+      "xr": "Dayachesi lopaliki vachchi koorchondi."
+    },
+    "c009": {
+      "t": "క్షమించండి",
+      "r": "Kshaminchandi",
+      "x": "క్షమించండి, నేను ఒక ప్రశ్న అడగవచ్చా?",
+      "xr": "Kshaminchandi, nenu oka prashna adagavachchaa?"
+    },
+    "c010": {
+      "t": "నన్ను క్షమించండి",
+      "r": "Nannu kshaminchandi",
+      "x": "ఆలస్యంగా వచ్చినందుకు నన్ను క్షమించండి.",
+      "xr": "Aalasyamgaa vachchinanduku nannu kshaminchandi."
+    },
+    "c011": {
+      "t": "అవును",
+      "r": "Avunu",
+      "x": "అవును, నాకు పూర్తిగా అర్థమైంది.",
+      "xr": "Avunu, naaku poortigaa arthamaindi."
+    },
+    "c012": {
+      "t": "కాదు",
+      "r": "Kaadu",
+      "x": "వద్దు, ధన్యవాదాలు, నేను బాగానే ఉన్నాను.",
+      "xr": "Vaddu, dhanyavaadaalu, nenu baagaane unnaanu."
+    },
+    "c013": {
+      "t": "వెళ్ళి వస్తాను",
+      "r": "Velli vastaanu",
+      "x": "వెళ్ళి వస్తాను, మీ ప్రయాణం సురక్షితంగా సాగాలి.",
+      "xr": "Velli vastaanu, mee prayaanam surakshitamgaa saagaali."
+    },
+    "c014": {
+      "t": "నా పేరు",
+      "r": "Naa peru",
+      "x": "నా పేరు మాయ.",
+      "xr": "Naa peru Maaya."
+    },
+    "c015": {
+      "t": "మీరు ఎలా ఉన్నారు?",
+      "r": "Meeru elaa unnaaru?",
+      "x": "మీరు ఈరోజు ఎలా ఉన్నారు?",
+      "xr": "Meeru eeroju elaa unnaaru?"
+    },
+    "c016": {
+      "t": "నేను",
+      "r": "Nenu",
+      "x": "నేను కొత్త భాష నేర్చుకుంటున్నాను.",
+      "xr": "Nenu kotta bhaasha nerchukuntunnaanu."
+    },
+    "c017": {
+      "t": "మీరు",
+      "r": "Meeru",
+      "x": "మీరు చాలా స్పష్టంగా మాట్లాడతారు.",
+      "xr": "Meeru chaalaa spashtamgaa maatlaadataaru."
+    },
+    "c018": {
+      "t": "అతను",
+      "r": "Atanu",
+      "x": "అతను నా అన్నయ్య.",
+      "xr": "Atanu naa annayya."
+    },
+    "c019": {
+      "t": "ఆమె",
+      "r": "Aame",
+      "x": "ఆమె నైపుణ్యం గల వైద్యురాలు.",
+      "xr": "Aame naipunyam gala vaidyuraalu."
+    },
+    "c020": {
+      "t": "మేము",
+      "r": "Memu",
+      "x": "మేము ఒకే నగరంలో నివసిస్తున్నాము.",
+      "xr": "Memu oke nagaramlo nivasistunnaamu."
+    },
+    "c021": {
+      "t": "అమ్మ",
+      "r": "Amma",
+      "x": "మా అమ్మ రుచికరమైన వంట చేస్తుంది.",
+      "xr": "Maa amma ruchikaramaina vanta chestundi."
+    },
+    "c022": {
+      "t": "నాన్న",
+      "r": "Naanna",
+      "x": "మా నాన్న ప్రతిరోజూ ఉదయం వార్తాపత్రిక చదువుతారు.",
+      "xr": "Maa naanna pratirojoo udayam vaartaapatrika chaduvutaaru."
+    },
+    "c023": {
+      "t": "సోదరుడు",
+      "r": "Sodarudu",
+      "x": "నా సోదరుడు ఫుట్‌బాల్ ఆడతాడు.",
+      "xr": "Naa sodarudu phutbaal aadataadu."
+    },
+    "c024": {
+      "t": "సోదరి",
+      "r": "Sodari",
+      "x": "నా సోదరి వైద్యశాస్త్రం చదువుతోంది.",
+      "xr": "Naa sodari vaidyashaastram chaduvutondi."
+    },
+    "c025": {
+      "t": "కుటుంబం",
+      "r": "Kutumbam",
+      "x": "మా కుటుంబం ప్రతి ఆదివారం కలుస్తుంది.",
+      "xr": "Maa kutumbam prati aadivaaram kalustundi."
+    },
+    "c026": {
+      "t": "స్నేహితుడు",
+      "r": "Snehitudu",
+      "x": "ఆమె నా అత్యంత ఆప్త స్నేహితురాలు.",
+      "xr": "Aame naa atyanta aapta snehituraalu."
+    },
+    "c027": {
+      "t": "పిల్లవాడు",
+      "r": "Pillavaadu",
+      "x": "ఆ చిన్నారి ఒక బొమ్మ గీస్తోంది.",
+      "xr": "Aa chinnaari oka bomma geestondi."
+    },
+    "c028": {
+      "t": "ఉపాధ్యాయుడు",
+      "r": "Upaadhyaayudu",
+      "x": "మా ఉపాధ్యాయులు వ్యాకరణాన్ని స్పష్టంగా వివరిస్తారు.",
+      "xr": "Maa upaadhyaayulu vyaakaranaanni spashtamgaa vivaristaaru."
+    },
+    "c029": {
+      "t": "విద్యార్థి",
+      "r": "Vidyaarthi",
+      "x": "ప్రతి విద్యార్థి ఒక నోట్‌బుక్ తీసుకువచ్చారు.",
+      "xr": "Prati vidyaarthi oka notbuk teesukuvachchaaru."
+    },
+    "c030": {
+      "t": "పొరుగువారు",
+      "r": "Poruguvaaru",
+      "x": "మా పొరుగువారు చాలా దయగలవారు.",
+      "xr": "Maa poruguvaaru chaalaa dayagalavaaru."
+    },
+    "c031": {
+      "t": "ఒకటి",
+      "r": "Okati",
+      "x": "నాకు ఒక కప్పు టీ కావాలి.",
+      "xr": "Naaku oka kappu tee kaavaali."
+    },
+    "c032": {
+      "t": "రెండు",
+      "r": "Rendu",
+      "x": "దయచేసి మాకు రెండు టికెట్లు కావాలి.",
+      "xr": "Dayachesi maaku rendu tiketlu kaavaali."
+    },
+    "c033": {
+      "t": "మూడు",
+      "r": "Moodu",
+      "x": "బల్ల మీద మూడు పుస్తకాలు ఉన్నాయి.",
+      "xr": "Balla meeda moodu pustakaalu unnaayi."
+    },
+    "c034": {
+      "t": "ఐదు",
+      "r": "Aidu",
+      "x": "తరగతి ఐదు నిమిషాల్లో ప్రారంభమవుతుంది.",
+      "xr": "Taragati aidu nimishaallo praarambhamavutundi."
+    },
+    "c035": {
+      "t": "పది",
+      "r": "Padi",
+      "x": "ఆమె ఒకటి నుండి పది వరకు లెక్కించింది.",
+      "xr": "Aame okati nundi padi varaku lekkinchindi."
+    },
+    "c036": {
+      "t": "ఈరోజు",
+      "r": "Eeroju",
+      "x": "ఈరోజు ఎండగా ఉన్న అందమైన రోజు.",
+      "xr": "Eeroju endagaa unna andamaina roju."
+    },
+    "c037": {
+      "t": "రేపు",
+      "r": "Repu",
+      "x": "రేపు మనం మ్యూజియం సందర్శిస్తాము.",
+      "xr": "Repu manam myoojiyam sandarshistaamu."
+    },
+    "c038": {
+      "t": "నిన్న",
+      "r": "Ninna",
+      "x": "నిన్న మధ్యాహ్నం అంతా వర్షం పడింది.",
+      "xr": "Ninna madhyaahnam antaa varsham padindi."
+    },
+    "c039": {
+      "t": "ఇప్పుడు",
+      "r": "Ippudu",
+      "x": "నేను ఇప్పుడే బయలుదేరడానికి సిద్ధంగా ఉన్నాను.",
+      "xr": "Nenu ippude bayaluderadaaniki siddhamgaa unnaanu."
+    },
+    "c040": {
+      "t": "తర్వాత",
+      "r": "Tarvaata",
+      "x": "దీని గురించి మనం తర్వాత మాట్లాడుకుందాం.",
+      "xr": "Deeni gurinchi manam tarvaata maatlaadukundaam."
+    },
+    "c041": {
+      "t": "ఉదయం",
+      "r": "Udayam",
+      "x": "నేను ప్రతిరోజూ ఉదయం వ్యాయామం చేస్తాను.",
+      "xr": "Nenu pratirojoo udayam vyaayaamam chestaanu."
+    },
+    "c042": {
+      "t": "రాత్రి",
+      "r": "Raatri",
+      "x": "రాత్రిపూట నక్షత్రాలు ప్రకాశవంతంగా మెరుస్తాయి.",
+      "xr": "Raatripoota nakshatraalu prakaashavantamgaa merustaayi."
+    },
+    "c043": {
+      "t": "వారం",
+      "r": "Vaaram",
+      "x": "ఈ వారం చాలా పని ఒత్తిడిగా గడిచింది.",
+      "xr": "Ee vaaram chaalaa pani ottidigaa gadichindi."
+    },
+    "c044": {
+      "t": "నెల",
+      "r": "Nela",
+      "x": "వచ్చే నెల మేము విదేశాలకు ప్రయాణిస్తాము.",
+      "xr": "Vachche nela memu videshaalaku prayaanistaamu."
+    },
+    "c045": {
+      "t": "సంవత్సరం",
+      "r": "Samvatsaram",
+      "x": "మీ అందరికీ నూతన సంవత్సర శుభాకాంక్షలు.",
+      "xr": "Mee andarikee nootana samvatsara shubhaakaankshalu."
+    },
+    "c046": {
+      "t": "నీళ్ళు",
+      "r": "Neellu",
+      "x": "నాకు ఒక గ్లాసు మంచి నీళ్ళు ఇస్తారా?",
+      "xr": "Naaku oka glaasu manchi neellu istaaraa?"
+    },
+    "c047": {
+      "t": "అన్నం",
+      "r": "Annam",
+      "x": "మేము వేడి అన్నంతో కూర తింటాము.",
+      "xr": "Memu vedi annamto koora tintaamu."
+    },
+    "c048": {
+      "t": "రొట్టె",
+      "r": "Rotte",
+      "x": "తాజా రొట్టె సువాసన అద్భుతంగా ఉంటుంది.",
+      "xr": "Taajaa rotte suvaasana adbhutamgaa untundi."
+    },
+    "c049": {
+      "t": "పండు",
+      "r": "Pandu",
+      "x": "ప్రతిరోజూ తాజా పండ్లు పుష్కలంగా తినండి.",
+      "xr": "Pratirojoo taajaa pandlu pushkalamgaa tinandi."
+    },
+    "c050": {
+      "t": "పాలు",
+      "r": "Paalu",
+      "x": "మీరు కాఫీలో పాలు కలుపుకుంటారా?",
+      "xr": "Meeru kaapheelo paalu kalupukuntaaraa?"
+    },
+    "c051": {
+      "t": "టీ",
+      "r": "Tee",
+      "x": "చలికాలంలో వేడి టీ చాలా హాయిగా ఉంటుంది.",
+      "xr": "Chalikaalamlo vedi tee chaalaa haayigaa untundi."
+    },
+    "c052": {
+      "t": "కాఫీ",
+      "r": "Kaaphee",
+      "x": "నేను ఉదయం బ్లాక్ కాఫీ తాగుతాను.",
+      "xr": "Nenu udayam blaak kaaphee taagutaanu."
+    },
+    "c053": {
+      "t": "అల్పాహారం",
+      "r": "Alpaahaaram",
+      "x": "అల్పాహారం రోజులో మొదటి భోజనం.",
+      "xr": "Alpaahaaram rojulo modati bhojanam."
+    },
+    "c054": {
+      "t": "మధ్యాహ్న భోజనం",
+      "r": "Madhyaahna bhojanam",
+      "x": "మధ్యాహ్న భోజనానికి మనం ఎక్కడికి వెళ్దాం?",
+      "xr": "Madhyaahna bhojananiki manam ekkadiki veldaam?"
+    },
+    "c055": {
+      "t": "రాత్రి భోజనం",
+      "r": "Raatri bhojanam",
+      "x": "రాత్రి భోజనం ఏడు గంటలకు సిద్ధమవుతుంది.",
+      "xr": "Raatri bhojanam edu gantalaku siddhamavutundi."
+    },
+    "c056": {
+      "t": "రుచికరమైన",
+      "r": "Ruchikaramaina",
+      "x": "ఈ వంటకం నిజంగా చాలా రుచికరంగా ఉంది.",
+      "xr": "Ee vantakam nijamgaa chaalaa ruchikaramgaa undi."
+    },
+    "c057": {
+      "t": "ఆకలి",
+      "r": "Aakali",
+      "x": "నడక తర్వాత నాకు చాలా ఆకలిగా ఉంది.",
+      "xr": "Nadaka tarvaata naaku chaalaa aakaligaa undi."
+    },
+    "c058": {
+      "t": "దాహం",
+      "r": "Daaham",
+      "x": "ఈ ఎండలో నాకు బాగా దాహంగా ఉంది.",
+      "xr": "Ee endalo naaku baagaa daahamgaa undi."
+    },
+    "c059": {
+      "t": "మెనూ",
+      "r": "Menoo",
+      "x": "దయచేసి నేను మెనూ చూడవచ్చా?",
+      "xr": "Dayachesi nenu menoo choodavachchaa?"
+    },
+    "c060": {
+      "t": "బిల్లు",
+      "r": "Billu",
+      "x": "దయచేసి మాకు బిల్లు ఇస్తారా?",
+      "xr": "Dayachesi maaku billu istaaraa?"
+    },
+    "c061": {
+      "t": "ఇల్లు",
+      "r": "Illu",
+      "x": "వారి ఇంటికి ఒక చిన్న తోట ఉంది.",
+      "xr": "Vaari intiki oka chinna tota undi."
+    },
+    "c062": {
+      "t": "గది",
+      "r": "Gadi",
+      "x": "నా గదిలో పెద్ద కిటికీ ఉంది.",
+      "xr": "Naa gadilo pedda kitikee undi."
+    },
+    "c063": {
+      "t": "బల్ల",
+      "r": "Balla",
+      "x": "తాళపు చెవులను బల్ల మీద పెట్టండి.",
+      "xr": "Taalapu chevulanu balla meeda pettandi."
+    },
+    "c064": {
+      "t": "పుస్తకం",
+      "r": "Pustakam",
+      "x": "ఈ పుస్తకం చదవడానికి సులభంగా ఉంది.",
+      "xr": "Ee pustakam chadavadaaniki sulabhamgaa undi."
+    },
+    "c065": {
+      "t": "తలుపు",
+      "r": "Talupu",
+      "x": "దయచేసి తలుపును మెల్లగా మూయండి.",
+      "xr": "Dayachesi talupunu mellagaa mooyandi."
+    },
+    "c066": {
+      "t": "ఎరుపు",
+      "r": "Erupu",
+      "x": "ఆమె ప్రకాశవంతమైన ఎరుపు గొడుగు కొన్నది.",
+      "xr": "Aame prakaashavantamaina erupu godugu konnadi."
+    },
+    "c067": {
+      "t": "నీలం",
+      "r": "Neelam",
+      "x": "ఆకాశం నిర్మలంగా మరియు నీలంగా ఉంది.",
+      "xr": "Aakaasham nirmalamgaa mariyu neelamgaa undi."
+    },
+    "c068": {
+      "t": "తెలుపు",
+      "r": "Telupu",
+      "x": "మంచు నేలను తెలుపు రంగుతో కప్పేసింది.",
+      "xr": "Manchu nelanu telupu ranguto kappesindi."
+    },
+    "c069": {
+      "t": "పెద్ద",
+      "r": "Pedda",
+      "x": "వారు ఒక పెద్ద నగరానికి మారారు.",
+      "xr": "Vaaru oka pedda nagaraaniki maaraaru."
+    },
+    "c070": {
+      "t": "చిన్న",
+      "r": "Chinna",
+      "x": "ఒక చిన్న పక్షి కొమ్మ మీద పాడింది.",
+      "xr": "Oka chinna pakshi komma meeda paadindi."
+    },
+    "c071": {
+      "t": "వెళ్ళడం",
+      "r": "Velladam",
+      "x": "నేను రైలులో పనికి వెళ్తాను.",
+      "xr": "Nenu railulo paniki veltaanu."
+    },
+    "c072": {
+      "t": "రావడం",
+      "r": "Raavadam",
+      "x": "దయచేసి మా వేడుకకు రండి.",
+      "xr": "Dayachesi maa vedukaku randi."
+    },
+    "c073": {
+      "t": "తినడం",
+      "r": "Tinadam",
+      "x": "మేము ఎనిమిది గంటలకు కలిసి రాత్రి భోజనం తింటాము.",
+      "xr": "Memu enimidi gantalaku kalisi raatri bhojanam tintaamu."
+    },
+    "c074": {
+      "t": "తాగడం",
+      "r": "Taagadam",
+      "x": "తగినంత నీరు తాగడం మర్చిపోకండి.",
+      "xr": "Taginanta neeru taagadam marchipokandi."
+    },
+    "c075": {
+      "t": "నిద్రపోవడం",
+      "r": "Nidrapovadam",
+      "x": "నేను ప్రతి రాత్రి ఎనిమిది గంటలు నిద్రపోవడానికి ప్రయత్నిస్తాను.",
+      "xr": "Nenu prati raatri enimidi gantalu nidrapovadaaniki prayatnistaanu."
+    },
+    "c076": {
+      "t": "రైలు",
+      "r": "Railu",
+      "x": "ఎక్స్‌ప్రెస్ రైలు మధ్యాహ్నం పన్నెండు గంటలకు వస్తుంది.",
+      "xr": "Ekspres railu madhyaahnam pannendu gantalaku vastundi."
+    },
+    "c077": {
+      "t": "బస్సు",
+      "r": "Bassu",
+      "x": "నగర కేంద్రానికి వెళ్ళడానికి రెండవ బస్సు ఎక్కండి.",
+      "xr": "Nagara kendraaniki velladaaniki rendava bassu ekkandi."
+    },
+    "c078": {
+      "t": "విమానాశ్రయం",
+      "r": "Vimaanaashrayam",
+      "x": "మేము రెండు గంటల ముందే విమానాశ్రయానికి చేరుకున్నాము.",
+      "xr": "Memu rendu gantala munde vimaanaashrayaaniki cherukunnaamu."
+    },
+    "c079": {
+      "t": "టికెట్",
+      "r": "Tiket",
+      "x": "మీరు బయటకు వెళ్ళే వరకు మీ టికెట్‌ను జాగ్రత్తగా ఉంచుకోండి.",
+      "xr": "Meeru bayataku velle varaku mee tiketnu jaagrattagaa unchukondi."
+    },
+    "c080": {
+      "t": "స్టేషన్",
+      "r": "Steshan",
+      "x": "స్టేషన్ ఇక్కడి నుండి ఐదు నిమిషాల దూరంలో ఉంది.",
+      "xr": "Steshan ikkadi nundi aidu nimishaala dooramlo undi."
+    },
+    "c081": {
+      "t": "ఎడమ",
+      "r": "Edama",
+      "x": "తర్వాతి ట్రాఫిక్ సిగ్నల్ వద్ద ఎడమవైపు తిరగండి.",
+      "xr": "Tarvaati traaphik signal vadda edamavaipu tiragandi."
+    },
+    "c082": {
+      "t": "కుడి",
+      "r": "Kudi",
+      "x": "మందుల దుకాణం మీ కుడివైపున ఉంది.",
+      "xr": "Mandula dukaanam mee kudivaipuna undi."
+    },
+    "c083": {
+      "t": "నేరుగా",
+      "r": "Nerugaa",
+      "x": "రెండు వీధుల వరకు నేరుగా నడవండి.",
+      "xr": "Rendu veedhula varaku nerugaa nadavandi."
+    },
+    "c084": {
+      "t": "దగ్గర",
+      "r": "Daggara",
+      "x": "ఇక్కడికి దగ్గరలో ఏదైనా హోటల్ ఉందా?",
+      "xr": "Ikkadiki daggaralo edainaa hotal undaa?"
+    },
+    "c085": {
+      "t": "దూరం",
+      "r": "Dooram",
+      "x": "సముద్ర తీరం పట్టణానికి ఎక్కువ దూరంలో లేదు.",
+      "xr": "Samudra teeram pattanaaniki ekkuva dooramlo ledu."
+    },
+    "c086": {
+      "t": "పటం",
+      "r": "Patam",
+      "x": "పటంలో మార్గాన్ని పరిశీలిద్దాం.",
+      "xr": "Patamlo maargaanni parisheeliddaam."
+    },
+    "c087": {
+      "t": "హోటల్",
+      "r": "Hotal",
+      "x": "మేము నగర మధ్యలో ప్రశాంతమైన హోటల్ బుక్ చేసుకున్నాము.",
+      "xr": "Memu nagara madhyalo prashaantamaina hotal buk chesukunnaamu."
+    },
+    "c088": {
+      "t": "పాస్‌పోర్ట్",
+      "r": "Paasport",
+      "x": "మీ పాస్‌పోర్ట్‌ను ఇంట్లో మర్చిపోకండి.",
+      "xr": "Mee paasportnu intlo marchipokandi."
+    },
+    "c089": {
+      "t": "సామాను",
+      "r": "Saamaanu",
+      "x": "ఈరోజు నా సామాను చాలా బరువుగా ఉంది.",
+      "xr": "Eeroju naa saamaanu chaalaa baruvugaa undi."
+    },
+    "c090": {
+      "t": "ఎక్కడ ఉంది?",
+      "r": "Ekkada undi?",
+      "x": "అత్యంత సమీప మెట్రో నిర్గమనం ఎక్కడ ఉంది?",
+      "xr": "Atyanta sameepa metro nirgamanam ekkada undi?"
+    },
+    "c091": {
+      "t": "డబ్బు",
+      "r": "Dabbu",
+      "x": "ప్రతి నెలా మీ డబ్బులో కొంత భాగాన్ని పొదుపు చేయండి.",
+      "xr": "Prati nelaa mee dabbulo konta bhaagaanni podupu cheyandi."
+    },
+    "c092": {
+      "t": "ధర",
+      "r": "Dhara",
+      "x": "ఈ జాకెట్ ధర ఎంత?",
+      "xr": "Ee jaaket dhara enta?"
+    },
+    "c093": {
+      "t": "చౌక",
+      "r": "Chauka",
+      "x": "ఉదయం మార్కెట్లో కూరగాయలు చౌకగా దొరుకుతాయి.",
+      "xr": "Udayam maarketlo kooragaayalu chaukagaa dorukutaayi."
+    },
+    "c094": {
+      "t": "ఖరీదైన",
+      "r": "Khareedaina",
+      "x": "ఆ గడియారం నాకు చాలా ఖరీదైనది.",
+      "xr": "Aa gadiyaaram naaku chaalaa khareedainadi."
+    },
+    "c095": {
+      "t": "రాయితీ",
+      "r": "Raayitee",
+      "x": "విద్యార్థులకు రాయితీ అందుబాటులో ఉందా?",
+      "xr": "Vidyaarthulaku raayitee andubaatulo undaa?"
+    },
+    "c096": {
+      "t": "దుకాణం",
+      "r": "Dukaanam",
+      "x": "ఆ మూల దుకాణం ఎనిమిది గంటలకు తెరుచుకుంటుంది.",
+      "xr": "Aa moola dukaanam enimidi gantalaku teruchukuntundi."
+    },
+    "c097": {
+      "t": "మార్కెట్",
+      "r": "Maarket",
+      "x": "శనివారాల్లో స్థానిక మార్కెట్ చాలా సందడిగా ఉంటుంది.",
+      "xr": "Shanivaaraallo sthaanika maarket chaalaa sandadigaa untundi."
+    },
+    "c098": {
+      "t": "కొనడం",
+      "r": "Konadam",
+      "x": "నేను వెచ్చని కోటు కొనాలనుకుంటున్నాను.",
+      "xr": "Nenu vechchani kotu konaalanukuntunnaanu."
+    },
+    "c099": {
+      "t": "చెల్లించడం",
+      "r": "Chellinchadam",
+      "x": "నేను కార్డు లేదా నగదు ద్వారా చెల్లించవచ్చా?",
+      "xr": "Nenu kaardu ledaa nagadu dvaaraa chellinchavachchaa?"
+    },
+    "c100": {
+      "t": "రసీదు",
+      "r": "Raseedu",
+      "x": "దయచేసి నాకు రసీదు ఇవ్వండి.",
+      "xr": "Dayachesi naaku raseedu ivvandi."
+    },
+    "c101": {
+      "t": "చొక్కా",
+      "r": "Chokkaa",
+      "x": "ఈ నూలు చొక్కా చాలా సౌకర్యంగా ఉంది.",
+      "xr": "Ee noolu chokkaa chaalaa saukaryamgaa undi."
+    },
+    "c102": {
+      "t": "బూట్లు",
+      "r": "Bootlu",
+      "x": "పర్వతారోహణకు నాకు దృఢమైన బూట్లు కావాలి.",
+      "xr": "Parvataarohanaku naaku drudhamaina bootlu kaavaali."
+    },
+    "c103": {
+      "t": "సంచి",
+      "r": "Sanchi",
+      "x": "ఆమె తోలు సంచిని పట్టుకుంది.",
+      "xr": "Aame tolu sanchini pattukundi."
+    },
+    "c104": {
+      "t": "కొత్త",
+      "r": "Kotta",
+      "x": "అతను ఈరోజు తన కొత్త జాకెట్ వేసుకున్నాడు.",
+      "xr": "Atanu eeroju tana kotta jaaket vesukunnaadu."
+    },
+    "c105": {
+      "t": "కొలత",
+      "r": "Kolata",
+      "x": "ఇందులో మధ్యస్థ కొలత మీ వద్ద ఉందా?",
+      "xr": "Indulo madhyastha kolata mee vadda undaa?"
+    },
+    "c106": {
+      "t": "సూర్యుడు",
+      "r": "Sooryudu",
+      "x": "వెచ్చని సూర్యరశ్మి తడిసిన రహదారిని ఆరబెట్టింది.",
+      "xr": "Vechchani sooryarashmi tadisina rahadaarini aarabettindi."
+    },
+    "c107": {
+      "t": "వర్షం",
+      "r": "Varsham",
+      "x": "వర్షం పడే అవకాశం ఉంది కాబట్టి గొడుగు తీసుకెళ్ళండి.",
+      "xr": "Varsham pade avakaasham undi kaabatti godugu teesukellandi."
+    },
+    "c108": {
+      "t": "గాలి",
+      "r": "Gaali",
+      "x": "సముద్రం వైపు నుండి చల్లని గాలి వీచింది.",
+      "xr": "Samudram vaipu nundi challani gaali veechindi."
+    },
+    "c109": {
+      "t": "వేడి",
+      "r": "Vedi",
+      "x": "ఇక్కడ వేసవి మధ్యాహ్నాలు చాలా వేడిగా ఉంటాయి.",
+      "xr": "Ikkada vesavi madhyaahnaalu chaalaa vedigaa untaayi."
+    },
+    "c110": {
+      "t": "చలి",
+      "r": "Chali",
+      "x": "చలిగా ఉన్నప్పుడు కంఠవస్త్రం ధరించండి.",
+      "xr": "Chaligaa unnappudu kanthavastram dharinchandi."
+    },
+    "c111": {
+      "t": "వేసవి",
+      "r": "Vesavi",
+      "x": "వేసవిలో మేము తరచుగా ఈత కొడతాము.",
+      "xr": "Vesavilo memu tarachugaa eeta kodataamu."
+    },
+    "c112": {
+      "t": "చలికాలం",
+      "r": "Chalikaalam",
+      "x": "చలికాలపు రాత్రులు పొడవుగా మరియు ప్రశాంతంగా ఉంటాయి.",
+      "xr": "Chalikaalapu raatrulu podavugaa mariyu prashaantamgaa untaayi."
+    },
+    "c113": {
+      "t": "వసంతం",
+      "r": "Vasantam",
+      "x": "వసంత ఋతువులో అంతటా పూలు వికసిస్తాయి.",
+      "xr": "Vasanta rutuvulo antataa poolu vikasistaayi."
+    },
+    "c114": {
+      "t": "మేఘం",
+      "r": "Megham",
+      "x": "తుఫానుకు ముందు నల్లటి మేఘాలు కమ్ముకున్నాయి.",
+      "xr": "Tuphaanuku mundu nallati meghaalu kammukunnaayi."
+    },
+    "c115": {
+      "t": "మంచు",
+      "r": "Manchu",
+      "x": "పిల్లలు తాజా మంచులో మంచు బొమ్మను తయారు చేశారు.",
+      "xr": "Pillalu taajaa manchulo manchu bommanu tayaaru chesaaru."
+    },
+    "c116": {
+      "t": "పర్వతం",
+      "r": "Parvatam",
+      "x": "సూర్యోదయానికి ముందే మేము పర్వతాన్ని ఎక్కాము.",
+      "xr": "Sooryodayaaniki munde memu parvataanni ekkaamu."
+    },
+    "c117": {
+      "t": "నది",
+      "r": "Nadi",
+      "x": "విశాలమైన నది లోయ గుండా ప్రవహిస్తుంది.",
+      "xr": "Vishaalamaina nadi loya gundaa pravahistundi."
+    },
+    "c118": {
+      "t": "సముద్రం",
+      "r": "Samudram",
+      "x": "ఈ సాయంత్రం సముద్రం ప్రశాంతంగా కనిపిస్తోంది.",
+      "xr": "Ee saayantram samudram prashaantamgaa kanipistondi."
+    },
+    "c119": {
+      "t": "చెట్టు",
+      "r": "Chettu",
+      "x": "ఒక ప్రాచీన చెట్టు ప్రాంగణానికి నీడనిస్తుంది.",
+      "xr": "Oka praacheena chettu praangananiki needanistundi."
+    },
+    "c120": {
+      "t": "పువ్వు",
+      "r": "Puvvu",
+      "x": "తోటలోని ప్రతి పువ్వూ వికసించింది.",
+      "xr": "Totaloni prati puvvoo vikasinchindi."
+    },
+    "c121": {
+      "t": "తల",
+      "r": "Tala",
+      "x": "రోజంతా చదవడం వల్ల నా తల నొప్పిగా ఉంది.",
+      "xr": "Rojantaa chadavadam valla naa tala noppigaa undi."
+    },
+    "c122": {
+      "t": "చేయి",
+      "r": "Cheyi",
+      "x": "భోజనానికి ముందు మీ చేతులు కడుక్కోండి.",
+      "xr": "Bhojananiki mundu mee chetulu kadukkondi."
+    },
+    "c123": {
+      "t": "కన్ను",
+      "r": "Kannu",
+      "x": "తెరలకు దూరంగా ఉండి మీ కళ్ళకు విశ్రాంతి ఇవ్వండి.",
+      "xr": "Teralaku dooramgaa undi mee kallaku vishraanti ivvandi."
+    },
+    "c124": {
+      "t": "గుండె",
+      "r": "Gunde",
+      "x": "వ్యాయామం మీ గుండెను బలంగా ఉంచుతుంది.",
+      "xr": "Vyaayaamam mee gundenu balamgaa unchutundi."
+    },
+    "c125": {
+      "t": "కడుపు",
+      "r": "Kadupu",
+      "x": "కడుపు నొప్పిగా ఉంటే గోరువెచ్చని నీరు తాగండి.",
+      "xr": "Kadupu noppigaa unte goruvechchani neeru taagandi."
+    },
+    "c126": {
+      "t": "వైద్యుడు",
+      "r": "Vaidyudu",
+      "x": "మీరు ఈరోజు వైద్యుడిని సంప్రదించాలి.",
+      "xr": "Meeru eeroju vaidyudini sampradinchaali."
+    },
+    "c127": {
+      "t": "ఆసుపత్రి",
+      "r": "Aasupatri",
+      "x": "ఆసుపత్రి ఇరవై నాలుగు గంటలూ తెరిచి ఉంటుంది.",
+      "xr": "Aasupatri iravai naalugu gantaloo terichi untundi."
+    },
+    "c128": {
+      "t": "మందు",
+      "r": "Mandu",
+      "x": "భోజనం తర్వాత ఈ మందు వేసుకోండి.",
+      "xr": "Bhojanam tarvaata ee mandu vesukondi."
+    },
+    "c129": {
+      "t": "నొప్పి",
+      "r": "Noppi",
+      "x": "నొప్పి ఎక్కడ ఉందో నర్సుకు చెప్పండి.",
+      "xr": "Noppi ekkada undo narsuku cheppandi."
+    },
+    "c130": {
+      "t": "జ్వరం",
+      "r": "Jvaram",
+      "x": "స్వల్ప జ్వరం వల్ల అతను ఇంట్లోనే ఉన్నాడు.",
+      "xr": "Svalpa jvaram valla atanu intlone unnaadu."
+    },
+    "c131": {
+      "t": "సహాయం",
+      "r": "Sahaayam",
+      "x": "దయచేసి ఈ పెట్టెను మోయడానికి నాకు సహాయం చేయండి.",
+      "xr": "Dayachesi ee pettenu moyadaaniki naaku sahaayam cheyandi."
+    },
+    "c132": {
+      "t": "పోలీసు",
+      "r": "Poleesu",
+      "x": "అత్యవసర పరిస్థితిలో పోలీసులకు ఫోన్ చేయండి.",
+      "xr": "Atyavasara paristhitilo poleesulaku phon cheyandi."
+    },
+    "c133": {
+      "t": "అత్యవసర పరిస్థితి",
+      "r": "Atyavasara paristhiti",
+      "x": "అత్యవసర పరిస్థితి నంబర్లను మీ ఫోన్లో సేవ్ చేసుకోండి.",
+      "xr": "Atyavasara paristhiti nambarlanu mee phonlo sev chesukondi."
+    },
+    "c134": {
+      "t": "విశ్రాంతి",
+      "r": "Vishraanti",
+      "x": "త్వరగా కోలుకోవడానికి తగినంత విశ్రాంతి తీసుకోండి.",
+      "xr": "Tvaragaa kolukovadaaniki taginanta vishraanti teesukondi."
+    },
+    "c135": {
+      "t": "ఆరోగ్యకరమైన",
+      "r": "Aarogyakaramaina",
+      "x": "సమతుల్య ఆహారం మిమ్మల్ని ఆరోగ్యంగా ఉంచుతుంది.",
+      "xr": "Samatulya aahaaram mimmalni aarogyamgaa unchutundi."
+    },
+    "c136": {
+      "t": "పాఠశాల",
+      "r": "Paathashaala",
+      "x": "పిల్లలు కలిసి పాఠశాలకు నడుచుకుంటూ వెళ్తారు.",
+      "xr": "Pillalu kalisi paathashaalaku naduchukuntoo veltaaru."
+    },
+    "c137": {
+      "t": "విశ్వవిద్యాలయం",
+      "r": "Vishvavidyaalayam",
+      "x": "ఆమె విశ్వవిద్యాలయంలో ఇంజనీరింగ్ చదువుతోంది.",
+      "xr": "Aame vishvavidyaalayamlo injaneering chaduvutondi."
+    },
+    "c138": {
+      "t": "పరీక్ష",
+      "r": "Pareeksha",
+      "x": "నేను తుది పరీక్ష కోసం జాగ్రత్తగా సిద్ధమయ్యాను.",
+      "xr": "Nenu tudi pareeksha kosam jaagrattagaa siddhamayyaanu."
+    },
+    "c139": {
+      "t": "భాష",
+      "r": "Bhaasha",
+      "x": "కొత్త భాష నేర్చుకోవడం కొత్త ప్రపంచాలను తెరుస్తుంది.",
+      "xr": "Kotta bhaasha nerchukovadam kotta prapanchaalanu terustundi."
+    },
+    "c140": {
+      "t": "ప్రశ్న",
+      "r": "Prashna",
+      "x": "అది చాలా ఆలోచనాత్మకమైన ప్రశ్న.",
+      "xr": "Adi chaalaa aalochanaatmakamaina prashna."
+    },
+    "c141": {
+      "t": "పని",
+      "r": "Pani",
+      "x": "అతను ఆరు గంటలకు పని పూర్తి చేస్తాడు.",
+      "xr": "Atanu aaru gantalaku pani poorti chestaadu."
+    },
+    "c142": {
+      "t": "కార్యాలయం",
+      "r": "Kaaryaalayam",
+      "x": "మా కార్యాలయం నాలుగవ అంతస్తులో ఉంది.",
+      "xr": "Maa kaaryaalayam naalugava antastulo undi."
+    },
+    "c143": {
+      "t": "సమావేశం",
+      "r": "Samaavesham",
+      "x": "బృంద సమావేశం పది గంటలకు ప్రారంభమవుతుంది.",
+      "xr": "Brunda samaavesham padi gantalaku praarambhamavutundi."
+    },
+    "c144": {
+      "t": "సహోద్యోగి",
+      "r": "Sahodyogi",
+      "x": "సాంకేతిక లోపాన్ని పరిష్కరించడానికి నా సహోద్యోగి సహాయం చేశారు.",
+      "xr": "Saanketika lopaanni parishkarinchadaaniki naa sahodyogi sahaayam chesaaru."
+    },
+    "c145": {
+      "t": "తీరిక లేని",
+      "r": "Teerika leni",
+      "x": "శుక్రవారం వరకు నేను చాలా పనిలో నిమగ్నమై ఉన్నాను.",
+      "xr": "Shukravaaram varaku nenu chaalaa panilo nimagnamai unnaanu."
+    },
+    "c146": {
+      "t": "సంగీతం",
+      "r": "Sangeetam",
+      "x": "సంగీతం వినడం నాకు మనసుకు ప్రశాంతతనిస్తుంది.",
+      "xr": "Sangeetam vinadam naaku manasuku prashaantatanistundi."
+    },
+    "c147": {
+      "t": "సినిమా",
+      "r": "Sinimaa",
+      "x": "మేము నిన్న రాత్రి ఒక స్ఫూర్తిదాయకమైన సినిమా చూశాము.",
+      "xr": "Memu ninna raatri oka sphoortidaayakamaina sinimaa choosaamu."
+    },
+    "c148": {
+      "t": "క్రీడ",
+      "r": "Kreeda",
+      "x": "మీరు ఏ క్రీడను చూడటానికి ఇష్టపడతారు?",
+      "xr": "Meeru e kreedanu choodataaniki ishtapadataaru?"
+    },
+    "c149": {
+      "t": "ప్రయాణం",
+      "r": "Prayaanam",
+      "x": "నాకు రైలులో ప్రయాణం చేయడం చాలా ఇష్టం.",
+      "xr": "Naaku railulo prayaanam cheyadam chaalaa ishtam."
+    },
+    "c150": {
+      "t": "అభిరుచి",
+      "r": "Abhiruchi",
+      "x": "ఫోటోగ్రఫీ నాకు ఇష్టమైన వారాంతపు అభిరుచి.",
+      "xr": "Photographee naaku ishtamaina vaaraantapu abhiruchi."
+    },
+    "c151": {
+      "t": "సంతోషం",
+      "r": "Santosham",
+      "x": "మీ శుభవార్త విని నాకు నిజంగా సంతోషంగా ఉంది.",
+      "xr": "Mee shubhavaarta vini naaku nijamgaa santoshamgaa undi."
+    },
+    "c152": {
+      "t": "బాధ",
+      "r": "Baadha",
+      "x": "కొన్నిసార్లు బాధపడటం సహజమే.",
+      "xr": "Konnisaarlu baadhapadatam sahajame."
+    },
+    "c153": {
+      "t": "కోపం",
+      "r": "Kopam",
+      "x": "కోపంగా ఉన్నప్పుడు మాట్లాడే ముందు లోతుగా ఊపిరి పీల్చుకోండి.",
+      "xr": "Kopamgaa unnappudu maatlaade mundu lotugaa oopiri peelchukondi."
+    },
+    "c154": {
+      "t": "ఆశ్చర్యం",
+      "r": "Aashcharyam",
+      "x": "ఆకస్మిక ప్రకటనతో అందరూ ఆశ్చర్యపోయారు.",
+      "xr": "Aakasmika prakatanato andaroo aashcharyapoyaaru."
+    },
+    "c155": {
+      "t": "ఆందోళన",
+      "r": "Aandolana",
+      "x": "ఆందోళన చెందకండి; అంతా మంచే జరుగుతుంది.",
+      "xr": "Aandolana chendakandi; antaa manche jarugutundi."
+    },
+    "c156": {
+      "t": "దయగల",
+      "r": "Dayagala",
+      "x": "ఒక దయగల చర్య ఎవరి రోజైనా వెలిగించగలదు.",
+      "xr": "Oka dayagala charya evari rojainaa veliginchagaladu."
+    },
+    "c157": {
+      "t": "నిజాయితీ గల",
+      "r": "Nijaayitee gala",
+      "x": "మీ నిజాయితీ గల అభిప్రాయాన్ని నేను అభినందిస్తున్నాను.",
+      "xr": "Mee nijaayitee gala abhipraayaanni nenu abhinandistunnaanu."
+    },
+    "c158": {
+      "t": "ఓర్పు",
+      "r": "Orpu",
+      "x": "భాషలో పట్టు సాధించడానికి ఓర్పు అవసరం.",
+      "xr": "Bhaashalo pattu saadhinchadaaniki orpu avasaram."
+    },
+    "c159": {
+      "t": "ధైర్యవంతుడు",
+      "r": "Dhairyavantudu",
+      "x": "బహిరంగంగా మాట్లాడటం నిజంగా ధైర్యవంతమైన పని.",
+      "xr": "Bahirangamgaa maatlaadatam nijamgaa dhairyavantamaina pani."
+    },
+    "c160": {
+      "t": "ఆసక్తి గల",
+      "r": "Aasakti gala",
+      "x": "జిజ్ఞాస గల మనస్సులు ఎప్పుడూ కొత్త విషయాలను అన్వేషిస్తూనే ఉంటాయి.",
+      "xr": "Jijnaasa gala manassulu eppudoo kotta vishayaalanu anveshistoone untaayi."
+    },
+    "c161": {
+      "t": "నేను అనుకుంటున్నాను",
+      "r": "Nenu anukuntunnaanu",
+      "x": "ఈ పరిష్కారం ఆచరణాత్మకమైనదని నేను అనుకుంటున్నాను.",
+      "xr": "Ee parishkaaram aacharanaatmakamainadani nenu anukuntunnaanu."
+    },
+    "c162": {
+      "t": "నేను ఏకీభవిస్తున్నాను",
+      "r": "Nenu ekeebhavistunnaanu",
+      "x": "మీ ప్రధాన అంశంతో నేను ఏకీభవిస్తున్నాను.",
+      "xr": "Mee pradhaana amshamto nenu ekeebhavistunnaanu."
+    },
+    "c163": {
+      "t": "అభిప్రాయం",
+      "r": "Abhipraayam",
+      "x": "ప్రతి ఒక్కరికీ తమ అభిప్రాయం కలిగి ఉండే హక్కు ఉంది.",
+      "xr": "Prati okkarikee tama abhipraayam kaligi unde hakku undi."
+    },
+    "c164": {
+      "t": "ముఖ్యమైన",
+      "r": "Mukhyamaina",
+      "x": "స్పష్టమైన సంభాషణ చాలా ముఖ్యమైనది.",
+      "xr": "Spashtamaina sambhaashana chaalaa mukhyamainadi."
+    },
+    "c165": {
+      "t": "సాధ్యం",
+      "r": "Saadhyam",
+      "x": "నిరంతర కృషితో ఏదైనా సాధ్యమవుతుంది.",
+      "xr": "Nirantara krushito edainaa saadhyamavutundi."
+    },
+    "c166": {
+      "t": "ఆహ్వానం",
+      "r": "Aahvaanam",
+      "x": "మీ ఆత్మీయ ఆహ్వానానికి ధన్యవాదాలు.",
+      "xr": "Mee aatmeeya aahvaanaaniki dhanyavaadaalu."
+    },
+    "c167": {
+      "t": "వేడుక",
+      "r": "Veduka",
+      "x": "పొరుగువారంతా ఆ వేడుకలో ఉత్సాహంగా పాల్గొన్నారు.",
+      "xr": "Poruguvaarantaa aa vedukalo utsaahamgaa paalgonnaaru."
+    },
+    "c168": {
+      "t": "వాగ్దానం",
+      "r": "Vaagdaanam",
+      "x": "మీరు చేసిన వాగ్దానాన్ని ఎల్లప్పుడూ నిలబెట్టుకోండి.",
+      "xr": "Meeru chesina vaagdaanaanni ellappudoo nilabettukondi."
+    },
+    "c169": {
+      "t": "నియామక సమయం",
+      "r": "Niyaamaka samayam",
+      "x": "మూడు గంటలకు నాకు దంతవైద్యుని వద్ద అపాయింట్‌మెంట్ ఉంది.",
+      "xr": "Moodu gantalaku naaku dantavaidyuni vadda apaayintment undi."
+    },
+    "c170": {
+      "t": "అనుకోని కానుక",
+      "r": "Anukoni kaanuka",
+      "x": "ఆమె పుట్టినరోజు కోసం మేము ఒక ఆశ్చర్యకరమైన వేడుకను ప్లాన్ చేశాము.",
+      "xr": "Aame puttinaroju kosam memu oka aashcharyakaramaina vedukanu plaan chesaamu."
+    },
+    "c171": {
+      "t": "జ్ఞాపకం",
+      "r": "Jnaapakam",
+      "x": "ఆ ప్రయాణం నాకు అత్యంత మధురమైన జ్ఞాపకంగా నిలిచిపోయింది.",
+      "xr": "Aa prayaanam naaku atyanta madhuramaina jnaapakamgaa nilichipoyindi."
+    },
+    "c172": {
+      "t": "అనుభవం",
+      "r": "Anubhavam",
+      "x": "విదేశాల్లో నివసించడం నా జీవితాన్ని మార్చిన అనుభవం.",
+      "xr": "Videshaallo nivasinchadam naa jeevitaanni maarchina anubhavam."
+    },
+    "c173": {
+      "t": "కథ",
+      "r": "Katha",
+      "x": "తాతయ్య ఒక ఆకట్టుకునే కథ చెప్పారు.",
+      "xr": "Taatayya oka aakattukune katha cheppaaru."
+    },
+    "c174": {
+      "t": "కల",
+      "r": "Kala",
+      "x": "మీ పెద్ద కలను ఎప్పుడూ వదులుకోకండి.",
+      "xr": "Mee pedda kalanu eppudoo vadulukokandi."
+    },
+    "c175": {
+      "t": "ప్రస్థానం",
+      "r": "Prasthaanam",
+      "x": "ప్రతి సుదీర్ఘ ప్రస్థానం ఒక అడుగుతోనే మొదలవుతుంది.",
+      "xr": "Prati sudeergha prasthaanam oka adugutone modalavutundi."
+    },
+    "c176": {
+      "t": "నమ్మకం",
+      "r": "Nammakam",
+      "x": "నమ్మకాన్ని నిర్మించుకోవడానికి సంవత్సరాలు పడుతుంది.",
+      "xr": "Nammakaanni nirminchukovadaaniki samvatsaraalu padutundi."
+    },
+    "c177": {
+      "t": "గౌరవం",
+      "r": "Gauravam",
+      "x": "ప్రతి వ్యక్తిని నిజమైన గౌరవంతో చూడండి.",
+      "xr": "Prati vyaktini nijamaina gauravamto choodandi."
+    },
+    "c178": {
+      "t": "సలహా",
+      "r": "Salahaa",
+      "x": "కెరీర్ గురించి మీరు నాకు కొంత సలహా ఇవ్వగలరా?",
+      "xr": "Kereer gurinchi meeru naaku konta salahaa ivvagalaraa?"
+    },
+    "c179": {
+      "t": "మద్దతు",
+      "r": "Maddatu",
+      "x": "మీ అచంచలమైన మద్దతుకు హృదయపూర్వక ధన్యవాదాలు.",
+      "xr": "Mee achanchalamaina maddatuku hrudayapoorvaka dhanyavaadaalu."
+    },
+    "c180": {
+      "t": "క్షమించడం",
+      "r": "Kshaminchadam",
+      "x": "క్షమించి ముందుకు సాగడానికి గొప్ప మనసు కావాలి.",
+      "xr": "Kshaminchi munduku saagadaaniki goppa manasu kaavaali."
+    },
+    "c181": {
+      "t": "కంప్యూటర్",
+      "r": "Kampyootar",
+      "x": "నా కంప్యూటర్ రాత్రికి రాత్రే అప్‌డేట్ అయింది.",
+      "xr": "Naa kampyootar raatriki raatre apdet ayindi."
+    },
+    "c182": {
+      "t": "అంతర్జాలం",
+      "r": "Antarjaalam",
+      "x": "వేగవంతమైన అంతర్జాలం మారుమూల గ్రామాలను కలుపుతుంది.",
+      "xr": "Vegavantamaina antarjaalam maarumoola graamaalanu kaluputundi."
+    },
+    "c183": {
+      "t": "ఫోన్",
+      "r": "Phon",
+      "x": "ఉపన్యాస సమయంలో దయచేసి మీ ఫోన్‌ను సైలెంట్‌లో పెట్టండి.",
+      "xr": "Upanyaasa samayamlo dayachesi mee phonnu sailentlo pettandi."
+    },
+    "c184": {
+      "t": "రహస్య పదం",
+      "r": "Rahasya padam",
+      "x": "ప్రతి ఖాతాకు బలమైన, ప్రత్యేకమైన రహస్య పదాన్ని ఉపయోగించండి.",
+      "xr": "Prati khaataaku balamaina, pratyekamaina rahasya padaanni upayoginchandi."
+    },
+    "c185": {
+      "t": "డౌన్‌లోడ్",
+      "r": "Daunlod",
+      "x": "మీరు ఆఫ్‌లైన్ ప్యాక్‌ను ఉచితంగా డౌన్‌లోడ్ చేసుకోవచ్చు.",
+      "xr": "Meeru aaphlain pyaaknu uchitamgaa daunlod chesukovachchu."
+    },
+    "c186": {
+      "t": "సందేశం",
+      "r": "Sandesham",
+      "x": "నేను ఈరోజు ఉదయం మీకు ఒక సందేశం పంపాను.",
+      "xr": "Nenu eeroju udayam meeku oka sandesham pampaanu."
+    },
+    "c187": {
+      "t": "శోధన",
+      "r": "Shodhana",
+      "x": "నమ్మదగిన పత్రాల కోసం శోధన చేద్దాం.",
+      "xr": "Nammadagina patraala kosam shodhana cheddaam."
+    },
+    "c188": {
+      "t": "యాప్",
+      "r": "Yaap",
+      "x": "ఈ ఓపెన్-సోర్స్ యాప్ ఇంటర్నెట్ లేకుండా కూడా పనిచేస్తుంది.",
+      "xr": "Ee open-sors yaap intarnet lekundaa koodaa panichestundi."
+    },
+    "c189": {
+      "t": "గోప్యత",
+      "r": "Gopyata",
+      "x": "వినియోగదారుల గోప్యతను కాపాడటానికి మొదటి ప్రాధాన్యత ఇవ్వాలి.",
+      "xr": "Viniyogadaarula gopyatanu kaapaadataaniki modati praadhaanyata ivvaali."
+    },
+    "c190": {
+      "t": "నవీకరణ",
+      "r": "Naveekarana",
+      "x": "తాజా నవీకరణ వేగాన్ని గణనీయంగా పెంచింది.",
+      "xr": "Taajaa naveekarana vegaanni gananeeyamgaa penchindi."
+    },
+    "c191": {
+      "t": "వార్తలు",
+      "r": "Vaartalu",
+      "x": "వార్తలను ఎల్లప్పుడూ పలు మూలాల నుండి నిర్ధారించుకోండి.",
+      "xr": "Vaartalanu ellappudoo palu moolaala nundi nirdhaarinchukondi."
+    },
+    "c192": {
+      "t": "వ్యాసం",
+      "r": "Vyaasam",
+      "x": "భాషాశాస్త్రంపై నేను ఒక ఆసక్తికరమైన వ్యాసం చదివాను.",
+      "xr": "Bhaashaashaastrampai nenu oka aasaktikaramaina vyaasam chadivaanu."
+    },
+    "c193": {
+      "t": "సమాచారం",
+      "r": "Samaachaaram",
+      "x": "ఖచ్చితమైన సమాచారం ప్రజలు వివేకంతో నిర్ణయించుకోవడానికి సహాయపడుతుంది.",
+      "xr": "Khachchitamaina samaachaaram prajalu vivekamto nirnayinchukovadaaniki sahaayapadutundi."
+    },
+    "c194": {
+      "t": "కెమెరా",
+      "r": "Kemeraa",
+      "x": "ఆమె పండుగకు తన కెమెరాను తీసుకువచ్చింది.",
+      "xr": "Aame pandugaku tana kemeraanu teesukuvachchindi."
+    },
+    "c195": {
+      "t": "తెర",
+      "r": "Tera",
+      "x": "రాత్రిపూట తెర వెలుతురును తగ్గించుకోండి.",
+      "xr": "Raatripoota tera veluturunu tagginchukondi."
+    },
+    "c196": {
+      "t": "సంస్కృతి",
+      "r": "Samskruti",
+      "x": "భాష అనేది సంస్కృతికి సజీవ హృదయం.",
+      "xr": "Bhaasha anedi samskrutiki sajeeva hrudayam."
+    },
+    "c197": {
+      "t": "సంప్రదాయం",
+      "r": "Sampradaayam",
+      "x": "ప్రతి ప్రాంతం తనదైన పంటల పండుగ సంప్రదాయాన్ని కాపాడుకుంటుంది.",
+      "xr": "Prati praantam tanadaina pantala panduga sampradaayaanni kaapaadukuntundi."
+    },
+    "c198": {
+      "t": "పండుగ",
+      "r": "Panduga",
+      "x": "పండుగ సమయంలో దీపాలు నగరమంతా వెలుగులు నింపాయి.",
+      "xr": "Panduga samayamlo deepaalu nagaramantaa velugulu nimpaayi."
+    },
+    "c199": {
+      "t": "చరిత్ర",
+      "r": "Charitra",
+      "x": "ఈ మ్యూజియం ఐదు వేల సంవత్సరాల చరిత్రను కళ్ళకు కడుతుంది.",
+      "xr": "Ee myoojiyam aidu vela samvatsaraala charitranu kallaku kadutundi."
+    },
+    "c200": {
+      "t": "వారసత్వం",
+      "r": "Vaarasatvam",
+      "x": "మన ఉమ్మడి సాంస్కృతిక వారసత్వాన్ని మనం పరిరక్షించాలి.",
+      "xr": "Mana ummadi saamskrutika vaarasatvaanni manam parirakshinchaali."
+    },
+    "c201": {
+      "t": "కళ",
+      "r": "Kala",
+      "x": "గొప్ప కళ సరిహద్దులను మరియు శతాబ్దాలను అధిగమిస్తుంది.",
+      "xr": "Goppa kala sarihaddulanu mariyu shataabdaalanu adhigamistundi."
+    },
+    "c202": {
+      "t": "నృత్యం",
+      "r": "Nrutyam",
+      "x": "శాస్త్రీయ నృత్యం అభినయం, కదలికల ద్వారా కథలను చెబుతుంది.",
+      "xr": "Shaastreeya nrutyam abhinayam, kadalikala dvaaraa kathalanu chebutundi."
+    },
+    "c203": {
+      "t": "పాట",
+      "r": "Paata",
+      "x": "ఆ జానపద పాటను తరతరాలుగా పాడుతున్నారు.",
+      "xr": "Aa jaanapada paatanu tarataraalugaa paadutunnaaru."
+    },
+    "c204": {
+      "t": "వాస్తుశిల్పం",
+      "r": "Vaastushilpam",
+      "x": "ఈ ఆలయ వాస్తుశిల్పం అత్యంత సున్నితంగా చెక్కబడింది.",
+      "xr": "Ee aalaya vaastushilpam atyanta sunnitamgaa chekkabadindi."
+    },
+    "c205": {
+      "t": "కవిత్వం",
+      "r": "Kavitvam",
+      "x": "కవిత్వం కొన్ని పంక్తుల్లోనే గాఢమైన భావాలను బంధిస్తుంది.",
+      "xr": "Kavitvam konni panktullone gaadhamaina bhaavaalanu bandhistundi."
+    },
+    "c206": {
+      "t": "అతిథి",
+      "r": "Atithi",
+      "x": "ప్రతి అతిథిని ఆప్యాయతతో స్వాగతిస్తారు.",
+      "xr": "Prati atithini aapyaayatato svaagatistaaru."
+    },
+    "c207": {
+      "t": "బహుమతి",
+      "r": "Bahumati",
+      "x": "చిన్న బహుమతి తీసుకురావడం మన ఆప్యాయతను చూపుతుంది.",
+      "xr": "Chinna bahumati teesukuraavadam mana aapyaayatanu chooputundi."
+    },
+    "c208": {
+      "t": "ఆచారం",
+      "r": "Aachaaram",
+      "x": "కొత్త దేశానికి వెళ్ళే ముందు స్థానిక ఆచారాలను తెలుసుకోండి.",
+      "xr": "Kotta deshaaniki velle mundu sthaanika aachaaraalanu telusukondi."
+    },
+    "c209": {
+      "t": "ఉత్సవం",
+      "r": "Utsavam",
+      "x": "పట్టభద్రుల ప్రదానోత్సవం రెండు గంటల పాటు జరిగింది.",
+      "xr": "Pattabhadrula pradaanotsavam rendu gantala paatu jarigindi."
+    },
+    "c210": {
+      "t": "ఆశీర్వాదం",
+      "r": "Aasheervaadam",
+      "x": "పెద్దలు నవదంపతులకు తమ ఆశీర్వాదాలను అందించారు.",
+      "xr": "Peddalu navadampatulaku tama aasheervaadaalanu andinchaaru."
+    },
+    "c211": {
+      "t": "ఎందుకంటే",
+      "r": "Endukante",
+      "x": "మేము ఇంట్లోనే ఉన్నాము, ఎందుకంటే తుఫాను వస్తోంది.",
+      "xr": "Memu intlone unnaamu, endukante tuphaanu vastondi."
+    },
+    "c212": {
+      "t": "అయితే",
+      "r": "Ayite",
+      "x": "ఆ పని కష్టంగా ఉంది; అయితే, మేము విజయం సాధించాము.",
+      "xr": "Aa pani kashtamgaa undi; ayite, memu vijayam saadhinchaamu."
+    },
+    "c213": {
+      "t": "అయినా",
+      "r": "Ayinaa",
+      "x": "ఆలస్యమైనప్పటికీ, అతను ఆ అధ్యాయాన్ని పూర్తి చేశాడు.",
+      "xr": "Aalasyamainappatikee, atanu aa adhyaayaanni poorti chesaadu."
+    },
+    "c214": {
+      "t": "కాబట్టి",
+      "r": "Kaabatti",
+      "x": "సమాచారం స్పష్టంగా ఉంది; కాబట్టి, మనం చర్య తీసుకోవాలి.",
+      "xr": "Samaachaaram spashtamgaa undi; kaabatti, manam charya teesukovaali."
+    },
+    "c215": {
+      "t": "ఈలోగా",
+      "r": "Eelogaa",
+      "x": "నేను రాత్రి భోజనం వండుతాను; ఈలోగా, దయచేసి బల్ల సిద్ధం చేయండి.",
+      "xr": "Nenu raatri bhojanam vandutaanu; eelogaa, dayachesi balla siddham cheyandi."
+    },
+    "c216": {
+      "t": "సమస్య",
+      "r": "Samasya",
+      "x": "ఈ సమస్యకు మూల కారణాన్ని గుర్తిద్దాం.",
+      "xr": "Ee samasyaku moola kaaranaanni gurtiddaam."
+    },
+    "c217": {
+      "t": "పరిష్కారం",
+      "r": "Parishkaaram",
+      "x": "సరళమైన పరిష్కారాలు తరచుగా అత్యంత నమ్మదగినవిగా ఉంటాయి.",
+      "xr": "Saralamaina parishkaaraalu tarachugaa atyanta nammadaginavigaa untaayi."
+    },
+    "c218": {
+      "t": "నిర్ణయం",
+      "r": "Nirnayam",
+      "x": "పెద్ద నిర్ణయం తీసుకునే ముందు ప్రశాంతంగా ఆలోచించండి.",
+      "xr": "Pedda nirnayam teesukune mundu prashaantamgaa aalochinchandi."
+    },
+    "c219": {
+      "t": "తప్పు",
+      "r": "Tappu",
+      "x": "ప్రతి తప్పూ మనకు విలువైన పాఠం నేర్పుతుంది.",
+      "xr": "Prati tappoo manaku viluvaina paatham nerputundi."
+    },
+    "c220": {
+      "t": "విజయం",
+      "r": "Vijayam",
+      "x": "బృంద కృషియే మా విజయానికి కీలకం అయింది.",
+      "xr": "Brunda krushiye maa vijayaaniki keelakam ayindi."
+    },
+    "c221": {
+      "t": "ఒకవేళ",
+      "r": "Okavela",
+      "x": "ఒకవేళ మీరు ప్రతిరోజూ సాధన చేస్తే, వేగంగా మెరుగుపడతారు.",
+      "xr": "Okavela meeru pratirojoo saadhana cheste, vegamgaa merugupadataaru."
+    },
+    "c222": {
+      "t": "బదులుగా",
+      "r": "Badulugaa",
+      "x": "కారు నడపడానికి బదులుగా దుకాణానికి నడుచుకుంటూ వెళ్ళండి.",
+      "xr": "Kaaru nadapadaaniki badulugaa dukaanaaniki naduchukuntoo vellandi."
+    },
+    "c223": {
+      "t": "పోల్చడం",
+      "r": "Polchadam",
+      "x": "ఓటు వేసే ముందు రెండు ప్రతిపాదనలను జాగ్రత్తగా పోల్చండి.",
+      "xr": "Otu vese mundu rendu pratipaadanalanu jaagrattagaa polchandi."
+    },
+    "c224": {
+      "t": "తేడా",
+      "r": "Tedaa",
+      "x": "చిన్న అలవాట్లు కాలక్రమేణా పెద్ద తేడాను సృష్టిస్తాయి.",
+      "xr": "Chinna alavaatlu kaalakramenaa pedda tedaanu srushtistaayi."
+    },
+    "c225": {
+      "t": "కారణం",
+      "r": "Kaaranam",
+      "x": "మీ ఎంపిక వెనుక ఉన్న కారణాన్ని వివరించండి.",
+      "xr": "Mee empika venuka unna kaaranaanni vivarinchandi."
+    },
+    "c226": {
+      "t": "వ్యూహం",
+      "r": "Vyooham",
+      "x": "మేము మా దీర్ఘకాలిక ఉత్పత్తి వ్యూహాన్ని సవరించాము.",
+      "xr": "Memu maa deerghakaalika utpatti vyoohaanni savarinchaamu."
+    },
+    "c227": {
+      "t": "ప్రాజెక్ట్",
+      "r": "Praajekt",
+      "x": "ఇంజనీరింగ్ ప్రాజెక్ట్ నిర్ణీత సమయానికంటే ముందే ప్రారంభమైంది.",
+      "xr": "Injaneering praajekt nirneeta samayaanikante munde praarambhamaindi."
+    },
+    "c228": {
+      "t": "గడువు",
+      "r": "Gaduvu",
+      "x": "గడువుకు ముందే మేము ప్రతి మైలురాయిని పూర్తి చేశాము.",
+      "xr": "Gaduvuku munde memu prati mailuraayini poorti chesaamu."
+    },
+    "c229": {
+      "t": "బాధ్యత",
+      "r": "Baadhyata",
+      "x": "నాయకత్వం అంటే పూర్తి బాధ్యతను స్వీకరించడం.",
+      "xr": "Naayakatvam ante poorti baadhyatanu sveekarinchadam."
+    },
+    "c230": {
+      "t": "సహకారం",
+      "r": "Sahakaaram",
+      "x": "స్వేచ్ఛాయుత సహకారం ఆవిష్కరణలను వేగవంతం చేస్తుంది.",
+      "xr": "Svechchaayuta sahakaaram aavishkaranalanu vegavantam chestundi."
+    },
+    "c231": {
+      "t": "ఆర్థిక వ్యవస్థ",
+      "r": "Aarthika vyavastha",
+      "x": "చిన్న వ్యాపారాలు ఆర్థిక వ్యవస్థకు వెన్నెముకగా నిలుస్తాయి.",
+      "xr": "Chinna vyaapaaraalu aarthika vyavasthaku vennemukagaa nilustaayi."
+    },
+    "c232": {
+      "t": "బడ్జెట్",
+      "r": "Badjet",
+      "x": "పురపాలక సంఘం వచ్చే ఏడాది విద్యా బడ్జెట్‌కు ఆమోదం తెలిపింది.",
+      "xr": "Purapaalaka sangham vachche edaadi vidyaa badjetku aamodam telipindi."
+    },
+    "c233": {
+      "t": "పెట్టుబడి",
+      "r": "Pettubadi",
+      "x": "విద్య అత్యంత వివేకవంతమైన దీర్ఘకాలిక పెట్టుబడి.",
+      "xr": "Vidya atyanta vivekavantamaina deerghakaalika pettubadi."
+    },
+    "c234": {
+      "t": "ఒప్పంద పత్రం",
+      "r": "Oppanda patram",
+      "x": "ఒప్పంద పత్రంలోని ప్రతి నిబంధనను జాగ్రత్తగా చదవండి.",
+      "xr": "Oppanda patramloni prati nibandhananu jaagrattagaa chadavandi."
+    },
+    "c235": {
+      "t": "లాభం",
+      "r": "Laabham",
+      "x": "స్వల్పకాలిక లాభం కంటే స్థిరమైన వృద్ధి ఎంతో ముఖ్యం.",
+      "xr": "Svalpakaalika laabham kante sthiramaina vruddhi ento mukhyam."
+    },
+    "c236": {
+      "t": "ప్రతిపాదన",
+      "r": "Pratipaadana",
+      "x": "కమిటీ మా సమగ్ర ప్రతిపాదనను సమీక్షించింది.",
+      "xr": "Kamitee maa samagra pratipaadananu sameekshinchindi."
+    },
+    "c237": {
+      "t": "చర్చలు",
+      "r": "Charchalu",
+      "x": "ఇరు పక్షాలు సద్భావనతో చర్చలలో పాల్గొన్నాయి.",
+      "xr": "Iru pakshaalu sadbhaavanato charchalalo paalgonnaayi."
+    },
+    "c238": {
+      "t": "ఒప్పందం",
+      "r": "Oppandam",
+      "x": "వారు పరస్పర ప్రయోజనకరమైన వాణిజ్య ఒప్పందంపై సంతకం చేశారు.",
+      "xr": "Vaaru paraspara prayojanakaramaina vaanijya oppandampai santakam chesaaru."
+    },
+    "c239": {
+      "t": "రాజీ",
+      "r": "Raajee",
+      "x": "న్యాయమైన రాజీ ఆ వివాదాన్ని పరిష్కరించింది.",
+      "xr": "Nyaayamaina raajee aa vivaadaanni parishkarinchindi."
+    },
+    "c240": {
+      "t": "అవకాశం",
+      "r": "Avakaasham",
+      "x": "ప్రతి సవాలులోనూ ఒక దాగి ఉన్న అవకాశం ఉంటుంది.",
+      "xr": "Prati savaalulonoo oka daagi unna avakaasham untundi."
+    },
+    "c241": {
+      "t": "పరిశోధన",
+      "r": "Parishodhana",
+      "x": "నిపుణులు సమీక్షించిన పరిశోధన ఆధునిక వైద్యానికి మార్గదర్శనం చేస్తుంది.",
+      "xr": "Nipunulu sameekshinchina parishodhana aadhunika vaidyaaniki maargadarshanam chestundi."
+    },
+    "c242": {
+      "t": "ప్రయోగం",
+      "r": "Prayogam",
+      "x": "ప్రయోగశాల ప్రయోగం మా అంచనాను ధృవీకరించింది.",
+      "xr": "Prayogashaala prayogam maa anchanaanu dhruveekarinchindi."
+    },
+    "c243": {
+      "t": "ఆధారం",
+      "r": "Aadhaaram",
+      "x": "బలమైన తీర్మానాలు పటిష్టమైన ఆధారాలపై నిలవాలి.",
+      "xr": "Balamaina teermaanaalu patishtamaina aadhaaraalapai nilavaali."
+    },
+    "c244": {
+      "t": "సిద్ధాంతం",
+      "r": "Siddhaantam",
+      "x": "గురుత్వాకర్షణ కాంతిని ఎలా వంచుతుందో ఈ సిద్ధాంతం వివరిస్తుంది.",
+      "xr": "Gurutvaakarshana kaantini elaa vanchutundo ee siddhaantam vivaristundi."
+    },
+    "c245": {
+      "t": "ఆవిష్కరణ",
+      "r": "Aavishkarana",
+      "x": "ఆ ఆవిష్కరణ స్వచ్ఛమైన ఇంధన నిల్వను సమూలంగా మార్చివేసింది.",
+      "xr": "Aa aavishkarana svachchamaina indhana nilvanu samoolamgaa maarchivesindi."
+    },
+    "c246": {
+      "t": "నవకల్పన",
+      "r": "Navakalpana",
+      "x": "క్షేత్రస్థాయి నవకల్పన ప్రజల నిజమైన అవసరాలను తీరుస్తుంది.",
+      "xr": "Kshetrasthaayi navakalpana prajala nijamaina avasaraalanu teerustundi."
+    },
+    "c247": {
+      "t": "అల్గారిథమ్",
+      "r": "Algaaritham",
+      "x": "సమర్థవంతమైన అల్గారిథమ్ విద్యుత్తును మరియు సమయాన్ని ఆదా చేస్తుంది.",
+      "xr": "Samarthavantamaina algaaritham vidyuttunu mariyu samayaanni aadaa chestundi."
+    },
+    "c248": {
+      "t": "శక్తి",
+      "r": "Shakti",
+      "x": "సౌర ఫలకాలు సూర్యరశ్మిని నేరుగా విద్యుత్ శక్తిగా మారుస్తాయి.",
+      "xr": "Saura phalakaalu sooryarashmini nerugaa vidyut shaktigaa maarustaayi."
+    },
+    "c249": {
+      "t": "ప్రయోగశాల",
+      "r": "Prayogashaala",
+      "x": "శాస్త్రవేత్తలు ప్రయోగశాలలో సెన్సార్లను కచ్చితంగా అమర్చారు.",
+      "xr": "Shaastravettalu prayogashaalalo sensaarlanu kachchitamgaa amarchaaru."
+    },
+    "c250": {
+      "t": "ఖచ్చితత్వం",
+      "r": "Khachchitatvam",
+      "x": "సూక్ష్మ శస్త్రచికిత్సకు అసాధారణ ఖచ్చితత్వం అవసరం.",
+      "xr": "Sookshma shastrachikitsaku asaadhaarana khachchitatvam avasaram."
+    },
+    "c251": {
+      "t": "విశ్వం",
+      "r": "Vishvam",
+      "x": "టెలిస్కోపులు విశ్వంలోని అత్యంత ప్రాచీన నక్షత్రమండలాలను చూపిస్తాయి.",
+      "xr": "Teliskopulu vishvamloni atyanta praacheena nakshatramandalaalanu choopistaayi."
+    },
+    "c252": {
+      "t": "గ్రహం",
+      "r": "Graham",
+      "x": "ఏ గ్రహంలోనైనా జీవం ఉండటానికి నీరు అత్యవసరం.",
+      "xr": "E grahamlonainaa jeevam undataaniki neeru atyavasaram."
+    },
+    "c253": {
+      "t": "గురుత్వాకర్షణ",
+      "r": "Gurutvaakarshana",
+      "x": "గురుత్వాకర్షణ చంద్రుడిని భూమి చుట్టూ కక్ష్యలో ఉంచుతుంది.",
+      "xr": "Gurutvaakarshana chandrudini bhoomi chuttoo kakshyalo unchutundi."
+    },
+    "c254": {
+      "t": "పరిణామం",
+      "r": "Parinaamam",
+      "x": "పరిణామం లక్షలాది సంవత్సరాలలో జీవులను తీర్చిదిద్దుతుంది.",
+      "xr": "Parinaamam lakshalaadi samvatsaraalalo jeevulanu teerchididdutundi."
+    },
+    "c255": {
+      "t": "జిజ్ఞాస",
+      "r": "Jijnaasa",
+      "x": "వైజ్ఞానిక జిజ్ఞాస మానవాళిని ముందుకు నడిపిస్తుంది.",
+      "xr": "Vaijnaanika jijnaasa maanavaalini munduku nadipistundi."
+    },
+    "c256": {
+      "t": "పర్యావరణం",
+      "r": "Paryaavaranam",
+      "x": "పర్యావరణాన్ని కాపాడటం అంటే భావి తరాలను కాపాడటమే.",
+      "xr": "Paryaavaranaanni kaapaadatam ante bhaavi taraalanu kaapaadatame."
+    },
+    "c257": {
+      "t": "వాతావరణం",
+      "r": "Vaataavaranam",
+      "x": "మారుతున్న వాతావరణ పోకడలు ప్రపంచ పంటలను ప్రభావితం చేస్తున్నాయి.",
+      "xr": "Maarutunna vaataavarana pokadalu prapancha pantalanu prabhaavitam chestunnaayi."
+    },
+    "c258": {
+      "t": "పర్యావరణ వ్యవస్థ",
+      "r": "Paryaavarana vyavastha",
+      "x": "చిత్తడి నేలలు తీర ప్రాంత పర్యావరణ వ్యవస్థకు ప్రాణాధారం.",
+      "xr": "Chittadi nelalu teera praanta paryaavarana vyavasthaku praanaadhaaram."
+    },
+    "c259": {
+      "t": "జీవవైవిధ్యం",
+      "r": "Jeevavaividhyam",
+      "x": "వర్షారణ్యాలు అసాధారణ జీవవైవిధ్యానికి ఆశ్రయం ఇస్తాయి.",
+      "xr": "Varshaaranyaalu asaadhaarana jeevavaividhyaaniki aashrayam istaayi."
+    },
+    "c260": {
+      "t": "కాలుష్యం",
+      "r": "Kaalushyam",
+      "x": "విద్యుత్ రవాణా నగరాల్లో వాయు కాలుష్యాన్ని గణనీయంగా తగ్గిస్తుంది.",
+      "xr": "Vidyut ravaanaa nagaraallo vaayu kaalushyaanni gananeeyamgaa taggistundi."
+    },
+    "c261": {
+      "t": "పునరుత్పాదక",
+      "r": "Punarutpaadaka",
+      "x": "పవన మరియు సౌరశక్తి పుష్కలంగా లభించే పునరుత్పాదక వనరులు.",
+      "xr": "Pavana mariyu saurashakti pushkalamgaa labhinche punarutpaadaka vanarulu."
+    },
+    "c262": {
+      "t": "సుస్థిరత",
+      "r": "Susthirata",
+      "x": "నిజమైన సుస్థిరత ప్రకృతి మరియు శ్రేయస్సు మధ్య సమతుల్యతను సాధిస్తుంది.",
+      "xr": "Nijamaina susthirata prakruti mariyu shreyassu madhya samatulyatanu saadhistundi."
+    },
+    "c263": {
+      "t": "సంరక్షణ",
+      "r": "Samrakshana",
+      "x": "సమాజం నాయకత్వం వహించిన సంరక్షణ అడవికి పునర్జీవం పోసింది.",
+      "xr": "Samaajam naayakatvam vahinchina samrakshana adaviki punarjeevam posindi."
+    },
+    "c264": {
+      "t": "పునర్వినియోగం",
+      "r": "Punarviniyogam",
+      "x": "నగరాలు పునర్వినియోగం చేయడానికి గాజు, కాగితం, లోహాలను వేరు చేయండి.",
+      "xr": "Nagaraalu punarviniyogam cheyadaaniki gaaju, kaagitam, lohaalanu veru cheyandi."
+    },
+    "c265": {
+      "t": "వనరు",
+      "r": "Vanaru",
+      "x": "మంచినీరు అత్యంత విలువైన ఉమ్మడి వనరు.",
+      "xr": "Manchineeru atyanta viluvaina ummadi vanaru."
+    },
+    "c266": {
+      "t": "అడవి",
+      "r": "Adavi",
+      "x": "స్థానిక అడవులను పునరుద్ధరించడం వల్ల చుట్టుపక్కల పట్టణాలు చల్లబడతాయి.",
+      "xr": "Sthaanika adavulanu punaruddharinchadam valla chuttupakkala pattanaalu challabadataayi."
+    },
+    "c267": {
+      "t": "మహాసముద్రం",
+      "r": "Mahaasamudram",
+      "x": "ఆరోగ్యకరమైన మహాసముద్రాలు భారీ మొత్తంలో కర్బనాన్ని గ్రహిస్తాయి.",
+      "xr": "Aarogyakaramaina mahaasamudraalu bhaaree mottamlo karbanaanni grahistaayi."
+    },
+    "c268": {
+      "t": "కరువు",
+      "r": "Karuvu",
+      "x": "ఆధునిక నీటిపారుదల రైతులు కరువును తట్టుకోవడానికి సహాయపడుతుంది.",
+      "xr": "Aadhunika neetipaarudala raitulu karuvunu tattukovadaaniki sahaayapadutundi."
+    },
+    "c269": {
+      "t": "సామరస్యం",
+      "r": "Saamarasyam",
+      "x": "మానవ ప్రగతి ప్రకృతితో సామరస్యంగా కొనసాగాలి.",
+      "xr": "Maanava pragati prakrutito saamarasyamgaa konasaagaali."
+    },
+    "c270": {
+      "t": "భవిష్యత్తు",
+      "r": "Bhavishyattu",
+      "x": "ఈరోజు మనం చేసే ఎంపికలే రేపటి భవిష్యత్తును రూపొందిస్తాయి.",
+      "xr": "Eeroju manam chese empikale repati bhavishyattunu roopondistaayi."
+    },
+    "c271": {
+      "t": "న్యాయం",
+      "r": "Nyaayam",
+      "x": "చట్టం ముందు సమాన న్యాయం సమాజాన్ని బలోపేతం చేస్తుంది.",
+      "xr": "Chattam mundu samaana nyaayam samaajaanni balopetam chestundi."
+    },
+    "c272": {
+      "t": "స్వేచ్ఛ",
+      "r": "Svechcha",
+      "x": "భావ ప్రకటన స్వేచ్ఛకు పరస్పర బాధ్యత అవసరం.",
+      "xr": "Bhaava prakatana svechchaku paraspara baadhyata avasaram."
+    },
+    "c273": {
+      "t": "సమానత్వం",
+      "r": "Samaanatvam",
+      "x": "విద్య సామాజిక మరియు ఆర్థిక సమానత్వాన్ని ప్రోత్సహిస్తుంది.",
+      "xr": "Vidya saamaajika mariyu aarthika samaanatvaanni protsahistundi."
+    },
+    "c274": {
+      "t": "రాజ్యాంగం",
+      "r": "Raajyaangam",
+      "x": "రాజ్యాంగం ప్రాథమిక మానవ హక్కులను కాపాడుతుంది.",
+      "xr": "Raajyaangam praathamika maanava hakkulanu kaapaadutundi."
+    },
+    "c275": {
+      "t": "పౌరుడు",
+      "r": "Paurudu",
+      "x": "చైతన్యవంతమైన ప్రతి పౌరుడూ పౌర జీవితానికి తోడ్పడతాడు.",
+      "xr": "Chaitanyavantamaina prati paurudoo paura jeevitaaniki todpadataadu."
+    },
+    "c276": {
+      "t": "ప్రజాస్వామ్యం",
+      "r": "Prajaasvaamyam",
+      "x": "ఆరోగ్యకరమైన ప్రజాస్వామ్యం అవగాహన గల ఓటర్లపై ఆధారపడి ఉంటుంది.",
+      "xr": "Aarogyakaramaina prajaasvaamyam avagaahana gala otarlapai aadhaarapadi untundi."
+    },
+    "c277": {
+      "t": "ప్రభుత్వం",
+      "r": "Prabhutvam",
+      "x": "స్థానిక ప్రభుత్వం రహదారులు, పార్కులు మరియు పాఠశాలలను నిర్వహిస్తుంది.",
+      "xr": "Sthaanika prabhutvam rahadaarulu, paarkulu mariyu paathashaalalanu nirvahistundi."
+    },
+    "c278": {
+      "t": "విధానం",
+      "r": "Vidhaanam",
+      "x": "ప్రజారోగ్య విధానం లక్షలాది ప్రాణాలను కాపాడింది.",
+      "xr": "Prajaarogya vidhaanam lakshalaadi praanaalanu kaapaadindi."
+    },
+    "c279": {
+      "t": "చట్టం",
+      "r": "Chattam",
+      "x": "పారదర్శకమైన చట్టాలు సమాజాలలో విశ్వాసాన్ని పెంపొందిస్తాయి.",
+      "xr": "Paaradarshakamaina chattaalu samaajaalalo vishvaasaanni pempondistaayi."
+    },
+    "c280": {
+      "t": "పారదర్శకత",
+      "r": "Paaradarshakata",
+      "x": "ఆర్థిక పారదర్శకత అవినీతిని అరికడుతుంది.",
+      "xr": "Aarthika paaradarshakata avineetini arikadutundi."
+    },
+    "c281": {
+      "t": "సమాజం",
+      "r": "Samaajam",
+      "x": "బలమైన సమాజాలు బలహీనులకు అండగా నిలుస్తాయి.",
+      "xr": "Balamaina samaajaalu balaheenulaku andagaa nilustaayi."
+    },
+    "c282": {
+      "t": "శాంతి",
+      "r": "Shaanti",
+      "x": "శాశ్వత శాంతికి సంభాషణ మరియు సహానుభూతి అవసరం.",
+      "xr": "Shaashvata shaantiki sambhaashana mariyu sahaanubhooti avasaram."
+    },
+    "c283": {
+      "t": "విద్య",
+      "r": "Vidya",
+      "x": "సార్వత్రిక విద్య సమస్త దేశాలను ఉన్నత శిఖరాలకు చేరుస్తుంది.",
+      "xr": "Saarvatrika vidya samasta deshaalanu unnata shikharaalaku cherustundi."
+    },
+    "c284": {
+      "t": "స్వచ్ఛంద సేవకుడు",
+      "r": "Svachchanda sevakudu",
+      "x": "వరదల తర్వాత పునర్నిర్మాణానికి వందలాది స్వచ్ఛంద సేవకులు సహాయం చేశారు.",
+      "xr": "Varadala tarvaata punarnirmaanaaniki vandalaadi svachchanda sevakulu sahaayam chesaaru."
+    },
+    "c285": {
+      "t": "సంఘీభావం",
+      "r": "Sangheebhaavam",
+      "x": "ప్రపంచ సంఘీభావం సంక్షోభాలను వేగంగా అధిగమిస్తుంది.",
+      "xr": "Prapancha sangheebhaavam samkshobhaalanu vegamgaa adhigamistundi."
+    },
+    "c286": {
+      "t": "వాదన",
+      "r": "Vaadana",
+      "x": "ప్రతి వాదనను నిర్ధారించదగిన వాస్తవాలతో సమర్థించండి.",
+      "xr": "Prati vaadananu nirdhaarinchadagina vaastavaalato samarthinchandi."
+    },
+    "c287": {
+      "t": "దృక్పథం",
+      "r": "Drukpatham",
+      "x": "మరొక దృక్పథాన్ని చూడటం అవగాహనను మరింత లోతుగా చేస్తుంది.",
+      "xr": "Maroka drukpathaanni choodatam avagaahananu marinta lotugaa chestundi."
+    },
+    "c288": {
+      "t": "విశ్లేషణ",
+      "r": "Vishleshana",
+      "x": "ఆమె ఆర్థిక విశ్లేషణ మూడు దాగి ఉన్న ప్రమాదాలను వెలుగులోకి తెచ్చింది.",
+      "xr": "Aame aarthika vishleshana moodu daagi unna pramaadaalanu veluguloki techchindi."
+    },
+    "c289": {
+      "t": "అంచనా",
+      "r": "Anchanaa",
+      "x": "మీ అంతర్లీన అంచనాలను ఎల్లప్పుడూ ప్రశ్నించండి.",
+      "xr": "Mee antarleena anchanaalanu ellappudoo prashninchandi."
+    },
+    "c290": {
+      "t": "ముగింపు",
+      "r": "Mugimpu",
+      "x": "నిర్ధారణకు వచ్చే ముందు అన్ని వాస్తవాల కోసం వేచి ఉండండి.",
+      "xr": "Nirdhaaranaku vachche mundu anni vaastavaala kosam vechi undandi."
+    },
+    "c291": {
+      "t": "నిష్పక్షపాత",
+      "r": "Nishpakshapaata",
+      "x": "నిజాయితీ గల పాత్రికేయుడు నిష్పక్షపాతంగా ఉండటానికి కృషి చేస్తాడు.",
+      "xr": "Nijaayitee gala paatrikeyudu nishpakshapaatamgaa undataaniki krushi chestaadu."
+    },
+    "c292": {
+      "t": "పక్షపాతం",
+      "r": "Pakshapaatam",
+      "x": "మన స్వంత పక్షపాతాన్ని గుర్తించడం మెరుగైన తీర్పుకు దారితీస్తుంది.",
+      "xr": "Mana svanta pakshapaataanni gurtinchadam merugaina teerpuku daariteestundi."
+    },
+    "c293": {
+      "t": "ప్రమాణం",
+      "r": "Pramaanam",
+      "x": "విశ్వసనీయత మా ప్రాథమిక మూల్యాంకన ప్రమాణం.",
+      "xr": "Vishvasaneeyata maa praathamika moolyaankana pramaanam."
+    },
+    "c294": {
+      "t": "వైరుధ్యం",
+      "r": "Vairudhyam",
+      "x": "సాక్షి కాలక్రమంలో ఒక వైరుధ్యాన్ని గమనించారు.",
+      "xr": "Saakshi kaalakramamlo oka vairudhyaanni gamaninchaaru."
+    },
+    "c295": {
+      "t": "ఏకాభిప్రాయం",
+      "r": "Ekaabhipraayam",
+      "x": "సుదీర్ఘ చర్చ తర్వాత ప్యానెల్ ఏకాభిప్రాయానికి వచ్చింది.",
+      "xr": "Sudeergha charcha tarvaata pyaanel ekaabhipraayaaniki vachchindi."
+    },
+    "c296": {
+      "t": "స్పష్టం చేయడం",
+      "r": "Spashtam cheyadam",
+      "x": "ఆ మాట ద్వారా మీరు ఏమి ఉద్దేశించారో స్పష్టం చేయగలరా?",
+      "xr": "Aa maata dvaaraa meeru emi uddeshinchaaro spashtam cheyagalaraa?"
+    },
+    "c297": {
+      "t": "నొక్కి చెప్పడం",
+      "r": "Nokki cheppadam",
+      "x": "అందుబాటు యొక్క ప్రాముఖ్యతను నేను నొక్కి చెప్పదలిచాను.",
+      "xr": "Andubaatu yokka praamukhyatanu nenu nokki cheppadalichaanu."
+    },
+    "c298": {
+      "t": "అయినప్పటికీ",
+      "r": "Ayinappatikee",
+      "x": "దారి నిటారుగా ఉంది; అయినప్పటికీ, మేము శిఖరాన్ని చేరుకున్నాము.",
+      "xr": "Daari nitaarugaa undi; ayinappatikee, memu shikharaanni cherukunnaamu."
+    },
+    "c299": {
+      "t": "పర్యవసానం",
+      "r": "Paryavasaanam",
+      "x": "నిర్ణయం తీసుకునే ముందు ప్రతి దీర్ఘకాలిక పర్యవసానాన్ని పరిశీలించండి.",
+      "xr": "Nirnayam teesukune mundu prati deerghakaalika paryavasaanaanni parisheelinchandi."
+    },
+    "c300": {
+      "t": "అంతర్దృష్టి",
+      "r": "Antardrushti",
+      "x": "ఆమె వ్యాఖ్య అద్భుతమైన అంతర్దృష్టిని అందించింది.",
+      "xr": "Aame vyaakhya adbhutamaina antardrushtini andinchindi."
+    },
+    "c301": {
+      "t": "రూపకం",
+      "r": "Roopakam",
+      "x": "నది గడిచిపోయే కాలానికి ఒక రూపకంగా నిలుస్తుంది.",
+      "xr": "Nadi gadichipoye kaalaaniki oka roopakamgaa nilustundi."
+    },
+    "c302": {
+      "t": "ప్రతీకాత్మకత",
+      "r": "Prateekaatmakata",
+      "x": "ఈ నవల పొరలు పొరలుగా ఉండే ప్రతీకాత్మకతతో సమృద్ధంగా ఉంది.",
+      "xr": "Ee navala poralu poralugaa unde prateekaatmakatato samruddhamgaa undi."
+    },
+    "c303": {
+      "t": "కథనం",
+      "r": "Kathanam",
+      "x": "రచయిత పరస్పరం ముడిపడి ఉన్న మూడు కథనాలను అల్లారు.",
+      "xr": "Rachayita parasparam mudipadi unna moodu kathanaalanu allaaru."
+    },
+    "c304": {
+      "t": "కళాఖండం",
+      "r": "Kalaakhandam",
+      "x": "ఆ సంగీత రచనను కాలాతీత కళాఖండంగా కీర్తిస్తారు.",
+      "xr": "Aa sangeeta rachananu kaalaateeta kalaakhandamgaa keertistaaru."
+    },
+    "c305": {
+      "t": "సౌందర్య దృష్టి",
+      "r": "Saundarya drushti",
+      "x": "సరళమైన రూపకల్పన ప్రశాంత సౌందర్య దృష్టిని ప్రోత్సహిస్తుంది.",
+      "xr": "Saralamaina roopakalpana prashaanta saundarya drushtini protsahistundi."
+    },
+    "c306": {
+      "t": "సూక్ష్మత",
+      "r": "Sookshmata",
+      "x": "సున్నితమైన సాంస్కృతిక సూక్ష్మతలను గ్రహించడంలోనే నిజమైన ప్రావీణ్యం ఉంది.",
+      "xr": "Sunnitamaina saamskrutika sookshmatalanu grahinchadamlone nijamaina praaveenyam undi."
+    },
+    "c307": {
+      "t": "ద్వంద్వార్థం",
+      "r": "Dvandvaartham",
+      "x": "ఆ కవిత ఉద్దేశపూర్వక, హృదయాన్ని తాకే ద్వంద్వార్థంతో ముగుస్తుంది.",
+      "xr": "Aa kavita uddeshapoorvaka, hrudayaanni taake dvandvaarthamto mugustundi."
+    },
+    "c308": {
+      "t": "వ్యంగ్యం",
+      "r": "Vyangyam",
+      "x": "నాటక రచయిత అహంకారాన్ని విమర్శించడానికి పదునైన వ్యంగ్యాన్ని వాడారు.",
+      "xr": "Naataka rachayita ahamkaaraanni vimarshinchadaaniki padunaina vyangyaanni vaadaaru."
+    },
+    "c309": {
+      "t": "వాక్చాతుర్యం",
+      "r": "Vaakchaaturyam",
+      "x": "ఆమె అద్భుతమైన హుందాతనం మరియు వాక్చాతుర్యంతో ప్రసంగించింది.",
+      "xr": "Aame adbhutamaina hundaatanam mariyu vaakchaaturyamto prasanginchindi."
+    },
+    "c310": {
+      "t": "బౌద్ధిక వారసత్వం",
+      "r": "Bauddhika vaarasatvam",
+      "x": "గొప్ప సాహిత్యం శాశ్వత బౌద్ధిక వారసత్వాన్ని అందిస్తుంది.",
+      "xr": "Goppa saahityam shaashvata bauddhika vaarasatvaanni andistundi."
+    },
+    "c311": {
+      "t": "మధుర స్మృతి",
+      "r": "Madhura smruti",
+      "x": "వేడి నేలపై పడిన తొలకరి వాన సువాసన లోతైన మధుర స్మృతులను మేల్కొల్పింది.",
+      "xr": "Vedi nelapai padina tolakari vaana suvaasana lotaina madhura smrutulanu melkolpindi."
+    },
+    "c312": {
+      "t": "ప్రతిధ్వని",
+      "r": "Pratidhvani",
+      "x": "ఆ రాగం గాఢమైన భావోద్వేగ ప్రతిధ్వనిని కలిగించింది.",
+      "xr": "Aa raagam gaadhamaina bhaavodvega pratidhvanini kaliginchindi."
+    },
+    "c313": {
+      "t": "ఉదాత్తమైన",
+      "r": "Udaattamaina",
+      "x": "ధ్రువకాంతుల క్రింద నిలబడటం అత్యంత ఉదాత్తంగా అనిపించింది.",
+      "xr": "Dhruvakaantula krinda nilabadatam atyanta udaattamgaa anipinchindi."
+    },
+    "c314": {
+      "t": "అధిగమించడం",
+      "r": "Adhigaminchadam",
+      "x": "కరుణ భాషను మరియు చరిత్రను అధిగమించగలదు.",
+      "xr": "Karuna bhaashanu mariyu charitranu adhigaminchagaladu."
+    },
+    "c315": {
+      "t": "సహజత్వం",
+      "r": "Sahajatvam",
+      "x": "పాఠకులు నిజమైన సహజత్వాన్ని తక్షణమే గుర్తిస్తారు.",
+      "xr": "Paathakulu nijamaina sahajatvaanni takshaname gurtistaaru."
+    },
+    "c316": {
+      "t": "అంతరాత్మ",
+      "r": "Antaraatma",
+      "x": "నిజాయితీ గల అంతరాత్మకు అనుగుణంగా ప్రవర్తించండి.",
+      "xr": "Nijaayitee gala antaraatmaku anugunamgaa pravartinchandi."
+    },
+    "c317": {
+      "t": "నిబద్ధత",
+      "r": "Nibaddhata",
+      "x": "ఎవరూ చూడనప్పుడు కూడా సరైనది చేయడమే నైతిక నిబద్ధత.",
+      "xr": "Evaroo choodanappudu koodaa sarainadi cheyadame naitika nibaddhata."
+    },
+    "c318": {
+      "t": "సహానుభూతి",
+      "r": "Sahaanubhooti",
+      "x": "సహానుభూతి అత్యంత లోతైన విభేదాలకు సైతం వారధి నిర్మిస్తుంది.",
+      "xr": "Sahaanubhooti atyanta lotaina vibhedaalaku saitam vaaradhi nirmistundi."
+    },
+    "c319": {
+      "t": "ధర్మసందేహం",
+      "r": "Dharmasandeham",
+      "x": "కమిటీ క్లిష్టమైన నైతిక ధర్మసందేహాన్ని ఎదుర్కొంది.",
+      "xr": "Kamitee klishtamaina naitika dharmasandehaanni edurkondi."
+    },
+    "c320": {
+      "t": "వివేకం",
+      "r": "Vivekam",
+      "x": "జ్ఞానం మాట్లాడుతుంది, కానీ వివేకం ఆలకిస్తుంది.",
+      "xr": "Jnaanam maatlaadutundi, kaanee vivekam aalakistundi."
+    },
+    "c321": {
+      "t": "చైతన్యం",
+      "r": "Chaitanyam",
+      "x": "తత్వవేత్తలు ఇప్పటికీ చైతన్య స్వభావంపై చర్చిస్తున్నారు.",
+      "xr": "Tatvavettalu ippatikee chaitanya svabhaavampai charchistunnaaru."
+    },
+    "c322": {
+      "t": "అవగాహన",
+      "r": "Avagaahana",
+      "x": "భాష కాలం పట్ల మన అవగాహనను సూక్ష్మంగా రూపొందిస్తుంది.",
+      "xr": "Bhaasha kaalam patla mana avagaahananu sookshmamgaa roopondistundi."
+    },
+    "c323": {
+      "t": "మనోస్థైర్యం",
+      "r": "Manosthairyam",
+      "x": "ప్రతికూలతలను అధిగమించడం ద్వారా అంతర్గత మనోస్థైర్యం పెరుగుతుంది.",
+      "xr": "Pratikoolatalanu adhigaminchadam dvaaraa antargata manosthairyam perugutundi."
+    },
+    "c324": {
+      "t": "ఆత్మావలోకనం",
+      "r": "Aatmaavalokanam",
+      "x": "గందరగోళ సమయంలో ప్రశాంత ఆత్మావలోకనం స్పష్టతను ఇస్తుంది.",
+      "xr": "Gandaragola samayamlo prashaanta aatmaavalokanam spashtatanu istundi."
+    },
+    "c325": {
+      "t": "విరోధాభాసం",
+      "r": "Virodhaabhaasam",
+      "x": "ఎంపికల విరోధాభాసం ఎక్కువ అవకాశాలు గందరగోళాన్ని కలిగిస్తాయని చూపిస్తుంది.",
+      "xr": "Empikala virodhaabhaasam ekkuva avakaashaalu gandaragolaanni kaligistaayani choopistundi."
+    },
+    "c326": {
+      "t": "అనిత్యత",
+      "r": "Anityata",
+      "x": "అనిత్యతను అంగీకరించడం నేటి రోజును ఆస్వాదించడాన్ని నేర్పుతుంది.",
+      "xr": "Anityatanu angeekarinchadam neti rojunu aasvaadinchadaanni nerputundi."
+    },
+    "c327": {
+      "t": "స్థితప్రజ్ఞత",
+      "r": "Sthitaprajnata",
+      "x": "ఆమె విజయాన్ని మరియు పరాజయాన్ని స్థితప్రజ్ఞతతో స్వీకరించింది.",
+      "xr": "Aame vijayaanni mariyu paraajayaanni sthitaprajnatato sveekarinchindi."
+    },
+    "c328": {
+      "t": "లక్ష్యం",
+      "r": "Lakshyam",
+      "x": "ఉమ్మడి లక్ష్యం దైనందిన శ్రమను ఆనందంగా మారుస్తుంది.",
+      "xr": "Ummadi lakshyam dainandina shramanu aanandamgaa maarustundi."
+    },
+    "c329": {
+      "t": "స్వయంప్రతిపత్తి",
+      "r": "Svayampratipatti",
+      "x": "బౌద్ధిక స్వయంప్రతిపత్తి స్వతంత్ర ఆలోచనతో ప్రారంభమవుతుంది.",
+      "xr": "Bauddhika svayampratipatti svatantra aalochanato praarambhamavutundi."
+    },
+    "c330": {
+      "t": "వినయం",
+      "r": "Vinayam",
+      "x": "నిజమైన పాండిత్యం ఎల్లప్పుడూ వినయంతో కూడి ఉంటుంది.",
+      "xr": "Nijamaina paandityam ellappudoo vinayamto koodi untundi."
+    },
+    "c331": {
+      "t": "మాటలకన్నా చేతలు మిన్న",
+      "r": "Maatalakannaa chetalu minna",
+      "x": "మీ మాట నిలబెట్టుకోండి—మాటలకన్నా చేతలు మిన్న.",
+      "xr": "Mee maata nilabettukondi—maatalakannaa chetalu minna."
+    },
+    "c332": {
+      "t": "సాధనమున పనులు సమకూరు",
+      "r": "Saadhanamuna panulu samakooru",
+      "x": "తప్పులకు భయపడకండి; సాధనమున పనులు సమకూరు.",
+      "xr": "Tappulaku bhayapadakandi; saadhanamuna panulu samakooru."
+    },
+    "c333": {
+      "t": "చీకటి వెనుక వెలుగు ఉంటుంది",
+      "r": "Cheekati venuka velugu untundi",
+      "x": "ఆశతో ఉండండి—చీకటి వెనుక వెలుగు ఉంటుంది.",
+      "xr": "Aashato undandi—cheekati venuka velugu untundi."
+    },
+    "c334": {
+      "t": "కాలం అన్ని గాయాలను మాన్పుతుంది",
+      "r": "Kaalam anni gaayaalanu maanputundi",
+      "x": "మిమ్మల్ని మీరు ఓదార్చుకోండి; కాలం అన్ని గాయాలను మాన్పుతుంది.",
+      "xr": "Mimmalni meeru odaarchukondi; kaalam anni gaayaalanu maanputundi."
+    },
+    "c335": {
+      "t": "ఐకమత్యమే మహాబలం",
+      "r": "Aikamatyame mahaabalam",
+      "x": "కలిసి పనిచేయడం ఐకమత్యమే మహాబలం అని నిరూపిస్తుంది.",
+      "xr": "Kalisi panicheyadam aikamatyame mahaabalam ani niroopistundi."
+    },
+    "c336": {
+      "t": "సంకోచాన్ని పోగొట్టడం",
+      "r": "Sankochaanni pogottadam",
+      "x": "విందులో ఒక సరదా చలోక్తి అందరి సంకోచాన్ని పోగొట్టడానికి తోడ్పడింది.",
+      "xr": "Vindulo oka saradaa chalokti andari sankochaanni pogottadaaniki todpadindi."
+    },
+    "c337": {
+      "t": "మంచినీళ్ళ ప్రాయం",
+      "r": "Manchineella praayam",
+      "x": "వారాల తరబడి సాధన తర్వాత, ఆ పరీక్ష మంచినీళ్ళ ప్రాయం అయింది.",
+      "xr": "Vaaraala tarabadi saadhana tarvaata, aa pareeksha manchineella praayam ayindi."
+    },
+    "c338": {
+      "t": "అమావాస్యకో పున్నమికో ఒకసారి",
+      "r": "Amaavaasyako punnamiko okasaari",
+      "x": "ఈ లోయలో అమావాస్యకో పున్నమికో ఒకసారి మంచు కనిపిస్తుంది.",
+      "xr": "Ee loyalo amaavaasyako punnamiko okasaari manchu kanipistundi."
+    },
+    "c339": {
+      "t": "సరిగ్గా మర్మాన్ని తాకడం",
+      "r": "Sariggaa marmaanni taakadam",
+      "x": "మీ రోగనిర్ధారణ సరిగ్గా మర్మాన్ని తాకింది.",
+      "xr": "Mee roganirdhaarana sariggaa marmaanni taakindi."
+    },
+    "c340": {
+      "t": "రేయింబవళ్ళు కష్టపడటం",
+      "r": "Reyimbavallu kashtapadatam",
+      "x": "సమయానికి అందించడానికి బృందం రేయింబవళ్ళు కష్టపడింది.",
+      "xr": "Samayaaniki andinchadaaniki brundam reyimbavallu kashtapadindi."
+    },
+    "c341": {
+      "t": "అంతరార్థాన్ని గ్రహించడం",
+      "r": "Antaraarthaanni grahinchadam",
+      "x": "దౌత్యంలో మీరు మాటల వెనుక ఉన్న అంతరార్థాన్ని గ్రహించాలి.",
+      "xr": "Dautyamlo meeru maatala venuka unna antaraarthaanni grahinchaali."
+    },
+    "c342": {
+      "t": "కొత్త అధ్యాయం ప్రారంభించడం",
+      "r": "Kotta adhyaayam praarambhinchadam",
+      "x": "ఈ వసంతంలో ఆమె జీవితంలో కొత్త అధ్యాయం ప్రారంభించాలని నిర్ణయించుకుంది.",
+      "xr": "Ee vasantamlo aame jeevitamlo kotta adhyaayam praarambhinchaalani nirnayinchukundi."
+    },
+    "c343": {
+      "t": "కష్టంలో దాగిన వరం",
+      "r": "Kashtamlo daagina varam",
+      "x": "ఆ ఉద్యోగం కోల్పోవడం చివరకు కష్టంలో దాగిన వరంగా మారింది.",
+      "xr": "Aa udyogam kolpovadam chivaraku kashtamlo daagina varamgaa maarindi."
+    },
+    "c344": {
+      "t": "అంచనాలకు మించి కృషి చేయడం",
+      "r": "Anchanaalaku minchi krushi cheyadam",
+      "x": "గొప్ప ఉపాధ్యాయులు ఎల్లప్పుడూ అంచనాలకు మించి కృషి చేస్తారు.",
+      "xr": "Goppa upaadhyaayulu ellappudoo anchanaalaku minchi krushi chestaaru."
+    },
+    "c345": {
+      "t": "సమగ్ర దృక్పథంతో చూడటం",
+      "r": "Samagra drukpathamto choodatam",
+      "x": "సమగ్ర దృక్పథంతో చూడటానికి చిన్న వివరాల నుండి కాస్త వెనక్కి రండి.",
+      "xr": "Samagra drukpathamto choodataaniki chinna vivaraala nundi kaasta venakki randi."
+    },
+    "c346": {
+      "t": "సార్వభౌమత్వం",
+      "r": "Saarvabhaumatvam",
+      "x": "అంతర్జాతీయ చట్టం సార్వభౌమత్వం పట్ల పరస్పర గౌరవాన్ని ధృవీకరిస్తుంది.",
+      "xr": "Antarjaateeya chattam saarvabhaumatvam patla paraspara gauravaanni dhruveekaristundi."
+    },
+    "c347": {
+      "t": "దౌత్యం",
+      "r": "Dautyam",
+      "x": "ఓర్పుతో కూడిన దౌత్యం ఉద్రిక్తత పెరగకుండా అడ్డుకుంది.",
+      "xr": "Orputo koodina dautyam udriktata peragakundaa addukundi."
+    },
+    "c348": {
+      "t": "ఒడంబడిక",
+      "r": "Odambadika",
+      "x": "నలభై దేశాలు పర్యావరణ ఒడంబడికను ఆమోదించాయి.",
+      "xr": "Nalabhai deshaalu paryaavarana odambadikanu aamodinchaayi."
+    },
+    "c349": {
+      "t": "బహుపాక్షిక",
+      "r": "Bahupaakshika",
+      "x": "బహుపాక్షిక సహకారం ఉమ్మడి ప్రపంచ ప్రమాదాలను పరిష్కరిస్తుంది.",
+      "xr": "Bahupaakshika sahakaaram ummadi prapancha pramaadaalanu parishkaristundi."
+    },
+    "c350": {
+      "t": "న్యాయపరిధి",
+      "r": "Nyaayaparidhi",
+      "x": "ఆ ట్రిబ్యునల్‌కు సముద్ర వివాదాలపై న్యాయపరిధి ఉంది.",
+      "xr": "Aa tribyunalku samudra vivaadaalapai nyaayaparidhi undi."
+    },
+    "c351": {
+      "t": "పరికల్పన",
+      "r": "Parikalpana",
+      "x": "ఈ పరిశోధనా పత్రం ఒక నూతన భాషా పరికల్పనను పరీక్షిస్తుంది.",
+      "xr": "Ee parishodhanaa patram oka nootana bhaashaa parikalpananu pareekshistundi."
+    },
+    "c352": {
+      "t": "విధానశాస్త్రం",
+      "r": "Vidhaanashaastram",
+      "x": "పారదర్శక విధానశాస్త్రం స్వతంత్ర పునరుత్పత్తికి వీలు కల్పిస్తుంది.",
+      "xr": "Paaradarshaka vidhaanashaastram svatantra punarutpattiki veelu kalpistundi."
+    },
+    "c353": {
+      "t": "సంశ్లేషణ",
+      "r": "Samshleshana",
+      "x": "ఆమె ఉపన్యాసం రెండు రంగాల అద్భుత సంశ్లేషణను అందించింది.",
+      "xr": "Aame upanyaasam rendu rangaala adbhuta samshleshananu andinchindi."
+    },
+    "c354": {
+      "t": "పూర్వనిదర్శనం",
+      "r": "Poorvanidarshanam",
+      "x": "ఆ తీర్పు ఒక ముఖ్యమైన న్యాయ పూర్వనిదర్శనాన్ని నెలకొల్పింది.",
+      "xr": "Aa teerpu oka mukhyamaina nyaaya poorvanidarshanaanni nelakolpindi."
+    },
+    "c355": {
+      "t": "అమలు",
+      "r": "Amalu",
+      "x": "జాగ్రత్తగా అమలు చేయడమే ఒక సంస్కరణ విజయాన్ని నిర్ణయిస్తుంది.",
+      "xr": "Jaagrattagaa amalu cheyadame oka samskarana vijayaanni nirnayistundi."
+    },
+    "c356": {
+      "t": "ఉన్నప్పటికీ",
+      "r": "Unnappatikee",
+      "x": "ప్రారంభ ఆలస్యాలు ఉన్నప్పటికీ, వంతెన సురక్షితంగా ప్రారంభించబడింది.",
+      "xr": "Praarambha aalasyaalu unnappatikee, vantena surakshitamgaa praarambhinchabadindi."
+    },
+    "c357": {
+      "t": "ఫలితంగా",
+      "r": "Phalitamgaa",
+      "x": "నిధులు పెరిగాయి; ఫలితంగా, గ్రామీణ వైద్యశాలలు విస్తరించాయి.",
+      "xr": "Nidhulu perigaayi; phalitamgaa, graameena vaidyashaalalu vistarinchaayi."
+    },
+    "c358": {
+      "t": "అంతేకాకుండా",
+      "r": "Antekaakundaa",
+      "x": "అంతేకాకుండా, బహిరంగ డేటా స్వతంత్ర పరిశోధకులకు ప్రయోజనం చేకూరుస్తుంది.",
+      "xr": "Antekaakundaa, bahiranga detaa svatantra parishodhakulaku prayojanam chekoorustundi."
+    },
+    "c359": {
+      "t": "నేపథ్యంలో",
+      "r": "Nepathyamlo",
+      "x": "కొత్త ఆధారాల నేపథ్యంలో, మేము మార్గదర్శకాలను సవరించాము.",
+      "xr": "Kotta aadhaaraala nepathyamlo, memu maargadarshakaalanu savarinchaamu."
+    },
+    "c360": {
+      "t": "పూర్ణ గౌరవంతో",
+      "r": "Poorna gauravamto",
+      "x": "పూర్ణ గౌరవంతో, నేను ప్రత్యామ్నాయ విధానాన్ని ప్రతిపాదిస్తున్నాను.",
+      "xr": "Poorna gauravamto, nenu pratyaamnaaya vidhaanaanni pratipaadistunnaanu."
+    },
+    "c361": {
+      "t": "స్పష్టంగా వ్యక్తీకరించడం",
+      "r": "Spashtamgaa vyakteekarinchadam",
+      "x": "ఆమె సంక్లిష్టమైన ఆలోచనలను సునాయాసంగా స్పష్టంగా వ్యక్తీకరించగలదు.",
+      "xr": "Aame samklishtamaina aalochanalanu sunaayaasamgaa spashtamgaa vyakteekarinchagaladu."
+    },
+    "c362": {
+      "t": "సంక్షిప్త",
+      "r": "Samkshipta",
+      "x": "సుదీర్ఘ ప్రసంగం కంటే సంక్షిప్త వివరణ మరింత స్పష్టంగా ఉంటుంది.",
+      "xr": "Sudeergha prasangam kante samkshipta vivarana marinta spashtamgaa untundi."
+    },
+    "c363": {
+      "t": "పొందికైన",
+      "r": "Pondikaina",
+      "x": "మొదటి నుండి చివరి వరకు పొందికైన కథనాన్ని నిర్మించండి.",
+      "xr": "Modati nundi chivari varaku pondikaina kathanaanni nirminchandi."
+    },
+    "c364": {
+      "t": "ఒప్పించే",
+      "r": "Oppinche",
+      "x": "నిజమైన కథలు వాదనను మరింత బలంగా ఒప్పించేలా చేస్తాయి.",
+      "xr": "Nijamaina kathalu vaadananu marinta balamgaa oppinchelaa chestaayi."
+    },
+    "c365": {
+      "t": "ఆచరణాత్మక",
+      "r": "Aacharanaatmaka",
+      "x": "అమలు కోసం మేము ఆచరణాత్మక కార్యాచరణ ప్రణాళికను స్వీకరించాము.",
+      "xr": "Amalu kosam memu aacharanaatmaka kaaryaacharana pranaalikanu sveekarinchaamu."
+    },
+    "c366": {
+      "t": "అపూర్వమైన",
+      "r": "Apoorvamaina",
+      "x": "వేధశాల అపూర్వమైన స్పష్టతతో కూడిన చిత్రాలను బంధించింది.",
+      "xr": "Vedhashaala apoorvamaina spashtatato koodina chitraalanu bandhinchindi."
+    },
+    "c367": {
+      "t": "అనివార్యమైన",
+      "r": "Anivaaryamaina",
+      "x": "భాషలో క్రమంగా జరిగే మార్పు పూర్తిగా అనివార్యమైనది.",
+      "xr": "Bhaashalo kramamgaa jarige maarpu poortigaa anivaaryamainadi."
+    },
+    "c368": {
+      "t": "అత్యవసరమైన",
+      "r": "Atyavasaramaina",
+      "x": "లోతైన భాషా ప్రావీణ్యానికి చురుకైన ఆలకింపు అత్యవసరమైనది.",
+      "xr": "Lotaina bhaashaa praaveenyaaniki churukaina aalakimpu atyavasaramainadi."
+    },
+    "c369": {
+      "t": "గాఢమైన",
+      "r": "Gaadhamaina",
+      "x": "ఉత్తమ గ్రంథాలను చదవడం మనసుపై గాఢమైన ముద్ర వేస్తుంది.",
+      "xr": "Uttama granthaalanu chadavadam manasupai gaadhamaina mudra vestundi."
+    },
+    "c370": {
+      "t": "అంతరాయం లేని",
+      "r": "Antaraayam leni",
+      "x": "ప్రతి పరికరంలోనూ అంతరాయం లేని అనుభవాన్ని అందించడమే మా లక్ష్యం.",
+      "xr": "Prati parikaramlonoo antaraayam leni anubhavaanni andinchadame maa lakshyam."
+    },
+    "c371": {
+      "t": "ఎలాంటి సందేహం లేకుండా",
+      "r": "Elaanti sandeham lekundaa",
+      "x": "ఎలాంటి సందేహం లేకుండా, నిరంతర కృషియే విజయాన్ని సాధిస్తుంది.",
+      "xr": "Elaanti sandeham lekundaa, nirantara krushiye vijayaanni saadhistundi."
+    },
+    "c372": {
+      "t": "అదే విధంగా",
+      "r": "Ade vidhamgaa",
+      "x": "మేము వేగాన్ని విలువైనదిగా భావిస్తాము; అదే విధంగా, నాణ్యతలో ఎన్నడూ రాజీ పడము.",
+      "xr": "Memu vegaanni viluvainadigaa bhaavistaamu; ade vidhamgaa, naanyatalo ennadoo raajee padamu."
+    },
+    "c373": {
+      "t": "అన్ని విషయాలను పరిగణనలోకి తీసుకుంటే",
+      "r": "Anni vishayaalanu parigananaloki teesukunte",
+      "x": "అన్ని విషయాలను పరిగణనలోకి తీసుకుంటే, ఇది మా అత్యుత్తమ సంవత్సరం.",
+      "xr": "Anni vishayaalanu parigananaloki teesukunte, idi maa atyuttama samvatsaram."
+    },
+    "c374": {
+      "t": "కాలపరీక్షకు నిలవడం",
+      "r": "Kaalapareekshaku nilavadam",
+      "x": "శ్రద్ధతో నిర్మించిన బహిరంగ జ్ఞానం కాలపరీక్షకు నిలుస్తుంది.",
+      "xr": "Shraddhato nirminchina bahiranga jnaanam kaalapareekshaku nilustundi."
+    },
+    "c375": {
+      "t": "జీవితాంతం నేర్చుకోవడం",
+      "r": "Jeevitaantam nerchukovadam",
+      "x": "భాషలపై పట్టు సాధించడం జీవితాంతం నేర్చుకునే ఆనందకరమైన యాత్ర.",
+      "xr": "Bhaashalapai pattu saadhinchadam jeevitaantam nerchukune aanandakaramaina yaatra."
+    }
+  }
+}

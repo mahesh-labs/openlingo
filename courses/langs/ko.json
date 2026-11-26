@@ -1,0 +1,2285 @@
+{
+  "code": "ko",
+  "name": "Korean",
+  "nativeName": "한국어",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Korean uses the Hangul alphabet grouped into syllable blocks and follows Subject-Object-Verb (SOV) order. Polite speech ends in -요 (-yo) or the formal -습니다/-ㅂ니다 (-seumnida/-mnida), used in greetings and apologies.",
+    "u2": "Use topic markers 은/는 (eun/neun) and subject markers 이/가 (i/ga) depending on whether the preceding syllable ends in a consonant. Korean kinship terms distinguish gender and age (e.g., 오빠/형 for older brother).",
+    "u3": "Korean has two number systems: Native Korean (하나, 둘, 셋) for counting items and hours, and Sino-Korean (일, 이, 삼) for minutes, dates, and money. Counters like 잔 (cup) or 권 (book) follow native numbers.",
+    "u4": "Direct objects take the particle 을/를 (eul/reul). Polite requests at restaurants commonly use -(으)세요 (-euseyo) or -주세요 (-juseyo, 'please give me').",
+    "u5": "Korean adjectives conjugate like verbs at the end of a sentence (크다 -> 커요). Before a noun, adjectives take the modifier ending -(으)ㄴ (큰 도시, 'big city').",
+    "u6": "Use 에 (e) for destinations and static locations, 에서 (eseo) for places where actions occur, and (으)로 (euro/ro) for direction or means of transport (기차로, 'by train').",
+    "u7": "To express 'want to', attach -고 싶다 (-go sipda) to a verb stem. To ask 'can I...?', use -(으)ㄹ 수 있어요? (e.g., 카드로 결제할 수 있어요?).",
+    "u8": "Weather expressions often pair a noun with a specific verb: 비가 오다 ('rain comes'), 눈이 내리다 ('snow falls'), 바람이 불다 ('wind blows').",
+    "u9": "Describe physical pain with [body part] + 이/가 아프다 (머리가 아파요). Give polite advice or instructions with -(으)세요 or -아/어야 해요 ('should/must').",
+    "u10": "Express ongoing actions with -고 있다 (-go itda) and hobbies with -는 것을 좋아하다 ('like doing...'). Time expressions like 6시에 attach 에 directly to the hour.",
+    "u11": "State opinions using -다고 생각하다 ('think that...') or -(으)ㄴ 것 같다 ('seem/think that...'). Descriptive verbs express emotions directly (기쁘다, 슬프다, 걱정되다).",
+    "u12": "Form the past tense with -았/었어요 (-at/eosseoyo) and future plans with -(으)ㄹ 거예요 (-eul geoyeyo). Modifiers -(으)ㄴ (past) and -는 (present) turn verbs into rich noun phrases.",
+    "u13": "Tech vocabulary blends Sino-Korean compounds (개인정보, 검색) with adapted loanwords (컴퓨터, 인터넷, 다운로드). Nominalize verbs with -기 or -는 것 to use them as subjects.",
+    "u14": "Cultural discourse frequently uses the honorific suffix -(으)시- when speaking of elders or respected figures, and passive -되다/-아/어지다 for traditions passed down over generations.",
+    "u15": "Connect clauses cleanly with -아서/어서 (because), -지만 / -(으)ㄴ데 (although/however), -(으)면 (if), and -는 대신에 (instead of). Conjunctive adverbs like 그러나 and 따라서 link formal sentences.",
+    "u16": "Workplace and business Korean favors the deferential 합쇼체 (-습니다/-ㅂ니다) and concise Sino-Korean compounds (전략, 예산, 협상, 합의) paired with 하다 or 되다.",
+    "u17": "Scientific writing uses objective, impersonal phrasing with -다/-ㄴ다 or -습니다, passive forms (-되다, 밝혀지다), and evidential connectors like -에 기반하다 ('be based on').",
+    "u18": "Sustainability and policy prose relies on compound noun phrases and modal expressions of necessity: -아야 한다 ('must'), -도록 ('so that'), and -을/를 통해 ('through').",
+    "u19": "Civic and legal discourse employs formal Sino-Korean roots (헌법, 민주주의, 투명성) and formal postpositions like -에 따라 ('according to') and -을/를 바탕으로 ('grounded in').",
+    "u20": "Structure persuasive arguments using contrastive markers (그럼에도 불구하고, 반면에), clarifying verbs (명확히 하다, 강조하다), and nominalized clauses ending in -다는 점 ('the point that...').",
+    "u21": "Literary Korean uses evocative modifiers, sensory verbs, and refined Sino-Korean aesthetic terms (은유, 상징성, 여운, 숭고하다) to convey layered emotional depth.",
+    "u22": "Philosophical and psychological writing contrasts abstract concepts with -는 반면 ('whereas'), -을/를 통해 ('through'), and reflective nominal forms ending in -(으)ㅁ.",
+    "u23": "Korean idioms include traditional proverbs (속담, e.g., 시간이 약이다), four-character Sino-Korean idioms (사자성어, e.g., 전화위복), and vivid figurative expressions (식은 죽 먹기).",
+    "u24": "Diplomatic, legal, and academic Korean uses elevated formal register: -에도 불구하고 ('notwithstanding'), -에 비추어 볼 때 ('in light of'), and courteous deferential framing (실례지만).",
+    "u25": "C2 mastery combines rhetorical precision, idiomatic cohesion (의심의 여지 없이, 마찬가지로, 종합해 보면), and effortless switching between conversational warmth and formal gravitas."
+  },
+  "items": {
+    "c001": {
+      "t": "안녕하세요",
+      "r": "annyeonghaseyo",
+      "x": "안녕하세요, 만나서 반갑습니다.",
+      "xr": "Annyeonghaseyo, mannaseo bangapseumnida."
+    },
+    "c002": {
+      "t": "좋은 아침이에요",
+      "r": "joeun achimieyo",
+      "x": "좋은 아침이에요, 잘 주무셨어요?",
+      "xr": "Joeun achimieyo, jal jumusyeosseoyo?"
+    },
+    "c003": {
+      "t": "좋은 오후예요",
+      "r": "joeun ohuyeyo",
+      "x": "여러분, 좋은 오후예요.",
+      "xr": "Yeoreobun, joeun ohuyeyo."
+    },
+    "c004": {
+      "t": "좋은 저녁이에요",
+      "r": "joeun jeonyeogieyo",
+      "x": "좋은 저녁이에요, 집에 잘 오셨어요.",
+      "xr": "Joeun jeonyeogieyo, jibe jal osyeosseoyo."
+    },
+    "c005": {
+      "t": "안녕히 주무세요",
+      "r": "annyeonghi jumuseyo",
+      "x": "안녕히 주무세요, 내일 봐요.",
+      "xr": "Annyeonghi jumuseyo, naeil bwayo."
+    },
+    "c006": {
+      "t": "감사합니다",
+      "r": "gamsahamnida",
+      "x": "도와주셔서 정말 감사합니다.",
+      "xr": "Dowajusyeoseo jeongmal gamsahamnida."
+    },
+    "c007": {
+      "t": "천만에요",
+      "r": "cheonmaneyo",
+      "x": "천만에요, 언제든지요.",
+      "xr": "Cheonmaneyo, eonjedeunjiyo."
+    },
+    "c008": {
+      "t": "부탁합니다",
+      "r": "butakamnida",
+      "x": "어서 들어와서 앉으세요.",
+      "xr": "Eoseo deureowaseo anjeuseyo."
+    },
+    "c009": {
+      "t": "실례합니다",
+      "r": "sillyehamnida",
+      "x": "실례합니다, 질문 하나 해도 될까요?",
+      "xr": "Sillyehamnida, jilmun hana haedo doelkkayo?"
+    },
+    "c010": {
+      "t": "죄송합니다",
+      "r": "joesonghamnida",
+      "x": "늦어서 정말 죄송합니다.",
+      "xr": "Neujeoseo jeongmal joesonghamnida."
+    },
+    "c011": {
+      "t": "네",
+      "r": "ne",
+      "x": "네, 완전히 이해했어요.",
+      "xr": "Ne, wanjeonhi ihaehaesseoyo."
+    },
+    "c012": {
+      "t": "아니요",
+      "r": "aniyo",
+      "x": "아니요, 괜찮습니다. 감사합니다.",
+      "xr": "Aniyo, gwaenchanseumnida. Gamsahamnida."
+    },
+    "c013": {
+      "t": "안녕히 가세요",
+      "r": "annyeonghi gaseyo",
+      "x": "안녕히 가세요, 안전한 여행 되세요.",
+      "xr": "Annyeonghi gaseyo, anjeonhan yeohaeng doeseyo."
+    },
+    "c014": {
+      "t": "제 이름은",
+      "r": "je ireumeun",
+      "x": "제 이름은 마야입니다.",
+      "xr": "Je ireumeun Mayaimnida."
+    },
+    "c015": {
+      "t": "어떻게 지내세요?",
+      "r": "eotteoke jinaeseyo?",
+      "x": "오늘 어떻게 지내세요?",
+      "xr": "Oneul eotteoke jinaeseyo?"
+    },
+    "c016": {
+      "t": "저",
+      "r": "jeo",
+      "x": "저는 새로운 언어를 배우고 있어요.",
+      "xr": "Jeoneun saeroun eoneoreul baeugo isseoyo."
+    },
+    "c017": {
+      "t": "당신",
+      "r": "dangsin",
+      "x": "말씀을 정말 명확하게 하시네요.",
+      "xr": "Malsseumeul jeongmal myeonghwakage hasineyo."
+    },
+    "c018": {
+      "t": "그",
+      "r": "geu",
+      "x": "그는 제 형이에요.",
+      "xr": "Geuneun je hyeongieyo."
+    },
+    "c019": {
+      "t": "그녀",
+      "r": "geunyeo",
+      "x": "그녀는 실력 있는 의사예요.",
+      "xr": "Geunyeoneun sillyeok inneun uisayeyo."
+    },
+    "c020": {
+      "t": "우리",
+      "r": "uri",
+      "x": "우리는 같은 도시에 살아요.",
+      "xr": "Urineun gateun dosie sarayo."
+    },
+    "c021": {
+      "t": "어머니",
+      "r": "eomeoni",
+      "x": "어머니는 맛있는 음식을 요리하세요.",
+      "xr": "Eomeonineun masinneun eumsigeul yorihaseyo."
+    },
+    "c022": {
+      "t": "아버지",
+      "r": "abeoji",
+      "x": "아버지는 매일 아침 신문을 읽으세요.",
+      "xr": "Abeojineun maeil achim sinmuneul ilgeuseyo."
+    },
+    "c023": {
+      "t": "형제",
+      "r": "hyeongje",
+      "x": "제 남동생은 축구를 해요.",
+      "xr": "Je namdongsaengeun chukgureul haeyo."
+    },
+    "c024": {
+      "t": "자매",
+      "r": "jamae",
+      "x": "제 누나는 의학을 공부해요.",
+      "xr": "Je nunaneun uihageul gongbuhaeyo."
+    },
+    "c025": {
+      "t": "가족",
+      "r": "gajok",
+      "x": "우리 가족은 매주 일요일에 모여요.",
+      "xr": "Uri gajogeun maeju iryoire moyeoyo."
+    },
+    "c026": {
+      "t": "친구",
+      "r": "chingu",
+      "x": "그녀는 제 가장 친한 친구예요.",
+      "xr": "Geunyeoneun je gajang chinhan chinguyeyo."
+    },
+    "c027": {
+      "t": "아이",
+      "r": "ai",
+      "x": "아이가 그림을 그리고 있어요.",
+      "xr": "Aiga geurimeul geurigo isseoyo."
+    },
+    "c028": {
+      "t": "선생님",
+      "r": "seonsaengnim",
+      "x": "우리 선생님은 문법을 알기 쉽게 설명하세요.",
+      "xr": "Uri seonsaengnimeun munbeobeul algi swipge seolmyeonghaseyo."
+    },
+    "c029": {
+      "t": "학생",
+      "r": "haksaeng",
+      "x": "모든 학생이 공책을 가져왔어요.",
+      "xr": "Modeun haksaengi gongchaegeul gajyeowasseoyo."
+    },
+    "c030": {
+      "t": "이웃",
+      "r": "iut",
+      "x": "우리 이웃은 정말 친절해요.",
+      "xr": "Uri iuseun jeongmal chinjeolhaeyo."
+    },
+    "c031": {
+      "t": "하나",
+      "r": "hana",
+      "x": "차 한 잔 주세요.",
+      "xr": "Cha han jan juseyo."
+    },
+    "c032": {
+      "t": "둘",
+      "r": "dul",
+      "x": "표 두 장 부탁드립니다.",
+      "xr": "Pyo du jang butakdeurimnida."
+    },
+    "c033": {
+      "t": "셋",
+      "r": "set",
+      "x": "탁자 위에 책이 세 권 있어요.",
+      "xr": "Takja wie chaegi se gwon isseoyo."
+    },
+    "c034": {
+      "t": "다섯",
+      "r": "daseot",
+      "x": "수업이 5분 후에 시작해요.",
+      "xr": "Sueobi obun hue sijakaeyo."
+    },
+    "c035": {
+      "t": "열",
+      "r": "yeol",
+      "x": "그녀는 하나부터 열까지 셌어요.",
+      "xr": "Geunyeoneun hanabuteo yeolkkaji sesseoyo."
+    },
+    "c036": {
+      "t": "오늘",
+      "r": "oneul",
+      "x": "오늘은 맑은 날이에요.",
+      "xr": "Oneureun malgeun narieyo."
+    },
+    "c037": {
+      "t": "내일",
+      "r": "naeil",
+      "x": "내일 우리는 박물관에 갈 거예요.",
+      "xr": "Naeil urineun bangmulgwane gal geoyeyo."
+    },
+    "c038": {
+      "t": "어제",
+      "r": "eoje",
+      "x": "어제는 오후 내내 비가 내렸어요.",
+      "xr": "Eojeneun ohu naenae biga naeryeosseoyo."
+    },
+    "c039": {
+      "t": "지금",
+      "r": "jigeum",
+      "x": "지금 바로 출발할 준비가 됐어요.",
+      "xr": "Jigeum baro chulbalhal junbiga dwaesseoyo."
+    },
+    "c040": {
+      "t": "나중에",
+      "r": "najunge",
+      "x": "이 일은 나중에 이야기해요.",
+      "xr": "I ireun najunge iyagihaeyo."
+    },
+    "c041": {
+      "t": "아침",
+      "r": "achim",
+      "x": "저는 매일 아침 운동해요.",
+      "xr": "Jeoneun maeil achim undonghaeyo."
+    },
+    "c042": {
+      "t": "밤",
+      "r": "bam",
+      "x": "밤에는 별들이 밝게 빛나요.",
+      "xr": "Bameneun byeoldeuri balkge binnayo."
+    },
+    "c043": {
+      "t": "주",
+      "r": "ju",
+      "x": "이번 주는 정말 바빴어요.",
+      "xr": "Ibeon juneun jeongmal bappasseoyo."
+    },
+    "c044": {
+      "t": "달",
+      "r": "dal",
+      "x": "다음 달에 우리는 해외로 여행해요.",
+      "xr": "Daeum dare urineun haeoero yeohaenghaeyo."
+    },
+    "c045": {
+      "t": "해",
+      "r": "hae",
+      "x": "모두 새해 복 많이 받으세요.",
+      "xr": "Modu saehae bok mani badeuseyo."
+    },
+    "c046": {
+      "t": "물",
+      "r": "mul",
+      "x": "물 한 잔 주시겠어요?",
+      "xr": "Mul han jan jusigesseoyo?"
+    },
+    "c047": {
+      "t": "밥",
+      "r": "bap",
+      "x": "우리는 카레와 함께 따뜻한 밥을 먹어요.",
+      "xr": "Urineun karewa hamkke ttatteutan babeul meogeoyo."
+    },
+    "c048": {
+      "t": "빵",
+      "r": "ppang",
+      "x": "갓 구운 빵 냄새가 정말 좋아요.",
+      "xr": "Gat guun ppang naemsaega jeongmal joayo."
+    },
+    "c049": {
+      "t": "과일",
+      "r": "gwail",
+      "x": "매일 신선한 과일을 충분히 드세요.",
+      "xr": "Maeil sinseonhan gwaireul chungbunhi deuseyo."
+    },
+    "c050": {
+      "t": "우유",
+      "r": "uyu",
+      "x": "커피에 우유를 넣어 드세요?",
+      "xr": "Keopie uyureul neoeo deuseyo?"
+    },
+    "c051": {
+      "t": "차",
+      "r": "cha",
+      "x": "따뜻한 차는 겨울에 마음을 편안하게 해 줘요.",
+      "xr": "Ttatteutan chaneun gyeoure maeumeul pyeonanhage hae jwoyo."
+    },
+    "c052": {
+      "t": "커피",
+      "r": "keopi",
+      "x": "저는 아침에 블랙 커피를 마셔요.",
+      "xr": "Jeoneun achime beullaek keopireul masyeoyo."
+    },
+    "c053": {
+      "t": "아침 식사",
+      "r": "achim siksa",
+      "x": "아침 식사는 하루의 첫 번째 끼니예요.",
+      "xr": "Achim siksaneun haruui cheot beonjjae kkiniyeyo."
+    },
+    "c054": {
+      "t": "점심 식사",
+      "r": "jeomsim siksa",
+      "x": "점심 먹으러 어디로 갈까요?",
+      "xr": "Jeomsim meogeureo eodiro galkkayo?"
+    },
+    "c055": {
+      "t": "저녁 식사",
+      "r": "jeonyeok siksa",
+      "x": "저녁 식사는 일곱 시에 준비될 거예요.",
+      "xr": "Jeonyeok siksaneun ilgop sie junbidoel geoyeyo."
+    },
+    "c056": {
+      "t": "맛있다",
+      "r": "masitda",
+      "x": "이 요리는 정말 맛있어요.",
+      "xr": "I yorineun jeongmal masisseoyo."
+    },
+    "c057": {
+      "t": "배고프다",
+      "r": "baegopeuda",
+      "x": "산책한 후에 너무 배고파요.",
+      "xr": "Sanchaekan hue neomu baegopayo."
+    },
+    "c058": {
+      "t": "목마르다",
+      "r": "mongmareuda",
+      "x": "이렇게 더워서 목이 말라요.",
+      "xr": "Ireoke deowoseo mogi mallayo."
+    },
+    "c059": {
+      "t": "메뉴판",
+      "r": "menyupan",
+      "x": "메뉴판 좀 볼 수 있을까요?",
+      "xr": "Menyupan jom bol su isseulkkayo?"
+    },
+    "c060": {
+      "t": "계산서",
+      "r": "gyesanseo",
+      "x": "계산서 좀 부탁드립니다.",
+      "xr": "Gyesanseo jom butakdeurimnida."
+    },
+    "c061": {
+      "t": "집",
+      "r": "jip",
+      "x": "그들의 집에는 작은 정원이 있어요.",
+      "xr": "Geudeurui jibeneun jageun jeongwoni isseoyo."
+    },
+    "c062": {
+      "t": "방",
+      "r": "bang",
+      "x": "제 방에는 큰 창문이 있어요.",
+      "xr": "Je bangeneun keun changmuni isseoyo."
+    },
+    "c063": {
+      "t": "탁자",
+      "r": "takja",
+      "x": "열쇠를 탁자 위에 올려 두세요.",
+      "xr": "Yeolsoereul takja wie ollyeo duseyo."
+    },
+    "c064": {
+      "t": "책",
+      "r": "chaek",
+      "x": "이 책은 읽기 쉬워요.",
+      "xr": "I chaegeun ilki swiwoyo."
+    },
+    "c065": {
+      "t": "문",
+      "r": "mun",
+      "x": "문을 조용히 닫아 주세요.",
+      "xr": "Muneul joyonghi dada juseyo."
+    },
+    "c066": {
+      "t": "빨간색",
+      "r": "ppalgansaek",
+      "x": "그녀는 선명한 빨간색 우산을 샀어요.",
+      "xr": "Geunyeoneun seonmyeonghan ppalgansaek usaneul sasseoyo."
+    },
+    "c067": {
+      "t": "파란색",
+      "r": "paransaek",
+      "x": "하늘이 맑고 파래요.",
+      "xr": "Haneuri malkgo paraeyo."
+    },
+    "c068": {
+      "t": "하얀색",
+      "r": "hayansaek",
+      "x": "눈이 땅을 하얗게 덮었어요.",
+      "xr": "Nuni ttangeul hayake deopeosseoyo."
+    },
+    "c069": {
+      "t": "크다",
+      "r": "keuda",
+      "x": "그들은 큰 도시로 이사했어요.",
+      "xr": "Geudeureun keun dosiro isahaesseoyo."
+    },
+    "c070": {
+      "t": "작다",
+      "r": "jakda",
+      "x": "작은 새가 나뭇가지 위에서 노래했어요.",
+      "xr": "Jageun saega namutgaji wieseo noraehaesseoyo."
+    },
+    "c071": {
+      "t": "가다",
+      "r": "gada",
+      "x": "저는 기차를 타고 출근해요.",
+      "xr": "Jeoneun gichareul tago chulgeunhaeyo."
+    },
+    "c072": {
+      "t": "오다",
+      "r": "oda",
+      "x": "우리 축하 자리에 꼭 오세요.",
+      "xr": "Uri chuka jarie kkok oseyo."
+    },
+    "c073": {
+      "t": "먹다",
+      "r": "meokda",
+      "x": "우리는 여덟 시에 함께 저녁을 먹어요.",
+      "xr": "Urineun yeodeol sie hamkke jeonyeogeul meogeoyo."
+    },
+    "c074": {
+      "t": "마시다",
+      "r": "masida",
+      "x": "물을 충분히 마시는 것을 잊지 마세요.",
+      "xr": "Mureul chungbunhi masineun geoseul itji maseyo."
+    },
+    "c075": {
+      "t": "자다",
+      "r": "jada",
+      "x": "저는 매일 밤 여덟 시간씩 자려고 노력해요.",
+      "xr": "Jeoneun maeil bam yeodeol siganssik jaryeogo noryeokaeyo."
+    },
+    "c076": {
+      "t": "기차",
+      "r": "gicha",
+      "x": "급행열차가 정오에 도착해요.",
+      "xr": "Geupaengyeolchaga jeongoe dochakaeyo."
+    },
+    "c077": {
+      "t": "버스",
+      "r": "beoseu",
+      "x": "시내로 가는 두 번째 버스를 타세요.",
+      "xr": "Sinaero ganeun du beonjjae beoseureul taseyo."
+    },
+    "c078": {
+      "t": "공항",
+      "r": "gonghang",
+      "x": "우리는 두 시간 일찍 공항에 도착했어요.",
+      "xr": "Urineun du sigan iljjik gonghange dochakaesseoyo."
+    },
+    "c079": {
+      "t": "표",
+      "r": "pyo",
+      "x": "나갈 때까지 표를 잘 보관하세요.",
+      "xr": "Nagal ttaekkaji pyoreul jal bogwanhaseyo."
+    },
+    "c080": {
+      "t": "역",
+      "r": "yeok",
+      "x": "역은 여기서 걸어서 오 분 거리에 있어요.",
+      "xr": "Yeogeun yeogiseo georeoseo o bun georie isseoyo."
+    },
+    "c081": {
+      "t": "왼쪽",
+      "r": "oenjjok",
+      "x": "다음 신호등에서 왼쪽으로 도세요.",
+      "xr": "Daeum sinhodeungeseo oenjjogeuro doseyo."
+    },
+    "c082": {
+      "t": "오른쪽",
+      "r": "oreunjjok",
+      "x": "약국은 오른쪽에 있어요.",
+      "xr": "Yakgugeun oreunjjoge isseoyo."
+    },
+    "c083": {
+      "t": "똑바로",
+      "r": "ttokbaro",
+      "x": "두 블록 동안 똑바로 걸어가세요.",
+      "xr": "Du beullok dongan ttokbaro georeogaseyo."
+    },
+    "c084": {
+      "t": "가깝다",
+      "r": "gakkapda",
+      "x": "이 근처에 가까운 호텔이 있나요?",
+      "xr": "I geuncheoe gakkaun hoteri innayo?"
+    },
+    "c085": {
+      "t": "멀다",
+      "r": "meolda",
+      "x": "해변은 시내에서 멀지 않아요.",
+      "xr": "Haebyeoneun sinaeseo meolji anayo."
+    },
+    "c086": {
+      "t": "지도",
+      "r": "jido",
+      "x": "지도에서 경로를 확인해 봅시다.",
+      "xr": "Jidoeseo gyeongnoreul hwaginhae bopsida."
+    },
+    "c087": {
+      "t": "호텔",
+      "r": "hotel",
+      "x": "우리는 도심에 조용한 호텔을 예약했어요.",
+      "xr": "Urineun dosime joyonghan hotereul yeyakaesseoyo."
+    },
+    "c088": {
+      "t": "여권",
+      "r": "yeogwon",
+      "x": "집에 여권을 두고 오지 마세요.",
+      "xr": "Jibe yeogwoneul dugo oji maseyo."
+    },
+    "c089": {
+      "t": "짐",
+      "r": "jim",
+      "x": "오늘은 제 짐이 꽤 무겁네요.",
+      "xr": "Oneureun je jimi kkwae mugeomneyo."
+    },
+    "c090": {
+      "t": "어디에 있나요?",
+      "r": "eodie innayo?",
+      "x": "가장 가까운 지하철 출구가 어디에 있나요?",
+      "xr": "Gajang gakkaun jihacheol chulguga eodie innayo?"
+    },
+    "c091": {
+      "t": "돈",
+      "r": "don",
+      "x": "매달 돈의 일부를 저축하세요.",
+      "xr": "Maedal donui ilbureul jeochukaseyo."
+    },
+    "c092": {
+      "t": "가격",
+      "r": "gagyeok",
+      "x": "이 재킷의 가격이 얼마인가요?",
+      "xr": "I jaekisui gagyeogi eolmaingayo?"
+    },
+    "c093": {
+      "t": "싸다",
+      "r": "ssada",
+      "x": "아침 시장에서는 채소가 싸요.",
+      "xr": "Achim sijangeseoneun chaesoga ssayo."
+    },
+    "c094": {
+      "t": "비싸다",
+      "r": "bissada",
+      "x": "저 시계는 저한테 너무 비싸요.",
+      "xr": "Jeo sigyeneun jeohante neomu bissayo."
+    },
+    "c095": {
+      "t": "할인",
+      "r": "harin",
+      "x": "학생 할인이 가능한가요?",
+      "xr": "Haksaeng harini ganeunghangayo?"
+    },
+    "c096": {
+      "t": "가게",
+      "r": "gage",
+      "x": "모퉁이에 있는 저 가게는 여덟 시에 열어요.",
+      "xr": "Motungie inneun jeo gageneun yeodeol sie yeoreoyo."
+    },
+    "c097": {
+      "t": "시장",
+      "r": "sijang",
+      "x": "동네 시장은 토요일마다 활기차요.",
+      "xr": "Dongne sijangeun toyoilmada hwalgichayo."
+    },
+    "c098": {
+      "t": "사다",
+      "r": "sada",
+      "x": "따뜻한 코트를 한 벌 사고 싶어요.",
+      "xr": "Ttatteutan koteureul han beol sago sipeoyo."
+    },
+    "c099": {
+      "t": "결제하다",
+      "r": "gyeoljehada",
+      "x": "카드나 현금으로 결제할 수 있나요?",
+      "xr": "Kadeuna hyeongeumeuro gyeoljehal su innayo?"
+    },
+    "c100": {
+      "t": "영수증",
+      "r": "yeongsujeung",
+      "x": "영수증 좀 주세요.",
+      "xr": "Yeongsujeung jom juseyo."
+    },
+    "c101": {
+      "t": "셔츠",
+      "r": "syeocheu",
+      "x": "이 면 셔츠는 입기 편해요.",
+      "xr": "I myeon syeocheuneun ipgi pyeonhaeyo."
+    },
+    "c102": {
+      "t": "신발",
+      "r": "sinbal",
+      "x": "등산용으로 튼튼한 신발이 필요해요.",
+      "xr": "Deungsanyongeuro teunteunhan sinbari piryohaeyo."
+    },
+    "c103": {
+      "t": "가방",
+      "r": "gabang",
+      "x": "그녀는 가죽 가방을 들고 있었어요.",
+      "xr": "Geunyeoneun gajuk gabangeul deulgo isseosseoyo."
+    },
+    "c104": {
+      "t": "새롭다",
+      "r": "saeropda",
+      "x": "그는 오늘 새 재킷을 입었어요.",
+      "xr": "Geuneun oneul sae jaekiseul ibeosseoyo."
+    },
+    "c105": {
+      "t": "치수",
+      "r": "chisu",
+      "x": "이것 중간 치수로 있나요?",
+      "xr": "Igeot junggan chisuro innayo?"
+    },
+    "c106": {
+      "t": "태양",
+      "r": "taeyang",
+      "x": "따뜻한 태양이 젖은 도로를 말렸어요.",
+      "xr": "Ttatteutan taeyangi jeojeun dororeul mallyeosseoyo."
+    },
+    "c107": {
+      "t": "비",
+      "r": "bi",
+      "x": "비가 올지도 모르니 우산을 챙기세요.",
+      "xr": "Biga oljido moreuni usaneul chaenggiseyo."
+    },
+    "c108": {
+      "t": "바람",
+      "r": "baram",
+      "x": "바다에서 시원한 바람이 불어왔어요.",
+      "xr": "Badaeseo siwonhan barami bureowasseoyo."
+    },
+    "c109": {
+      "t": "덥다",
+      "r": "deopda",
+      "x": "여기는 여름 오후가 아주 더워요.",
+      "xr": "Yeogineun yeoreum ohuga aju deowoyo."
+    },
+    "c110": {
+      "t": "춥다",
+      "r": "chupda",
+      "x": "날씨가 추울 때는 목도리를 하세요.",
+      "xr": "Nalssiga chuul ttaeneun mokdorireul haseyo."
+    },
+    "c111": {
+      "t": "여름",
+      "r": "yeoreum",
+      "x": "우리는 여름에 자주 수영해요.",
+      "xr": "Urineun yeoreume jaju suyeonghaeyo."
+    },
+    "c112": {
+      "t": "겨울",
+      "r": "gyeoul",
+      "x": "겨울밤은 길고 고요해요.",
+      "xr": "Gyeoulbameun gilgo goyohaeyo."
+    },
+    "c113": {
+      "t": "봄",
+      "r": "bom",
+      "x": "봄에는 곳곳에 꽃이 활짝 피어요.",
+      "xr": "Bomeneun gotgose kkochi hwaljjak pieoyo."
+    },
+    "c114": {
+      "t": "구름",
+      "r": "gureum",
+      "x": "폭풍이 오기 전에 먹구름이 몰려왔어요.",
+      "xr": "Pokpungi ogi jeone meokgureumi mollyeowasseoyo."
+    },
+    "c115": {
+      "t": "눈",
+      "r": "nun",
+      "x": "아이들이 갓 내린 눈으로 눈사람을 만들었어요.",
+      "xr": "Aideuri gat naerin nuneuro nunsarameul mandeureosseoyo."
+    },
+    "c116": {
+      "t": "산",
+      "r": "san",
+      "x": "우리는 해 뜨기 전에 산에 올랐어요.",
+      "xr": "Urineun hae tteugi jeone sane ollasseoyo."
+    },
+    "c117": {
+      "t": "강",
+      "r": "gang",
+      "x": "넓은 강이 계곡 사이로 흐르고 있어요.",
+      "xr": "Neolbeun gangi gyegok sairo heureugo isseoyo."
+    },
+    "c118": {
+      "t": "바다",
+      "r": "bada",
+      "x": "오늘 저녁 바다는 참 잔잔해 보여요.",
+      "xr": "Oneul jeonyeok badaneun cham janjanhae boyeoyo."
+    },
+    "c119": {
+      "t": "나무",
+      "r": "namu",
+      "x": "오래된 나무가 마당에 그늘을 만들어 줘요.",
+      "xr": "Oraedoen namuga madange geuneureul mandeureo jwoyo."
+    },
+    "c120": {
+      "t": "꽃",
+      "r": "kkot",
+      "x": "정원의 모든 꽃이 활짝 피었어요.",
+      "xr": "Jeongwonui modeun kkochi hwaljjak pieosseoyo."
+    },
+    "c121": {
+      "t": "머리",
+      "r": "meori",
+      "x": "하루 종일 책을 읽었더니 머리가 아파요.",
+      "xr": "Haru jongil chaegeul ilgeotdeoni meoriga apayo."
+    },
+    "c122": {
+      "t": "손",
+      "r": "son",
+      "x": "식사하기 전에 손을 깨끗이 씻으세요.",
+      "xr": "Siksahagi jeone soneul kkaekkeusi ssiseuseyo."
+    },
+    "c123": {
+      "t": "눈",
+      "r": "nun",
+      "x": "화면에서 시선을 떼고 눈을 쉬게 하세요.",
+      "xr": "Hwamyeoneseo siseoneul ttego nuneul swige haseyo."
+    },
+    "c124": {
+      "t": "심장",
+      "r": "simjang",
+      "x": "운동은 심장을 튼튼하게 유지해 줍니다.",
+      "xr": "Undongeun simjangeul teunteunhage yujihae jumnida."
+    },
+    "c125": {
+      "t": "배",
+      "r": "bae",
+      "x": "배가 아프면 따뜻한 물을 마시세요.",
+      "xr": "Baega apeumyeon ttatteutan mureul masiseyo."
+    },
+    "c126": {
+      "t": "의사",
+      "r": "uisa",
+      "x": "오늘 의사의 진료를 받아 보셔야 해요.",
+      "xr": "Oneul uisaui jillyoreul bada bosyeoya haeyo."
+    },
+    "c127": {
+      "t": "병원",
+      "r": "byeongwon",
+      "x": "이 병원은 24시간 문을 엽니다.",
+      "xr": "I byeongwoneun isipsasigan muneul yeomnida."
+    },
+    "c128": {
+      "t": "약",
+      "r": "yak",
+      "x": "이 약은 식후에 복용하세요.",
+      "xr": "I yageun sikhue bogyonghaseyo."
+    },
+    "c129": {
+      "t": "통증",
+      "r": "tongjeung",
+      "x": "어디에 통증이 있는지 간호사에게 말씀하세요.",
+      "xr": "Eodie tongjeungi inneunji ganhosaege malsseumhaseyo."
+    },
+    "c130": {
+      "t": "열",
+      "r": "yeol",
+      "x": "그는 미열이 있어서 집에서 쉬었어요.",
+      "xr": "Geuneun miyeori isseoseo jibeseo swieosseoyo."
+    },
+    "c131": {
+      "t": "도움",
+      "r": "doum",
+      "x": "이 상자를 옮기는 것 좀 도와주세요.",
+      "xr": "I sangjareul omgineun geot jom dowajuseyo."
+    },
+    "c132": {
+      "t": "경찰",
+      "r": "gyeongchal",
+      "x": "위급한 상황에는 경찰에 신고하세요.",
+      "xr": "Wigeupan sanghwangeneun gyeongchare singohaseyo."
+    },
+    "c133": {
+      "t": "응급 상황",
+      "r": "eunggeup sanghwang",
+      "x": "휴대전화에 비상 연락처를 저장해 두세요.",
+      "xr": "Hyudaejeonhwae bisang yeollakcheoreul jeojanghae duseyo."
+    },
+    "c134": {
+      "t": "휴식",
+      "r": "hyusik",
+      "x": "빨리 회복하려면 충분히 휴식을 취하세요.",
+      "xr": "Ppalli hoebokaryeomyeon chungbunhi hyusigeul chwihaseyo."
+    },
+    "c135": {
+      "t": "건강하다",
+      "r": "geonganghada",
+      "x": "균형 잡힌 식단은 몸을 건강하게 지켜 줍니다.",
+      "xr": "Gyunhyeong japin sikdaneun momeul geonganghage jikyeo jumnida."
+    },
+    "c136": {
+      "t": "학교",
+      "r": "hakgyo",
+      "x": "아이들이 함께 걸어서 학교에 가요.",
+      "xr": "Aideuri hamkke georeoseo hakgyoe gayo."
+    },
+    "c137": {
+      "t": "대학교",
+      "r": "daehakgyo",
+      "x": "그녀는 대학교에서 공학을 전공해요.",
+      "xr": "Geunyeoneun daehakgyoeseo gonghageul jeongonghaeyo."
+    },
+    "c138": {
+      "t": "시험",
+      "r": "siheom",
+      "x": "저는 기말시험을 꼼꼼히 준비했어요.",
+      "xr": "Jeoneun gimalsiheomeul kkomkkomhi junbihaesseoyo."
+    },
+    "c139": {
+      "t": "언어",
+      "r": "eoneo",
+      "x": "언어를 배우면 새로운 세계가 열립니다.",
+      "xr": "Eoneoreul baeumyeon saeroun segyega yeollimnida."
+    },
+    "c140": {
+      "t": "질문",
+      "r": "jilmun",
+      "x": "정말 깊이 있는 질문이네요.",
+      "xr": "Jeongmal gipi inneun jilmunineyo."
+    },
+    "c141": {
+      "t": "일",
+      "r": "il",
+      "x": "그는 여섯 시에 일을 마쳐요.",
+      "xr": "Geuneun yeoseot sie ireul machyeoyo."
+    },
+    "c142": {
+      "t": "사무실",
+      "r": "samusil",
+      "x": "우리 사무실은 4층에 있어요.",
+      "xr": "Uri samusireun sacheunge isseoyo."
+    },
+    "c143": {
+      "t": "회의",
+      "r": "hoeui",
+      "x": "팀 회의가 열 시에 시작합니다.",
+      "xr": "Tim hoeuiga yeol sie sijakamnida."
+    },
+    "c144": {
+      "t": "동료",
+      "r": "dongnyo",
+      "x": "동료가 오류를 해결하는 것을 도와줬어요.",
+      "xr": "Dongnyoga oryureul haegyeolhaneun geoseul dowajwosseoyo."
+    },
+    "c145": {
+      "t": "바쁘다",
+      "r": "bappeuda",
+      "x": "저는 금요일까지 꽤 바빠요.",
+      "xr": "Jeoneun geumyoilkkaji kkwae bappayo."
+    },
+    "c146": {
+      "t": "음악",
+      "r": "eumak",
+      "x": "음악을 들으면 마음이 편안해져요.",
+      "xr": "Eumageul deureumyeon maeumi pyeonanhaejyeoyo."
+    },
+    "c147": {
+      "t": "영화",
+      "r": "yeonghwa",
+      "x": "우리는 어젯밤에 감동적인 영화를 봤어요.",
+      "xr": "Urineun eojetbame gamdongjeogin yeonghwareul bwasseoyo."
+    },
+    "c148": {
+      "t": "스포츠",
+      "r": "seupocheu",
+      "x": "어떤 스포츠 경기를 보는 것을 좋아하세요?",
+      "xr": "Eotteon seupocheu gyeonggireul boneun geoseul joahaseyo?"
+    },
+    "c149": {
+      "t": "여행",
+      "r": "yeohaeng",
+      "x": "저는 기차로 여행하는 것을 좋아해요.",
+      "xr": "Jeoneun gicharo yeohaenghaneun geoseul joahaeyo."
+    },
+    "c150": {
+      "t": "취미",
+      "r": "chwimi",
+      "x": "사진 촬영은 제가 가장 좋아하는 주말 취미예요.",
+      "xr": "Sajin chwalyeongeun jega gajang joahaneun jumal chwimiyeyo."
+    },
+    "c151": {
+      "t": "행복하다",
+      "r": "haengbokada",
+      "x": "좋은 소식을 들으니 정말 기뻐요.",
+      "xr": "Joeun sosigeul deureuni jeongmal gippeoyo."
+    },
+    "c152": {
+      "t": "슬프다",
+      "r": "seulpeuda",
+      "x": "가끔 슬픔을 느끼는 것은 자연스러운 일이에요.",
+      "xr": "Gakkeum seulpeumeul neukkineun geoseun jayeonseureoun irieyo."
+    },
+    "c153": {
+      "t": "화나다",
+      "r": "hwanada",
+      "x": "화가 날 때는 말하기 전에 심호흡을 하세요.",
+      "xr": "Hwaga nal ttaeneun malhagi jeone simhoheubeul haseyo."
+    },
+    "c154": {
+      "t": "놀라다",
+      "r": "nollada",
+      "x": "갑작스러운 발표에 모두가 놀랐어요.",
+      "xr": "Gapjakseureoun balpyoe moduga nollasseoyo."
+    },
+    "c155": {
+      "t": "걱정하다",
+      "r": "geokjeonghada",
+      "x": "걱정하지 마세요. 모든 것이 잘 풀릴 거예요.",
+      "xr": "Geokjeonghaji maseyo. Modeun geosi jal pullil geoyeyo."
+    },
+    "c156": {
+      "t": "친절하다",
+      "r": "chinjeolhada",
+      "x": "친절한 배려 하나가 누군가의 하루를 밝힐 수 있어요.",
+      "xr": "Chinjeolhan baeryeo hanaga nugungaui harureul balkil su isseoyo."
+    },
+    "c157": {
+      "t": "솔직하다",
+      "r": "soljikada",
+      "x": "솔직한 피드백에 감사드립니다.",
+      "xr": "Soljikan pideubaege gamsadeurimnida."
+    },
+    "c158": {
+      "t": "인내심이 있다",
+      "r": "innaesimi itda",
+      "x": "유창함을 기르려면 인내심이 필요해요.",
+      "xr": "Yuchanghameul gireuryeomyeon innaesimi piryohaeyo."
+    },
+    "c159": {
+      "t": "용감하다",
+      "r": "yonggamhada",
+      "x": "대중 앞에서 소신을 밝힌 것은 정말 용감했어요.",
+      "xr": "Daejung apeseo sosineul balkin geoseun jeongmal yonggamhaesseoyo."
+    },
+    "c160": {
+      "t": "호기심이 많다",
+      "r": "hogisimi manta",
+      "x": "호기심이 많은 사람들은 끊임없이 발견해 나갑니다.",
+      "xr": "Hogisimi maneun saramdeureun kkeunimeopsi balgyeonhae nagamnida."
+    },
+    "c161": {
+      "t": "제 생각에는",
+      "r": "je saenggageneun",
+      "x": "제 생각에는 이 해결책이 실용적이에요.",
+      "xr": "Je saenggageneun i haegyeolchaegi siryongjeogieyo."
+    },
+    "c162": {
+      "t": "동의해요",
+      "r": "donguihaeyo",
+      "x": "핵심 요점에 전적으로 동의합니다.",
+      "xr": "Haeksim yojeome jeonjeogeuro donguihamnida."
+    },
+    "c163": {
+      "t": "의견",
+      "r": "uigyeon",
+      "x": "누구나 자신의 의견을 가질 권리가 있어요.",
+      "xr": "Nuguna jasinui uigyeoneul gajil gwolliga isseoyo."
+    },
+    "c164": {
+      "t": "중요하다",
+      "r": "jungyohada",
+      "x": "명확한 의사소통은 매우 중요합니다.",
+      "xr": "Myeonghwakan uisasotongeun maeu jungyohamnida."
+    },
+    "c165": {
+      "t": "가능하다",
+      "r": "ganeunghada",
+      "x": "꾸준히 노력하면 무엇이든 가능합니다.",
+      "xr": "Kkujunhi noryeokamyeon mueosideun ganeunghamnida."
+    },
+    "c166": {
+      "t": "초대",
+      "r": "chodae",
+      "x": "따뜻하게 초대해 주셔서 감사합니다.",
+      "xr": "Ttatteutage chodaehae jusyeoseo gamsahamnida."
+    },
+    "c167": {
+      "t": "축하",
+      "r": "chuka",
+      "x": "온 동네 사람들이 축하 자리에 함께했어요.",
+      "xr": "On dongne saramdeuri chuka jarie hamkkehaesseoyo."
+    },
+    "c168": {
+      "t": "약속",
+      "r": "yaksok",
+      "x": "한번 한 약속은 반드시 지키세요.",
+      "xr": "Hanbeon han yaksogeun bandeusi jikiseyo."
+    },
+    "c169": {
+      "t": "예약",
+      "r": "yeyak",
+      "x": "세 시에 치과 예약이 있어요.",
+      "xr": "Se sie chigwa yeyagi isseoyo."
+    },
+    "c170": {
+      "t": "깜짝 선물",
+      "r": "kkamjjak seonmul",
+      "x": "우리는 그녀를 위해 생일 깜짝 파티를 준비했어요.",
+      "xr": "Urineun geunyeoreul wihae saengil kkamjjak patireul junbihaesseoyo."
+    },
+    "c171": {
+      "t": "추억",
+      "r": "chueok",
+      "x": "그 여행은 제 가장 소중한 추억으로 남아 있어요.",
+      "xr": "Geu yeohaengeun je gajang sojunghan chueogeuro nama isseoyo."
+    },
+    "c172": {
+      "t": "경험",
+      "r": "gyeongheom",
+      "x": "해외 생활은 제 삶을 바꾼 값진 경험이었어요.",
+      "xr": "Haeoe saenghwareun je salmeul bakkun gapjin gyeongheomieosseoyo."
+    },
+    "c173": {
+      "t": "이야기",
+      "r": "iyagi",
+      "x": "할아버지께서 흥미진진한 이야기를 들려주셨어요.",
+      "xr": "Harabeojikkeseo heungmijinjinhan iyagireul deullyeojusyeosseoyo."
+    },
+    "c174": {
+      "t": "꿈",
+      "r": "kkum",
+      "x": "가장 큰 꿈을 결코 포기하지 마세요.",
+      "xr": "Gajang keun kkumeul gyeolko pogihaji maseyo."
+    },
+    "c175": {
+      "t": "여정",
+      "r": "yeojeong",
+      "x": "아무리 긴 여정도 한 걸음부터 시작합니다.",
+      "xr": "Amuri gin yeojeongdo han georeumbuteo sijakamnida."
+    },
+    "c176": {
+      "t": "신뢰",
+      "r": "silloe",
+      "x": "신뢰를 쌓는 데는 오랜 세월이 걸립니다.",
+      "xr": "Silloereul ssanneun deneun oraen sewori geollimnida."
+    },
+    "c177": {
+      "t": "존중",
+      "r": "jonjung",
+      "x": "모든 사람을 진심 어린 존중으로 대하세요.",
+      "xr": "Modeun sarameul jinsim eorin jonjungeuro daehaseyo."
+    },
+    "c178": {
+      "t": "조언",
+      "r": "joeon",
+      "x": "진로에 대해 조언을 좀 해 주실 수 있나요?",
+      "xr": "Jilloe daehae joeoneul jom hae jusil su innayo?"
+    },
+    "c179": {
+      "t": "응원",
+      "r": "eungwon",
+      "x": "변함없는 응원과 지지에 감사드립니다.",
+      "xr": "Byeonhameomneun eungwongwa jijie gamsadeurimnida."
+    },
+    "c180": {
+      "t": "용서하다",
+      "r": "yongseohada",
+      "x": "용서하고 앞으로 나아가려면 큰 용기가 필요해요.",
+      "xr": "Yongseohago apeuro naagaryeomyeon keun yonggiga piryohaeyo."
+    },
+    "c181": {
+      "t": "컴퓨터",
+      "r": "keompyuteo",
+      "x": "제 컴퓨터가 밤사이에 업데이트되었어요.",
+      "xr": "Je keompyuteoga bamsaie eopdeiteudoeeosseoyo."
+    },
+    "c182": {
+      "t": "인터넷",
+      "r": "inteonet",
+      "x": "빠른 인터넷은 외딴 마을까지 연결해 줍니다.",
+      "xr": "Ppareun inteoneseun oettan maeulkkaji yeongyeolhae jumnida."
+    },
+    "c183": {
+      "t": "휴대전화",
+      "r": "hyudaejeonhwa",
+      "x": "강의 중에는 휴대전화를 무음으로 해 주세요.",
+      "xr": "Gangui jungeneun hyudaejeonhwareul mueumeuro hae juseyo."
+    },
+    "c184": {
+      "t": "비밀번호",
+      "r": "bimilbeonho",
+      "x": "모든 계정에 강력하고 고유한 비밀번호를 사용하세요.",
+      "xr": "Modeun gyejeonge gangnyeokago goyuhan bimilbeonhoreul sayonghaseyo."
+    },
+    "c185": {
+      "t": "다운로드",
+      "r": "daullodeu",
+      "x": "오프라인 학습 팩을 무료로 다운로드할 수 있어요.",
+      "xr": "Opeurain hakseup paegeul muryoro daullodeuhal su isseoyo."
+    },
+    "c186": {
+      "t": "메시지",
+      "r": "mesiji",
+      "x": "오늘 일찍 메시지를 보내 드렸어요.",
+      "xr": "Oneul iljjik mesijireul bonae deuryeosseoyo."
+    },
+    "c187": {
+      "t": "검색",
+      "r": "geomsaek",
+      "x": "신뢰할 수 있는 공식 문서를 검색해 봅시다.",
+      "xr": "Silloehal su inneun gongsik munseoreul geomsaekae bopsida."
+    },
+    "c188": {
+      "t": "애플리케이션",
+      "r": "aepeullikeisyeon",
+      "x": "이 오픈 소스 애플리케이션은 오프라인에서도 작동해요.",
+      "xr": "I opeun soseu aepeullikeisyeoneun opeuraineseodo jakdonghaeyo."
+    },
+    "c189": {
+      "t": "개인정보 보호",
+      "r": "gaeinjeongbo boho",
+      "x": "사용자의 개인정보 보호가 최우선이 되어야 합니다.",
+      "xr": "Sayongjaui gaeinjeongbo bohoga choeuseoni doeeoya hamnida."
+    },
+    "c190": {
+      "t": "업데이트",
+      "r": "eopdeiteu",
+      "x": "최신 업데이트로 속도가 크게 향상되었어요.",
+      "xr": "Choesin eopdeiteuro sokdoga keuge hyangsangdoeeosseoyo."
+    },
+    "c191": {
+      "t": "뉴스",
+      "r": "nyuseu",
+      "x": "뉴스는 항상 여러 출처를 통해 확인하세요.",
+      "xr": "Nyuseuneun hangsang yeoreo chulcheoreul tonghae hwaginhaseyo."
+    },
+    "c192": {
+      "t": "기사",
+      "r": "gisa",
+      "x": "언어학에 관한 흥미로운 기사를 읽었어요.",
+      "xr": "Eoneohage gwanhan heungmiroun gisareul ilgeosseoyo."
+    },
+    "c193": {
+      "t": "정보",
+      "r": "jeongbo",
+      "x": "정확한 정보는 현명한 결정을 내리는 데 도움이 됩니다.",
+      "xr": "Jeonghwakan jeongboneun hyeonmyeonghan gyeoljeongeul naerineun de doumi doemnida."
+    },
+    "c194": {
+      "t": "카메라",
+      "r": "kamera",
+      "x": "그녀는 축제에 카메라를 챙겨 왔어요.",
+      "xr": "Geunyeoneun chukjee kamerareul chaenggyeo wasseoyo."
+    },
+    "c195": {
+      "t": "화면",
+      "r": "hwamyeon",
+      "x": "밤에는 화면 밝기를 알맞게 조절하세요.",
+      "xr": "Bameneun hwamyeon balkgireul almatge jojeolhaseyo."
+    },
+    "c196": {
+      "t": "문화",
+      "r": "munhwa",
+      "x": "언어는 문화의 살아 숨 쉬는 심장입니다.",
+      "xr": "Eoneoneun munhwaui sara sum swineun simjangimnida."
+    },
+    "c197": {
+      "t": "전통",
+      "r": "jeontong",
+      "x": "각 지역은 고유한 추수 전통을 보존하고 있습니다.",
+      "xr": "Gak jiyeogeun goyuhan chusu jeontongeul bojonhago isseumnida."
+    },
+    "c198": {
+      "t": "축제",
+      "r": "chukje",
+      "x": "축제 기간 동안 등불이 도시 전체를 환하게 밝혔습니다.",
+      "xr": "Chukje gigan dongan deungburi dosi jeonchereul hwanhage balkyeosseumnida."
+    },
+    "c199": {
+      "t": "역사",
+      "r": "yeoksa",
+      "x": "이 박물관은 오천 년의 역사를 보여 줍니다.",
+      "xr": "I bangmulgwaneun ocheon nyeonui yeoksareul boyeo jumnida."
+    },
+    "c200": {
+      "t": "유산",
+      "r": "yusan",
+      "x": "우리는 공동의 문화유산을 소중히 지켜야 합니다.",
+      "xr": "Urineun gongdongui munhwayusaneul sojunghi jikyeoya hamnida."
+    },
+    "c201": {
+      "t": "예술",
+      "r": "yesul",
+      "x": "위대한 예술은 국경과 시대를 초월합니다.",
+      "xr": "Widaehan yesureun gukgyeonggwa sidaereul chowolhamnida."
+    },
+    "c202": {
+      "t": "춤",
+      "r": "chum",
+      "x": "고전 무용은 움직임을 통해 이야기를 전합니다.",
+      "xr": "Gojeon muyongeun umjigimeul tonghae iyagireul jeonhamnida."
+    },
+    "c203": {
+      "t": "노래",
+      "r": "norae",
+      "x": "그 민요는 세대를 거쳐 불려 왔습니다.",
+      "xr": "Geu minyoneun sedaereul geochyeo bullyeo wasseumnida."
+    },
+    "c204": {
+      "t": "건축",
+      "r": "geonchuk",
+      "x": "사원의 건축 양식은 놀라울 만큼 정교합니다.",
+      "xr": "Sawonui geonchuk yangsigeun nollaul mankeum jeonggyohamnida."
+    },
+    "c205": {
+      "t": "시",
+      "r": "si",
+      "x": "시는 단 몇 줄의 글에 깊은 감정을 담아냅니다.",
+      "xr": "Sineun dan myeot jurui geure gipeun gamjeongeul damanaemnida."
+    },
+    "c206": {
+      "t": "손님",
+      "r": "sonnim",
+      "x": "모든 손님은 따뜻한 환대를 받습니다.",
+      "xr": "Modeun sonnimeun ttatteutan hwandaereul batseumnida."
+    },
+    "c207": {
+      "t": "선물",
+      "r": "seonmul",
+      "x": "작은 선물을 준비하는 것은 사려 깊음을 보여 줍니다.",
+      "xr": "Jageun seonmureul junbihaneun geoseun saryeo gipeumeul boyeo jumnida."
+    },
+    "c208": {
+      "t": "풍습",
+      "r": "pungseup",
+      "x": "새로운 나라를 방문하기 전에 현지 풍습을 배워 두세요.",
+      "xr": "Saeroun narareul bangmunhagi jeone hyeonji pungseubeul baewo duseyo."
+    },
+    "c209": {
+      "t": "의식",
+      "r": "uisik",
+      "x": "졸업식은 두 시간 동안 진행되었습니다.",
+      "xr": "Joreopsigeun du sigan dongan jinhaengdoeeosseumnida."
+    },
+    "c210": {
+      "t": "축복",
+      "r": "chukbok",
+      "x": "어른들께서 신혼부부에게 따뜻한 축복을 건네셨습니다.",
+      "xr": "Eoreundeulkkeseo sinhonbubuege ttatteutan chukbogeul geonnesyeosseumnida."
+    },
+    "c211": {
+      "t": "왜냐하면",
+      "r": "waenyahamyeon",
+      "x": "폭풍이 다가오고 있었기 때문에 우리는 실내에 머물렀어요.",
+      "xr": "Pokpungi dagaogo isseotgi ttaemune urineun sillaee meomulleosseoyo."
+    },
+    "c212": {
+      "t": "그러나",
+      "r": "geureona",
+      "x": "과제는 어려웠습니다. 그러나 우리는 성공했습니다.",
+      "xr": "Gwajeneun eoryeowosseumnida. Geureona urineun seonggonghaesseumnida."
+    },
+    "c213": {
+      "t": "비록",
+      "r": "birok",
+      "x": "비록 시간이 늦었지만 그는 그 장을 끝까지 마쳤어요.",
+      "xr": "Birok sigani neujeotjiman geuneun geu jangeul kkeutkkaji machyeosseoyo."
+    },
+    "c214": {
+      "t": "따라서",
+      "r": "ttaraseo",
+      "x": "자료가 명확합니다. 따라서 지금 행동해야 합니다.",
+      "xr": "Jaryoga myeonghwakamnida. Ttaraseo jigeum haengdonghaeya hamnida."
+    },
+    "c215": {
+      "t": "그동안",
+      "r": "geudongan",
+      "x": "제가 저녁을 요리할게요. 그동안 식탁 좀 차려 주세요.",
+      "xr": "Jega jeonyeogeul yorihalgeyo. Geudongan siktak jom charyeo juseyo."
+    },
+    "c216": {
+      "t": "문제",
+      "r": "munje",
+      "x": "먼저 문제의 근본 원인을 파악해 봅시다.",
+      "xr": "Meonjeo munjeui geunbon wonineul paakae bopsida."
+    },
+    "c217": {
+      "t": "해결책",
+      "r": "haegyeolchaek",
+      "x": "단순한 해결책이 종종 가장 믿음직합니다.",
+      "xr": "Dansunhan haegyeolchaegi jongjong gajang mideumjikamnida."
+    },
+    "c218": {
+      "t": "결정",
+      "r": "gyeoljeong",
+      "x": "중요한 결정을 내리기 전에 차분히 생각하세요.",
+      "xr": "Jungyohan gyeoljeongeul naerigi jeone chabunhi saenggakaseyo."
+    },
+    "c219": {
+      "t": "실수",
+      "r": "silsu",
+      "x": "모든 실수는 우리에게 값진 교훈을 줍니다.",
+      "xr": "Modeun silsuneun uriege gapjin gyohuneul jumnida."
+    },
+    "c220": {
+      "t": "성공",
+      "r": "seonggong",
+      "x": "팀워크가 우리 성공의 열쇠였습니다.",
+      "xr": "Timwokeuga uri seonggongui yeolsoeyeosseumnida."
+    },
+    "c221": {
+      "t": "만약",
+      "r": "manyak",
+      "x": "만약 매일 연습한다면 실력이 빠르게 늘 거예요.",
+      "xr": "Manyak maeil yeonseupandamyeon sillyeogi ppareuge neul geoyeyo."
+    },
+    "c222": {
+      "t": "대신에",
+      "r": "daesine",
+      "x": "운전하는 대신에 가게까지 걸어가세요.",
+      "xr": "Unjeonhaneun daesine gagekkaji georeogaseyo."
+    },
+    "c223": {
+      "t": "비교하다",
+      "r": "bigyohada",
+      "x": "투표하기 전에 두 제안서를 신중히 비교하세요.",
+      "xr": "Tupyohagi jeone du jeanseoreul sinjunghi bigyohaseyo."
+    },
+    "c224": {
+      "t": "차이",
+      "r": "chai",
+      "x": "작은 습관이 시간이 지나면 큰 차이를 만듭니다.",
+      "xr": "Jageun seupgwani sigani jinamyeon keun chaireul mandeumnida."
+    },
+    "c225": {
+      "t": "이유",
+      "r": "iyu",
+      "x": "그 선택을 한 이유를 설명해 주세요.",
+      "xr": "Geu seontaegeul han iyureul seolmyeonghae juseyo."
+    },
+    "c226": {
+      "t": "전략",
+      "r": "jeollyak",
+      "x": "우리는 장기적인 제품 전략을 수정했습니다.",
+      "xr": "Urineun janggijeogin jepum jeollyageul sujeonghaesseumnida."
+    },
+    "c227": {
+      "t": "프로젝트",
+      "r": "peurojekteu",
+      "x": "그 엔지니어링 프로젝트는 예정보다 일찍 출범했습니다.",
+      "xr": "Geu enjinieoring peurojekteuneun yejeongboda iljjik chulbeomhaesseumnida."
+    },
+    "c228": {
+      "t": "마감일",
+      "r": "magamil",
+      "x": "우리는 마감일 전에 모든 단계를 완료했습니다.",
+      "xr": "Urineun magamil jeone modeun dangyereul wallyohaesseumnida."
+    },
+    "c229": {
+      "t": "책임",
+      "r": "chaegim",
+      "x": "리더십은 온전한 책임을 지는 것을 뜻합니다.",
+      "xr": "Rideosibeun onjeonhan chaegimeul jineun geoseul tteutamnida."
+    },
+    "c230": {
+      "t": "협업",
+      "r": "hyeobeop",
+      "x": "열린 협업은 혁신의 속도를 높입니다.",
+      "xr": "Yeollin hyeobeobeun hyeoksinui sokdoreul nopimnida."
+    },
+    "c231": {
+      "t": "경제",
+      "r": "gyeongje",
+      "x": "중소기업은 국가 경제의 중추를 이룹니다.",
+      "xr": "Jungsogieobeun gukga gyeongjeui jungchureul irumnida."
+    },
+    "c232": {
+      "t": "예산",
+      "r": "yesan",
+      "x": "시 의회는 내년도 교육 예산을 승인했습니다.",
+      "xr": "Si uihoeneun naenyeondo gyoyuk yesaneul seunginhaesseumnida."
+    },
+    "c233": {
+      "t": "투자",
+      "r": "tuja",
+      "x": "교육은 가장 현명한 장기 투자입니다.",
+      "xr": "Gyoyugeun gajang hyeonmyeonghan janggi tujaimnida."
+    },
+    "c234": {
+      "t": "계약서",
+      "r": "gyeyakseo",
+      "x": "계약서의 모든 조항을 꼼꼼히 읽어 보십시오.",
+      "xr": "Gyeyakseoui modeun johangeul kkomkkomhi ilgeo bosipsio."
+    },
+    "c235": {
+      "t": "수익",
+      "r": "suik",
+      "x": "지속 가능한 성장이 단기 수익보다 중요합니다.",
+      "xr": "Jisok ganeunghan seongjangi dangi suikboda jungyohamnida."
+    },
+    "c236": {
+      "t": "제안서",
+      "r": "jeanseo",
+      "x": "위원회가 우리의 상세한 제안서를 검토했습니다.",
+      "xr": "Wiwonhoega uriui sangsehan jeanseoreul geomtohaesseumnida."
+    },
+    "c237": {
+      "t": "협상",
+      "r": "hyeopsang",
+      "x": "양측은 성실한 태도로 협상에 임했습니다.",
+      "xr": "Yangcheugeun seongsilhan taedoro hyeopsange imhaesseumnida."
+    },
+    "c238": {
+      "t": "협정",
+      "r": "hyeopjeong",
+      "x": "양측은 상호 호혜적인 무역 협정에 서명했습니다.",
+      "xr": "Yangcheugeun sangho hohyejeogin muyeok hyeopjeonge seomyeonghaesseumnida."
+    },
+    "c239": {
+      "t": "타협",
+      "r": "tahyeop",
+      "x": "공정한 타협을 통해 분쟁이 해결되었습니다.",
+      "xr": "Gongjeonghan tahyeobeul tonghae bunjaengi haegyeoldoeeosseumnida."
+    },
+    "c240": {
+      "t": "기회",
+      "r": "gihoe",
+      "x": "모든 시련 뒤에는 숨겨진 기회가 찾아옵니다.",
+      "xr": "Modeun siryeon dwieneun sumgyeojin gihoega chajaomnida."
+    },
+    "c241": {
+      "t": "연구",
+      "r": "yeongu",
+      "x": "동료 심사를 거친 연구가 현대 의학을 이끕니다.",
+      "xr": "Dongnyo simsareul geochin yeonguga hyeondae uihageul ikkeumnida."
+    },
+    "c242": {
+      "t": "실험",
+      "r": "silheom",
+      "x": "실험실의 실험이 우리의 예측을 입증했습니다.",
+      "xr": "Silheomsirui silheomi uriui yecheugeul ipjeunghaesseumnida."
+    },
+    "c243": {
+      "t": "증거",
+      "r": "jeunggeo",
+      "x": "설득력 있는 결론은 탄탄한 증거에 기반해야 합니다.",
+      "xr": "Seoldeungnyeok inneun gyeolloneun tantanhan jeunggeoe gibanhaeya hamnida."
+    },
+    "c244": {
+      "t": "이론",
+      "r": "iron",
+      "x": "이 이론은 중력이 어떻게 빛을 휘게 하는지 설명합니다.",
+      "xr": "I ironeun jungnyeogi eotteoke bicheul hwige haneunji seolmyeonghamnida."
+    },
+    "c245": {
+      "t": "발견",
+      "r": "balgyeon",
+      "x": "그 발견은 청정에너지 저장 기술을 혁신했습니다.",
+      "xr": "Geu balgyeoneun cheongjeongeneoji jeojang gisureul hyeoksinhaesseumnida."
+    },
+    "c246": {
+      "t": "혁신",
+      "r": "hyeoksin",
+      "x": "풀뿌리 혁신이 지역사회의 실질적인 문제를 해결합니다.",
+      "xr": "Pulppuri hyeoksini jiyeoksahoeui siljiljeogin munjereul haegyeolhamnida."
+    },
+    "c247": {
+      "t": "알고리즘",
+      "r": "algorijeum",
+      "x": "효율적인 알고리즘은 전력과 시간을 절약합니다.",
+      "xr": "Hyoyuljeogin algorijeumeun jeollyeokgwa siganeul jeoryakamnida."
+    },
+    "c248": {
+      "t": "에너지",
+      "r": "eneoji",
+      "x": "태양광 패널은 햇빛을 직접 에너지로 전환합니다.",
+      "xr": "Taeyanggwang paeneoreun haetbicheul jikjeop eneojiro jeonhwanhamnida."
+    },
+    "c249": {
+      "t": "실험실",
+      "r": "silheomsil",
+      "x": "과학자들이 실험실에서 센서를 정밀하게 보정했습니다.",
+      "xr": "Gwahakjadeuri silheomsireseo senseoreul jeongmilhage bojeonghaesseumnida."
+    },
+    "c250": {
+      "t": "정밀도",
+      "r": "jeongmildo",
+      "x": "미세 수술에는 고도의 정밀도가 요구됩니다.",
+      "xr": "Mise susureneun godoui jeongmildoga yogudoemnida."
+    },
+    "c251": {
+      "t": "우주",
+      "r": "uju",
+      "x": "망원경은 우주 초기의 은하들을 포착합니다.",
+      "xr": "Mangwongyeongeun uju chogiui eunhadeureul pochakamnida."
+    },
+    "c252": {
+      "t": "행성",
+      "r": "haengseong",
+      "x": "물은 어느 행성에서나 생명 유지에 필수적입니다.",
+      "xr": "Mureun eoneu haengseongeseona saengmyeong yujie pilsujeogimnida."
+    },
+    "c253": {
+      "t": "중력",
+      "r": "jungnyeok",
+      "x": "중력은 달이 지구 주위를 공전하도록 유지합니다.",
+      "xr": "Jungnyeogeun dari jigu juwireul gongjeonhadorok yujihamnida."
+    },
+    "c254": {
+      "t": "진화",
+      "r": "jinhwa",
+      "x": "진화는 수백만 년에 걸쳐 생명체를 변화시킵니다.",
+      "xr": "Jinhwaneun subaengman nyeone geolchyeo saengmyeongchereul byeonhwasikimnida."
+    },
+    "c255": {
+      "t": "호기심",
+      "r": "hogisim",
+      "x": "과학적 호기심이 인류를 앞으로 나아가게 합니다.",
+      "xr": "Gwahakjeok hogisimi illyureul apeuro naagage hamnida."
+    },
+    "c256": {
+      "t": "환경",
+      "r": "hwangyeong",
+      "x": "환경을 보호하는 것은 미래 세대를 지키는 일입니다.",
+      "xr": "Hwangyeongeul bohohaneun geoseun mirae sedaereul jikineun irimnida."
+    },
+    "c257": {
+      "t": "기후",
+      "r": "gihu",
+      "x": "변화하는 기후 패턴이 전 세계 수확량에 영향을 미칩니다.",
+      "xr": "Byeonhwahaneun gihu paeteoni jeon segye suhwangnyange yeonghyangeul michimnida."
+    },
+    "c258": {
+      "t": "생태계",
+      "r": "saengtaegye",
+      "x": "습지는 해안 생태계에 필수적인 역할을 합니다.",
+      "xr": "Seupjineun haean saengtaegyee pilsujeogin yeokareul hamnida."
+    },
+    "c259": {
+      "t": "생물 다양성",
+      "r": "saengmul dayangseong",
+      "x": "열대우림은 놀라운 생물 다양성의 보고입니다.",
+      "xr": "Yeoldaeurimeun nollaun saengmul dayangseongui bogoimnida."
+    },
+    "c260": {
+      "t": "오염",
+      "r": "oyeom",
+      "x": "전기 대중교통은 도시의 대기 오염을 크게 줄입니다.",
+      "xr": "Jeongi daejunggyotongeun dosiui daegi oyeomeul keuge jurimnida."
+    },
+    "c261": {
+      "t": "재생 가능한",
+      "r": "jaesaeng ganeunghan",
+      "x": "풍력과 태양광은 풍부한 재생 가능 에너지원입니다.",
+      "xr": "Pungnyeokgwa taeyanggwangeun pungbuhan jaesaeng ganeung eneojiwonimnida."
+    },
+    "c262": {
+      "t": "지속 가능성",
+      "r": "jisok ganeungseong",
+      "x": "진정한 지속 가능성은 자연과 번영의 조화를 이룹니다.",
+      "xr": "Jinjeonghan jisok ganeungseongeun jayeongwa beonyeongui johwareul irumnida."
+    },
+    "c263": {
+      "t": "보전",
+      "r": "bojeon",
+      "x": "지역사회 주도의 보전 활동이 숲을 되살렸습니다.",
+      "xr": "Jiyeoksahoe judoui bojeon hwaldongi supeul doesallyeosseumnida."
+    },
+    "c264": {
+      "t": "재활용하다",
+      "r": "jaehwaryonghada",
+      "x": "도시에서 재활용할 수 있도록 유리, 종이, 금속을 분리수거하세요.",
+      "xr": "Dosieseo jaehwaryonghal su itdorok yuri, jongi, geumsogeul bullisugeohaseyo."
+    },
+    "c265": {
+      "t": "자원",
+      "r": "jawon",
+      "x": "담수는 인류가 함께 나누어야 할 소중한 자원입니다.",
+      "xr": "Damsuneun illyuga hamkke nanueoya hal sojunghan jawonimnida."
+    },
+    "c266": {
+      "t": "숲",
+      "r": "sup",
+      "x": "토종 숲을 복원하면 주변 도시의 기온이 낮아집니다.",
+      "xr": "Tojong supeul bogwonhamyeon jubyeon dosiui gioni najajimnida."
+    },
+    "c267": {
+      "t": "대양",
+      "r": "daeyang",
+      "x": "건강한 바다는 막대한 양의 탄소를 흡수합니다.",
+      "xr": "Geonganghan badaneun makdaehan yangui tansoreul heupsuhamnida."
+    },
+    "c268": {
+      "t": "가뭄",
+      "r": "gamum",
+      "x": "스마트 관개 기술은 농부들이 가뭄을 견디도록 돕습니다.",
+      "xr": "Seumateu gwangae gisureun nongbudeuri gamumeul gyeondidorok dopseumnida."
+    },
+    "c269": {
+      "t": "조화",
+      "r": "johwa",
+      "x": "인류의 발전은 자연과 조화를 이루어야 합니다.",
+      "xr": "Illyuui baljeoneun jayeongwa johwareul irueoya hamnida."
+    },
+    "c270": {
+      "t": "미래",
+      "r": "mirae",
+      "x": "오늘의 선택이 내일의 미래를 결정합니다.",
+      "xr": "Oneurui seontaegi naeirui miraereul gyeoljeonghamnida."
+    },
+    "c271": {
+      "t": "정의",
+      "r": "jeongui",
+      "x": "법 앞의 평등한 정의가 사회를 튼튼하게 합니다.",
+      "xr": "Beop apui pyeongdeunghan jeonguiga sahoereul teunteunhage hamnida."
+    },
+    "c272": {
+      "t": "자유",
+      "r": "jayu",
+      "x": "표현의 자유에는 상호 책임이 따릅니다.",
+      "xr": "Pyohyeonui jayueneun sangho chaegimi ttareumnida."
+    },
+    "c273": {
+      "t": "평등",
+      "r": "pyeongdeung",
+      "x": "교육은 사회적·경제적 평등을 증진합니다.",
+      "xr": "Gyoyugeun sahoejeok gyeongjejeok pyeongdeungeul jeungjinhamnida."
+    },
+    "c274": {
+      "t": "헌법",
+      "r": "heonbeop",
+      "x": "헌법은 기본적인 인권을 보장합니다.",
+      "xr": "Heonbeobeun gibonjeogin ingwoneul bojanghamnida."
+    },
+    "c275": {
+      "t": "시민",
+      "r": "simin",
+      "x": "적극적으로 참여하는 시민이 건강한 공동체를 만듭니다.",
+      "xr": "Jeokgeukjeogeuro chamyeohaneun simini geonganghan gongdongchereul mandeumnida."
+    },
+    "c276": {
+      "t": "민주주의",
+      "r": "minjujuui",
+      "x": "건전한 민주주의는 깨어 있는 유권자에 달려 있습니다.",
+      "xr": "Geonjeonhan minjujuuineun kkaeeo inneun yugwonjae dallyeo isseumnida."
+    },
+    "c277": {
+      "t": "정부",
+      "r": "jeongbu",
+      "x": "지방 정부는 도로, 공원, 학교를 관리합니다.",
+      "xr": "Jibang jeongbuneun doro, gongwon, hakgyoreul gwallihamnida."
+    },
+    "c278": {
+      "t": "정책",
+      "r": "jeongchaek",
+      "x": "공중 보건 정책이 수백만 명의 생명을 구했습니다.",
+      "xr": "Gongjung bogeon jeongchaegi subaengman myeongui saengmyeongeul guhaesseumnida."
+    },
+    "c279": {
+      "t": "법",
+      "r": "beop",
+      "x": "투명한 법은 지역사회 전반의 신뢰를 쌓습니다.",
+      "xr": "Tumyeonghan beobeun jiyeoksahoe jeonbanui silloereul ssasseumnida."
+    },
+    "c280": {
+      "t": "투명성",
+      "r": "tumyeongseong",
+      "x": "재정적 투명성은 부패를 예방합니다.",
+      "xr": "Jaejeongjeok tumyeongseongeun bupaereul yebanghamnida."
+    },
+    "c281": {
+      "t": "공동체",
+      "r": "gongdongche",
+      "x": "굳건한 공동체는 취약 계층을 세심히 보살핍니다.",
+      "xr": "Gutgeonhan gongdongcheneun chwiyak gyecheungeul sesimhi bosalpimnida."
+    },
+    "c282": {
+      "t": "평화",
+      "r": "pyeonghwa",
+      "x": "지속적인 평화는 대화와 공감을 필요로 합니다.",
+      "xr": "Jisokjeogin pyeonghwaneun daehwawa gonggameul piryoro hamnida."
+    },
+    "c283": {
+      "t": "교육",
+      "r": "gyoyuk",
+      "x": "보편적 교육은 국가 전체를 일으켜 세웁니다.",
+      "xr": "Bopyeonjeok gyoyugeun gukga jeonchereul ireukyeo seumnida."
+    },
+    "c284": {
+      "t": "자원봉사자",
+      "r": "jawonbongsaja",
+      "x": "수백 명의 자원봉사자들이 홍수 피해 복구를 도왔습니다.",
+      "xr": "Subaek myeongui jawonbongsajadeuri hongsu pihae bokgureul dowasseumnida."
+    },
+    "c285": {
+      "t": "연대",
+      "r": "yeondae",
+      "x": "국제적 연대는 위기를 더 빠르게 극복하게 합니다.",
+      "xr": "Gukjejeok yeondaeneun wigireul deo ppareuge geukbokage hamnida."
+    },
+    "c286": {
+      "t": "주장",
+      "r": "jujang",
+      "x": "모든 주장은 검증 가능한 사실로 뒷받침하세요.",
+      "xr": "Modeun jujangeun geomjeung ganeunghan sasillo dwitbatchimhaseyo."
+    },
+    "c287": {
+      "t": "관점",
+      "r": "gwanjeom",
+      "x": "다른 관점에서 바라보면 이해의 폭이 깊어집니다.",
+      "xr": "Dareun gwanjeomeseo barabomyeon ihaeui pogi gipeojimnida."
+    },
+    "c288": {
+      "t": "분석",
+      "r": "bunseok",
+      "x": "그녀의 경제 분석은 숨겨진 세 가지 위험을 짚어 냈습니다.",
+      "xr": "Geunyeoui gyeongje bunseogeun sumgyeojin se gaji wiheomeul jipeo naesseumnida."
+    },
+    "c289": {
+      "t": "전제",
+      "r": "jeonje",
+      "x": "항상 기저에 깔린 자신의 전제를 되짚어 보세요.",
+      "xr": "Hangsang gijeoe kkallin jasinui jeonjereul doejipeo boseyo."
+    },
+    "c290": {
+      "t": "결론",
+      "r": "gyeollon",
+      "x": "성급히 결론을 내리기 전에 모든 사실을 확인하세요.",
+      "xr": "Seonggeupi gyeolloneul naerigi jeone modeun sasireul hwaginhaseyo."
+    },
+    "c291": {
+      "t": "객관적",
+      "r": "gaekgwanjeok",
+      "x": "공정한 기자는 객관성을 유지하려 노력합니다.",
+      "xr": "Gongjeonghan gijaneun gaekgwanseongeul yujiharyeo noryeokamnida."
+    },
+    "c292": {
+      "t": "편견",
+      "r": "pyeongyeon",
+      "x": "자신의 편견을 인식하면 더 나은 판단을 내릴 수 있습니다.",
+      "xr": "Jasinui pyeongyeoneul insikamyeon deo naeun pandaneul naeril su isseumnida."
+    },
+    "c293": {
+      "t": "기준",
+      "r": "gijun",
+      "x": "신뢰성이 우리의 최우선 평가 기준입니다.",
+      "xr": "Silloeseongi uriui choeuseon pyeongga gijunimnida."
+    },
+    "c294": {
+      "t": "모순",
+      "r": "mosun",
+      "x": "목격자는 시간 흐름 속의 모순을 발견했습니다.",
+      "xr": "Mokgyeokjaneun sigan heureum sogui mosuneul balgyeonhaesseumnida."
+    },
+    "c295": {
+      "t": "합의",
+      "r": "habui",
+      "x": "열띤 토론 끝에 위원회는 합의에 도달했습니다.",
+      "xr": "Yeolttin toron kkeute wiwonhoeneun habuie dodalhaesseumnida."
+    },
+    "c296": {
+      "t": "명확히 하다",
+      "r": "myeonghwaki hada",
+      "x": "그 표현의 의미를 좀 더 명확히 설명해 주시겠습니까?",
+      "xr": "Geu pyohyeonui uimireul jom deo myeonghwaki seolmyeonghae jusigesseumnikka?"
+    },
+    "c297": {
+      "t": "강조하다",
+      "r": "gangjohada",
+      "x": "저는 접근성의 중요성을 강조하고 싶습니다.",
+      "xr": "Jeoneun jeopgeunseongui jungyoseongeul gangjohago sipseumnida."
+    },
+    "c298": {
+      "t": "그럼에도 불구하고",
+      "r": "geureomedo bulguhago",
+      "x": "길은 가팔랐습니다. 그럼에도 불구하고 우리는 정상에 올랐습니다.",
+      "xr": "Gireun gapallasseumnida. Geureomedo bulguhago urineun jeongsange ollasseumnida."
+    },
+    "c299": {
+      "t": "결과",
+      "r": "gyeolgwa",
+      "x": "결정하기 전에 장기적인 결과를 모두 고려하세요.",
+      "xr": "Gyeoljeonghagi jeone janggijeogin gyeolgwareul modu goryeohaseyo."
+    },
+    "c300": {
+      "t": "통찰력",
+      "r": "tongchallyeok",
+      "x": "그녀의 발언은 놀라운 통찰력을 담고 있었습니다.",
+      "xr": "Geunyeoui bareoneun nollaun tongchallyeogeul damgo isseosseumnida."
+    },
+    "c301": {
+      "t": "은유",
+      "r": "eunyu",
+      "x": "강물은 흘러가는 시간의 은유로 쓰입니다.",
+      "xr": "Gangmureun heulleoganeun siganui eunyuro sseuimnida."
+    },
+    "c302": {
+      "t": "상징성",
+      "r": "sangjingseong",
+      "x": "그 소설은 중층적인 상징성으로 가득합니다.",
+      "xr": "Geu soseoreun jungcheungjeogin sangjingseongeuro gadeukamnida."
+    },
+    "c303": {
+      "t": "서사",
+      "r": "seosa",
+      "x": "작가는 서로 얽힌 세 갈래의 서사를 정교하게 엮어 냅니다.",
+      "xr": "Jakganeun seoro eolkin se gallaeui seosareul jeonggyohage yeokkeo naemnida."
+    },
+    "c304": {
+      "t": "걸작",
+      "r": "geoljak",
+      "x": "그 교향곡은 시대를 초월한 걸작으로 칭송받습니다.",
+      "xr": "Geu gyohyanggogeun sidaereul chowolhan geoljageuro chingsongbatseumnida."
+    },
+    "c305": {
+      "t": "미학",
+      "r": "mihak",
+      "x": "미니멀리즘 디자인은 고요한 미학적 조화를 중시합니다.",
+      "xr": "Minimeollijeum dijaineun goyohan mihakjeok johwareul jungsihamnida."
+    },
+    "c306": {
+      "t": "뉘앙스",
+      "r": "nwiangseu",
+      "x": "진정한 유창함은 미묘한 문화적 뉘앙스를 파악하는 데 있습니다.",
+      "xr": "Jinjeonghan yuchanghameun mimyohan munhwajeok nwiangseureul paakaneun de isseumnida."
+    },
+    "c307": {
+      "t": "모호함",
+      "r": "mohoham",
+      "x": "그 시는 의도적이고 여운이 남는 모호함으로 끝을 맺습니다.",
+      "xr": "Geu sineun uidojeogigo yeouni namneun mohohameuro kkeuteul maetseumnida."
+    },
+    "c308": {
+      "t": "아이러니",
+      "r": "aireoni",
+      "x": "극작가는 날카로운 아이러니로 허영심을 풍자했습니다.",
+      "xr": "Geukjakganeun nalkaroun aireoniro heoyeongsimeul pungjahaesseumnida."
+    },
+    "c309": {
+      "t": "웅변",
+      "r": "ungbyeon",
+      "x": "그녀는 돋보이는 침착함과 유려한 웅변으로 연설했습니다.",
+      "xr": "Geunyeoneun dotboineun chimchakamgwa yuryeohan ungbyeoneuro yeonseolhaesseumnida."
+    },
+    "c310": {
+      "t": "유산",
+      "r": "yusan",
+      "x": "위대한 문학은 오래도록 남는 지적 유산을 남깁니다.",
+      "xr": "Widaehan munhageun oraedorok namneun jijeok yusaneul namgimnida."
+    },
+    "c311": {
+      "t": "향수",
+      "r": "hyangsu",
+      "x": "따뜻한 흙에 내리는 비 냄새가 깊은 향수를 불러일으켰습니다.",
+      "xr": "Ttatteutan heulge naerineun bi naemsaega gipeun hyangsureul bulleoireukyeosseumnida."
+    },
+    "c312": {
+      "t": "울림",
+      "r": "ullim",
+      "x": "그 선율은 깊은 정서적 울림을 지니고 있었습니다.",
+      "xr": "Geu seonyureun gipeun jeongseojeok ullimeul jinigo isseosseumnida."
+    },
+    "c313": {
+      "t": "숭고하다",
+      "r": "sunggohada",
+      "x": "오로라 아래 서 있던 순간은 그야말로 숭고했습니다.",
+      "xr": "Orora arae seo itdeon sunganeun geuyamallo sunggohaesseumnida."
+    },
+    "c314": {
+      "t": "초월하다",
+      "r": "chowolhada",
+      "x": "연민과 공감은 언어와 역사를 초월할 수 있습니다.",
+      "xr": "Yeonmingwa gonggameun eoneowa yeoksareul chowolhal su isseumnida."
+    },
+    "c315": {
+      "t": "진정성",
+      "r": "jinjeongseong",
+      "x": "독자들은 글 속의 진정한 진정성을 단번에 알아봅니다.",
+      "xr": "Dokjadeureun geul sogui jinjeonghan jinjeongseongeul danbeone arabomnida."
+    },
+    "c316": {
+      "t": "양심",
+      "r": "yangsim",
+      "x": "정직한 양심에 따라 행동하십시오.",
+      "xr": "Jeongjikan yangsime ttara haengdonghasipsio."
+    },
+    "c317": {
+      "t": "청렴",
+      "r": "cheongnyeom",
+      "x": "청렴이란 아무도 보지 않을 때도 옳은 일을 하는 것입니다.",
+      "xr": "Cheongnyeomiran amudo boji aneul ttaedo oreun ireul haneun geosimnida."
+    },
+    "c318": {
+      "t": "공감",
+      "r": "gonggam",
+      "x": "공감은 아무리 깊은 갈등의 골도 이어 줍니다.",
+      "xr": "Gonggameun amuri gipeun galdeungui goldo ieo jumnida."
+    },
+    "c319": {
+      "t": "딜레마",
+      "r": "dillema",
+      "x": "위원회는 어려운 윤리적 딜레마에 직면했습니다.",
+      "xr": "Wiwonhoeneun eoryeoun yullijeok dillemae jingmyeonhaesseumnida."
+    },
+    "c320": {
+      "t": "지혜",
+      "r": "jihye",
+      "x": "지식은 말하려 하지만 지혜는 귀 기울여 듣습니다.",
+      "xr": "Jisigeun malharyeo hajiman jihyeneun gwi giuryeo deutseumnida."
+    },
+    "c321": {
+      "t": "의식",
+      "r": "uisik",
+      "x": "철학자들은 여전히 의식의 본질을 두고 논쟁합니다.",
+      "xr": "Cheolhakjadeureun yeojeonhi uisigui bonjireul dugo nonjaenghamnida."
+    },
+    "c322": {
+      "t": "인식",
+      "r": "insik",
+      "x": "언어는 시간에 대한 우리의 인식을 미묘하게 형성합니다.",
+      "xr": "Eoneoneun sigane daehan uriui insigeul mimyohage hyeongseonghamnida."
+    },
+    "c323": {
+      "t": "회복탄력성",
+      "r": "hoeboktallyeokseong",
+      "x": "내면의 회복탄력성은 역경을 이겨 내며 자라납니다.",
+      "xr": "Naemyeonui hoeboktallyeokseongeun yeokgyeongeul igyeo naemyeo jaranamnida."
+    },
+    "c324": {
+      "t": "성찰",
+      "r": "seongchal",
+      "x": "고요한 자기 성찰은 혼란 속에서 명료함을 가져다줍니다.",
+      "xr": "Goyohan jagi seongchareun hollan sogeseo myeongnyohameul gajyeodajumnida."
+    },
+    "c325": {
+      "t": "역설",
+      "r": "yeokseol",
+      "x": "선택의 역설은 선택지가 많을수록 오히려 부담이 커짐을 보여 줍니다.",
+      "xr": "Seontaegui yeokseoreun seontaekjiga maneulsurok ohiryeo budami keojimeul boyeo jumnida."
+    },
+    "c326": {
+      "t": "무상함",
+      "r": "musangham",
+      "x": "삶의 무상함을 받아들이면 오늘을 더 소중히 여기게 됩니다.",
+      "xr": "Salmui musanghameul badadeurimyeon oneureul deo sojunghi yeogige doemnida."
+    },
+    "c327": {
+      "t": "평정심",
+      "r": "pyeongjeongsim",
+      "x": "그녀는 승리와 좌절 모두를 평정심으로 맞이했습니다.",
+      "xr": "Geunyeoneun seungniwa jwajeol modureul pyeongjeongsimeuro majihaesseumnida."
+    },
+    "c328": {
+      "t": "목적의식",
+      "r": "mokjeoguisik",
+      "x": "공유된 목적의식은 일상의 노력을 기쁨으로 바꿉니다.",
+      "xr": "Gongyudoen mokjeoguisigeun ilsangui noryeogeul gippeumeuro bakkumnida."
+    },
+    "c329": {
+      "t": "자율성",
+      "r": "jayulseong",
+      "x": "지적 자율성은 독립적인 사고에서 비롯됩니다.",
+      "xr": "Jijeok jayulseongeun dongnipjeogin sagoeseo birotdoemnida."
+    },
+    "c330": {
+      "t": "겸손",
+      "r": "gyeomson",
+      "x": "진정한 경지에는 언제나 겸손이 함께합니다.",
+      "xr": "Jinjeonghan gyeongjieneun eonjena gyeomsoni hamkkehamnida."
+    },
+    "c331": {
+      "t": "말보다 행동이 앞선다",
+      "r": "malboda haengdongi apseonda",
+      "x": "약속을 지키세요. 백 마디 말보다 한 번의 행동이 중요합니다.",
+      "xr": "Yaksogeul jikiseyo. Baek madi malboda han beonui haengdongi jungyohamnida."
+    },
+    "c332": {
+      "t": "연습이 완벽을 만든다",
+      "r": "yeonseubi wanbyeogeul mandeunda",
+      "x": "실수를 두려워하지 마세요. 연습이 완벽을 만듭니다.",
+      "xr": "Silsureul duryeowohaji maseyo. Yeonseubi wanbyeogeul mandeumnida."
+    },
+    "c333": {
+      "t": "하늘이 무너져도 솟아날 구멍이 있다",
+      "r": "haneuri muneojyeodo sosanal gumeongi itda",
+      "x": "희망을 잃지 마세요. 하늘이 무너져도 솟아날 구멍은 있습니다.",
+      "xr": "Huimangeul ilchi maseyo. Haneuri muneojyeodo sosanal gumeongeun isseumnida."
+    },
+    "c334": {
+      "t": "시간이 약이다",
+      "r": "sigani yagida",
+      "x": "스스로에게 너그러워지세요. 시간이 약입니다.",
+      "xr": "Seuseuroege neogeureowojiseyo. Sigani yagimnida."
+    },
+    "c335": {
+      "t": "백지장도 맞들면 낫다",
+      "r": "baekjijangdo matdeulmyeon natda",
+      "x": "함께 힘을 합치면 백지장도 맞들면 낫다는 말을 실감하게 됩니다.",
+      "xr": "Hamkke himeul hapchimyeon baekjijangdo matdeulmyeon natdaneun mareul silgamhage doemnida."
+    },
+    "c336": {
+      "t": "어색한 분위기를 깨다",
+      "r": "eosaekan bunwigireul kkaeda",
+      "x": "따뜻한 농담 한마디가 저녁 식사 자리의 어색한 분위기를 깼습니다.",
+      "xr": "Ttatteutan nongdam hanmadiga jeonyeok siksa jariui eosaekan bunwigireul kkaesseumnida."
+    },
+    "c337": {
+      "t": "식은 죽 먹기",
+      "r": "sigeun juk meokgi",
+      "x": "몇 주 동안 반복 연습을 했더니 시험이 식은 죽 먹기였습니다.",
+      "xr": "Myeot ju dongan banbok yeonseubeul haetdeoni siheomi sigeun juk meokgiyeosseumnida."
+    },
+    "c338": {
+      "t": "가뭄에 콩 나듯",
+      "r": "gamume kong nadeut",
+      "x": "이 계곡에서는 눈이 가뭄에 콩 나듯 아주 드물게 내립니다.",
+      "xr": "I gyegogeseoneun nuni gamume kong nadeut aju deumulge naerimnida."
+    },
+    "c339": {
+      "t": "정곡을 찌르다",
+      "r": "jeonggogeul jjireuda",
+      "x": "당신의 진단은 문제의 정곡을 정확히 찔렀습니다.",
+      "xr": "Dangsinui jindaneun munjeui jeonggogeul jeonghwaki jjilleosseumnida."
+    },
+    "c340": {
+      "t": "밤을 새우다",
+      "r": "bameul saeuda",
+      "x": "팀원들은 출시 기한을 맞추기 위해 밤을 새워 일했습니다.",
+      "xr": "Timwondeureun chulsi gihaneul matchugi wihae bameul saewo ilhaesseumnida."
+    },
+    "c341": {
+      "t": "행간을 읽다",
+      "r": "haengganeul ikda",
+      "x": "외교에서는 말 뒤에 숨은 행간을 읽을 줄 알아야 합니다.",
+      "xr": "Oegyoeseoneun mal dwie sumeun haengganeul ilgeul jul araya hamnida."
+    },
+    "c342": {
+      "t": "새 출발을 하다",
+      "r": "sae chulbareul hada",
+      "x": "그녀는 올봄에 마음을 다잡고 새 출발을 하기로 결심했습니다.",
+      "xr": "Geunyeoneun olbome maeumeul dajapgo sae chulbareul hagiro gyeolsimhaesseumnida."
+    },
+    "c343": {
+      "t": "전화위복",
+      "r": "jeonhwawibok",
+      "x": "그 직장을 잃은 일이 결국 전화위복이 되었습니다.",
+      "xr": "Geu jikjangeul ireun iri gyeolguk jeonhwawibogi doeeosseumnida."
+    },
+    "c344": {
+      "t": "한 걸음 더 나아가다",
+      "r": "han georeum deo naagada",
+      "x": "훌륭한 스승은 언제나 학생을 위해 한 걸음 더 나아갑니다.",
+      "xr": "Hullyunghan seuseungeun eonjena haksaengeul wihae han georeum deo naagamnida."
+    },
+    "c345": {
+      "t": "큰 그림을 보다",
+      "r": "keun geurimeul boda",
+      "x": "세부 사항에서 잠시 물러나 큰 그림을 보십시오.",
+      "xr": "Sebu sahangeseo jamsi mulleona keun geurimeul bosipsio."
+    },
+    "c346": {
+      "t": "주권",
+      "r": "jugwon",
+      "x": "국제법은 주권에 대한 상호 존중을 천명합니다.",
+      "xr": "Gukjebeobeun jugwone daehan sangho jonjungeul cheonmyeonghamnida."
+    },
+    "c347": {
+      "t": "외교",
+      "r": "oegyo",
+      "x": "인내심 있는 외교가 갈등의 확전을 막았습니다.",
+      "xr": "Innaesim inneun oegyoga galdeungui hwakjeoneul magasseumnida."
+    },
+    "c348": {
+      "t": "조약",
+      "r": "joyak",
+      "x": "40개국이 그 환경 조약을 비준했습니다.",
+      "xr": "Sasipgaegugi geu hwangyeong joyageul bijunhaesseumnida."
+    },
+    "c349": {
+      "t": "다자간",
+      "r": "dajagan",
+      "x": "다자간 협력은 공동의 세계적 위기에 대응합니다.",
+      "xr": "Dajagan hyeomnyeogeun gongdongui segyejeok wigie daeeunghamnida."
+    },
+    "c350": {
+      "t": "관할권",
+      "r": "gwanhalgwon",
+      "x": "그 재판소는 해양 분쟁에 대한 관할권을 지닙니다.",
+      "xr": "Geu jaepansoneun haeyang bunjaenge daehan gwanhalgwoneul jinimnida."
+    },
+    "c351": {
+      "t": "가설",
+      "r": "gaseol",
+      "x": "이 논문은 새로운 언어학적 가설을 검증합니다.",
+      "xr": "I nonmuneun saeroun eoneohakjeok gaseoreul geomjeunghamnida."
+    },
+    "c352": {
+      "t": "방법론",
+      "r": "bangbeomnon",
+      "x": "투명한 방법론은 독립적인 재현 검증을 가능하게 합니다.",
+      "xr": "Tumyeonghan bangbeomnoneun dongnipjeogin jaehyeon geomjeungeul ganeunghage hamnida."
+    },
+    "c353": {
+      "t": "종합",
+      "r": "jonghap",
+      "x": "그녀의 강연은 두 학문 분야의 탁월한 종합을 제시했습니다.",
+      "xr": "Geunyeoui gangyeoneun du hangmun bunyaui tagwolhan jonghabeul jesihaesseumnida."
+    },
+    "c354": {
+      "t": "판례",
+      "r": "pallye",
+      "x": "그 판결은 중요한 법적 판례를 남겼습니다.",
+      "xr": "Geu pangyeoreun jungyohan beopjeok pallyereul namgyeosseumnida."
+    },
+    "c355": {
+      "t": "이행",
+      "r": "ihaeng",
+      "x": "철저한 이행 여부가 개혁의 성패를 가릅니다.",
+      "xr": "Cheoljeohan ihaeng yeobuga gaehyeogui seongpaereul gareumnida."
+    },
+    "c356": {
+      "t": "에도 불구하고",
+      "r": "edo bulguhago",
+      "x": "초기의 지연에도 불구하고 그 교량은 안전하게 개통되었습니다.",
+      "xr": "Chogiui jiyeonedo bulguhago geu gyoryangeun anjeonhage gaetongdoeeosseumnida."
+    },
+    "c357": {
+      "t": "결과적으로",
+      "r": "gyeolgwajeogeuro",
+      "x": "예산이 확대되었고, 결과적으로 농촌 진료소가 늘어났습니다.",
+      "xr": "Yesani hwakdaedoeeotgo, gyeolgwajeogeuro nongchon jillyosoga neureonasseumnida."
+    },
+    "c358": {
+      "t": "더 나아가",
+      "r": "deo naaga",
+      "x": "더 나아가 공공 데이터 개방은 독립 연구자들에게 큰 도움이 됩니다.",
+      "xr": "Deo naaga gonggong deiteo gaebangeun dongnip yeongujadeurege keun doumi doemnida."
+    },
+    "c359": {
+      "t": "에 비추어 볼 때",
+      "r": "e bichueo bol ttae",
+      "x": "새로운 증거에 비추어 볼 때 지침을 개정했습니다.",
+      "xr": "Saeroun jeunggeoe bichueo bol ttae jichimeul gaejeonghaesseumnida."
+    },
+    "c360": {
+      "t": "외람되오나",
+      "r": "oeramdoeona",
+      "x": "외람되오나 대안적인 접근 방식을 제안드리고자 합니다.",
+      "xr": "Oeramdoeona daeanjeogin jeopgeun bangsigeul jeandeurigoja hamnida."
+    },
+    "c361": {
+      "t": "명료하게 표현하다",
+      "r": "myeongnyohage pyohyeonhada",
+      "x": "그녀는 복잡한 개념도 막힘없이 명료하게 표현합니다.",
+      "xr": "Geunyeoneun bokjapan gaenyeomdo makimeopsi myeongnyohage pyohyeonhamnida."
+    },
+    "c362": {
+      "t": "간결하다",
+      "r": "gangyeolhada",
+      "x": "간결한 설명이 장황한 연설보다 훨씬 명확합니다.",
+      "xr": "Gangyeolhan seolmyeongi janghwanghan yeonseolboda hwolssin myeonghwakamnida."
+    },
+    "c363": {
+      "t": "일관되다",
+      "r": "ilgwandoeda",
+      "x": "처음부터 끝까지 일관된 서사를 구축하십시오.",
+      "xr": "Cheoeumbuteo kkeutkkaji ilgwandoen seosareul guchukasipsio."
+    },
+    "c364": {
+      "t": "설득력 있다",
+      "r": "seoldeungnyeok itda",
+      "x": "생생한 실제 사례는 주장을 훨씬 더 설득력 있게 만듭니다.",
+      "xr": "Saengsaenghan silje saryeneun jujangeul hwolssin deo seoldeungnyeok itge mandeumnida."
+    },
+    "c365": {
+      "t": "실용적이다",
+      "r": "siryongjeogida",
+      "x": "우리는 단계적 도입을 위한 실용적인 로드맵을 채택했습니다.",
+      "xr": "Urineun dangyejeok doibeul wihan siryongjeogin rodeumaebeul chaetaekaesseumnida."
+    },
+    "c366": {
+      "t": "전례 없는",
+      "r": "jeollye eomneun",
+      "x": "천문대는 전례 없는 선명도의 우주 영상을 포착했습니다.",
+      "xr": "Cheonmundaeneun jeollye eomneun seonmyeongdoui uju yeongsangeul pochakaesseumnida."
+    },
+    "c367": {
+      "t": "불가피하다",
+      "r": "bulgapihada",
+      "x": "언어의 점진적인 변화는 지극히 불가피합니다.",
+      "xr": "Eoneoui jeomjinjeogin byeonhwaneun jigeuki bulgapihamnida."
+    },
+    "c368": {
+      "t": "필수 불가결하다",
+      "r": "pilsu bulgagyeolhada",
+      "x": "깊은 유창함을 위해서는 적극적인 경청이 필수 불가결합니다.",
+      "xr": "Gipeun yuchanghameul wihaeseoneun jeokgeukjeogin gyeongcheongi pilsu bulgagyeolhamnida."
+    },
+    "c369": {
+      "t": "심오하다",
+      "r": "simohada",
+      "x": "고전을 읽으면 심오한 인상이 남습니다.",
+      "xr": "Gojeoneul ilgeumyeon simohan insangi namseumnida."
+    },
+    "c370": {
+      "t": "매끄럽다",
+      "r": "maekkeureopda",
+      "x": "우리의 목표는 모든 기기에서 매끄러운 경험을 제공하는 것입니다.",
+      "xr": "Uriui mokpyoneun modeun gigieseo maekkeureoun gyeongheomeul jegonghaneun geosimnida."
+    },
+    "c371": {
+      "t": "의심의 여지 없이",
+      "r": "uisimui yeoji eopsi",
+      "x": "의심의 여지 없이 꾸준함이 결국 승리를 이끕니다.",
+      "xr": "Uisimui yeoji eopsi kkujunhami gyeolguk seungnireul ikkeumnida."
+    },
+    "c372": {
+      "t": "마찬가지로",
+      "r": "machangajiro",
+      "x": "우리는 속도를 중시합니다. 마찬가지로 품질도 결코 타협하지 않습니다.",
+      "xr": "Urineun sokdoreul jungsihamnida. Machangajiro pumjildo gyeolko tahyeopaji anseumnida."
+    },
+    "c373": {
+      "t": "종합해 보면",
+      "r": "jonghapae bomyeon",
+      "x": "모든 점을 종합해 보면 올해는 우리에게 최고의 한 해였습니다.",
+      "xr": "Modeun jeomeul jonghapae bomyeon olhaeneun uriege choegoui han haeyeosseumnida."
+    },
+    "c374": {
+      "t": "세월의 시험을 견디다",
+      "r": "seworui siheomeul gyeondida",
+      "x": "정성을 들여 쌓아 올린 열린 지식은 세월의 시험을 견뎌 냅니다.",
+      "xr": "Jeongseongeul deuryeo ssaa ollin yeollin jisigeun seworui siheomeul gyeondyeo naemnida."
+    },
+    "c375": {
+      "t": "평생 학습",
+      "r": "pyeongsaeng hakseup",
+      "x": "언어를 익히는 일은 평생 학습이라는 즐거운 모험입니다.",
+      "xr": "Eoneoreul ikineun ireun pyeongsaeng hakseubiraneun jeulgeoun moheomimnida."
+    }
+  }
+}

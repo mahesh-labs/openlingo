@@ -1,0 +1,2285 @@
+{
+  "code": "fr",
+  "name": "French",
+  "nativeName": "Français",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Premiers pas et salutations : French distinguishes informal 'tu' from polite 'vous'. 'Bonjour' serves for both 'Hello' and 'Good morning' in France (while 'Bon matin' is common in Quebec); use 'Bonsoir' in the evening and 'Bonne nuit' only before sleep.",
+    "u2": "Personnes, famille et pronoms : Unlike Spanish, French always requires an explicit subject pronoun (je, tu, il, elle, nous). Possessive adjectives (mon, ma, mes) agree with the gender and number of the possessed noun, not the owner.",
+    "u3": "Nombres, temps et calendrier : Watch elision before vowels ('l'après-midi', 'aujourd'hui') and liaison in numbers ('deux billets', 'trois livres'). Days of the week and months are lowercase in French.",
+    "u4": "Nourriture, boissons et restaurant : French uses partitive articles ('du pain', 'de la soupe', 'de l'eau') for unspecified quantities, and 'avoir faim / avoir soif' (to have hunger/thirst) rather than 'être'.",
+    "u5": "Maison, couleurs et actions quotidiennes : Most adjectives follow the noun ('un parapluie rouge'), except common short ones like 'petit', 'grand', 'bon', and 'nouveau' ('un petit jardin', 'une grande ville'). Verbs group into -er, -ir, and -re conjugations.",
+    "u6": "Voyages, transport et directions : Note the mandatory contractions 'à + le = au' ('au centre') and 'de + le = du' ('du village'). Questions can use intonation, 'Est-ce que...?', or subject-verb inversion ('Où est...?').",
+    "u7": "Achats, argent et vêtements : Demonstratives agree in gender and number ('ce manteau', 'cet article', 'cette chemise', 'ces chaussures'). Use 'Je voudrais...' (conditional) for polite requests in shops.",
+    "u8": "Météo, saisons et nature : Impersonal weather statements rely on 'il fait' ('il fait chaud', 'il fait froid') or dedicated verbs ('il pleut', 'il neige'). Seasons take 'en' ('en été', 'en hiver') except 'au printemps'.",
+    "u9": "Santé, corps et urgences : Use 'avoir mal à' + definite article for aches ('J'ai mal à la tête', 'mal au ventre'). With reflexive verbs like 'se laver', body parts take the definite article ('Lave-toi les mains').",
+    "u10": "Travail, école et loisirs : Notice 'jouer à' for sports ('jouer au football') vs. 'jouer de' for musical instruments. Definite articles express general likes and dislikes ('J'adore voyager', 'Écouter de la musique').",
+    "u11": "Émotions, personnalité et opinions : Adjectives agree in gender and number ('heureux/heureuse', 'curieux/curieuse'). Affirmative 'Je pense que' takes the indicative, while negated 'Je ne pense pas que' triggers the subjunctive.",
+    "u12": "Vie sociale et récits : Past narration contrasts the 'passé composé' (specific completed events: 'a raconté', 'avons préparé') with the 'imparfait' (ongoing states, background, habits). Most verbs form the passé composé with 'avoir', while motion and reflexive verbs take 'être'.",
+    "u13": "Technologie, internet et médias : French strongly favors authentic native equivalents for digital concepts ('ordinateur', 'mot de passe', 'télécharger', 'mise à jour', 'écran'). Watch impersonal 'il faut' + infinitive for guidelines.",
+    "u14": "Culture, festivals et traditions : Passive voice uses 'être' + past participle with gender/number agreement ('Chaque invité est accueilli'). French also uses the pronoun 'on' naturally for general statements and traditions.",
+    "u15": "Résolution de problèmes et connecteurs : Connectors govern grammatical mood: 'bien que' (although) always requires the subjunctive ('Bien qu'il soit tard...'), whereas 'parce que' and 'donc' take the indicative.",
+    "u16": "Carrière, affaires et négociations : Business French favors precise nominal structures ('la mise en œuvre', 'la prise de décision'), polite conditional phrasing ('Pourriez-vous...?'), and clear agreement between nouns and formal adjectives.",
+    "u17": "Science, innovation et espace : Academic and scientific French uses impersonal constructions, passive forms, and Latinate/Greek-derived precision ('hypothèse', 'algorithme', 'gravité'). Notice 'permettre de' + infinitive.",
+    "u18": "Environnement, climat et durabilité : Note how French uses definite articles with abstract and mass nouns ('L'eau douce', 'La biodiversité', 'Les océans sains') and 'afin que / pour que' + subjunctive to express purpose.",
+    "u19": "Société, droit et gouvernance : Civic prose often pairs abstract nouns with strong transitive verbs ('garantir', 'promouvoir', 'prévenir'). Watch the placement of 'ne... pas' around conjugated verbs and before infinitives.",
+    "u20": "Esprit critique et débat : Structured French argumentation ('thèse, antithèse, synthèse') thrives on logical linkers ('néanmoins', 'cependant', 'par conséquent', 'en revanche') and nuanced modal verbs ('devoir', 'pouvoir', 'tendre à').",
+    "u21": "Littérature, art et esthétique : Literary French employs elevated vocabulary, expressive adjective placement ('une profonde nostalgie'), and the literary past ('passé simple', e.g., 'fut', 'parla') in formal narrative.",
+    "u22": "Philosophie, éthique et psychologie : French philosophical discourse distinguishes 'la conscience morale' (moral conscience) from 'la conscience' (consciousness) and balances antithetical propositions with 'alors que' or 'tandis que'.",
+    "u23": "Expressions idiomatiques, proverbes et sagesse : French idioms draw on history, craft, and nature ('C'est en forgeant qu'on devient forgeron', 'Un jeu d'enfant', 'Tous les trente-six du mois'). Master their fixed prepositions and articles.",
+    "u24": "Discours formel, diplomatique et juridique : High-register French employs formal prepositions and connectors ('nonobstant', 'par conséquent', 'en outre', 'à la lumière de', 'avec tout le respect que je vous dois') alongside precise legal syntax.",
+    "u25": "Nuance, rhétorique et maîtrise native : C2 mastery blends lexical precision ('sans précédent', 'indispensable'), balanced cadence, subtle discourse markers ('sans l'ombre d'un doute', 'tout bien considéré'), and effortless control of register."
+  },
+  "items": {
+    "c001": {
+      "t": "Bonjour",
+      "r": "",
+      "x": "Bonjour, ravi de vous rencontrer.",
+      "xr": ""
+    },
+    "c002": {
+      "t": "Bon matin",
+      "r": "",
+      "x": "Bon matin, avez-vous bien dormi ?",
+      "xr": ""
+    },
+    "c003": {
+      "t": "Bon après-midi",
+      "r": "",
+      "x": "Bon après-midi à tous.",
+      "xr": ""
+    },
+    "c004": {
+      "t": "Bonsoir",
+      "r": "",
+      "x": "Bonsoir, bienvenue à la maison.",
+      "xr": ""
+    },
+    "c005": {
+      "t": "Bonne nuit",
+      "r": "",
+      "x": "Bonne nuit, à demain.",
+      "xr": ""
+    },
+    "c006": {
+      "t": "Merci",
+      "r": "",
+      "x": "Merci beaucoup pour votre aide.",
+      "xr": ""
+    },
+    "c007": {
+      "t": "De rien",
+      "r": "",
+      "x": "De rien, quand vous voulez.",
+      "xr": ""
+    },
+    "c008": {
+      "t": "S'il vous plaît",
+      "r": "",
+      "x": "Entrez et asseyez-vous, s'il vous plaît.",
+      "xr": ""
+    },
+    "c009": {
+      "t": "Excusez-moi",
+      "r": "",
+      "x": "Excusez-moi, puis-je poser une question ?",
+      "xr": ""
+    },
+    "c010": {
+      "t": "Je suis désolé",
+      "r": "",
+      "x": "Je suis désolé pour mon retard.",
+      "xr": ""
+    },
+    "c011": {
+      "t": "Oui",
+      "r": "",
+      "x": "Oui, je comprends parfaitement.",
+      "xr": ""
+    },
+    "c012": {
+      "t": "Non",
+      "r": "",
+      "x": "Non merci, je vais très bien.",
+      "xr": ""
+    },
+    "c013": {
+      "t": "Au revoir",
+      "r": "",
+      "x": "Au revoir, faites bon voyage.",
+      "xr": ""
+    },
+    "c014": {
+      "t": "Je m'appelle",
+      "r": "",
+      "x": "Je m'appelle Maya.",
+      "xr": ""
+    },
+    "c015": {
+      "t": "Comment allez-vous ?",
+      "r": "",
+      "x": "Comment allez-vous aujourd'hui ?",
+      "xr": ""
+    },
+    "c016": {
+      "t": "Je",
+      "r": "",
+      "x": "J'apprends une nouvelle langue.",
+      "xr": ""
+    },
+    "c017": {
+      "t": "Vous",
+      "r": "",
+      "x": "Vous parlez très clairement.",
+      "xr": ""
+    },
+    "c018": {
+      "t": "Il",
+      "r": "",
+      "x": "Il est mon frère aîné.",
+      "xr": ""
+    },
+    "c019": {
+      "t": "Elle",
+      "r": "",
+      "x": "Elle est médecin et très compétente.",
+      "xr": ""
+    },
+    "c020": {
+      "t": "Nous",
+      "r": "",
+      "x": "Nous habitons dans la même ville.",
+      "xr": ""
+    },
+    "c021": {
+      "t": "Mère",
+      "r": "",
+      "x": "Ma mère cuisine des plats délicieux.",
+      "xr": ""
+    },
+    "c022": {
+      "t": "Père",
+      "r": "",
+      "x": "Mon père lit le journal chaque matin.",
+      "xr": ""
+    },
+    "c023": {
+      "t": "Frère",
+      "r": "",
+      "x": "Mon frère joue au football.",
+      "xr": ""
+    },
+    "c024": {
+      "t": "Sœur",
+      "r": "",
+      "x": "Ma sœur étudie la médecine.",
+      "xr": ""
+    },
+    "c025": {
+      "t": "Famille",
+      "r": "",
+      "x": "Ma famille se réunit chaque dimanche.",
+      "xr": ""
+    },
+    "c026": {
+      "t": "Ami",
+      "r": "",
+      "x": "Elle est mon amie la plus proche.",
+      "xr": ""
+    },
+    "c027": {
+      "t": "Enfant",
+      "r": "",
+      "x": "L'enfant est en train de faire un dessin.",
+      "xr": ""
+    },
+    "c028": {
+      "t": "Professeur",
+      "r": "",
+      "x": "Notre professeur explique la grammaire clairement.",
+      "xr": ""
+    },
+    "c029": {
+      "t": "Étudiant",
+      "r": "",
+      "x": "Chaque étudiant a apporté un cahier.",
+      "xr": ""
+    },
+    "c030": {
+      "t": "Voisin",
+      "r": "",
+      "x": "Notre voisin est très gentil.",
+      "xr": ""
+    },
+    "c031": {
+      "t": "Un",
+      "r": "",
+      "x": "Je voudrais une tasse de thé.",
+      "xr": ""
+    },
+    "c032": {
+      "t": "Deux",
+      "r": "",
+      "x": "Nous avons besoin de deux billets, s'il vous plaît.",
+      "xr": ""
+    },
+    "c033": {
+      "t": "Trois",
+      "r": "",
+      "x": "Il y a trois livres sur la table.",
+      "xr": ""
+    },
+    "c034": {
+      "t": "Cinq",
+      "r": "",
+      "x": "Le cours commence dans cinq minutes.",
+      "xr": ""
+    },
+    "c035": {
+      "t": "Dix",
+      "r": "",
+      "x": "Elle a compté de un à dix.",
+      "xr": ""
+    },
+    "c036": {
+      "t": "Aujourd'hui",
+      "r": "",
+      "x": "Aujourd'hui est une journée ensoleillée.",
+      "xr": ""
+    },
+    "c037": {
+      "t": "Demain",
+      "r": "",
+      "x": "Demain, nous visiterons le musée.",
+      "xr": ""
+    },
+    "c038": {
+      "t": "Hier",
+      "r": "",
+      "x": "Hier, il a plu tout l'après-midi.",
+      "xr": ""
+    },
+    "c039": {
+      "t": "Maintenant",
+      "r": "",
+      "x": "Je suis prêt à partir dès maintenant.",
+      "xr": ""
+    },
+    "c040": {
+      "t": "Plus tard",
+      "r": "",
+      "x": "Parlons-en plus tard.",
+      "xr": ""
+    },
+    "c041": {
+      "t": "Matin",
+      "r": "",
+      "x": "Je fais de l'exercice chaque matin.",
+      "xr": ""
+    },
+    "c042": {
+      "t": "Nuit",
+      "r": "",
+      "x": "Les étoiles brillent vivement la nuit.",
+      "xr": ""
+    },
+    "c043": {
+      "t": "Semaine",
+      "r": "",
+      "x": "Cette semaine a été très chargée.",
+      "xr": ""
+    },
+    "c044": {
+      "t": "Mois",
+      "r": "",
+      "x": "Le mois prochain, nous voyageons à l'étranger.",
+      "xr": ""
+    },
+    "c045": {
+      "t": "Année",
+      "r": "",
+      "x": "Bonne année à vous tous.",
+      "xr": ""
+    },
+    "c046": {
+      "t": "Eau",
+      "r": "",
+      "x": "Pourrais-je avoir un verre d'eau ?",
+      "xr": ""
+    },
+    "c047": {
+      "t": "Riz",
+      "r": "",
+      "x": "Nous mangeons du riz vapeur avec du curry.",
+      "xr": ""
+    },
+    "c048": {
+      "t": "Pain",
+      "r": "",
+      "x": "Le pain frais sent merveilleusement bon.",
+      "xr": ""
+    },
+    "c049": {
+      "t": "Fruit",
+      "r": "",
+      "x": "Mangez beaucoup de fruits frais chaque jour.",
+      "xr": ""
+    },
+    "c050": {
+      "t": "Lait",
+      "r": "",
+      "x": "Prenez-vous du lait dans votre café ?",
+      "xr": ""
+    },
+    "c051": {
+      "t": "Thé",
+      "r": "",
+      "x": "Le thé chaud est réconfortant en hiver.",
+      "xr": ""
+    },
+    "c052": {
+      "t": "Café",
+      "r": "",
+      "x": "Je bois du café noir le matin.",
+      "xr": ""
+    },
+    "c053": {
+      "t": "Petit-déjeuner",
+      "r": "",
+      "x": "Le petit-déjeuner est le premier repas de la journée.",
+      "xr": ""
+    },
+    "c054": {
+      "t": "Déjeuner",
+      "r": "",
+      "x": "Où irons-nous pour le déjeuner ?",
+      "xr": ""
+    },
+    "c055": {
+      "t": "Dîner",
+      "r": "",
+      "x": "Le dîner sera prêt à dix-neuf heures.",
+      "xr": ""
+    },
+    "c056": {
+      "t": "Délicieux",
+      "r": "",
+      "x": "Ce plat est vraiment délicieux.",
+      "xr": ""
+    },
+    "c057": {
+      "t": "Affamé",
+      "r": "",
+      "x": "J'ai très faim après la marche.",
+      "xr": ""
+    },
+    "c058": {
+      "t": "Assoiffé",
+      "r": "",
+      "x": "J'ai soif avec cette chaleur.",
+      "xr": ""
+    },
+    "c059": {
+      "t": "Menu",
+      "r": "",
+      "x": "Puis-je voir le menu, s'il vous plaît ?",
+      "xr": ""
+    },
+    "c060": {
+      "t": "Addition",
+      "r": "",
+      "x": "Pourrions-nous avoir l'addition, s'il vous plaît ?",
+      "xr": ""
+    },
+    "c061": {
+      "t": "Maison",
+      "r": "",
+      "x": "Leur maison possède un petit jardin.",
+      "xr": ""
+    },
+    "c062": {
+      "t": "Chambre",
+      "r": "",
+      "x": "Ma chambre a une grande fenêtre.",
+      "xr": ""
+    },
+    "c063": {
+      "t": "Table",
+      "r": "",
+      "x": "Posez les clés sur la table.",
+      "xr": ""
+    },
+    "c064": {
+      "t": "Livre",
+      "r": "",
+      "x": "Ce livre est facile à lire.",
+      "xr": ""
+    },
+    "c065": {
+      "t": "Porte",
+      "r": "",
+      "x": "Veuillez fermer la porte doucement.",
+      "xr": ""
+    },
+    "c066": {
+      "t": "Rouge",
+      "r": "",
+      "x": "Elle a acheté un parapluie rouge vif.",
+      "xr": ""
+    },
+    "c067": {
+      "t": "Bleu",
+      "r": "",
+      "x": "Le ciel est clair et bleu.",
+      "xr": ""
+    },
+    "c068": {
+      "t": "Blanc",
+      "r": "",
+      "x": "La neige a recouvert le sol de blanc.",
+      "xr": ""
+    },
+    "c069": {
+      "t": "Grand",
+      "r": "",
+      "x": "Ils ont déménagé dans une grande ville.",
+      "xr": ""
+    },
+    "c070": {
+      "t": "Petit",
+      "r": "",
+      "x": "Un petit oiseau chantait sur la branche.",
+      "xr": ""
+    },
+    "c071": {
+      "t": "Aller",
+      "r": "",
+      "x": "Je vais au travail en train.",
+      "xr": ""
+    },
+    "c072": {
+      "t": "Venir",
+      "r": "",
+      "x": "Venez à notre fête, s'il vous plaît.",
+      "xr": ""
+    },
+    "c073": {
+      "t": "Manger",
+      "r": "",
+      "x": "Nous mangeons ensemble à huit heures.",
+      "xr": ""
+    },
+    "c074": {
+      "t": "Boire",
+      "r": "",
+      "x": "Pensez à boire suffisamment d'eau.",
+      "xr": ""
+    },
+    "c075": {
+      "t": "Dormir",
+      "r": "",
+      "x": "J'essaie de dormir huit heures chaque nuit.",
+      "xr": ""
+    },
+    "c076": {
+      "t": "Train",
+      "r": "",
+      "x": "Le train express arrive à midi.",
+      "xr": ""
+    },
+    "c077": {
+      "t": "Bus",
+      "r": "",
+      "x": "Prenez le deuxième bus vers le centre.",
+      "xr": ""
+    },
+    "c078": {
+      "t": "Aéroport",
+      "r": "",
+      "x": "Nous sommes arrivés à l'aéroport deux heures à l'avance.",
+      "xr": ""
+    },
+    "c079": {
+      "t": "Billet",
+      "r": "",
+      "x": "Conservez votre billet jusqu'à la sortie.",
+      "xr": ""
+    },
+    "c080": {
+      "t": "Gare",
+      "r": "",
+      "x": "La gare se trouve à cinq minutes d'ici.",
+      "xr": ""
+    },
+    "c081": {
+      "t": "Gauche",
+      "r": "",
+      "x": "Tournez à gauche au prochain feu rouge.",
+      "xr": ""
+    },
+    "c082": {
+      "t": "Droite",
+      "r": "",
+      "x": "La pharmacie est sur votre droite.",
+      "xr": ""
+    },
+    "c083": {
+      "t": "Tout droit",
+      "r": "",
+      "x": "Marchez tout droit pendant deux pâtés de maisons.",
+      "xr": ""
+    },
+    "c084": {
+      "t": "Près",
+      "r": "",
+      "x": "Y a-t-il un hôtel près d'ici ?",
+      "xr": ""
+    },
+    "c085": {
+      "t": "Loin",
+      "r": "",
+      "x": "La plage n'est pas loin de la ville.",
+      "xr": ""
+    },
+    "c086": {
+      "t": "Carte",
+      "r": "",
+      "x": "Vérifions l'itinéraire sur la carte.",
+      "xr": ""
+    },
+    "c087": {
+      "t": "Hôtel",
+      "r": "",
+      "x": "Nous avons réservé un hôtel calme au centre-ville.",
+      "xr": ""
+    },
+    "c088": {
+      "t": "Passeport",
+      "r": "",
+      "x": "N'oubliez pas votre passeport à la maison.",
+      "xr": ""
+    },
+    "c089": {
+      "t": "Bagages",
+      "r": "",
+      "x": "Mes bagages sont assez lourds aujourd'hui.",
+      "xr": ""
+    },
+    "c090": {
+      "t": "Où est ?",
+      "r": "",
+      "x": "Où est la sortie de métro la plus proche ?",
+      "xr": ""
+    },
+    "c091": {
+      "t": "Argent",
+      "r": "",
+      "x": "Épargnez une partie de votre argent chaque mois.",
+      "xr": ""
+    },
+    "c092": {
+      "t": "Prix",
+      "r": "",
+      "x": "Quel est le prix de cette veste ?",
+      "xr": ""
+    },
+    "c093": {
+      "t": "Bon marché",
+      "r": "",
+      "x": "Les légumes sont bon marché au marché du matin.",
+      "xr": ""
+    },
+    "c094": {
+      "t": "Cher",
+      "r": "",
+      "x": "Cette montre est trop chère pour moi.",
+      "xr": ""
+    },
+    "c095": {
+      "t": "Réduction",
+      "r": "",
+      "x": "Y a-t-il une réduction étudiante disponible ?",
+      "xr": ""
+    },
+    "c096": {
+      "t": "Boutique",
+      "r": "",
+      "x": "Cette boutique au coin de la rue ouvre à huit heures.",
+      "xr": ""
+    },
+    "c097": {
+      "t": "Marché",
+      "r": "",
+      "x": "Le marché local est très animé le samedi.",
+      "xr": ""
+    },
+    "c098": {
+      "t": "Acheter",
+      "r": "",
+      "x": "Je veux acheter un manteau chaud.",
+      "xr": ""
+    },
+    "c099": {
+      "t": "Payer",
+      "r": "",
+      "x": "Puis-je payer par carte ou en espèces ?",
+      "xr": ""
+    },
+    "c100": {
+      "t": "Reçu",
+      "r": "",
+      "x": "Veuillez me donner le reçu.",
+      "xr": ""
+    },
+    "c101": {
+      "t": "Chemise",
+      "r": "",
+      "x": "Cette chemise en coton est très confortable.",
+      "xr": ""
+    },
+    "c102": {
+      "t": "Chaussures",
+      "r": "",
+      "x": "J'ai besoin de chaussures solides pour la randonnée.",
+      "xr": ""
+    },
+    "c103": {
+      "t": "Sac",
+      "r": "",
+      "x": "Elle portait un sac en cuir.",
+      "xr": ""
+    },
+    "c104": {
+      "t": "Nouveau",
+      "r": "",
+      "x": "Il a porté sa nouvelle veste aujourd'hui.",
+      "xr": ""
+    },
+    "c105": {
+      "t": "Taille",
+      "r": "",
+      "x": "Avez-vous ceci en taille moyenne ?",
+      "xr": ""
+    },
+    "c106": {
+      "t": "Soleil",
+      "r": "",
+      "x": "Le soleil chaud a séché la route mouillée.",
+      "xr": ""
+    },
+    "c107": {
+      "t": "Pluie",
+      "r": "",
+      "x": "Prenez un parapluie en cas de pluie.",
+      "xr": ""
+    },
+    "c108": {
+      "t": "Vent",
+      "r": "",
+      "x": "Un vent frais soufflait depuis la mer.",
+      "xr": ""
+    },
+    "c109": {
+      "t": "Chaud",
+      "r": "",
+      "x": "Les après-midis d'été sont très chauds ici.",
+      "xr": ""
+    },
+    "c110": {
+      "t": "Froid",
+      "r": "",
+      "x": "Portez une écharpe quand il fait froid.",
+      "xr": ""
+    },
+    "c111": {
+      "t": "Été",
+      "r": "",
+      "x": "Nous nageons souvent pendant l'été.",
+      "xr": ""
+    },
+    "c112": {
+      "t": "Hiver",
+      "r": "",
+      "x": "Les nuits d'hiver sont longues et calmes.",
+      "xr": ""
+    },
+    "c113": {
+      "t": "Printemps",
+      "r": "",
+      "x": "Les fleurs s'épanouissent partout au printemps.",
+      "xr": ""
+    },
+    "c114": {
+      "t": "Nuage",
+      "r": "",
+      "x": "Des nuages sombres se sont amassés avant l'orage.",
+      "xr": ""
+    },
+    "c115": {
+      "t": "Neige",
+      "r": "",
+      "x": "Les enfants ont fait un bonhomme dans la neige fraîche.",
+      "xr": ""
+    },
+    "c116": {
+      "t": "Montagne",
+      "r": "",
+      "x": "Nous avons gravi la montagne avant le lever du soleil.",
+      "xr": ""
+    },
+    "c117": {
+      "t": "Rivière",
+      "r": "",
+      "x": "Une large rivière traverse la vallée.",
+      "xr": ""
+    },
+    "c118": {
+      "t": "Mer",
+      "r": "",
+      "x": "La mer paraît calme ce soir.",
+      "xr": ""
+    },
+    "c119": {
+      "t": "Arbre",
+      "r": "",
+      "x": "Un arbre centenaire ombrage la cour.",
+      "xr": ""
+    },
+    "c120": {
+      "t": "Fleur",
+      "r": "",
+      "x": "Chaque fleur du jardin s'est ouverte.",
+      "xr": ""
+    },
+    "c121": {
+      "t": "Tête",
+      "r": "",
+      "x": "J'ai mal à la tête à force de lire toute la journée.",
+      "xr": ""
+    },
+    "c122": {
+      "t": "Main",
+      "r": "",
+      "x": "Lavez-vous les mains avant de manger.",
+      "xr": ""
+    },
+    "c123": {
+      "t": "Œil",
+      "r": "",
+      "x": "Reposez vos yeux loin des écrans.",
+      "xr": ""
+    },
+    "c124": {
+      "t": "Cœur",
+      "r": "",
+      "x": "L'exercice garde votre cœur fort.",
+      "xr": ""
+    },
+    "c125": {
+      "t": "Ventre",
+      "r": "",
+      "x": "Buvez de l'eau tiède si vous avez mal au ventre.",
+      "xr": ""
+    },
+    "c126": {
+      "t": "Médecin",
+      "r": "",
+      "x": "Vous devriez consulter un médecin aujourd'hui.",
+      "xr": ""
+    },
+    "c127": {
+      "t": "Hôpital",
+      "r": "",
+      "x": "L'hôpital est ouvert vingt-quatre heures sur vingt-quatre.",
+      "xr": ""
+    },
+    "c128": {
+      "t": "Médicament",
+      "r": "",
+      "x": "Prenez ce médicament après les repas.",
+      "xr": ""
+    },
+    "c129": {
+      "t": "Douleur",
+      "r": "",
+      "x": "Indiquez à l'infirmière où se situe la douleur.",
+      "xr": ""
+    },
+    "c130": {
+      "t": "Fièvre",
+      "r": "",
+      "x": "Il est resté chez lui avec une légère fièvre.",
+      "xr": ""
+    },
+    "c131": {
+      "t": "Aide",
+      "r": "",
+      "x": "Aidez-moi à porter cette boîte, s'il vous plaît.",
+      "xr": ""
+    },
+    "c132": {
+      "t": "Police",
+      "r": "",
+      "x": "Appelez la police en cas d'urgence.",
+      "xr": ""
+    },
+    "c133": {
+      "t": "Urgence",
+      "r": "",
+      "x": "Enregistrez les numéros d'urgence dans votre téléphone.",
+      "xr": ""
+    },
+    "c134": {
+      "t": "Repos",
+      "r": "",
+      "x": "Prenez beaucoup de repos pour vous rétablir vite.",
+      "xr": ""
+    },
+    "c135": {
+      "t": "Sain",
+      "r": "",
+      "x": "Une alimentation équilibrée vous garde en bonne santé.",
+      "xr": ""
+    },
+    "c136": {
+      "t": "École",
+      "r": "",
+      "x": "Les enfants marchent ensemble jusqu'à l'école.",
+      "xr": ""
+    },
+    "c137": {
+      "t": "Université",
+      "r": "",
+      "x": "Elle étudie l'ingénierie à l'université.",
+      "xr": ""
+    },
+    "c138": {
+      "t": "Examen",
+      "r": "",
+      "x": "Je me suis préparé avec soin pour l'examen final.",
+      "xr": ""
+    },
+    "c139": {
+      "t": "Langue",
+      "r": "",
+      "x": "Apprendre une langue ouvre de nouveaux horizons.",
+      "xr": ""
+    },
+    "c140": {
+      "t": "Question",
+      "r": "",
+      "x": "C'est une question très pertinente.",
+      "xr": ""
+    },
+    "c141": {
+      "t": "Travail",
+      "r": "",
+      "x": "Il termine le travail à dix-huit heures précises.",
+      "xr": ""
+    },
+    "c142": {
+      "t": "Bureau",
+      "r": "",
+      "x": "Notre bureau se trouve au quatrième étage.",
+      "xr": ""
+    },
+    "c143": {
+      "t": "Réunion",
+      "r": "",
+      "x": "La réunion d'équipe commence à dix heures.",
+      "xr": ""
+    },
+    "c144": {
+      "t": "Collègue",
+      "r": "",
+      "x": "Mon collègue a aidé à corriger le bogue.",
+      "xr": ""
+    },
+    "c145": {
+      "t": "Occupé",
+      "r": "",
+      "x": "Je suis assez occupé jusqu'à vendredi.",
+      "xr": ""
+    },
+    "c146": {
+      "t": "Musique",
+      "r": "",
+      "x": "Écouter de la musique m'aide à me détendre.",
+      "xr": ""
+    },
+    "c147": {
+      "t": "Film",
+      "r": "",
+      "x": "Nous avons regardé un film inspirant hier soir.",
+      "xr": ""
+    },
+    "c148": {
+      "t": "Sport",
+      "r": "",
+      "x": "Quel sport aimez-vous regarder ?",
+      "xr": ""
+    },
+    "c149": {
+      "t": "Voyager",
+      "r": "",
+      "x": "J'adore voyager en train.",
+      "xr": ""
+    },
+    "c150": {
+      "t": "Passe-temps",
+      "r": "",
+      "x": "La photographie est mon passe-temps favori le week-end.",
+      "xr": ""
+    },
+    "c151": {
+      "t": "Heureux",
+      "r": "",
+      "x": "Je suis vraiment heureux d'apprendre cette nouvelle.",
+      "xr": ""
+    },
+    "c152": {
+      "t": "Triste",
+      "r": "",
+      "x": "Il est naturel de se sentir triste parfois.",
+      "xr": ""
+    },
+    "c153": {
+      "t": "En colère",
+      "r": "",
+      "x": "Respirez profondément avant de parler lorsque vous êtes en colère.",
+      "xr": ""
+    },
+    "c154": {
+      "t": "Surpris",
+      "r": "",
+      "x": "Tout le monde a été surpris par cette annonce soudaine.",
+      "xr": ""
+    },
+    "c155": {
+      "t": "Inquiet",
+      "r": "",
+      "x": "Ne soyez pas inquiet ; tout va s'arranger.",
+      "xr": ""
+    },
+    "c156": {
+      "t": "Gentil",
+      "r": "",
+      "x": "Un geste gentil peut illuminer la journée de quelqu'un.",
+      "xr": ""
+    },
+    "c157": {
+      "t": "Honnête",
+      "r": "",
+      "x": "J'apprécie vos retours honnêtes.",
+      "xr": ""
+    },
+    "c158": {
+      "t": "Patient",
+      "r": "",
+      "x": "Atteindre la maîtrise demande d'être patient.",
+      "xr": ""
+    },
+    "c159": {
+      "t": "Courageux",
+      "r": "",
+      "x": "C'était courageux de prendre la parole en public.",
+      "xr": ""
+    },
+    "c160": {
+      "t": "Curieux",
+      "r": "",
+      "x": "Les esprits curieux ne cessent jamais de découvrir.",
+      "xr": ""
+    },
+    "c161": {
+      "t": "Je pense que",
+      "r": "",
+      "x": "Je pense que cette solution est pratique.",
+      "xr": ""
+    },
+    "c162": {
+      "t": "Je suis d'accord",
+      "r": "",
+      "x": "Je suis d'accord avec votre point principal.",
+      "xr": ""
+    },
+    "c163": {
+      "t": "Opinion",
+      "r": "",
+      "x": "Chacun a le droit d'avoir une opinion.",
+      "xr": ""
+    },
+    "c164": {
+      "t": "Important",
+      "r": "",
+      "x": "Une communication claire est très importante.",
+      "xr": ""
+    },
+    "c165": {
+      "t": "Possible",
+      "r": "",
+      "x": "Tout est possible avec un effort constant.",
+      "xr": ""
+    },
+    "c166": {
+      "t": "Invitation",
+      "r": "",
+      "x": "Merci pour cette chaleureuse invitation.",
+      "xr": ""
+    },
+    "c167": {
+      "t": "Célébration",
+      "r": "",
+      "x": "Tout le quartier s'est joint à la célébration.",
+      "xr": ""
+    },
+    "c168": {
+      "t": "Promesse",
+      "r": "",
+      "x": "Tenez toujours les promesses que vous faites.",
+      "xr": ""
+    },
+    "c169": {
+      "t": "Rendez-vous",
+      "r": "",
+      "x": "J'ai un rendez-vous chez le dentiste à quinze heures.",
+      "xr": ""
+    },
+    "c170": {
+      "t": "Surprise",
+      "r": "",
+      "x": "Nous avons organisé une surprise d'anniversaire pour elle.",
+      "xr": ""
+    },
+    "c171": {
+      "t": "Souvenir",
+      "r": "",
+      "x": "Ce voyage reste mon plus beau souvenir.",
+      "xr": ""
+    },
+    "c172": {
+      "t": "Expérience",
+      "r": "",
+      "x": "Vivre à l'étranger a été une expérience transformatrice.",
+      "xr": ""
+    },
+    "c173": {
+      "t": "Récit",
+      "r": "",
+      "x": "Grand-père a raconté un récit captivant.",
+      "xr": ""
+    },
+    "c174": {
+      "t": "Rêve",
+      "r": "",
+      "x": "N'abandonnez jamais votre plus grand rêve.",
+      "xr": ""
+    },
+    "c175": {
+      "t": "Voyage",
+      "r": "",
+      "x": "Tout long voyage commence par un premier pas.",
+      "xr": ""
+    },
+    "c176": {
+      "t": "Confiance",
+      "r": "",
+      "x": "La confiance prend des années à se bâtir.",
+      "xr": ""
+    },
+    "c177": {
+      "t": "Respect",
+      "r": "",
+      "x": "Traitez chaque personne avec un respect sincère.",
+      "xr": ""
+    },
+    "c178": {
+      "t": "Conseil",
+      "r": "",
+      "x": "Pourriez-vous me donner un conseil de carrière ?",
+      "xr": ""
+    },
+    "c179": {
+      "t": "Soutien",
+      "r": "",
+      "x": "Merci pour votre soutien indéfectible.",
+      "xr": ""
+    },
+    "c180": {
+      "t": "Pardonner",
+      "r": "",
+      "x": "Il faut de la force pour pardonner et avancer.",
+      "xr": ""
+    },
+    "c181": {
+      "t": "Ordinateur",
+      "r": "",
+      "x": "Mon ordinateur s'est mis à jour pendant la nuit.",
+      "xr": ""
+    },
+    "c182": {
+      "t": "Internet",
+      "r": "",
+      "x": "Un internet rapide relie les villages isolés.",
+      "xr": ""
+    },
+    "c183": {
+      "t": "Téléphone",
+      "r": "",
+      "x": "Veuillez mettre votre téléphone en mode silencieux pendant les cours.",
+      "xr": ""
+    },
+    "c184": {
+      "t": "Mot de passe",
+      "r": "",
+      "x": "Utilisez un mot de passe robuste et unique pour chaque compte.",
+      "xr": ""
+    },
+    "c185": {
+      "t": "Télécharger",
+      "r": "",
+      "x": "Vous pouvez télécharger le pack hors ligne gratuitement.",
+      "xr": ""
+    },
+    "c186": {
+      "t": "Message",
+      "r": "",
+      "x": "Je vous ai envoyé un message plus tôt aujourd'hui.",
+      "xr": ""
+    },
+    "c187": {
+      "t": "Rechercher",
+      "r": "",
+      "x": "Recherchons une documentation fiable.",
+      "xr": ""
+    },
+    "c188": {
+      "t": "Application",
+      "r": "",
+      "x": "Cette application open source fonctionne hors ligne.",
+      "xr": ""
+    },
+    "c189": {
+      "t": "Confidentialité",
+      "r": "",
+      "x": "La protection de la confidentialité des utilisateurs doit primer.",
+      "xr": ""
+    },
+    "c190": {
+      "t": "Mise à jour",
+      "r": "",
+      "x": "La dernière mise à jour a nettement amélioré la vitesse.",
+      "xr": ""
+    },
+    "c191": {
+      "t": "Actualités",
+      "r": "",
+      "x": "Vérifiez toujours les actualités auprès de plusieurs sources.",
+      "xr": ""
+    },
+    "c192": {
+      "t": "Article",
+      "r": "",
+      "x": "J'ai lu un article fascinant sur la linguistique.",
+      "xr": ""
+    },
+    "c193": {
+      "t": "Information",
+      "r": "",
+      "x": "Une information exacte aide à décider avec sagesse.",
+      "xr": ""
+    },
+    "c194": {
+      "t": "Appareil photo",
+      "r": "",
+      "x": "Elle a apporté son appareil photo au festival.",
+      "xr": ""
+    },
+    "c195": {
+      "t": "Écran",
+      "r": "",
+      "x": "Réglez la luminosité de l'écran le soir.",
+      "xr": ""
+    },
+    "c196": {
+      "t": "Culture",
+      "r": "",
+      "x": "La langue est le cœur vivant de la culture.",
+      "xr": ""
+    },
+    "c197": {
+      "t": "Tradition",
+      "r": "",
+      "x": "Chaque région préserve sa propre tradition des récoltes.",
+      "xr": ""
+    },
+    "c198": {
+      "t": "Festival",
+      "r": "",
+      "x": "Des lanternes ont illuminé toute la ville pendant le festival.",
+      "xr": ""
+    },
+    "c199": {
+      "t": "Histoire",
+      "r": "",
+      "x": "Le musée retrace cinq mille ans d'histoire.",
+      "xr": ""
+    },
+    "c200": {
+      "t": "Patrimoine",
+      "r": "",
+      "x": "Nous devons préserver notre patrimoine culturel commun.",
+      "xr": ""
+    },
+    "c201": {
+      "t": "Art",
+      "r": "",
+      "x": "Le grand art transcende les frontières et les siècles.",
+      "xr": ""
+    },
+    "c202": {
+      "t": "Danse",
+      "r": "",
+      "x": "La danse classique raconte des histoires par le mouvement.",
+      "xr": ""
+    },
+    "c203": {
+      "t": "Chanson",
+      "r": "",
+      "x": "Cette chanson traditionnelle se chante depuis des générations.",
+      "xr": ""
+    },
+    "c204": {
+      "t": "Architecture",
+      "r": "",
+      "x": "L'architecture du temple est remarquablement raffinée.",
+      "xr": ""
+    },
+    "c205": {
+      "t": "Poésie",
+      "r": "",
+      "x": "La poésie saisit l'émotion en quelques vers seulement.",
+      "xr": ""
+    },
+    "c206": {
+      "t": "Invité",
+      "r": "",
+      "x": "Chaque invité est accueilli avec chaleur.",
+      "xr": ""
+    },
+    "c207": {
+      "t": "Cadeau",
+      "r": "",
+      "x": "Apporter un petit cadeau témoigne d'une délicate attention.",
+      "xr": ""
+    },
+    "c208": {
+      "t": "Coutume",
+      "r": "",
+      "x": "Apprenez les coutumes locales avant de visiter un nouveau pays.",
+      "xr": ""
+    },
+    "c209": {
+      "t": "Cérémonie",
+      "r": "",
+      "x": "La cérémonie de remise des diplômes a duré deux heures.",
+      "xr": ""
+    },
+    "c210": {
+      "t": "Bénédiction",
+      "r": "",
+      "x": "Les anciens ont offert leurs bénédictions au couple.",
+      "xr": ""
+    },
+    "c211": {
+      "t": "Parce que",
+      "r": "",
+      "x": "Nous sommes restés à l'intérieur parce qu'un orage approchait.",
+      "xr": ""
+    },
+    "c212": {
+      "t": "Cependant",
+      "r": "",
+      "x": "La tâche était ardue ; cependant, nous avons réussi.",
+      "xr": ""
+    },
+    "c213": {
+      "t": "Bien que",
+      "r": "",
+      "x": "Bien qu'il ait été tard, il a terminé le chapitre.",
+      "xr": ""
+    },
+    "c214": {
+      "t": "Donc",
+      "r": "",
+      "x": "Les données sont claires ; donc, nous devons agir.",
+      "xr": ""
+    },
+    "c215": {
+      "t": "Pendant ce temps",
+      "r": "",
+      "x": "Je prépare le dîner ; pendant ce temps, mets la table s'il te plaît.",
+      "xr": ""
+    },
+    "c216": {
+      "t": "Problème",
+      "r": "",
+      "x": "Identifions la cause profonde du problème.",
+      "xr": ""
+    },
+    "c217": {
+      "t": "Solution",
+      "r": "",
+      "x": "Les solutions simples sont souvent les plus fiables.",
+      "xr": ""
+    },
+    "c218": {
+      "t": "Décision",
+      "r": "",
+      "x": "Réfléchissez calmement avant de prendre une grande décision.",
+      "xr": ""
+    },
+    "c219": {
+      "t": "Erreur",
+      "r": "",
+      "x": "Chaque erreur nous apprend quelque chose de précieux.",
+      "xr": ""
+    },
+    "c220": {
+      "t": "Succès",
+      "r": "",
+      "x": "Le travail d'équipe a été la clé de notre succès.",
+      "xr": ""
+    },
+    "c221": {
+      "t": "Si",
+      "r": "",
+      "x": "Si vous pratiquez chaque jour, vous progresserez vite.",
+      "xr": ""
+    },
+    "c222": {
+      "t": "Au lieu de",
+      "r": "",
+      "x": "Allez à la boutique à pied au lieu de conduire.",
+      "xr": ""
+    },
+    "c223": {
+      "t": "Comparer",
+      "r": "",
+      "x": "Comparez attentivement les deux propositions avant de voter.",
+      "xr": ""
+    },
+    "c224": {
+      "t": "Différence",
+      "r": "",
+      "x": "De petites habitudes créent une immense différence avec le temps.",
+      "xr": ""
+    },
+    "c225": {
+      "t": "Raison",
+      "r": "",
+      "x": "Expliquez la raison qui motive votre choix.",
+      "xr": ""
+    },
+    "c226": {
+      "t": "Stratégie",
+      "r": "",
+      "x": "Nous avons révisé notre stratégie produit à long terme.",
+      "xr": ""
+    },
+    "c227": {
+      "t": "Projet",
+      "r": "",
+      "x": "Le projet d'ingénierie a été lancé avant l'échéance.",
+      "xr": ""
+    },
+    "c228": {
+      "t": "Échéance",
+      "r": "",
+      "x": "Nous avons atteint chaque jalon avant l'échéance.",
+      "xr": ""
+    },
+    "c229": {
+      "t": "Responsabilité",
+      "r": "",
+      "x": "Le leadership consiste à assumer l'entière responsabilité.",
+      "xr": ""
+    },
+    "c230": {
+      "t": "Collaboration",
+      "r": "",
+      "x": "La collaboration ouverte accélère l'innovation.",
+      "xr": ""
+    },
+    "c231": {
+      "t": "Économie",
+      "r": "",
+      "x": "Les petites entreprises constituent l'épine dorsale de l'économie.",
+      "xr": ""
+    },
+    "c232": {
+      "t": "Budget",
+      "r": "",
+      "x": "La municipalité a approuvé le budget éducatif de l'an prochain.",
+      "xr": ""
+    },
+    "c233": {
+      "t": "Investissement",
+      "r": "",
+      "x": "L'éducation est l'investissement le plus judicieux à long terme.",
+      "xr": ""
+    },
+    "c234": {
+      "t": "Contrat",
+      "r": "",
+      "x": "Lisez attentivement chaque clause du contrat.",
+      "xr": ""
+    },
+    "c235": {
+      "t": "Bénéfice",
+      "r": "",
+      "x": "La croissance durable importe davantage que le bénéfice à court terme.",
+      "xr": ""
+    },
+    "c236": {
+      "t": "Proposition",
+      "r": "",
+      "x": "Le comité a examiné notre proposition détaillée.",
+      "xr": ""
+    },
+    "c237": {
+      "t": "Négociation",
+      "r": "",
+      "x": "Les deux parties ont entamé la négociation de bonne foi.",
+      "xr": ""
+    },
+    "c238": {
+      "t": "Accord",
+      "r": "",
+      "x": "Ils ont signé un accord commercial mutuellement avantageux.",
+      "xr": ""
+    },
+    "c239": {
+      "t": "Compromis",
+      "r": "",
+      "x": "Un compromis équitable a résolu le différend.",
+      "xr": ""
+    },
+    "c240": {
+      "t": "Opportunité",
+      "r": "",
+      "x": "Chaque défi recèle une opportunité cachée.",
+      "xr": ""
+    },
+    "c241": {
+      "t": "Recherche",
+      "r": "",
+      "x": "La recherche évaluée par les pairs guide la médecine moderne.",
+      "xr": ""
+    },
+    "c242": {
+      "t": "Expérience",
+      "r": "",
+      "x": "L'expérience en laboratoire a confirmé notre prédiction.",
+      "xr": ""
+    },
+    "c243": {
+      "t": "Preuve",
+      "r": "",
+      "x": "Des conclusions solides doivent reposer sur des preuves tangibles.",
+      "xr": ""
+    },
+    "c244": {
+      "t": "Théorie",
+      "r": "",
+      "x": "La théorie explique comment la gravité courbe la lumière.",
+      "xr": ""
+    },
+    "c245": {
+      "t": "Découverte",
+      "r": "",
+      "x": "Cette découverte a transformé le stockage de l'énergie propre.",
+      "xr": ""
+    },
+    "c246": {
+      "t": "Innovation",
+      "r": "",
+      "x": "L'innovation locale répond aux besoins concrets des communautés.",
+      "xr": ""
+    },
+    "c247": {
+      "t": "Algorithme",
+      "r": "",
+      "x": "Un algorithme efficace économise de l'énergie et du temps.",
+      "xr": ""
+    },
+    "c248": {
+      "t": "Énergie",
+      "r": "",
+      "x": "Les panneaux solaires convertissent directement la lumière en énergie.",
+      "xr": ""
+    },
+    "c249": {
+      "t": "Laboratoire",
+      "r": "",
+      "x": "Les scientifiques ont calibré les capteurs au laboratoire.",
+      "xr": ""
+    },
+    "c250": {
+      "t": "Précision",
+      "r": "",
+      "x": "La microchirurgie exige une précision extraordinaire.",
+      "xr": ""
+    },
+    "c251": {
+      "t": "Univers",
+      "r": "",
+      "x": "Les télescopes révèlent les premières galaxies de l'univers.",
+      "xr": ""
+    },
+    "c252": {
+      "t": "Planète",
+      "r": "",
+      "x": "L'eau est indispensable à la vie sur toute planète.",
+      "xr": ""
+    },
+    "c253": {
+      "t": "Gravité",
+      "r": "",
+      "x": "La gravité maintient la Lune en orbite autour de la Terre.",
+      "xr": ""
+    },
+    "c254": {
+      "t": "Évolution",
+      "r": "",
+      "x": "L'évolution façonne les organismes sur des millions d'années.",
+      "xr": ""
+    },
+    "c255": {
+      "t": "Curiosité",
+      "r": "",
+      "x": "La curiosité scientifique fait avancer l'humanité.",
+      "xr": ""
+    },
+    "c256": {
+      "t": "Environnement",
+      "r": "",
+      "x": "Protéger l'environnement, c'est protéger les générations futures.",
+      "xr": ""
+    },
+    "c257": {
+      "t": "Climat",
+      "r": "",
+      "x": "L'évolution du climat affecte les récoltes mondiales.",
+      "xr": ""
+    },
+    "c258": {
+      "t": "Écosystème",
+      "r": "",
+      "x": "Les zones humides sont vitales pour l'écosystème côtier.",
+      "xr": ""
+    },
+    "c259": {
+      "t": "Biodiversité",
+      "r": "",
+      "x": "Les forêts tropicales abritent une biodiversité extraordinaire.",
+      "xr": ""
+    },
+    "c260": {
+      "t": "Pollution",
+      "r": "",
+      "x": "Les transports électriques réduisent nettement la pollution urbaine.",
+      "xr": ""
+    },
+    "c261": {
+      "t": "Renouvelable",
+      "r": "",
+      "x": "Le vent et le soleil sont des sources renouvelables abondantes.",
+      "xr": ""
+    },
+    "c262": {
+      "t": "Durabilité",
+      "r": "",
+      "x": "La véritable durabilité concilie nature et prospérité.",
+      "xr": ""
+    },
+    "c263": {
+      "t": "Conservation",
+      "r": "",
+      "x": "La conservation menée par les habitants a régénéré la forêt.",
+      "xr": ""
+    },
+    "c264": {
+      "t": "Recycler",
+      "r": "",
+      "x": "Triez le verre, le papier et le métal pour que les villes puissent les recycler.",
+      "xr": ""
+    },
+    "c265": {
+      "t": "Ressource",
+      "r": "",
+      "x": "L'eau douce est une précieuse ressource partagée.",
+      "xr": ""
+    },
+    "c266": {
+      "t": "Forêt",
+      "r": "",
+      "x": "Restaurer les forêts indigènes rafraîchit les villes voisines.",
+      "xr": ""
+    },
+    "c267": {
+      "t": "Océan",
+      "r": "",
+      "x": "Des océans sains absorbent d'immenses quantités de carbone.",
+      "xr": ""
+    },
+    "c268": {
+      "t": "Sécheresse",
+      "r": "",
+      "x": "L'irrigation intelligente aide les agriculteurs à affronter la sécheresse.",
+      "xr": ""
+    },
+    "c269": {
+      "t": "Harmonie",
+      "r": "",
+      "x": "Le progrès humain doit exister en harmonie avec la nature.",
+      "xr": ""
+    },
+    "c270": {
+      "t": "Avenir",
+      "r": "",
+      "x": "Les choix faits aujourd'hui façonnent l'avenir de demain.",
+      "xr": ""
+    },
+    "c271": {
+      "t": "Justice",
+      "r": "",
+      "x": "Une justice égale devant la loi renforce la société.",
+      "xr": ""
+    },
+    "c272": {
+      "t": "Liberté",
+      "r": "",
+      "x": "La liberté d'expression implique une responsabilité mutuelle.",
+      "xr": ""
+    },
+    "c273": {
+      "t": "Égalité",
+      "r": "",
+      "x": "L'éducation favorise l'égalité sociale et économique.",
+      "xr": ""
+    },
+    "c274": {
+      "t": "Constitution",
+      "r": "",
+      "x": "La constitution garantit les droits humains fondamentaux.",
+      "xr": ""
+    },
+    "c275": {
+      "t": "Citoyen",
+      "r": "",
+      "x": "Chaque citoyen engagé contribue à la vie civique.",
+      "xr": ""
+    },
+    "c276": {
+      "t": "Démocratie",
+      "r": "",
+      "x": "Une démocratie saine repose sur des électeurs informés.",
+      "xr": ""
+    },
+    "c277": {
+      "t": "Gouvernement",
+      "r": "",
+      "x": "Le gouvernement local entretient les routes, les parcs et les écoles.",
+      "xr": ""
+    },
+    "c278": {
+      "t": "Politique",
+      "r": "",
+      "x": "La politique de santé publique a sauvé des millions de vies.",
+      "xr": ""
+    },
+    "c279": {
+      "t": "Loi",
+      "r": "",
+      "x": "Des lois transparentes instaurent la confiance au sein des communautés.",
+      "xr": ""
+    },
+    "c280": {
+      "t": "Transparence",
+      "r": "",
+      "x": "La transparence financière prévient la corruption.",
+      "xr": ""
+    },
+    "c281": {
+      "t": "Communauté",
+      "r": "",
+      "x": "Les communautés soudées veillent sur les plus vulnérables.",
+      "xr": ""
+    },
+    "c282": {
+      "t": "Paix",
+      "r": "",
+      "x": "Une paix durable exige le dialogue et l'empathie.",
+      "xr": ""
+    },
+    "c283": {
+      "t": "Éducation",
+      "r": "",
+      "x": "L'éducation universelle élève des nations entières.",
+      "xr": ""
+    },
+    "c284": {
+      "t": "Bénévole",
+      "r": "",
+      "x": "Des centaines de bénévoles ont aidé à reconstruire après l'inondation.",
+      "xr": ""
+    },
+    "c285": {
+      "t": "Solidarité",
+      "r": "",
+      "x": "La solidarité mondiale surmonte les crises plus rapidement.",
+      "xr": ""
+    },
+    "c286": {
+      "t": "Argument",
+      "r": "",
+      "x": "Appuyez chaque argument sur des faits vérifiables.",
+      "xr": ""
+    },
+    "c287": {
+      "t": "Perspective",
+      "r": "",
+      "x": "Adopter une autre perspective approfondit la compréhension.",
+      "xr": ""
+    },
+    "c288": {
+      "t": "Analyse",
+      "r": "",
+      "x": "Son analyse économique a mis en lumière trois risques cachés.",
+      "xr": ""
+    },
+    "c289": {
+      "t": "Présupposé",
+      "r": "",
+      "x": "Remettez toujours en question vos présupposés.",
+      "xr": ""
+    },
+    "c290": {
+      "t": "Conclusion",
+      "r": "",
+      "x": "Attendez de connaître tous les faits avant de tirer une conclusion.",
+      "xr": ""
+    },
+    "c291": {
+      "t": "Objectif",
+      "r": "",
+      "x": "Un journaliste intègre s'efforce de rester objectif.",
+      "xr": ""
+    },
+    "c292": {
+      "t": "Biais",
+      "r": "",
+      "x": "Reconnaître ses propres biais conduit à un meilleur jugement.",
+      "xr": ""
+    },
+    "c293": {
+      "t": "Critère",
+      "r": "",
+      "x": "La fiabilité est notre principal critère d'évaluation.",
+      "xr": ""
+    },
+    "c294": {
+      "t": "Contradiction",
+      "r": "",
+      "x": "Le témoin a relevé une contradiction dans la chronologie.",
+      "xr": ""
+    },
+    "c295": {
+      "t": "Consensus",
+      "r": "",
+      "x": "Après un débat animé, le jury est parvenu à un consensus.",
+      "xr": ""
+    },
+    "c296": {
+      "t": "Clarifier",
+      "r": "",
+      "x": "Pourriez-vous clarifier ce que vous entendiez par cette phrase ?",
+      "xr": ""
+    },
+    "c297": {
+      "t": "Souligner",
+      "r": "",
+      "x": "Je tiens à souligner l'importance de l'accessibilité.",
+      "xr": ""
+    },
+    "c298": {
+      "t": "Néanmoins",
+      "r": "",
+      "x": "La route était escarpée ; néanmoins, nous avons atteint le sommet.",
+      "xr": ""
+    },
+    "c299": {
+      "t": "Conséquence",
+      "r": "",
+      "x": "Pesez chaque conséquence à long terme avant de décider.",
+      "xr": ""
+    },
+    "c300": {
+      "t": "Perspicacité",
+      "r": "",
+      "x": "Sa remarque a révélé une remarquable perspicacité.",
+      "xr": ""
+    },
+    "c301": {
+      "t": "Métaphore",
+      "r": "",
+      "x": "La rivière sert de métaphore au temps qui passe.",
+      "xr": ""
+    },
+    "c302": {
+      "t": "Symbolisme",
+      "r": "",
+      "x": "Le roman est riche d'un symbolisme aux multiples strates.",
+      "xr": ""
+    },
+    "c303": {
+      "t": "Narration",
+      "r": "",
+      "x": "L'auteur entrelace trois narrations intimement liées.",
+      "xr": ""
+    },
+    "c304": {
+      "t": "Chef-d'œuvre",
+      "r": "",
+      "x": "Cette symphonie est saluée comme un chef-d'œuvre intemporel.",
+      "xr": ""
+    },
+    "c305": {
+      "t": "Esthétique",
+      "r": "",
+      "x": "Le design minimaliste privilégie une sobre harmonie esthétique.",
+      "xr": ""
+    },
+    "c306": {
+      "t": "Nuance",
+      "r": "",
+      "x": "La véritable maîtrise réside dans la saisie des nuances culturelles.",
+      "xr": ""
+    },
+    "c307": {
+      "t": "Ambiguïté",
+      "r": "",
+      "x": "Le poème s'achève sur une ambiguïté délibérée et envoûtante.",
+      "xr": ""
+    },
+    "c308": {
+      "t": "Ironie",
+      "r": "",
+      "x": "Le dramaturge a usé d'une fine ironie pour critiquer la vanité.",
+      "xr": ""
+    },
+    "c309": {
+      "t": "Éloquence",
+      "r": "",
+      "x": "Elle s'est exprimée avec un aplomb et une éloquence remarquables.",
+      "xr": ""
+    },
+    "c310": {
+      "t": "Héritage",
+      "r": "",
+      "x": "La grande littérature laisse un héritage intellectuel durable.",
+      "xr": ""
+    },
+    "c311": {
+      "t": "Nostalgie",
+      "r": "",
+      "x": "L'odeur de la pluie sur la terre chaude a éveillé une profonde nostalgie.",
+      "xr": ""
+    },
+    "c312": {
+      "t": "Résonance",
+      "r": "",
+      "x": "La mélodie possédait une profonde résonance émotionnelle.",
+      "xr": ""
+    },
+    "c313": {
+      "t": "Sublime",
+      "r": "",
+      "x": "Se tenir sous l'aurore boréale était absolument sublime.",
+      "xr": ""
+    },
+    "c314": {
+      "t": "Transcender",
+      "r": "",
+      "x": "La compassion peut transcender les langues et l'histoire.",
+      "xr": ""
+    },
+    "c315": {
+      "t": "Authenticité",
+      "r": "",
+      "x": "Les lecteurs perçoivent immédiatement une authenticité sincère.",
+      "xr": ""
+    },
+    "c316": {
+      "t": "Conscience morale",
+      "r": "",
+      "x": "Agissez en accord avec une conscience morale intègre.",
+      "xr": ""
+    },
+    "c317": {
+      "t": "Intégrité",
+      "r": "",
+      "x": "L'intégrité consiste à faire le bien quand personne ne regarde.",
+      "xr": ""
+    },
+    "c318": {
+      "t": "Empathie",
+      "r": "",
+      "x": "L'empathie jette des ponts sur les fossés les plus profonds.",
+      "xr": ""
+    },
+    "c319": {
+      "t": "Dilemme",
+      "r": "",
+      "x": "Le comité faisait face à un délicat dilemme éthique.",
+      "xr": ""
+    },
+    "c320": {
+      "t": "Sagesse",
+      "r": "",
+      "x": "Le savoir parle, tandis que la sagesse écoute.",
+      "xr": ""
+    },
+    "c321": {
+      "t": "Conscience",
+      "r": "",
+      "x": "Les philosophes débattent encore de la nature de la conscience.",
+      "xr": ""
+    },
+    "c322": {
+      "t": "Perception",
+      "r": "",
+      "x": "La langue façonne subtilement notre perception du temps.",
+      "xr": ""
+    },
+    "c323": {
+      "t": "Résilience",
+      "r": "",
+      "x": "La résilience intérieure grandit en surmontant l'adversité.",
+      "xr": ""
+    },
+    "c324": {
+      "t": "Introspection",
+      "r": "",
+      "x": "Une introspection sereine apporte la clarté dans la tourmente.",
+      "xr": ""
+    },
+    "c325": {
+      "t": "Paradoxe",
+      "r": "",
+      "x": "Le paradoxe du choix montre que trop d'options peuvent submerger.",
+      "xr": ""
+    },
+    "c326": {
+      "t": "Impermanence",
+      "r": "",
+      "x": "Accepter l'impermanence nous apprend à chérir l'instant présent.",
+      "xr": ""
+    },
+    "c327": {
+      "t": "Équanimité",
+      "r": "",
+      "x": "Elle a accueilli le triomphe comme le revers avec équanimité.",
+      "xr": ""
+    },
+    "c328": {
+      "t": "Raison d'être",
+      "r": "",
+      "x": "Une raison d'être partagée transforme l'effort quotidien en joie.",
+      "xr": ""
+    },
+    "c329": {
+      "t": "Autonomie",
+      "r": "",
+      "x": "L'autonomie intellectuelle commence par une pensée indépendante.",
+      "xr": ""
+    },
+    "c330": {
+      "t": "Humilité",
+      "r": "",
+      "x": "La véritable maîtrise va toujours de pair avec l'humilité.",
+      "xr": ""
+    },
+    "c331": {
+      "t": "Les actes valent mieux que les mots",
+      "r": "",
+      "x": "Tenez vos engagements : les actes valent mieux que les mots.",
+      "xr": ""
+    },
+    "c332": {
+      "t": "C'est en forgeant qu'on devient forgeron",
+      "r": "",
+      "x": "Ne craignez pas l'erreur ; c'est en forgeant qu'on devient forgeron.",
+      "xr": ""
+    },
+    "c333": {
+      "t": "Après la pluie, le beau temps",
+      "r": "",
+      "x": "Gardez espoir : après la pluie, le beau temps.",
+      "xr": ""
+    },
+    "c334": {
+      "t": "Le temps guérit toutes les blessures",
+      "r": "",
+      "x": "Soyez bienveillant envers vous-même ; le temps guérit toutes les blessures.",
+      "xr": ""
+    },
+    "c335": {
+      "t": "L'union fait la force",
+      "r": "",
+      "x": "Travailler ensemble prouve que l'union fait la force.",
+      "xr": ""
+    },
+    "c336": {
+      "t": "Briser la glace",
+      "r": "",
+      "x": "Une plaisanterie chaleureuse a permis de briser la glace au dîner.",
+      "xr": ""
+    },
+    "c337": {
+      "t": "Un jeu d'enfant",
+      "r": "",
+      "x": "Après des semaines d'exercices, l'examen a été un jeu d'enfant.",
+      "xr": ""
+    },
+    "c338": {
+      "t": "Tous les trente-six du mois",
+      "r": "",
+      "x": "Il neige dans cette vallée tous les trente-six du mois.",
+      "xr": ""
+    },
+    "c339": {
+      "t": "Mettre le doigt dessus",
+      "r": "",
+      "x": "Votre diagnostic a mis le doigt dessus.",
+      "xr": ""
+    },
+    "c340": {
+      "t": "Veiller tard à la tâche",
+      "r": "",
+      "x": "L'équipe a veillé tard à la tâche pour livrer à temps.",
+      "xr": ""
+    },
+    "c341": {
+      "t": "Lire entre les lignes",
+      "r": "",
+      "x": "En diplomatie, il faut savoir lire entre les lignes.",
+      "xr": ""
+    },
+    "c342": {
+      "t": "Tourner la page",
+      "r": "",
+      "x": "Elle a décidé de tourner la page ce printemps.",
+      "xr": ""
+    },
+    "c343": {
+      "t": "Un mal pour un bien",
+      "r": "",
+      "x": "Perdre cet emploi s'est révélé être un mal pour un bien.",
+      "xr": ""
+    },
+    "c344": {
+      "t": "Se surpasser",
+      "r": "",
+      "x": "Les grands enseignants savent toujours se surpasser.",
+      "xr": ""
+    },
+    "c345": {
+      "t": "Voir la situation dans son ensemble",
+      "r": "",
+      "x": "Prenez du recul sur les détails pour voir la situation dans son ensemble.",
+      "xr": ""
+    },
+    "c346": {
+      "t": "Souveraineté",
+      "r": "",
+      "x": "Le droit international affirme le respect mutuel de la souveraineté.",
+      "xr": ""
+    },
+    "c347": {
+      "t": "Diplomatie",
+      "r": "",
+      "x": "Une diplomatie patiente a empêché toute escalade.",
+      "xr": ""
+    },
+    "c348": {
+      "t": "Traité",
+      "r": "",
+      "x": "Quarante nations ont ratifié le traité environnemental.",
+      "xr": ""
+    },
+    "c349": {
+      "t": "Multilatéral",
+      "r": "",
+      "x": "La coopération multilatérale répond aux risques mondiaux partagés.",
+      "xr": ""
+    },
+    "c350": {
+      "t": "Juridiction",
+      "r": "",
+      "x": "Ce tribunal exerce sa juridiction sur les différends maritimes.",
+      "xr": ""
+    },
+    "c351": {
+      "t": "Hypothèse",
+      "r": "",
+      "x": "L'article met à l'épreuve une hypothèse linguistique novatrice.",
+      "xr": ""
+    },
+    "c352": {
+      "t": "Méthodologie",
+      "r": "",
+      "x": "Une méthodologie transparente permet une réplication indépendante.",
+      "xr": ""
+    },
+    "c353": {
+      "t": "Synthèse",
+      "r": "",
+      "x": "Sa conférence a offert une brillante synthèse des deux disciplines.",
+      "xr": ""
+    },
+    "c354": {
+      "t": "Précédent",
+      "r": "",
+      "x": "Cette décision a créé un important précédent juridique.",
+      "xr": ""
+    },
+    "c355": {
+      "t": "Mise en œuvre",
+      "r": "",
+      "x": "Une mise en œuvre rigoureuse détermine le succès d'une réforme.",
+      "xr": ""
+    },
+    "c356": {
+      "t": "Nonobstant",
+      "r": "",
+      "x": "Nonobstant les retards initiaux, le pont a ouvert en toute sécurité.",
+      "xr": ""
+    },
+    "c357": {
+      "t": "Par conséquent",
+      "r": "",
+      "x": "Les financements ont augmenté ; par conséquent, les cliniques rurales se sont étendues.",
+      "xr": ""
+    },
+    "c358": {
+      "t": "En outre",
+      "r": "",
+      "x": "En outre, les données ouvertes profitent aux chercheurs indépendants.",
+      "xr": ""
+    },
+    "c359": {
+      "t": "À la lumière de",
+      "r": "",
+      "x": "À la lumière de nouvelles preuves, nous avons révisé la directive.",
+      "xr": ""
+    },
+    "c360": {
+      "t": "Avec tout le respect que je vous dois",
+      "r": "",
+      "x": "Avec tout le respect que je vous dois, je propose une approche alternative.",
+      "xr": ""
+    },
+    "c361": {
+      "t": "Articuler",
+      "r": "",
+      "x": "Elle sait articuler des idées complexes sans effort.",
+      "xr": ""
+    },
+    "c362": {
+      "t": "Concis",
+      "r": "",
+      "x": "Une explication concise est plus claire qu'un long discours.",
+      "xr": ""
+    },
+    "c363": {
+      "t": "Cohérent",
+      "r": "",
+      "x": "Construisez un récit cohérent du début à la fin.",
+      "xr": ""
+    },
+    "c364": {
+      "t": "Persuasif",
+      "r": "",
+      "x": "Des récits vécus rendent un argument bien plus persuasif.",
+      "xr": ""
+    },
+    "c365": {
+      "t": "Pragmatique",
+      "r": "",
+      "x": "Nous avons adopté une feuille de route pragmatique pour le déploiement.",
+      "xr": ""
+    },
+    "c366": {
+      "t": "Sans précédent",
+      "r": "",
+      "x": "L'observatoire a capturé des images d'une netteté sans précédent.",
+      "xr": ""
+    },
+    "c367": {
+      "t": "Inévitable",
+      "r": "",
+      "x": "L'évolution graduelle d'une langue est tout à fait inévitable.",
+      "xr": ""
+    },
+    "c368": {
+      "t": "Indispensable",
+      "r": "",
+      "x": "L'écoute active est indispensable à une maîtrise approfondie.",
+      "xr": ""
+    },
+    "c369": {
+      "t": "Profond",
+      "r": "",
+      "x": "La lecture des classiques laisse une profonde impression.",
+      "xr": ""
+    },
+    "c370": {
+      "t": "Fluide",
+      "r": "",
+      "x": "Notre objectif est une expérience fluide sur chaque appareil.",
+      "xr": ""
+    },
+    "c371": {
+      "t": "Sans l'ombre d'un doute",
+      "r": "",
+      "x": "Sans l'ombre d'un doute, la constance l'emporte.",
+      "xr": ""
+    },
+    "c372": {
+      "t": "De la même manière",
+      "r": "",
+      "x": "Nous valorisons la rapidité ; de la même manière, nous ne sacrifions jamais la qualité.",
+      "xr": ""
+    },
+    "c373": {
+      "t": "Tout bien considéré",
+      "r": "",
+      "x": "Tout bien considéré, ce fut notre plus belle année.",
+      "xr": ""
+    },
+    "c374": {
+      "t": "Résister à l'épreuve du temps",
+      "r": "",
+      "x": "Le savoir ouvert bâti avec soin résistera à l'épreuve du temps.",
+      "xr": ""
+    },
+    "c375": {
+      "t": "Apprentissage tout au long de la vie",
+      "r": "",
+      "x": "Maîtriser des langues est une joyeuse aventure d'apprentissage tout au long de la vie.",
+      "xr": ""
+    }
+  }
+}

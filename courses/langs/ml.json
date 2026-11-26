@@ -1,0 +1,2285 @@
+{
+  "code": "ml",
+  "name": "Malayalam",
+  "nativeName": "മലയാളം",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Malayalam Greetings & Politeness: 'നമസ്കാരം' (Namaskaaram) works at any hour. Unlike English, Malayalam verbs do not change for person, number, or gender. Add '-ഓ' (-o) to a statement to form a yes/no question, e.g., 'സുഖമാണ്' (is well) → 'സുഖമാണോ?' (are you well?).",
+    "u2": "Pronouns & Family Relations: Malayalam distinguishes inclusive 'നമ്മൾ' (nammal, we including listener) and exclusive 'ഞങ്ങൾ' (njangal, we excluding listener). Use polite 'നിങ്ങൾ' (ningal) or 'താങ്കൾ' (thaankal) for respect. Possessives use '-ന്റെ' (-nte) or '-ഉടെ' (-ude), as in 'എന്റെ അമ്മ' (ente amma, my mother).",
+    "u3": "Numbers, Time & SOV Order: Malayalam follows Subject–Object–Verb (SOV) word order. Numbers precede nouns ('ഒരു കപ്പ് ചായ', oru kappu chaaya). Time adverbs like 'ഇന്ന്' (innu, today) and 'നാളെ' (naale, tomorrow) typically appear near the beginning of the sentence.",
+    "u4": "Food, Dining & Dative Experiencers: Physical states like hunger and thirst use the dative case ('എനിക്ക്', enikku, 'to me'): 'എനിക്ക് വിശക്കുന്നു' (I am hungry), 'എനിക്ക് ദാഹിക്കുന്നു' (I am thirsty). Polite requests use '-ആമോ?' (-aamo?, may I / could I) or 'തരാമോ?' (tharaamo?, could you give?).",
+    "u5": "Home, Adjectives & Core Verbs: Attributive adjectives precede nouns and do not inflect for gender or number ('വലിയ നഗരം', valiya nagaram, big city). Verbs end in '-ഉക' (-uka) in citation form ('പോകുക', pokuka, to go) and '-ഉന്നു' (-unnu) in the present tense ('പോകുന്നു', pokunnu).",
+    "u6": "Directions & Locative Cases: Use '-ഇൽ' (-il) for 'in/at' ('സ്റ്റേഷനിൽ', station-il), '-ഇലേക്ക്' (-ilekku) for 'toward/to', and '-ഇൽ നിന്ന്' (-il ninnu) for 'from'. Imperatives soften into polite requests with '-ഊ' (-oo) or 'ദയവായി' (dayavaayi, please).",
+    "u7": "Shopping, Modals & Desire: Express 'want' with 'വേണം' (venam) plus dative subject, or verb stem + '-അണം' (-anam) ('വാങ്ങണം', vaanganam, want/need to buy). Ask prices naturally with 'ഇതിന് എത്ര വിലയാണ്?' (ithinu ethra vilayaanu?).",
+    "u8": "Weather, Nature & Past Tense: Malayalam past tense takes '-ഇ' (-i) or '-ഉ' (-u) depending on verb class ('പെയ്തു', peythu, rained; 'കയറി', kayari, climbed). Weather expressions often pair a noun with 'ആണ്' (aanu, is) or an active verb.",
+    "u9": "Health, Body & Obligation: Express advice ('should') with verb + '-അണം' (-anam), e.g., 'കാണണം' (kaananam, should see) and 'കഴിക്കണം' (kazhikkanam, should take/eat). Pain is expressed with the body part + 'വേദനിക്കുന്നു' (vedanikkunnu, hurts).",
+    "u10": "Work, Study & Verbal Nouns: Turn any verb into a gerund/noun with '-ഉന്നത്' (-unnathu) or '-അൽ' (-al), as in 'പഠിക്കുന്നത്' (padikkunnathu, learning) and 'കേൾക്കുന്നത്' (kelkkunnathu, listening). Habitual actions use the simple present '-ഉന്നു' (-unnu).",
+    "u11": "Emotions, Opinions & Complement Clauses: Report thoughts and opinions using the quotative particle 'എന്ന്' (ennu, 'that') placed AFTER the embedded clause: 'ഈ പരിഹാരം പ്രായോഗികമാണെന്ന് ഞാൻ കരുതുന്നു' (I think that this solution is practical).",
+    "u12": "Social Life, Memory & Aspect: Perfect aspect uses '-ഇട്ടുണ്ട്' (-ittundu, has/have done), while progressive uses '-ഉകയാണ്' (-ukayaanu, is doing). Storytelling frequently chains actions with adverbial participles ('-ഇട്ട്', -ittu, 'having done').",
+    "u13": "Technology, Media & Compound Verbs: Modern Malayalam blends native verbs like 'ചെയ്യുക' (cheyyuka, do) and 'നൽകുക' (nalkuka, give) with technical terms and Sanskritic compounds ('സ്വകാര്യത', swakaaryatha, privacy; 'അപ്‌ഡേറ്റ് ചെയ്യുക', update cheyyuka).",
+    "u14": "Culture, Heritage & Passive Voice: Formal cultural descriptions often use the passive auxiliary '-പ്പെടുക' (-ppeduka), e.g., 'സ്വീകരിക്കപ്പെടുന്നു' (sweekarikkappedunnu, is welcomed) and 'പാടപ്പെടുന്നു' (paadappedunnu, is sung).",
+    "u15": "Connectors & Conditional Clauses: Form 'if' clauses by adding '-ആൽ' (-aal) to the past stem: 'പരിശീലിച്ചാൽ' (parisheelichaal, if you practice). Link contrasting ideas with 'എന്നിരുന്നാലും' (ennirunnaalum, however) and 'എങ്കിലും' (engilum, although).",
+    "u16": "Business, Negotiations & Formal Compounds: Professional Malayalam relies heavily on crisp Sanskrit-derived nominal compounds ('തന്ത്രം', thanthram; 'കരാർ', karaar; 'നിക്ഷേപം', nikshepam) paired with formal verbs like 'അംഗീകരിക്കുക' (angeekarikkuka, approve) and 'ഒപ്പുവെക്കുക' (oppuvekkuka, sign).",
+    "u17": "Science, Research & Causative Verbs: Malayalam distinguishes intransitive and causative verb pairs systematically (e.g., 'മാറുക' maaruka 'change' vs 'മാറ്റുക' maattuka 'transform'; 'വളരുക' valaruka 'grow' vs 'വളർത്തുക' valarthuka 'cultivate').",
+    "u18": "Environment & Relative Participles: Malayalam builds relative clauses without 'who/which' by attaching '-അ' (-a) to tense stems before the noun: 'ഇന്ന് എടുക്കുന്ന തീരുമാനങ്ങൾ' (innu edukkunna theerumaanangal, the decisions taken today).",
+    "u19": "Society, Law & Abstract Nouns: Abstract civic nouns frequently end in '-ത' (-tha), '-ത്വം' (-thwam), or '-നം' (-nam), e.g., 'സമത്വം' (samathwam, equality), 'സുതാര്യത' (suthaaryatha, transparency), 'ഭരണഘടന' (bharanaghadana, constitution).",
+    "u20": "Critical Thinking & Discourse Markers: Structure persuasive arguments with clause-linking markers like 'അതുകൊണ്ട്' (athukondu, therefore), 'എന്നിരുന്നാലും' (ennirunnaalum, nevertheless), and nominalized clauses ending in '-എന്നത്' (-ennathu, the fact that).",
+    "u21": "Literature, Art & Manipravalam Style: Literary Malayalam weaves lush Sanskritic aesthetics ('സൗന്ദര്യശാസ്ത്രം', soundaryashaasthram; 'ഗൃഹാതുരത്വം', grihaathurathwam) with rhythmic Dravidian syntax and evocative participial modifiers.",
+    "u22": "Philosophy, Ethics & Subtle Distinctions: Philosophical discourse contrasts inner states using precise prefixes like 'അന്തർ-' (anthar-, inner), 'സ്വ-' (swa-, self), and 'അ-' (a-, negation, as in 'അനിത്യത', anithyatha, impermanence).",
+    "u23": "Proverbs & Idioms (പഴഞ്ചൊല്ലുകൾ): Authentic Malayalam proverbs compress timeless wisdom into rhythmic, elliptical lines—often omitting the copula 'ആണ്' (aanu), as in 'ഐക്യമത്യം മഹാബലം' (Unity is strength) and 'അഭ്യാസം കൊണ്ട് സിദ്ധി' (Practice brings mastery).",
+    "u24": "Formal, Diplomatic & Legal Register: Official Malayalam employs honorific compounds ('പൂർണ്ണ ബഹുമാനത്തോടെ', poorna bahumaanathode), postpositional phrases ('പശ്ചാത്തലത്തിൽ', pashchaathalathil, in light of), and formal discourse connectors ('തൽഫലമായി', 'കൂടാതെ').",
+    "u25": "Nuance, Rhetoric & C2 Mastery: Native-level rhetoric balances concise attributive adjectives ('സംക്ഷിപ്തമായ', 'അഭൂതപൂർവ്വമായ') with emphatic particles like '-തന്നെ' (-thanne, indeed) and '-ഏ' (-e, only/precisely) to achieve persuasive elegance."
+  },
+  "items": {
+    "c001": {
+      "t": "നമസ്കാരം",
+      "r": "Namaskaaram",
+      "x": "നമസ്കാരം, നിങ്ങളെ പരിചയപ്പെട്ടതിൽ സന്തോഷം.",
+      "xr": "Namaskaaram, ningale parichayappettathil santhosham."
+    },
+    "c002": {
+      "t": "സുപ്രഭാതം",
+      "r": "Suprabhaatham",
+      "x": "സുപ്രഭാതം, നിങ്ങൾ നന്നായി ഉറങ്ങിയോ?",
+      "xr": "Suprabhaatham, ningal nannaayi urangiyo?"
+    },
+    "c003": {
+      "t": "ശുഭ ഉച്ചയ്ക്ക്",
+      "r": "Shubha uchaykku",
+      "x": "എല്ലാവർക്കും ശുഭ ഉച്ചനേരം ആശംസിക്കുന്നു.",
+      "xr": "Ellaavarkkum shubha uchaneram aashamsikkunnu."
+    },
+    "c004": {
+      "t": "ശുഭസന്ധ്യ",
+      "r": "Shubhasandhya",
+      "x": "ശുഭസന്ധ്യ, വീട്ടിലേക്ക് സ്വാഗതം.",
+      "xr": "Shubhasandhya, veettilekku swaagatham."
+    },
+    "c005": {
+      "t": "ശുഭരാത്രി",
+      "r": "Shubharaathri",
+      "x": "ശുഭരാത്രി, നാളെ കാണാം.",
+      "xr": "Shubharaathri, naale kaanaam."
+    },
+    "c006": {
+      "t": "നന്ദി",
+      "r": "Nanni",
+      "x": "നിങ്ങളുടെ സഹായത്തിന് വളരെ നന്ദി.",
+      "xr": "Ningalude sahaayathinu valare nanni."
+    },
+    "c007": {
+      "t": "സന്തോഷമേയുള്ളൂ",
+      "r": "Santhoshameyyulloo",
+      "x": "സന്തോഷമേയുള്ളൂ, എപ്പോൾ വേണമെങ്കിലും ചോദിക്കാം.",
+      "xr": "Santhoshameyyulloo, eppol venamengilum chodikkaam."
+    },
+    "c008": {
+      "t": "ദയവായി",
+      "r": "Dayavaayi",
+      "x": "ദയവായി അകത്തേക്ക് വരൂ, ഇരിക്കൂ.",
+      "xr": "Dayavaayi akathekku varoo, irikkoo."
+    },
+    "c009": {
+      "t": "ക്ഷമിക്കണം",
+      "r": "Kshamikkanam",
+      "x": "ക്ഷമിക്കണം, എനിക്ക് ഒരു ചോദ്യം ചോദിക്കാമോ?",
+      "xr": "Kshamikkanam, enikku oru chodyam chodikkaamo?"
+    },
+    "c010": {
+      "t": "എന്നോട് ക്ഷമിക്കൂ",
+      "r": "Ennodu kshamikkoo",
+      "x": "വൈകിയതിന് എന്നോട് ക്ഷമിക്കൂ.",
+      "xr": "Vaikiyathinu ennodu kshamikkoo."
+    },
+    "c011": {
+      "t": "അതെ",
+      "r": "Athe",
+      "x": "അതെ, എനിക്ക് പൂർണ്ണമായും മനസ്സിലായി.",
+      "xr": "Athe, enikku poornamaayum manassilaayi."
+    },
+    "c012": {
+      "t": "അല്ല",
+      "r": "Alla",
+      "x": "വേണ്ട, നന്ദി, എനിക്ക് കുഴപ്പമില്ല.",
+      "xr": "Venda, nanni, enikku kuzhappamilla."
+    },
+    "c013": {
+      "t": "വിട",
+      "r": "Vida",
+      "x": "വിട, സുരക്ഷിതമായ യാത്ര ആശംസിക്കുന്നു.",
+      "xr": "Vida, surakshithamaaya yaathra aashamsikkunnu."
+    },
+    "c014": {
+      "t": "എന്റെ പേര്",
+      "r": "Ente peru",
+      "x": "എന്റെ പേര് മായ എന്നാണ്.",
+      "xr": "Ente peru Maaya ennaanu."
+    },
+    "c015": {
+      "t": "സുഖമാണോ?",
+      "r": "Sukhamaano?",
+      "x": "ഇന്ന് നിങ്ങൾക്ക് സുഖമാണോ?",
+      "xr": "Innu ningalkku sukhamaano?"
+    },
+    "c016": {
+      "t": "ഞാൻ",
+      "r": "Njaan",
+      "x": "ഞാൻ ഒരു പുതിയ ഭാഷ പഠിക്കുകയാണ്.",
+      "xr": "Njaan oru puthiya bhaasha padikkukayaanu."
+    },
+    "c017": {
+      "t": "നിങ്ങൾ",
+      "r": "Ningal",
+      "x": "നിങ്ങൾ വളരെ വ്യക്തമായി സംസാരിക്കുന്നു.",
+      "xr": "Ningal valare vyakthamaayi samsaarikkunnu."
+    },
+    "c018": {
+      "t": "അവൻ",
+      "r": "Avan",
+      "x": "അവൻ എന്റെ ജ്യേഷ്ഠനാണ്.",
+      "xr": "Avan ente jyeshtanaanu."
+    },
+    "c019": {
+      "t": "അവൾ",
+      "r": "Aval",
+      "x": "അവൾ ഒരു മിടുക്കിയായ ഡോക്ടറാണ്.",
+      "xr": "Aval oru midukkiyaaya doktaraanu."
+    },
+    "c020": {
+      "t": "ഞങ്ങൾ",
+      "r": "Njangal",
+      "x": "ഞങ്ങൾ ഒരേ നഗരത്തിലാണ് താമസിക്കുന്നത്.",
+      "xr": "Njangal ore nagarathilaanu thaamasikkunnathu."
+    },
+    "c021": {
+      "t": "അമ്മ",
+      "r": "Amma",
+      "x": "എന്റെ അമ്മ രുചികരമായ ഭക്ഷണം പാചകം ചെയ്യുന്നു.",
+      "xr": "Ente amma ruchikaramaaya bhakshanam paachakam cheyyunnu."
+    },
+    "c022": {
+      "t": "അച്ഛൻ",
+      "r": "Achan",
+      "x": "എന്റെ അച്ഛൻ എല്ലാ ദിവസവും രാവിലെ പത്രം വായിക്കുന്നു.",
+      "xr": "Ente achan ellaa divasavum raavile pathram vaayikkunnu."
+    },
+    "c023": {
+      "t": "സഹോദരൻ",
+      "r": "Sahodaran",
+      "x": "എന്റെ സഹോദരൻ ഫുട്ബോൾ കളിക്കുന്നു.",
+      "xr": "Ente sahodaran futboal kalikkunnu."
+    },
+    "c024": {
+      "t": "സഹോദരി",
+      "r": "Sahodari",
+      "x": "എന്റെ സഹോദരി വൈദ്യശാസ്ത്രം പഠിക്കുന്നു.",
+      "xr": "Ente sahodari vaidyashaasthram padikkunnu."
+    },
+    "c025": {
+      "t": "കുടുംബം",
+      "r": "Kudumbam",
+      "x": "എന്റെ കുടുംബം എല്ലാ ഞായറാഴ്ചയും ഒത്തുചേരുന്നു.",
+      "xr": "Ente kudumbam ellaa njaayaraazhchayum othucherunnu."
+    },
+    "c026": {
+      "t": "സുഹൃത്ത്",
+      "r": "Suhruthu",
+      "x": "അവൾ എന്റെ ഏറ്റവും അടുത്ത സുഹൃത്താണ്.",
+      "xr": "Aval ente ettavum adutha suhruthaanu."
+    },
+    "c027": {
+      "t": "കുട്ടി",
+      "r": "Kutti",
+      "x": "കുട്ടി ഒരു ചിത്രം വരയ്ക്കുകയാണ്.",
+      "xr": "Kutti oru chithram varaykkukayaanu."
+    },
+    "c028": {
+      "t": "അധ്യാപകൻ",
+      "r": "Adhyaapakan",
+      "x": "ഞങ്ങളുടെ അധ്യാപകൻ വ്യാകരണം വ്യക്തമായി വിശദീകരിക്കുന്നു.",
+      "xr": "Njangalude adhyaapakan vyaakaranam vyakthamaayi vishadeekarikkunnu."
+    },
+    "c029": {
+      "t": "വിദ്യാർത്ഥി",
+      "r": "Vidyaarthi",
+      "x": "ഓരോ വിദ്യാർത്ഥിയും ഒരു നോട്ടുബുക്ക് കൊണ്ടുവന്നു.",
+      "xr": "Oro vidyaarthiyum oru nottubukku konduvannu."
+    },
+    "c030": {
+      "t": "അയൽക്കാരൻ",
+      "r": "Ayalkkaaran",
+      "x": "ഞങ്ങളുടെ അയൽക്കാരൻ വളരെ ദയാലുവാണ്.",
+      "xr": "Njangalude ayalkkaaran valare dayaluvaanu."
+    },
+    "c031": {
+      "t": "ഒന്ന്",
+      "r": "Onnu",
+      "x": "എനിക്ക് ഒരു കപ്പ് ചായ വേണം.",
+      "xr": "Enikku oru kappu chaaya venam."
+    },
+    "c032": {
+      "t": "രണ്ട്",
+      "r": "Randu",
+      "x": "ഞങ്ങൾക്ക് രണ്ട് ടിക്കറ്റ് തരാമോ?",
+      "xr": "Njangalkku randu tikkatu tharaamo?"
+    },
+    "c033": {
+      "t": "മൂന്ന്",
+      "r": "Moonnu",
+      "x": "മേശപ്പുറത്ത് മൂന്ന് പുസ്തകങ്ങൾ ഉണ്ട്.",
+      "xr": "Meshappurathu moonnu pusthakangal undu."
+    },
+    "c034": {
+      "t": "അഞ്ച്",
+      "r": "Anchu",
+      "x": "ക്ലാസ് അഞ്ച് മിനിറ്റിനുള്ളിൽ തുടങ്ങും.",
+      "xr": "Klaasu anchu minittinullil thudangum."
+    },
+    "c035": {
+      "t": "പത്ത്",
+      "r": "Pathu",
+      "x": "അവൾ ഒന്നു മുതൽ പത്തു വരെ എണ്ണി.",
+      "xr": "Aval onnu muthal pathu vare enni."
+    },
+    "c036": {
+      "t": "ഇന്ന്",
+      "r": "Innu",
+      "x": "ഇന്ന് നല്ല വെയിലുള്ള ദിവസമാണ്.",
+      "xr": "Innu nalla veyilulla divasamaanu."
+    },
+    "c037": {
+      "t": "നാളെ",
+      "r": "Naale",
+      "x": "നാളെ ഞങ്ങൾ മ്യൂസിയം സന്ദർശിക്കും.",
+      "xr": "Naale njangal myoosiyam sandarshikkum."
+    },
+    "c038": {
+      "t": "ഇന്നലെ",
+      "r": "Innale",
+      "x": "ഇന്നലെ ഉച്ചയ്ക്ക് ശേഷം മുഴുവൻ മഴ പെയ്തു.",
+      "xr": "Innale uchaykku shesham muzhuvan mazha peythu."
+    },
+    "c039": {
+      "t": "ഇപ്പോൾ",
+      "r": "Ippol",
+      "x": "ഞാൻ ഇപ്പോൾ തന്നെ പുറപ്പെടാൻ തയ്യാറാണ്.",
+      "xr": "Njaan ippol thanne purappedaan thayyaaraanu."
+    },
+    "c040": {
+      "t": "പിന്നീട്",
+      "r": "Pinneedu",
+      "x": "നമുക്ക് ഇതിനെക്കുറിച്ച് പിന്നീട് സംസാരിക്കാം.",
+      "xr": "Namukku ithinekkurichu pinneedu samsaarikkaam."
+    },
+    "c041": {
+      "t": "രാവിലെ",
+      "r": "Raavile",
+      "x": "ഞാൻ എല്ലാ ദിവസവും രാവിലെ വ്യായാമം ചെയ്യുന്നു.",
+      "xr": "Njaan ellaa divasavum raavile vyaayaamam cheyyunnu."
+    },
+    "c042": {
+      "t": "രാത്രി",
+      "r": "Raathri",
+      "x": "രാത്രിയിൽ നക്ഷത്രങ്ങൾ തിളങ്ങുന്നു.",
+      "xr": "Raathriyil nakshathrangal thilangunnu."
+    },
+    "c043": {
+      "t": "ആഴ്ച",
+      "r": "Aazhcha",
+      "x": "ഈ ആഴ്ച വളരെ തിരക്കുള്ളതായിരുന്നു.",
+      "xr": "Ee aazhcha valare thirakkullathaayirunnu."
+    },
+    "c044": {
+      "t": "മാസം",
+      "r": "Maasam",
+      "x": "അടുത്ത മാസം ഞങ്ങൾ വിദേശത്തേക്ക് യാത്ര പോകുന്നു.",
+      "xr": "Adutha maasam njangal videshathekku yaathra pokunnu."
+    },
+    "c045": {
+      "t": "വർഷം",
+      "r": "Varsham",
+      "x": "നിങ്ങൾക്കെല്ലാവർക്കും പുതുവത്സരാശംസകൾ.",
+      "xr": "Ningalkkellaavarkkum puthuvathsaraashamsakal."
+    },
+    "c046": {
+      "t": "വെള്ളം",
+      "r": "Vellam",
+      "x": "എനിക്ക് ഒരു ഗ്ലാസ് വെള്ളം തരാമോ?",
+      "xr": "Enikku oru glaasu vellam tharaamo?"
+    },
+    "c047": {
+      "t": "ചോറ്",
+      "r": "Choru",
+      "x": "ഞങ്ങൾ കറിയോടൊപ്പം ചൂടുള്ള ചോറ് കഴിക്കുന്നു.",
+      "xr": "Njangal kariyodoppam choodulla choru kazhikkunnu."
+    },
+    "c048": {
+      "t": "റൊട്ടി",
+      "r": "Rotti",
+      "x": "പുതിയ റൊട്ടിക്ക് നല്ല മണമുണ്ട്.",
+      "xr": "Puthiya rottikku nalla manamundu."
+    },
+    "c049": {
+      "t": "പഴം",
+      "r": "Pazham",
+      "x": "ദിവസവും ധാരാളം പുതിയ പഴങ്ങൾ കഴിക്കൂ.",
+      "xr": "Divasavum dhaaraalam puthiya pazhangal kazhikkoo."
+    },
+    "c050": {
+      "t": "പാൽ",
+      "r": "Paal",
+      "x": "നിങ്ങൾ കാപ്പിയിൽ പാൽ ചേർക്കാറുണ്ടോ?",
+      "xr": "Ningal kaappiyil paal cherkkaarundo?"
+    },
+    "c051": {
+      "t": "ചായ",
+      "r": "Chaaya",
+      "x": "തണുപ്പുകാലത്ത് ചൂട് ചായ വളരെ ആശ്വാസം നൽകുന്നു.",
+      "xr": "Thanuppukaalathu choodu chaaya valare aashwaasam nalkunnu."
+    },
+    "c052": {
+      "t": "കാപ്പി",
+      "r": "Kaappi",
+      "x": "ഞാൻ രാവിലെ കട്ടൻ കാപ്പി കുടിക്കുന്നു.",
+      "xr": "Njaan raavile kattan kaappi kudikkunnu."
+    },
+    "c053": {
+      "t": "പ്രഭാതഭക്ഷണം",
+      "r": "Prabhaathabhakshanam",
+      "x": "ദിവസത്തെ ആദ്യ ഭക്ഷണമാണ് പ്രഭാതഭക്ഷണം.",
+      "xr": "Divasathe aadya bhakshanamaanu prabhaathabhakshanam."
+    },
+    "c054": {
+      "t": "ഉച്ചഭക്ഷണം",
+      "r": "Uchabhakshanam",
+      "x": "നമുക്ക് ഉച്ചഭക്ഷണത്തിന് എവിടെ പോകാം?",
+      "xr": "Namukku uchabhakshanathinu evide pokaam?"
+    },
+    "c055": {
+      "t": "അത്താഴം",
+      "r": "Athaazham",
+      "x": "ഏഴ് മണിക്ക് അത്താഴം തയ്യാറാകും.",
+      "xr": "Ezhu manikku athaazham thayyaaraakum."
+    },
+    "c056": {
+      "t": "രുചികരം",
+      "r": "Ruchikaram",
+      "x": "ഈ വിഭവം ശരിക്കും രുചികരമാണ്.",
+      "xr": "Ee vibhavam sherikkum ruchikaramaanu."
+    },
+    "c057": {
+      "t": "വിശക്കുന്നു",
+      "r": "Vishakkunnu",
+      "x": "നടത്തത്തിന് ശേഷം എനിക്ക് നന്നായി വിശക്കുന്നു.",
+      "xr": "Nadathathinu shesham enikku nannaayi vishakkunnu."
+    },
+    "c058": {
+      "t": "ദാഹിക്കുന്നു",
+      "r": "Daahikkunnu",
+      "x": "ഈ ചൂടിൽ എനിക്ക് വല്ലാതെ ദാഹിക്കുന്നു.",
+      "xr": "Ee choodil enikku vallaathe daahikkunnu."
+    },
+    "c059": {
+      "t": "മെനു",
+      "r": "Menu",
+      "x": "ദയവായി മെനു ഒന്ന് കാണിക്കാമോ?",
+      "xr": "Dayavaayi menu onnu kaanikkaamo?"
+    },
+    "c060": {
+      "t": "ബിൽ",
+      "r": "Bil",
+      "x": "ദയവായി ഞങ്ങൾക്ക് ബിൽ തരാമോ?",
+      "xr": "Dayavaayi njangalkku bil tharaamo?"
+    },
+    "c061": {
+      "t": "വീട്",
+      "r": "Veedu",
+      "x": "അവരുടെ വീടിന് ചെറിയൊരു പൂന്തോട്ടമുണ്ട്.",
+      "xr": "Avarude veedinu cheriyoru poonthottamundu."
+    },
+    "c062": {
+      "t": "മുറി",
+      "r": "Muri",
+      "x": "എന്റെ മുറിയിൽ ഒരു വലിയ ജനാലയുണ്ട്.",
+      "xr": "Ente muriyil oru valiya janaalayundu."
+    },
+    "c063": {
+      "t": "മേശ",
+      "r": "Mesha",
+      "x": "താക്കോൽ മേശപ്പുറത്ത് വയ്ക്കൂ.",
+      "xr": "Thaakkol meshappurathu vaykkoo."
+    },
+    "c064": {
+      "t": "പുസ്തകം",
+      "r": "Pusthakam",
+      "x": "ഈ പുസ്തകം വായിക്കാൻ എളുപ്പമാണ്.",
+      "xr": "Ee pusthakam vaayikkaan eluppamaanu."
+    },
+    "c065": {
+      "t": "വാതിൽ",
+      "r": "Vaathil",
+      "x": "ദയവായി വാതിൽ പതുക്കെ അടയ്ക്കൂ.",
+      "xr": "Dayavaayi vaathil pathukke adaykkoo."
+    },
+    "c066": {
+      "t": "ചുവപ്പ്",
+      "r": "Chuvappu",
+      "x": "അവൾ തിളങ്ങുന്ന ചുവപ്പ് കുട വാങ്ങി.",
+      "xr": "Aval thilangunna chuvappu kuda vaangi."
+    },
+    "c067": {
+      "t": "നീല",
+      "r": "Neela",
+      "x": "ആകാശം തെളിഞ്ഞതും നീലനിറമുള്ളതുമാണ്.",
+      "xr": "Aakaasham thelinjathum neelaniramullathumaanu."
+    },
+    "c068": {
+      "t": "വെള്ള",
+      "r": "Vella",
+      "x": "മഞ്ഞ് ഭൂമിയെ വെള്ളനിറത്തിൽ പൊതിഞ്ഞു.",
+      "xr": "Manju bhoomiye vellanirathil pothinju."
+    },
+    "c069": {
+      "t": "വലിയ",
+      "r": "Valiya",
+      "x": "അവർ ഒരു വലിയ നഗരത്തിലേക്ക് താമസം മാറി.",
+      "xr": "Avar oru valiya nagarathilekku thaamasam maari."
+    },
+    "c070": {
+      "t": "ചെറിയ",
+      "r": "Cheriya",
+      "x": "ഒരു ചെറിയ പക്ഷി കൊമ്പിലിരുന്ന് പാടി.",
+      "xr": "Oru cheriya pakshi kombilirunnu paadi."
+    },
+    "c071": {
+      "t": "പോകുക",
+      "r": "Pokuka",
+      "x": "ഞാൻ ട്രെയിനിലാണ് ജോലിക്ക് പോകുന്നത്.",
+      "xr": "Njaan treyinilaanu jolikku pokunnathu."
+    },
+    "c072": {
+      "t": "വരിക",
+      "r": "Varika",
+      "x": "ദയവായി ഞങ്ങളുടെ ആഘോഷത്തിലേക്ക് വരിക.",
+      "xr": "Dayavaayi njangalude aaghoshathilekku varika."
+    },
+    "c073": {
+      "t": "കഴിക്കുക",
+      "r": "Kazhikkuka",
+      "x": "ഞങ്ങൾ എട്ട് മണിക്ക് ഒരുമിച്ച് അത്താഴം കഴിക്കുന്നു.",
+      "xr": "Njangal ettu manikku orumichu athaazham kazhikkunnu."
+    },
+    "c074": {
+      "t": "കുടിക്കുക",
+      "r": "Kudikkuka",
+      "x": "ആവശ്യത്തിന് വെള്ളം കുടിക്കാൻ ഓർക്കുക.",
+      "xr": "Aavashyathinu vellam kudikkaan orkkuka."
+    },
+    "c075": {
+      "t": "ഉറങ്ങുക",
+      "r": "Uranguka",
+      "x": "എല്ലാ രാത്രിയും എട്ട് മണിക്കൂർ ഉറങ്ങാൻ ഞാൻ ശ്രമിക്കുന്നു.",
+      "xr": "Ellaa raathriyum ettu manikkoor urangaan njaan shramikkunnu."
+    },
+    "c076": {
+      "t": "തീവണ്ടി",
+      "r": "Theevandi",
+      "x": "എക്സ്പ്രസ്സ് തീവണ്ടി ഉച്ചയ്ക്ക് എത്തും.",
+      "xr": "Ekspressu theevandi uchaykku ethum."
+    },
+    "c077": {
+      "t": "ബസ്",
+      "r": "Bas",
+      "x": "നഗരമധ്യത്തിലേക്ക് രണ്ടാമത്തെ ബസ്സിൽ കയറൂ.",
+      "xr": "Nagaramadhyathilekku randaamathe bassil kayaroo."
+    },
+    "c078": {
+      "t": "വിമാനത്താവളം",
+      "r": "Vimaanathaavalam",
+      "x": "ഞങ്ങൾ രണ്ട് മണിക്കൂർ നേരത്തെ വിമാനത്താവളത്തിൽ എത്തി.",
+      "xr": "Njangal randu manikkoor nerathe vimaanathaavalathil ethi."
+    },
+    "c079": {
+      "t": "ടിക്കറ്റ്",
+      "r": "Tikkatu",
+      "x": "പുറത്തിറങ്ങുന്നത് വരെ നിങ്ങളുടെ ടിക്കറ്റ് സൂക്ഷിക്കുക.",
+      "xr": "Purathirangunnathu vare ningalude tikkatu sookshikkuka."
+    },
+    "c080": {
+      "t": "സ്റ്റേഷൻ",
+      "r": "Steshan",
+      "x": "സ്റ്റേഷൻ ഇവിടെ നിന്ന് അഞ്ച് മിനിറ്റ് ദൂരെയാണ്.",
+      "xr": "Steshan ivide ninnu anchu minittu dooreyaanu."
+    },
+    "c081": {
+      "t": "ഇടത്",
+      "r": "Idathu",
+      "x": "അടുത്ത ട്രാഫിക് സിഗ്നലിൽ ഇടത്തോട്ട് തിരിയൂ.",
+      "xr": "Adutha traafik signalil idathottu thiriyoo."
+    },
+    "c082": {
+      "t": "വലത്",
+      "r": "Valathu",
+      "x": "മരുന്നുകട നിങ്ങളുടെ വലതുവശത്താണ്.",
+      "xr": "Marunnukada ningalude valathuvashathaanu."
+    },
+    "c083": {
+      "t": "നേരെ",
+      "r": "Nere",
+      "x": "രണ്ട് ബ്ലോക്ക് നേരെ നടക്കൂ.",
+      "xr": "Randu blokku nere nadakkoo."
+    },
+    "c084": {
+      "t": "അടുത്ത്",
+      "r": "Aduthu",
+      "x": "ഇവിടെ അടുത്ത് ഏതെങ്കിലും ഹോട്ടൽ ഉണ്ടോ?",
+      "xr": "Ivide aduthu ethengilum hottal undo?"
+    },
+    "c085": {
+      "t": "ദൂരെ",
+      "r": "Doore",
+      "x": "കടൽത്തീരം പട്ടണത്തിൽ നിന്ന് അധികം ദൂരെയല്ല.",
+      "xr": "Kadalthheeram pattanathil ninnu adhikam dooreyalla."
+    },
+    "c086": {
+      "t": "ഭൂപടം",
+      "r": "Bhoopadam",
+      "x": "നമുക്ക് ഭൂപടത്തിൽ വഴി പരിശോധിക്കാം.",
+      "xr": "Namukku bhoopadathil vazhi parishodhikkaam."
+    },
+    "c087": {
+      "t": "ഹോട്ടൽ",
+      "r": "Hottal",
+      "x": "ഞങ്ങൾ നഗരമധ്യത്തിൽ ശാന്തമായ ഒരു ഹോട്ടൽ ബുക്ക് ചെയ്തു.",
+      "xr": "Njangal nagaramadhyathil shaanthamaaya oru hottal bukku cheythu."
+    },
+    "c088": {
+      "t": "പാസ്പോർട്ട്",
+      "r": "Paasporttu",
+      "x": "നിങ്ങളുടെ പാസ്പോർട്ട് വീട്ടിൽ മറക്കരുത്.",
+      "xr": "Ningalude paasporttu veettil marakkaruthu."
+    },
+    "c089": {
+      "t": "ലഗേജ്",
+      "r": "Lageju",
+      "x": "ഇന്ന് എന്റെ ലഗേജിന് നല്ല ഭാരമുണ്ട്.",
+      "xr": "Innu ente lagejinu nalla bhaaramundu."
+    },
+    "c090": {
+      "t": "എവിടെയാണ്?",
+      "r": "Evideyaanu?",
+      "x": "ഏറ്റവും അടുത്ത മെട്രോ എക്സിറ്റ് എവിടെയാണ്?",
+      "xr": "Ettavum adutha metro eksittu evideyaanu?"
+    },
+    "c091": {
+      "t": "പണം",
+      "r": "Panam",
+      "x": "എല്ലാ മാസവും നിങ്ങളുടെ പണത്തിന്റെ ഒരു ഭാഗം സമ്പാദിക്കുക.",
+      "xr": "Ellaa maasavum ningalude panathinte oru bhaagam sampaadikkuka."
+    },
+    "c092": {
+      "t": "വില",
+      "r": "Vila",
+      "x": "ഈ ജാക്കറ്റിന് എത്ര വിലയാണ്?",
+      "xr": "Ee jaakkattinu ethra vilayaanu?"
+    },
+    "c093": {
+      "t": "വിലകുറഞ്ഞ",
+      "r": "Vilakuranja",
+      "x": "രാവിലത്തെ ചന്തയിൽ പച്ചക്കറികൾക്ക് വില കുറവാണ്.",
+      "xr": "Raavilathe chanthayil pachakkarikalkku vila kuravaanu."
+    },
+    "c094": {
+      "t": "വിലകൂടിയ",
+      "r": "Vilakoodiya",
+      "x": "ആ വാച്ചിന് എനിക്ക് താങ്ങാനാവാത്തത്ര വിലയാണ്.",
+      "xr": "Aa vaachinu enikku thaangaanaavaathathra vilayaanu."
+    },
+    "c095": {
+      "t": "കിഴിവ്",
+      "r": "Kizhivu",
+      "x": "വിദ്യാർത്ഥികൾക്ക് കിഴിവ് ലഭ്യമാണോ?",
+      "xr": "Vidyaarthikalkku kizhivu labhyamaano?"
+    },
+    "c096": {
+      "t": "കട",
+      "r": "Kada",
+      "x": "ആ മൂലയിലുള്ള കട എട്ട് മണിക്ക് തുറക്കും.",
+      "xr": "Aa moolayilulla kada ettu manikku thurakkum."
+    },
+    "c097": {
+      "t": "ചന്ത",
+      "r": "Chantha",
+      "x": "ശനിയാഴ്ചകളിൽ പ്രാദേശിക ചന്ത വളരെ സജീവമായിരിക്കും.",
+      "xr": "Shaniyaazhchakalil praadeshika chantha valare sajeevamaayirikkum."
+    },
+    "c098": {
+      "t": "വാങ്ങുക",
+      "r": "Vaanguka",
+      "x": "എനിക്ക് തണുപ്പിനിടാൻ ഒരു നല്ല കോട്ട് വാങ്ങണം.",
+      "xr": "Enikku thanuppinidaan oru nalla kottu vaanganam."
+    },
+    "c099": {
+      "t": "പണമടയ്ക്കുക",
+      "r": "Panamadaykkuka",
+      "x": "എനിക്ക് കാർഡ് വഴിയോ പണമായോ പണമടയ്ക്കാമോ?",
+      "xr": "Enikku kaardu vazhiyo panamaayo panamadaykkaamo?"
+    },
+    "c100": {
+      "t": "രസീത്",
+      "r": "Raseethu",
+      "x": "ദയവായി എനിക്ക് രസീത് തരൂ.",
+      "xr": "Dayavaayi enikku raseethu tharoo."
+    },
+    "c101": {
+      "t": "ഷർട്ട്",
+      "r": "Sharttu",
+      "x": "ഈ പരുത്തി ഷർട്ട് ധരിക്കാൻ വളരെ സുഖകരമാണ്.",
+      "xr": "Ee paruthi sharttu dharikkaan valare sukhakaramaanu."
+    },
+    "c102": {
+      "t": "ഷൂസ്",
+      "r": "Shoos",
+      "x": "മലകയറ്റത്തിന് എനിക്ക് ഉറപ്പുള്ള ഷൂസ് വേണം.",
+      "xr": "Malakayattathinu enikku urappulla shoos venam."
+    },
+    "c103": {
+      "t": "ബാഗ്",
+      "r": "Baagu",
+      "x": "അവൾ തുകൽകൊണ്ടുള്ള ഒരു ബാഗ് കൈയിലേന്തി.",
+      "xr": "Aval thukalkondulla oru baagu kaiyilenthi."
+    },
+    "c104": {
+      "t": "പുതിയ",
+      "r": "Puthiya",
+      "x": "അവൻ ഇന്ന് തന്റെ പുതിയ ജാക്കറ്റ് ധരിച്ചു.",
+      "xr": "Avan innu thante puthiya jaakkattu dharichu."
+    },
+    "c105": {
+      "t": "അളവ്",
+      "r": "Alavu",
+      "x": "ഇതിന്റെ മീഡിയം അളവ് നിങ്ങളുടെ പക്കലുണ്ടോ?",
+      "xr": "Ithinte meediyam alavu ningalude pakkalundo?"
+    },
+    "c106": {
+      "t": "സൂര്യൻ",
+      "r": "Sooryan",
+      "x": "ചൂടുള്ള സൂര്യപ്രകാശം നനഞ്ഞ റോഡ് ഉണക്കി.",
+      "xr": "Choodulla sooryaprakaasham nananja rodu unakki."
+    },
+    "c107": {
+      "t": "മഴ",
+      "r": "Mazha",
+      "x": "മഴ പെയ്യാൻ സാധ്യതയുള്ളതിനാൽ ഒരു കുട കരുതൂ.",
+      "xr": "Mazha peyyaan saadhyathayullathinaal oru kuda karuthoo."
+    },
+    "c108": {
+      "t": "കാറ്റ്",
+      "r": "Kaattu",
+      "x": "കടലിൽ നിന്ന് തണുത്ത കാറ്റ് വീശി.",
+      "xr": "Kadalil ninnu thanutha kaattu veeshi."
+    },
+    "c109": {
+      "t": "ചൂട്",
+      "r": "Choodu",
+      "x": "വേനൽക്കാലത്തെ ഉച്ചസമയത്ത് ഇവിടെ കടുത്ത ചൂടാണ്.",
+      "xr": "Venalkkaalathe uchasamayathu ivide kadutha choodaanu."
+    },
+    "c110": {
+      "t": "തണുപ്പ്",
+      "r": "Thanuppu",
+      "x": "തണുപ്പുള്ളപ്പോൾ ഒരു സ്കാർഫ് ധരിക്കൂ.",
+      "xr": "Thanuppullappol oru skaarfu dharikkoo."
+    },
+    "c111": {
+      "t": "വേനൽക്കാലം",
+      "r": "Venalkkaalam",
+      "x": "വേനൽക്കാലത്ത് ഞങ്ങൾ ഇടയ്ക്കിടെ നീന്താറുണ്ട്.",
+      "xr": "Venalkkaalathu njangal idaykkide neenthaarundu."
+    },
+    "c112": {
+      "t": "ശൈത്യകാലം",
+      "r": "Shaithyakaalam",
+      "x": "ശൈത്യകാലത്തെ രാത്രികൾ നീളമുള്ളതും ശാന്തവുമാണ്.",
+      "xr": "Shaithyakaalathe raathrikal neelamullathum shaanthavumaanu."
+    },
+    "c113": {
+      "t": "വസന്തകാലം",
+      "r": "Vasanthakaalam",
+      "x": "വസന്തകാലത്ത് എല്ലായിടത്തും പൂക്കൾ വിരിയുന്നു.",
+      "xr": "Vasanthakaalathu ellaayidathum pookkal viriyunnu."
+    },
+    "c114": {
+      "t": "മേഘം",
+      "r": "Megham",
+      "x": "കൊടുങ്കാറ്റിന് മുമ്പ് കറുത്ത മേഘങ്ങൾ ഉരുണ്ടുകൂടി.",
+      "xr": "Kodunkaattinu mumbu karutha meghangal urundukoodi."
+    },
+    "c115": {
+      "t": "മഞ്ഞ്",
+      "r": "Manju",
+      "x": "കുട്ടികൾ പുതിയ മഞ്ഞിൽ ഒരു മഞ്ഞുമനുഷ്യനെ ഉണ്ടാക്കി.",
+      "xr": "Kuttikal puthiya manjil oru manjumanushyane undaakki."
+    },
+    "c116": {
+      "t": "മല",
+      "r": "Mala",
+      "x": "സൂര്യോദയത്തിന് മുമ്പ് ഞങ്ങൾ മല കയറി.",
+      "xr": "Sooryodayathinu mumbu njangal mala kayari."
+    },
+    "c117": {
+      "t": "നദി",
+      "r": "Nadi",
+      "x": "താഴ്‌വരയിലൂടെ വീതിയുള്ള ഒരു നദി ഒഴുകുന്നു.",
+      "xr": "Thaazhvarayiloode veethiyulla oru nadi ozhukunnu."
+    },
+    "c118": {
+      "t": "കടൽ",
+      "r": "Kadal",
+      "x": "ഇന്ന് വൈകുന്നേരം കടൽ ശാന്തമായി കാണപ്പെടുന്നു.",
+      "xr": "Innu vaikunneram kadal shaanthamaayi kaanappedunnu."
+    },
+    "c119": {
+      "t": "മരം",
+      "r": "Maram",
+      "x": "പുരാതനമായ ഒരു മരം മുറ്റത്തിന് തണൽ നൽകുന്നു.",
+      "xr": "Puraathanamaaya oru maram muttathinu thanal nalkunnu."
+    },
+    "c120": {
+      "t": "പൂവ്",
+      "r": "Poovu",
+      "x": "തോട്ടത്തിലെ ഓരോ പൂവും വിരിഞ്ഞിരിക്കുന്നു.",
+      "xr": "Thottathile oro poovum virinjirikkunnu."
+    },
+    "c121": {
+      "t": "തല",
+      "r": "Thala",
+      "x": "ദിവസം മുഴുവൻ വായിച്ചതുകൊണ്ട് എന്റെ തല വേദനിക്കുന്നു.",
+      "xr": "Divasam muzhuvan vaayichathukondu ente thala vedanikkunnu."
+    },
+    "c122": {
+      "t": "കൈ",
+      "r": "Kai",
+      "x": "ഭക്ഷണം കഴിക്കുന്നതിന് മുമ്പ് കൈകൾ കഴുകുക.",
+      "xr": "Bhakshanam kazhikkunnathinu mumbu kaikal kazhukuka."
+    },
+    "c123": {
+      "t": "കണ്ണ്",
+      "r": "Kannu",
+      "x": "സ്ക്രീനുകളിൽ നിന്ന് മാറി കണ്ണുകൾക്ക് വിശ്രമം നൽകൂ.",
+      "xr": "Skreenukalil ninnu maari kannukalkku vishramam nalkoo."
+    },
+    "c124": {
+      "t": "ഹൃദയം",
+      "r": "Hridayam",
+      "x": "വ്യായാമം നിങ്ങളുടെ ഹൃദയത്തെ ശക്തമാക്കുന്നു.",
+      "xr": "Vyaayaamam ningalude hridayathe shakthamaakkunnu."
+    },
+    "c125": {
+      "t": "വയറ്",
+      "r": "Vayaru",
+      "x": "വയറ് വേദനിക്കുന്നുണ്ടെങ്കിൽ ചെറുചൂടുവെള്ളം കുടിക്കൂ.",
+      "xr": "Vayaru vedanikkunnundengil cheruchooduvellam kudikkoo."
+    },
+    "c126": {
+      "t": "ഡോക്ടർ",
+      "r": "Doktar",
+      "x": "നിങ്ങൾ ഇന്ന് തന്നെ ഒരു ഡോക്ടറെ കാണണം.",
+      "xr": "Ningal innu thanne oru doktare kaananam."
+    },
+    "c127": {
+      "t": "ആശുപത്രി",
+      "r": "Aashupathri",
+      "x": "ആശുപത്രി ഇരുപത്തിനാല് മണിക്കൂറും തുറന്നിരിക്കും.",
+      "xr": "Aashupathri irupathinaalu manikkoorum thurannirikkum."
+    },
+    "c128": {
+      "t": "മരുന്ന്",
+      "r": "Marunnu",
+      "x": "ഭക്ഷണത്തിന് ശേഷം ഈ മരുന്ന് കഴിക്കണം.",
+      "xr": "Bhakshanathinu shesham ee marunnu kazhikkanam."
+    },
+    "c129": {
+      "t": "വേദന",
+      "r": "Vedana",
+      "x": "വേദന എവിടെയാണെന്ന് നഴ്സിനോട് പറയൂ.",
+      "xr": "Vedana evideyaanennu narsinodu parayoo."
+    },
+    "c130": {
+      "t": "പനി",
+      "r": "Pani",
+      "x": "ചെറിയ പനിയുള്ളതിനാൽ അവൻ വീട്ടിൽ തന്നെ ഇരുന്നു.",
+      "xr": "Cheriya paniyullathinaal avan veettil thanne irunnu."
+    },
+    "c131": {
+      "t": "സഹായം",
+      "r": "Sahaayam",
+      "x": "ഈ പെട്ടി എടുക്കാൻ ദയവായി എന്നെ സഹായിക്കൂ.",
+      "xr": "Ee petti edukkaan dayavaayi enne sahaayikkoo."
+    },
+    "c132": {
+      "t": "പോലീസ്",
+      "r": "Polees",
+      "x": "അടിയന്തര ഘട്ടത്തിൽ പോലീസിനെ വിളിക്കുക.",
+      "xr": "Adiyanthara ghattathil poleesine vilikkuka."
+    },
+    "c133": {
+      "t": "അടിയന്തരാവസ്ഥ",
+      "r": "Adiyantharaavastha",
+      "x": "അടിയന്തര നമ്പറുകൾ നിങ്ങളുടെ ഫോണിൽ സൂക്ഷിക്കുക.",
+      "xr": "Adiyanthara nambarukal ningalude fonil sookshikkuka."
+    },
+    "c134": {
+      "t": "വിശ്രമം",
+      "r": "Vishramam",
+      "x": "വേഗം സുഖം പ്രാപിക്കാൻ ആവശ്യത്തിന് വിശ്രമം എടുക്കൂ.",
+      "xr": "Vegam sukham praapikkaan aavashyathinu vishramam edukkoo."
+    },
+    "c135": {
+      "t": "ആരോഗ്യമുള്ള",
+      "r": "Aarogyamulla",
+      "x": "സമീകൃതാഹാരം നിങ്ങളെ ആരോഗ്യമുള്ളവരാക്കുന്നു.",
+      "xr": "Sameekrithaahaaram ningale aarogyamullavaraakkunnu."
+    },
+    "c136": {
+      "t": "സ്കൂൾ",
+      "r": "Skool",
+      "x": "കുട്ടികൾ ഒരുമിച്ച് സ്കൂളിലേക്ക് നടക്കുന്നു.",
+      "xr": "Kuttikal orumichu skoolilekku nadakkunnu."
+    },
+    "c137": {
+      "t": "സർവ്വകലാശാല",
+      "r": "Sarvakalaashaala",
+      "x": "അവൾ സർവ്വകലാശാലയിൽ എഞ്ചിനീയറിംഗ് പഠിക്കുന്നു.",
+      "xr": "Aval sarvakalaashaalayil enjineeyaring padikkunnu."
+    },
+    "c138": {
+      "t": "പരീക്ഷ",
+      "r": "Pareeksha",
+      "x": "അവസാന പരീക്ഷയ്ക്കായി ഞാൻ ശ്രദ്ധാപൂർവ്വം തയ്യാറെടുത്തു.",
+      "xr": "Avasaana pareekshaykkaayi njaan shraddhaapoorvam thayyaareduthu."
+    },
+    "c139": {
+      "t": "ഭാഷ",
+      "r": "Bhaasha",
+      "x": "ഒരു ഭാഷ പഠിക്കുന്നത് പുതിയ ലോകങ്ങൾ തുറന്നുതരുന്നു.",
+      "xr": "Oru bhaasha padikkunnathu puthiya lokangal thurannutharunnu."
+    },
+    "c140": {
+      "t": "ചോദ്യം",
+      "r": "Chodyam",
+      "x": "അത് വളരെ ചിന്തോദ്ദീപകമായ ഒരു ചോദ്യമാണ്.",
+      "xr": "Athu valare chinthoddeepakamaaya oru chodyamaanu."
+    },
+    "c141": {
+      "t": "ജോലി",
+      "r": "Joli",
+      "x": "അവൻ ആറ് മണിക്ക് ജോലി അവസാനിപ്പിക്കുന്നു.",
+      "xr": "Avan aaru manikku joli avasaanippikkunnu."
+    },
+    "c142": {
+      "t": "ഓഫീസ്",
+      "r": "Ofees",
+      "x": "ഞങ്ങളുടെ ഓഫീസ് നാലാം നിലയിലാണ്.",
+      "xr": "Njangalude ofees naalaam nilayilaanu."
+    },
+    "c143": {
+      "t": "യോഗം",
+      "r": "Yogam",
+      "x": "ടീം യോഗം പത്ത് മണിക്ക് തുടങ്ങും.",
+      "xr": "Teem yogam pathu manikku thudangum."
+    },
+    "c144": {
+      "t": "സഹപ്രവർത്തകൻ",
+      "r": "Sahapravarthakan",
+      "x": "സോഫ്റ്റ്‌വെയർ പിഴവ് പരിഹരിക്കാൻ എന്റെ സഹപ്രവർത്തകൻ സഹായിച്ചു.",
+      "xr": "Softveyar pizhavu pariharikkaan ente sahapravarthakan sahaayichu."
+    },
+    "c145": {
+      "t": "തിരക്കുള്ള",
+      "r": "Thirakkulla",
+      "x": "വെള്ളിയാഴ്ച വരെ ഞാൻ വളരെ തിരക്കിലാണ്.",
+      "xr": "Velliyaazhcha vare njaan valare thirakkilaanu."
+    },
+    "c146": {
+      "t": "സംഗീതം",
+      "r": "Sangeetham",
+      "x": "സംഗീതം കേൾക്കുന്നത് എനിക്ക് മനഃശാന്തി നൽകുന്നു.",
+      "xr": "Sangeetham kelkkunnathu enikku manashaanthi nalkunnu."
+    },
+    "c147": {
+      "t": "സിനിമ",
+      "r": "Sinima",
+      "x": "ഇന്നലെ രാത്രി ഞങ്ങൾ പ്രചോദനാത്മകമായ ഒരു സിനിമ കണ്ടു.",
+      "xr": "Innale raathri njangal prachodanaathmakamaaya oru sinima kandu."
+    },
+    "c148": {
+      "t": "കായികം",
+      "r": "Kaayikam",
+      "x": "ഏത് കായിക വിനോദമാണ് കാണാൻ നിങ്ങൾക്ക് ഇഷ്ടം?",
+      "xr": "Ethu kaayika vinodamaanu kaanaan ningalkku ishtam?"
+    },
+    "c149": {
+      "t": "യാത്ര",
+      "r": "Yaathra",
+      "x": "തീവണ്ടിയിൽ യാത്ര ചെയ്യാൻ എനിക്ക് വളരെ ഇഷ്ടമാണ്.",
+      "xr": "Theevandiyil yaathra cheyyaan enikku valare ishtamaanu."
+    },
+    "c150": {
+      "t": "വിനോദം",
+      "r": "Vinodam",
+      "x": "ഫോട്ടോഗ്രാഫിയാണ് എന്റെ പ്രിയപ്പെട്ട വാരാന്ത്യ വിനോദം.",
+      "xr": "Fotograafiyaanu ente priyappetta vaaraanthya vinodam."
+    },
+    "c151": {
+      "t": "സന്തോഷം",
+      "r": "Santhosham",
+      "x": "നിങ്ങളുടെ വാർത്ത കേട്ടതിൽ എനിക്ക് അതിയായ സന്തോഷമുണ്ട്.",
+      "xr": "Ningalude vaartha kettathil enikku athiyaaya santhoshamundu."
+    },
+    "c152": {
+      "t": "സങ്കടം",
+      "r": "Sankadam",
+      "x": "ചിലപ്പോൾ സങ്കടം തോന്നുന്നത് സ്വാഭാവികമാണ്.",
+      "xr": "Chilappol sankadam thonnunnathu swaabhaavikamaanu."
+    },
+    "c153": {
+      "t": "ദേഷ്യം",
+      "r": "Deshyam",
+      "x": "ദേഷ്യം വരുമ്പോൾ സംസാരിക്കുന്നതിന് മുമ്പ് ദീർഘമായി ശ്വസിക്കൂ.",
+      "xr": "Deshyam varumpol samsaarikkunnathinu mumbu deerghamaayi shwasikkoo."
+    },
+    "c154": {
+      "t": "അത്ഭുതപ്പെട്ടു",
+      "r": "Athbhuthappettu",
+      "x": "അപ്രതീക്ഷിത പ്രഖ്യാപനം കേട്ട് എല്ലാവരും അത്ഭുതപ്പെട്ടു.",
+      "xr": "Apratheekshitha prakhyaapanam kettu ellaavarum athbhuthappettu."
+    },
+    "c155": {
+      "t": "ആശങ്ക",
+      "r": "Aashanka",
+      "x": "ആശങ്കപ്പെടേണ്ട; എല്ലാം ശരിയാകും.",
+      "xr": "Aashankappedenda; ellaam shariyaakum."
+    },
+    "c156": {
+      "t": "ദയയുള്ള",
+      "r": "Dayayulla",
+      "x": "ദയയുള്ള ഒരു ചെറിയ പ്രവൃത്തി മറ്റൊരാളുടെ ദിവസം പ്രകാശമാനമാക്കും.",
+      "xr": "Dayayulla oru cheriya pravrithi mattorallude divasam prakaashamaanamaakkum."
+    },
+    "c157": {
+      "t": "സത്യസന്ധമായ",
+      "r": "Sathyasandhamaaya",
+      "x": "നിങ്ങളുടെ സത്യസന്ധമായ അഭിപ്രായത്തെ ഞാൻ വിലമതിക്കുന്നു.",
+      "xr": "Ningalude sathyasandhamaaya abhipraayathe njaan vilamathikkunnu."
+    },
+    "c158": {
+      "t": "ക്ഷമയുള്ള",
+      "r": "Kshamayulla",
+      "x": "ഭാഷയിൽ പ്രാവീണ്യം നേടാൻ ക്ഷമ ആവശ്യമാണ്.",
+      "xr": "Bhaashayil praaveenyam nedaan kshama aavashyamaanu."
+    },
+    "c159": {
+      "t": "ധൈര്യമുള്ള",
+      "r": "Dhairyamulla",
+      "x": "പൊതുവേദിയിൽ തുറന്നു സംസാരിച്ചത് വലിയ ധൈര്യമായിരുന്നു.",
+      "xr": "Pothuvediyil thurannu samsaarichathu valiya dhairyamaayirunnu."
+    },
+    "c160": {
+      "t": "ജിജ്ഞാസയുള്ള",
+      "r": "Jijnaasayulla",
+      "x": "ജിജ്ഞാസയുള്ള മനസ്സുകൾ ഒരിക്കലും കണ്ടെത്തലുകൾ നിർത്തുന്നില്ല.",
+      "xr": "Jijnaasayulla manassukal orikkalum kandethalukal nirthunnilla."
+    },
+    "c161": {
+      "t": "ഞാൻ കരുതുന്നു",
+      "r": "Njaan karuthunnu",
+      "x": "ഈ പരിഹാരം പ്രായോഗികമാണെന്ന് ഞാൻ കരുതുന്നു.",
+      "xr": "Ee parihaaram praayogikamaanennu njaan karuthunnu."
+    },
+    "c162": {
+      "t": "ഞാൻ യോജിക്കുന്നു",
+      "r": "Njaan yojikkunnu",
+      "x": "നിങ്ങളുടെ പ്രധാന വാദത്തോട് ഞാൻ യോജിക്കുന്നു.",
+      "xr": "Ningalude pradhaana vaadathodu njaan yojikkunnu."
+    },
+    "c163": {
+      "t": "അഭിപ്രായം",
+      "r": "Abhipraayam",
+      "x": "എല്ലാവർക്കും സ്വന്തം അഭിപ്രായം പറയാൻ അവകാശമുണ്ട്.",
+      "xr": "Ellaavarkkum swantham abhipraayam parayaan avakaashamundu."
+    },
+    "c164": {
+      "t": "പ്രധാനപ്പെട്ട",
+      "r": "Pradhaanappetta",
+      "x": "വ്യക്തമായ ആശയവിനിമയം വളരെ പ്രധാനപ്പെട്ടതാണ്.",
+      "xr": "Vyakthamaaya aashayavinimayam valare pradhaanappettathaanu."
+    },
+    "c165": {
+      "t": "സാധ്യമായ",
+      "r": "Saadhyamaaya",
+      "x": "സ്ഥിരമായ പരിശ്രമം കൊണ്ട് എന്തും സാധ്യമാണ്.",
+      "xr": "Sthiramaaya parishramam kondu enthum saadhyamaanu."
+    },
+    "c166": {
+      "t": "ക്ഷണം",
+      "r": "Kshanam",
+      "x": "നിങ്ങളുടെ സ്നേഹപൂർണ്ണമായ ക്ഷണത്തിന് നന്ദി.",
+      "xr": "Ningalude snehapoornamaaya kshanathinu nanni."
+    },
+    "c167": {
+      "t": "ആഘോഷം",
+      "r": "Aaghosham",
+      "x": "അയൽപക്കം മുഴുവൻ ആഘോഷത്തിൽ പങ്കുചേർന്നു.",
+      "xr": "Ayalpakkam muzhuvan aaghoshathil pankuchernnu."
+    },
+    "c168": {
+      "t": "വാഗ്ദാനം",
+      "r": "Vaagdaanam",
+      "x": "നൽകിയ വാഗ്ദാനം എപ്പോഴും പാലിക്കുക.",
+      "xr": "Nalkiya vaagdaanam eppozhum paalikkuka."
+    },
+    "c169": {
+      "t": "അപ്പോയിന്റ്മെന്റ്",
+      "r": "Appoyintment",
+      "x": "എനിക്ക് മൂന്ന് മണിക്ക് ദന്തഡോക്ടറുമായി അപ്പോയിന്റ്മെന്റ് ഉണ്ട്.",
+      "xr": "Enikku moonnu manikku danthadoktarumaayi appoyintment undu."
+    },
+    "c170": {
+      "t": "അത്ഭുതസമ്മാനം",
+      "r": "Athbhuthasammaanam",
+      "x": "അവളുടെ പിറന്നാളിന് ഞങ്ങൾ ഒരു അപ്രതീക്ഷിത ആഘോഷം ഒരുക്കി.",
+      "xr": "Avalude pirannaalinu njangal oru apratheekshitha aaghosham orukki."
+    },
+    "c171": {
+      "t": "ഓർമ്മ",
+      "r": "Ormma",
+      "x": "ആ യാത്ര എന്റെ ഏറ്റവും പ്രിയപ്പെട്ട ഓർമ്മയായി നിലനിൽക്കുന്നു.",
+      "xr": "Aa yaathra ente ettavum priyappetta ormmayaayi nilanilkkunnu."
+    },
+    "c172": {
+      "t": "അനുഭവം",
+      "r": "Anubhavam",
+      "x": "വിദേശത്ത് താമസിച്ചത് ജീവിതം മാറ്റിമറിച്ച അനുഭവമായിരുന്നു.",
+      "xr": "Videshathu thaamasichathu jeevitham maattimaricha anubhavamaayirunnu."
+    },
+    "c173": {
+      "t": "കഥ",
+      "r": "Katha",
+      "x": "മുത്തച്ഛൻ ആകർഷകമായ ഒരു കഥ പറഞ്ഞു.",
+      "xr": "Muthachan aakarshakamaaya oru katha paranju."
+    },
+    "c174": {
+      "t": "സ്വപ്നം",
+      "r": "Swapnam",
+      "x": "നിങ്ങളുടെ ഏറ്റവും വലിയ സ്വപ്നം ഒരിക്കലും ഉപേക്ഷിക്കരുത്.",
+      "xr": "Ningalude ettavum valiya swapnam orikkalum upekshikkaruthu."
+    },
+    "c175": {
+      "t": "യാത്ര",
+      "r": "Yaathra",
+      "x": "ഏതൊരു നീണ്ട യാത്രയും ഒരു ചെറിയ ചുവടുവെപ്പിൽ നിന്നാണ് തുടങ്ങുന്നത്.",
+      "xr": "Ethoru neenda yaathrayum oru cheriya chuvaduveppil ninnaanu thudangunnathu."
+    },
+    "c176": {
+      "t": "വിശ്വാസം",
+      "r": "Vishwaasam",
+      "x": "വിശ്വാസം വളർത്തിയെടുക്കാൻ വർഷങ്ങൾ എടുക്കും.",
+      "xr": "Vishwaasam valarthiyedukkaan varshangal edukum."
+    },
+    "c177": {
+      "t": "ബഹുമാനം",
+      "r": "Bahumaanam",
+      "x": "ഓരോ വ്യക്തിയോടും ആത്മാർത്ഥമായ ബഹുമാനത്തോടെ പെരുമാറുക.",
+      "xr": "Oro vyakthiyodum aathmaarthamaaya bahumaanathode perumaaruka."
+    },
+    "c178": {
+      "t": "ഉപദേശം",
+      "r": "Upadesham",
+      "x": "തൊഴിൽ മേഖലയെക്കുറിച്ച് എനിക്ക് കുറച്ച് ഉപദേശം തരാമോ?",
+      "xr": "Thozhil mekhalayekkurichu enikku kurachu upadesham tharaamo?"
+    },
+    "c179": {
+      "t": "പിന്തുണ",
+      "r": "Pinthuna",
+      "x": "നിങ്ങളുടെ അചഞ്ചലമായ പിന്തുണയ്ക്ക് ഹൃദയം നിറഞ്ഞ നന്ദി.",
+      "xr": "Ningalude achanchalamaaya pinthunaykku hridayam niranja nanni."
+    },
+    "c180": {
+      "t": "ക്ഷമിക്കുക",
+      "r": "Kshamikkuka",
+      "x": "ക്ഷമിച്ച് മുന്നോട്ട് പോകാൻ വലിയ മനക്കരുത്ത് വേണം.",
+      "xr": "Kshamichu munnottu pokaan valiya manakkaruthu venam."
+    },
+    "c181": {
+      "t": "കമ്പ്യൂട്ടർ",
+      "r": "Kampyoottar",
+      "x": "എന്റെ കമ്പ്യൂട്ടർ രാത്രിയിൽ സ്വയം അപ്‌ഡേറ്റ് ആയി.",
+      "xr": "Ente kampyoottar raathriyil swayam apdettu aayi."
+    },
+    "c182": {
+      "t": "ഇന്റർനെറ്റ്",
+      "r": "Intarnettu",
+      "x": "വേഗതയേറിയ ഇന്റർനെറ്റ് വിദൂര ഗ്രാമങ്ങളെ ബന്ധിപ്പിക്കുന്നു.",
+      "xr": "Vegathayeriya intarnettu vidoora graamangale bandhippikkunnu."
+    },
+    "c183": {
+      "t": "ഫോൺ",
+      "r": "Fon",
+      "x": "ക്ലാസ് നടക്കുമ്പോൾ ദയവായി ഫോൺ നിശ്ശബ്ദമാക്കുക.",
+      "xr": "Klaasu nadakkumpol dayavaayi fon nishabdamakkuka."
+    },
+    "c184": {
+      "t": "പാസ്‌വേഡ്",
+      "r": "Paasvedu",
+      "x": "ഓരോ അക്കൗണ്ടിനും ശക്തവും വ്യത്യസ്തവുമായ പാസ്‌വേഡ് ഉപയോഗിക്കുക.",
+      "xr": "Oro akkauntinum shakthavum vyathyasthavumaaya paasvedu upayogikkuka."
+    },
+    "c185": {
+      "t": "ഡൗൺലോഡ്",
+      "r": "Daunlodu",
+      "x": "നിങ്ങൾക്ക് ഓഫ്‌ലൈൻ പാക്ക് സൗജന്യമായി ഡൗൺലോഡ് ചെയ്യാം.",
+      "xr": "Ningalkku oflain paakku saujanyamaayi daunlodu cheyyaam."
+    },
+    "c186": {
+      "t": "സന്ദേശം",
+      "r": "Sandesham",
+      "x": "ഞാൻ ഇന്ന് നേരത്തെ നിങ്ങൾക്ക് ഒരു സന്ദേശം അയച്ചിരുന്നു.",
+      "xr": "Njaan innu nerathe ningalkku oru sandesham ayachirunnu."
+    },
+    "c187": {
+      "t": "തിരയുക",
+      "r": "Thirayuka",
+      "x": "നമുക്ക് വിശ്വസനീയമായ രേഖകൾക്കായി തിരയാം.",
+      "xr": "Namukku vishwasaneeyamaaya rekhakalkkaayi thirayaam."
+    },
+    "c188": {
+      "t": "ആപ്ലിക്കേഷൻ",
+      "r": "Aaplikkeshan",
+      "x": "ഈ ഓപ്പൺ സോഴ്സ് ആപ്ലിക്കേഷൻ ഓഫ്‌ലൈനായി പ്രവർത്തിക്കുന്നു.",
+      "xr": "Ee oppan sorsu aaplikkeshan oflainaayi pravarthikkunnu."
+    },
+    "c189": {
+      "t": "സ്വകാര്യത",
+      "r": "Swakaaryatha",
+      "x": "ഉപയോക്താക്കളുടെ സ്വകാര്യത സംരക്ഷിക്കുന്നതിന് മുൻഗണന നൽകണം.",
+      "xr": "Upayokthaakkalude swakaaryatha samrakshikkunnathinu munganana nalkanam."
+    },
+    "c190": {
+      "t": "അപ്‌ഡേറ്റ്",
+      "r": "Apdettu",
+      "x": "ഏറ്റവും പുതിയ അപ്‌ഡേറ്റ് വേഗത ഗണ്യമായി വർദ്ധിപ്പിച്ചു.",
+      "xr": "Ettavum puthiya apdettu vegatha ganyamaayi vardhippichu."
+    },
+    "c191": {
+      "t": "വാർത്ത",
+      "r": "Vaartha",
+      "x": "പല ഉറവിടങ്ങളിൽ നിന്നും വാർത്തകൾ എപ്പോഴും സ്ഥിരീകരിക്കുക.",
+      "xr": "Pala uravidangalil ninnum vaarthakal eppozhum sthireekarikkuka."
+    },
+    "c192": {
+      "t": "ലേഖനം",
+      "r": "Lekhanam",
+      "x": "ഭാഷാശാസ്ത്രത്തെക്കുറിച്ച് ഞാൻ രസകരമായ ഒരു ലേഖനം വായിച്ചു.",
+      "xr": "Bhaashaashaasthrathakkurichu njaan rasakaramaaya oru lekhanam vaayichu."
+    },
+    "c193": {
+      "t": "വിവരം",
+      "r": "Vivaram",
+      "x": "കൃത്യമായ വിവരങ്ങൾ വിവേകപൂർവ്വം തീരുമാനമെടുക്കാൻ സഹായിക്കുന്നു.",
+      "xr": "Krithyamaaya vivarangal vivekapoorvam theerumaanamedukkaan sahaayikkunnu."
+    },
+    "c194": {
+      "t": "ക്യാമറ",
+      "r": "Kyaamara",
+      "x": "ഉത്സവത്തിന് അവൾ തന്റെ ക്യാമറ കൊണ്ടുവന്നു.",
+      "xr": "Uthsavathinu aval thante kyaamara konduvannu."
+    },
+    "c195": {
+      "t": "സ്ക്രീൻ",
+      "r": "Skreen",
+      "x": "രാത്രിയിൽ സ്ക്രീനിന്റെ വെളിച്ചം കുറയ്ക്കുക.",
+      "xr": "Raathriyil skreeninte velicham kuraykkuka."
+    },
+    "c196": {
+      "t": "സംസ്കാരം",
+      "r": "Samskaaram",
+      "x": "ഭാഷയാണ് ഒരു സംസ്കാരത്തിന്റെ ജീവിക്കുന്ന ഹൃദയം.",
+      "xr": "Bhaashayaan oru samskaarathinte jeevikkunna hridayam."
+    },
+    "c197": {
+      "t": "പാരമ്പര്യം",
+      "r": "Paaramparyam",
+      "x": "ഓരോ പ്രദേശവും അതിന്റേതായ വിളവെടുപ്പ് പാരമ്പര്യം കാത്തുസൂക്ഷിക്കുന്നു.",
+      "xr": "Oro pradeshavum athintethaaya vilaveduppu paaramparyam kaathusookshikkunnu."
+    },
+    "c198": {
+      "t": "ഉത്സവം",
+      "r": "Uthsavam",
+      "x": "ഉത്സവകാലത്ത് വിളക്കുകൾ നഗരം മുഴുവൻ പ്രകാശമാനമാക്കി.",
+      "xr": "Uthsavakaalathu vilakkukal nagaram muzhuvan prakaashamaanamaakki."
+    },
+    "c199": {
+      "t": "ചരിത്രം",
+      "r": "Charithram",
+      "x": "ഈ മ്യൂസിയം അയ്യായിരം വർഷത്തെ ചരിത്രം അനാവരണം ചെയ്യുന്നു.",
+      "xr": "Ee myoosiyam ayyaayiram varshathe charithram anaavaranam cheyyunnu."
+    },
+    "c200": {
+      "t": "പൈതൃകം",
+      "r": "Paithrikam",
+      "x": "നമ്മുടെ പൊതുവായ സാംസ്കാരിക പൈതൃകം നാം സംരക്ഷിക്കണം.",
+      "xr": "Nammude pothuvaaya saamskaarika paithrikam naam samrakshikkanam."
+    },
+    "c201": {
+      "t": "കല",
+      "r": "Kala",
+      "x": "മഹത്തായ കല അതിരുകളെയും നൂറ്റാണ്ടുകളെയും അതിജീവിക്കുന്നു.",
+      "xr": "Mahathaaya kala athirukaleyum noottaandukaleyum athijeevikkunnu."
+    },
+    "c202": {
+      "t": "നൃത്തം",
+      "r": "Nritham",
+      "x": "ശാസ്ത്രീയ നൃത്തം ചലനങ്ങളിലൂടെ കഥകൾ പറയുന്നു.",
+      "xr": "Shaasthreeya nritham chalanangaliloode kathakal parayunnu."
+    },
+    "c203": {
+      "t": "പാട്ട്",
+      "r": "Paattu",
+      "x": "ആ നാടൻപാട്ട് തലമുറകളായി പാടിവരുന്നതാണ്.",
+      "xr": "Aa naadanpaattu thalamurakalaayi paadivarunnathaanu."
+    },
+    "c204": {
+      "t": "വാസ്തുവിദ്യ",
+      "r": "Vaasthuvidya",
+      "x": "ക്ഷേത്രത്തിന്റെ വാസ്തുവിദ്യ അതിശയകരമാംവിധം സൂക്ഷ്മമാണ്.",
+      "xr": "Kshethrathinte vaasthuvidya athishayakaramaamvidham sookshmamaanu."
+    },
+    "c205": {
+      "t": "കവിത",
+      "r": "Kavitha",
+      "x": "ചുരുങ്ങിയ വരികളിൽ വികാരങ്ങളെ പകർത്തുന്നതാണ് കവിത.",
+      "xr": "Churungiya varikalil vikaarangale pakarthunnathaanu kavitha."
+    },
+    "c206": {
+      "t": "അതിഥി",
+      "r": "Athithi",
+      "x": "ഓരോ അതിഥിയെയും സ്നേഹോഷ്മളമായി സ്വീകരിക്കുന്നു.",
+      "xr": "Oro athithiyeyum snehoshmalamaayi sweekarikkunnu."
+    },
+    "c207": {
+      "t": "സമ്മാനം",
+      "r": "Sammaanam",
+      "x": "ചെറിയൊരു സമ്മാനം കൊണ്ടുപോകുന്നത് കരുതലിന്റെ അടയാളമാണ്.",
+      "xr": "Cheriyoru sammaanam kondupokunnathu karuthalinte adayaalamaanu."
+    },
+    "c208": {
+      "t": "ആചാരം",
+      "r": "Aachaaram",
+      "x": "പുതിയൊരു രാജ്യം സന്ദർശിക്കുന്നതിന് മുമ്പ് അവിടുത്തെ ആചാരങ്ങൾ മനസ്സിലാക്കുക.",
+      "xr": "Puthiyoru raajyam sandarshikkunnathinu mumbu aviduthe aachaarangal manassilaakkuka."
+    },
+    "c209": {
+      "t": "ചടങ്ങ്",
+      "r": "Chadangu",
+      "x": "ബിരുദദാന ചടങ്ങ് രണ്ട് മണിക്കൂർ നീണ്ടുനിന്നു.",
+      "xr": "Birudadaana chadangu randu manikkoor neenduninnu."
+    },
+    "c210": {
+      "t": "അനുഗ്രഹം",
+      "r": "Anugraham",
+      "x": "മുതിർന്നവർ ദമ്പതികൾക്ക് തങ്ങളുടെ അനുഗ്രഹം നൽകി.",
+      "xr": "Muthirnnavar dampathikalkku thangalude anugraham nalki."
+    },
+    "c211": {
+      "t": "എന്തുകൊണ്ടെന്നാൽ",
+      "r": "Enthukondennaal",
+      "x": "ഞങ്ങൾ വീടിനുള്ളിൽ തന്നെ ഇരുന്നു, എന്തുകൊണ്ടെന്നാൽ കൊടുങ്കാറ്റ് വരുന്നുണ്ടായിരുന്നു.",
+      "xr": "Njangal veedinullil thanne irunnu, enthukondennaal kodunkaattu varunnundaayirunnu."
+    },
+    "c212": {
+      "t": "എന്നിരുന്നാലും",
+      "r": "Ennirunnaalum",
+      "x": "ദൗത്യം കഠിനമായിരുന്നു; എന്നിരുന്നാലും ഞങ്ങൾ വിജയിച്ചു.",
+      "xr": "Dauthyam kadhinamaayirunnu; ennirunnaalum njangal vijayichu."
+    },
+    "c213": {
+      "t": "എങ്കിലും",
+      "r": "Engilum",
+      "x": "വൈകിയിരുന്നെങ്കിലും അവൻ ആ അധ്യായം പൂർത്തിയാക്കി.",
+      "xr": "Vaikiyirunnengilum avan aa adhyaayam poorthiyaakki."
+    },
+    "c214": {
+      "t": "അതിനാൽ",
+      "r": "Athinaal",
+      "x": "വിവരങ്ങൾ വ്യക്തമാണ്; അതിനാൽ നാം നടപടിയെടുക്കണം.",
+      "xr": "Vivarangal vyakthamaanu; athinaal naam nadapadiyedukkanam."
+    },
+    "c215": {
+      "t": "അതിനിടെ",
+      "r": "Athinide",
+      "x": "ഞാൻ അത്താഴം പാചകം ചെയ്യാം; അതിനിടെ ദയവായി മേശ ഒരുക്കൂ.",
+      "xr": "Njaan athaazham paachakam cheyyaam; athinide dayavaayi mesha orukkoo."
+    },
+    "c216": {
+      "t": "പ്രശ്നം",
+      "r": "Prashnam",
+      "x": "നമുക്ക് ഈ പ്രശ്നത്തിന്റെ മൂലകാരണം കണ്ടെത്താം.",
+      "xr": "Namukku ee prashnathinte moolakaaranam kandethaam."
+    },
+    "c217": {
+      "t": "പരിഹാരം",
+      "r": "Parihaaram",
+      "x": "ലളിതമായ പരിഹാരങ്ങളാണ് പലപ്പോഴും ഏറ്റവും വിശ്വസനീയമായത്.",
+      "xr": "Lalithamaaya parihaarangalaanu palappozhum ettavum vishwasaneeyamaayathu."
+    },
+    "c218": {
+      "t": "തീരുമാനം",
+      "r": "Theerumaanam",
+      "x": "വലിയൊരു തീരുമാനമെടുക്കുന്നതിന് മുമ്പ് ശാന്തമായി ചിന്തിക്കുക.",
+      "xr": "Valiyoru theerumaanamedukkunnathinu mumbu shaanthamaayi chinthikkuka."
+    },
+    "c219": {
+      "t": "തെറ്റ്",
+      "r": "Thettu",
+      "x": "ഓരോ തെറ്റും നമുക്ക് വിലപ്പെട്ട എന്തെങ്കിലും പഠിപ്പിച്ചുതരുന്നു.",
+      "xr": "Oro thettum namukku vilappetta enthengilum padippichutharunnu."
+    },
+    "c220": {
+      "t": "വിജയം",
+      "r": "Vijayam",
+      "x": "കൂട്ടായ പ്രവർത്തനമാണ് നമ്മുടെ വിജയത്തിന്റെ താക്കോൽ.",
+      "xr": "Koottaaya pravarthanamaanu nammude vijayathinte thaakkol."
+    },
+    "c221": {
+      "t": "എങ്കിൽ",
+      "r": "Engil",
+      "x": "ദിവസവും പരിശീലിച്ചാൽ നിങ്ങൾ വേഗത്തിൽ മെച്ചപ്പെടും.",
+      "xr": "Divasavum parisheelichaal ningal vegathil mechappedum."
+    },
+    "c222": {
+      "t": "പകരം",
+      "r": "Pakaram",
+      "x": "വണ്ടി ഓടിക്കുന്നതിന് പകരം കടയിലേക്ക് നടന്നുപോകൂ.",
+      "xr": "Vandi odikkunnathinu pakaram kadayilekku nadannupokoo."
+    },
+    "c223": {
+      "t": "താരതമ്യം ചെയ്യുക",
+      "r": "Thaarathamyam cheyyuka",
+      "x": "വോട്ട് ചെയ്യുന്നതിന് മുമ്പ് രണ്ട് നിർദ്ദേശങ്ങളും ശ്രദ്ധാപൂർവ്വം താരതമ്യം ചെയ്യുക.",
+      "xr": "Vottu cheyyunnathinu mumbu randu nirddeshangalum shraddhaapoorvam thaarathamyam cheyyuka."
+    },
+    "c224": {
+      "t": "വ്യത്യാസം",
+      "r": "Vyathyaasam",
+      "x": "ചെറിയ ശീലങ്ങൾ കാലക്രമേണ വലിയ വ്യത്യാസം സൃഷ്ടിക്കുന്നു.",
+      "xr": "Cheriya sheelangal kaalakramena valiya vyathyaasam srishtikkunnu."
+    },
+    "c225": {
+      "t": "കാരണം",
+      "r": "Kaaranam",
+      "x": "നിങ്ങളുടെ തിരഞ്ഞെടുപ്പിന് പിന്നിലെ കാരണം വിശദീകരിക്കുക.",
+      "xr": "Ningalude thiranjetuppinu pinnile kaaranam vishadeekarikkuka."
+    },
+    "c226": {
+      "t": "തന്ത്രം",
+      "r": "Thanthram",
+      "x": "ഞങ്ങളുടെ ദീർഘകാല ഉൽപ്പന്ന തന്ത്രം ഞങ്ങൾ പരിഷ്കരിച്ചു.",
+      "xr": "Njangalude deerghakaala ulppanna thanthram njangal parishkarichu."
+    },
+    "c227": {
+      "t": "പദ്ധതി",
+      "r": "Paddhathi",
+      "x": "എഞ്ചിനീയറിംഗ് പദ്ധതി നിശ്ചയിച്ച സമയത്തിന് മുമ്പേ ആരംഭിച്ചു.",
+      "xr": "Enjineeyaring paddhathi nishchayicha samayathinu mumbe aarambhichu."
+    },
+    "c228": {
+      "t": "സമയപരിധി",
+      "r": "Samayaparidhi",
+      "x": "സമയപരിധിക്ക് മുമ്പ് എല്ലാ നാഴികക്കല്ലുകളും ഞങ്ങൾ പൂർത്തിയാക്കി.",
+      "xr": "Samayaparidhikku mumbu ellaa naazhikakkallukalum njangal poorthiyaakki."
+    },
+    "c229": {
+      "t": "ഉത്തരവാദിത്തം",
+      "r": "Utharavaaditham",
+      "x": "നേതൃത്വം എന്നാൽ പൂർണ്ണ ഉത്തരവാദിത്തം ഏറ്റെടുക്കുക എന്നതാണ്.",
+      "xr": "Nethrithwam ennaal poorna utharavaaditham ettedukkuka ennathaanu."
+    },
+    "c230": {
+      "t": "സഹകരണം",
+      "r": "Sahakaranam",
+      "x": "തുറന്ന സഹകരണം നൂതന ആശയങ്ങൾക്ക് വേഗത കൂട്ടുന്നു.",
+      "xr": "Thuranna sahakaranam noothana aashayangalkku vegatha koottunnu."
+    },
+    "c231": {
+      "t": "സമ്പദ്‌വ്യവസ്ഥ",
+      "r": "Sampadvyavastha",
+      "x": "ചെറുകിട വ്യവസായങ്ങളാണ് സമ്പദ്‌വ്യവസ്ഥയുടെ നട്ടെല്ല്.",
+      "xr": "Cherukida vyavasaayangalaanu sampadvyavasthayude nattellu."
+    },
+    "c232": {
+      "t": "ബജറ്റ്",
+      "r": "Bajattu",
+      "x": "അടുത്ത വർഷത്തെ വിദ്യാഭ്യാസ ബജറ്റ് നഗരസഭ അംഗീകരിച്ചു.",
+      "xr": "Adutha varshathe vidyaabhyaasa bajattu nagarasabha angeekarichu."
+    },
+    "c233": {
+      "t": "നിക്ഷേപം",
+      "r": "Nikshepam",
+      "x": "വിദ്യാഭ്യാസമാണ് ഏറ്റവും വിവേകപൂർണ്ണമായ ദീർഘകാല നിക്ഷേപം.",
+      "xr": "Vidyaabhyaasamaanu ettavum vivekapoornamaaya deerghakaala nikshepam."
+    },
+    "c234": {
+      "t": "കരാർ",
+      "r": "Karaar",
+      "x": "കരാറിലെ ഓരോ വ്യവസ്ഥയും ശ്രദ്ധാപൂർവ്വം വായിക്കുക.",
+      "xr": "Karaarile oro vyavasthayum shraddhaapoorvam vaayikkuka."
+    },
+    "c235": {
+      "t": "ലാഭം",
+      "r": "Laabham",
+      "x": "ഹ്രസ്വകാല ലാഭത്തേക്കാൾ പ്രധാനം സുസ്ഥിര വളർച്ചയാണ്.",
+      "xr": "Hraswakaala laabhathekkaal pradhaanam susthira valarchayaan."
+    },
+    "c236": {
+      "t": "നിർദ്ദേശം",
+      "r": "Nirddesham",
+      "x": "സമിതി ഞങ്ങളുടെ വിശദമായ നിർദ്ദേശം അവലോകനം ചെയ്തു.",
+      "xr": "Samithi njangalude vishadamaaya nirddesham avalokanam cheythu."
+    },
+    "c237": {
+      "t": "ചർച്ച",
+      "r": "Charcha",
+      "x": "ഇരുവിഭാഗവും നല്ല വിശ്വാസത്തോടെയാണ് ചർച്ചയിൽ പങ്കെടുത്തത്.",
+      "xr": "Iruvibhaagavum nalla vishwaasathodeyaanu charchayil pankeduthathu."
+    },
+    "c238": {
+      "t": "ധാരണാപത്രം",
+      "r": "Dhaaranaapathram",
+      "x": "ഇരുവർക്കും പ്രയോജനകരമായ വ്യാപാര കരാറിൽ അവർ ഒപ്പുവെച്ചു.",
+      "xr": "Iruvarkkum prayojanakaramaaya vyaapaara karaaril avar oppuvechu."
+    },
+    "c239": {
+      "t": "ഒത്തുതീർപ്പ്",
+      "r": "Othutheerppu",
+      "x": "ന്യായമായ ഒരു ഒത്തുതീർപ്പിലൂടെ തർക്കം പരിഹരിക്കപ്പെട്ടു.",
+      "xr": "Nyaayamaaya oru othutheerppiloode tharkkam pariharikkappettu."
+    },
+    "c240": {
+      "t": "അവസരം",
+      "r": "Avasaram",
+      "x": "ഓരോ വെല്ലുവിളിയും ഒളിഞ്ഞിരിക്കുന്ന ഒരു അവസരം നൽകുന്നു.",
+      "xr": "Oro velluviliyum olinjirikkunna oru avasaram nalkunnu."
+    },
+    "c241": {
+      "t": "ഗവേഷണം",
+      "r": "Gaveshanam",
+      "x": "വിദഗ്ദ്ധർ വിലയിരുത്തിയ ഗവേഷണങ്ങളാണ് ആധുനിക വൈദ്യശാസ്ത്രത്തെ നയിക്കുന്നത്.",
+      "xr": "Vidagdhhar vilayiruthiya gaveshanangalaanu aadhunika vaidyashaasthrathine nayikkunnathu."
+    },
+    "c242": {
+      "t": "പരീക്ഷണം",
+      "r": "Pareekshanam",
+      "x": "ലാബിലെ പരീക്ഷണം ഞങ്ങളുടെ പ്രവചനം ശരിവെച്ചു.",
+      "xr": "Laabile pareekshanam njangalude pravachanam sharivechu."
+    },
+    "c243": {
+      "t": "തെളിവ്",
+      "r": "Thelivu",
+      "x": "ശക്തമായ നിഗമനങ്ങൾ ഉറച്ച തെളിവുകളിൽ അധിഷ്ഠിതമായിരിക്കണം.",
+      "xr": "Shakthamaaya nigamanangal uracha thelivukalil adhishtithamaayirikkanam."
+    },
+    "c244": {
+      "t": "സിദ്ധാന്തം",
+      "r": "Siddhaantham",
+      "x": "ഗുരുത്വാകർഷണം പ്രകാശത്തെ എങ്ങനെ വളയ്ക്കുന്നു എന്ന് ഈ സിദ്ധാന്തം വിശദീകരിക്കുന്നു.",
+      "xr": "Guruthwaakarshanam prakaashathe engene valaykkunnu ennu ee siddhaantham vishadeekarikkunnu."
+    },
+    "c245": {
+      "t": "കണ്ടെത്തൽ",
+      "r": "Kandethal",
+      "x": "ആ കണ്ടെത്തൽ ശുദ്ധമായ ഊർജ്ജ സംഭരണത്തെ മാറ്റിമറിച്ചു.",
+      "xr": "Aa kandethal shuddhamaaya oorjja sambharanathe maattimarichu."
+    },
+    "c246": {
+      "t": "നൂതനാശയം",
+      "r": "Noothanaashayam",
+      "x": "പ്രാദേശിക തലത്തിലുള്ള നൂതനാശയങ്ങൾ യഥാർത്ഥ സാമൂഹിക ആവശ്യങ്ങൾ പരിഹരിക്കുന്നു.",
+      "xr": "Praadeshika thalathilulla noothanaashayangal yathaartha saamoohika aavashyangal pariharikkunnu."
+    },
+    "c247": {
+      "t": "അൽഗോരിതം",
+      "r": "Algoritham",
+      "x": "കാര്യക്ഷമമായ ഒരു അൽഗോരിതം ഊർജ്ജവും സമയവും ലാഭിക്കുന്നു.",
+      "xr": "Kaaryakshamamaaya oru algoritham oorjjavum samayavum laabhikkunnu."
+    },
+    "c248": {
+      "t": "ഊർജ്ജം",
+      "r": "Oorjjam",
+      "x": "സോളാർ പാനലുകൾ സൂര്യപ്രകാശത്തെ നേരിട്ട് ഊർജ്ജമാക്കി മാറ്റുന്നു.",
+      "xr": "Solaar paanalukal sooryaprakaashathe nerittu oorjjamaakki maattunnu."
+    },
+    "c249": {
+      "t": "പരീക്ഷണശാല",
+      "r": "Pareekshanashaala",
+      "x": "ശാസ്ത്രജ്ഞർ പരീക്ഷണശാലയിൽ സെൻസറുകൾ കൃത്യമായി ക്രമീകരിച്ചു.",
+      "xr": "Shaasthrajnar pareekshanashaalayil sensarukal krithyamaayi krameekarichu."
+    },
+    "c250": {
+      "t": "കൃത്യത",
+      "r": "Krithyatha",
+      "x": "സൂക്ഷ്മ ശസ്ത്രക്രിയയ്ക്ക് അസാധാരണമായ കൃത്യത ആവശ്യമാണ്.",
+      "xr": "Sookshma shasthrakriyaykku asaadhaaranamaaya krithyatha aavashyamaanu."
+    },
+    "c251": {
+      "t": "പ്രപഞ്ചം",
+      "r": "Prapancham",
+      "x": "ദൂരദർശിനികൾ പ്രപഞ്ചത്തിലെ ആദ്യകാല താരാപഥങ്ങളെ വെളിപ്പെടുത്തുന്നു.",
+      "xr": "Dooradarshinikal prapanchathile aadyakaala thaaraapathangale velippeduthunnu."
+    },
+    "c252": {
+      "t": "ഗ്രഹം",
+      "r": "Graham",
+      "x": "ഏതൊരു ഗ്രഹത്തിലും ജീവന് വെള്ളം അത്യന്താപേക്ഷിതമാണ്.",
+      "xr": "Ethoru grahathilum jeevanu vellam athyanthaapekshithamaanu."
+    },
+    "c253": {
+      "t": "ഗുരുത്വാകർഷണം",
+      "r": "Guruthwaakarshanam",
+      "x": "ഗുരുത്വാകർഷണമാണ് ചന്ദ്രനെ ഭൂമിക്ക് ചുറ്റുമുള്ള ഭ്രമണപഥത്തിൽ നിലനിർത്തുന്നത്.",
+      "xr": "Guruthwaakarshanamaanu chandrane bhoomikku chuttumulla bhramanapathathil nilanirthunnathu."
+    },
+    "c254": {
+      "t": "പരിണാമം",
+      "r": "Parinaamam",
+      "x": "ദശലക്ഷക്കണക്കിന് വർഷങ്ങളിലൂടെ പരിണാമം ജീവികളെ രൂപപ്പെടുത്തുന്നു.",
+      "xr": "Dashalakshakkanakkinu varshangaliloode parinaamam jeevikale roopappeduthunnu."
+    },
+    "c255": {
+      "t": "അന്വേഷണത്വര",
+      "r": "Anweshanathwara",
+      "x": "ശാസ്ത്രീയ അന്വേഷണത്വരയാണ് മനുഷ്യരാശിയെ മുന്നോട്ട് നയിക്കുന്നത്.",
+      "xr": "Shaasthreeya anweshanathwarayaan manushyaraashiye munnottu nayikkunnathu."
+    },
+    "c256": {
+      "t": "പരിസ്ഥിതി",
+      "r": "Paristhithi",
+      "x": "പരിസ്ഥിതിയെ സംരക്ഷിക്കുന്നത് വരുംതലമുറയെ സംരക്ഷിക്കലാണ്.",
+      "xr": "Paristhithiye samrakshikkunnathu varumthalamuraye samrakshikkalaanu."
+    },
+    "c257": {
+      "t": "കാലാവസ്ഥ",
+      "r": "Kaalaavastha",
+      "x": "മാറിക്കൊണ്ടിരിക്കുന്ന കാലാവസ്ഥാ രീതികൾ ആഗോള വിളവെടുപ്പിനെ ബാധിക്കുന്നു.",
+      "xr": "Maarikkondirikkunna kaalaavasthaa reethikal aagola vilaveduppine baadhikkunnu."
+    },
+    "c258": {
+      "t": "ആവാസവ്യവസ്ഥ",
+      "r": "Aavaasavyavastha",
+      "x": "തീരദേശ ആവാസവ്യവസ്ഥയ്ക്ക് തണ്ണീർത്തടങ്ങൾ അത്യന്താപേക്ഷിതമാണ്.",
+      "xr": "Theeradesha aavaasavyavasthaykku thanneerthadangal athyanthaapekshithamaanu."
+    },
+    "c259": {
+      "t": "ജൈവവൈവിധ്യം",
+      "r": "Jaivavaividhyam",
+      "x": "മഴക്കാടുകൾ അസാധാരണമായ ജൈവവൈവിധ്യത്തിന് അഭയം നൽകുന്നു.",
+      "xr": "Mazhakkaadukal asaadhaaranamaaya jaivavaividhyathinu abhayam nalkunnu."
+    },
+    "c260": {
+      "t": "മലിനീകരണം",
+      "r": "Malineekaranam",
+      "x": "വൈദ്യുത ഗതാഗതം നഗരങ്ങളിലെ വായുമലിനീകരണം ഗണ്യമായി കുറയ്ക്കുന്നു.",
+      "xr": "Vaidyutha gathaagatham nagarangalile vaayumalineekaranam ganyamaayi kuraykkunnu."
+    },
+    "c261": {
+      "t": "പുനരുപയോഗിക്കാവുന്ന",
+      "r": "Punarupayogikkaavunna",
+      "x": "കാറ്റും സൂര്യപ്രകാശവും സമൃദ്ധമായ പുനരുപയോഗിക്കാവുന്ന ഊർജ്ജ സ്രോതസ്സുകളാണ്.",
+      "xr": "Kaattum sooryaprakaashavum samriddhamaaya punarupayogikkaavunna oorjja srothassukalaanu."
+    },
+    "c262": {
+      "t": "സുസ്ഥിരത",
+      "r": "Susthiratha",
+      "x": "യഥാർത്ഥ സുസ്ഥിരത പ്രകൃതിയെയും സമൃദ്ധിയെയും സന്തുലിതമാക്കുന്നു.",
+      "xr": "Yathaartha susthiratha prakrithiyeyum samriddhiyeyum santhulithamaakkunnu."
+    },
+    "c263": {
+      "t": "സംരക്ഷണം",
+      "r": "Samrakshanam",
+      "x": "സമൂഹത്തിന്റെ നേതൃത്വത്തിലുള്ള സംരക്ഷണം ആ വനത്തെ പുനരുജ്ജീവിപ്പിച്ചു.",
+      "xr": "Samoohathinte nethrithwathilulla samrakshanam aa vanathe punarujjeevippichu."
+    },
+    "c264": {
+      "t": "പുനരുപയോഗിക്കുക",
+      "r": "Punarupayogikkuka",
+      "x": "നഗരങ്ങൾക്ക് പുനരുപയോഗിക്കാൻ കഴിയുന്ന തരത്തിൽ ഗ്ലാസ്, പേപ്പർ, ലോഹം എന്നിവ വേർതിരിക്കുക.",
+      "xr": "Nagarangalkku punarupayogikkaan kazhiyunna tharathil glaasu, peppar, loham enniva verthirikkuka."
+    },
+    "c265": {
+      "t": "വിഭവം",
+      "r": "Vibhavam",
+      "x": "ശുദ്ധജലം നാം പങ്കിടുന്ന വിലയേറിയ ഒരു വിഭവമാണ്.",
+      "xr": "Shuddhajalam naam pankidunna vilayeriya oru vibhavamaanu."
+    },
+    "c266": {
+      "t": "വനം",
+      "r": "Vanam",
+      "x": "തദ്ദേശീയ വനങ്ങൾ പുനഃസ്ഥാപിക്കുന്നത് സമീപ പട്ടണങ്ങളെ തണുപ്പിക്കുന്നു.",
+      "xr": "Thaddesheeya vanangal punahsthaapikkunnathu sameepa pattanangale thanuppikkunnu."
+    },
+    "c267": {
+      "t": "സമുദ്രം",
+      "r": "Samudram",
+      "x": "ആരോഗ്യമുള്ള സമുദ്രങ്ങൾ വലിയ അളവിൽ കാർബൺ ആഗിരണം ചെയ്യുന്നു.",
+      "xr": "Aarogyamulla samudrangal valiya alavil kaarban aagiranam cheyyunnu."
+    },
+    "c268": {
+      "t": "വരൾച്ച",
+      "r": "Varalcha",
+      "x": "സ്മാർട്ട് ജലസേചനം കർഷകരെ വരൾച്ചയെ അതിജീവിക്കാൻ സഹായിക്കുന്നു.",
+      "xr": "Smaarttu jalasechanam karshakare varalchaye athijeevikkaan sahaayikkunnu."
+    },
+    "c269": {
+      "t": "സൗഹാർദ്ദം",
+      "r": "Sauhaarddam",
+      "x": "മനുഷ്യപുരോഗതി പ്രകൃതിയുമായുള്ള സൗഹാർദ്ദത്തോടെ നിലനിൽക്കണം.",
+      "xr": "Manushyapurogathi prakrithiyumaayulla sauhaarddathode nilanilkkanam."
+    },
+    "c270": {
+      "t": "ഭാവി",
+      "r": "Bhaavi",
+      "x": "ഇന്ന് എടുക്കുന്ന തീരുമാനങ്ങളാണ് നാളത്തെ ഭാവി രൂപപ്പെടുത്തുന്നത്.",
+      "xr": "Innu edukkunna theerumaanangalaanu naalathe bhaavi roopappeduthunnathu."
+    },
+    "c271": {
+      "t": "നീതി",
+      "r": "Neethi",
+      "x": "നിയമത്തിന് മുന്നിലുള്ള തുല്യനീതി സമൂഹത്തെ ശക്തിപ്പെടുത്തുന്നു.",
+      "xr": "Niyamathinu munnilulla thulyaneethi samoohathe shakthippeduthunnu."
+    },
+    "c272": {
+      "t": "സ്വാതന്ത്ര്യം",
+      "r": "Swaathanthryam",
+      "x": "അഭിപ്രായസ്വാതന്ത്ര്യത്തിന് പരസ്പര ഉത്തരവാദിത്തം ആവശ്യമാണ്.",
+      "xr": "Abhipraayaswaathanthryathinu paraspara utharavaaditham aavashyamaanu."
+    },
+    "c273": {
+      "t": "സമത്വം",
+      "r": "Samathwam",
+      "x": "വിദ്യാഭ്യാസം സാമൂഹികവും സാമ്പത്തികവുമായ സമത്വം പ്രോത്സാഹിപ്പിക്കുന്നു.",
+      "xr": "Vidyaabhyaasam saamoohikavum saampathikavumaaya samathwam prolsaahippikkunnu."
+    },
+    "c274": {
+      "t": "ഭരണഘടന",
+      "r": "Bharanaghadana",
+      "x": "ഭരണഘടന മൗലിക മനുഷ്യാവകാശങ്ങളെ സംരക്ഷിക്കുന്നു.",
+      "xr": "Bharanaghadana maulika manushyaavakaashangale samrakshikkunnu."
+    },
+    "c275": {
+      "t": "പൗരൻ",
+      "r": "Pauran",
+      "x": "സജീവമായ ഓരോ പൗരനും പൊതുജീവിതത്തിന് സംഭാവന നൽകുന്നു.",
+      "xr": "Sajeevamaaya oro pauranum pothujeevithathinu sambhaavana nalkunnu."
+    },
+    "c276": {
+      "t": "ജനാധിപത്യം",
+      "r": "Janaadhipathyam",
+      "x": "ആരോഗ്യകരമായ ജനാധിപത്യം വിവരമുള്ള വോട്ടർമാരെ ആശ്രയിച്ചിരിക്കുന്നു.",
+      "xr": "Aarogyakaramaaya janaadhipathyam vivaramulla vottarmaare aashrayichirikkunnu."
+    },
+    "c277": {
+      "t": "സർക്കാർ",
+      "r": "Sarkkaar",
+      "x": "പ്രാദേശിക സർക്കാർ റോഡുകളും പാർക്കുകളും സ്കൂളുകളും പരിപാലിക്കുന്നു.",
+      "xr": "Praadeshika sarkkaar rodukalum paarkkukalum skoolukalum paripaalikkunnu."
+    },
+    "c278": {
+      "t": "നയം",
+      "r": "Nayam",
+      "x": "പൊതുജനാരോഗ്യ നയം ദശലക്ഷക്കണക്കിന് ജീവനുകൾ രക്ഷിച്ചു.",
+      "xr": "Pothujanaarogya nayam dashalakshakkanakkinu jeevanukal rakshichu."
+    },
+    "c279": {
+      "t": "നിയമം",
+      "r": "Niyamam",
+      "x": "സുതാര്യമായ നിയമങ്ങൾ സമൂഹങ്ങളിൽ ആത്മവിശ്വാസം വളർത്തുന്നു.",
+      "xr": "Suthaaryamaaya niyamangal samoohangalil aathmavishwaasam valarthunnu."
+    },
+    "c280": {
+      "t": "സുതാര്യത",
+      "r": "Suthaaryatha",
+      "x": "സാമ്പത്തിക സുതാര്യത അഴിമതി തടയുന്നു.",
+      "xr": "Saampathika suthaaryatha azhimathi thadayunnu."
+    },
+    "c281": {
+      "t": "സമൂഹം",
+      "r": "Samooham",
+      "x": "ശക്തമായ സമൂഹങ്ങൾ ദുർബലരെ സംരക്ഷിക്കുന്നു.",
+      "xr": "Shakthamaaya samoohangal durbalare samrakshikkunnu."
+    },
+    "c282": {
+      "t": "സമാധാനം",
+      "r": "Samaadhaanam",
+      "x": "ശാശ്വത സമാധാനത്തിന് സംഭാഷണവും സഹാനുഭൂതിയും ആവശ്യമാണ്.",
+      "xr": "Shaashwatha samaadhaanathinu sambhaashanavum sahaanubhoothiyum aavashyamaanu."
+    },
+    "c283": {
+      "t": "വിദ്യാഭ്യാസം",
+      "r": "Vidyaabhyaasam",
+      "x": "സാർവ്വത്രിക വിദ്യാഭ്യാസം മുഴുവൻ രാഷ്ട്രങ്ങളെയും ഉയർത്തുന്നു.",
+      "xr": "Saarvathrika vidyaabhyaasam muzhuvan raashtrangaleyum uyarthunnu."
+    },
+    "c284": {
+      "t": "സന്നദ്ധപ്രവർത്തകൻ",
+      "r": "Sannaddhapravarthakan",
+      "x": "വെള്ളപ്പൊക്കത്തിന് ശേഷം പുനർനിർമ്മാണത്തിനായി നൂറുകണക്കിന് സന്നദ്ധപ്രവർത്തകർ സഹായിച്ചു.",
+      "xr": "Vellappokkathinu shesham punarnirmaanathinaayi noorukanakkinu sannaddhapravarthakar sahaayichu."
+    },
+    "c285": {
+      "t": "ഐക്യദാർഢ്യം",
+      "r": "Aikyadaardhyam",
+      "x": "ആഗോള ഐക്യദാർഢ്യം പ്രതിസന്ധികളെ വേഗത്തിൽ മറികടക്കുന്നു.",
+      "xr": "Aagola aikyadaardhyam prathisandhikale vegathil marikadakkunnu."
+    },
+    "c286": {
+      "t": "വാദം",
+      "r": "Vaadam",
+      "x": "ഓരോ വാദത്തെയും സ്ഥിരീകരിക്കാവുന്ന വസ്തുതകൾ കൊണ്ട് പിന്തുണയ്ക്കുക.",
+      "xr": "Oro vaadatheyum sthireekarikkaavunna vasthuthakal kondu pinthunaykkuka."
+    },
+    "c287": {
+      "t": "കാഴ്ചപ്പാട്",
+      "r": "Kaazhchappaadu",
+      "x": "മറ്റൊരു കാഴ്ചപ്പാട് കാണുന്നത് ധാരണയെ ആഴത്തിലാക്കുന്നു.",
+      "xr": "Mattoru kaazhchappaadu kaanunnathu dhaaranaye aazhathilaakkunnu."
+    },
+    "c288": {
+      "t": "വിശകലനം",
+      "r": "Vishakalanam",
+      "x": "അവളുടെ സാമ്പത്തിക വിശകലനം ഒളിഞ്ഞിരുന്ന മൂന്ന് അപകടസാധ്യതകൾ ചൂണ്ടിക്കാട്ടി.",
+      "xr": "Avalude saampathika vishakalanam olinjirunna moonnu apakadasaadhyathakal choondikkaatti."
+    },
+    "c289": {
+      "t": "അനുമാനം",
+      "r": "Anumaanam",
+      "x": "നിങ്ങളുടെ അടിസ്ഥാന അനുമാനങ്ങളെ എപ്പോഴും ചോദ്യം ചെയ്യുക.",
+      "xr": "Ningalude adisthaana anumaanangale eppozhum chodyam cheyyuka."
+    },
+    "c290": {
+      "t": "നിഗമനം",
+      "r": "Nigamanam",
+      "x": "ഒരു നിഗമനത്തിൽ എത്തുന്നതിന് മുമ്പ് എല്ലാ വസ്തുതകളും കാത്തിരിക്കുക.",
+      "xr": "Oru nigamanathil ethunnathinu mumbu ellaa vasthuthakalum kaathirikkuka."
+    },
+    "c291": {
+      "t": "നിഷ്പക്ഷമായ",
+      "r": "Nishpakshamaaya",
+      "x": "നീതിമാനായ ഒരു മാധ്യമപ്രവർത്തകൻ നിഷ്പക്ഷനായി തുടരാൻ ശ്രമിക്കുന്നു.",
+      "xr": "Neethimaanaaya oru maadhyamapravarthakan nishpakshanaayi thudaraan shramikkunnu."
+    },
+    "c292": {
+      "t": "പക്ഷപാതം",
+      "r": "Pakshapaatham",
+      "x": "നമ്മുടെ സ്വന്തം പക്ഷപാതം തിരിച്ചറിയുന്നത് മെച്ചപ്പെട്ട വിവേചനത്തിലേക്ക് നയിക്കുന്നു.",
+      "xr": "Nammude swantham pakshapaatham thirichariyunnathu mechappetta vivechanathilekku nayikkunnu."
+    },
+    "c293": {
+      "t": "മാനദണ്ഡം",
+      "r": "Maanadandam",
+      "x": "വിശ്വാസ്യതയാണ് ഞങ്ങളുടെ പ്രാഥമിക വിലയിരുത്തൽ മാനദണ്ഡം.",
+      "xr": "Vishwaasyathayaan njangalude praathamika vilayiruthal maanadandam."
+    },
+    "c294": {
+      "t": "വൈരുദ്ധ്യം",
+      "r": "Vairudhyam",
+      "x": "സമയക്രമത്തിൽ ഒരു വൈരുദ്ധ്യം സാക്ഷി ശ്രദ്ധിച്ചു.",
+      "xr": "Samayakramathil oru vairudhyam saakshi shraddhichu."
+    },
+    "c295": {
+      "t": "സമവായം",
+      "r": "Samavaayam",
+      "x": "സജീവമായ സംവാദത്തിന് ശേഷം സമിതി സമവായത്തിലെത്തി.",
+      "xr": "Sajeevamaaya samvaadathinu shesham samithi samavaayathilethi."
+    },
+    "c296": {
+      "t": "വ്യക്തമാക്കുക",
+      "r": "Vyakthamaakkuka",
+      "x": "ആ പ്രയോഗം കൊണ്ട് നിങ്ങൾ എന്താണ് ഉദ്ദേശിച്ചതെന്ന് വ്യക്തമാക്കാമോ?",
+      "xr": "Aa prayogam kondu ningal enthaanu uddeshichathennu vyakthamaakkaamo?"
+    },
+    "c297": {
+      "t": "ഊന്നിപ്പറയുക",
+      "r": "Oonnipparayuka",
+      "x": "പ്രാപ്യതയുടെ പ്രാധാന്യം ഞാൻ ഊന്നിപ്പറയാൻ ആഗ്രഹിക്കുന്നു.",
+      "xr": "Praapyathayude praadhaanyam njaan oonnipparayaan aagrahikkunnu."
+    },
+    "c298": {
+      "t": "എന്നിരുന്നാലും",
+      "r": "Ennirunnaalum",
+      "x": "പാത കുത്തനെയുള്ളതായിരുന്നു; എന്നിരുന്നാലും ഞങ്ങൾ കൊടുമുടിയിലെത്തി.",
+      "xr": "Paatha kuthaneyullathaayirunnu; ennirunnaalum njangal kodumudiyilethi."
+    },
+    "c299": {
+      "t": "അനന്തരഫലം",
+      "r": "Anantharaphalam",
+      "x": "തീരുമാനമെടുക്കുന്നതിന് മുമ്പ് എല്ലാ ദീർഘകാല അനന്തരഫലങ്ങളും പരിഗണിക്കുക.",
+      "xr": "Theerumaanamedukkunnathinu mumbu ellaa deerghakaala anantharaphalangalum pariganikkuka."
+    },
+    "c300": {
+      "t": "ഉൾക്കാഴ്ച",
+      "r": "Ulkkaazhcha",
+      "x": "അവളുടെ അഭിപ്രായം ശ്രദ്ധേയമായ ഒരു ഉൾക്കാഴ്ച നൽകി.",
+      "xr": "Avalude abhipraayam shraddheyamaaya oru ulkkaazhcha nalki."
+    },
+    "c301": {
+      "t": "രൂപകം",
+      "r": "Roopakam",
+      "x": "കടന്നുപോകുന്ന കാലത്തിന്റെ രൂപകമായി നദി വർത്തിക്കുന്നു.",
+      "xr": "Kadannupokunna kaalathinte roopakamaayi nadi varthikkunnu."
+    },
+    "c302": {
+      "t": "പ്രതീകാത്മകത",
+      "r": "Pratheekaathmakatha",
+      "x": "ഈ നോവൽ ആഴമേറിയ പ്രതീകാത്മകതയാൽ സമ്പന്നമാണ്.",
+      "xr": "Ee noval aazhameriya pratheekaathmakathayaal sampannamaanu."
+    },
+    "c303": {
+      "t": "ആഖ്യാനം",
+      "r": "Aakhyaanam",
+      "x": "പരസ്പരം ബന്ധപ്പെട്ട മൂന്ന് ആഖ്യാനങ്ങളെ എഴുത്തുകാരൻ നെയ്തെടുക്കുന്നു.",
+      "xr": "Parasparam bandhappetta moonnu aakhyaanangale ezhuthukaaran neythedukkunnu."
+    },
+    "c304": {
+      "t": "മാസ്റ്റർപീസ്",
+      "r": "Maasttarpees",
+      "x": "ആ സിംഫണി കാലാതീതമായ ഒരു മഹത്തായ കലാസൃഷ്ടിയായി വാഴ്ത്തപ്പെടുന്നു.",
+      "xr": "Aa simfani kaalaatheethamaaya oru mahathaaya kalaasrishtiyaayi vaazhthappedunnu."
+    },
+    "c305": {
+      "t": "സൗന്ദര്യശാസ്ത്രം",
+      "r": "Soundaryashaasthram",
+      "x": "ലളിതമായ രൂപകൽപ്പന ശാന്തമായ സൗന്ദര്യശാസ്ത്ര സൗഹാർദ്ദത്തിന് മുൻഗണന നൽകുന്നു.",
+      "xr": "Lalithamaaya roopakalpana shaanthamaaya soundaryashaasthra sauhaarddathinu munganana nalkunnu."
+    },
+    "c306": {
+      "t": "സൂക്ഷ്മഭേദം",
+      "r": "Sookshmabhedam",
+      "x": "സൂക്ഷ്മമായ സാംസ്കാരിക ഭേദങ്ങൾ ഉൾക്കൊള്ളുന്നതിലാണ് യഥാർത്ഥ ഭാഷാപ്രാവീണ്യം.",
+      "xr": "Sookshmamaaya saamskaarika bhedangal ulkkollunnathilaanu yathaartha bhaashaapraaveenyam."
+    },
+    "c307": {
+      "t": "അവ്യക്തത",
+      "r": "Avyakthatha",
+      "x": "കവിത ബോധപൂർവ്വവും മനസ്സിൽ തങ്ങിനിൽക്കുന്നതുമായ ഒരു അവ്യക്തതയിൽ അവസാനിക്കുന്നു.",
+      "xr": "Kavitha bodhapoorvavum manassil thanginilkkunnathumaaya oru avyakthathayil avasaanikkunnu."
+    },
+    "c308": {
+      "t": "പരിഹാസം",
+      "r": "Parihaasam",
+      "x": "അഹങ്കാരത്തെ വിമർശിക്കാൻ നാടകകൃത്ത് മൂർച്ചയുള്ള വ്യംഗ്യപരിഹാസം ഉപയോഗിച്ചു.",
+      "xr": "Ahankaarathe vimarshikkaan naadakakrithu moorchayulla vyangyaparihaasam upayogichu."
+    },
+    "c309": {
+      "t": "വാഗ്ചാതുര്യം",
+      "r": "Vaagchaathuryam",
+      "x": "അവൾ ശ്രദ്ധേയമായ ആത്മസംയമനത്തോടും വാഗ്ചാതുര്യത്തോടും കൂടി സംസാരിച്ചു.",
+      "xr": "Aval shraddheyamaaya aathmasamyamanathodum vaagchaathuryathodum koodi samsaarichu."
+    },
+    "c310": {
+      "t": "പൈതൃകം",
+      "r": "Paithrikam",
+      "x": "മഹത്തായ സാഹിത്യം നിലനിൽക്കുന്ന ബൗദ്ധിക പൈതൃകം അവശേഷിപ്പിക്കുന്നു.",
+      "xr": "Mahathaaya saahithyam nilanilkkunna bauddhika paithrikam avasheshippikkunnu."
+    },
+    "c311": {
+      "t": "ഗൃഹാതുരത്വം",
+      "r": "Grihaathurathwam",
+      "x": "ചൂടുള്ള മണ്ണിൽ മഴ പെയ്യുന്ന ഗന്ധം അഗാധമായ ഗൃഹാതുരത്വം ഉണർത്തി.",
+      "xr": "Choodulla mannil mazha peyyunna gandham agaadhamaaya grihaathurathwam unarthi."
+    },
+    "c312": {
+      "t": "പ്രതിധ്വനി",
+      "r": "Prathidhwani",
+      "x": "ആ ഈണത്തിന് ആഴമേറിയ വൈകാരിക പ്രതിധ്വനി ഉണ്ടായിരുന്നു.",
+      "xr": "Aa eenathinu aazhameriya vaikaarika prathidhwani undaayirunnu."
+    },
+    "c313": {
+      "t": "ഉദാത്തമായ",
+      "r": "Udaathamaaya",
+      "x": "ധ്രുവദീപ്തിക്ക് കീഴിൽ നിൽക്കുന്നത് തികച്ചും ഉദാത്തമായ അനുഭവമായിരുന്നു.",
+      "xr": "Dhruvadeepthikku keezhil nilkkunnathu thikachum udaathamaaya anubhavamaayirunnu."
+    },
+    "c314": {
+      "t": "അതിലംഘിക്കുക",
+      "r": "Athilanghikkuka",
+      "x": "അനുകമ്പയ്ക്ക് ഭാഷയെയും ചരിത്രത്തെയും അതിലംഘിക്കാൻ കഴിയും.",
+      "xr": "Anukampaykku bhaashayeyum charithratheyum athilanghikkaan kazhiyum."
+    },
+    "c315": {
+      "t": "ആധികാരികത",
+      "r": "Aadhikaarikatha",
+      "x": "വായനക്കാർ യഥാർത്ഥ ആധികാരികത ഉടൻ തിരിച്ചറിയുന്നു.",
+      "xr": "Vaayanakkaar yathaartha aadhikaarikatha udan thirichariyunnu."
+    },
+    "c316": {
+      "t": "മനസ്സാക്ഷി",
+      "r": "Manassaakshi",
+      "x": "സത്യസന്ധമായ മനസ്സാക്ഷിക്ക് അനുസരിച്ച് പ്രവർത്തിക്കുക.",
+      "xr": "Sathyasandhamaaya manassaakshikku anusarichu pravarthikkuka."
+    },
+    "c317": {
+      "t": "സത്യനിഷ്ഠ",
+      "r": "Sathyanishta",
+      "x": "ആരും കാണാത്തപ്പോഴും ശരിയായത് ചെയ്യുകയാണ് സത്യനിഷ്ഠ.",
+      "xr": "Aarum kaanaathappozhum shariyaayathu cheyyukayaanu sathyanishta."
+    },
+    "c318": {
+      "t": "സഹാനുഭൂതി",
+      "r": "Sahaanubhoothi",
+      "x": "സഹാനുഭൂതി ഏറ്റവും ആഴമുള്ള അകൽച്ചകളെയും ബന്ധിപ്പിക്കുന്നു.",
+      "xr": "Sahaanubhoothi ettavum aazhamulla akalchakaleyum bandhippikkunnu."
+    },
+    "c319": {
+      "t": "ധർമ്മസങ്കടം",
+      "r": "Dharmasankadam",
+      "x": "സമിതിക്ക് കഠിനമായ ഒരു ധാർമ്മിക സങ്കടം നേരിടേണ്ടി വന്നു.",
+      "xr": "Samithikku kadhinamaaya oru dhaarmika sankadam neridendi vannu."
+    },
+    "c320": {
+      "t": "വിവേകം",
+      "r": "Vivekam",
+      "x": "അറിവ് സംസാരിക്കുന്നു, എന്നാൽ വിവേകം ശ്രവിക്കുന്നു.",
+      "xr": "Arivu samsaarikkunnu, ennaal vivekam shravikkunnu."
+    },
+    "c321": {
+      "t": "ബോധം",
+      "r": "Bodham",
+      "x": "ബോധത്തിന്റെ സ്വഭാവത്തെക്കുറിച്ച് തത്ത്വചിന്തകർ ഇപ്പോഴും സംവാദം നടത്തുന്നു.",
+      "xr": "Bodhathinte swabhaavathekkurichu thathwachinthakar ippozhum samvaadam nadathunnu."
+    },
+    "c322": {
+      "t": "ധാരണ",
+      "r": "Dhaarana",
+      "x": "ഭാഷ കാലത്തെക്കുറിച്ചുള്ള നമ്മുടെ ധാരണയെ സൂക്ഷ്മമായി രൂപപ്പെടുത്തുന്നു.",
+      "xr": "Bhaasha kaalathekkurichulla nammude dhaaranaye sookshmamaayi roopappeduthunnu."
+    },
+    "c323": {
+      "t": "അതിജീവനശേഷി",
+      "r": "Athijeevanasheshi",
+      "x": "പ്രതികൂല സാഹചര്യങ്ങളെ മറികടക്കുന്നതിലൂടെ ആന്തരിക അതിജീവനശേഷി വളരുന്നു.",
+      "xr": "Prathikoola saahacharyangale marikadakkunnathiloode aantharika athijeevanasheshi valarunnu."
+    },
+    "c324": {
+      "t": "ആത്മപരിശോധന",
+      "r": "Aathmaparishodhana",
+      "x": "പ്രക്ഷുബ്ധമായ സമയങ്ങളിൽ ശാന്തമായ ആത്മപരിശോധന വ്യക്തത നൽകുന്നു.",
+      "xr": "Prakshubdhamaaya samayangalil shaanthamaaya aathmaparishodhana vyakthatha nalkunnu."
+    },
+    "c325": {
+      "t": "വൈരുദ്ധ്യാഭാസം",
+      "r": "Vairudhyaabhaasam",
+      "x": "കൂടുതൽ തിരഞ്ഞെടുപ്പുകൾ ആശയക്കുഴപ്പമുണ്ടാക്കുമെന്ന് തിരഞ്ഞെടുപ്പിന്റെ വൈരുദ്ധ്യാഭാസം കാണിക്കുന്നു.",
+      "xr": "Kooduthal thiranjetuppukal aashayakkuzhappamundaakkumennu thiranjetuppinte vairudhyaabhaasam kaanikkunnu."
+    },
+    "c326": {
+      "t": "അനിത്യത",
+      "r": "Anithyatha",
+      "x": "അനിത്യതയെ അംഗീകരിക്കുന്നത് ഇന്നിനെ വിലമതിക്കാൻ നമ്മെ പഠിപ്പിക്കുന്നു.",
+      "xr": "Anithyathaye angeekarikkunnathu innine vilamathikkaan namme padippikkunnu."
+    },
+    "c327": {
+      "t": "സമചിത്തത",
+      "r": "Samachithatha",
+      "x": "വിജയത്തെയും തിരിച്ചടിയെയും അവൾ സമചിത്തതയോടെ നേരിട്ടു.",
+      "xr": "Vijayatheyum thirichadiyeyum aval samachithathayode nerittu."
+    },
+    "c328": {
+      "t": "ലക്ഷ്യബോധം",
+      "r": "Lakshyabodham",
+      "x": "പൊതുവായ ലക്ഷ്യബോധം സാധാരണ പ്രയത്നത്തെ ആനന്ദമാക്കി മാറ്റുന്നു.",
+      "xr": "Pothuvaaya lakshyabodham saadhaarana prayathnathe aanandamaakki maattunnu."
+    },
+    "c329": {
+      "t": "സ്വയംഭരണം",
+      "r": "Swayambharanam",
+      "x": "ബൗദ്ധിക സ്വയംഭരണം സ്വതന്ത്ര ചിന്തയിൽ നിന്നാണ് ആരംഭിക്കുന്നത്.",
+      "xr": "Bauddhika swayambharanam swathanthra chinthayil ninnaanu aarambhikkunnathu."
+    },
+    "c330": {
+      "t": "വിനയം",
+      "r": "Vinayam",
+      "x": "യഥാർത്ഥ പ്രാവീണ്യം എപ്പോഴും വിനയത്തോടൊപ്പമാണ് നിലനിൽക്കുന്നത്.",
+      "xr": "Yathaartha praaveenyam eppozhum vinayathodoppamaanu nilanilkkunnathu."
+    },
+    "c331": {
+      "t": "വാക്കുകളേക്കാൾ വലുത് പ്രവൃത്തി",
+      "r": "Vaakkukaleekkaal valuthu pravrithi",
+      "x": "നിങ്ങളുടെ പ്രതിജ്ഞകൾ പാലിക്കുക—വാക്കുകളേക്കാൾ വലുത് പ്രവൃത്തിയാണ്.",
+      "xr": "Ningalude prathijnakal paalikkuka—vaakkukaleekkaal valuthu pravrithiyaanu."
+    },
+    "c332": {
+      "t": "അഭ്യാസം കൊണ്ട് സിദ്ധി",
+      "r": "Abhyaasam kondu siddhi",
+      "x": "തെറ്റുകളെ ഭയപ്പെടേണ്ട; അഭ്യാസം കൊണ്ട് സിദ്ധി കൈവരും.",
+      "xr": "Thettukale bhayappedenda; abhyaasam kondu siddhi kaivarum."
+    },
+    "c333": {
+      "t": "കാർമേഘത്തിനും ഒരു വെള്ളിവരയുണ്ട്",
+      "r": "Kaarmeghathinum oru vellivarayundu",
+      "x": "പ്രതീക്ഷ കൈവിടരുത്—ഏതൊരു കാർമേഘത്തിനും ഒരു വെള്ളിവരയുണ്ട്.",
+      "xr": "Pratheeksha kaividaruthu—ethoru kaarmeghathinum oru vellivarayundu."
+    },
+    "c334": {
+      "t": "കാലം എല്ലാ മുറിവുകളും ഉണക്കും",
+      "r": "Kaalam ellaa murivukalum unakkum",
+      "x": "സ്വയം കരുണ കാണിക്കുക; കാലം എല്ലാ മുറിവുകളും ഉണക്കും.",
+      "xr": "Swayam karuna kaanikkuka; kaalam ellaa murivukalum unakkum."
+    },
+    "c335": {
+      "t": "ഐക്യമത്യം മഹാബലം",
+      "r": "Aikyamathyam mahaabalam",
+      "x": "ഒരുമിച്ച് പ്രവർത്തിക്കുമ്പോഴാണ് ഐക്യമത്യം മഹാബലം എന്ന് തെളിയുന്നത്.",
+      "xr": "Orumichu pravarthikkumpolaanu aikyamathyam mahaabalam ennu theliyunnathu."
+    },
+    "c336": {
+      "t": "മൗനം ഭഞ്ജിക്കുക",
+      "r": "Maunam bhanjikkuka",
+      "x": "അത്താഴവിരുന്നിൽ ഹൃദ്യമായൊരു തമാശ മൗനം ഭഞ്ജിക്കാൻ സഹായിച്ചു.",
+      "xr": "Athaazhavirunnil hridyamaayoru thamaasha maunam bhanjikkaan sahaayichu."
+    },
+    "c337": {
+      "t": "ഇടംകൈയിലെ കളി",
+      "r": "Idamkaiyile kali",
+      "x": "ആഴ്ചകൾ നീണ്ട പരിശീലനത്തിന് ശേഷം പരീക്ഷ അവൾക്ക് ഇടംകൈയിലെ കളിയായിരുന്നു.",
+      "xr": "Aazhchakal neenda parisheelanathinu shesham pareeksha avalkku idamkaiyile kaliyaayirunnu."
+    },
+    "c338": {
+      "t": "വല്ലപ്പോഴും ഒരിക്കൽ",
+      "r": "Vallappozhum orikkal",
+      "x": "ഈ താഴ്‌വരയിൽ വല്ലപ്പോഴും ഒരിക്കൽ മാത്രമേ മഞ്ഞുവീഴ്ച കാണാറുള്ളൂ.",
+      "xr": "Ee thaazhvarayil vallappozhum orikkal maathrame manjuveezhcha kaanaarulloo."
+    },
+    "c339": {
+      "t": "കൃത്യമായി ചൂണ്ടിക്കാണിക്കുക",
+      "r": "Krithyamaayi choondikkaanikkuka",
+      "x": "നിങ്ങളുടെ രോഗനിർണ്ണയം കാര്യത്തിന്റെ കാമ്പ് കൃത്യമായി ചൂണ്ടിക്കാണിച്ചു.",
+      "xr": "Ningalude roganirnayam kaaryathinte kaampu krithyamaayi choondikkaanichu."
+    },
+    "c340": {
+      "t": "രാപ്പകൽ അധ്വാനിക്കുക",
+      "r": "Raappakal adhwaanikkuka",
+      "x": "കൃത്യസമയത്ത് പദ്ധതി പൂർത്തിയാക്കാൻ ടീം രാപ്പകൽ അധ്വാനിച്ചു.",
+      "xr": "Krithyasamayathu paddhathi poorthiyaakkaan teem raappakal adhwaanichu."
+    },
+    "c341": {
+      "t": "വരികൾക്കിടയിലൂടെ വായിക്കുക",
+      "r": "Varikalkkidayiloode vaayikkuka",
+      "x": "നയതന്ത്രത്തിൽ വരികൾക്കിടയിലൂടെ വായിക്കാൻ നിങ്ങൾ പഠിക്കണം.",
+      "xr": "Nayathanthrathil varikalkkidayiloode vaayikkaan ningal padikkanam."
+    },
+    "c342": {
+      "t": "പുതിയൊരു അധ്യായം തുടങ്ങുക",
+      "r": "Puthiyoru adhyaayam thudanguka",
+      "x": "ഈ വസന്തകാലത്ത് ജീവിതത്തിൽ പുതിയൊരു അധ്യായം തുടങ്ങാൻ അവൾ തീരുമാനിച്ചു.",
+      "xr": "Ee vasanthakaalathu jeevithathil puthiyoru adhyaayam thudangaan aval theerumaanichu."
+    },
+    "c343": {
+      "t": "മറഞ്ഞിരിക്കുന്ന അനുഗ്രഹം",
+      "r": "Maranjirikkunna anugraham",
+      "x": "ആ ജോലി നഷ്ടപ്പെട്ടത് ഒടുവിൽ മറഞ്ഞിരിക്കുന്ന ഒരു അനുഗ്രഹമായി മാറി.",
+      "xr": "Aa joli nashtappettathu oduvil maranjirikkunna oru anugrahamaayi maari."
+    },
+    "c344": {
+      "t": "അധിക പരിശ്രമം നടത്തുക",
+      "r": "Adhika parishramam nadathuka",
+      "x": "മികച്ച അധ്യാപകർ എപ്പോഴും വിദ്യാർത്ഥികൾക്കായി അധിക പരിശ്രമം നടത്തുന്നു.",
+      "xr": "Mikacha adhyaapakar eppozhum vidyaarthikalkkaayi adhika parishramam nadathunnu."
+    },
+    "c345": {
+      "t": "സമഗ്രമായി കാണുക",
+      "r": "Samagramaayi kaanuka",
+      "x": "വിശദാംശങ്ങളിൽ നിന്ന് അൽപ്പം പിന്നോട്ട് മാറി കാര്യങ്ങൾ സമഗ്രമായി കാണുക.",
+      "xr": "Vishadaamshangalil ninnu alppam pinnottu maari kaaryangal samagramaayi kaanuka."
+    },
+    "c346": {
+      "t": "പരമാധികാരം",
+      "r": "Paramaadhikaaram",
+      "x": "അന്താരാഷ്ട്ര നിയമം പരമാധികാരത്തോടുള്ള പരസ്പര ബഹുമാനം ഉറപ്പിക്കുന്നു.",
+      "xr": "Anthaaraashtra niyamam paramaadhikaarathodulla paraspara bahumaanam urappikkunnu."
+    },
+    "c347": {
+      "t": "നയതന്ത്രം",
+      "r": "Nayathanthram",
+      "x": "ക്ഷമാപൂർണ്ണമായ നയതന്ത്രം സംഘർഷം രൂക്ഷമാകുന്നത് തടഞ്ഞു.",
+      "xr": "Kshamaapoornamaaya nayathanthram sangharsham rookshamaakunnathu thadanju."
+    },
+    "c348": {
+      "t": "ഉടമ്പടി",
+      "r": "Udampadi",
+      "x": "നാൽപ്പത് രാജ്യങ്ങൾ പരിസ്ഥിതി ഉടമ്പടി അംഗീകരിച്ചു.",
+      "xr": "Naalppathu raajyangal paristhithi udampadi angeekarichu."
+    },
+    "c349": {
+      "t": "ബഹുമുഖ",
+      "r": "Bahumukha",
+      "x": "ബഹുമുഖ സഹകരണം പൊതുവായ ആഗോള വെല്ലുവിളികളെ നേരിടുന്നു.",
+      "xr": "Bahumukha sahakaranam pothuvaaya aagola velluvilikale neridunnu."
+    },
+    "c350": {
+      "t": "അധികാരപരിധി",
+      "r": "Adhikaaraparidhi",
+      "x": "സമുദ്ര തർക്കങ്ങളിൽ ആ ട്രൈബ്യൂണലിന് അധികാരപരിധിയുണ്ട്.",
+      "xr": "Samudra tharkkangalil aa traibyoonalinu adhikaaraparidhiyundu."
+    },
+    "c351": {
+      "t": "പരികല്പന",
+      "r": "Parikalpana",
+      "x": "ഈ പ്രബന്ധം നൂതനമായ ഒരു ഭാഷാശാസ്ത്ര പരികല്പന പരിശോധിക്കുന്നു.",
+      "xr": "Ee prabandham noothanamaaya oru bhaashaashaasthra parikalpana parishodhikkunnu."
+    },
+    "c352": {
+      "t": "രീതിശാസ്ത്രം",
+      "r": "Reethishaasthram",
+      "x": "സുതാര്യമായ രീതിശാസ്ത്രം സ്വതന്ത്ര പുനഃപരിശോധന സാധ്യമാക്കുന്നു.",
+      "xr": "Suthaaryamaaya reethishaasthram swathanthra punahparishodhana saadhyamaakkunnu."
+    },
+    "c353": {
+      "t": "സമന്വയം",
+      "r": "Samanwayam",
+      "x": "അവളുടെ പ്രഭാഷണം ഇരുമേഖലകളുടെയും ഉജ്ജ്വലമായ സമന്വയം അവതരിപ്പിച്ചു.",
+      "xr": "Avalude prabhaashanam irumekhalakaludeyum ujjwalamaaya samanwayam avatharippichu."
+    },
+    "c354": {
+      "t": "കീഴ്വഴക്കം",
+      "r": "Keezhvazhakkam",
+      "x": "ആ വിധി പ്രധാനപ്പെട്ട ഒരു നിയമ കീഴ്വഴക്കം സ്ഥാപിച്ചു.",
+      "xr": "Aa vidhi pradhaanappetta oru niyama keezhvazhakkam sthaapichu."
+    },
+    "c355": {
+      "t": "നടപ്പാക്കൽ",
+      "r": "Nadappaakkal",
+      "x": "ഒരു പരിഷ്കരണം വിജയിക്കുമോ എന്ന് നിർണ്ണയിക്കുന്നത് ശ്രദ്ധാപൂർണ്ണമായ നടപ്പാക്കലാണ്.",
+      "xr": "Oru parishkaranam vijayikkumo ennu nirnayikkunnathu shraddhaapoornamaaya nadappaakkalaanu."
+    },
+    "c356": {
+      "t": "വകവെയ്ക്കാതെ",
+      "r": "Vakaveykkaathe",
+      "x": "പ്രാരംഭ കാലതാമസം വകവെയ്ക്കാതെ പാലം സുരക്ഷിതമായി തുറന്നുകൊടുത്തു.",
+      "xr": "Praarambha kaalathaamasam vakaveykkaathe paalam surakshithamaayi thurannukoduthu."
+    },
+    "c357": {
+      "t": "തൽഫലമായി",
+      "r": "Thalphalamaayi",
+      "x": "ധനസഹായം വർദ്ധിച്ചു; തൽഫലമായി ഗ്രാമീണ ക്ലിനിക്കുകൾ വിപുലീകരിക്കപ്പെട്ടു.",
+      "xr": "Dhanasahaayam vardhichu; thalphalamaayi graameena klinikkukal vipuleekarikkappettu."
+    },
+    "c358": {
+      "t": "കൂടാതെ",
+      "r": "Koodaathe",
+      "x": "കൂടാതെ, തുറന്ന ഡാറ്റ സ്വതന്ത്ര ഗവേഷകർക്ക് പ്രയോജനം ചെയ്യുന്നു.",
+      "xr": "Koodaathe, thuranna daatta swathanthra gaveshakarkku prayojanam cheyyunnu."
+    },
+    "c359": {
+      "t": "പശ്ചാത്തലത്തിൽ",
+      "r": "Pashchaathalathil",
+      "x": "പുതിയ തെളിവുകളുടെ പശ്ചാത്തലത്തിൽ ഞങ്ങൾ മാർഗ്ഗനിർദ്ദേശം പരിഷ്കരിച്ചു.",
+      "xr": "Puthiya thelivukalude pashchaathalathil njangal maargganirddesham parishkarichu."
+    },
+    "c360": {
+      "t": "പൂർണ്ണ ബഹുമാനത്തോടെ",
+      "r": "Poorna bahumaanathode",
+      "x": "പൂർണ്ണ ബഹുമാനത്തോടെ, ഞാൻ മറ്റൊരു സമീപനം നിർദ്ദേശിക്കുന്നു.",
+      "xr": "Poorna bahumaanathode, njaan mattoru sameepanam nirddeshikkunnu."
+    },
+    "c361": {
+      "t": "വ്യക്തമായി ആവിഷ്കരിക്കുക",
+      "r": "Vyakthamaayi aavishkarikkuka",
+      "x": "സങ്കീർണ്ണമായ ആശയങ്ങൾ അവൾ അനായാസമായി ആവിഷ്കരിക്കുന്നു.",
+      "xr": "Sankeernamaaya aashayangal aval anaayaasamaayi aavishkarikkunnu."
+    },
+    "c362": {
+      "t": "സംക്ഷിപ്തമായ",
+      "r": "Samkshipthamaaya",
+      "x": "നീണ്ട പ്രസംഗത്തേക്കാൾ വ്യക്തമാണ് സംക്ഷിപ്തമായ വിശദീകരണം.",
+      "xr": "Neenda prasangathekkaal vyakthamaanu samkshipthamaaya vishadeekaranam."
+    },
+    "c363": {
+      "t": "യുക്തിഭദ്രമായ",
+      "r": "Yukthibhadramaaya",
+      "x": "തുടക്കം മുതൽ ഒടുക്കം വരെ യുക്തിഭദ്രമായ ഒരു ആഖ്യാനം നിർമ്മിക്കുക.",
+      "xr": "Thudakkam muthal odukkam vare yukthibhadramaaya oru aakhyaanam nirmikkuka."
+    },
+    "c364": {
+      "t": "ബോധ്യപ്പെടുത്തുന്ന",
+      "r": "Bodhyappeduthunna",
+      "x": "യഥാർത്ഥ കഥകൾ ഒരു വാദത്തെ കൂടുതൽ ബോധ്യപ്പെടുത്തുന്നതാക്കുന്നു.",
+      "xr": "Yathaartha kathakal oru vaadathe kooduthal bodhyappeduthunnathaakkunnu."
+    },
+    "c365": {
+      "t": "പ്രായോഗികമായ",
+      "r": "Praayogikamaaya",
+      "x": "പദ്ധതി നടപ്പാക്കാൻ ഞങ്ങൾ പ്രായോഗികമായ ഒരു മാർഗ്ഗരേഖ സ്വീകരിച്ചു.",
+      "xr": "Paddhathi nadappaakkaan njangal praayogikamaaya oru maarggarekha sweekarichu."
+    },
+    "c366": {
+      "t": "അഭൂതപൂർവ്വമായ",
+      "r": "Abhoothapoorvamaaya",
+      "x": "നിരീക്ഷണാലയം അഭൂതപൂർവ്വമായ വ്യക്തതയുള്ള ചിത്രങ്ങൾ പകർത്തി.",
+      "xr": "Nireekshanaalayam abhoothapoorvamaaya vyakthathayulla chithrangal pakarthi."
+    },
+    "c367": {
+      "t": "അനിവാര്യമായ",
+      "r": "Anivaaryamaaya",
+      "x": "ഭാഷയിൽ ക്രമേണയുണ്ടാകുന്ന മാറ്റം തികച്ചും അനിവാര്യമാണ്.",
+      "xr": "Bhaashayil kramenayundaakunna maattam thikachum anivaaryamaanu."
+    },
+    "c368": {
+      "t": "ഒഴിച്ചുകൂടാനാവാത്ത",
+      "r": "Ozhichukoodaanaavaatha",
+      "x": "ആഴത്തിലുള്ള ഭാഷാപ്രാവീണ്യത്തിന് ശ്രദ്ധയോടെ കേൾക്കൽ ഒഴിച്ചുകൂടാനാവാത്തതാണ്.",
+      "xr": "Aazhathilulla bhaashaapraaveenyathinu shraddhayode kelkkal ozhichukoodaanaavaathathaanu."
+    },
+    "c369": {
+      "t": "അഗാധമായ",
+      "r": "Agaadhamaaya",
+      "x": "ക്ലാസിക് കൃതികൾ വായിക്കുന്നത് അഗാധമായ സ്വാധീനം ചെലുത്തുന്നു.",
+      "xr": "Klaasik krithikal vaayikkunnathu agaadhamaaya swaadheenam cheluthunnu."
+    },
+    "c370": {
+      "t": "തടസ്സമില്ലാത്ത",
+      "r": "Thadassamillaatha",
+      "x": "എല്ലാ ഉപകരണങ്ങളിലും തടസ്സമില്ലാത്ത അനുഭവം നൽകുകയാണ് ഞങ്ങളുടെ ലക്ഷ്യം.",
+      "xr": "Ellaa upakaranangalilum thadassamillaatha anubhavam nalkukayaanu njangalude lakshyam."
+    },
+    "c371": {
+      "t": "സംശയലേശമന്യേ",
+      "r": "Samshayaleshamanye",
+      "x": "സംശയലേശമന്യേ, സ്ഥിരതയാണ് എപ്പോഴും വിജയിക്കുന്നത്.",
+      "xr": "Samshayaleshamanye, sthirathayaan eppozhum vijayikkunnathu."
+    },
+    "c372": {
+      "t": "അതേപോലെ തന്നെ",
+      "r": "Athepole thanne",
+      "x": "ഞങ്ങൾ വേഗതയെ വിലമതിക്കുന്നു; അതേപോലെ തന്നെ ഗുണനിലവാരത്തിൽ ഒരിക്കലും വിട്ടുവീഴ്ച ചെയ്യില്ല.",
+      "xr": "Njangal vegathaye vilamathikkunnu; athepole thanne gunanilavaarathil orikkalum vittuveezhcha cheyyilla."
+    },
+    "c373": {
+      "t": "എല്ലാം കണക്കിലെടുക്കുമ്പോൾ",
+      "r": "Ellaam kanakkiledukkumpol",
+      "x": "എല്ലാം കണക്കിലെടുക്കുമ്പോൾ, ഇത് ഞങ്ങളുടെ ഏറ്റവും മികച്ച വർഷമായിരുന്നു.",
+      "xr": "Ellaam kanakkiledukkumpol, ithu njangalude ettavum mikacha varshamaayirunnu."
+    },
+    "c374": {
+      "t": "കാലത്തെ അതിജീവിക്കുക",
+      "r": "Kaalathe athijeevikkuka",
+      "x": "കരുതലോടെ നിർമ്മിച്ച തുറന്ന അറിവ് കാലത്തെ അതിജീവിക്കും.",
+      "xr": "Karuthalode nirmicha thuranna arivu kaalathe athijeevikkum."
+    },
+    "c375": {
+      "t": "ആജീവനാന്ത പഠനം",
+      "r": "Aajeevanantha padanam",
+      "x": "ഭാഷകളിൽ പ്രാവീണ്യം നേടുന്നത് ആജീവനാന്ത പഠനത്തിന്റെ ആനന്ദകരമായ ഒരു സാഹസിക യാത്രയാണ്.",
+      "xr": "Bhaashakalil praaveenyam nedunnathu aajeevanantha padanathinte aanandakaramaaya oru saahasika yaathrayaanu."
+    }
+  }
+}

@@ -192,6 +192,306 @@ export const SCRIPT_SETS = {
         ]
       }
     ]
+  },
+  ta: {
+    title: 'Tamil Script (தமிழ் எழுத்துக்கள்)',
+    subtitle: 'Master Tamil Uyir (12 vowels) and Mei/Uyirmei consonants (18 core consonants).',
+    speechLocale: 'ta-IN',
+    tabs: [
+      {
+        id: 'ta-vowels',
+        label: 'Uyir Vowels (உயிர்)',
+        note: '12 Tamil vowels (short/long pairs) plus the Aytham (ஃ).',
+        rows: [
+          { group: 'Short & Long Vowels', chars: [
+            { glyph: 'அ', romaji: 'a' }, { glyph: 'ஆ', romaji: 'aa' }, { glyph: 'இ', romaji: 'i' }, { glyph: 'ஈ', romaji: 'ee' }, { glyph: 'உ', romaji: 'u' }, { glyph: 'ஊ', romaji: 'oo' }
+          ]},
+          { group: 'E, O & Diphthongs', chars: [
+            { glyph: 'எ', romaji: 'e' }, { glyph: 'ஏ', romaji: 'ae' }, { glyph: 'ஐ', romaji: 'ai' }, { glyph: 'ஒ', romaji: 'o' }, { glyph: 'ஓ', romaji: 'oo' }, { glyph: 'ஔ', romaji: 'au' }, { glyph: 'ஃ', romaji: 'akh' }
+          ]}
+        ]
+      },
+      {
+        id: 'ta-consonants',
+        label: 'Consonants (மெய்)',
+        note: '18 classical Tamil consonants grouped by Hard (Vallinam), Soft (Mellinam), and Medium (Idaiyinam).',
+        rows: [
+          { group: 'Hard Consonants (வல்லினம்)', chars: [
+            { glyph: 'க', romaji: 'ka' }, { glyph: 'ச', romaji: 'cha/sa' }, { glyph: 'ட', romaji: 'ta' }, { glyph: 'த', romaji: 'tha' }, { glyph: 'ப', romaji: 'pa' }, { glyph: 'ற', romaji: 'rra' }
+          ]},
+          { group: 'Soft Consonants (மெல்லினம்)', chars: [
+            { glyph: 'ங', romaji: 'nga' }, { glyph: 'ஞ', romaji: 'nya' }, { glyph: 'ண', romaji: 'na (retroflex)' }, { glyph: 'ந', romaji: 'na' }, { glyph: 'ம', romaji: 'ma' }, { glyph: 'ன', romaji: 'na (alveolar)' }
+          ]},
+          { group: 'Medium Consonants (இடையினம்)', chars: [
+            { glyph: 'ய', romaji: 'ya' }, { glyph: 'ர', romaji: 'ra' }, { glyph: 'ல', romaji: 'la' }, { glyph: 'வ', romaji: 'va' }, { glyph: 'ழ', romaji: 'zha' }, { glyph: 'ள', romaji: 'la (retroflex)' }
+          ]}
+        ]
+      }
+    ]
+  },
+  kn: {
+    title: 'Kannada Script (ಕನ್ನಡ ಲಿಪಿ)',
+    subtitle: 'Practice Kannada Swaragalu (vowels) and Vyanjanagalu (consonants).',
+    speechLocale: 'kn-IN',
+    tabs: [
+      {
+        id: 'kn-vowels',
+        label: 'Swaragalu (ಸ್ವರಗಳು)',
+        note: 'Core Kannada independent vowel letters.',
+        rows: [
+          { group: 'Short & Long Vowels', chars: [
+            { glyph: 'ಅ', romaji: 'a' }, { glyph: 'ಆ', romaji: 'aa' }, { glyph: 'ಇ', romaji: 'i' }, { glyph: 'ಈ', romaji: 'ee' }, { glyph: 'ಉ', romaji: 'u' }, { glyph: 'ಊ', romaji: 'oo' }, { glyph: 'ಋ', romaji: 'ru' }
+          ]},
+          { group: 'E, O & Diphthongs', chars: [
+            { glyph: 'ಎ', romaji: 'e' }, { glyph: 'ಏ', romaji: 'ae' }, { glyph: 'ಐ', romaji: 'ai' }, { glyph: 'ಒ', romaji: 'o' }, { glyph: 'ಓ', romaji: 'oo' }, { glyph: 'ಔ', romaji: 'au' }
+          ]}
+        ]
+      },
+      {
+        id: 'kn-consonants',
+        label: 'Vyanjanagalu (ವ್ಯಂಜನಗಳು)',
+        note: 'Structured consonant rows across velar, palatal, retroflex, dental, and labial sounds.',
+        rows: [
+          { group: 'Ka & Cha Rows', chars: [
+            { glyph: 'ಕ', romaji: 'ka' }, { glyph: 'ಖ', romaji: 'kha' }, { glyph: 'ಗ', romaji: 'ga' }, { glyph: 'ಘ', romaji: 'gha' }, { glyph: 'ಚ', romaji: 'cha' }, { glyph: 'ಜ', romaji: 'ja' }
+          ]},
+          { group: 'Ta, Tha & Pa Rows', chars: [
+            { glyph: 'ಟ', romaji: 'ta' }, { glyph: 'ಡ', romaji: 'da' }, { glyph: 'ಣ', romaji: 'na' }, { glyph: 'ತ', romaji: 'tha' }, { glyph: 'ದ', romaji: 'dha' }, { glyph: 'ನ', romaji: 'na' }, { glyph: 'ಪ', romaji: 'pa' }, { glyph: 'ಬ', romaji: 'ba' }, { glyph: 'ಮ', romaji: 'ma' }
+          ]},
+          { group: 'Liquids & Sibilants', chars: [
+            { glyph: 'ಯ', romaji: 'ya' }, { glyph: 'ರ', romaji: 'ra' }, { glyph: 'ಲ', romaji: 'la' }, { glyph: 'ವ', romaji: 'va' }, { glyph: 'ಶ', romaji: 'sha' }, { glyph: 'ಸ', romaji: 'sa' }, { glyph: 'ಹ', romaji: 'ha' }, { glyph: 'ಳ', romaji: 'la (retroflex)' }
+          ]}
+        ]
+      }
+    ]
+  },
+  te: {
+    title: 'Telugu Script (తెలుగు లిపి)',
+    subtitle: 'Practice Telugu Achulu (vowels) and Hallulu (consonants).',
+    speechLocale: 'te-IN',
+    tabs: [
+      {
+        id: 'te-vowels',
+        label: 'Achulu (అచ్చులు)',
+        note: 'Core Telugu vowel letters.',
+        rows: [
+          { group: 'Short & Long Vowels', chars: [
+            { glyph: 'అ', romaji: 'a' }, { glyph: 'ఆ', romaji: 'aa' }, { glyph: 'ఇ', romaji: 'i' }, { glyph: 'ఈ', romaji: 'ee' }, { glyph: 'ఉ', romaji: 'u' }, { glyph: 'ఊ', romaji: 'oo' }, { glyph: 'ఋ', romaji: 'ru' }
+          ]},
+          { group: 'E, O & Diphthongs', chars: [
+            { glyph: 'ఎ', romaji: 'e' }, { glyph: 'ఏ', romaji: 'ae' }, { glyph: 'ఐ', romaji: 'ai' }, { glyph: 'ఒ', romaji: 'o' }, { glyph: 'ఓ', romaji: 'oo' }, { glyph: 'ఔ', romaji: 'au' }
+          ]}
+        ]
+      },
+      {
+        id: 'te-consonants',
+        label: 'Hallulu (హల్లులు)',
+        note: 'Essential Telugu consonants with inherent "a" vowel.',
+        rows: [
+          { group: 'Ka & Cha Rows', chars: [
+            { glyph: 'క', romaji: 'ka' }, { glyph: 'ఖ', romaji: 'kha' }, { glyph: 'గ', romaji: 'ga' }, { glyph: 'ఘ', romaji: 'gha' }, { glyph: 'చ', romaji: 'cha' }, { glyph: 'జ', romaji: 'ja' }
+          ]},
+          { group: 'Ta, Tha & Pa Rows', chars: [
+            { glyph: 'ట', romaji: 'ta' }, { glyph: 'డ', romaji: 'da' }, { glyph: 'ణ', romaji: 'na' }, { glyph: 'త', romaji: 'tha' }, { glyph: 'ద', romaji: 'dha' }, { glyph: 'న', romaji: 'na' }, { glyph: 'ప', romaji: 'pa' }, { glyph: 'బ', romaji: 'ba' }, { glyph: 'మ', romaji: 'ma' }
+          ]},
+          { group: 'Liquids & Sibilants', chars: [
+            { glyph: 'య', romaji: 'ya' }, { glyph: 'ర', romaji: 'ra' }, { glyph: 'ల', romaji: 'la' }, { glyph: 'వ', romaji: 'va' }, { glyph: 'శ', romaji: 'sha' }, { glyph: 'స', romaji: 'sa' }, { glyph: 'హ', romaji: 'ha' }, { glyph: 'ళ', romaji: 'la (retroflex)' }
+          ]}
+        ]
+      }
+    ]
+  },
+  hi: {
+    title: 'Hindi Devanagari (हिन्दी देवनागरी)',
+    subtitle: 'Master Devanagari Swar (vowels) and Vyanjan (consonants) with handwriting tracing.',
+    speechLocale: 'hi-IN',
+    tabs: [
+      {
+        id: 'hi-vowels',
+        label: 'Swar (स्वर)',
+        note: '11 core Devanagari vowels plus Anusvara (अं) and Visarga (अः).',
+        rows: [
+          { group: 'Core Vowels', chars: [
+            { glyph: 'अ', romaji: 'a' }, { glyph: 'आ', romaji: 'aa' }, { glyph: 'इ', romaji: 'i' }, { glyph: 'ई', romaji: 'ee' }, { glyph: 'उ', romaji: 'u' }, { glyph: 'ऊ', romaji: 'oo' }, { glyph: 'ऋ', romaji: 'ri' }
+          ]},
+          { group: 'E, O & Modifiers', chars: [
+            { glyph: 'ए', romaji: 'e' }, { glyph: 'ऐ', romaji: 'ai' }, { glyph: 'ओ', romaji: 'o' }, { glyph: 'औ', romaji: 'au' }, { glyph: 'अं', romaji: 'am' }, { glyph: 'अः', romaji: 'ah' }
+          ]}
+        ]
+      },
+      {
+        id: 'hi-consonants',
+        label: 'Vyanjan (व्यंजन)',
+        note: 'Devanagari consonants are arranged scientifically by place of articulation.',
+        rows: [
+          { group: 'Velar & Palatal', chars: [
+            { glyph: 'क', romaji: 'ka' }, { glyph: 'ख', romaji: 'kha' }, { glyph: 'ग', romaji: 'ga' }, { glyph: 'घ', romaji: 'gha' }, { glyph: 'च', romaji: 'cha' }, { glyph: 'छ', romaji: 'chha' }, { glyph: 'ज', romaji: 'ja' }, { glyph: 'झ', romaji: 'jha' }
+          ]},
+          { group: 'Retroflex & Dental', chars: [
+            { glyph: 'ट', romaji: 'ta' }, { glyph: 'ठ', romaji: 'tha' }, { glyph: 'ड', romaji: 'da' }, { glyph: 'ण', romaji: 'na' }, { glyph: 'त', romaji: 'ta (soft)' }, { glyph: 'थ', romaji: 'tha' }, { glyph: 'द', romaji: 'da' }, { glyph: 'ध', romaji: 'dha' }, { glyph: 'न', romaji: 'na' }
+          ]},
+          { group: 'Labial, Liquids & Sibilants', chars: [
+            { glyph: 'प', romaji: 'pa' }, { glyph: 'फ', romaji: 'pha' }, { glyph: 'ब', romaji: 'ba' }, { glyph: 'भ', romaji: 'bha' }, { glyph: 'म', romaji: 'ma' }, { glyph: 'य', romaji: 'ya' }, { glyph: 'र', romaji: 'ra' }, { glyph: 'ल', romaji: 'la' }, { glyph: 'व', romaji: 'va' }, { glyph: 'श', romaji: 'sha' }, { glyph: 'स', romaji: 'sa' }, { glyph: 'ह', romaji: 'ha' }
+          ]}
+        ]
+      }
+    ]
+  },
+  zh: {
+    title: 'Mandarin Chinese Hanzi (汉字)',
+    subtitle: 'Trace foundational Simplified Hanzi characters & radicals with Pinyin tones.',
+    speechLocale: 'zh-CN',
+    tabs: [
+      {
+        id: 'zh-core',
+        label: 'Core Hanzi (基础汉字)',
+        note: '50 foundational HSK 1–2 characters & semantic building blocks.',
+        rows: [
+          { group: 'Numbers & Basics', chars: [
+            { glyph: '一', romaji: 'yī · 1' }, { glyph: '二', romaji: 'èr · 2' }, { glyph: '三', romaji: 'sān · 3' }, { glyph: '四', romaji: 'sì · 4' }, { glyph: '五', romaji: 'wǔ · 5' },
+            { glyph: '六', romaji: 'liù · 6' }, { glyph: '七', romaji: 'qī · 7' }, { glyph: '八', romaji: 'bā · 8' }, { glyph: '九', romaji: 'jiǔ · 9' }, { glyph: '十', romaji: 'shí · 10' }
+          ]},
+          { group: 'People & Nature', chars: [
+            { glyph: '人', romaji: 'rén · person' }, { glyph: '我', romaji: 'wǒ · I' }, { glyph: '你', romaji: 'nǐ · you' }, { glyph: '好', romaji: 'hǎo · good' }, { glyph: '家', romaji: 'jiā · home' },
+            { glyph: '日', romaji: 'rì · sun/day' }, { glyph: '月', romaji: 'yuè · moon' }, { glyph: '水', romaji: 'shuǐ · water' }, { glyph: '火', romaji: 'huǒ · fire' }, { glyph: '山', romaji: 'shān · mountain' },
+            { glyph: '木', romaji: 'mù · wood' }, { glyph: '天', romaji: 'tiān · sky' }, { glyph: '心', romaji: 'xīn · heart' }, { glyph: '手', romaji: 'shǒu · hand' }, { glyph: '口', romaji: 'kǒu · mouth' }
+          ]},
+          { group: 'Essential Verbs & Qualities', chars: [
+            { glyph: '大', romaji: 'dà · big' }, { glyph: '小', romaji: 'xiǎo · small' }, { glyph: '中', romaji: 'zhōng · middle' }, { glyph: '国', romaji: 'guó · country' }, { glyph: '学', romaji: 'xué · study' },
+            { glyph: '语', romaji: 'yǔ · language' }, { glyph: '书', romaji: 'shū · book' }, { glyph: '吃', romaji: 'chī · eat' }, { glyph: '喝', romaji: 'hē · drink' }, { glyph: '去', romaji: 'qù · go' },
+            { glyph: '来', romaji: 'lái · come' }, { glyph: '看', romaji: 'kàn · look' }, { glyph: '听', romaji: 'tīng · listen' }, { glyph: '说', romaji: 'shuō · speak' }, { glyph: '爱', romaji: 'ài · love' }
+          ]}
+        ]
+      }
+    ]
+  },
+  ko: {
+    title: 'Korean Hangul (한글)',
+    subtitle: 'Master all 14 basic consonants, 5 double consonants, and 10 basic vowels.',
+    speechLocale: 'ko-KR',
+    tabs: [
+      {
+        id: 'ko-consonants',
+        label: 'Consonants (자음)',
+        note: 'Hangul consonant shapes reflect the position of the tongue and mouth when pronouncing them.',
+        rows: [
+          { group: '14 Basic Consonants', chars: [
+            { glyph: 'ㄱ', romaji: 'g / k' }, { glyph: 'ㄴ', romaji: 'n' }, { glyph: 'ㄷ', romaji: 'd / t' }, { glyph: 'ㄹ', romaji: 'r / l' }, { glyph: 'ㅁ', romaji: 'm' },
+            { glyph: 'ㅂ', romaji: 'b / p' }, { glyph: 'ㅅ', romaji: 's' }, { glyph: 'ㅇ', romaji: 'silent / ng' }, { glyph: 'ㅈ', romaji: 'j' }, { glyph: 'ㅊ', romaji: 'ch' },
+            { glyph: 'ㅋ', romaji: 'k' }, { glyph: 'ㅌ', romaji: 't' }, { glyph: 'ㅍ', romaji: 'p' }, { glyph: 'ㅎ', romaji: 'h' }
+          ]},
+          { group: '5 Double Consonants', chars: [
+            { glyph: 'ㄲ', romaji: 'kk' }, { glyph: 'ㄸ', romaji: 'tt' }, { glyph: 'ㅃ', romaji: 'pp' }, { glyph: 'ㅆ', romaji: 'ss' }, { glyph: 'ㅉ', romaji: 'jj' }
+          ]}
+        ]
+      },
+      {
+        id: 'ko-vowels',
+        label: 'Vowels (모음)',
+        note: 'Hangul vowels combine vertical and horizontal strokes representing heaven, earth, and humanity.',
+        rows: [
+          { group: '10 Basic Vowels', chars: [
+            { glyph: 'ㅏ', romaji: 'a' }, { glyph: 'ㅑ', romaji: 'ya' }, { glyph: 'ㅓ', romaji: 'eo' }, { glyph: 'ㅕ', romaji: 'yeo' }, { glyph: 'ㅗ', romaji: 'o' },
+            { glyph: 'ㅛ', romaji: 'yo' }, { glyph: 'ㅜ', romaji: 'u' }, { glyph: 'ㅠ', romaji: 'yu' }, { glyph: 'ㅡ', romaji: 'eu' }, { glyph: 'ㅣ', romaji: 'i' }
+          ]},
+          { group: 'Common Compound Vowels', chars: [
+            { glyph: 'ㅐ', romaji: 'ae' }, { glyph: 'ㅔ', romaji: 'e' }, { glyph: 'ㅘ', romaji: 'wa' }, { glyph: 'ㅝ', romaji: 'wo' }, { glyph: 'ㅢ', romaji: 'ui' }
+          ]}
+        ]
+      }
+    ]
+  },
+  ar: {
+    title: 'Arabic Alphabet (الأبجدية العربية)',
+    subtitle: 'Master all 28 Arabic letters (written right-to-left) with pronunciation and tracing.',
+    speechLocale: 'ar-SA',
+    dir: 'rtl',
+    tabs: [
+      {
+        id: 'ar-alphabet',
+        label: '28 Letters (الحروف)',
+        note: 'Arabic is read right-to-left. Practice recognizing and drawing each letter in its isolated form.',
+        rows: [
+          { group: 'Alif – Zay', chars: [
+            { glyph: 'ا', romaji: 'alif (a)' }, { glyph: 'ب', romaji: 'ba (b)' }, { glyph: 'ت', romaji: 'ta (t)' }, { glyph: 'ث', romaji: 'tha (th)' }, { glyph: 'ج', romaji: 'jim (j)' },
+            { glyph: 'ح', romaji: 'ha (h)' }, { glyph: 'خ', romaji: 'kha (kh)' }, { glyph: 'د', romaji: 'dal (d)' }, { glyph: 'ذ', romaji: 'dhal (dh)' }, { glyph: 'ر', romaji: 'ra (r)' }, { glyph: 'ز', romaji: 'zay (z)' }
+          ]},
+          { group: 'Sin – Qaf', chars: [
+            { glyph: 'س', romaji: 'sin (s)' }, { glyph: 'ش', romaji: 'shin (sh)' }, { glyph: 'ص', romaji: 'sad (s)' }, { glyph: 'ض', romaji: 'dad (d)' }, { glyph: 'ط', romaji: 'ta (t)' },
+            { glyph: 'ظ', romaji: 'za (z)' }, { glyph: 'ع', romaji: 'ayn' }, { glyph: 'غ', romaji: 'ghayn (gh)' }, { glyph: 'ف', romaji: 'fa (f)' }, { glyph: 'ق', romaji: 'qaf (q)' }
+          ]},
+          { group: 'Kaf – Ya', chars: [
+            { glyph: 'ك', romaji: 'kaf (k)' }, { glyph: 'ل', romaji: 'lam (l)' }, { glyph: 'م', romaji: 'mim (m)' }, { glyph: 'ن', romaji: 'nun (n)' },
+            { glyph: 'ه', romaji: 'ha (h)' }, { glyph: 'و', romaji: 'waw (w/u)' }, { glyph: 'ي', romaji: 'ya (y/i)' }
+          ]}
+        ]
+      }
+    ]
+  },
+  fr: {
+    title: 'French Accents & Alphabet (Français)',
+    subtitle: 'Practice French diacritics (é, è, ê, ç, œ) and alphabet pronunciation.',
+    speechLocale: 'fr-FR',
+    tabs: [
+      {
+        id: 'fr-accents',
+        label: 'Accents & Ligatures',
+        note: 'Accents change vowel pronunciation and distinguish meanings in French (e.g. ou vs où).',
+        rows: [
+          { group: 'French Diacritics', chars: [
+            { glyph: 'é', romaji: 'accent aigu (ay)' }, { glyph: 'è', romaji: 'accent grave (eh)' }, { glyph: 'ê', romaji: 'circonflexe (eh)' }, { glyph: 'ë', romaji: 'tréma' }, { glyph: 'à', romaji: 'a grave' },
+            { glyph: 'â', romaji: 'a circonflexe' }, { glyph: 'ç', romaji: 'cédille (s)' }, { glyph: 'ù', romaji: 'u grave' }, { glyph: 'û', romaji: 'u circonflexe' }, { glyph: 'ô', romaji: 'o circonflexe' },
+            { glyph: 'î', romaji: 'i circonflexe' }, { glyph: 'ï', romaji: 'i tréma' }, { glyph: 'œ', romaji: 'e dans l’o' }
+          ]}
+        ]
+      }
+    ]
+  },
+  ru: {
+    title: 'Russian Cyrillic (Русский алфавит)',
+    subtitle: 'Master all 33 Cyrillic letters with clear phonetic guides and handwriting practice.',
+    speechLocale: 'ru-RU',
+    tabs: [
+      {
+        id: 'ru-cyrillic',
+        label: 'Cyrillic (33 Letters)',
+        note: 'Russian Cyrillic is highly phonetic—learn the 33 letters to read any Russian word aloud.',
+        rows: [
+          { group: 'А – Й', chars: [
+            { glyph: 'А', romaji: 'a' }, { glyph: 'Б', romaji: 'b' }, { glyph: 'В', romaji: 'v' }, { glyph: 'Г', romaji: 'g' }, { glyph: 'Д', romaji: 'd' },
+            { glyph: 'Е', romaji: 'ye' }, { glyph: 'Ё', romaji: 'yo' }, { glyph: 'Ж', romaji: 'zh' }, { glyph: 'З', romaji: 'z' }, { glyph: 'И', romaji: 'i' }, { glyph: 'Й', romaji: 'y' }
+          ]},
+          { group: 'К – Х', chars: [
+            { glyph: 'К', romaji: 'k' }, { glyph: 'Л', romaji: 'l' }, { glyph: 'М', romaji: 'm' }, { glyph: 'Н', romaji: 'n' }, { glyph: 'О', romaji: 'o' },
+            { glyph: 'П', romaji: 'p' }, { glyph: 'Р', romaji: 'r' }, { glyph: 'С', romaji: 's' }, { glyph: 'Т', romaji: 't' }, { glyph: 'У', romaji: 'u' }, { glyph: 'Ф', romaji: 'f' }, { glyph: 'Х', romaji: 'kh' }
+          ]},
+          { group: 'Ц – Я', chars: [
+            { glyph: 'Ц', romaji: 'ts' }, { glyph: 'Ч', romaji: 'ch' }, { glyph: 'Ш', romaji: 'sh' }, { glyph: 'Щ', romaji: 'shch' }, { glyph: 'Ъ', romaji: 'hard sign' },
+            { glyph: 'Ы', romaji: 'y' }, { glyph: 'Ь', romaji: 'soft sign' }, { glyph: 'Э', romaji: 'e' }, { glyph: 'Ю', romaji: 'yu' }, { glyph: 'Я', romaji: 'ya' }
+          ]}
+        ]
+      }
+    ]
+  },
+  en: {
+    title: 'English Alphabet & Sounds',
+    subtitle: 'Practice English letters and key consonant digraphs (th, sh, ch, ph, wh, ng).',
+    speechLocale: 'en-US',
+    tabs: [
+      {
+        id: 'en-digraphs',
+        label: 'Key Digraphs & Vowels',
+        note: 'Master English vowel sounds and common letter combinations.',
+        rows: [
+          { group: 'Vowels', chars: [
+            { glyph: 'A', romaji: 'ay / æ' }, { glyph: 'E', romaji: 'ee / eh' }, { glyph: 'I', romaji: 'eye / ih' }, { glyph: 'O', romaji: 'oh / aw' }, { glyph: 'U', romaji: 'you / uh' }
+          ]},
+          { group: 'Essential Digraphs', chars: [
+            { glyph: 'th', romaji: 'think / this' }, { glyph: 'sh', romaji: 'ship' }, { glyph: 'ch', romaji: 'chair' }, { glyph: 'ph', romaji: 'phone (f)' }, { glyph: 'wh', romaji: 'where' }, { glyph: 'ng', romaji: 'sing' }
+          ]}
+        ]
+      }
+    ]
   }
 };
 

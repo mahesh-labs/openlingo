@@ -1,0 +1,1343 @@
+{
+  "version": "3.0.0",
+  "conceptCount": 375,
+  "unitCount": 25,
+  "lessonCount": 75,
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "nativeName": "English",
+      "speechLocale": "en-US",
+      "dir": "ltr",
+      "usesTransliteration": false,
+      "standardName": "CEFR",
+      "levelLabels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1-C2"
+      ]
+    },
+    {
+      "code": "ml",
+      "name": "Malayalam",
+      "nativeName": "മലയാളം",
+      "speechLocale": "ml-IN",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "Stage",
+      "levelLabels": [
+        "Stage 1",
+        "Stage 2",
+        "Stage 3",
+        "Stage 4",
+        "Stage 5"
+      ]
+    },
+    {
+      "code": "ta",
+      "name": "Tamil",
+      "nativeName": "தமிழ்",
+      "speechLocale": "ta-IN",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "Stage",
+      "levelLabels": [
+        "Stage 1",
+        "Stage 2",
+        "Stage 3",
+        "Stage 4",
+        "Stage 5"
+      ]
+    },
+    {
+      "code": "kn",
+      "name": "Kannada",
+      "nativeName": "ಕನ್ನಡ",
+      "speechLocale": "kn-IN",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "Stage",
+      "levelLabels": [
+        "Stage 1",
+        "Stage 2",
+        "Stage 3",
+        "Stage 4",
+        "Stage 5"
+      ]
+    },
+    {
+      "code": "te",
+      "name": "Telugu",
+      "nativeName": "తెలుగు",
+      "speechLocale": "te-IN",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "Stage",
+      "levelLabels": [
+        "Stage 1",
+        "Stage 2",
+        "Stage 3",
+        "Stage 4",
+        "Stage 5"
+      ]
+    },
+    {
+      "code": "hi",
+      "name": "Hindi",
+      "nativeName": "हिन्दी",
+      "speechLocale": "hi-IN",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "Stage",
+      "levelLabels": [
+        "Stage 1",
+        "Stage 2",
+        "Stage 3",
+        "Stage 4",
+        "Stage 5"
+      ]
+    },
+    {
+      "code": "ja",
+      "name": "Japanese",
+      "nativeName": "日本語",
+      "speechLocale": "ja-JP",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "JLPT",
+      "levelLabels": [
+        "N5",
+        "N4",
+        "N3",
+        "N2",
+        "N1"
+      ]
+    },
+    {
+      "code": "zh",
+      "name": "Chinese (Mandarin)",
+      "nativeName": "中文",
+      "speechLocale": "zh-CN",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "HSK",
+      "levelLabels": [
+        "HSK 1",
+        "HSK 2-3",
+        "HSK 4",
+        "HSK 5",
+        "HSK 6"
+      ]
+    },
+    {
+      "code": "ko",
+      "name": "Korean",
+      "nativeName": "한국어",
+      "speechLocale": "ko-KR",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "TOPIK",
+      "levelLabels": [
+        "TOPIK 1",
+        "TOPIK 2",
+        "TOPIK 3",
+        "TOPIK 4",
+        "TOPIK 5-6"
+      ]
+    },
+    {
+      "code": "ar",
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "speechLocale": "ar-SA",
+      "dir": "rtl",
+      "usesTransliteration": true,
+      "standardName": "CEFR",
+      "levelLabels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1-C2"
+      ]
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "nativeName": "Español",
+      "speechLocale": "es-ES",
+      "dir": "ltr",
+      "usesTransliteration": false,
+      "standardName": "CEFR",
+      "levelLabels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1-C2"
+      ]
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "nativeName": "Français",
+      "speechLocale": "fr-FR",
+      "dir": "ltr",
+      "usesTransliteration": false,
+      "standardName": "CEFR",
+      "levelLabels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1-C2"
+      ]
+    },
+    {
+      "code": "ru",
+      "name": "Russian",
+      "nativeName": "Русский",
+      "speechLocale": "ru-RU",
+      "dir": "ltr",
+      "usesTransliteration": true,
+      "standardName": "TRKI",
+      "levelLabels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1-C2"
+      ]
+    }
+  ],
+  "tiers": [
+    {
+      "tierIndex": 0,
+      "id": "sec-t1",
+      "tier": "Beginner",
+      "title": "Foundations & Everyday Basics",
+      "description": "Core greetings, family, numbers, time, food, home, and essential daily actions.",
+      "color": "#7c3aed",
+      "units": [
+        {
+          "id": "u1",
+          "title": "First Steps & Greetings",
+          "subtitle": "Polite greetings, gratitude, apologies & introductions",
+          "lessons": [
+            {
+              "id": "u1-l1",
+              "title": "Morning to Night Greetings",
+              "objective": "Greet people politely at any time of day.",
+              "concepts": [
+                "c001",
+                "c002",
+                "c003",
+                "c004",
+                "c005"
+              ]
+            },
+            {
+              "id": "u1-l2",
+              "title": "Gratitude & Politeness",
+              "objective": "Say thank you, please, and excuse me naturally.",
+              "concepts": [
+                "c006",
+                "c007",
+                "c008",
+                "c009",
+                "c010"
+              ]
+            },
+            {
+              "id": "u1-l3",
+              "title": "Yes, No & Introductions",
+              "objective": "Confirm, decline, and introduce yourself.",
+              "concepts": [
+                "c011",
+                "c012",
+                "c013",
+                "c014",
+                "c015"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u2",
+          "title": "People, Family & Pronouns",
+          "subtitle": "Pronouns, relatives, friends, and basic identities",
+          "lessons": [
+            {
+              "id": "u2-l1",
+              "title": "Personal Pronouns",
+              "objective": "Refer to yourself and others clearly.",
+              "concepts": [
+                "c016",
+                "c017",
+                "c018",
+                "c019",
+                "c020"
+              ]
+            },
+            {
+              "id": "u2-l2",
+              "title": "Immediate Family",
+              "objective": "Talk about parents, siblings, and family members.",
+              "concepts": [
+                "c021",
+                "c022",
+                "c023",
+                "c024",
+                "c025"
+              ]
+            },
+            {
+              "id": "u2-l3",
+              "title": "Friends & Community",
+              "objective": "Describe people around you in everyday life.",
+              "concepts": [
+                "c026",
+                "c027",
+                "c028",
+                "c029",
+                "c030"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u3",
+          "title": "Numbers, Time & Calendar",
+          "subtitle": "Counting, telling time, days, and schedules",
+          "lessons": [
+            {
+              "id": "u3-l1",
+              "title": "Core Numbers",
+              "objective": "Count accurately from one to one hundred.",
+              "concepts": [
+                "c031",
+                "c032",
+                "c033",
+                "c034",
+                "c035"
+              ]
+            },
+            {
+              "id": "u3-l2",
+              "title": "Days & Relative Time",
+              "objective": "Talk about today, tomorrow, and yesterday.",
+              "concepts": [
+                "c036",
+                "c037",
+                "c038",
+                "c039",
+                "c040"
+              ]
+            },
+            {
+              "id": "u3-l3",
+              "title": "Clock & Calendar",
+              "objective": "Discuss hours, weeks, months, and years.",
+              "concepts": [
+                "c041",
+                "c042",
+                "c043",
+                "c044",
+                "c045"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u4",
+          "title": "Food, Drink & Dining",
+          "subtitle": "Essential meals, ingredients, and restaurant phrases",
+          "lessons": [
+            {
+              "id": "u4-l1",
+              "title": "Staple Foods",
+              "objective": "Name basic foods and drinks.",
+              "concepts": [
+                "c046",
+                "c047",
+                "c048",
+                "c049",
+                "c050"
+              ]
+            },
+            {
+              "id": "u4-l2",
+              "title": "Meals & Beverages",
+              "objective": "Order coffee, tea, and everyday meals.",
+              "concepts": [
+                "c051",
+                "c052",
+                "c053",
+                "c054",
+                "c055"
+              ]
+            },
+            {
+              "id": "u4-l3",
+              "title": "At the Restaurant",
+              "objective": "Express hunger, taste, and pay the bill.",
+              "concepts": [
+                "c056",
+                "c057",
+                "c058",
+                "c059",
+                "c060"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u5",
+          "title": "Home, Colors & Daily Actions",
+          "subtitle": "Rooms, everyday objects, colors, and core verbs",
+          "lessons": [
+            {
+              "id": "u5-l1",
+              "title": "Around the House",
+              "objective": "Name rooms and household essentials.",
+              "concepts": [
+                "c061",
+                "c062",
+                "c063",
+                "c064",
+                "c065"
+              ]
+            },
+            {
+              "id": "u5-l2",
+              "title": "Essential Colors & Qualities",
+              "objective": "Describe size and color accurately.",
+              "concepts": [
+                "c066",
+                "c067",
+                "c068",
+                "c069",
+                "c070"
+              ]
+            },
+            {
+              "id": "u5-l3",
+              "title": "Core Daily Verbs",
+              "objective": "Use essential action verbs every day.",
+              "concepts": [
+                "c071",
+                "c072",
+                "c073",
+                "c074",
+                "c075"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tierIndex": 1,
+      "id": "sec-t2",
+      "tier": "Elementary",
+      "title": "Everyday Fluency & Navigation",
+      "description": "Travel, shopping, weather, health, work, school, and daily routines.",
+      "color": "#6d28d9",
+      "units": [
+        {
+          "id": "u6",
+          "title": "Travel, Transport & Directions",
+          "subtitle": "Getting around cities, stations, and airports",
+          "lessons": [
+            {
+              "id": "u6-l1",
+              "title": "Public Transport",
+              "objective": "Navigate trains, buses, and flights.",
+              "concepts": [
+                "c076",
+                "c077",
+                "c078",
+                "c079",
+                "c080"
+              ]
+            },
+            {
+              "id": "u6-l2",
+              "title": "Directions & Orientation",
+              "objective": "Ask for and follow spatial directions.",
+              "concepts": [
+                "c081",
+                "c082",
+                "c083",
+                "c084",
+                "c085"
+              ]
+            },
+            {
+              "id": "u6-l3",
+              "title": "Navigating Places",
+              "objective": "Use maps, passports, and hotel basics.",
+              "concepts": [
+                "c086",
+                "c087",
+                "c088",
+                "c089",
+                "c090"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u7",
+          "title": "Shopping, Money & Numbers",
+          "subtitle": "Prices, stores, payments, and clothing",
+          "lessons": [
+            {
+              "id": "u7-l1",
+              "title": "Money & Prices",
+              "objective": "Ask prices and compare value.",
+              "concepts": [
+                "c091",
+                "c092",
+                "c093",
+                "c094",
+                "c095"
+              ]
+            },
+            {
+              "id": "u7-l2",
+              "title": "At the Market",
+              "objective": "Buy, pay, and request receipts.",
+              "concepts": [
+                "c096",
+                "c097",
+                "c098",
+                "c099",
+                "c100"
+              ]
+            },
+            {
+              "id": "u7-l3",
+              "title": "Clothing & Sizes",
+              "objective": "Shop for clothes and check fit.",
+              "concepts": [
+                "c101",
+                "c102",
+                "c103",
+                "c104",
+                "c105"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u8",
+          "title": "Weather, Seasons & Nature",
+          "subtitle": "Forecasts, landscapes, and outdoor life",
+          "lessons": [
+            {
+              "id": "u8-l1",
+              "title": "Weather Conditions",
+              "objective": "Talk about sun, rain, wind, and temperature.",
+              "concepts": [
+                "c106",
+                "c107",
+                "c108",
+                "c109",
+                "c110"
+              ]
+            },
+            {
+              "id": "u8-l2",
+              "title": "Seasons & Sky",
+              "objective": "Describe seasonal changes and skies.",
+              "concepts": [
+                "c111",
+                "c112",
+                "c113",
+                "c114",
+                "c115"
+              ]
+            },
+            {
+              "id": "u8-l3",
+              "title": "Landscapes & Nature",
+              "objective": "Name rivers, mountains, trees, and oceans.",
+              "concepts": [
+                "c116",
+                "c117",
+                "c118",
+                "c119",
+                "c120"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u9",
+          "title": "Health, Body & Emergencies",
+          "subtitle": "Body parts, symptoms, clinics, and urgent help",
+          "lessons": [
+            {
+              "id": "u9-l1",
+              "title": "Body Parts",
+              "objective": "Identify essential parts of the body.",
+              "concepts": [
+                "c121",
+                "c122",
+                "c123",
+                "c124",
+                "c125"
+              ]
+            },
+            {
+              "id": "u9-l2",
+              "title": "Feeling Unwell",
+              "objective": "Explain pain, fever, and need for rest.",
+              "concepts": [
+                "c126",
+                "c127",
+                "c128",
+                "c129",
+                "c130"
+              ]
+            },
+            {
+              "id": "u9-l3",
+              "title": "Safety & Help",
+              "objective": "Call for urgent assistance clearly.",
+              "concepts": [
+                "c131",
+                "c132",
+                "c133",
+                "c134",
+                "c135"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u10",
+          "title": "Work, School & Hobbies",
+          "subtitle": "Occupations, studying, music, and free time",
+          "lessons": [
+            {
+              "id": "u10-l1",
+              "title": "Education & Study",
+              "objective": "Talk about classes, exams, and learning.",
+              "concepts": [
+                "c136",
+                "c137",
+                "c138",
+                "c139",
+                "c140"
+              ]
+            },
+            {
+              "id": "u10-l2",
+              "title": "Workplace Basics",
+              "objective": "Discuss jobs, offices, and schedules.",
+              "concepts": [
+                "c141",
+                "c142",
+                "c143",
+                "c144",
+                "c145"
+              ]
+            },
+            {
+              "id": "u10-l3",
+              "title": "Hobbies & Leisure",
+              "objective": "Share what you enjoy in your free time.",
+              "concepts": [
+                "c146",
+                "c147",
+                "c148",
+                "c149",
+                "c150"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tierIndex": 2,
+      "id": "sec-t3",
+      "tier": "Intermediate",
+      "title": "Independent Expression & Culture",
+      "description": "Emotions, storytelling, technology, traditions, and complex sentence connectors.",
+      "color": "#5b21b6",
+      "units": [
+        {
+          "id": "u11",
+          "title": "Emotions, Personality & Opinions",
+          "subtitle": "Express feelings, traits, and viewpoints",
+          "lessons": [
+            {
+              "id": "u11-l1",
+              "title": "Core Feelings",
+              "objective": "Describe emotional states with nuance.",
+              "concepts": [
+                "c151",
+                "c152",
+                "c153",
+                "c154",
+                "c155"
+              ]
+            },
+            {
+              "id": "u11-l2",
+              "title": "Personality Traits",
+              "objective": "Describe character and personal qualities.",
+              "concepts": [
+                "c156",
+                "c157",
+                "c158",
+                "c159",
+                "c160"
+              ]
+            },
+            {
+              "id": "u11-l3",
+              "title": "Sharing Opinions",
+              "objective": "Agree, disagree, and explain what you think.",
+              "concepts": [
+                "c161",
+                "c162",
+                "c163",
+                "c164",
+                "c165"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u12",
+          "title": "Social Life & Storytelling",
+          "subtitle": "Plans, invitations, memories, and experiences",
+          "lessons": [
+            {
+              "id": "u12-l1",
+              "title": "Invitations & Plans",
+              "objective": "Invite friends and coordinate events.",
+              "concepts": [
+                "c166",
+                "c167",
+                "c168",
+                "c169",
+                "c170"
+              ]
+            },
+            {
+              "id": "u12-l2",
+              "title": "Experiences & Memories",
+              "objective": "Narrate past adventures and personal milestones.",
+              "concepts": [
+                "c171",
+                "c172",
+                "c173",
+                "c174",
+                "c175"
+              ]
+            },
+            {
+              "id": "u12-l3",
+              "title": "Relationships & Advice",
+              "objective": "Offer advice, trust, and mutual respect.",
+              "concepts": [
+                "c176",
+                "c177",
+                "c178",
+                "c179",
+                "c180"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u13",
+          "title": "Technology, Internet & Media",
+          "subtitle": "Digital life, software, privacy, and news",
+          "lessons": [
+            {
+              "id": "u13-l1",
+              "title": "Devices & Connectivity",
+              "objective": "Discuss computers, phones, and networks.",
+              "concepts": [
+                "c181",
+                "c182",
+                "c183",
+                "c184",
+                "c185"
+              ]
+            },
+            {
+              "id": "u13-l2",
+              "title": "Software & Communication",
+              "objective": "Talk about apps, messages, and search.",
+              "concepts": [
+                "c186",
+                "c187",
+                "c188",
+                "c189",
+                "c190"
+              ]
+            },
+            {
+              "id": "u13-l3",
+              "title": "News & Digital Media",
+              "objective": "Discuss articles, podcasts, and journalism.",
+              "concepts": [
+                "c191",
+                "c192",
+                "c193",
+                "c194",
+                "c195"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u14",
+          "title": "Culture, Festivals & Traditions",
+          "subtitle": "Heritage, arts, cuisine, and hospitality",
+          "lessons": [
+            {
+              "id": "u14-l1",
+              "title": "Heritage & Customs",
+              "objective": "Talk about history and cultural traditions.",
+              "concepts": [
+                "c196",
+                "c197",
+                "c198",
+                "c199",
+                "c200"
+              ]
+            },
+            {
+              "id": "u14-l2",
+              "title": "Arts & Crafts",
+              "objective": "Discuss painting, dance, and architecture.",
+              "concepts": [
+                "c201",
+                "c202",
+                "c203",
+                "c204",
+                "c205"
+              ]
+            },
+            {
+              "id": "u14-l3",
+              "title": "Hospitality & Etiquette",
+              "objective": "Navigate social norms politely.",
+              "concepts": [
+                "c206",
+                "c207",
+                "c208",
+                "c209",
+                "c210"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u15",
+          "title": "Problem Solving & Connectors",
+          "subtitle": "Link ideas with cause, contrast, and condition",
+          "lessons": [
+            {
+              "id": "u15-l1",
+              "title": "Logical Connectors",
+              "objective": "Join clauses smoothly like a fluent speaker.",
+              "concepts": [
+                "c211",
+                "c212",
+                "c213",
+                "c214",
+                "c215"
+              ]
+            },
+            {
+              "id": "u15-l2",
+              "title": "Solutions & Decisions",
+              "objective": "Analyze options and resolve issues.",
+              "concepts": [
+                "c216",
+                "c217",
+                "c218",
+                "c219",
+                "c220"
+              ]
+            },
+            {
+              "id": "u15-l3",
+              "title": "Conditionals & Comparison",
+              "objective": "Compare choices and express conditions.",
+              "concepts": [
+                "c221",
+                "c222",
+                "c223",
+                "c224",
+                "c225"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tierIndex": 3,
+      "id": "sec-t4",
+      "tier": "Upper-Intermediate",
+      "title": "Professional, Scientific & Civic Fluency",
+      "description": "Business, economics, science, environment, law, and structured debate.",
+      "color": "#4c1d95",
+      "units": [
+        {
+          "id": "u16",
+          "title": "Career, Business & Negotiations",
+          "subtitle": "Strategy, contracts, leadership, and finance",
+          "lessons": [
+            {
+              "id": "u16-l1",
+              "title": "Workplace Leadership",
+              "objective": "Lead projects and collaborate professionally.",
+              "concepts": [
+                "c226",
+                "c227",
+                "c228",
+                "c229",
+                "c230"
+              ]
+            },
+            {
+              "id": "u16-l2",
+              "title": "Economics & Finance",
+              "objective": "Discuss budgets, investments, and markets.",
+              "concepts": [
+                "c231",
+                "c232",
+                "c233",
+                "c234",
+                "c235"
+              ]
+            },
+            {
+              "id": "u16-l3",
+              "title": "Negotiations & Agreements",
+              "objective": "Propose, negotiate, and reach consensus.",
+              "concepts": [
+                "c236",
+                "c237",
+                "c238",
+                "c239",
+                "c240"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u17",
+          "title": "Science, Innovation & Space",
+          "subtitle": "Research, hypotheses, medicine, and discovery",
+          "lessons": [
+            {
+              "id": "u17-l1",
+              "title": "Scientific Method",
+              "objective": "Discuss experiments, evidence, and theories.",
+              "concepts": [
+                "c241",
+                "c242",
+                "c243",
+                "c244",
+                "c245"
+              ]
+            },
+            {
+              "id": "u17-l2",
+              "title": "Engineering & Innovation",
+              "objective": "Talk about artificial intelligence, robotics, and design.",
+              "concepts": [
+                "c246",
+                "c247",
+                "c248",
+                "c249",
+                "c250"
+              ]
+            },
+            {
+              "id": "u17-l3",
+              "title": "Astronomy & Universe",
+              "objective": "Explore planets, galaxies, and physics.",
+              "concepts": [
+                "c251",
+                "c252",
+                "c253",
+                "c254",
+                "c255"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u18",
+          "title": "Environment, Climate & Sustainability",
+          "subtitle": "Ecology, conservation, and green transition",
+          "lessons": [
+            {
+              "id": "u18-l1",
+              "title": "Climate & Ecology",
+              "objective": "Discuss ecosystems and climate resilience.",
+              "concepts": [
+                "c256",
+                "c257",
+                "c258",
+                "c259",
+                "c260"
+              ]
+            },
+            {
+              "id": "u18-l2",
+              "title": "Sustainability & Conservation",
+              "objective": "Talk about renewable resources and recycling.",
+              "concepts": [
+                "c261",
+                "c262",
+                "c263",
+                "c264",
+                "c265"
+              ]
+            },
+            {
+              "id": "u18-l3",
+              "title": "Global Action",
+              "objective": "Address drought, forests, and ecological harmony.",
+              "concepts": [
+                "c266",
+                "c267",
+                "c268",
+                "c269",
+                "c270"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u19",
+          "title": "Society, Law & Governance",
+          "subtitle": "Rights, justice, democracy, and public policy",
+          "lessons": [
+            {
+              "id": "u19-l1",
+              "title": "Rights & Justice",
+              "objective": "Discuss equality, freedom, and civic dignity.",
+              "concepts": [
+                "c271",
+                "c272",
+                "c273",
+                "c274",
+                "c275"
+              ]
+            },
+            {
+              "id": "u19-l2",
+              "title": "Governance & Policy",
+              "objective": "Talk about legislation, courts, and transparency.",
+              "concepts": [
+                "c276",
+                "c277",
+                "c278",
+                "c279",
+                "c280"
+              ]
+            },
+            {
+              "id": "u19-l3",
+              "title": "Community & Global Issues",
+              "objective": "Discuss solidarity, peace, and human welfare.",
+              "concepts": [
+                "c281",
+                "c282",
+                "c283",
+                "c284",
+                "c285"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u20",
+          "title": "Critical Thinking & Debate",
+          "subtitle": "Arguments, perspective, nuance, and analysis",
+          "lessons": [
+            {
+              "id": "u20-l1",
+              "title": "Structured Argumentation",
+              "objective": "Present claims, counterarguments, and logic.",
+              "concepts": [
+                "c286",
+                "c287",
+                "c288",
+                "c289",
+                "c290"
+              ]
+            },
+            {
+              "id": "u20-l2",
+              "title": "Evaluating Ideas",
+              "objective": "Weigh trade-offs, bias, and credibility.",
+              "concepts": [
+                "c291",
+                "c292",
+                "c293",
+                "c294",
+                "c295"
+              ]
+            },
+            {
+              "id": "u20-l3",
+              "title": "Persuasion & Clarity",
+              "objective": "Articulate complex ideas persuasively.",
+              "concepts": [
+                "c296",
+                "c297",
+                "c298",
+                "c299",
+                "c300"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tierIndex": 4,
+      "id": "sec-t5",
+      "tier": "Mastery",
+      "title": "Super Advanced Mastery, Literature & Rhetoric",
+      "description": "Literature, philosophy, idioms, proverbs, diplomacy, and native-level nuance.",
+      "color": "#3b0764",
+      "units": [
+        {
+          "id": "u21",
+          "title": "Literature, Art & Aesthetics",
+          "subtitle": "Critique narratives, symbolism, and beauty",
+          "lessons": [
+            {
+              "id": "u21-l1",
+              "title": "Literary Craft",
+              "objective": "Analyze metaphors, themes, and narratives.",
+              "concepts": [
+                "c301",
+                "c302",
+                "c303",
+                "c304",
+                "c305"
+              ]
+            },
+            {
+              "id": "u21-l2",
+              "title": "Interpretation & Critique",
+              "objective": "Discuss irony, nuance, and ambiguity.",
+              "concepts": [
+                "c306",
+                "c307",
+                "c308",
+                "c309",
+                "c310"
+              ]
+            },
+            {
+              "id": "u21-l3",
+              "title": "Emotion in Art",
+              "objective": "Express nostalgia, awe, and catharsis.",
+              "concepts": [
+                "c311",
+                "c312",
+                "c313",
+                "c314",
+                "c315"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u22",
+          "title": "Philosophy, Ethics & Psychology",
+          "subtitle": "Explore consciousness, virtue, and meaning",
+          "lessons": [
+            {
+              "id": "u22-l1",
+              "title": "Ethics & Virtue",
+              "objective": "Discuss integrity, altruism, and moral dilemmas.",
+              "concepts": [
+                "c316",
+                "c317",
+                "c318",
+                "c319",
+                "c320"
+              ]
+            },
+            {
+              "id": "u22-l2",
+              "title": "Mind & Perception",
+              "objective": "Discuss consciousness, cognition, and resilience.",
+              "concepts": [
+                "c321",
+                "c322",
+                "c323",
+                "c324",
+                "c325"
+              ]
+            },
+            {
+              "id": "u22-l3",
+              "title": "Existential & Stoic Ideas",
+              "objective": "Reflect on impermanence, purpose, and equanimity.",
+              "concepts": [
+                "c326",
+                "c327",
+                "c328",
+                "c329",
+                "c330"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u23",
+          "title": "Idioms, Proverbs & Cultural Wisdom",
+          "subtitle": "Speak with authentic figurative expressions",
+          "lessons": [
+            {
+              "id": "u23-l1",
+              "title": "Timeless Proverbs",
+              "objective": "Use universal wisdom idioms naturally.",
+              "concepts": [
+                "c331",
+                "c332",
+                "c333",
+                "c334",
+                "c335"
+              ]
+            },
+            {
+              "id": "u23-l2",
+              "title": "Everyday Figurative Idioms",
+              "objective": "Understand colorful native expressions.",
+              "concepts": [
+                "c336",
+                "c337",
+                "c338",
+                "c339",
+                "c340"
+              ]
+            },
+            {
+              "id": "u23-l3",
+              "title": "Strategic & Life Metaphors",
+              "objective": "Master nuanced idiomatic phrasing.",
+              "concepts": [
+                "c341",
+                "c342",
+                "c343",
+                "c344",
+                "c345"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u24",
+          "title": "Formal, Diplomatic & Legal Discourse",
+          "subtitle": "High-register speeches, treaties, and academia",
+          "lessons": [
+            {
+              "id": "u24-l1",
+              "title": "Diplomacy & Treaties",
+              "objective": "Communicate with formal international precision.",
+              "concepts": [
+                "c346",
+                "c347",
+                "c348",
+                "c349",
+                "c350"
+              ]
+            },
+            {
+              "id": "u24-l2",
+              "title": "Academic & Executive Register",
+              "objective": "Write formal reports, abstracts, and proposals.",
+              "concepts": [
+                "c351",
+                "c352",
+                "c353",
+                "c354",
+                "c355"
+              ]
+            },
+            {
+              "id": "u24-l3",
+              "title": "High-Register Transitions",
+              "objective": "Structure formal speeches and essays effortlessly.",
+              "concepts": [
+                "c356",
+                "c357",
+                "c358",
+                "c359",
+                "c360"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "u25",
+          "title": "Nuance, Rhetoric & Native Mastery",
+          "subtitle": "Master subtle tone, persuasion, and precision",
+          "lessons": [
+            {
+              "id": "u25-l1",
+              "title": "Rhetorical Precision",
+              "objective": "Choose the exact word for subtle shades of meaning.",
+              "concepts": [
+                "c361",
+                "c362",
+                "c363",
+                "c364",
+                "c365"
+              ]
+            },
+            {
+              "id": "u25-l2",
+              "title": "Subtle Modifiers & Tone",
+              "objective": "Calibrate politeness, certainty, and emphasis.",
+              "concepts": [
+                "c366",
+                "c367",
+                "c368",
+                "c369",
+                "c370"
+              ]
+            },
+            {
+              "id": "u25-l3",
+              "title": "Capstone Mastery Expressions",
+              "objective": "Speak with effortless confidence at C2 / Mastery level.",
+              "concepts": [
+                "c371",
+                "c372",
+                "c373",
+                "c374",
+                "c375"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

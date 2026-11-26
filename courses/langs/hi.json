@@ -1,0 +1,2285 @@
+{
+  "code": "hi",
+  "name": "Hindi",
+  "nativeName": "हिन्दी",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Hindi Greetings & Politeness: Hindi uses Devanagari script (left-to-right) with a top horizontal bar (shirorekhā) and a vertical bar (।) as a full stop. Use 'नमस्ते' (Namaste) at any time of day, and add 'जी' (jī) for polite respect. Word order is Subject–Object–Verb (SOV).",
+    "u2": "Pronouns, Gender & Honorifics: Hindi has three levels of 'you': तू (tū, intimate), तुम (tum, familiar), and आप (āp, respectful/formal — safest with strangers). Nouns have grammatical gender (masculine or feminine), which governs possessive 'मेरा/मेरी/मेरे' (my) and verb endings.",
+    "u3": "Numbers, Time & Postpositions: Unlike English prepositions, Hindi uses postpositions placed after the noun (में = in, पर = on, से = from, को = to). Watch how masculine -आ nouns change to the oblique form -ए before postpositions (e.g., कमरा -> कमरे में).",
+    "u4": "Dining, 'चाहिए' & Oblique Subjects: To say 'I want/need', Hindi often uses the dative construction 'मुझे ... चाहिए' (to me ... is needed). Similarly, hunger and thirst use 'मुझे भूख लगी है' (hunger has struck me) and 'मुझे प्यास लगी है'.",
+    "u5": "Core Verbs & Present Habitual: Hindi verb infinitives end in -ना (जाना = to go, खाना = to eat). Remove -ना to get the stem, then add -ता/-ती/-ते + होना (हूँ/है/हैं) for habitual present: 'मैं जाता हूँ' (m.) / 'मैं जाती हूँ' (f.).",
+    "u6": "Directions, Imperatives & Questions: Polite requests use the -इए ending on verb stems with आप: 'कृपया बैठिए' (please sit), 'सीधे जाइए' (go straight). Question words like कहाँ (where) and क्या (what) usually sit right before the verb.",
+    "u7": "Shopping, Comparisons & Adjectives: Adjectives ending in -आ agree with the noun in gender and number (नया कोट, नई कमीज़, नए जूते), while others stay invariable (सफ़ेद, लाल, सुंदर). Ask prices with 'यह कितने का है?' (masculine) or 'कितने की है?' (feminine).",
+    "u8": "Weather, Seasons & Continuous Tense: The present continuous uses stem + रहा/रही/रहे + होना: 'बारिश हो रही है' (it is raining). Weather expressions frequently use the verb 'होना' (to be/happen) or 'चलना' (हवा चल रही है = wind is blowing).",
+    "u9": "Health, Body & Obligation ('चाहिए' / 'पड़ना'): Express advice with infinitive + चाहिए ('आपको डॉक्टर से मिलना चाहिए' = you should see a doctor). Express compulsion with 'पड़ना' and express pain with 'मेरे सिर में दर्द है' (there is pain in my head).",
+    "u10": "Work, Study & Infinitives as Nouns: Hindi infinitives act as gerunds and take postpositions in the oblique -ने form: 'संगीत सुनने से आराम मिलता है' (listening to music brings relief). Use 'के लिए' (for) and 'से' (from/by/with) to link actions.",
+    "u11": "Emotions, Opinions & Conjunct Verbs: Many Hindi verbs are formed by pairing a noun or adjective with करना (to do, active) or होना (to be/become, experiential): चिंता करना (to worry), सहमत होना (to agree), महसूस करना (to feel).",
+    "u12": "Past Tense & Ergative 'ने': In the simple past of transitive verbs, Hindi uses the ergative postposition 'ने' after the subject, and the verb agrees with the object's gender and number: 'दादाजी ने एक रोचक कहानी सुनाई' (कहानी is feminine -> सुनाई).",
+    "u13": "Technology & Compound Verbs: Modern Hindi blends native verbs with digital terms cleanly. Notice compound verbs (stem + vector verb like लेना, देना, जाना) that add nuance of completion or benefit: 'भेज दिया' (sent completely), 'डाउनलोड कर सकते हैं' (can download).",
+    "u14": "Culture, Passive Voice & Heritage: Form the passive in Hindi with the past participle + जाना: 'यह लोकगीत पीढ़ियों से गाया जाता रहा है' (this folk song has been sung for generations). Cultural vocabulary often draws on Sanskrit-origin Tatsama nouns.",
+    "u15": "Connectors & Conditional Clauses: Pair 'अगर/यदि' (if) with 'तो' (then), and 'हालाँकि/यद्यपि' (although) with 'फिर भी/तथापि' (still/yet). Causal and contrastive connectors (क्योंकि, हालांकि, इसलिए, जबकि, के बजाय) build fluent B2 discourse.",
+    "u16": "Business Register & Formal Conjuncts: Professional Hindi favors nominalized constructions with करना/होना (समीक्षा करना = to review, हस्ताक्षर करना = to sign, समझौता करना = to reach an agreement) and respectful passive forms in negotiations.",
+    "u17": "Science & Tatsama Word Formation: Scientific Hindi extensively uses Sanskrit prefixes (प्र-, सं-, वि-, अनु-, परि-) and suffixes (-ता, -त्व, -इक) such as अनुसंधान (research), प्रयोगशाला (laboratory), और सटीकता (precision). Learning roots unlocks hundreds of terms.",
+    "u18": "Environment & Participles: Use imperfective (-ता हुआ) and perfective (-आ हुआ) participles as adjectives: 'बदलते जलवायु पैटर्न' (changing climate patterns), 'बनाए गए निर्णय' (decisions made). Notice how '-करण' forms process nouns like नवीनीकरण.",
+    "u19": "Civic & Legal Structures: Institutional Hindi employs precise postpositional phrases like 'के अंतर्गत' (under), 'के माध्यम से' (through), and 'के प्रति' (toward). Watch how 'करना आवश्यक है' and 'अनिवार्य है' convey legal and civic duty.",
+    "u20": "Critical Thinking & Subjunctive Mood: Use the Hindi subjunctive (without गा/गी/गे or है) for hypotheticals, careful suggestions, and polite inquiry: 'क्या आप स्पष्ट कर सकें...' or 'निष्कर्ष पर पहुँचने से पहले प्रतीक्षा करें'.",
+    "u21": "Literary Hindi & Aesthetic Nuance: Literary and critical prose relies on rich Tatsama compounds (प्रतीकात्मकता, सौंदर्यशास्त्र, भावात्मक अनुगूँज) and expressive correlatives (जहाँ... वहीं..., जितना... उतना...) to balance contrast and rhythm.",
+    "u22": "Philosophy, Ethics & Abstract Nouns: Abstract philosophical nouns in Hindi frequently end in -ता (चेतना, विनम्रता, स्वायत्तता, अनित्यता) or -त्व (अस्तित्व, दायित्व). Practice pairing them with verbs like स्वीकार करना, चिंतन करना, and विकसित होना.",
+    "u23": "Idioms (मुहावरे) & Proverbs (लोकोक्तियाँ): Hindi मुहावरे are verbal phrases that conjugate in tense and gender (जैसे 'चुप्पी तोड़ना', 'रात-दिन एक करना'), while लोकोक्तियाँ are complete standalone proverbs (जैसे 'एकता में बल है'). Always use them in idiomatic context.",
+    "u24": "Formal, Diplomatic & Academic Discourse: High-register Hindi uses elevated connectors (के बावजूद, फलस्वरूप, इसके अतिरिक्त, के आलोक में, सादर निवेदन है) and precise Sanskritized terminology for treaties, courts, and peer-reviewed research.",
+    "u25": "Rhetoric, Precision & Native Mastery: At C2 mastery, control subtle register shifts between warm everyday Hindustani and crisp formal Manak Hindi, using rhetorical framing phrases (निःसंदेह, उसी प्रकार, समग्र रूप से) for persuasive clarity."
+  },
+  "items": {
+    "c001": {
+      "t": "नमस्ते",
+      "r": "Namaste",
+      "x": "नमस्ते, आपसे मिलकर बहुत खुशी हुई।",
+      "xr": "Namaste, āpse milkar bahut khushī huī."
+    },
+    "c002": {
+      "t": "सुप्रभात",
+      "r": "Suprabhāt",
+      "x": "सुप्रभात, क्या आपकी नींद अच्छी रही?",
+      "xr": "Suprabhāt, kyā āpkī nīnd achchhī rahī?"
+    },
+    "c003": {
+      "t": "नमस्कार",
+      "r": "Namaskār",
+      "x": "सभी को दोपहर का नमस्कार।",
+      "xr": "Sabhī ko dopahar kā namaskār."
+    },
+    "c004": {
+      "t": "शुभ संध्या",
+      "r": "Shubh sandhyā",
+      "x": "शुभ संध्या, घर में आपका स्वागत है।",
+      "xr": "Shubh sandhyā, ghar mein āpkā svāgat hai."
+    },
+    "c005": {
+      "t": "शुभ रात्रि",
+      "r": "Shubh rātri",
+      "x": "शुभ रात्रि, कल मिलते हैं।",
+      "xr": "Shubh rātri, kal milte hain."
+    },
+    "c006": {
+      "t": "धन्यवाद",
+      "r": "Dhanyavād",
+      "x": "आपकी मदद के लिए बहुत-बहुत धन्यवाद।",
+      "xr": "Āpkī madad ke lie bahut-bahut dhanyavād."
+    },
+    "c007": {
+      "t": "आपका स्वागत है",
+      "r": "Āpkā svāgat hai",
+      "x": "आपका स्वागत है, कभी भी कहिए।",
+      "xr": "Āpkā svāgat hai, kabhī bhī kahie."
+    },
+    "c008": {
+      "t": "कृपया",
+      "r": "Kṛpayā",
+      "x": "कृपया अंदर आइए और बैठिए।",
+      "xr": "Kṛpayā andar āie aur baiṭhie."
+    },
+    "c009": {
+      "t": "माफ़ कीजिए",
+      "r": "Māf kījie",
+      "x": "माफ़ कीजिए, क्या मैं एक सवाल पूछ सकता हूँ?",
+      "xr": "Māf kījie, kyā main ek savāl pūchh saktā hūn?"
+    },
+    "c010": {
+      "t": "मुझे खेद है",
+      "r": "Mujhe khed hai",
+      "x": "देर से आने के लिए मुझे खेद है।",
+      "xr": "Der se āne ke lie mujhe khed hai."
+    },
+    "c011": {
+      "t": "हाँ",
+      "r": "Hān",
+      "x": "हाँ, मैं पूरी तरह समझ गया।",
+      "xr": "Hān, main pūrī tarah samajh gayā."
+    },
+    "c012": {
+      "t": "नहीं",
+      "r": "Nahīn",
+      "x": "नहीं, धन्यवाद, मैं ठीक हूँ।",
+      "xr": "Nahīn, dhanyavād, main ṭhīk hūn."
+    },
+    "c013": {
+      "t": "अलविदा",
+      "r": "Alvidā",
+      "x": "अलविदा, आपकी यात्रा मंगलमय हो।",
+      "xr": "Alvidā, āpkī yātrā mangalmay ho."
+    },
+    "c014": {
+      "t": "मेरा नाम ... है",
+      "r": "Merā nām ... hai",
+      "x": "मेरा नाम माया है।",
+      "xr": "Merā nām Māyā hai."
+    },
+    "c015": {
+      "t": "आप कैसे हैं?",
+      "r": "Āp kaise hain?",
+      "x": "आज आप कैसे हैं?",
+      "xr": "Āj āp kaise hain?"
+    },
+    "c016": {
+      "t": "मैं",
+      "r": "Main",
+      "x": "मैं एक नई भाषा सीख रहा हूँ।",
+      "xr": "Main ek naī bhāṣā sīkh rahā hūn."
+    },
+    "c017": {
+      "t": "आप",
+      "r": "Āp",
+      "x": "आप बहुत स्पष्ट बोलते हैं।",
+      "xr": "Āp bahut spaṣṭ bolte hain."
+    },
+    "c018": {
+      "t": "वह (पुल्लिंग)",
+      "r": "Vah (m.)",
+      "x": "वह मेरा बड़ा भाई है।",
+      "xr": "Vah merā baṛā bhāī hai."
+    },
+    "c019": {
+      "t": "वह (स्त्रीलिंग)",
+      "r": "Vah (f.)",
+      "x": "वह एक कुशल डॉक्टर हैं।",
+      "xr": "Vah ek kushal ḍŏkṭar hain."
+    },
+    "c020": {
+      "t": "हम",
+      "r": "Ham",
+      "x": "हम एक ही शहर में रहते हैं।",
+      "xr": "Ham ek hī shahar mein rahte hain."
+    },
+    "c021": {
+      "t": "माँ",
+      "r": "Mān",
+      "x": "मेरी माँ स्वादिष्ट खाना बनाती हैं।",
+      "xr": "Merī mān svādiṣṭ khānā banātī hain."
+    },
+    "c022": {
+      "t": "पिता",
+      "r": "Pitā",
+      "x": "मेरे पिता हर सुबह अख़बार पढ़ते हैं।",
+      "xr": "Mere pitā har subah akhbār paṛhte hain."
+    },
+    "c023": {
+      "t": "भाई",
+      "r": "Bhāī",
+      "x": "मेरा भाई फ़ुटबॉल खेलता है।",
+      "xr": "Merā bhāī fuṭbŏl kheltā hai."
+    },
+    "c024": {
+      "t": "बहन",
+      "r": "Bahan",
+      "x": "मेरी बहन चिकित्सा की पढ़ाई करती है।",
+      "xr": "Merī bahan chikitsā kī paṛhāī kartī hai."
+    },
+    "c025": {
+      "t": "परिवार",
+      "r": "Parivār",
+      "x": "मेरा परिवार हर रविवार को साथ मिलता है।",
+      "xr": "Merā parivār har ravivār ko sāth miltā hai."
+    },
+    "c026": {
+      "t": "दोस्त",
+      "r": "Dost",
+      "x": "वह मेरी सबसे क़रीबी दोस्त है।",
+      "xr": "Vah merī sabse qarībī dost hai."
+    },
+    "c027": {
+      "t": "बच्चा",
+      "r": "Bachchā",
+      "x": "बच्चा एक चित्र बना रहा है।",
+      "xr": "Bachchā ek chitra banā rahā hai."
+    },
+    "c028": {
+      "t": "शिक्षक",
+      "r": "Shikṣak",
+      "x": "हमारे शिक्षक व्याकरण स्पष्ट रूप से समझाते हैं।",
+      "xr": "Hamāre shikṣak vyākaraṇ spaṣṭ rūp se samjhāte hain."
+    },
+    "c029": {
+      "t": "विद्यार्थी",
+      "r": "Vidyārthī",
+      "x": "हर विद्यार्थी अपनी कॉपी लेकर आया।",
+      "xr": "Har vidyārthī apnī kŏpī lekar āyā."
+    },
+    "c030": {
+      "t": "पड़ोसी",
+      "r": "Paṛosī",
+      "x": "हमारे पड़ोसी बहुत दयालु हैं।",
+      "xr": "Hamāre paṛosī bahut dayālu hain."
+    },
+    "c031": {
+      "t": "एक",
+      "r": "Ek",
+      "x": "मुझे एक कप चाय चाहिए।",
+      "xr": "Mujhe ek kap chāy chāhie."
+    },
+    "c032": {
+      "t": "दो",
+      "r": "Do",
+      "x": "कृपया हमें दो टिकट दीजिए।",
+      "xr": "Kṛpayā hamein do ṭikaṭ dījie."
+    },
+    "c033": {
+      "t": "तीन",
+      "r": "Tīn",
+      "x": "मेज़ पर तीन किताबें रखी हैं।",
+      "xr": "Mez par tīn kitābein rakhī hain."
+    },
+    "c034": {
+      "t": "पाँच",
+      "r": "Pānch",
+      "x": "कक्षा पाँच मिनट में शुरू होती है।",
+      "xr": "Kakṣā pānch minaṭ mein shurū hotī hai."
+    },
+    "c035": {
+      "t": "दस",
+      "r": "Das",
+      "x": "उसने एक से दस तक गिना।",
+      "xr": "Usne ek se das tak ginā."
+    },
+    "c036": {
+      "t": "आज",
+      "r": "Āj",
+      "x": "आज बहुत सुहावना और धूप वाला दिन है।",
+      "xr": "Āj bahut suhāvnā aur dhūp vālā din hai."
+    },
+    "c037": {
+      "t": "कल (आने वाला)",
+      "r": "Kal (tomorrow)",
+      "x": "कल हम संग्रहालय देखने जाएँगे।",
+      "xr": "Kal ham sangrahālay dekhne jāenge."
+    },
+    "c038": {
+      "t": "कल (बीता हुआ)",
+      "r": "Kal (yesterday)",
+      "x": "कल पूरी दोपहर बारिश होती रही।",
+      "xr": "Kal pūrī dopahar bārish hotī rahī."
+    },
+    "c039": {
+      "t": "अभी",
+      "r": "Abhī",
+      "x": "मैं अभी निकलने के लिए तैयार हूँ।",
+      "xr": "Main abhī nikalne ke lie taiyār hūn."
+    },
+    "c040": {
+      "t": "बाद में",
+      "r": "Bād mein",
+      "x": "आइए इस बारे में बाद में बात करते हैं।",
+      "xr": "Āie is bāre mein bād mein bāt karte hain."
+    },
+    "c041": {
+      "t": "सुबह",
+      "r": "Subah",
+      "x": "मैं हर सुबह व्यायाम करता हूँ।",
+      "xr": "Main har subah vyāyām kartā hūn."
+    },
+    "c042": {
+      "t": "रात",
+      "r": "Rāt",
+      "x": "रात में तारे चमकते हैं।",
+      "xr": "Rāt mein tāre chamakte hain."
+    },
+    "c043": {
+      "t": "सप्ताह",
+      "r": "Saptāh",
+      "x": "यह सप्ताह बहुत व्यस्त रहा है।",
+      "xr": "Yah saptāh bahut vyast rahā hai."
+    },
+    "c044": {
+      "t": "महीना",
+      "r": "Mahīnā",
+      "x": "अगले महीने हम विदेश यात्रा करेंगे।",
+      "xr": "Agle mahīne ham videsh yātrā karenge."
+    },
+    "c045": {
+      "t": "साल",
+      "r": "Sāl",
+      "x": "आप सभी को नव वर्ष की हार्दिक शुभकामनाएँ।",
+      "xr": "Āp sabhī ko nav varṣ kī hārdik shubhkāmnāen."
+    },
+    "c046": {
+      "t": "पानी",
+      "r": "Pānī",
+      "x": "क्या मुझे एक गिलास पानी मिल सकता है?",
+      "xr": "Kyā mujhe ek gilās pānī mil saktā hai?"
+    },
+    "c047": {
+      "t": "चावल",
+      "r": "Chāval",
+      "x": "हम करी के साथ उबले हुए चावल खाते हैं।",
+      "xr": "Ham karī ke sāth uble hue chāval khāte hain."
+    },
+    "c048": {
+      "t": "रोटी",
+      "r": "Roṭī",
+      "x": "ताज़ी रोटी की खुशबू बहुत अच्छी लगती है।",
+      "xr": "Tāzī roṭī kī khushbū bahut achchhī lagtī hai."
+    },
+    "c049": {
+      "t": "फल",
+      "r": "Phal",
+      "x": "रोज़ाना भरपूर ताज़े फल खाएँ।",
+      "xr": "Rozānā bharpūr tāze phal khāen."
+    },
+    "c050": {
+      "t": "दूध",
+      "r": "Dūdh",
+      "x": "क्या आप अपनी कॉफ़ी में दूध लेते हैं?",
+      "xr": "Kyā āp apnī kŏfī mein dūdh lete hain?"
+    },
+    "c051": {
+      "t": "चाय",
+      "r": "Chāy",
+      "x": "सर्दियों में गरम चाय बहुत सुकून देती है।",
+      "xr": "Sardiyon mein garam chāy bahut sukūn detī hai."
+    },
+    "c052": {
+      "t": "कॉफ़ी",
+      "r": "Kŏfī",
+      "x": "मैं सुबह बिना दूध की कॉफ़ी पीता हूँ।",
+      "xr": "Main subah binā dūdh kī kŏfī pītā hūn."
+    },
+    "c053": {
+      "t": "नाश्ता",
+      "r": "Nāshtā",
+      "x": "नाश्ता दिन का पहला भोजन होता है।",
+      "xr": "Nāshtā din kā pahlā bhojan hotā hai."
+    },
+    "c054": {
+      "t": "दोपहर का भोजन",
+      "r": "Dopahar kā bhojan",
+      "x": "दोपहर के भोजन के लिए हम कहाँ चलें?",
+      "xr": "Dopahar ke bhojan ke lie ham kahān chalein?"
+    },
+    "c055": {
+      "t": "रात का खाना",
+      "r": "Rāt kā khānā",
+      "x": "रात का खाना सात बजे तैयार होगा।",
+      "xr": "Rāt kā khānā sāt baje taiyār hogā."
+    },
+    "c056": {
+      "t": "स्वादिष्ट",
+      "r": "Svādiṣṭ",
+      "x": "यह व्यंजन सचमुच बहुत स्वादिष्ट है।",
+      "xr": "Yah vyanjan sachmuch bahut svādiṣṭ hai."
+    },
+    "c057": {
+      "t": "भूखा",
+      "r": "Bhūkhā",
+      "x": "टहलने के बाद मुझे बहुत भूख लगी है।",
+      "xr": "Ṭahalne ke bād mujhe bahut bhūkh lagī hai."
+    },
+    "c058": {
+      "t": "प्यासा",
+      "r": "Pyāsā",
+      "x": "इस गर्मी में मुझे प्यास लग रही है।",
+      "xr": "Is garmī mein mujhe pyās lag rahī hai."
+    },
+    "c059": {
+      "t": "मेनू",
+      "r": "Menū",
+      "x": "कृपया क्या मैं मेनू देख सकता हूँ?",
+      "xr": "Kṛpayā kyā main menū dekh saktā hūn?"
+    },
+    "c060": {
+      "t": "बिल",
+      "r": "Bil",
+      "x": "कृपया क्या हमें बिल मिल सकता है?",
+      "xr": "Kṛpayā kyā hamein bil mil saktā hai?"
+    },
+    "c061": {
+      "t": "घर",
+      "r": "Ghar",
+      "x": "उनके घर में एक छोटा-सा बगीचा है।",
+      "xr": "Unke ghar mein ek chhoṭā-sā bagīchā hai."
+    },
+    "c062": {
+      "t": "कमरा",
+      "r": "Kamrā",
+      "x": "मेरे कमरे में एक बड़ी खिड़की है।",
+      "xr": "Mere kamre mein ek baṛī khiṛkī hai."
+    },
+    "c063": {
+      "t": "मेज़",
+      "r": "Mez",
+      "x": "चाबियाँ मेज़ पर रख दो।",
+      "xr": "Chābiyān mez par rakh do."
+    },
+    "c064": {
+      "t": "किताब",
+      "r": "Kitāb",
+      "x": "यह किताब पढ़ने में आसान है।",
+      "xr": "Yah kitāb paṛhne mein āsān hai."
+    },
+    "c065": {
+      "t": "दरवाज़ा",
+      "r": "Darvāzā",
+      "x": "कृपया दरवाज़ा धीरे से बंद कीजिए।",
+      "xr": "Kṛpayā darvāzā dhīre se band kījie."
+    },
+    "c066": {
+      "t": "लाल",
+      "r": "Lāl",
+      "x": "उसने एक चमकदार लाल छाता ख़रीदा।",
+      "xr": "Usne ek chamakdār lāl chhātā kharīdā."
+    },
+    "c067": {
+      "t": "नीला",
+      "r": "Nīlā",
+      "x": "आसमान साफ़ और नीला है।",
+      "xr": "Āsmān sāf aur nīlā hai."
+    },
+    "c068": {
+      "t": "सफ़ेद",
+      "r": "Safed",
+      "x": "बर्फ़ ने ज़मीन को सफ़ेद चादर से ढक दिया।",
+      "xr": "Barf ne zamīn ko safed chādar se ḍhak diyā."
+    },
+    "c069": {
+      "t": "बड़ा",
+      "r": "Baṛā",
+      "x": "वे एक बड़े शहर में रहने चले गए।",
+      "xr": "Ve ek baṛe shahar mein rahne chale gae."
+    },
+    "c070": {
+      "t": "छोटा",
+      "r": "Chhoṭā",
+      "x": "डाली पर एक छोटी चिड़िया गा रही थी।",
+      "xr": "Ḍālī par ek chhoṭī chiṛiyā gā rahī thī."
+    },
+    "c071": {
+      "t": "जाना",
+      "r": "Jānā",
+      "x": "मैं रेलगाड़ी से काम पर जाता हूँ।",
+      "xr": "Main relgāṛī se kām par jātā hūn."
+    },
+    "c072": {
+      "t": "आना",
+      "r": "Ānā",
+      "x": "कृपया हमारे उत्सव में ज़रूर आइएगा।",
+      "xr": "Kṛpayā hamāre utsav mein zarūr āiegā."
+    },
+    "c073": {
+      "t": "खाना",
+      "r": "Khānā",
+      "x": "हम आठ बजे साथ में रात का खाना खाते हैं।",
+      "xr": "Ham āṭh baje sāth mein rāt kā khānā khāte hain."
+    },
+    "c074": {
+      "t": "पीना",
+      "r": "Pīnā",
+      "x": "पर्याप्त पानी पीना याद रखें।",
+      "xr": "Paryāpt pānī pīnā yād rakhein."
+    },
+    "c075": {
+      "t": "सोना",
+      "r": "Sonā",
+      "x": "मैं हर रात आठ घंटे सोने की कोशिश करता हूँ।",
+      "xr": "Main har rāt āṭh ghanṭe sone kī koshish kartā hūn."
+    },
+    "c076": {
+      "t": "रेलगाड़ी",
+      "r": "Relgāṛī",
+      "x": "एक्सप्रेस रेलगाड़ी दोपहर बारह बजे पहुँचती है।",
+      "xr": "Ekspres relgāṛī dopahar bārah baje pahunchtī hai."
+    },
+    "c077": {
+      "t": "बस",
+      "r": "Bas",
+      "x": "शहर के केंद्र के लिए दूसरी बस पकड़िए।",
+      "xr": "Shahar ke kendra ke lie dūsrī bas pakaṛie."
+    },
+    "c078": {
+      "t": "हवाई अड्डा",
+      "r": "Havāī aḍḍā",
+      "x": "हम दो घंटे पहले हवाई अड्डे पहुँच गए।",
+      "xr": "Ham do ghanṭe pahle havāī aḍḍe pahunch gae."
+    },
+    "c079": {
+      "t": "टिकट",
+      "r": "Ṭikaṭ",
+      "x": "बाहर निकलने तक अपना टिकट संभालकर रखें।",
+      "xr": "Bāhar nikalne tak apnā ṭikaṭ sambhālkar rakhein."
+    },
+    "c080": {
+      "t": "स्टेशन",
+      "r": "Sṭeshan",
+      "x": "स्टेशन यहाँ से पाँच मिनट की दूरी पर है।",
+      "xr": "Sṭeshan yahān se pānch minaṭ kī dūrī par hai."
+    },
+    "c081": {
+      "t": "बाएँ",
+      "r": "Bāen",
+      "x": "अगली ट्रैफ़िक लाइट पर बाएँ मुड़िए।",
+      "xr": "Aglī ṭraifik lāiṭ par bāen muṛie."
+    },
+    "c082": {
+      "t": "दाएँ",
+      "r": "Dāen",
+      "x": "दवा की दुकान आपके दाईं ओर है।",
+      "xr": "Davā kī dukān āpke dāīn or hai."
+    },
+    "c083": {
+      "t": "सीधे",
+      "r": "Sīdhe",
+      "x": "दो ब्लॉक तक सीधे चलिए।",
+      "xr": "Do blŏk tak sīdhe chalie."
+    },
+    "c084": {
+      "t": "पास",
+      "r": "Pās",
+      "x": "क्या यहाँ के पास कोई होटल है?",
+      "xr": "Kyā yahān ke pās koī hoṭal hai?"
+    },
+    "c085": {
+      "t": "दूर",
+      "r": "Dūr",
+      "x": "समुद्र तट शहर से ज़्यादा दूर नहीं है।",
+      "xr": "Samudra taṭ shahar se zyādā dūr nahīn hai."
+    },
+    "c086": {
+      "t": "नक़्शा",
+      "r": "Naqshā",
+      "x": "आइए नक़्शे पर रास्ता देखते हैं।",
+      "xr": "Āie naqshe par rāstā dekhte hain."
+    },
+    "c087": {
+      "t": "होटल",
+      "r": "Hoṭal",
+      "x": "हमने शहर के बीच एक शांत होटल बुक किया।",
+      "xr": "Hamne shahar ke bīch ek shānt hoṭal buk kiyā."
+    },
+    "c088": {
+      "t": "पासपोर्ट",
+      "r": "Pāsporṭ",
+      "x": "अपना पासपोर्ट घर पर मत भूलना।",
+      "xr": "Apnā pāsporṭ ghar par mat bhūlnā."
+    },
+    "c089": {
+      "t": "सामान",
+      "r": "Sāmān",
+      "x": "आज मेरा सामान काफ़ी भारी है।",
+      "xr": "Āj merā sāmān kāfī bhārī hai."
+    },
+    "c090": {
+      "t": "कहाँ है?",
+      "r": "Kahān hai?",
+      "x": "सबसे नज़दीकी मेट्रो निकास कहाँ है?",
+      "xr": "Sabse nazdīkī meṭro nikās kahān hai?"
+    },
+    "c091": {
+      "t": "पैसा",
+      "r": "Paisā",
+      "x": "हर महीने अपने पैसों का कुछ हिस्सा बचाएँ।",
+      "xr": "Har mahīne apne paison kā kuchh hissā bachāen."
+    },
+    "c092": {
+      "t": "क़ीमत",
+      "r": "Qīmat",
+      "x": "इस जैकेट की क़ीमत क्या है?",
+      "xr": "Is jaikeṭ kī qīmat kyā hai?"
+    },
+    "c093": {
+      "t": "सस्ता",
+      "r": "Sastā",
+      "x": "सुबह के बाज़ार में सब्ज़ियाँ सस्ती मिलती हैं।",
+      "xr": "Subah ke bāzār mein sabziyān sastī miltī hain."
+    },
+    "c094": {
+      "t": "महँगा",
+      "r": "Mahangā",
+      "x": "वह घड़ी मेरे लिए बहुत महँगी है।",
+      "xr": "Vah ghaṛī mere lie bahut mahangī hai."
+    },
+    "c095": {
+      "t": "छूट",
+      "r": "Chhūṭ",
+      "x": "क्या छात्रों के लिए कोई छूट उपलब्ध है?",
+      "xr": "Kyā chhātron ke lie koī chhūṭ uplabdh hai?"
+    },
+    "c096": {
+      "t": "दुकान",
+      "r": "Dukān",
+      "x": "कोने वाली वह दुकान आठ बजे खुलती है।",
+      "xr": "Kone vālī vah dukān āṭh baje khultī hai."
+    },
+    "c097": {
+      "t": "बाज़ार",
+      "r": "Bāzār",
+      "x": "शनिवार को स्थानीय बाज़ार में खूब रौनक रहती है।",
+      "xr": "Shanivār ko sthānīy bāzār mein khūb raunak rahtī hai."
+    },
+    "c098": {
+      "t": "ख़रीदना",
+      "r": "Kharīdnā",
+      "x": "मैं एक गरम कोट ख़रीदना चाहता हूँ।",
+      "xr": "Main ek garam koṭ kharīdnā chāhtā hūn."
+    },
+    "c099": {
+      "t": "भुगतान करना",
+      "r": "Bhugtān karnā",
+      "x": "क्या मैं कार्ड या नक़द से भुगतान कर सकता हूँ?",
+      "xr": "Kyā main kārḍ yā naqad se bhugtān kar saktā hūn?"
+    },
+    "c100": {
+      "t": "रसीद",
+      "r": "Rasīd",
+      "x": "कृपया मुझे रसीद दे दीजिए।",
+      "xr": "Kṛpayā mujhe rasīd de dījie."
+    },
+    "c101": {
+      "t": "कमीज़",
+      "r": "Kamīz",
+      "x": "यह सूती कमीज़ बहुत आरामदायक है।",
+      "xr": "Yah sūtī kamīz bahut ārāmdāyak hai."
+    },
+    "c102": {
+      "t": "जूते",
+      "r": "Jūte",
+      "x": "पहाड़ चढ़ने के लिए मुझे मज़बूत जूते चाहिए।",
+      "xr": "Pahāṛ chaṛhne ke lie mujhe mazbūt jūte chāhie."
+    },
+    "c103": {
+      "t": "बैग",
+      "r": "Baig",
+      "x": "उसके पास चमड़े का एक बैग था।",
+      "xr": "Uske pās chamṛe kā ek baig thā."
+    },
+    "c104": {
+      "t": "नया",
+      "r": "Nayā",
+      "x": "उसने आज अपनी नई जैकेट पहनी।",
+      "xr": "Usne āj apnī naī jaikeṭ pahnī."
+    },
+    "c105": {
+      "t": "नाप",
+      "r": "Nāp",
+      "x": "क्या यह मध्यम नाप में उपलब्ध है?",
+      "xr": "Kyā yah madhyam nāp mein uplabdh hai?"
+    },
+    "c106": {
+      "t": "सूरज",
+      "r": "Sūraj",
+      "x": "गरम धूप ने गीली सड़क को सुखा दिया।",
+      "xr": "Garam dhūp ne gīlī saṛak ko sukhā diyā."
+    },
+    "c107": {
+      "t": "बारिश",
+      "r": "Bārish",
+      "x": "बारिश की संभावना है, छाता साथ ले लीजिए।",
+      "xr": "Bārish kī sambhāvnā hai, chhātā sāth le lījie."
+    },
+    "c108": {
+      "t": "हवा",
+      "r": "Havā",
+      "x": "समुद्र की ओर से ठंडी हवा चल रही थी।",
+      "xr": "Samudra kī or se ṭhanḍī havā chal rahī thī."
+    },
+    "c109": {
+      "t": "गरम",
+      "r": "Garam",
+      "x": "यहाँ गर्मियों की दोपहर बहुत गरम होती है।",
+      "xr": "Yahān garmiyon kī dopahar bahut garam hotī hai."
+    },
+    "c110": {
+      "t": "ठंडा",
+      "r": "Ṭhanḍā",
+      "x": "ठंड होने पर स्कार्फ़ पहन लीजिए।",
+      "xr": "Ṭhanḍ hone par skārf pahan lījie."
+    },
+    "c111": {
+      "t": "गर्मी",
+      "r": "Garmī",
+      "x": "हम गर्मियों में अक्सर तैरने जाते हैं।",
+      "xr": "Ham garmiyon mein aksar tairne jāte hain."
+    },
+    "c112": {
+      "t": "सर्दी",
+      "r": "Sardī",
+      "x": "सर्दी की रातें लंबी और शांत होती हैं।",
+      "xr": "Sardī kī rātein lambī aur shānt hotī hain."
+    },
+    "c113": {
+      "t": "वसंत",
+      "r": "Vasant",
+      "x": "वसंत में हर तरफ़ फूल खिल उठते हैं।",
+      "xr": "Vasant mein har taraf phūl khil uṭhte hain."
+    },
+    "c114": {
+      "t": "बादल",
+      "r": "Bādal",
+      "x": "तूफ़ान से पहले काले बादल घिर आए।",
+      "xr": "Tūfān se pahle kāle bādal ghir āe."
+    },
+    "c115": {
+      "t": "बर्फ़",
+      "r": "Barf",
+      "x": "बच्चों ने ताज़ी बर्फ़ से हिममानव बनाया।",
+      "xr": "Bachchon ne tāzī barf se himmānav banāyā."
+    },
+    "c116": {
+      "t": "पहाड़",
+      "r": "Pahāṛ",
+      "x": "हम सूर्योदय से पहले पहाड़ पर चढ़ गए।",
+      "xr": "Ham sūryoday se pahle pahāṛ par chaṛh gae."
+    },
+    "c117": {
+      "t": "नदी",
+      "r": "Nadī",
+      "x": "घाटी के बीच से एक चौड़ी नदी बहती है।",
+      "xr": "Ghāṭī ke bīch se ek chauṛī nadī bahtī hai."
+    },
+    "c118": {
+      "t": "समुद्र",
+      "r": "Samudra",
+      "x": "आज शाम समुद्र बहुत शांत दिख रहा है।",
+      "xr": "Āj shām samudra bahut shānt dikh rahā hai."
+    },
+    "c119": {
+      "t": "पेड़",
+      "r": "Peṛ",
+      "x": "एक प्राचीन पेड़ आँगन में छाया देता है।",
+      "xr": "Ek prāchīn peṛ āngan mein chhāyā detā hai."
+    },
+    "c120": {
+      "t": "फूल",
+      "r": "Phūl",
+      "x": "बगीचे का हर फूल खिल चुका है।",
+      "xr": "Bagīche kā har phūl khil chukā hai."
+    },
+    "c121": {
+      "t": "सिर",
+      "r": "Sir",
+      "x": "दिन भर पढ़ने से मेरे सिर में दर्द है।",
+      "xr": "Din bhar paṛhne se mere sir mein dard hai."
+    },
+    "c122": {
+      "t": "हाथ",
+      "r": "Hāth",
+      "x": "खाने से पहले अपने हाथ धो लें।",
+      "xr": "Khāne se pahle apne hāth dho lein."
+    },
+    "c123": {
+      "t": "आँख",
+      "r": "Ānkh",
+      "x": "स्क्रीन से दूर रहकर अपनी आँखों को आराम दें।",
+      "xr": "Skrīn se dūr rahkar apnī ānkhon ko ārām dein."
+    },
+    "c124": {
+      "t": "दिल",
+      "r": "Dil",
+      "x": "व्यायाम आपके दिल को मज़बूत रखता है।",
+      "xr": "Vyāyām āpke dil ko mazbūt rakhtā hai."
+    },
+    "c125": {
+      "t": "पेट",
+      "r": "Peṭ",
+      "x": "अगर पेट में दर्द हो तो गुनगुना पानी पिएँ।",
+      "xr": "Agar peṭ mein dard ho to gungunā pānī pien."
+    },
+    "c126": {
+      "t": "डॉक्टर",
+      "r": "Ḍŏkṭar",
+      "x": "आपको आज डॉक्टर से मिलना चाहिए।",
+      "xr": "Āpko āj ḍŏkṭar se milnā chāhie."
+    },
+    "c127": {
+      "t": "अस्पताल",
+      "r": "Aspatāl",
+      "x": "यह अस्पताल चौबीसों घंटे खुला रहता है।",
+      "xr": "Yah aspatāl chaubīson ghanṭe khulā rahtā hai."
+    },
+    "c128": {
+      "t": "दवा",
+      "r": "Davā",
+      "x": "यह दवा भोजन के बाद लें।",
+      "xr": "Yah davā bhojan ke bād lein."
+    },
+    "c129": {
+      "t": "दर्द",
+      "r": "Dard",
+      "x": "नर्स को बताएँ कि दर्द कहाँ हो रहा है।",
+      "xr": "Nars ko batāen ki dard kahān ho rahā hai."
+    },
+    "c130": {
+      "t": "बुख़ार",
+      "r": "Bukhār",
+      "x": "हल्के बुख़ार के कारण वह घर पर ही रुका।",
+      "xr": "Halke bukhār ke kāraṇ vah ghar par hī rukā."
+    },
+    "c131": {
+      "t": "मदद",
+      "r": "Madad",
+      "x": "कृपया इस डिब्बे को उठाने में मेरी मदद कीजिए।",
+      "xr": "Kṛpayā is ḍibbe ko uṭhāne mein merī madad kījie."
+    },
+    "c132": {
+      "t": "पुलिस",
+      "r": "Pulis",
+      "x": "आपात स्थिति में पुलिस को फ़ोन करें।",
+      "xr": "Āpāt sthiti mein pulis ko fon karein."
+    },
+    "c133": {
+      "t": "आपातकाल",
+      "r": "Āpātkāl",
+      "x": "अपने फ़ोन में आपातकालीन नंबर सहेजकर रखें।",
+      "xr": "Apne fon mein āpātkālīn nambar sahejkar rakhein."
+    },
+    "c134": {
+      "t": "आराम",
+      "r": "Ārām",
+      "x": "जल्दी स्वस्थ होने के लिए पर्याप्त आराम करें।",
+      "xr": "Jaldī svasth hone ke lie paryāpt ārām karein."
+    },
+    "c135": {
+      "t": "स्वस्थ",
+      "r": "Svasth",
+      "x": "संतुलित आहार आपको स्वस्थ रखता है।",
+      "xr": "Santulit āhār āpko svasth rakhtā hai."
+    },
+    "c136": {
+      "t": "विद्यालय",
+      "r": "Vidyālay",
+      "x": "बच्चे साथ मिलकर विद्यालय पैदल जाते हैं।",
+      "xr": "Bachche sāth milkar vidyālay paidal jāte hain."
+    },
+    "c137": {
+      "t": "विश्वविद्यालय",
+      "r": "Vishvavidyālay",
+      "x": "वह विश्वविद्यालय में अभियांत्रिकी पढ़ती है।",
+      "xr": "Vah vishvavidyālay mein abhiyāntrikī paṛhtī hai."
+    },
+    "c138": {
+      "t": "परीक्षा",
+      "r": "Parīkṣā",
+      "x": "मैंने अंतिम परीक्षा के लिए सावधानी से तैयारी की।",
+      "xr": "Mainne antim parīkṣā ke lie sāvdhānī se taiyārī kī."
+    },
+    "c139": {
+      "t": "भाषा",
+      "r": "Bhāṣā",
+      "x": "एक नई भाषा सीखना नई दुनिया के द्वार खोलता है।",
+      "xr": "Ek naī bhāṣā sīkhnā naī duniyā ke dvār kholtā hai."
+    },
+    "c140": {
+      "t": "प्रश्न",
+      "r": "Prashna",
+      "x": "यह बहुत विचारशील प्रश्न है।",
+      "xr": "Yah bahut vichārshīl prashna hai."
+    },
+    "c141": {
+      "t": "काम",
+      "r": "Kām",
+      "x": "वह छह बजे अपना काम ख़त्म करता है।",
+      "xr": "Vah chhah baje apnā kām khatm kartā hai."
+    },
+    "c142": {
+      "t": "कार्यालय",
+      "r": "Kāryālay",
+      "x": "हमारा कार्यालय चौथी मंज़िल पर है।",
+      "xr": "Hamārā kāryālay chauthī manzil par hai."
+    },
+    "c143": {
+      "t": "बैठक",
+      "r": "Baiṭhak",
+      "x": "टीम की बैठक दस बजे शुरू होती है।",
+      "xr": "Ṭīm kī baiṭhak das baje shurū hotī hai."
+    },
+    "c144": {
+      "t": "सहकर्मी",
+      "r": "Sahkarmī",
+      "x": "मेरे सहकर्मी ने तकनीकी त्रुटि सुधारने में मदद की।",
+      "xr": "Mere sahkarmī ne taknīkī truṭi sudhārne mein madad kī."
+    },
+    "c145": {
+      "t": "व्यस्त",
+      "r": "Vyast",
+      "x": "मैं शुक्रवार तक काफ़ी व्यस्त हूँ।",
+      "xr": "Main shukravār tak kāfī vyast hūn."
+    },
+    "c146": {
+      "t": "संगीत",
+      "r": "Sangīt",
+      "x": "संगीत सुनने से मुझे सुकून मिलता है।",
+      "xr": "Sangīt sunne se mujhe sukūn miltā hai."
+    },
+    "c147": {
+      "t": "फ़िल्म",
+      "r": "Film",
+      "x": "कल रात हमने एक प्रेरणादायक फ़िल्म देखी।",
+      "xr": "Kal rāt hamne ek preraṇādāyak film dekhī."
+    },
+    "c148": {
+      "t": "खेल",
+      "r": "Khel",
+      "x": "आपको कौन-सा खेल देखना पसंद है?",
+      "xr": "Āpko kaun-sā khel dekhnā pasand hai?"
+    },
+    "c149": {
+      "t": "यात्रा",
+      "r": "Yātrā",
+      "x": "मुझे रेलगाड़ी से यात्रा करना बहुत पसंद है।",
+      "xr": "Mujhe relgāṛī se yātrā karnā bahut pasand hai."
+    },
+    "c150": {
+      "t": "शौक़",
+      "r": "Shauq",
+      "x": "फ़ोटोग्राफ़ी मेरा सबसे पसंदीदा सप्ताहांत शौक़ है।",
+      "xr": "Foṭogrāfī merā sabse pasandīdā saptāhānt shauq hai."
+    },
+    "c151": {
+      "t": "ख़ुश",
+      "r": "Khush",
+      "x": "आपकी ख़बर सुनकर मुझे सचमुच बहुत ख़ुशी हुई।",
+      "xr": "Āpkī khabar sunkar mujhe sachmuch bahut khushī huī."
+    },
+    "c152": {
+      "t": "उदास",
+      "r": "Udās",
+      "x": "कभी-कभी उदास महसूस करना स्वाभाविक है।",
+      "xr": "Kabhī-kabhī udās mahsūs karnā svābhāvik hai."
+    },
+    "c153": {
+      "t": "क्रोधित",
+      "r": "Krodhit",
+      "x": "गुस्सा आने पर बोलने से पहले गहरी साँस लें।",
+      "xr": "Gussā āne par bolne se pahle gahrī sāns lein."
+    },
+    "c154": {
+      "t": "आश्चर्यचकित",
+      "r": "Āshcharyachakit",
+      "x": "अचानक हुई घोषणा से हर कोई आश्चर्यचकित था।",
+      "xr": "Achānak huī ghoṣaṇā se har koī āshcharyachakit thā."
+    },
+    "c155": {
+      "t": "चिंतित",
+      "r": "Chintit",
+      "x": "चिंतित मत होइए, सब ठीक हो जाएगा।",
+      "xr": "Chintit mat hoie, sab ṭhīk ho jāegā."
+    },
+    "c156": {
+      "t": "दयालु",
+      "r": "Dayālu",
+      "x": "एक दयालु व्यवहार किसी का भी दिन बना सकता है।",
+      "xr": "Ek dayālu vyavahār kisī kā bhī din banā saktā hai."
+    },
+    "c157": {
+      "t": "ईमानदार",
+      "r": "Īmāndār",
+      "x": "मैं आपकी ईमानदार प्रतिक्रिया की सराहना करता हूँ।",
+      "xr": "Main āpkī īmāndār pratikriyā kī sarāhnā kartā hūn."
+    },
+    "c158": {
+      "t": "धैर्यवान",
+      "r": "Dhairyavān",
+      "x": "धाराप्रवाह बोलना सीखने के लिए धैर्यवान होना ज़रूरी है।",
+      "xr": "Dhārāpravāh bolnā sīkhne ke lie dhairyavān honā zarūrī hai."
+    },
+    "c159": {
+      "t": "साहसी",
+      "r": "Sāhasī",
+      "x": "सार्वजनिक रूप से अपनी बात रखना साहस का काम था।",
+      "xr": "Sārvajanik rūp se apnī bāt rakhnā sāhas kā kām thā."
+    },
+    "c160": {
+      "t": "जिज्ञासु",
+      "r": "Jigyāsu",
+      "x": "जिज्ञासु मन कभी खोजना बंद नहीं करता।",
+      "xr": "Jigyāsu man kabhī khojnā band nahīn kartā."
+    },
+    "c161": {
+      "t": "मुझे लगता है",
+      "r": "Mujhe lagtā hai",
+      "x": "मुझे लगता है कि यह समाधान व्यावहारिक है।",
+      "xr": "Mujhe lagtā hai ki yah samādhān vyāvahārik hai."
+    },
+    "c162": {
+      "t": "मैं सहमत हूँ",
+      "r": "Main sahmat hūn",
+      "x": "मैं आपके मुख्य बिंदु से सहमत हूँ।",
+      "xr": "Main āpke mukhya bindu se sahmat hūn."
+    },
+    "c163": {
+      "t": "राय",
+      "r": "Rāy",
+      "x": "हर किसी को अपनी राय रखने का अधिकार है।",
+      "xr": "Har kisī ko apnī rāy rakhne kā adhikār hai."
+    },
+    "c164": {
+      "t": "महत्वपूर्ण",
+      "r": "Mahatvapūrṇ",
+      "x": "स्पष्ट संवाद बहुत महत्वपूर्ण है।",
+      "xr": "Spaṣṭ samvād bahut mahatvapūrṇ hai."
+    },
+    "c165": {
+      "t": "संभव",
+      "r": "Sambhav",
+      "x": "निरंतर प्रयास से कुछ भी संभव है।",
+      "xr": "Nirantar prayās se kuchh bhī sambhav hai."
+    },
+    "c166": {
+      "t": "निमंत्रण",
+      "r": "Nimantraṇ",
+      "x": "इस आत्मीय निमंत्रण के लिए धन्यवाद।",
+      "xr": "Is ātmīy nimantraṇ ke lie dhanyavād."
+    },
+    "c167": {
+      "t": "उत्सव",
+      "r": "Utsav",
+      "x": "पूरा मोहल्ला उत्सव में शामिल हुआ।",
+      "xr": "Pūrā mohallā utsav mein shāmil huā."
+    },
+    "c168": {
+      "t": "वादा",
+      "r": "Vādā",
+      "x": "जो वादा करें उसे हमेशा निभाएँ।",
+      "xr": "Jo vādā karein use hameshā nibhāen."
+    },
+    "c169": {
+      "t": "मुलाक़ात का समय",
+      "r": "Mulāqāt kā samay",
+      "x": "तीन बजे दंत चिकित्सक के साथ मेरी मुलाक़ात का समय है।",
+      "xr": "Tīn baje dant chikitsak ke sāth merī mulāqāt kā samay hai."
+    },
+    "c170": {
+      "t": "आश्चर्य",
+      "r": "Āshcharya",
+      "x": "हमने उसके जन्मदिन के लिए एक सुखद आश्चर्य की योजना बनाई।",
+      "xr": "Hamne uske janmdin ke lie ek sukhad āshcharya kī yojnā banāī."
+    },
+    "c171": {
+      "t": "याद",
+      "r": "Yād",
+      "x": "वह यात्रा मेरी सबसे मधुर याद बनी हुई है।",
+      "xr": "Vah yātrā merī sabse madhur yād banī huī hai."
+    },
+    "c172": {
+      "t": "अनुभव",
+      "r": "Anubhav",
+      "x": "विदेश में रहना जीवन बदल देने वाला अनुभव था।",
+      "xr": "Videsh mein rahnā jīvan badal dene vālā anubhav thā."
+    },
+    "c173": {
+      "t": "कहानी",
+      "r": "Kahānī",
+      "x": "दादाजी ने एक मनमोहक कहानी सुनाई।",
+      "xr": "Dādājī ne ek manmohak kahānī sunāī."
+    },
+    "c174": {
+      "t": "सपना",
+      "r": "Sapnā",
+      "x": "अपने सबसे बड़े सपने को कभी मत छोड़ना।",
+      "xr": "Apne sabse baṛe sapne ko kabhī mat chhoṛnā."
+    },
+    "c175": {
+      "t": "सफ़र",
+      "r": "Safar",
+      "x": "हर लंबा सफ़र एक पहले क़दम से शुरू होता है।",
+      "xr": "Har lambā safar ek pahle qadam se shurū hotā hai."
+    },
+    "c176": {
+      "t": "विश्वास",
+      "r": "Vishvās",
+      "x": "विश्वास बनाने में बरसों लग जाते हैं।",
+      "xr": "Vishvās banāne mein barson lag jāte hain."
+    },
+    "c177": {
+      "t": "सम्मान",
+      "r": "Sammān",
+      "x": "हर व्यक्ति के साथ सच्चे सम्मान से पेश आएँ।",
+      "xr": "Har vyakti ke sāth sachche sammān se pesh āen."
+    },
+    "c178": {
+      "t": "सलाह",
+      "r": "Salāh",
+      "x": "क्या आप मुझे करियर के बारे में कुछ सलाह दे सकते हैं?",
+      "xr": "Kyā āp mujhe kariyar ke bāre mein kuchh salāh de sakte hain?"
+    },
+    "c179": {
+      "t": "सहयोग",
+      "r": "Sahyog",
+      "x": "आपके अटूट सहयोग के लिए हार्दिक धन्यवाद।",
+      "xr": "Āpke aṭūṭ sahyog ke lie hārdik dhanyavād."
+    },
+    "c180": {
+      "t": "क्षमा करना",
+      "r": "Kṣamā karnā",
+      "x": "क्षमा करके आगे बढ़ने के लिए आंतरिक शक्ति चाहिए।",
+      "xr": "Kṣamā karke āge baṛhne ke lie āntarik shakti chāhie."
+    },
+    "c181": {
+      "t": "कंप्यूटर",
+      "r": "Kampyūṭar",
+      "x": "मेरा कंप्यूटर रात भर में अपडेट हो गया।",
+      "xr": "Merā kampyūṭar rāt bhar mein apḍeṭ ho gayā."
+    },
+    "c182": {
+      "t": "इंटरनेट",
+      "r": "Inṭarneṭ",
+      "x": "तेज़ इंटरनेट दूरदराज़ के गाँवों को जोड़ता है।",
+      "xr": "Tez inṭarneṭ dūrdarāz ke gānvon ko joṛtā hai."
+    },
+    "c183": {
+      "t": "फ़ोन",
+      "r": "Fon",
+      "x": "कृपया व्याख्यान के दौरान अपना फ़ोन साइलेंट रखें।",
+      "xr": "Kṛpayā vyākhyān ke daurān apnā fon sāilenṭ rakhein."
+    },
+    "c184": {
+      "t": "पासवर्ड",
+      "r": "Pāsvaṛḍ",
+      "x": "हर खाते के लिए मज़बूत और अलग पासवर्ड इस्तेमाल करें।",
+      "xr": "Har khāte ke lie mazbūt aur alag pāsvaṛḍ istemāl karein."
+    },
+    "c185": {
+      "t": "डाउनलोड करना",
+      "r": "Ḍāunloḍ karnā",
+      "x": "आप ऑफ़लाइन पैक मुफ़्त में डाउनलोड कर सकते हैं।",
+      "xr": "Āp ŏflāin paik muft mein ḍāunloḍ kar sakte hain."
+    },
+    "c186": {
+      "t": "संदेश",
+      "r": "Sandesh",
+      "x": "मैंने आज सुबह आपको एक संदेश भेजा था।",
+      "xr": "Mainne āj subah āpko ek sandesh bhejā thā."
+    },
+    "c187": {
+      "t": "खोजना",
+      "r": "Khojnā",
+      "x": "आइए विश्वसनीय दस्तावेज़ों को खोजें।",
+      "xr": "Āie vishvasnīy dastāvezon ko khojein."
+    },
+    "c188": {
+      "t": "ऐप्लिकेशन",
+      "r": "Aiplikeshan",
+      "x": "यह ओपन-सोर्स ऐप्लिकेशन ऑफ़लाइन भी काम करता है।",
+      "xr": "Yah opan-sors aiplikeshan ŏflāin bhī kām kartā hai."
+    },
+    "c189": {
+      "t": "गोपनीयता",
+      "r": "Gopnīyatā",
+      "x": "उपयोगकर्ता की गोपनीयता की रक्षा सर्वोपरि होनी चाहिए।",
+      "xr": "Upyogkartā kī gopnīyatā kī rakṣā sarvopari honī chāhie."
+    },
+    "c190": {
+      "t": "अपडेट",
+      "r": "Apḍeṭ",
+      "x": "नवीनतम अपडेट ने गति को काफ़ी बेहतर बनाया है।",
+      "xr": "Navīntam apḍeṭ ne gati ko kāfī behtar banāyā hai."
+    },
+    "c191": {
+      "t": "समाचार",
+      "r": "Samāchār",
+      "x": "समाचारों की पुष्टि हमेशा अनेक स्रोतों से करें।",
+      "xr": "Samāchāron kī puṣṭi hameshā anek sroton se karein."
+    },
+    "c192": {
+      "t": "लेख",
+      "r": "Lekh",
+      "x": "मैंने भाषाविज्ञान पर एक रोचक लेख पढ़ा।",
+      "xr": "Mainne bhāṣāvigyān par ek rochak lekh paṛhā."
+    },
+    "c193": {
+      "t": "जानकारी",
+      "r": "Jānkārī",
+      "x": "सटीक जानकारी लोगों को समझदारी से निर्णय लेने में मदद करती है।",
+      "xr": "Saṭīk jānkārī logon ko samajhdārī se nirṇay lene mein madad kartī hai."
+    },
+    "c194": {
+      "t": "कैमरा",
+      "r": "Kaimrā",
+      "x": "वह उत्सव में अपना कैमरा साथ लाई थी।",
+      "xr": "Vah utsav mein apnā kaimrā sāth lāī thī."
+    },
+    "c195": {
+      "t": "स्क्रीन",
+      "r": "Skrīn",
+      "x": "रात में स्क्रीन की चमक कम कर लें।",
+      "xr": "Rāt mein skrīn kī chamak kam kar lein."
+    },
+    "c196": {
+      "t": "संस्कृति",
+      "r": "Sanskṛti",
+      "x": "भाषा किसी भी संस्कृति का जीवंत हृदय है।",
+      "xr": "Bhāṣā kisī bhī sanskṛti kā jīvant hṛday hai."
+    },
+    "c197": {
+      "t": "परंपरा",
+      "r": "Paramparā",
+      "x": "हर क्षेत्र अपनी फसल उत्सव की परंपरा संजोकर रखता है।",
+      "xr": "Har kṣetra apnī phasal utsav kī paramparā sanjokar rakhtā hai."
+    },
+    "c198": {
+      "t": "त्योहार",
+      "r": "Tyohār",
+      "x": "त्योहार के दौरान दीपों से पूरा शहर जगमगा उठा।",
+      "xr": "Tyohār ke daurān dīpon se pūrā shahar jagmagā uṭhā."
+    },
+    "c199": {
+      "t": "इतिहास",
+      "r": "Itihās",
+      "x": "यह संग्रहालय पाँच हज़ार वर्षों के इतिहास को दर्शाता है।",
+      "xr": "Yah sangrahālay pānch hazār varṣon ke itihās ko darshātā hai."
+    },
+    "c200": {
+      "t": "विरासत",
+      "r": "Virāsat",
+      "x": "हमें अपनी साझा सांस्कृतिक विरासत की रक्षा करनी चाहिए।",
+      "xr": "Hamein apnī sājhā sānskṛtik virāsat kī rakṣā karnī chāhie."
+    },
+    "c201": {
+      "t": "कला",
+      "r": "Kalā",
+      "x": "महान कला सीमाओं और सदियों से परे होती है।",
+      "xr": "Mahān kalā sīmāon aur sadiyon se pare hotī hai."
+    },
+    "c202": {
+      "t": "नृत्य",
+      "r": "Nṛtya",
+      "x": "शास्त्रीय नृत्य मुद्राओं के माध्यम से कथाएँ कहता है।",
+      "xr": "Shāstrīy nṛtya mudrāon ke mādhyam se kathāen kahtā hai."
+    },
+    "c203": {
+      "t": "गीत",
+      "r": "Gīt",
+      "x": "यह लोकगीत पीढ़ियों से गाया जाता रहा है।",
+      "xr": "Yah lokgīt pīṛhiyon se gāyā jātā rahā hai."
+    },
+    "c204": {
+      "t": "वास्तुकला",
+      "r": "Vāstukalā",
+      "x": "मंदिर की वास्तुकला अद्भुत रूप से सूक्ष्म है।",
+      "xr": "Mandir kī vāstukalā adbhut rūp se sūkṣma hai."
+    },
+    "c205": {
+      "t": "कविता",
+      "r": "Kavitā",
+      "x": "कविता कुछ ही पंक्तियों में गहरी भावनाएँ समेट लेती है।",
+      "xr": "Kavitā kuchh hī panktiyon mein gahrī bhāvnāen sameṭ letī hai."
+    },
+    "c206": {
+      "t": "अतिथि",
+      "r": "Atithi",
+      "x": "हर अतिथि का आत्मीयता से स्वागत किया जाता है।",
+      "xr": "Har atithi kā ātmīyatā se svāgat kiyā jātā hai."
+    },
+    "c207": {
+      "t": "उपहार",
+      "r": "Upahār",
+      "x": "छोटा-सा उपहार ले जाना स्नेह और विचारशीलता दर्शाता है।",
+      "xr": "Chhoṭā-sā upahār le jānā sneh aur vichārshīltā darshātā hai."
+    },
+    "c208": {
+      "t": "रीति-रिवाज",
+      "r": "Rīti-rivāj",
+      "x": "नए देश जाने से पहले वहाँ के रीति-रिवाज जान लें।",
+      "xr": "Nae desh jāne se pahle vahān ke rīti-rivāj jān lein."
+    },
+    "c209": {
+      "t": "समारोह",
+      "r": "Samāroh",
+      "x": "दीक्षांत समारोह दो घंटे तक चला।",
+      "xr": "Dīkṣānt samāroh do ghanṭe tak chalā."
+    },
+    "c210": {
+      "t": "आशीर्वाद",
+      "r": "Āshīrvād",
+      "x": "बड़ों ने नवदंपति को अपना आशीर्वाद दिया।",
+      "xr": "Baṛon ne navdampati ko apnā āshīrvād diyā."
+    },
+    "c211": {
+      "t": "क्योंकि",
+      "r": "Kyonki",
+      "x": "हम घर के अंदर ही रहे क्योंकि तूफ़ान आ रहा था।",
+      "xr": "Ham ghar ke andar hī rahe kyonki tūfān ā rahā thā."
+    },
+    "c212": {
+      "t": "हालाँकि",
+      "r": "Hālāṅki",
+      "x": "कार्य कठिन था; तथापि हम सफल हुए।",
+      "xr": "Kārya kaṭhin thā; tathāpi ham saphal hue."
+    },
+    "c213": {
+      "t": "यद्यपि",
+      "r": "Yadyapi",
+      "x": "यद्यपि देर हो चुकी थी, फिर भी उसने अध्याय पूरा किया।",
+      "xr": "Yadyapi der ho chukī thī, phir bhī usne adhyāy pūrā kiyā."
+    },
+    "c214": {
+      "t": "इसलिए",
+      "r": "Islie",
+      "x": "आँकड़े स्पष्ट हैं; इसलिए हमें कदम उठाना होगा।",
+      "xr": "Ānkaṛe spaṣṭ hain; islie hamein kadam uṭhānā hogā."
+    },
+    "c215": {
+      "t": "इस बीच",
+      "r": "Is bīch",
+      "x": "मैं खाना बनाता हूँ; इस बीच कृपया मेज़ सजा दें।",
+      "xr": "Main khānā banātā hūn; is bīch kṛpayā mez sajā dein."
+    },
+    "c216": {
+      "t": "समस्या",
+      "r": "Samasyā",
+      "x": "आइए समस्या के मूल कारण की पहचान करें।",
+      "xr": "Āie samasyā ke mūl kāraṇ kī pahchān karein."
+    },
+    "c217": {
+      "t": "समाधान",
+      "r": "Samādhān",
+      "x": "सरल समाधान अक्सर सबसे विश्वसनीय होते हैं।",
+      "xr": "Saral samādhān aksar sabse vishvasnīy hote hain."
+    },
+    "c218": {
+      "t": "निर्णय",
+      "r": "Nirṇay",
+      "x": "कोई बड़ा निर्णय लेने से पहले शांत मन से सोचें।",
+      "xr": "Koī baṛā nirṇay lene se pahle shānt man se sochein."
+    },
+    "c219": {
+      "t": "ग़लती",
+      "r": "Galtī",
+      "x": "हर ग़लती हमें कुछ मूल्यवान सिखाती है।",
+      "xr": "Har galtī hamein kuchh mūlyavān sikhātī hai."
+    },
+    "c220": {
+      "t": "सफलता",
+      "r": "Saphaltā",
+      "x": "सामूहिक प्रयास ही हमारी सफलता की कुंजी था।",
+      "xr": "Sāmūhik prayās hī hamārī saphaltā kī kunjī thā."
+    },
+    "c221": {
+      "t": "यदि",
+      "r": "Yadi",
+      "x": "यदि आप रोज़ अभ्यास करेंगे, तो शीघ्र प्रगति होगी।",
+      "xr": "Yadi āp roz abhyās karenge, to shīghra pragati hogī."
+    },
+    "c222": {
+      "t": "के बजाय",
+      "r": "Ke bajāy",
+      "x": "गाड़ी चलाने के बजाय दुकान तक पैदल जाएँ।",
+      "xr": "Gāṛī chalāne ke bajāy dukān tak paidal jāen."
+    },
+    "c223": {
+      "t": "तुलना करना",
+      "r": "Tulnā karnā",
+      "x": "मतदान से पहले दोनों प्रस्तावों की सावधानी से तुलना करें।",
+      "xr": "Matdān se pahle donon prastāvon kī sāvdhānī se tulnā karein."
+    },
+    "c224": {
+      "t": "अंतर",
+      "r": "Antar",
+      "x": "छोटी आदतें समय के साथ बड़ा अंतर पैदा करती हैं।",
+      "xr": "Chhoṭī ādatein samay ke sāth baṛā antar paidā kartī hain."
+    },
+    "c225": {
+      "t": "कारण",
+      "r": "Kāraṇ",
+      "x": "अपने चुनाव के पीछे का कारण स्पष्ट करें।",
+      "xr": "Apne chunāv ke pīchhe kā kāraṇ spaṣṭ karein."
+    },
+    "c226": {
+      "t": "रणनीति",
+      "r": "Raṇnīti",
+      "x": "हमने अपनी दीर्घकालिक उत्पाद रणनीति में संशोधन किया।",
+      "xr": "Hamne apnī dīrghkālik utpād raṇnīti mein sanshodhan kiyā."
+    },
+    "c227": {
+      "t": "परियोजना",
+      "r": "Pariyojnā",
+      "x": "अभियांत्रिकी परियोजना तय समय से पहले शुरू हो गई।",
+      "xr": "Abhiyāntrikī pariyojnā tay samay se pahle shurū ho gaī."
+    },
+    "c228": {
+      "t": "समय-सीमा",
+      "r": "Samay-sīmā",
+      "x": "हमने समय-सीमा से पहले हर पड़ाव पूरा कर लिया।",
+      "xr": "Hamne samay-sīmā se pahle har paṛāv pūrā kar liyā."
+    },
+    "c229": {
+      "t": "ज़िम्मेदारी",
+      "r": "Zimmedārī",
+      "x": "नेतृत्व का अर्थ है पूरी ज़िम्मेदारी लेना।",
+      "xr": "Netṛtva kā arth hai pūrī zimmedārī lenā."
+    },
+    "c230": {
+      "t": "सहभागिता",
+      "r": "Sahbhāgitā",
+      "x": "खुला सहयोग और सहभागिता नवाचार को गति देती है।",
+      "xr": "Khulā sahyog aur sahbhāgitā navāchār ko gati detī hai."
+    },
+    "c231": {
+      "t": "अर्थव्यवस्था",
+      "r": "Arthvyavasthā",
+      "x": "लघु व्यवसाय अर्थव्यवस्था की रीढ़ होते हैं।",
+      "xr": "Laghu vyavasāy arthvyavasthā kī rīṛh hote hain."
+    },
+    "c232": {
+      "t": "बजट",
+      "r": "Bajaṭ",
+      "x": "नगरपालिका ने अगले वर्ष के शिक्षा बजट को स्वीकृति दी।",
+      "xr": "Nagarpālikā ne agle varṣ ke shikṣā bajaṭ ko svīkṛti dī."
+    },
+    "c233": {
+      "t": "निवेश",
+      "r": "Nivesh",
+      "x": "शिक्षा सबसे समझदारी भरा दीर्घकालिक निवेश है।",
+      "xr": "Shikṣā sabse samajhdārī bharā dīrghkālik nivesh hai."
+    },
+    "c234": {
+      "t": "अनुबंध",
+      "r": "Anubandh",
+      "x": "अनुबंध की हर शर्त ध्यानपूर्वक पढ़ें।",
+      "xr": "Anubandh kī har shart dhyānpūrvak paṛhein."
+    },
+    "c235": {
+      "t": "लाभ",
+      "r": "Lābh",
+      "x": "अल्पकालिक लाभ से अधिक महत्वपूर्ण सतत विकास है।",
+      "xr": "Alpakālik lābh se adhik mahatvapūrṇ satat vikās hai."
+    },
+    "c236": {
+      "t": "प्रस्ताव",
+      "r": "Prastāv",
+      "x": "समिति ने हमारे विस्तृत प्रस्ताव की समीक्षा की।",
+      "xr": "Samiti ne hamāre vistṛt prastāv kī samīkṣā kī."
+    },
+    "c237": {
+      "t": "वार्ता",
+      "r": "Vārtā",
+      "x": "दोनों पक्ष सद्भावना के साथ वार्ता में शामिल हुए।",
+      "xr": "Donon pakṣ sadbhāvnā ke sāth vārtā mein shāmil hue."
+    },
+    "c238": {
+      "t": "समझौता",
+      "r": "Samjhautā",
+      "x": "उन्होंने परस्पर लाभकारी व्यापार समझौते पर हस्ताक्षर किए।",
+      "xr": "Unhonne paraspar lābhkārī vyāpār samjhaute par hastākṣar kie."
+    },
+    "c239": {
+      "t": "सुलह",
+      "r": "Sulah",
+      "x": "एक न्यायसंगत सुलह ने विवाद को समाप्त कर दिया।",
+      "xr": "Ek nyāysangat sulah ne vivād ko samāpt kar diyā."
+    },
+    "c240": {
+      "t": "अवसर",
+      "r": "Avasar",
+      "x": "हर चुनौती अपने भीतर एक छिपा अवसर लेकर आती है।",
+      "xr": "Har chunautī apne bhītar ek chhipā avasar lekar ātī hai."
+    },
+    "c241": {
+      "t": "अनुसंधान",
+      "r": "Anusandhān",
+      "x": "समकक्ष-समीक्षित अनुसंधान आधुनिक चिकित्सा का मार्गदर्शन करता है।",
+      "xr": "Samkakṣ-samīkṣit anusandhān ādhunik chikitsā kā mārgdarshan kartā hai."
+    },
+    "c242": {
+      "t": "प्रयोग",
+      "r": "Prayog",
+      "x": "प्रयोगशाला के प्रयोग ने हमारे पूर्वानुमान की पुष्टि की।",
+      "xr": "Prayogshālā ke prayog ne hamāre pūrvānumān kī puṣṭi kī."
+    },
+    "c243": {
+      "t": "प्रमाण",
+      "r": "Pramāṇ",
+      "x": "मज़बूत निष्कर्ष ठोस प्रमाणों पर आधारित होने चाहिए।",
+      "xr": "Mazbūt niṣkarṣ ṭhos pramāṇon par ādhārit hone chāhie."
+    },
+    "c244": {
+      "t": "सिद्धांत",
+      "r": "Siddhānt",
+      "x": "यह सिद्धांत समझाता है कि गुरुत्वाकर्षण प्रकाश को कैसे मोड़ता है।",
+      "xr": "Yah siddhānt samjhātā hai ki gurutvākarṣaṇ prakāsh ko kaise moṛtā hai."
+    },
+    "c245": {
+      "t": "खोज",
+      "r": "Khoj",
+      "x": "उस खोज ने स्वच्छ ऊर्जा भंडारण को बदल दिया।",
+      "xr": "Us khoj ne svachchh ūrjā bhanḍāraṇ ko badal diyā."
+    },
+    "c246": {
+      "t": "नवाचार",
+      "r": "Navāchār",
+      "x": "ज़मीनी स्तर का नवाचार समुदाय की वास्तविक आवश्यकताएँ हल करता है।",
+      "xr": "Zamīnī star kā navāchār samudāy kī vāstavik āvashyaktāen hal kartā hai."
+    },
+    "c247": {
+      "t": "एल्गोरिदम",
+      "r": "Elgoridam",
+      "x": "एक कुशल एल्गोरिदम ऊर्जा और समय दोनों बचाता है।",
+      "xr": "Ek kushal elgoridam ūrjā aur samay donon bachātā hai."
+    },
+    "c248": {
+      "t": "ऊर्जा",
+      "r": "Ūrjā",
+      "x": "सौर पैनल सूर्य के प्रकाश को सीधे ऊर्जा में बदलते हैं।",
+      "xr": "Saur painal sūrya ke prakāsh ko sīdhe ūrjā mein badalte hain."
+    },
+    "c249": {
+      "t": "प्रयोगशाला",
+      "r": "Prayogshālā",
+      "x": "वैज्ञानिकों ने प्रयोगशाला में सेंसरों का अंशांकन किया।",
+      "xr": "Vaigyānikon ne prayogshālā mein sensaron kā anshānkan kiyā."
+    },
+    "c250": {
+      "t": "सटीकता",
+      "r": "Saṭīktā",
+      "x": "सूक्ष्म शल्य-चिकित्सा में असाधारण सटीकता की आवश्यकता होती है।",
+      "xr": "Sūkṣma shalya-chikitsā mein asādhāraṇ saṭīktā kī āvashyaktā hotī hai."
+    },
+    "c251": {
+      "t": "ब्रह्मांड",
+      "r": "Brahmānḍ",
+      "x": "दूरबीनें ब्रह्मांड की सबसे प्राचीन आकाशगंगाओं को दिखाती हैं।",
+      "xr": "Dūrbīnein brahmānḍ kī sabse prāchīn ākāshgangāon ko dikhātī hain."
+    },
+    "c252": {
+      "t": "ग्रह",
+      "r": "Grah",
+      "x": "किसी भी ग्रह पर जीवन के लिए जल आवश्यक है।",
+      "xr": "Kisī bhī grah par jīvan ke lie jal āvashyak hai."
+    },
+    "c253": {
+      "t": "गुरुत्वाकर्षण",
+      "r": "Gurutvākarṣaṇ",
+      "x": "गुरुत्वाकर्षण चंद्रमा को पृथ्वी की कक्षा में बनाए रखता है।",
+      "xr": "Gurutvākarṣaṇ chandramā ko pṛthvī kī kakṣā mein banāe rakhtā hai."
+    },
+    "c254": {
+      "t": "क्रमविकास",
+      "r": "Kramvikās",
+      "x": "क्रमविकास लाखों वर्षों में जीवों को आकार देता है।",
+      "xr": "Kramvikās lākhon varṣon mein jīvon ko ākār detā hai."
+    },
+    "c255": {
+      "t": "जिज्ञासा",
+      "r": "Jigyāsā",
+      "x": "वैज्ञानिक जिज्ञासा मानवता को आगे बढ़ाती है।",
+      "xr": "Vaigyānik jigyāsā mānavtā ko āge baṛhātī hai."
+    },
+    "c256": {
+      "t": "पर्यावरण",
+      "r": "Paryāvaraṇ",
+      "x": "पर्यावरण की रक्षा करना आने वाली पीढ़ियों की रक्षा करना है।",
+      "xr": "Paryāvaraṇ kī rakṣā karnā āne vālī pīṛhiyon kī rakṣā karnā hai."
+    },
+    "c257": {
+      "t": "जलवायु",
+      "r": "Jalvāyu",
+      "x": "बदलते जलवायु पैटर्न वैश्विक फसलों को प्रभावित करते हैं।",
+      "xr": "Badalte jalvāyu paiṭarn vaishvik phaslon ko prabhāvit karte hain."
+    },
+    "c258": {
+      "t": "पारिस्थितिकी तंत्र",
+      "r": "Pāristhitikī tantra",
+      "x": "आर्द्रभूमि तटीय पारिस्थितिकी तंत्र के लिए अत्यंत आवश्यक है।",
+      "xr": "Ārdrabhūmi taṭīy pāristhitikī tantra ke lie atyant āvashyak hai."
+    },
+    "c259": {
+      "t": "जैव विविधता",
+      "r": "Jaiv vividhtā",
+      "x": "वर्षावन असाधारण जैव विविधता को आश्रय देते हैं।",
+      "xr": "Varṣāvan asādhāraṇ jaiv vividhtā ko āshray dete hain."
+    },
+    "c260": {
+      "t": "प्रदूषण",
+      "r": "Pradūṣaṇ",
+      "x": "इलेक्ट्रिक परिवहन शहरी वायु प्रदूषण को तेज़ी से कम करता है।",
+      "xr": "Ilekṭrik parivahan shahrī vāyu pradūṣaṇ ko tezī se kam kartā hai."
+    },
+    "c261": {
+      "t": "नवीकरणीय",
+      "r": "Navīkaraṇīy",
+      "x": "पवन और सौर ऊर्जा प्रचुर नवीकरणीय स्रोत हैं।",
+      "xr": "Pavan aur saur ūrjā prachur navīkaraṇīy srot hain."
+    },
+    "c262": {
+      "t": "सतत विकास",
+      "r": "Satat vikās",
+      "x": "सच्ची स्थिरता प्रकृति और समृद्धि के बीच संतुलन बनाती है।",
+      "xr": "Sachchī sthirtā prakṛti aur samṛddhi ke bīch santulan banātī hai."
+    },
+    "c263": {
+      "t": "संरक्षण",
+      "r": "Sanrakṣaṇ",
+      "x": "समुदाय-नेतृत्व वाले संरक्षण ने जंगल को पुनर्जीवित कर दिया।",
+      "xr": "Samudāy-netṛtva vāle sanrakṣaṇ ne jangal ko punarjīvit kar diyā."
+    },
+    "c264": {
+      "t": "पुनर्चक्रण",
+      "r": "Punarchakraṇ",
+      "x": "काँच, कागज़ और धातु को अलग रखें ताकि शहर उनका पुनर्चक्रण कर सकें।",
+      "xr": "Kānch, kāgaz aur dhātu ko alag rakhein tāki shahar unkā punarchakraṇ kar sakein."
+    },
+    "c265": {
+      "t": "संसाधन",
+      "r": "Sansādhan",
+      "x": "मीठा जल एक अनमोल साझा संसाधन है।",
+      "xr": "Mīṭhā jal ek anmol sājhā sansādhan hai."
+    },
+    "c266": {
+      "t": "वन",
+      "r": "Van",
+      "x": "देशज वनों की पुनर्बहाली आसपास के नगरों को शीतल करती है।",
+      "xr": "Deshaj vanon kī punarbahālī āspās ke nagaron ko shītal kartī hai."
+    },
+    "c267": {
+      "t": "महासागर",
+      "r": "Mahāsāgar",
+      "x": "स्वस्थ महासागर विशाल मात्रा में कार्बन अवशोषित करते हैं।",
+      "xr": "Svasth mahāsāgar vishāl mātrā mein kārban avshoṣit karte hain."
+    },
+    "c268": {
+      "t": "सूखा",
+      "r": "Sūkhā",
+      "x": "स्मार्ट सिंचाई किसानों को सूखे का सामना करने में मदद करती है।",
+      "xr": "Smārṭ sinchāī kisānon ko sūkhe kā sāmnā karne mein madad kartī hai."
+    },
+    "c269": {
+      "t": "सामंजस्य",
+      "r": "Sāmanjasya",
+      "x": "मानव प्रगति प्रकृति के साथ सामंजस्य में होनी चाहिए।",
+      "xr": "Mānav pragati prakṛti ke sāth sāmanjasya mein honī chāhie."
+    },
+    "c270": {
+      "t": "भविष्य",
+      "r": "Bhaviṣya",
+      "x": "आज लिए गए निर्णय कल का भविष्य गढ़ते हैं।",
+      "xr": "Āj lie gae nirṇay kal kā bhaviṣya gaṛhte hain."
+    },
+    "c271": {
+      "t": "न्याय",
+      "r": "Nyāy",
+      "x": "क़ानून के समक्ष समान न्याय समाज को सुदृढ़ बनाता है।",
+      "xr": "Qānūn ke samakṣ samān nyāy samāj ko sudṛṛh banātā hai."
+    },
+    "c272": {
+      "t": "स्वतंत्रता",
+      "r": "Svatantratā",
+      "x": "अभिव्यक्ति की स्वतंत्रता के साथ पारस्परिक उत्तरदायित्व भी जुड़ा है।",
+      "xr": "Abhivyakti kī svatantratā ke sāth pārasparik uttardāyitva bhī juṛā hai."
+    },
+    "c273": {
+      "t": "समानता",
+      "r": "Samāntā",
+      "x": "शिक्षा सामाजिक और आर्थिक समानता को बढ़ावा देती है।",
+      "xr": "Shikṣā sāmājik aur ārthik samāntā ko baṛhāvā detī hai."
+    },
+    "c274": {
+      "t": "संविधान",
+      "r": "Samvidhān",
+      "x": "संविधान मौलिक मानवाधिकारों की रक्षा करता है।",
+      "xr": "Samvidhān maulik mānavādhikāron kī rakṣā kartā hai."
+    },
+    "c275": {
+      "t": "नागरिक",
+      "r": "Nāgarik",
+      "x": "हर जागरूक नागरिक नागरिक जीवन में योगदान देता है।",
+      "xr": "Har jāgrūk nāgarik nāgarik jīvan mein yogdān detā hai."
+    },
+    "c276": {
+      "t": "लोकतंत्र",
+      "r": "Loktantra",
+      "x": "एक स्वस्थ लोकतंत्र जागरूक मतदाताओं पर निर्भर करता है।",
+      "xr": "Ek svasth loktantra jāgrūk matdātāon par nirbhar kartā hai."
+    },
+    "c277": {
+      "t": "सरकार",
+      "r": "Sarkār",
+      "x": "स्थानीय सरकार सड़कों, उद्यानों और विद्यालयों का रखरखाव करती है।",
+      "xr": "Sthānīy sarkār saṛkon, udyānon aur vidyālayon kā rakhrakhāv kartī hai."
+    },
+    "c278": {
+      "t": "नीति",
+      "r": "Nīti",
+      "x": "जन-स्वास्थ्य नीति ने करोड़ों लोगों का जीवन बचाया है।",
+      "xr": "Jan-svāsthya nīti ne karoṛon logon kā jīvan bachāyā hai."
+    },
+    "c279": {
+      "t": "क़ानून",
+      "r": "Qānūn",
+      "x": "पारदर्शी क़ानून सभी समुदायों में विश्वास जगाते हैं।",
+      "xr": "Pārdarshī qānūn sabhī samudāyon mein vishvās jagāte hain."
+    },
+    "c280": {
+      "t": "पारदर्शिता",
+      "r": "Pārdarshitā",
+      "x": "वित्तीय पारदर्शिता भ्रष्टाचार को रोकती है।",
+      "xr": "Vittīy pārdarshitā bhraṣṭāchār ko roktī hai."
+    },
+    "c281": {
+      "t": "समुदाय",
+      "r": "Samudāy",
+      "x": "सशक्त समुदाय कमजोर वर्गों की देखभाल करते हैं।",
+      "xr": "Sashakt samudāy kamzor vargon kī dekhbhāl karte hain."
+    },
+    "c282": {
+      "t": "शांति",
+      "r": "Shānti",
+      "x": "स्थायी शांति के लिए संवाद और सहानुभूति आवश्यक है।",
+      "xr": "Sthāyī shānti ke lie samvād aur sahānubhūti āvashyak hai."
+    },
+    "c283": {
+      "t": "शिक्षा",
+      "r": "Shikṣā",
+      "x": "सर्वव्यापी शिक्षा पूरे राष्ट्र को ऊँचा उठाती है।",
+      "xr": "Sarvavyāpī shikṣā pūre rāṣṭra ko ūnchā uṭhātī hai."
+    },
+    "c284": {
+      "t": "स्वयंसेवक",
+      "r": "Svayamsevak",
+      "x": "बाढ़ के बाद सैकड़ों स्वयंसेवकों ने पुनर्निर्माण में मदद की।",
+      "xr": "Bāṛh ke bād saikaṛon svayamsevakon ne punarnirmāṇ mein madad kī."
+    },
+    "c285": {
+      "t": "एकजुटता",
+      "r": "Ekjuṭtā",
+      "x": "वैश्विक एकजुटता संकटों को तेज़ी से पार करती है।",
+      "xr": "Vaishvik ekjuṭtā sankaṭon ko tezī se pār kartī hai."
+    },
+    "c286": {
+      "t": "तर्क",
+      "r": "Tark",
+      "x": "हर तर्क को सत्यापनीय तथ्यों के साथ प्रस्तुत करें।",
+      "xr": "Har tark ko satyāpanīy tathyon ke sāth prastut karein."
+    },
+    "c287": {
+      "t": "दृष्टिकोण",
+      "r": "Dṛṣṭikoṇ",
+      "x": "दूसरे का दृष्टिकोण समझने से हमारी समझ गहरी होती है।",
+      "xr": "Dūsre kā dṛṣṭikoṇ samajhne se hamārī samajh gahrī hotī hai."
+    },
+    "c288": {
+      "t": "विश्लेषण",
+      "r": "Vishleṣaṇ",
+      "x": "उसके आर्थिक विश्लेषण ने तीन छिपे हुए जोखिम उजागर किए।",
+      "xr": "Uske ārthik vishleṣaṇ ne tīn chhipe hue jokhim ujāgar kie."
+    },
+    "c289": {
+      "t": "मान्यता",
+      "r": "Mānyatā",
+      "x": "अपनी अंतर्निहित मान्यताओं पर हमेशा प्रश्न उठाएँ।",
+      "xr": "Apnī antarnihit mānyatāon par hameshā prashna uṭhāen."
+    },
+    "c290": {
+      "t": "निष्कर्ष",
+      "r": "Niṣkarṣ",
+      "x": "निष्कर्ष पर पहुँचने से पहले सभी तथ्यों की प्रतीक्षा करें।",
+      "xr": "Niṣkarṣ par pahunchne se pahle sabhī tathyon kī pratīkṣā karein."
+    },
+    "c291": {
+      "t": "निष्पक्ष",
+      "r": "Niṣpakṣ",
+      "x": "एक ईमानदार पत्रकार निष्पक्ष रहने का प्रयास करता है।",
+      "xr": "Ek īmāndār patrakār niṣpakṣ rahne kā prayās kartā hai."
+    },
+    "c292": {
+      "t": "पूर्वाग्रह",
+      "r": "Pūrvāgrah",
+      "x": "अपने पूर्वाग्रह को पहचानना बेहतर निर्णय की ओर ले जाता है।",
+      "xr": "Apne pūrvāgrah ko pahchānnā behtar nirṇay kī or le jātā hai."
+    },
+    "c293": {
+      "t": "मापदंड",
+      "r": "Māpdaṇḍ",
+      "x": "विश्वसनीयता हमारा प्राथमिक मूल्यांकन मापदंड है।",
+      "xr": "Vishvasnīyatā hamārā prāthmik mūlyānkan māpdaṇḍ hai."
+    },
+    "c294": {
+      "t": "अंतर्विरोध",
+      "r": "Antarvirodh",
+      "x": "गवाह ने समयरेखा में एक अंतर्विरोध देखा।",
+      "xr": "Gavāh ne samayrekhā mein ek antarvirodh dekhā."
+    },
+    "c295": {
+      "t": "सर्वसम्मति",
+      "r": "Sarvasammati",
+      "x": "जीवंत बहस के बाद समिति सर्वसम्मति पर पहुँची।",
+      "xr": "Jīvant bahas ke bād samiti sarvasammati par pahunchī."
+    },
+    "c296": {
+      "t": "स्पष्ट करना",
+      "r": "Spaṣṭ karnā",
+      "x": "क्या आप स्पष्ट कर सकते हैं कि इस वाक्यांश से आपका क्या आशय था?",
+      "xr": "Kyā āp spaṣṭ kar sakte hain ki is vākyānsh se āpkā kyā āshay thā?"
+    },
+    "c297": {
+      "t": "ज़ोर देना",
+      "r": "Zor denā",
+      "x": "मैं सुगम्यता के महत्व पर ज़ोर देना चाहता हूँ।",
+      "xr": "Main sugamyatā ke mahatva par zor denā chāhtā hūn."
+    },
+    "c298": {
+      "t": "फिर भी",
+      "r": "Phir bhī",
+      "x": "रास्ता कठिन और खड़ा था; फिर भी हम शिखर पर पहुँच गए।",
+      "xr": "Rāstā kaṭhin aur khaṛā thā; phir bhī ham shikhar par pahunch gae."
+    },
+    "c299": {
+      "t": "परिणाम",
+      "r": "Pariṇām",
+      "x": "निर्णय लेने से पहले हर दीर्घकालिक परिणाम पर विचार करें।",
+      "xr": "Nirṇay lene se pahle har dīrghkālik pariṇām par vichār karein."
+    },
+    "c300": {
+      "t": "अंतर्दृष्टि",
+      "r": "Antardṛṣṭi",
+      "x": "उनकी टिप्पणी ने एक उल्लेखनीय अंतर्दृष्टि प्रदान की।",
+      "xr": "Unkī ṭippaṇī ne ek ullekhnīy antardṛṣṭi pradān kī."
+    },
+    "c301": {
+      "t": "रूपक",
+      "r": "Rūpak",
+      "x": "नदी यहाँ बीतते समय के रूपक के रूप में प्रयुक्त हुई है।",
+      "xr": "Nadī yahān bītte samay ke rūpak ke rūp mein prayukt huī hai."
+    },
+    "c302": {
+      "t": "प्रतीकवाद",
+      "r": "Pratīkvād",
+      "x": "यह उपन्यास बहुस्तरीय प्रतीकवाद से समृद्ध है।",
+      "xr": "Yah upanyās bahustarīy pratīkvād se samṛddh hai."
+    },
+    "c303": {
+      "t": "कथानक",
+      "r": "Kathānak",
+      "x": "लेखक तीन परस्पर जुड़े कथानकों को कुशलता से बुनता है।",
+      "xr": "Lekhak tīn paraspar juṛe kathānakon ko kushaltā se buntā hai."
+    },
+    "c304": {
+      "t": "कालजयी कृति",
+      "r": "Kāljayī kṛti",
+      "x": "उस सिम्फ़नी को एक कालजयी कृति के रूप में सराहा जाता है।",
+      "xr": "Us simfanī ko ek kāljayī kṛti ke rūp mein sarāhā jātā hai."
+    },
+    "c305": {
+      "t": "सौंदर्यबोध",
+      "r": "Saundaryabodh",
+      "x": "न्यूनतमवादी डिज़ाइन शांत सौंदर्यबोध और सामंजस्य को प्राथमिकता देता है।",
+      "xr": "Nyūntamvādī ḍizāin shānt saundaryabodh aur sāmanjasya ko prāthmiktā detā hai."
+    },
+    "c306": {
+      "t": "सूक्ष्मता",
+      "r": "Sūkṣmatā",
+      "x": "सच्ची प्रवीणता सूक्ष्म सांस्कृतिक बारीकियों को समझने में निहित है।",
+      "xr": "Sachchī pravīṇtā sūkṣma sānskṛtik bārīkiyon ko samajhne mein nihit hai."
+    },
+    "c307": {
+      "t": "अस्पष्टता",
+      "r": "Aspaṣṭatā",
+      "x": "कविता एक सोची-समझी, मर्मस्पर्शी अस्पष्टता पर समाप्त होती है।",
+      "xr": "Kavitā ek sochī-samjhī, marmasparshī aspaṣṭatā par samāpt hotī hai."
+    },
+    "c308": {
+      "t": "व्यंग्य",
+      "r": "Vyangya",
+      "x": "नाटककार ने अहंकार की आलोचना के लिए तीखे व्यंग्य का प्रयोग किया।",
+      "xr": "Nāṭakkār ne ahankār kī ālochnā ke lie tīkhe vyangya kā prayog kiyā."
+    },
+    "c309": {
+      "t": "वाक्पटुता",
+      "r": "Vākpaṭutā",
+      "x": "उन्होंने अद्भुत संयम और वाक्पटुता के साथ अपनी बात रखी।",
+      "xr": "Unhonne adbhut samyam aur vākpaṭutā ke sāth apnī bāt rakhī."
+    },
+    "c310": {
+      "t": "बौद्धिक विरासत",
+      "r": "Bauddhik virāsat",
+      "x": "महान साहित्य एक अमिट बौद्धिक विरासत छोड़ जाता है।",
+      "xr": "Mahān sāhitya ek amiṭ bauddhik virāsat chhoṛ jātā hai."
+    },
+    "c311": {
+      "t": "अतीत की स्मृति",
+      "r": "Atīt kī smṛti",
+      "x": "गर्म मिट्टी पर बारिश की सौंधी खुशबू ने गहरी पुरानी यादें जगा दीं।",
+      "xr": "Garam miṭṭī par bārish kī saundhī khushbū ne gahrī purānī yādein jagā dīn."
+    },
+    "c312": {
+      "t": "अनुगूँज",
+      "r": "Anugūnj",
+      "x": "उस धुन में गहरी भावात्मक अनुगूँज थी।",
+      "xr": "Us dhun mein gahrī bhāvātmak anugūnj thī."
+    },
+    "c313": {
+      "t": "उदात्त",
+      "r": "Udātt",
+      "x": "ध्रुवीय ज्योति के नीचे खड़े होना अत्यंत उदात्त अनुभव था।",
+      "xr": "Dhruvīy jyoti ke nīche khaṛe honā atyant udātt anubhav thā."
+    },
+    "c314": {
+      "t": "परे जाना",
+      "r": "Pare jānā",
+      "x": "करुणा भाषा और इतिहास की सीमाओं से परे जा सकती है।",
+      "xr": "Karuṇā bhāṣā aur itihās kī sīmāon se pare jā saktī hai."
+    },
+    "c315": {
+      "t": "प्रामाणिकता",
+      "r": "Prāmāṇiktā",
+      "x": "पाठक सच्ची प्रामाणिकता को तुरंत पहचान लेते हैं।",
+      "xr": "Pāṭhak sachchī prāmāṇiktā ko turant pahchān lete hain."
+    },
+    "c316": {
+      "t": "अंतरात्मा",
+      "r": "Antarātmā",
+      "x": "सदैव एक सच्ची अंतरात्मा की आवाज़ के अनुसार आचरण करें।",
+      "xr": "Sadaiv ek sachchī antarātmā kī āvāz ke anusār ācharaṇ karein."
+    },
+    "c317": {
+      "t": "सत्यनिष्ठा",
+      "r": "Satyanishṭhā",
+      "x": "सत्यनिष्ठा का अर्थ है सही काम करना, तब भी जब कोई न देख रहा हो।",
+      "xr": "Satyanishṭhā kā arth hai sahī kām karnā, tab bhī jab koī na dekh rahā ho."
+    },
+    "c318": {
+      "t": "समानुभूति",
+      "r": "Samānubhūti",
+      "x": "समानुभूति गहरी से गहरी खाई को भी पाट सकती है।",
+      "xr": "Samānubhūti gahrī se gahrī khāī ko bhī pāṭ saktī hai."
+    },
+    "c319": {
+      "t": "दुविधा",
+      "r": "Duvidhā",
+      "x": "समिति के सामने एक कठिन नैतिक दुविधा थी।",
+      "xr": "Samiti ke sāmne ek kaṭhin naitik duvidhā thī."
+    },
+    "c320": {
+      "t": "विवेक",
+      "r": "Vivek",
+      "x": "ज्ञान बोलता है, जबकि विवेक सुनता है।",
+      "xr": "Gyān boltā hai, jabki vivek suntā hai."
+    },
+    "c321": {
+      "t": "चेतना",
+      "r": "Chetnā",
+      "x": "दार्शनिक आज भी चेतना के स्वरूप पर विचार-विमर्श करते हैं।",
+      "xr": "Dārshanik āj bhī chetnā ke svarūp par vichār-vimarsh karte hain."
+    },
+    "c322": {
+      "t": "बोध",
+      "r": "Bodh",
+      "x": "भाषा सूक्ष्म रूप से हमारे समय के बोध को आकार देती है।",
+      "xr": "Bhāṣā sūkṣma rūp se hamāre samay ke bodh ko ākār detī hai."
+    },
+    "c323": {
+      "t": "लचीलापन",
+      "r": "Lachīlāpan",
+      "x": "विपरीत परिस्थितियों से उबरने पर आंतरिक लचीलापन बढ़ता है।",
+      "xr": "Viparīt paristhitiyon se ubarne par āntarik lachīlāpan baṛhtā hai."
+    },
+    "c324": {
+      "t": "आत्मचिंतन",
+      "r": "Ātmachintan",
+      "x": "उथल-पुथल के समय शांत आत्मचिंतन स्पष्टता लाता है।",
+      "xr": "Uthal-puthal ke samay shānt ātmachintan spaṣṭatā lātā hai."
+    },
+    "c325": {
+      "t": "विरोधाभास",
+      "r": "Virodhābhās",
+      "x": "विकल्पों का विरोधाभास दर्शाता है कि अधिक विकल्प भ्रमित कर सकते हैं।",
+      "xr": "Vikalpon kā virodhābhās darshātā hai ki adhik vikalp bhramit kar sakte hain."
+    },
+    "c326": {
+      "t": "अनित्यता",
+      "r": "Anityatā",
+      "x": "अनित्यता को स्वीकार करना हमें आज के पल को सँजोना सिखाता है।",
+      "xr": "Anityatā ko svīkār karnā hamein āj ke pal ko sanjonā sikhātā hai."
+    },
+    "c327": {
+      "t": "समभाव",
+      "r": "Sambhāv",
+      "x": "उन्होंने सफलता और असफलता दोनों का सामना समभाव से किया।",
+      "xr": "Unhonne saphaltā aur asaphaltā donon kā sāmnā sambhāv se kiyā."
+    },
+    "c328": {
+      "t": "उद्देश्य",
+      "r": "Uddeshya",
+      "x": "साझा उद्देश्य दैनिक परिश्रम को आनंद में बदल देता है।",
+      "xr": "Sājhā uddeshya dainik parishram ko ānand mein badal detā hai."
+    },
+    "c329": {
+      "t": "स्वायत्तता",
+      "r": "Svāyattatā",
+      "x": "बौद्धिक स्वायत्तता स्वतंत्र चिंतन से प्रारंभ होती है।",
+      "xr": "Bauddhik svāyattatā svatantra chintan se prārambh hotī hai."
+    },
+    "c330": {
+      "t": "विनम्रता",
+      "r": "Vinamratā",
+      "x": "सच्ची निपुणता सदैव विनम्रता के साथ जुड़ी होती है।",
+      "xr": "Sachchī nipuṇtā sadaiv vinamratā ke sāth juṛī hotī hai."
+    },
+    "c331": {
+      "t": "कथनी से करनी बड़ी होती है",
+      "r": "Kathnī se karnī baṛī hotī hai",
+      "x": "अपने वादे निभाइए—कथनी से करनी बड़ी होती है।",
+      "xr": "Apne vāde nibhāie—kathnī se karnī baṛī hotī hai."
+    },
+    "c332": {
+      "t": "करत-करत अभ्यास के जड़मति होत सुजान",
+      "r": "Karat-karat abhyās ke jaṛmati hot sujān",
+      "x": "ग़लतियों से मत डरिए; करत-करत अभ्यास के जड़मति होत सुजान।",
+      "xr": "Galtiyon se mat ḍarie; karat-karat abhyās ke jaṛmati hot sujān."
+    },
+    "c333": {
+      "t": "हर अँधेरी रात के बाद सवेरा होता है",
+      "r": "Har andherī rāt ke bād saverā hotā hai",
+      "x": "आशा बनाए रखिए—हर अँधेरी रात के बाद सवेरा होता है।",
+      "xr": "Āshā banāe rakhie—har andherī rāt ke bād saverā hotā hai."
+    },
+    "c334": {
+      "t": "समय हर घाव भर देता है",
+      "r": "Samay har ghāv bhar detā hai",
+      "x": "स्वयं के प्रति कोमल रहें; समय हर घाव भर देता है।",
+      "xr": "Svayam ke prati komal rahein; samay har ghāv bhar detā hai."
+    },
+    "c335": {
+      "t": "एकता में बल है",
+      "r": "Ektā mein bal hai",
+      "x": "साथ मिलकर काम करना सिद्ध करता है कि एकता में बल है।",
+      "xr": "Sāth milkar kām karnā siddh kartā hai ki ektā mein bal hai."
+    },
+    "c336": {
+      "t": "चुप्पी तोड़ना",
+      "r": "Chuppī toṛnā",
+      "x": "भोजन के समय एक प्यारे चुटकुले ने चुप्पी तोड़ दी।",
+      "xr": "Bhojan ke samay ek pyāre chuṭkule ne chuppī toṛ dī."
+    },
+    "c337": {
+      "t": "बाएँ हाथ का खेल",
+      "r": "Bāen hāth kā khel",
+      "x": "सप्ताहों के अभ्यास के बाद परीक्षा बाएँ हाथ का खेल थी।",
+      "xr": "Saptāhon ke abhyās ke bād parīkṣā bāen hāth kā khel thī."
+    },
+    "c338": {
+      "t": "ईद का चाँद होना",
+      "r": "Īd kā chānd honā",
+      "x": "इस घाटी में बर्फ़ गिरना मानो ईद का चाँद होने जैसा दुर्लभ है।",
+      "xr": "Is ghāṭī mein barf girnā māno īd kā chānd hone jaisā durlabh hai."
+    },
+    "c339": {
+      "t": "तीर निशाने पर लगना",
+      "r": "Tīr nishāne par lagnā",
+      "x": "आपका निदान बिल्कुल सही था, तीर सीधे निशाने पर लगा।",
+      "xr": "Āpkā nidān bilkul sahī thā, tīr sīdhe nishāne par lagā."
+    },
+    "c340": {
+      "t": "रात-दिन एक करना",
+      "r": "Rāt-din ek karnā",
+      "x": "समय पर काम पूरा करने के लिए टीम ने रात-दिन एक कर दिया।",
+      "xr": "Samay par kām pūrā karne ke lie ṭīm ne rāt-din ek kar diyā."
+    },
+    "c341": {
+      "t": "शब्दों के पीछे का मर्म समझना",
+      "r": "Shabdon ke pīchhe kā marm samajhnā",
+      "x": "कूटनीति में आपको शब्दों के पीछे का मर्म समझना होता है।",
+      "xr": "Kūṭnīti mein āpko shabdon ke pīchhe kā marm samajhnā hotā hai."
+    },
+    "c342": {
+      "t": "नया अध्याय शुरू करना",
+      "r": "Nayā adhyāy shurū karnā",
+      "x": "उसने इस वसंत में जीवन का एक नया अध्याय शुरू करने का निश्चय किया।",
+      "xr": "Usne is vasant mein jīvan kā ek nayā adhyāy shurū karne kā nishchay kiyā."
+    },
+    "c343": {
+      "t": "छिपा हुआ वरदान",
+      "r": "Chhipā huā vardān",
+      "x": "वह नौकरी छूटना अंततः एक छिपा हुआ वरदान साबित हुआ।",
+      "xr": "Vah naukrī chhūṭnā antataḥ ek chhipā huā vardān sābit huā."
+    },
+    "c344": {
+      "t": "जी-जान लगा देना",
+      "r": "Jī-jān lagā denā",
+      "x": "महान शिक्षक अपने छात्रों के लिए हमेशा जी-जान लगा देते हैं।",
+      "xr": "Mahān shikṣak apne chhātron ke lie hameshā jī-jān lagā dete hain."
+    },
+    "c345": {
+      "t": "व्यापक तस्वीर देखना",
+      "r": "Vyāpak tasvīr dekhnā",
+      "x": "छोटे विवरणों से पीछे हटकर व्यापक तस्वीर देखिए।",
+      "xr": "Chhoṭe vivaraṇon se pīchhe haṭkar vyāpak tasvīr dekhie."
+    },
+    "c346": {
+      "t": "संप्रभुता",
+      "r": "Samprabhutā",
+      "x": "अंतर्राष्ट्रीय क़ानून संप्रभुता के पारस्परिक सम्मान की पुष्टि करता है।",
+      "xr": "Antarrāṣṭrīy qānūn samprabhutā ke pārasparik sammān kī puṣṭi kartā hai."
+    },
+    "c347": {
+      "t": "कूटनीति",
+      "r": "Kūṭnīti",
+      "x": "धैर्यपूर्ण कूटनीति ने तनाव बढ़ने से रोक दिया।",
+      "xr": "Dhairyapūrṇ kūṭnīti ne tanāv baṛhne se rok diyā."
+    },
+    "c348": {
+      "t": "संधि",
+      "r": "Sandhi",
+      "x": "चालीस राष्ट्रों ने पर्यावरण संधि की पुष्टि की।",
+      "xr": "Chālīs rāṣṭron ne paryāvaraṇ sandhi kī puṣṭi kī."
+    },
+    "c349": {
+      "t": "बहुपक्षीय",
+      "r": "Bahupakṣīy",
+      "x": "बहुपक्षीय सहयोग साझा वैश्विक जोखिमों का समाधान करता है।",
+      "xr": "Bahupakṣīy sahyog sājhā vaishvik jokhimon kā samādhān kartā hai."
+    },
+    "c350": {
+      "t": "अधिकार-क्षेत्र",
+      "r": "Adhikār-kṣetra",
+      "x": "उस न्यायाधिकरण का समुद्री विवादों पर अधिकार-क्षेत्र है।",
+      "xr": "Us nyāyādhikaraṇ kā samudrī vivādon par adhikār-kṣetra hai."
+    },
+    "c351": {
+      "t": "परिकल्पना",
+      "r": "Parikalpanā",
+      "x": "यह शोध-पत्र एक नवीन भाषाई परिकल्पना का परीक्षण करता है।",
+      "xr": "Yah shodh-patra ek navīn bhāṣāī parikalpanā kā parīkṣaṇ kartā hai."
+    },
+    "c352": {
+      "t": "कार्यप्रणाली",
+      "r": "Kāryapraṇālī",
+      "x": "पारदर्शी कार्यप्रणाली स्वतंत्र पुनरावृत्ति को संभव बनाती है।",
+      "xr": "Pārdarshī kāryapraṇālī svatantra punarāvṛtti ko sambhav banātī hai."
+    },
+    "c353": {
+      "t": "संश्लेषण",
+      "r": "Sanshleṣaṇ",
+      "x": "उनके व्याख्यान ने दोनों क्षेत्रों का अद्भुत संश्लेषण प्रस्तुत किया।",
+      "xr": "Unke vyākhyān ne donon kṣetron kā adbhut sanshleṣaṇ prastut kiyā."
+    },
+    "c354": {
+      "t": "नज़ीर",
+      "r": "Nazīr",
+      "x": "उस निर्णय ने एक महत्वपूर्ण विधिक नज़ीर स्थापित की।",
+      "xr": "Us nirṇay ne ek mahatvapūrṇ vidhik nazīr sthāpit kī."
+    },
+    "c355": {
+      "t": "क्रियान्वयन",
+      "r": "Kriyānvayan",
+      "x": "सावधानीपूर्वक क्रियान्वयन तय करता है कि कोई सुधार सफल होगा या नहीं।",
+      "xr": "Sāvdhānīpūrvak kriyānvayan tay kartā hai ki koī sudhār saphal hogā yā nahīn."
+    },
+    "c356": {
+      "t": "के बावजूद",
+      "r": "Ke bāvajūd",
+      "x": "प्रारंभिक विलंब के बावजूद, पुल सुरक्षित रूप से खुल गया।",
+      "xr": "Prārambhik vilamb ke bāvajūd, pul surakṣit rūp se khul gayā."
+    },
+    "c357": {
+      "t": "फलस्वरूप",
+      "r": "Phalasvarūp",
+      "x": "वित्तपोषण बढ़ा; फलस्वरूप ग्रामीण चिकित्सालयों का विस्तार हुआ।",
+      "xr": "Vittapoṣaṇ baṛhā; phalasvarūp grāmīṇ chikitsālayon kā vistār huā."
+    },
+    "c358": {
+      "t": "इसके अतिरिक्त",
+      "r": "Iske atirikt",
+      "x": "इसके अतिरिक्त, खुला डेटा स्वतंत्र शोधकर्ताओं को लाभ पहुँचाता है।",
+      "xr": "Iske atirikt, khulā ḍeṭā svatantra shodhkartāon ko lābh pahunchātā hai."
+    },
+    "c359": {
+      "t": "के आलोक में",
+      "r": "Ke ālok mein",
+      "x": "नए प्रमाणों के आलोक में हमने दिशानिर्देश में संशोधन किया।",
+      "xr": "Nae pramāṇon ke ālok mein hamne dishānirdesh mein sanshodhan kiyā."
+    },
+    "c360": {
+      "t": "पूर्ण सम्मान के साथ",
+      "r": "Pūrṇ sammān ke sāth",
+      "x": "पूर्ण सम्मान के साथ, मैं एक वैकल्पिक दृष्टिकोण का प्रस्ताव रखता हूँ।",
+      "xr": "Pūrṇ sammān ke sāth, main ek vaikalpik dṛṣṭikoṇ kā prastāv rakhtā hūn."
+    },
+    "c361": {
+      "t": "सुस्पष्ट अभिव्यक्त करना",
+      "r": "Suspaṣṭ abhivyakt karnā",
+      "x": "वह जटिल विचारों को सहजता से सुस्पष्ट अभिव्यक्त कर सकती हैं।",
+      "xr": "Vah jaṭil vichāron ko sahajtā se suspaṣṭ abhivyakt kar saktī hain."
+    },
+    "c362": {
+      "t": "संक्षिप्त",
+      "r": "Sankṣipt",
+      "x": "लंबी बात की अपेक्षा संक्षिप्त व्याख्या अधिक स्पष्ट होती है।",
+      "xr": "Lambī bāt kī apekṣā sankṣipt vyākhyā adhik spaṣṭ hotī hai."
+    },
+    "c363": {
+      "t": "सुसंगत",
+      "r": "Susangat",
+      "x": "आरंभ से अंत तक एक सुसंगत कथाक्रम तैयार करें।",
+      "xr": "Ārambh se ant tak ek susangat kathākram taiyār karein."
+    },
+    "c364": {
+      "t": "प्रभावशाली",
+      "r": "Prabhāvshālī",
+      "x": "सच्ची कहानियाँ किसी भी तर्क को कहीं अधिक प्रभावशाली बना देती हैं।",
+      "xr": "Sachchī kahāniyān kisī bhī tark ko kahīn adhik prabhāvshālī banā detī hain."
+    },
+    "c365": {
+      "t": "व्यावहारिक",
+      "r": "Vyāvahārik",
+      "x": "हमने कार्यान्वयन के लिए एक व्यावहारिक रूपरेखा अपनाई।",
+      "xr": "Hamne kāryānvayan ke lie ek vyāvahārik rūprekhā apnāī."
+    },
+    "c366": {
+      "t": "अभूतपूर्व",
+      "r": "Abhūtpūrva",
+      "x": "वेधशाला ने अभूतपूर्व स्पष्टता वाली तस्वीरें लीं।",
+      "xr": "Vedhshālā ne abhūtpūrva spaṣṭatā vālī tasvīrein līn."
+    },
+    "c367": {
+      "t": "अपरिहार्य",
+      "r": "Aparihārya",
+      "x": "भाषा में क्रमिक परिवर्तन पूरी तरह अपरिहार्य है।",
+      "xr": "Bhāṣā mein kramik parivartan pūrī tarah aparihārya hai."
+    },
+    "c368": {
+      "t": "अनिवार्य",
+      "r": "Anivārya",
+      "x": "गहरी प्रवीणता के लिए सक्रिय श्रवण अनिवार्य है।",
+      "xr": "Gahrī pravīṇtā ke lie sakriy shravaṇ anivārya hai."
+    },
+    "c369": {
+      "t": "गहन",
+      "r": "Gahan",
+      "x": "कालजयी साहित्य पढ़ने से मन पर गहन प्रभाव पड़ता है।",
+      "xr": "Kāljayī sāhitya paṛhne se man par gahan prabhāv paṛtā hai."
+    },
+    "c370": {
+      "t": "निर्बाध",
+      "r": "Nirbādh",
+      "x": "हमारा लक्ष्य हर उपकरण पर निर्बाध अनुभव प्रदान करना है।",
+      "xr": "Hamārā lakṣya har upkaraṇ par nirbādh anubhav pradān karnā hai."
+    },
+    "c371": {
+      "t": "बिना किसी संदेह के",
+      "r": "Binā kisī sandeh ke",
+      "x": "बिना किसी संदेह के, निरंतरता की ही जीत होती है।",
+      "xr": "Binā kisī sandeh ke, nirantartā kī hī jīt hotī hai."
+    },
+    "c372": {
+      "t": "उसी प्रकार",
+      "r": "Usī prakār",
+      "x": "हम गति को महत्व देते हैं; उसी प्रकार गुणवत्ता से कभी समझौता नहीं करते।",
+      "xr": "Ham gati ko mahatva dete hain; usī prakār guṇvattā se kabhī samjhautā nahīn karte."
+    },
+    "c373": {
+      "t": "समग्र रूप से देखें तो",
+      "r": "Samagra rūp se dekhein to",
+      "x": "समग्र रूप से देखें तो यह हमारा सबसे उत्कृष्ट वर्ष रहा।",
+      "xr": "Samagra rūp se dekhein to yah hamārā sabse utkṛṣṭ varṣ rahā."
+    },
+    "c374": {
+      "t": "समय की कसौटी पर खरा उतरना",
+      "r": "Samay kī kasauṭī par kharā utarnā",
+      "x": "सावधानी से निर्मित मुक्त ज्ञान समय की कसौटी पर खरा उतरेगा।",
+      "xr": "Sāvdhānī se nirmit mukt gyān samay kī kasauṭī par kharā utregā."
+    },
+    "c375": {
+      "t": "आजीवन सीखना",
+      "r": "Ājīvan sīkhnā",
+      "x": "भाषाओं में निपुणता प्राप्त करना आजीवन सीखने की एक आनंदमय यात्रा है।",
+      "xr": "Bhāṣāon mein nipuṇtā prāpt karnā ājīvan sīkhne kī ek ānandmay yātrā hai."
+    }
+  }
+}

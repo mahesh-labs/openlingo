@@ -1,0 +1,2285 @@
+{
+  "code": "zh",
+  "name": "Chinese (Mandarin)",
+  "nativeName": "中文",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Four Tones & Basic Greetings: Mandarin uses four main tones (ā, á, ǎ, à) plus a neutral tone, and tone changes meaning. Word order is Subject-Verb-Object (SVO), and yes/no questions simply add 吗 (ma) at the end.",
+    "u2": "Pronouns, 是 (shì) & Possession with 的 (de): Mandarin verbs do not conjugate for person or tense. Use 是 to link nouns (他是我的哥哥) and 的 to show possession (我的妈妈 = my mother), though 的 is often omitted with close relatives.",
+    "u3": "Numbers, Measure Words (量词) & Time Order: Numbers before nouns require a measure word such as 个 (general), 杯 (cups), 张 (flat tickets), or 本 (books). Time expressions always go before the verb (明天我们去参观博物馆).",
+    "u4": "Dining, Adjectives & 很 (hěn): Adjectives act like predicates without 是—use 很 (very / default linker) before them (这道菜非常好吃). Express polite requests with 请问 (may I ask) and 可以...吗 (may I...?).",
+    "u5": "Locations with 在 (zài), Colors & Daily Verbs: Use 在 + place + 上/里 to indicate location (把钥匙放在桌子上). Basic verbs like 去 (go), 来 (come), 吃 (eat), 喝 (drink), and 睡 (sleep) stay invariant across all subjects.",
+    "u6": "Directions, Transport & Preposition 往/向: Express means of transport before the verb (坐火车 = by train, 坐公交车 = by bus). Give directions with 往左转 (turn left), 直走 (walk straight), and ask locations with 在哪里.",
+    "u7": "Shopping, Comparisons & Money: Ask prices with 多少钱 (how much?) and express desire with 想 (want to, e.g., 我想买一件暖和的外套). Use 太...了 to express 'too...' (太贵了 = too expensive).",
+    "u8": "Weather, Seasons & Aspect Particle 了 (le): Indicate completed action or change of state with 了 (下雪了, 花都开了). Seasonal time phrases appear at the beginning of the sentence or right after the subject.",
+    "u9": "Health, Body & Giving Advice with 应该: Describe symptoms directly with 疼/痛 (头疼 = headache, 肚子疼 = stomachache) or 发烧 (have a fever). Use 应该 (should) and 记得 (remember to) for health guidance.",
+    "u10": "Work, Study & Frequency Adverbs: Place locations of action before the verb using 在 (她在大学学习工程学). Discuss habits and hobbies with 喜欢 (like), 热爱 (love), and time durations placed after the verb.",
+    "u11": "Expressing Opinions, Feelings & 觉得/认为: Introduce viewpoints with 我觉得 (I feel/think) or 我认为 (I believe). Link adjectives and nouns with 的, and express possibility with 只要...就... (as long as... then...).",
+    "u12": "Experiences with 过 (guò) & Relative Clauses: Mark past life experiences with 过 after the verb and ongoing/completed events with 了. Modifiers—even entire clauses—always precede 的 and the head noun.",
+    "u13": "Modern Tech Vocabulary & 把 (bǎ) Sentences: Mandarin creates transparent tech compounds (电脑 = electric brain, 密码 = secret code). Use 把 to bring a specific object before the verb when emphasizing how it is handled.",
+    "u14": "Culture, Heritage & Passive 被 (bèi) Constructions: Express passive voice with 被 (被传唱 = has been sung) or implicit passives without 被 when the subject is clearly acted upon. Cultural compounds pair classical roots cleanly.",
+    "u15": "Paired Conjunctions & Logical Connectors: Mandarin strongly favors paired conjunctions: 因为...所以... (because... therefore...), 虽然...但是... (although... yet...), and 如果...就... (if... then...).",
+    "u16": "Business Chinese & Formal Disyllabic Verbs: Professional Mandarin favors crisp two-character compounds (战略, 预算, 谈判, 妥协) and formal prepositions like 在...之前 (prior to) and 本着 (in the spirit of).",
+    "u17": "Scientific Register & Nominalized Structures: Academic Chinese uses precise technical terms (实验, 证据, 算法, 精密) and structures like 通过...来... (by means of...) and 表明 (demonstrates) to build objective arguments.",
+    "u18": "Environment, Sustainability & Causative 使/让: Discuss ecological impact with 使 (cause/enable), 有助于 (helps to), and 与...和谐共处 (live in harmony with...). Note how 保护 and 恢复 drive active policy statements.",
+    "u19": "Civic, Legal & Governance Discourse: Legal and institutional prose employs formal verbs like 保障 (safeguard), 维护 (uphold), and 促进 (promote), along with concise four-character phrases such as 法律面前人人平等.",
+    "u20": "Critical Thinking, Analysis & Rhetorical Contrast: Frame debates using 从...的角度 (from the perspective of), 尽管如此 (nevertheless), and 立足于 (grounded in) to weigh assumptions, criteria, and conclusions.",
+    "u21": "Literary Criticism, Aesthetics & Evocative Compounds: Aesthetic prose relies on rich literary compounds (隐喻, 象征意义, 共鸣, 崇高) and poetic four-character modifiers that compress vivid imagery into balanced rhythm.",
+    "u22": "Philosophy, Ethics & Abstract Discourse: Philosophical Chinese balances classical conciseness with modern rigor—pairing concepts like 无常 (impermanence), 良知 (conscience), and 内省 (introspection) with reflective structures.",
+    "u23": "Chengyu (成语) & Traditional Proverbs (谚语): Four-character idioms (成语) like 熟能生巧, 一针见血, 塞翁失马, and 轻而易举 condense centuries of history and folklore into razor-sharp everyday and formal speech.",
+    "u24": "Diplomatic, Legal & Academic Written Style (书面语): High-register Mandarin uses classical connectors such as 尽管 (notwithstanding), 因此/从而 (consequently), 此外 (furthermore), 鉴于 (in light of), and 恕我直言 (with due respect).",
+    "u25": "Nuance, Rhetoric & Native C2 Mastery: Achieve native elegance with idiomatic set phrases (毫无疑问, 同理, 综合来看, 经得起时间的考验), symmetrical rhythm, and effortless switching between spoken warmth and literary precision."
+  },
+  "items": {
+    "c001": {
+      "t": "你好",
+      "r": "nǐ hǎo",
+      "x": "你好，很高兴认识你。",
+      "xr": "Nǐ hǎo, hěn gāoxìng rènshi nǐ."
+    },
+    "c002": {
+      "t": "早上好",
+      "r": "zǎoshang hǎo",
+      "x": "早上好，你昨晚睡得好吗？",
+      "xr": "Zǎoshang hǎo, nǐ zuówǎn shuì de hǎo ma?"
+    },
+    "c003": {
+      "t": "下午好",
+      "r": "xiàwǔ hǎo",
+      "x": "大家好，下午好。",
+      "xr": "Dàjiā hǎo, xiàwǔ hǎo."
+    },
+    "c004": {
+      "t": "晚上好",
+      "r": "wǎnshang hǎo",
+      "x": "晚上好，欢迎回家。",
+      "xr": "Wǎnshang hǎo, huānyíng huí jiā."
+    },
+    "c005": {
+      "t": "晚安",
+      "r": "wǎn'ān",
+      "x": "晚安，明天见。",
+      "xr": "Wǎn'ān, míngtiān jiàn."
+    },
+    "c006": {
+      "t": "谢谢",
+      "r": "xièxie",
+      "x": "非常感谢你的帮助。",
+      "xr": "Fēicháng gǎnxiè nǐ de bāngzhù."
+    },
+    "c007": {
+      "t": "不客气",
+      "r": "bù kèqi",
+      "x": "不客气，随时欢迎。",
+      "xr": "Bù kèqi, suíshí huānyíng."
+    },
+    "c008": {
+      "t": "请",
+      "r": "qǐng",
+      "x": "请进，请坐。",
+      "xr": "Qǐng jìn, qǐng zuò."
+    },
+    "c009": {
+      "t": "打扰一下",
+      "r": "dǎrǎo yīxià",
+      "x": "打扰一下，我可以问一个问题吗？",
+      "xr": "Dǎrǎo yīxià, wǒ kěyǐ wèn yīgè wèntí ma?"
+    },
+    "c010": {
+      "t": "对不起",
+      "r": "duìbuqǐ",
+      "x": "对不起，我迟到了。",
+      "xr": "Duìbuqǐ, wǒ chídào le."
+    },
+    "c011": {
+      "t": "是的",
+      "r": "shì de",
+      "x": "是的，我完全明白。",
+      "xr": "Shì de, wǒ wánquán míngbai."
+    },
+    "c012": {
+      "t": "不是",
+      "r": "bù shì",
+      "x": "不用了，谢谢，我很好。",
+      "xr": "Bùyòng le, xièxie, wǒ hěn hǎo."
+    },
+    "c013": {
+      "t": "再见",
+      "r": "zàijiàn",
+      "x": "再见，祝你一路平安。",
+      "xr": "Zàijiàn, zhù nǐ yīlù píng'ān."
+    },
+    "c014": {
+      "t": "我的名字是",
+      "r": "wǒ de míngzi shì",
+      "x": "我的名字是玛雅。",
+      "xr": "Wǒ de míngzi shì Mǎyǎ."
+    },
+    "c015": {
+      "t": "你好吗？",
+      "r": "nǐ hǎo ma?",
+      "x": "你今天过得怎么样？",
+      "xr": "Nǐ jīntiān guò de zěnmeyàng?"
+    },
+    "c016": {
+      "t": "我",
+      "r": "wǒ",
+      "x": "我正在学习一门新语言。",
+      "xr": "Wǒ zhèngzài xuéxí yī mén xīn yǔyán."
+    },
+    "c017": {
+      "t": "你",
+      "r": "nǐ",
+      "x": "你说话非常清楚。",
+      "xr": "Nǐ shuōhuà fēicháng qīngchu."
+    },
+    "c018": {
+      "t": "他",
+      "r": "tā",
+      "x": "他是我的哥哥。",
+      "xr": "Tā shì wǒ de gēge."
+    },
+    "c019": {
+      "t": "她",
+      "r": "tā",
+      "x": "她是一位医术精湛的医生。",
+      "xr": "Tā shì yī wèi yīshù jīngzhàn de yīshēng."
+    },
+    "c020": {
+      "t": "我们",
+      "r": "wǒmen",
+      "x": "我们住在同一个城市。",
+      "xr": "Wǒmen zhù zài tóng yīgè chéngshì."
+    },
+    "c021": {
+      "t": "妈妈",
+      "r": "māma",
+      "x": "我妈妈做的菜非常好吃。",
+      "xr": "Wǒ māma zuò de cài fēicháng hǎochī."
+    },
+    "c022": {
+      "t": "爸爸",
+      "r": "bàba",
+      "x": "我爸爸每天早上都看报纸。",
+      "xr": "Wǒ bàba měitiān zǎoshang dōu kàn bàozhǐ."
+    },
+    "c023": {
+      "t": "兄弟",
+      "r": "xiōngdì",
+      "x": "我哥哥喜欢踢足球。",
+      "xr": "Wǒ gēge xǐhuan tī zúqiú."
+    },
+    "c024": {
+      "t": "姐妹",
+      "r": "jiěmèi",
+      "x": "我姐姐在学医学。",
+      "xr": "Wǒ jiějie zài xué yīxué."
+    },
+    "c025": {
+      "t": "家庭",
+      "r": "jiātíng",
+      "x": "我们全家每个星期天都会聚在一起。",
+      "xr": "Wǒmen quánjiā měigè xīngqītiān dōu huì jù zài yīqǐ."
+    },
+    "c026": {
+      "t": "朋友",
+      "r": "péngyou",
+      "x": "她是我最亲密的朋友。",
+      "xr": "Tā shì wǒ zuì qīnmì de péngyou."
+    },
+    "c027": {
+      "t": "孩子",
+      "r": "háizi",
+      "x": "那个孩子正在画画。",
+      "xr": "Nàge háizi zhèngzài huàhuà."
+    },
+    "c028": {
+      "t": "老师",
+      "r": "lǎoshī",
+      "x": "我们的老师把语法讲得很清楚。",
+      "xr": "Wǒmen de lǎoshī bǎ yǔfǎ jiǎng de hěn qīngchu."
+    },
+    "c029": {
+      "t": "学生",
+      "r": "xuéshēng",
+      "x": "每个学生都带了笔记本。",
+      "xr": "Měigè xuéshēng dōu dài le bǐjìběn."
+    },
+    "c030": {
+      "t": "邻居",
+      "r": "línjū",
+      "x": "我们的邻居非常友善。",
+      "xr": "Wǒmen de línjū fēicháng yǒushàn."
+    },
+    "c031": {
+      "t": "一",
+      "r": "yī",
+      "x": "我想要一杯茶。",
+      "xr": "Wǒ xiǎng yào yī bēi chá."
+    },
+    "c032": {
+      "t": "二",
+      "r": "èr",
+      "x": "请给我们两张票。",
+      "xr": "Qǐng gěi wǒmen liǎng zhāng piào."
+    },
+    "c033": {
+      "t": "三",
+      "r": "sān",
+      "x": "桌子上有三本书。",
+      "xr": "Zhuōzi shàng yǒu sān běn shū."
+    },
+    "c034": {
+      "t": "五",
+      "r": "wǔ",
+      "x": "课程五分钟后开始。",
+      "xr": "Kèchéng wǔ fēnzhōng hòu kāishǐ."
+    },
+    "c035": {
+      "t": "十",
+      "r": "shí",
+      "x": "她从一数到了十。",
+      "xr": "Tā cóng yī shǔ dào le shí."
+    },
+    "c036": {
+      "t": "今天",
+      "r": "jīntiān",
+      "x": "今天是个阳光明媚的日子。",
+      "xr": "Jīntiān shì gè yángguāng míngmèi de rìzi."
+    },
+    "c037": {
+      "t": "明天",
+      "r": "míngtiān",
+      "x": "明天我们将去参观博物馆。",
+      "xr": "Míngtiān wǒmen jiāng qù cānguān bówùguǎn."
+    },
+    "c038": {
+      "t": "昨天",
+      "r": "zuótiān",
+      "x": "昨天整个下午都在下雨。",
+      "xr": "Zuótiān zhěnggè xiàwǔ dōu zài xiàyǔ."
+    },
+    "c039": {
+      "t": "现在",
+      "r": "xiànzài",
+      "x": "我现在就准备好出发了。",
+      "xr": "Wǒ xiànzài jiù zhǔnbèi hǎo chūfā le."
+    },
+    "c040": {
+      "t": "以后",
+      "r": "yǐhòu",
+      "x": "我们稍后再谈这件事吧。",
+      "xr": "Wǒmen shāohòu zài tán zhè jiàn shì ba."
+    },
+    "c041": {
+      "t": "早上",
+      "r": "zǎoshang",
+      "x": "我每天早上都锻炼身体。",
+      "xr": "Wǒ měitiān zǎoshang dōu duànliàn shēntǐ."
+    },
+    "c042": {
+      "t": "夜晚",
+      "r": "yèwǎn",
+      "x": "夜晚星星明亮地闪烁着。",
+      "xr": "Yèwǎn xīngxing míngliàng de shǎnshuò zhe."
+    },
+    "c043": {
+      "t": "星期",
+      "r": "xīngqī",
+      "x": "这个星期非常忙碌。",
+      "xr": "Zhège xīngqī fēicháng mánglù."
+    },
+    "c044": {
+      "t": "月",
+      "r": "yuè",
+      "x": "下个月我们要出国旅行。",
+      "xr": "Xià gè yuè wǒmen yào chūguó lǚxíng."
+    },
+    "c045": {
+      "t": "年",
+      "r": "nián",
+      "x": "祝大家新年快乐。",
+      "xr": "Zhù dàjiā xīnnián kuàilè."
+    },
+    "c046": {
+      "t": "水",
+      "r": "shuǐ",
+      "x": "请问可以给我一杯水吗？",
+      "xr": "Qǐngwèn kěyǐ gěi wǒ yī bēi shuǐ ma?"
+    },
+    "c047": {
+      "t": "米饭",
+      "r": "mǐfàn",
+      "x": "我们吃米饭配咖喱。",
+      "xr": "Wǒmen chī mǐfàn pèi gālí."
+    },
+    "c048": {
+      "t": "面包",
+      "r": "miànbāo",
+      "x": "新鲜出炉的面包闻起来真香。",
+      "xr": "Xīnxiān chūlú de miànbāo wén qǐlái zhēn xiāng."
+    },
+    "c049": {
+      "t": "水果",
+      "r": "shuǐguǒ",
+      "x": "每天多吃新鲜水果。",
+      "xr": "Měitiān duō chī xīnxiān shuǐguǒ."
+    },
+    "c050": {
+      "t": "牛奶",
+      "r": "niúnǎi",
+      "x": "你喝咖啡加牛奶吗？",
+      "xr": "Nǐ hē kāfēi jiā niúnǎi ma?"
+    },
+    "c051": {
+      "t": "茶",
+      "r": "chá",
+      "x": "冬天喝热茶非常暖心。",
+      "xr": "Dōngtiān hē rèchá fēicháng nuǎnxīn."
+    },
+    "c052": {
+      "t": "咖啡",
+      "r": "kāfēi",
+      "x": "我早上习惯喝黑咖啡。",
+      "xr": "Wǒ zǎoshang xíguàn hē hēi kāfēi."
+    },
+    "c053": {
+      "t": "早餐",
+      "r": "zǎocān",
+      "x": "早餐是一天中的第一顿饭。",
+      "xr": "Zǎocān shì yītiān zhōng de dì-yī dùn fàn."
+    },
+    "c054": {
+      "t": "午餐",
+      "r": "wǔcān",
+      "x": "我们午餐去哪里吃呢？",
+      "xr": "Wǒmen wǔcān qù nǎlǐ chī ne?"
+    },
+    "c055": {
+      "t": "晚餐",
+      "r": "wǎncān",
+      "x": "晚餐七点钟准备好。",
+      "xr": "Wǎncān qī diǎnzhōng zhǔnbèi hǎo."
+    },
+    "c056": {
+      "t": "美味",
+      "r": "měiwèi",
+      "x": "这道菜真是太美味了。",
+      "xr": "Zhè dào cài zhēn shì tài měiwèi le."
+    },
+    "c057": {
+      "t": "饿",
+      "r": "è",
+      "x": "散步之后我非常饿。",
+      "xr": "Sànbù zhīhòu wǒ fēicháng è."
+    },
+    "c058": {
+      "t": "渴",
+      "r": "kě",
+      "x": "这么热的天气让我觉得很渴。",
+      "xr": "Zhème rè de tiānqì ràng wǒ juéde hěn kě."
+    },
+    "c059": {
+      "t": "菜单",
+      "r": "càidān",
+      "x": "请问可以看一下菜单吗？",
+      "xr": "Qǐngwèn kěyǐ kàn yīxià càidān ma?"
+    },
+    "c060": {
+      "t": "账单",
+      "r": "zhàngdān",
+      "x": "请给我们账单，谢谢。",
+      "xr": "Qǐng gěi wǒmen zhàngdān, xièxie."
+    },
+    "c061": {
+      "t": "房子",
+      "r": "fángzi",
+      "x": "他们的房子带有一个小花园。",
+      "xr": "Tāmen de fángzi dài yǒu yīgè xiǎo huāyuán."
+    },
+    "c062": {
+      "t": "房间",
+      "r": "fángjiān",
+      "x": "我的房间有一扇大窗户。",
+      "xr": "Wǒ de fángjiān yǒu yī shàn dà chuānghu."
+    },
+    "c063": {
+      "t": "桌子",
+      "r": "zhuōzi",
+      "x": "把钥匙放在桌子上吧。",
+      "xr": "Bǎ yàoshi fàng zài zhuōzi shàng ba."
+    },
+    "c064": {
+      "t": "书",
+      "r": "shū",
+      "x": "这本书很容易读懂。",
+      "xr": "Zhè běn shū hěn róngyì dúdǒng."
+    },
+    "c065": {
+      "t": "门",
+      "r": "mén",
+      "x": "请轻轻把门关上。",
+      "xr": "Qǐng qīngqīng bǎ mén guān shàng."
+    },
+    "c066": {
+      "t": "红色",
+      "r": "hóngsè",
+      "x": "她买了一把鲜红色的雨伞。",
+      "xr": "Tā mǎi le yī bǎ xiānhóngsè de yǔsǎn."
+    },
+    "c067": {
+      "t": "蓝色",
+      "r": "lánsè",
+      "x": "天空晴朗湛蓝。",
+      "xr": "Tiānkōng qínglǎng zhànlán."
+    },
+    "c068": {
+      "t": "白色",
+      "r": "báisè",
+      "x": "白雪把大地覆盖成一片白色。",
+      "xr": "Báixuě bǎ dàdì fùgài chéng yī piàn báisè."
+    },
+    "c069": {
+      "t": "大",
+      "r": "dà",
+      "x": "他们搬到了一个大城市。",
+      "xr": "Tāmen bān dào le yīgè dà chéngshì."
+    },
+    "c070": {
+      "t": "小",
+      "r": "xiǎo",
+      "x": "一只小鸟在树枝上唱歌。",
+      "xr": "Yī zhī xiǎoniǎo zài shùzhī shàng chànggē."
+    },
+    "c071": {
+      "t": "去",
+      "r": "qù",
+      "x": "我每天坐火车去上班。",
+      "xr": "Wǒ měitiān zuò huǒchē qù shàngbān."
+    },
+    "c072": {
+      "t": "来",
+      "r": "lái",
+      "x": "请来参加我们的庆祝活动。",
+      "xr": "Qǐng lái cānjiā wǒmen de qìngzhù huódòng."
+    },
+    "c073": {
+      "t": "吃",
+      "r": "chī",
+      "x": "我们八点一起吃晚饭。",
+      "xr": "Wǒmen bā diǎn yīqǐ chī wǎnfàn."
+    },
+    "c074": {
+      "t": "喝",
+      "r": "hē",
+      "x": "记得每天喝足够的水。",
+      "xr": "Jìde měitiān hē zúgòu de shuǐ."
+    },
+    "c075": {
+      "t": "睡觉",
+      "r": "shuìjiào",
+      "x": "我尽量每晚睡满八个小时。",
+      "xr": "Wǒ jǐnliàng měiwǎn shuì mǎn bā gè xiǎoshí."
+    },
+    "c076": {
+      "t": "火车",
+      "r": "huǒchē",
+      "x": "特快火车将在中午到达。",
+      "xr": "Tèkuài huǒchē jiāng zài zhōngwǔ dàodá."
+    },
+    "c077": {
+      "t": "公交车",
+      "r": "gōngjiāochē",
+      "x": "坐第二班公交车去市中心。",
+      "xr": "Zuò dì-èr bān gōngjiāochē qù shìzhōngxīn."
+    },
+    "c078": {
+      "t": "机场",
+      "r": "jīchǎng",
+      "x": "我们提前两个小时到达了机场。",
+      "xr": "Wǒmen tíqián liǎng gè xiǎoshí dàodá le jīchǎng."
+    },
+    "c079": {
+      "t": "票",
+      "r": "piào",
+      "x": "出站前请保管好你的票。",
+      "xr": "Chūzhàn qián qǐng bǎoguǎn hǎo nǐ de piào."
+    },
+    "c080": {
+      "t": "车站",
+      "r": "chēzhàn",
+      "x": "车站离这里只有五分钟的路程。",
+      "xr": "Chēzhàn lí zhèlǐ zhǐyǒu wǔ fēnzhōng de lùchéng."
+    },
+    "c081": {
+      "t": "左",
+      "r": "zuǒ",
+      "x": "在下一个红绿灯处向左转。",
+      "xr": "Zài xià yīgè hónglǜdēng chù xiàng zuǒ zhuǎn."
+    },
+    "c082": {
+      "t": "右",
+      "r": "yòu",
+      "x": "药店就在你的右手边。",
+      "xr": "Yàodiàn jiù zài nǐ de yòushǒubiān."
+    },
+    "c083": {
+      "t": "直走",
+      "r": "zhízǒu",
+      "x": "往前直走两个街区。",
+      "xr": "Wǎng qián zhízǒu liǎng gè jiēqū."
+    },
+    "c084": {
+      "t": "近",
+      "r": "jìn",
+      "x": "这附近有酒店吗？",
+      "xr": "Zhè fùjìn yǒu jiǔdiàn ma?"
+    },
+    "c085": {
+      "t": "远",
+      "r": "yuǎn",
+      "x": "海滩离市区不远。",
+      "xr": "Hǎitān lí shìqū bù yuǎn."
+    },
+    "c086": {
+      "t": "地图",
+      "r": "dìtú",
+      "x": "我们在地图上查一下路线吧。",
+      "xr": "Wǒmen zài dìtú shàng chá yīxià lùxiàn ba."
+    },
+    "c087": {
+      "t": "酒店",
+      "r": "jiǔdiàn",
+      "x": "我们在市中心预订了一家安静的酒店。",
+      "xr": "Wǒmen zài shìzhōngxīn yùdìng le yī jiā ānjìng de jiǔdiàn."
+    },
+    "c088": {
+      "t": "护照",
+      "r": "hùzhào",
+      "x": "别把护照忘在家里了。",
+      "xr": "Bié bǎ hùzhào wàng zài jiālǐ le."
+    },
+    "c089": {
+      "t": "行李",
+      "r": "xíngli",
+      "x": "今天我的行李相当重。",
+      "xr": "Jīntiān wǒ de xíngli xiāngdāng zhòng."
+    },
+    "c090": {
+      "t": "在哪里？",
+      "r": "zài nǎlǐ?",
+      "x": "最近的地铁出口在哪里？",
+      "xr": "Zuìjìn de dìtiě chūkǒu zài nǎlǐ?"
+    },
+    "c091": {
+      "t": "钱",
+      "r": "qián",
+      "x": "每个月存下一部分钱。",
+      "xr": "Měigè yuè cún xià yībùfen qián."
+    },
+    "c092": {
+      "t": "价格",
+      "r": "jiàgé",
+      "x": "这件夹克的价格是多少？",
+      "xr": "Zhè jiàn jiákè de jiàgé shì duōshao?"
+    },
+    "c093": {
+      "t": "便宜",
+      "r": "piányi",
+      "x": "早市上的蔬菜很便宜。",
+      "xr": "Zǎoshì shàng de shūcài hěn piányi."
+    },
+    "c094": {
+      "t": "贵",
+      "r": "guì",
+      "x": "那块手表对我来说太贵了。",
+      "xr": "Nà kuài shǒubiǎo duì wǒ láishuō tài guì le."
+    },
+    "c095": {
+      "t": "折扣",
+      "r": "zhékòu",
+      "x": "请问有学生折扣吗？",
+      "xr": "Qǐngwèn yǒu xuéshēng zhékòu ma?"
+    },
+    "c096": {
+      "t": "商店",
+      "r": "shāngdiàn",
+      "x": "拐角处的那家商店八点开门。",
+      "xr": "Guǎijiǎo chù de nà jiā shāngdiàn bā diǎn kāimén."
+    },
+    "c097": {
+      "t": "市场",
+      "r": "shìchǎng",
+      "x": "当地的市场每到周六都非常热闹。",
+      "xr": "Dāngdì de shìchǎng měi dào zhōuliù dōu fēicháng rènao."
+    },
+    "c098": {
+      "t": "买",
+      "r": "mǎi",
+      "x": "我想买一件暖和的大衣。",
+      "xr": "Wǒ xiǎng mǎi yī jiàn nuǎnhuo de dàyī."
+    },
+    "c099": {
+      "t": "支付",
+      "r": "zhīfù",
+      "x": "请问我可以刷卡还是付现金？",
+      "xr": "Qǐngwèn wǒ kěyǐ shuākǎ háishi fù xiànjīn?"
+    },
+    "c100": {
+      "t": "收据",
+      "r": "shōujù",
+      "x": "请给我一张收据。",
+      "xr": "Qǐng gěi wǒ yī zhāng shōujù."
+    },
+    "c101": {
+      "t": "衬衫",
+      "r": "chènshān",
+      "x": "这件纯棉衬衫穿起来很舒服。",
+      "xr": "Zhè jiàn chúnmián chènshān chuān qǐlái hěn shūfu."
+    },
+    "c102": {
+      "t": "鞋子",
+      "r": "xiézi",
+      "x": "我需要一双结实的徒步鞋。",
+      "xr": "Wǒ xūyào yī shuāng jiēshi de túbùxié."
+    },
+    "c103": {
+      "t": "包",
+      "r": "bāo",
+      "x": "她背着一个皮包。",
+      "xr": "Tā bēi zhe yīgè píbāo."
+    },
+    "c104": {
+      "t": "新",
+      "r": "xīn",
+      "x": "他今天穿上了他的新夹克。",
+      "xr": "Tā jīntiān chuān shàng le tā de xīn jiákè."
+    },
+    "c105": {
+      "t": "尺码",
+      "r": "chǐmǎ",
+      "x": "请问这件有中号尺码吗？",
+      "xr": "Qǐngwèn zhè jiàn yǒu zhōnghào chǐmǎ ma?"
+    },
+    "c106": {
+      "t": "太阳",
+      "r": "tàiyáng",
+      "x": "温暖的太阳晒干了潮湿的路面。",
+      "xr": "Wēnnuǎn de tàiyáng shàigān le cháoshī de lùmiàn."
+    },
+    "c107": {
+      "t": "雨",
+      "r": "yǔ",
+      "x": "带上一把雨伞，以防下雨。",
+      "xr": "Dài shàng yī bǎ yǔsǎn, yǐfáng xiàyǔ."
+    },
+    "c108": {
+      "t": "风",
+      "r": "fēng",
+      "x": "一阵凉爽的风从海上吹来。",
+      "xr": "Yī zhèn liángshuǎng de fēng cóng hǎishàng chuī lái."
+    },
+    "c109": {
+      "t": "热",
+      "r": "rè",
+      "x": "这里夏天的午后非常热。",
+      "xr": "Zhèlǐ xiàtiān de wǔhòu fēicháng rè."
+    },
+    "c110": {
+      "t": "冷",
+      "r": "lěng",
+      "x": "天气冷的时候记得围上围巾。",
+      "xr": "Tiānqì lěng de shíhou jìde wéi shàng wéijīn."
+    },
+    "c111": {
+      "t": "夏天",
+      "r": "xiàtiān",
+      "x": "我们在夏天经常去游泳。",
+      "xr": "Wǒmen zài xiàtiān jīngcháng qù yóuyǒng."
+    },
+    "c112": {
+      "t": "冬天",
+      "r": "dōngtiān",
+      "x": "冬天的夜晚漫长而宁静。",
+      "xr": "Dōngtiān de yèwǎn màncháng ér níngjìng."
+    },
+    "c113": {
+      "t": "春天",
+      "r": "chūntiān",
+      "x": "春天到来时处处百花盛开。",
+      "xr": "Chūntiān dàolái shí chùchù bǎihuā shèngkāi."
+    },
+    "c114": {
+      "t": "云",
+      "r": "yún",
+      "x": "暴风雨来临前乌云密布。",
+      "xr": "Bàofēngyǔ láilín qián wūyún mìbù."
+    },
+    "c115": {
+      "t": "雪",
+      "r": "xuě",
+      "x": "孩子们在刚下的新雪里堆起了雪人。",
+      "xr": "Háizimen zài gāng xià de xīnxuě lǐ duī qǐ le xuěrén."
+    },
+    "c116": {
+      "t": "山",
+      "r": "shān",
+      "x": "我们在日出前登上了山顶。",
+      "xr": "Wǒmen zài rìchū qián dēng shàng le shāndǐng."
+    },
+    "c117": {
+      "t": "河流",
+      "r": "héliú",
+      "x": "一条宽阔的河流蜿蜒穿过山谷。",
+      "xr": "Yī tiáo kuānkuò de héliú wānyán chuānguò shāngǔ."
+    },
+    "c118": {
+      "t": "大海",
+      "r": "dàhǎi",
+      "x": "今晚的大海看起来十分平静。",
+      "xr": "Jīnwǎn de dàhǎi kàn qǐlái shífēn píngjìng."
+    },
+    "c119": {
+      "t": "树",
+      "r": "shù",
+      "x": "一棵古树为庭院洒下片片阴凉。",
+      "xr": "Yī kē gǔshù wèi tíngyuàn sǎ xià piànpiàn yīnliáng."
+    },
+    "c120": {
+      "t": "花",
+      "r": "huā",
+      "x": "花园里的每一朵花都绽放了。",
+      "xr": "Huāyuán lǐ de měi yī duǒ huā dōu zhànfàng le."
+    },
+    "c121": {
+      "t": "头",
+      "r": "tóu",
+      "x": "看了一整天书，我的头隐隐作痛。",
+      "xr": "Kàn le yī zhěngtiān shū, wǒ de tóu yǐnyǐn zuòtòng."
+    },
+    "c122": {
+      "t": "手",
+      "r": "shǒu",
+      "x": "饭前记得洗手。",
+      "xr": "Fànqián jìde xǐshǒu."
+    },
+    "c123": {
+      "t": "眼睛",
+      "r": "yǎnjing",
+      "x": "离开屏幕，让眼睛休息一下。",
+      "xr": "Líkāi píngmù, ràng yǎnjing xiūxi yīxià."
+    },
+    "c124": {
+      "t": "心脏",
+      "r": "xīnzàng",
+      "x": "坚持锻炼能让你的心脏保持强健。",
+      "xr": "Jiānchí duànliàn néng ràng nǐ de xīnzàng bǎochí qiángjiàn."
+    },
+    "c125": {
+      "t": "胃",
+      "r": "wèi",
+      "x": "如果胃不舒服，就喝点温水。",
+      "xr": "Rúguǒ wèi bù shūfu, jiù hē diǎn wēnshuǐ."
+    },
+    "c126": {
+      "t": "医生",
+      "r": "yīshēng",
+      "x": "你今天应该去看一下医生。",
+      "xr": "Nǐ jīntiān yīnggāi qù kàn yīxià yīshēng."
+    },
+    "c127": {
+      "t": "医院",
+      "r": "yīyuàn",
+      "x": "这家医院二十四小时全天开放。",
+      "xr": "Zhè jiā yīyuàn èrshísì xiǎoshí quántiān kāifàng."
+    },
+    "c128": {
+      "t": "药",
+      "r": "yào",
+      "x": "请在饭后服用这种药。",
+      "xr": "Qǐng zài fànhòu fúyòng zhè zhǒng yào."
+    },
+    "c129": {
+      "t": "疼痛",
+      "r": "téngtòng",
+      "x": "请告诉护士哪里感到疼痛。",
+      "xr": "Qǐng gàosu hùshi nǎlǐ gǎndào téngtòng."
+    },
+    "c130": {
+      "t": "发烧",
+      "r": "fāshāo",
+      "x": "他有点低烧，所以留在家里休息。",
+      "xr": "Tā yǒudiǎn dīshāo, suǒyǐ liú zài jiālǐ xiūxi."
+    },
+    "c131": {
+      "t": "帮助",
+      "r": "bāngzhù",
+      "x": "请问能帮我搬一下这个箱子吗？",
+      "xr": "Qǐngwèn néng bāng wǒ bān yīxià zhège xiāngzi ma?"
+    },
+    "c132": {
+      "t": "警察",
+      "r": "jǐngchá",
+      "x": "遇到紧急情况请立刻报警求助警察。",
+      "xr": "Yùdào jǐnjí qíngkuàng qǐng lìkè bàojǐng qiúzhù jǐngchá."
+    },
+    "c133": {
+      "t": "紧急情况",
+      "r": "jǐnjí qíngkuàng",
+      "x": "把紧急联系电话保存在手机里。",
+      "xr": "Bǎ jǐnjí liánxì diànhuà bǎocún zài shǒujī lǐ."
+    },
+    "c134": {
+      "t": "休息",
+      "r": "xiūxi",
+      "x": "充分休息才能更快恢复健康。",
+      "xr": "Chōngfèn xiūxi cái néng gèng kuài huīfù jiànkāng."
+    },
+    "c135": {
+      "t": "健康",
+      "r": "jiànkāng",
+      "x": "均衡的饮食让你保持健康。",
+      "xr": "Jūnhéng de yǐnshí ràng nǐ bǎochí jiànkāng."
+    },
+    "c136": {
+      "t": "学校",
+      "r": "xuéxiào",
+      "x": "孩子们一起步行去学校。",
+      "xr": "Háizimen yīqǐ bùxíng qù xuéxiào."
+    },
+    "c137": {
+      "t": "大学",
+      "r": "dàxué",
+      "x": "她在大学里攻读工程学。",
+      "xr": "Tā zài dàxué lǐ gōngdú gōngchéngxué."
+    },
+    "c138": {
+      "t": "考试",
+      "r": "kǎoshì",
+      "x": "我为期末考试做了充分准备。",
+      "xr": "Wǒ wèi qīmò kǎoshì zuò le chōngfèn zhǔnbèi."
+    },
+    "c139": {
+      "t": "语言",
+      "r": "yǔyán",
+      "x": "学习一门语言会为你打开全新的世界。",
+      "xr": "Xuéxí yī mén yǔyán huì wèi nǐ dǎkāi quánxīn de shìjiè."
+    },
+    "c140": {
+      "t": "问题",
+      "r": "wèntí",
+      "x": "这是一个非常有深度的问题。",
+      "xr": "Zhè shì yīgè fēicháng yǒu shēndù de wèntí."
+    },
+    "c141": {
+      "t": "工作",
+      "r": "gōngzuò",
+      "x": "他六点钟结束工作。",
+      "xr": "Tā liù diǎnzhōng jiéshù gōngzuò."
+    },
+    "c142": {
+      "t": "办公室",
+      "r": "bàngōngshì",
+      "x": "我们的办公室在四楼。",
+      "xr": "Wǒmen de bàngōngshì zài sì lóu."
+    },
+    "c143": {
+      "t": "会议",
+      "r": "huìyì",
+      "x": "团队会议将在十点准时开始。",
+      "xr": "Tuánduì huìyì jiāng zài shí diǎn zhǔnshí kāishǐ."
+    },
+    "c144": {
+      "t": "同事",
+      "r": "tóngshì",
+      "x": "我的同事帮我解决了这个程序漏洞。",
+      "xr": "Wǒ de tóngshì bāng wǒ jiějué le zhège chéngxù lòudòng."
+    },
+    "c145": {
+      "t": "忙碌",
+      "r": "mánglù",
+      "x": "直到星期五之前我都相当忙碌。",
+      "xr": "Zhídào xīngqīwǔ zhīqián wǒ dōu xiāngdāng mánglù."
+    },
+    "c146": {
+      "t": "音乐",
+      "r": "yīnyuè",
+      "x": "听音乐有助于我放松身心。",
+      "xr": "Tīng yīnyuè yǒuzhùyú wǒ fàngsōng shēnxīn."
+    },
+    "c147": {
+      "t": "电影",
+      "r": "diànyǐng",
+      "x": "我们昨晚看了一部鼓舞人心的电影。",
+      "xr": "Wǒmen zuówǎn kàn le yī bù gǔwǔ rénxīn de diànyǐng."
+    },
+    "c148": {
+      "t": "运动",
+      "r": "yùndòng",
+      "x": "你最喜欢观看哪项体育运动？",
+      "xr": "Nǐ zuì xǐhuan guānkàn nǎ xiàng tǐyù yùndòng?"
+    },
+    "c149": {
+      "t": "旅行",
+      "r": "lǚxíng",
+      "x": "我非常喜欢坐火车去旅行。",
+      "xr": "Wǒ fēicháng xǐhuan zuò huǒchē qù lǚxíng."
+    },
+    "c150": {
+      "t": "爱好",
+      "r": "àihào",
+      "x": "摄影是我最喜欢的周末爱好。",
+      "xr": "Shèyǐng shì wǒ zuì xǐhuan de zhōumò àihào."
+    },
+    "c151": {
+      "t": "高兴",
+      "r": "gāoxìng",
+      "x": "听到你的好消息，我真的非常高兴。",
+      "xr": "Tīngdào nǐ de hǎo xiāoxi, wǒ zhēn de fēicháng gāoxìng."
+    },
+    "c152": {
+      "t": "难过",
+      "r": "nánguò",
+      "x": "有时候感到难过是很正常的。",
+      "xr": "Yǒu shíhou gǎndào nánguò shì hěn zhèngcháng de."
+    },
+    "c153": {
+      "t": "生气",
+      "r": "shēngqì",
+      "x": "生气时开口说话前先深吸一口气。",
+      "xr": "Shēngqì shí kāikǒu shuōhuà qián xiān shēnxī yī kǒu qì."
+    },
+    "c154": {
+      "t": "惊讶",
+      "r": "jīngyà",
+      "x": "大家对这则突然的公告都感到惊讶。",
+      "xr": "Dàjiā duì zhè zé tūrán de gōnggào dōu gǎndào jīngyà."
+    },
+    "c155": {
+      "t": "担心",
+      "r": "dānxīn",
+      "x": "别担心，一切都会顺利解决的。",
+      "xr": "Bié dānxīn, yīqiè dōu huì shùnlì jiějué de."
+    },
+    "c156": {
+      "t": "善良",
+      "r": "shànliáng",
+      "x": "一个善良的举动就能照亮别人的一天。",
+      "xr": "Yīgè shànliáng de jǔdòng jiù néng zhàoliàng biérén de yītiān."
+    },
+    "c157": {
+      "t": "诚实",
+      "r": "chéngshí",
+      "x": "我很感激你诚实的反馈。",
+      "xr": "Wǒ hěn gǎnjī nǐ chéngshí de fǎnkuì."
+    },
+    "c158": {
+      "t": "耐心",
+      "r": "nàixīn",
+      "x": "练就流利的语言需要保持耐心。",
+      "xr": "Liànjiù liúlì de yǔyán xūyào bǎochí nàixīn."
+    },
+    "c159": {
+      "t": "勇敢",
+      "r": "yǒnggǎn",
+      "x": "敢于在公众面前发声是非常勇敢的。",
+      "xr": "Gǎnyú zài gōngzhòng miànqián fāshēng shì fēicháng yǒnggǎn de."
+    },
+    "c160": {
+      "t": "好奇",
+      "r": "hàoqí",
+      "x": "充满好奇的心灵永不停止探索。",
+      "xr": "Chōngmǎn hàoqí de xīnlíng yǒng bù tíngzhǐ tànsuǒ."
+    },
+    "c161": {
+      "t": "我认为",
+      "r": "wǒ rènwéi",
+      "x": "我认为这个方案非常实用。",
+      "xr": "Wǒ rènwéi zhège fāng'àn fēicháng shíyòng."
+    },
+    "c162": {
+      "t": "我同意",
+      "r": "wǒ tóngyì",
+      "x": "我同意你的主要观点。",
+      "xr": "Wǒ tóngyì nǐ de zhǔyào guāndiǎn."
+    },
+    "c163": {
+      "t": "观点",
+      "r": "guāndiǎn",
+      "x": "每个人都有表达自己观点的权利。",
+      "xr": "Měigè rén dōu yǒu biǎodá zìjǐ guāndiǎn de quánlì."
+    },
+    "c164": {
+      "t": "重要",
+      "r": "zhòngyào",
+      "x": "清晰的沟通非常重要。",
+      "xr": "Qīngxī de gōutōng fēicháng zhòngyào."
+    },
+    "c165": {
+      "t": "可能",
+      "r": "kěnéng",
+      "x": "只要持之以恒，一切皆有可能。",
+      "xr": "Zhǐyào chízhīyǐhéng, yīqiè jiē yǒu kěnéng."
+    },
+    "c166": {
+      "t": "邀请",
+      "r": "yāoqǐng",
+      "x": "感谢你热情的邀请。",
+      "xr": "Gǎnxiè nǐ rèqíng de yāoqǐng."
+    },
+    "c167": {
+      "t": "庆祝",
+      "r": "qìngzhù",
+      "x": "整个社区都加入了这场庆祝活动。",
+      "xr": "Zhěnggè shèqū dōu jiārù le zhè chǎng qìngzhù huódòng."
+    },
+    "c168": {
+      "t": "承诺",
+      "r": "chéngnuò",
+      "x": "一旦许下承诺就一定要信守。",
+      "xr": "Yīdàn xǔxià chéngnuò jiù yīdìng yào xìnshǒu."
+    },
+    "c169": {
+      "t": "预约",
+      "r": "yùyuē",
+      "x": "我三点钟有一个牙科预约。",
+      "xr": "Wǒ sān diǎnzhōng yǒu yīgè yákē yùyuē."
+    },
+    "c170": {
+      "t": "惊喜",
+      "r": "jīngxǐ",
+      "x": "我们为她策划了一场生日惊喜。",
+      "xr": "Wǒmen wèi tā cèhuà le yī chǎng shēngrì jīngxǐ."
+    },
+    "c171": {
+      "t": "回忆",
+      "r": "huíyì",
+      "x": "那次旅行至今仍是我最珍贵的回忆。",
+      "xr": "Nà cì lǚxíng zhìjīn réng shì wǒ zuì zhēnguì de huíyì."
+    },
+    "c172": {
+      "t": "经历",
+      "r": "jīnglì",
+      "x": "在海外生活是一段改变人生的经历。",
+      "xr": "Zài hǎiwài shēnghuó shì yī duàn gǎibiàn rénshēng de jīnglì."
+    },
+    "c173": {
+      "t": "故事",
+      "r": "gùshi",
+      "x": "祖父讲了一个引人入胜的故事。",
+      "xr": "Zǔfù jiǎng le yīgè yǐnrénrùshèng de gùshi."
+    },
+    "c174": {
+      "t": "梦想",
+      "r": "mèngxiǎng",
+      "x": "永远不要放弃你最远大的梦想。",
+      "xr": "Yǒngyuǎn bùyào fàngqì nǐ zuì yuǎndà de mèngxiǎng."
+    },
+    "c175": {
+      "t": "旅程",
+      "r": "lǚchéng",
+      "x": "千里之行，任何漫长的旅程都始于第一步。",
+      "xr": "Qiānlǐ zhī xíng, rènhé màncháng de lǚchéng dōu shǐyú dì-yī bù."
+    },
+    "c176": {
+      "t": "信任",
+      "r": "xìnrèn",
+      "x": "建立信任需要多年的积累。",
+      "xr": "Jiànlì xìnrèn xūyào duōnián de jīlěi."
+    },
+    "c177": {
+      "t": "尊重",
+      "r": "zūnzhòng",
+      "x": "要以真诚的尊重对待每一个人。",
+      "xr": "Yào yǐ zhēnchéng de zūnzhòng duìdài měi yīgè rén."
+    },
+    "c178": {
+      "t": "建议",
+      "r": "jiànyì",
+      "x": "你能给我一些职业发展方面的建议吗？",
+      "xr": "Nǐ néng gěi wǒ yīxiē zhíyè fāzhǎn fāngmiàn de jiànyì ma?"
+    },
+    "c179": {
+      "t": "支持",
+      "r": "zhīchí",
+      "x": "感谢你一如既往的坚定支持。",
+      "xr": "Gǎnxiè nǐ yīrújìwǎng de jiāndìng zhīchí."
+    },
+    "c180": {
+      "t": "原谅",
+      "r": "yuánliàng",
+      "x": "原谅他人并继续前行需要内心的力量。",
+      "xr": "Yuánliàng tārén bìng jìxù qiánxíng xūyào nèixīn de lìliàng."
+    },
+    "c181": {
+      "t": "电脑",
+      "r": "diànnǎo",
+      "x": "我的电脑昨晚自动更新了系统。",
+      "xr": "Wǒ de diànnǎo zuówǎn zìdòng gēngxīn le xìtǒng."
+    },
+    "c182": {
+      "t": "互联网",
+      "r": "hùliánwǎng",
+      "x": "高速互联网把偏远村庄紧密联系在一起。",
+      "xr": "Gāosù hùliánwǎng bǎ piānyuǎn cūnzhuāng jǐnmì liánxì zài yīqǐ."
+    },
+    "c183": {
+      "t": "手机",
+      "r": "shǒujī",
+      "x": "听讲座时请将手机调至静音。",
+      "xr": "Tīng jiǎngzuò shí qǐng jiāng shǒujī tiáozhì jìngyīn."
+    },
+    "c184": {
+      "t": "密码",
+      "r": "mìmǎ",
+      "x": "请为每个账号设置一个高强度且独立的密码。",
+      "xr": "Qǐng wèi měigè zhànghào shèzhì yīgè gāoqiángdù qiě dúlì de mìmǎ."
+    },
+    "c185": {
+      "t": "下载",
+      "r": "xiàzài",
+      "x": "你可以免费下载这份离线语言包。",
+      "xr": "Nǐ kěyǐ miǎnfèi xiàzài zhè fèn líxiàn yǔyánbāo."
+    },
+    "c186": {
+      "t": "消息",
+      "r": "xiāoxi",
+      "x": "我今天早些时候给你发了一条消息。",
+      "xr": "Wǒ jīntiān zǎoxiē shíhou gěi nǐ fā le yī tiáo xiāoxi."
+    },
+    "c187": {
+      "t": "搜索",
+      "r": "sōusuǒ",
+      "x": "我们来搜索一下可靠的技术文档吧。",
+      "xr": "Wǒmen lái sōusuǒ yīxià kěkào de jìshù wéndàng ba."
+    },
+    "c188": {
+      "t": "应用",
+      "r": "yìngyòng",
+      "x": "这款开源应用可以在离线状态下运行。",
+      "xr": "Zhè kuǎn kāiyuán yìngyòng kěyǐ zài líxiàn zhuàngtài xià yùnxíng."
+    },
+    "c189": {
+      "t": "隐私",
+      "r": "yǐnsī",
+      "x": "保护用户隐私理应放在首位。",
+      "xr": "Bǎohù yònghù yǐnsī lǐyīng fàng zài shǒuwèi."
+    },
+    "c190": {
+      "t": "更新",
+      "r": "gēngxīn",
+      "x": "最新一次更新大幅提升了运行速度。",
+      "xr": "Zuìxīn yī cì gēngxīn dàfú tíshēng le yùnxíng sùdù."
+    },
+    "c191": {
+      "t": "新闻",
+      "r": "xīnwén",
+      "x": "务必要通过多个来源核实新闻。",
+      "xr": "Wùbì yào tōngguò duōgè láiyuán héshí xīnwén."
+    },
+    "c192": {
+      "t": "文章",
+      "r": "wénzhāng",
+      "x": "我读了一篇关于语言学的精彩文章。",
+      "xr": "Wǒ dú le yī piān guānyú yǔyánxué de jīngcǎi wénzhāng."
+    },
+    "c193": {
+      "t": "信息",
+      "r": "xìnxī",
+      "x": "准确的信息能帮助人们做出明智的决策。",
+      "xr": "Zhǔnquè de xìnxī néng bāngzhù rénmen zuòchū míngzhì de juécè."
+    },
+    "c194": {
+      "t": "相机",
+      "r": "xiàngjī",
+      "x": "她带着相机去参加节庆活动。",
+      "xr": "Tā dài zhe xiàngjī qù cānjiā jiéqìng huódòng."
+    },
+    "c195": {
+      "t": "屏幕",
+      "r": "píngmù",
+      "x": "晚上记得调低屏幕亮度。",
+      "xr": "Wǎnshang jìde tiáodī píngmù liàngdù."
+    },
+    "c196": {
+      "t": "文化",
+      "r": "wénhuà",
+      "x": "语言是文化生生不息的核心。",
+      "xr": "Yǔyán shì wénhuà shēngshēngbùxī de héxīn."
+    },
+    "c197": {
+      "t": "传统",
+      "r": "chuántǒng",
+      "x": "每个地区都保留着独特的丰收传统。",
+      "xr": "Měigè dìqū dōu bǎoliú zhe dútè de fēngshōu chuántǒng."
+    },
+    "c198": {
+      "t": "节日",
+      "r": "jiérì",
+      "x": "节日期间，灯笼点亮了整座城市。",
+      "xr": "Jiérì qījiān, dēnglong diǎnliàng le zhěng zuò chéngshì."
+    },
+    "c199": {
+      "t": "历史",
+      "r": "lìshǐ",
+      "x": "这座博物馆追溯了五千年的历史。",
+      "xr": "Zhè zuò bówùguǎn zhuīsù le wǔqiān nián de lìshǐ."
+    },
+    "c200": {
+      "t": "遗产",
+      "r": "yíchǎn",
+      "x": "我们必须守护人类共同的文化遗产。",
+      "xr": "Wǒmen bìxū shǒuhù rénlèi gòngtóng de wénhuà yíchǎn."
+    },
+    "c201": {
+      "t": "艺术",
+      "r": "yìshù",
+      "x": "伟大的艺术超越国界与世纪。",
+      "xr": "Wěidà de yìshù chāoyuè guójiè yǔ shìjì."
+    },
+    "c202": {
+      "t": "舞蹈",
+      "r": "wǔdǎo",
+      "x": "古典舞蹈通过肢体动作讲述动人的故事。",
+      "xr": "Gǔdiǎn wǔdǎo tōngguò zhītǐ dòngzuò jiǎngshù dòngrén de gùshi."
+    },
+    "c203": {
+      "t": "歌曲",
+      "r": "gēqǔ",
+      "x": "那首民谣已经代代传唱了许久。",
+      "xr": "Nà shǒu mínyáo yǐjīng dàidài chuánchàng le xǔjiǔ."
+    },
+    "c204": {
+      "t": "建筑",
+      "r": "jiànzhù",
+      "x": "这座寺庙的建筑工艺极其精巧。",
+      "xr": "Zhè zuò sìmiào de jiànzhù gōngyì jíqí jīngqiǎo."
+    },
+    "c205": {
+      "t": "诗歌",
+      "r": "shīgē",
+      "x": "诗歌仅用寥寥数行便能捕捉深刻的情感。",
+      "xr": "Shīgē jǐn yòng liáoliáo shù háng biàn néng bǔzhuō shēnkè de qínggǎn."
+    },
+    "c206": {
+      "t": "客人",
+      "r": "kèrén",
+      "x": "每一位客人都受到热情款待。",
+      "xr": "Měi yī wèi kèrén dōu shòudào rèqíng kuǎndài."
+    },
+    "c207": {
+      "t": "礼物",
+      "r": "lǐwù",
+      "x": "带上一份小礼物能体现你的周到心意。",
+      "xr": "Dài shàng yī fèn xiǎo lǐwù néng tǐxiàn nǐ de zhōudào xīnyì."
+    },
+    "c208": {
+      "t": "习俗",
+      "r": "xísú",
+      "x": "造访新国家前应先了解当地的习俗。",
+      "xr": "Zàofǎng xīn guójiā qián yīng xiān liǎojiě dāngdì de xísú."
+    },
+    "c209": {
+      "t": "仪式",
+      "r": "yíshì",
+      "x": "毕业仪式持续了两个小时。",
+      "xr": "Bìyè yíshì chíxù le liǎng gè xiǎoshí."
+    },
+    "c210": {
+      "t": "祝福",
+      "r": "zhùfú",
+      "x": "长辈们向这对新人送上了诚挚的祝福。",
+      "xr": "Zhǎngbèimen xiàng zhè duì xīnrén sòng shàng le chéngzhì de zhùfú."
+    },
+    "c211": {
+      "t": "因为",
+      "r": "yīnwèi",
+      "x": "因为暴风雨即将来临，我们留在了室内。",
+      "xr": "Yīnwèi bàofēngyǔ jíjiāng láilín, wǒmen liú zài le shìnèi."
+    },
+    "c212": {
+      "t": "然而",
+      "r": "rán'ér",
+      "x": "这项任务十分艰巨，然而我们最终取得了成功。",
+      "xr": "Zhè xiàng rènwu shífēn jiānjù, rán'ér wǒmen zuìzhōng qǔdé le chénggōng."
+    },
+    "c213": {
+      "t": "虽然",
+      "r": "suīrán",
+      "x": "虽然夜已深，他还是读完了那一章。",
+      "xr": "Suīrán yè yǐ shēn, tā háishi dúwán le nà yī zhāng."
+    },
+    "c214": {
+      "t": "因此",
+      "r": "yīncǐ",
+      "x": "数据非常明确，因此我们必须立即采取行动。",
+      "xr": "Shùjù fēicháng míngquè, yīncǐ wǒmen bìxū lìjí cǎiqǔ xíngdòng."
+    },
+    "c215": {
+      "t": "与此同时",
+      "r": "yǔcǐtóngshí",
+      "x": "我来做晚饭，与此同时请你帮忙摆好餐具。",
+      "xr": "Wǒ lái zuò wǎnfàn, yǔcǐtóngshí qǐng nǐ bāngmáng bǎihǎo cānjù."
+    },
+    "c216": {
+      "t": "问题",
+      "r": "wèntí",
+      "x": "让我们一起找出问题的根本原因。",
+      "xr": "Ràng wǒmen yīqǐ zhǎochū wèntí de gēnběn yuányīn."
+    },
+    "c217": {
+      "t": "解决方案",
+      "r": "jiějué fāng'àn",
+      "x": "简洁的解决方案往往最为可靠。",
+      "xr": "Jiǎnjié de jiějué fāng'àn wǎngwǎng zuìwéi kěkào."
+    },
+    "c218": {
+      "t": "决定",
+      "r": "juédìng",
+      "x": "做出重大决定前请先冷静思考。",
+      "xr": "Zuòchū zhòngdà juédìng qián qǐng xiān lěngjìng sīkǎo."
+    },
+    "c219": {
+      "t": "错误",
+      "r": "cuòwù",
+      "x": "每一次错误都会教会我们宝贵的道理。",
+      "xr": "Měi yī cì cuòwù dōu huì jiāohuì wǒmen bǎoguì de dàolǐ."
+    },
+    "c220": {
+      "t": "成功",
+      "r": "chénggōng",
+      "x": "团队合作是我们取得成功的关键。",
+      "xr": "Tuánduì hézuò shì wǒmen qǔdé chénggōng de guānjiàn."
+    },
+    "c221": {
+      "t": "如果",
+      "r": "rúguǒ",
+      "x": "如果你坚持每天练习，进步就会非常迅速。",
+      "xr": "Rúguǒ nǐ jiānchí měitiān liànxí, jìnbù jiù huì fēicháng xùnsù."
+    },
+    "c222": {
+      "t": "而不是",
+      "r": "ér bù shì",
+      "x": "去商店不妨步行，而不是开车。",
+      "xr": "Qù shāngdiàn bùfáng bùxíng, ér bù shì kāichē."
+    },
+    "c223": {
+      "t": "比较",
+      "r": "bǐjiào",
+      "x": "投票前请仔细比较这两份方案。",
+      "xr": "Tóupiào qián qǐng zǐxì bǐjiào zhè liǎng fèn fāng'àn."
+    },
+    "c224": {
+      "t": "差别",
+      "r": "chābié",
+      "x": "微小的习惯日积月累会带来巨大的差别。",
+      "xr": "Wēixiǎo de xíguàn rìjīyuèlěi huì dàilái jùdà de chābié."
+    },
+    "c225": {
+      "t": "原因",
+      "r": "yuányīn",
+      "x": "请说明你做出这一选择的原因。",
+      "xr": "Qǐng shuōmíng nǐ zuòchū zhè yī xuǎnzé de yuányīn."
+    },
+    "c226": {
+      "t": "战略",
+      "r": "zhànlüè",
+      "x": "我们修订了长期的产品战略。",
+      "xr": "Wǒmen xiūdìng le chángqī de chǎnpǐn zhànlüè."
+    },
+    "c227": {
+      "t": "项目",
+      "r": "xiàngmù",
+      "x": "这项工程项目提前顺利启动。",
+      "xr": "Zhè xiàng gōngchéng xiàngmù tíqián shùnlì qǐdòng."
+    },
+    "c228": {
+      "t": "截止日期",
+      "r": "jiézhǐ rìqī",
+      "x": "我们在截止日期前完成了每一个阶段目标。",
+      "xr": "Wǒmen zài jiézhǐ rìqī qián wánchéng le měi yīgè jiēduàn mùbiāo."
+    },
+    "c229": {
+      "t": "责任",
+      "r": "zérèn",
+      "x": "领导力意味着勇于承担全部责任。",
+      "xr": "Lǐngdǎolì yìwèizhe yǒngyú chéngdān quánbù zérèn."
+    },
+    "c230": {
+      "t": "协作",
+      "r": "xiézuò",
+      "x": "开放协作能够大大加速创新。",
+      "xr": "Kāifàng xiézuò nénggòu dàdà jiāsù chuàngxīn."
+    },
+    "c231": {
+      "t": "经济",
+      "r": "jīngjì",
+      "x": "中小企业是国民经济的支柱。",
+      "xr": "Zhōngxiǎo qǐyè shì guómín jīngjì de zhīzhù."
+    },
+    "c232": {
+      "t": "预算",
+      "r": "yùsuàn",
+      "x": "市政府批准了明年的教育预算。",
+      "xr": "Shìzhèngfǔ pīzhǔn le míngnián de jiàoyù yùsuàn."
+    },
+    "c233": {
+      "t": "投资",
+      "r": "tóuzī",
+      "x": "教育是最具远见的长期投资。",
+      "xr": "Jiàoyù shì zuì jù yuǎnjiàn de chángqī tóuzī."
+    },
+    "c234": {
+      "t": "合同",
+      "r": "hétong",
+      "x": "请仔细阅读合同中的每一项条款。",
+      "xr": "Qǐng zǐxì yuèdú hétong zhōng de měi yī xiàng tiáokuǎn."
+    },
+    "c235": {
+      "t": "利润",
+      "r": "lìrùn",
+      "x": "可持续发展比短期利润更为重要。",
+      "xr": "Kěchíxù fāzhǎn bǐ duǎnqī lìrùn gèng wéi zhòngyào."
+    },
+    "c236": {
+      "t": "提案",
+      "r": "tí'àn",
+      "x": "委员会认真审议了我们详尽的提案。",
+      "xr": "Wěiyuánhuì rènzhēn shěnyì le wǒmen xiángjìn de tí'àn."
+    },
+    "c237": {
+      "t": "谈判",
+      "r": "tánpàn",
+      "x": "双方本着诚意进入了此次谈判。",
+      "xr": "Shuāngfāng běnzhe chéngyì jìnrù le cǐcì tánpàn."
+    },
+    "c238": {
+      "t": "协议",
+      "r": "xiéyì",
+      "x": "他们签署了一份互利共赢的贸易协议。",
+      "xr": "Tāmen qiānshǔ le yī fèn hùlì gòngyíng de màoyì xiéyì."
+    },
+    "c239": {
+      "t": "妥协",
+      "r": "tuǒxié",
+      "x": "一项公平的妥协化解了这场争端。",
+      "xr": "Yī xiàng gōngpíng de tuǒxié huàjiě le zhè chǎng zhēngduān."
+    },
+    "c240": {
+      "t": "机遇",
+      "r": "jīyù",
+      "x": "每一次挑战背后都蕴藏着机遇。",
+      "xr": "Měi yī cì tiǎozhàn bèihòu dōu yùncáng zhe jīyù."
+    },
+    "c241": {
+      "t": "研究",
+      "r": "yánjiū",
+      "x": "经过同行评审的研究引领着现代医学。",
+      "xr": "Jīngguò tóngháng píngshěn de yánjiū yǐnlǐng zhe xiàndài yīxué."
+    },
+    "c242": {
+      "t": "实验",
+      "r": "shíyàn",
+      "x": "实验室的实验证实了我们的预测。",
+      "xr": "Shíyànshì de shíyàn zhèngshí le wǒmen de yùcè."
+    },
+    "c243": {
+      "t": "证据",
+      "r": "zhèngjù",
+      "x": "有力的结论必须建立在确凿的证据之上。",
+      "xr": "Yǒulì de jiélùn bìxū jiànlì zài quèzáo de zhèngjù zhī shàng."
+    },
+    "c244": {
+      "t": "理论",
+      "r": "lǐlùn",
+      "x": "这一理论解释了引力如何使光线弯曲。",
+      "xr": "Zhè yī lǐlùn jiěshì le yǐnlì rúhé shǐ guāngxiàn wānqū."
+    },
+    "c245": {
+      "t": "发现",
+      "r": "fāxiàn",
+      "x": "那项发现彻底革新了清洁能源储能技术。",
+      "xr": "Nà xiàng fāxiàn chèdǐ géxīn le qīngjié néngyuán chǔnéng jìshù."
+    },
+    "c246": {
+      "t": "创新",
+      "r": "chuàngxīn",
+      "x": "基层创新能够切实解决社区的实际需求。",
+      "xr": "Jīcéng chuàngxīn nénggòu qièshí jiějué shèqū de shíjì xūqiú."
+    },
+    "c247": {
+      "t": "算法",
+      "r": "suànfǎ",
+      "x": "高效的算法能够同时节省能耗和时间。",
+      "xr": "Gāoxiào de suànfǎ nénggòu tóngshí jiéshěng nénghào hé shíjiān."
+    },
+    "c248": {
+      "t": "能源",
+      "r": "néngyuán",
+      "x": "太阳能电池板能将阳光直接转化为能源。",
+      "xr": "Tàiyángnéng diànchíbǎn néng jiāng yángguāng zhíjiē zhuǎnhuà wéi néngyuán."
+    },
+    "c249": {
+      "t": "实验室",
+      "r": "shíyànshì",
+      "x": "科学家们在实验室里校准了传感器。",
+      "xr": "Kēxuéjiāmen zài shíyànshì lǐ jiàozhǔn le chuángǎnqì."
+    },
+    "c250": {
+      "t": "精准",
+      "r": "jīngzhǔn",
+      "x": "显微外科手术要求达到非凡的精准度。",
+      "xr": "Xiǎnwēi wàikē shǒushù yāoqiú dádào fēifán de jīngzhǔndù."
+    },
+    "c251": {
+      "t": "宇宙",
+      "r": "yǔzhòu",
+      "x": "望远镜揭示了宇宙中最古老的星系。",
+      "xr": "Wàngyuǎnjìng jiēshì le yǔzhòu zhōng zuì gǔlǎo de xīngxì."
+    },
+    "c252": {
+      "t": "行星",
+      "r": "xíngxīng",
+      "x": "水是任何行星上生命存续的必备条件。",
+      "xr": "Shuǐ shì rènhé xíngxīng shàng shēngmìng cúnxù de bìbèi tiáojiàn."
+    },
+    "c253": {
+      "t": "引力",
+      "r": "yǐnlì",
+      "x": "引力使月球始终沿着轨道绕地球运行。",
+      "xr": "Yǐnlì shǐ yuèqiú shǐzhōng yánzhe guǐdào rào dìqiú yùnxíng."
+    },
+    "c254": {
+      "t": "进化",
+      "r": "jìnhuà",
+      "x": "进化历经数百万年塑造了形形色色的生物。",
+      "xr": "Jìnhuà lìjīng shùbǎiwàn nián sùzào le xíngxíngsèsè de shēngwù."
+    },
+    "c255": {
+      "t": "好奇心",
+      "r": "hàoqíxīn",
+      "x": "科学好奇心推动着人类不断前行。",
+      "xr": "Kēxué hàoqíxīn tuīdòng zhe rénlèi bùduàn qiánxíng."
+    },
+    "c256": {
+      "t": "环境",
+      "r": "huánjìng",
+      "x": "保护环境就是保护我们的子孙后代。",
+      "xr": "Bǎohù huánjìng jiùshì bǎohù wǒmen de zǐsūn hòudài."
+    },
+    "c257": {
+      "t": "气候",
+      "r": "qìhòu",
+      "x": "不断变化的气候模式正在影响全球粮食收成。",
+      "xr": "Bùduàn biànhuà de qìhòu móshì zhèngzài yǐngxiǎng quánqiú liángshi shōucheng."
+    },
+    "c258": {
+      "t": "生态系统",
+      "r": "shēngtài xìtǒng",
+      "x": "湿地对沿海生态系统至关重要。",
+      "xr": "Shīdì duì yánhǎi shēngtài xìtǒng zhìguān zhòngyào."
+    },
+    "c259": {
+      "t": "生物多样性",
+      "r": "shēngwù duōyàngxìng",
+      "x": "热带雨林孕育着极其丰富的生物多样性。",
+      "xr": "Rèdài yǔlín yùnyù zhe jíqí fēngfù de shēngwù duōyàngxìng."
+    },
+    "c260": {
+      "t": "污染",
+      "r": "wūrǎn",
+      "x": "电动公共交通大幅减少了城市空气污染。",
+      "xr": "Diàndòng gōnggòng jiāotōng dàfú jiǎnshǎo le chéngshì kōngqì wūrǎn."
+    },
+    "c261": {
+      "t": "可再生",
+      "r": "kězàishēng",
+      "x": "风能和太阳能都是储量丰富的可再生能源。",
+      "xr": "Fēngnéng hé tàiyángnéng dōu shì chǔliàng fēngfù de kězàishēng néngyuán."
+    },
+    "c262": {
+      "t": "可持续发展",
+      "r": "kěchíxù fāzhǎn",
+      "x": "真正的可持续发展能够兼顾自然与繁荣。",
+      "xr": "Zhēnzhèng de kěchíxù fāzhǎn nénggòu jiāngù zìrán yǔ fánróng."
+    },
+    "c263": {
+      "t": "保护",
+      "r": "bǎohù",
+      "x": "由社区主导的生态保护行动让森林重焕生机。",
+      "xr": "Yóu shèqū zhǔdǎo de shēngtài bǎohù xíngdòng ràng sēnlín chónghuàn shēngjī."
+    },
+    "c264": {
+      "t": "回收利用",
+      "r": "huíshōu lìyòng",
+      "x": "请将玻璃、纸张和金属分类，便于城市回收利用。",
+      "xr": "Qǐng jiāng bōli, zhǐzhāng hé jīnshǔ fēnlèi, biànyú chéngshì huíshōu lìyòng."
+    },
+    "c265": {
+      "t": "资源",
+      "r": "zīyuán",
+      "x": "淡水是全人类共同拥有的宝贵资源。",
+      "xr": "Dànshuǐ shì quánrénlèi gòngtóng yōngyǒu de bǎoguì zīyuán."
+    },
+    "c266": {
+      "t": "森林",
+      "r": "sēnlín",
+      "x": "恢复原生森林能够为周边城镇带来清凉。",
+      "xr": "Huīfù yuánshēng sēnlín nénggòu wèi zhōubiān chéngzhèn dàilái qīngliáng."
+    },
+    "c267": {
+      "t": "海洋",
+      "r": "hǎiyáng",
+      "x": "健康的海洋能够吸收大量的二氧化碳。",
+      "xr": "Jiànkāng de hǎiyáng nénggòu xīshōu dàliàng de èryǎnghuàtàn."
+    },
+    "c268": {
+      "t": "干旱",
+      "r": "gānhàn",
+      "x": "智能灌溉技术帮助农民渡过干旱难关。",
+      "xr": "Zhìnéng guàngài jìshù bāngzhù nóngmín dùguò gānhàn nánguān."
+    },
+    "c269": {
+      "t": "和谐",
+      "r": "héxié",
+      "x": "人类的进步必须建立在与自然和谐共处的基础之上。",
+      "xr": "Rénlèi de jìnbù bìxū jiànlì zài yǔ zìrán héxié gòngchǔ de jīchǔ zhī shàng."
+    },
+    "c270": {
+      "t": "未来",
+      "r": "wèilái",
+      "x": "今天的每一次选择都在塑造明天的未来。",
+      "xr": "Jīntiān de měi yī cì xuǎnzé dōu zài sùzào míngtiān de wèilái."
+    },
+    "c271": {
+      "t": "正义",
+      "r": "zhèngyì",
+      "x": "法律面前平等的正义能够凝聚社会力量。",
+      "xr": "Fǎlǜ miànqián píngděng de zhèngyì nénggòu níngjù shèhuì lìliàng."
+    },
+    "c272": {
+      "t": "自由",
+      "r": "zìyóu",
+      "x": "表达的自由伴随着彼此共同的责任。",
+      "xr": "Biǎodá de zìyóu bànsuí zhe bǐcǐ gòngtóng de zérèn."
+    },
+    "c273": {
+      "t": "平等",
+      "r": "píngděng",
+      "x": "教育能够促进社会与经济的平等。",
+      "xr": "Jiàoyù nénggòu cùjìn shèhuì yǔ jīngjì de píngděng."
+    },
+    "c274": {
+      "t": "宪法",
+      "r": "xiànfǎ",
+      "x": "宪法切实保障公民的基本权利。",
+      "xr": "Xiànfǎ qièshí bǎozhàng gōngmín de jīběn quánlì."
+    },
+    "c275": {
+      "t": "公民",
+      "r": "gōngmín",
+      "x": "每一位积极参与的公民都在为公共生活贡献力量。",
+      "xr": "Měi yī wèi jījí cānyù de gōngmín dōu zài wèi gōnggòng shēnghuó gòngxiàn lìliàng."
+    },
+    "c276": {
+      "t": "民主",
+      "r": "mínzhǔ",
+      "x": "健全的民主制度有赖于充分知情的选民。",
+      "xr": "Jiànquán de mínzhǔ zhìdù yǒulàiyú chōngfèn zhīqíng de xuǎnmín."
+    },
+    "c277": {
+      "t": "政府",
+      "r": "zhèngfǔ",
+      "x": "地方政府负责维护道路、公园和学校。",
+      "xr": "Dìfāng zhèngfǔ fùzé wéihù dàolù, gōngyuán hé xuéxiào."
+    },
+    "c278": {
+      "t": "政策",
+      "r": "zhèngcè",
+      "x": "公共卫生政策挽救了数百万人的生命。",
+      "xr": "Gōnggòng wèishēng zhèngcè wǎnjiù le shùbǎiwàn rén de shēngmìng."
+    },
+    "c279": {
+      "t": "法律",
+      "r": "fǎlǜ",
+      "x": "公开透明的法律能够在全社会建立信任。",
+      "xr": "Gōngkāi tòumíng de fǎlǜ nénggòu zài quánshèhuì jiànlì xìnrèn."
+    },
+    "c280": {
+      "t": "透明度",
+      "r": "tòumíngdù",
+      "x": "财政透明度有助于防止腐败滋生。",
+      "xr": "Cáizhèng tòumíngdù yǒuzhùyú fángzhǐ fǔbài zīshēng."
+    },
+    "c281": {
+      "t": "社区",
+      "r": "shèqū",
+      "x": "充满凝聚力的社区总会关爱弱势群体。",
+      "xr": "Chōngmǎn níngjùlì de shèqū zǒnghuì guān'ài ruòshì qúntǐ."
+    },
+    "c282": {
+      "t": "和平",
+      "r": "hépíng",
+      "x": "持久的和平需要真诚对话与同理心。",
+      "xr": "Chíjiǔ de hépíng xūyào zhēnchéng duìhuà yǔ tónglǐxīn."
+    },
+    "c283": {
+      "t": "教育",
+      "r": "jiàoyù",
+      "x": "普及教育能够提升整个国家的面貌。",
+      "xr": "Pǔjí jiàoyù nénggòu tíshēng zhěnggè guójiā de miànmào."
+    },
+    "c284": {
+      "t": "志愿者",
+      "r": "zhìyuànzhě",
+      "x": "数百名志愿者在洪水过后帮助灾区重建。",
+      "xr": "Shùbǎi míng zhìyuànzhě zài hóngshuǐ guòhòu bāngzhù zāiqū chóngjiàn."
+    },
+    "c285": {
+      "t": "团结",
+      "r": "tuánjié",
+      "x": "全球团结能够帮助世界更快渡过危机。",
+      "xr": "Quánqiú tuánjié nénggòu bāngzhù shìjiè gèng kuài dùguò wēijī."
+    },
+    "c286": {
+      "t": "论点",
+      "r": "lùndiǎn",
+      "x": "请用经得起核查的事实来支撑每一个论点。",
+      "xr": "Qǐng yòng jīngdeqǐ héchá de shìshí lái zhīchēng měi yīgè lùndiǎn."
+    },
+    "c287": {
+      "t": "视角",
+      "r": "shìjiǎo",
+      "x": "换一个视角看待问题能加深彼此的理解。",
+      "xr": "Huàn yīgè shìjiǎo kàndài wèntí néng jiāshēn bǐcǐ de lǐjiě."
+    },
+    "c288": {
+      "t": "分析",
+      "r": "fēnxī",
+      "x": "她的经济分析指出了三个潜藏的风险。",
+      "xr": "Tā de jīngjì fēnxī zhǐchū le sān gè qiáncáng de fēngxiǎn."
+    },
+    "c289": {
+      "t": "假设",
+      "r": "jiǎshè",
+      "x": "要时刻审视自己潜意识里的前提假设。",
+      "xr": "Yào shíkè shěnshì zìjǐ qiányìshí lǐ de qiántí jiǎshè."
+    },
+    "c290": {
+      "t": "结论",
+      "r": "jiélùn",
+      "x": "在掌握全部事实之前切勿草率下结论。",
+      "xr": "Zài zhǎngwò quánbù shìshí zhīqián qièwù cǎoshuài xià jiélùn."
+    },
+    "c291": {
+      "t": "客观",
+      "r": "kèguān",
+      "x": "一名公正的记者始终力求保持客观。",
+      "xr": "Yī míng gōngzhèng de jìzhě shǐzhōng lìqiú bǎochí kèguān."
+    },
+    "c292": {
+      "t": "偏见",
+      "r": "piānjiàn",
+      "x": "意识到自身存在的偏见能让我们做出更好的判断。",
+      "xr": "Yìshidào zìshēn cúnzài de piānjiàn néng ràng wǒmen zuòchū gèng hǎo de pànduàn."
+    },
+    "c293": {
+      "t": "标准",
+      "r": "biāozhǔn",
+      "x": "可靠性是我们首要的评估标准。",
+      "xr": "Kěkàoxìng shì wǒmen shǒuyào de pínggū biāozhǔn."
+    },
+    "c294": {
+      "t": "矛盾",
+      "r": "máodùn",
+      "x": "证人注意到时间线中存在一处明显的矛盾。",
+      "xr": "Zhèngrén zhùyìdào shíjiānxiàn zhōng cúnzài yī chù míngxiǎn de máodùn."
+    },
+    "c295": {
+      "t": "共识",
+      "r": "gòngshí",
+      "x": "经过热烈讨论，专家小组最终达成了共识。",
+      "xr": "Jīngguò rèliè tǎolùn, zhuānjiā xiǎozǔ zuìzhōng dáchéng le gòngshí."
+    },
+    "c296": {
+      "t": "澄清",
+      "r": "chéngqīng",
+      "x": "能否请你澄清一下刚才那句话的具体含义？",
+      "xr": "Néngfǒu qǐng nǐ chéngqīng yīxià gāngcái nà jù huà de jùtǐ hányì?"
+    },
+    "c297": {
+      "t": "强调",
+      "r": "qiángdiào",
+      "x": "我想着重强调无障碍体验的重要性。",
+      "xr": "Wǒ xiǎng zhuózhòng qiángdiào wúzhàng'ài tǐyàn de zhòngyàoxìng."
+    },
+    "c298": {
+      "t": "尽管如此",
+      "r": "jǐnguǎn rúcǐ",
+      "x": "山路十分陡峭，尽管如此，我们还是登上了顶峰。",
+      "xr": "Shānlù shífēn dǒuqiào, jǐnguǎn rúcǐ, wǒmen háishi dēng shàng le dǐngfēng."
+    },
+    "c299": {
+      "t": "后果",
+      "r": "hòuguǒ",
+      "x": "做决定前请充分权衡所有长远的后果。",
+      "xr": "Zuò juédìng qián qǐng chōngfèn quánhéng suǒyǒu chángyuǎn de hòuguǒ."
+    },
+    "c300": {
+      "t": "见解",
+      "r": "jiànjiě",
+      "x": "她的发言带来了极其独到的见解。",
+      "xr": "Tā de fāyán dàilái le jíqí dúdào de jiànjiě."
+    },
+    "c301": {
+      "t": "隐喻",
+      "r": "yǐnyù",
+      "x": "这条河流是时光流逝的隐喻。",
+      "xr": "Zhè tiáo héliú shì shíguāng liúshì de yǐnyù."
+    },
+    "c302": {
+      "t": "象征意义",
+      "r": "xiàngzhēng yìyì",
+      "x": "这部小说蕴含着层次丰富的象征意义。",
+      "xr": "Zhè bù xiǎoshuō yùnhán zhe céngcì fēngfù de xiàngzhēng yìyì."
+    },
+    "c303": {
+      "t": "叙事",
+      "r": "xùshì",
+      "x": "作者巧妙地编织了三条相互交织的叙事线索。",
+      "xr": "Zuòzhě qiǎomiào de biānzhī le sān tiáo xiānghù jiāozhī de xùshì xiànsuǒ."
+    },
+    "c304": {
+      "t": "杰作",
+      "r": "jiézuò",
+      "x": "那部交响曲被誉为跨越时代的杰作。",
+      "xr": "Nà bù jiāoxiǎngqǔ bèi yùwéi kuàyuè shídài de jiézuò."
+    },
+    "c305": {
+      "t": "审美",
+      "r": "shěnměi",
+      "x": "极简设计崇尚宁静和谐的审美意境。",
+      "xr": "Jíjiǎn shèjì chóngshàng níngjìng héxié de shěnměi yìjìng."
+    },
+    "c306": {
+      "t": "细微差别",
+      "r": "xìwēi chābié",
+      "x": "真正的流利在于把握微妙的文化细微差别。",
+      "xr": "Zhēnzhèng de liúlì zàiyú bǎwò wēimiào de wénhuà xìwēi chābié."
+    },
+    "c307": {
+      "t": "含蓄朦胧",
+      "r": "hánxù ménglóng",
+      "x": "这首诗以一种刻意营造、耐人寻味的含蓄朦胧作结。",
+      "xr": "Zhè shǒu shī yǐ yī zhǒng kèyì yíngzào, nàirén xúnwèi de hánxù ménglóng zuòjié."
+    },
+    "c308": {
+      "t": "反讽",
+      "r": "fǎnfěng",
+      "x": "剧作家运用犀利的反讽手法批判了虚荣。",
+      "xr": "Jùzuòjiā yùnyòng xīlì de fǎnfěng shǒufǎ pīpàn le xūróng."
+    },
+    "c309": {
+      "t": "雄辩",
+      "r": "xióngbiàn",
+      "x": "她以非凡的从容与雄辩发表了演讲。",
+      "xr": "Tā yǐ fēifán de cóngróng yǔ xióngbiàn fābiǎo le yǎnjiǎng."
+    },
+    "c310": {
+      "t": "精神遗产",
+      "r": "jīngshén yíchǎn",
+      "x": "伟大的文学作品留下绵延不绝的精神遗产。",
+      "xr": "Wěidà de wénxué zuòpǐn liúxià miányán bùjué de jīngshén yíchǎn."
+    },
+    "c311": {
+      "t": "怀旧",
+      "r": "huáijiù",
+      "x": "雨落温热大地的气息唤起了深深的怀旧之情。",
+      "xr": "Yǔ luò wēnrè dàdì de qìxī huànqǐ le shēnshēn de huáijiù zhī qíng."
+    },
+    "c312": {
+      "t": "共鸣",
+      "r": "gòngmíng",
+      "x": "这段旋律引发了深沉的情感共鸣。",
+      "xr": "Zhè duàn xuánlǜ yǐnfā le shēnchén de qínggǎn gòngmíng."
+    },
+    "c313": {
+      "t": "崇高",
+      "r": "chónggāo",
+      "x": "伫立在极光之下令人感到无比崇高。",
+      "xr": "Zhùlì zài jíguāng zhī xià lìngrén gǎndào wúbǐ chónggāo."
+    },
+    "c314": {
+      "t": "超越",
+      "r": "chāoyuè",
+      "x": "恻隐与关爱能够超越语言与历史的隔阂。",
+      "xr": "Cèyǐn yǔ guān'ài nénggòu chāoyuè yǔyán yǔ lìshǐ de géhé."
+    },
+    "c315": {
+      "t": "真实性",
+      "r": "zhēnshíxìng",
+      "x": "读者总能敏锐地感受到作品真挚的真实性。",
+      "xr": "Dúzhě zǒng néng mǐnruì de gǎnshòudào zuòpǐn zhēnzhì de zhēnshíxìng."
+    },
+    "c316": {
+      "t": "良知",
+      "r": "liángzhī",
+      "x": "行事应当遵循诚实正直的良知。",
+      "xr": "Xíngshì yīngdāng zūnxún chéngshí zhèngzhí de liángzhī."
+    },
+    "c317": {
+      "t": "正直",
+      "r": "zhèngzhí",
+      "x": "正直意味着在无人注视时依然坚持做正确的事。",
+      "xr": "Zhèngzhí yìwèizhe zài wúrén zhùshì shí yīrán jiānchí zuò zhèngquè de shì."
+    },
+    "c318": {
+      "t": "同理心",
+      "r": "tónglǐxīn",
+      "x": "同理心能够跨越最深的分歧。",
+      "xr": "Tónglǐxīn nénggòu kuàyuè zuì shēn de fēnqí."
+    },
+    "c319": {
+      "t": "两难困境",
+      "r": "liǎngnán kùnjìng",
+      "x": "委员会面临着一个棘手的伦理两难困境。",
+      "xr": "Wěiyuánhuì miànlín zhe yīgè jíshǒu de lúnlǐ liǎngnán kùnjìng."
+    },
+    "c320": {
+      "t": "智慧",
+      "r": "zhìhuì",
+      "x": "知识善于言谈，而智慧懂得倾听。",
+      "xr": "Zhīshi shànyú yántán, ér zhìhuì dǒngde qīngtīng."
+    },
+    "c321": {
+      "t": "意识",
+      "r": "yìshí",
+      "x": "哲学家们至今仍在探讨意识的本质。",
+      "xr": "Zhéxuéjiāmen zhìjīn réng zài tàntǎo yìshí de běnzhì."
+    },
+    "c322": {
+      "t": "感知",
+      "r": "gǎnzhī",
+      "x": "语言在潜移默化中塑造着我们对时间的感知。",
+      "xr": "Yǔyán zài qiányímòhuà zhōng sùzào zhe wǒmen duì shíjiān de gǎnzhī."
+    },
+    "c323": {
+      "t": "韧性",
+      "r": "rènxìng",
+      "x": "内心的韧性是在战胜逆境中不断成长起来的。",
+      "xr": "Nèixīn de rènxìng shì zài zhànshèng nìjìng zhōng bùduàn chéngzhǎng qǐlái de."
+    },
+    "c324": {
+      "t": "内省",
+      "r": "nèixǐng",
+      "x": "沉静的内省能在纷乱之中带来澄明。",
+      "xr": "Chénjìng de nèixǐng néng zài fēnluàn zhī zhōng dàilái chéngmíng."
+    },
+    "c325": {
+      "t": "悖论",
+      "r": "bèilùn",
+      "x": "选择悖论表明，过多的选项反而会让人无所适从。",
+      "xr": "Xuǎnzé bèilùn biǎomíng, guòduō de xuǎnxiàng fǎn'ér huì ràng rén wúsuǒshìcóng."
+    },
+    "c326": {
+      "t": "无常",
+      "r": "wúcháng",
+      "x": "接纳世事无常教会我们更加珍惜当下。",
+      "xr": "Jiēnà shìshì wúcháng jiāohuì wǒmen gèngjiā zhēnxī dāngxià."
+    },
+    "c327": {
+      "t": "平和从容",
+      "r": "pínghé cóngróng",
+      "x": "无论面对成功还是挫折，她始终保持平和从容。",
+      "xr": "Wúlùn miànduì chénggōng háishi cuòzhé, tā shǐzhōng bǎochí pínghé cóngróng."
+    },
+    "c328": {
+      "t": "使命感",
+      "r": "shǐmìnggǎn",
+      "x": "共同的使命感能让平凡的努力充满喜悦。",
+      "xr": "Gòngtóng de shǐmìnggǎn néng ràng píngfán de nǔlì chōngmǎn xǐyuè."
+    },
+    "c329": {
+      "t": "自主性",
+      "r": "zìzhǔxìng",
+      "x": "思想的自主性始于独立思考。",
+      "xr": "Sīxiǎng de zìzhǔxìng shǐyú dúlì sīkǎo."
+    },
+    "c330": {
+      "t": "谦逊",
+      "r": "qiānxùn",
+      "x": "真正的造诣总是与谦逊相伴而行。",
+      "xr": "Zhēnzhèng de zàoyì zǒngshì yǔ qiānxùn xiāngbàn ér xíng."
+    },
+    "c331": {
+      "t": "行胜于言",
+      "r": "xíng shèngyú yán",
+      "x": "请信守你的诺言，因为行胜于言。",
+      "xr": "Qǐng xìnshǒu nǐ de nuòyán, yīnwèi xíng shèngyú yán."
+    },
+    "c332": {
+      "t": "熟能生巧",
+      "r": "shú néng shēng qiǎo",
+      "x": "不要害怕犯错，熟能生巧。",
+      "xr": "Bùyào hàipà fàncuò, shú néng shēng qiǎo."
+    },
+    "c333": {
+      "t": "守得云开见月明",
+      "r": "shǒu de yún kāi jiàn yuèmíng",
+      "x": "请保持希望，终会守得云开见月明。",
+      "xr": "Qǐng bǎochí xīwàng, zhōng huì shǒu de yún kāi jiàn yuèmíng."
+    },
+    "c334": {
+      "t": "时间能抚平一切伤痛",
+      "r": "shíjiān néng fǔpíng yīqiè shāngtòng",
+      "x": "善待自己吧，时间能抚平一切伤痛。",
+      "xr": "Shàndài zìjǐ ba, shíjiān néng fǔpíng yīqiè shāngtòng."
+    },
+    "c335": {
+      "t": "团结就是力量",
+      "r": "tuánjié jiùshì lìliàng",
+      "x": "齐心协力证明了团结就是力量。",
+      "xr": "Qíxīn xiélì zhèngmíng le tuánjié jiùshì lìliàng."
+    },
+    "c336": {
+      "t": "打破僵局",
+      "r": "dǎpò jiāngjú",
+      "x": "一个温暖的笑话在晚宴上成功打破僵局。",
+      "xr": "Yīgè wēnnuǎn de xiàohua zài wǎnyàn shàng chénggōng dǎpò jiāngjú."
+    },
+    "c337": {
+      "t": "小菜一碟",
+      "r": "xiǎocài yī dié",
+      "x": "经过数周的强化训练，这场考试简直是小菜一碟。",
+      "xr": "Jīngguò shù zhōu de qiánghuà xùnliàn, zhè chǎng kǎoshì jiǎnzhí shì xiǎocài yī dié."
+    },
+    "c338": {
+      "t": "难得一见",
+      "r": "nándé yījiàn",
+      "x": "在这座山谷里下雪真是难得一见。",
+      "xr": "Zài zhè zuò shāngǔ lǐ xiàxuě zhēn shì nándé yījiàn."
+    },
+    "c339": {
+      "t": "一针见血",
+      "r": "yīzhēn jiànxiě",
+      "x": "你的诊断真可谓一针见血。",
+      "xr": "Nǐ de zhěnduàn zhēn kěwèi yīzhēn jiànxiě."
+    },
+    "c340": {
+      "t": "挑灯夜战",
+      "r": "tiǎodēng yèzhàn",
+      "x": "为了按期交付，整个团队连夜挑灯夜战。",
+      "xr": "Wèile ànqī jiāofù, zhěnggè tuánduì liányè tiǎodēng yèzhàn."
+    },
+    "c341": {
+      "t": "言外之意",
+      "r": "yánwài zhī yì",
+      "x": "在外交场合中，你必须善于领会言外之意。",
+      "xr": "Zài wàijiāo chǎnghé zhōng, nǐ bìxū shànyú lǐnghuì yánwài zhī yì."
+    },
+    "c342": {
+      "t": "翻开新的一页",
+      "r": "fānkāi xīn de yī yè",
+      "x": "她决定在今年春天翻开新的一页。",
+      "xr": "Tā juédìng zài jīnnián chūntiān fānkāi xīn de yī yè."
+    },
+    "c343": {
+      "t": "塞翁失马",
+      "r": "sàiwēng shīmǎ",
+      "x": "失去那份工作后来证明竟是塞翁失马，焉知非福。",
+      "xr": "Shīqù nà fèn gōngzuò hòulái zhèngmíng jìng shì sàiwēng shīmǎ, yānzhī fēifú."
+    },
+    "c344": {
+      "t": "不遗余力",
+      "r": "bùyíyúlì",
+      "x": "优秀的教师总是不遗余力地帮助学生成长。",
+      "xr": "Yōuxiù de jiàoshī zǒngshì bùyíyúlì de bāngzhù xuéshēng chéngzhǎng."
+    },
+    "c345": {
+      "t": "着眼大局",
+      "r": "zhuóyǎn dàjú",
+      "x": "跳出细枝末节，才能真正着眼大局。",
+      "xr": "Tiàochū xìzhīmòjié, cái néng zhēnzhèng zhuóyǎn dàjú."
+    },
+    "c346": {
+      "t": "主权",
+      "r": "zhǔquán",
+      "x": "国际法明确肯定各国相互尊重主权。",
+      "xr": "Guójìfǎ míngquè kěndìng gèguó xiānghù zūnzhòng zhǔquán."
+    },
+    "c347": {
+      "t": "外交",
+      "r": "wàijiāo",
+      "x": "耐心的外交斡旋防止了局势升级。",
+      "xr": "Nàixīn de wàijiāo wòxuán fángzhǐ le júshì shēngjí."
+    },
+    "c348": {
+      "t": "条约",
+      "r": "tiáoyuē",
+      "x": "四十个国家正式批准了这项环境条约。",
+      "xr": "Sìshí gè guójiā zhèngshì pīzhǔn le zhè xiàng huánjìng tiáoyuē."
+    },
+    "c349": {
+      "t": "多边",
+      "r": "duōbiān",
+      "x": "多边合作能够有效应对共同的全球风险。",
+      "xr": "Duōbiān hézuò nénggòu yǒuxiào yìngduì gòngtóng de quánqiú fēngxiǎn."
+    },
+    "c350": {
+      "t": "管辖权",
+      "r": "guǎnxiáquán",
+      "x": "该法庭对海事争端拥有管辖权。",
+      "xr": "Gāi fǎtíng duì hǎishì zhēngduān yōngyǒu guǎnxiáquán."
+    },
+    "c351": {
+      "t": "假说",
+      "r": "jiǎshuō",
+      "x": "这篇论文检验了一项全新的语言学假说。",
+      "xr": "Zhè piān lùnwén jiǎnyàn le yī xiàng quánxīn de yǔyánxué jiǎshuō."
+    },
+    "c352": {
+      "t": "方法论",
+      "r": "fāngfǎlùn",
+      "x": "透明的方法论使独立复现成为可能。",
+      "xr": "Tòumíng de fāngfǎlùn shǐ dúlì fùxiàn chéngwéi kěnéng."
+    },
+    "c353": {
+      "t": "综合",
+      "r": "zōnghé",
+      "x": "她的讲座对两个领域做出了精辟的综合。",
+      "xr": "Tā de jiǎngzuò duì liǎng gè lǐngyù zuòchū le jīngpì de zōnghé."
+    },
+    "c354": {
+      "t": "先例",
+      "r": "xiānlì",
+      "x": "这项裁决确立了一项重要的法律先例。",
+      "xr": "Zhè xiàng cáijué quèlì le yī xiàng zhòngyào de fǎlǜ xiānlì."
+    },
+    "c355": {
+      "t": "实施",
+      "r": "shíshī",
+      "x": "审慎的实施决定了改革能否取得成功。",
+      "xr": "Shěnshèn de shíshī juédìng le gǎigé néngfǒu qǔdé chénggōng."
+    },
+    "c356": {
+      "t": "尽管",
+      "r": "jǐnguǎn",
+      "x": "尽管初期有所延误，这座大桥仍安全通车。",
+      "xr": "Jǐnguǎn chūqī yǒusuǒ yánwù, zhè zuò dàqiáo réng ānquán tōngchē."
+    },
+    "c357": {
+      "t": "因而",
+      "r": "yīn'ér",
+      "x": "资金投入有所增加，因而乡村诊所也得以扩建。",
+      "xr": "Zījīn tóurù yǒusuǒ zēngjiā, yīn'ér xiāngcūn zhěnsuǒ yě déyǐ kuòjiàn."
+    },
+    "c358": {
+      "t": "此外",
+      "r": "cǐwài",
+      "x": "此外，开放数据也让独立研究者受益匪浅。",
+      "xr": "Cǐwài, kāifàng shùjù yě ràng dúlì yánjiūzhě shòuyì fěiqiǎn."
+    },
+    "c359": {
+      "t": "鉴于",
+      "r": "jiànyú",
+      "x": "鉴于新的证据，我们修订了这项指导方针。",
+      "xr": "Jiànyú xīn de zhèngjù, wǒmen xiūdìng le zhè xiàng zhǐdǎo fāngzhēn."
+    },
+    "c360": {
+      "t": "恕我直言",
+      "r": "shù wǒ zhíyán",
+      "x": "恕我直言，我建议考虑另一种替代方案。",
+      "xr": "Shù wǒ zhíyán, wǒ jiànyì kǎolǜ lìng yī zhǒng tìdài fāng'àn."
+    },
+    "c361": {
+      "t": "清晰阐述",
+      "r": "qīngxī chǎnshù",
+      "x": "她能够游刃有余地清晰阐述复杂的思想。",
+      "xr": "Tā nénggòu yóurènyǒuyú de qīngxī chǎnshù fùzá de sīxiǎng."
+    },
+    "c362": {
+      "t": "简明扼要",
+      "r": "jiǎnmíng èyào",
+      "x": "简明扼要的说明比冗长的演说更加清晰。",
+      "xr": "Jiǎnmíng èyào de shuōmíng bǐ rǒngcháng de yǎnshuō gèngjiā qīngxī."
+    },
+    "c363": {
+      "t": "连贯",
+      "r": "liánguàn",
+      "x": "请从头至尾构建一段逻辑连贯的叙述。",
+      "xr": "Qǐng cóngtóu zhìwěi gòujiàn yī duàn luójí liánguàn de xùshù."
+    },
+    "c364": {
+      "t": "有说服力",
+      "r": "yǒu shuōfúlì",
+      "x": "真实的故事会让论点变得更有说服力。",
+      "xr": "Zhēnshí de gùshi huì ràng lùndiǎn biànde gèng yǒu shuōfúlì."
+    },
+    "c365": {
+      "t": "务实",
+      "r": "wùshí",
+      "x": "我们为此次推广制定了一份务实的路线图。",
+      "xr": "Wǒmen wèi cǐcì tuīguǎng zhìdìng le yī fèn wùshí de lùxiàntú."
+    },
+    "c366": {
+      "t": "史无前例",
+      "r": "shǐwúqiánlì",
+      "x": "天文台拍摄到了清晰度史无前例的影像。",
+      "xr": "Tiānwéntái pāishè dào le qīngxīdù shǐwúqiánlì de yǐngxiàng."
+    },
+    "c367": {
+      "t": "不可避免",
+      "r": "bùkě bìmiǎn",
+      "x": "语言的渐进演变是完全不可避免的。",
+      "xr": "Yǔyán de jiànjìn yǎnbiàn shì wánquán bùkě bìmiǎn de."
+    },
+    "c368": {
+      "t": "不可或缺",
+      "r": "bùkě huòquē",
+      "x": "积极倾听对于达到深度流利不可或缺。",
+      "xr": "Jījí qīngtīng duìyú dádào shēndù liúlì bùkě huòquē."
+    },
+    "c369": {
+      "t": "深远",
+      "r": "shēnyuǎn",
+      "x": "阅读经典著作会给人留下深远的印记。",
+      "xr": "Yuèdú jīngdiǎn zhùzuò huì gěi rén liúxià shēnyuǎn de yìnjì."
+    },
+    "c370": {
+      "t": "无缝衔接",
+      "r": "wúfèng xiánjiē",
+      "x": "我们的目标是在每台设备上实现无缝衔接的体验。",
+      "xr": "Wǒmen de mùbiāo shì zài měi tái shèbèi shàng shíxiàn wúfèng xiánjiē de tǐyàn."
+    },
+    "c371": {
+      "t": "毫无疑问",
+      "r": "háowú yíwèn",
+      "x": "毫无疑问，持之以恒终将赢得胜利。",
+      "xr": "Háowú yíwèn, chízhīyǐhéng zhōngjiāng yíngdé shènglì."
+    },
+    "c372": {
+      "t": "同理",
+      "r": "tónglǐ",
+      "x": "我们重视效率；同理，我们绝不在质量上妥协。",
+      "xr": "Wǒmen zhòngshì xiàolǜ; tónglǐ, wǒmen jué bù zài zhìliàng shàng tuǒxié."
+    },
+    "c373": {
+      "t": "综合来看",
+      "r": "zōnghé lái kàn",
+      "x": "综合来看，今年是我们最为出色的一年。",
+      "xr": "Zōnghé lái kàn, jīnnián shì wǒmen zuìwéi chūsè de yī nián."
+    },
+    "c374": {
+      "t": "经得起时间的考验",
+      "r": "jīngdeqǐ shíjiān de kǎoyàn",
+      "x": "用心构建的开放知识必将经得起时间的考验。",
+      "xr": "Yòngxīn gòujiàn de kāifàng zhīshi bìjiāng jīngdeqǐ shíjiān de kǎoyàn."
+    },
+    "c375": {
+      "t": "终身学习",
+      "r": "zhōngshēn xuéxí",
+      "x": "掌握语言是一场充满乐趣的终身学习之旅。",
+      "xr": "Zhǎngwò yǔyán shì yī chǎng chōngmǎn lèqù de zhōngshēn xuéxí zhī lǚ."
+    }
+  }
+}

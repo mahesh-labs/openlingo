@@ -1,0 +1,2285 @@
+{
+  "code": "ru",
+  "name": "Russian",
+  "nativeName": "Русский",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Russian uses the Cyrillic alphabet and omits the verb 'to be' (быть) in the present tense. Distinguish formal вы (vy) from informal ты (ty); polite greetings like Здравствуйте use the formal register.",
+    "u2": "Every Russian noun has grammatical gender: masculine (consonant), feminine (-а/-я), or neuter (-о/-е). Possessive pronouns agree in gender with the noun they modify (мой брат, моя сестра).",
+    "u3": "Russian numerals govern noun cases: 1 takes nominative singular (одна чашка), 2–4 take genitive singular (две книги, три книги), and 5+ take genitive plural (пять минут).",
+    "u4": "Direct objects take the accusative case (feminine -а -> -у: пить воду). Use the instrumental case with с ('with') for accompaniments (рис с карри, кофе с молоком).",
+    "u5": "Use the prepositional case after в ('in') and на ('on') for static location (на столе, в комнате). Adjectives agree with their nouns in gender, number, and case (красный зонт, синее небо).",
+    "u6": "Russian verbs of motion distinguish going on foot (идти) from going by transport (ехать). Use accusative after в/на for direction (в центр) and prepositional for location (в отеле).",
+    "u7": "The genitive case expresses absence (нет), quantity, and belonging. Modal predicates можно ('may/can') and нужно ('need to') pair directly with infinitives (Можно оплатить картой?).",
+    "u8": "Weather and ambient states often use impersonal neuter adverbials without a subject: жарко ('it is hot'), холодно ('it is cold'), and the verb идти for precipitation (идёт дождь/снег).",
+    "u9": "Express physical pain with У + genitive + болит + nominative body part (У меня болит голова). Imperatives end in -й/-и/-ьте for polite instructions (вымойте руки, примите лекарство).",
+    "u10": "Russian verbs come in aspectual pairs: imperfective for habits/ongoing actions (учить, читать) and perfective for completed results (выучить, прочитать). Professions after работать take the instrumental case.",
+    "u11": "Short-form adjectives express temporary feelings or states as predicates (рад, удивлён, готов). Introduce viewpoints with Я думаю, что... ('I think that...') or По-моему... ('In my opinion...').",
+    "u12": "Russian past tense is formed from the infinitive stem plus gender/plural endings: -л (m.), -ла (f.), -ло (n.), -ли (pl.). Imperfective future uses быть + infinitive; perfective uses conjugated endings.",
+    "u13": "Modern tech vocabulary blends international loans (компьютер, интернет, пароль) with productive Russian derivatives (приложение, конфиденциальность, обновление) and reflexive verbs in -ся.",
+    "u14": "Cultural and historical descriptions often use genitive plural forms (пять тысяч лет истории), passive reflexive verbs (поётся, сохраняется), and rich compound expressions.",
+    "u15": "Complex sentences link clauses with subordinating conjunctions (потому что, хотя, если) and transition markers (однако, следовательно, тем временем), always separated by commas in Russian.",
+    "u16": "Business Russian (деловой стиль) favors abstract verbal nouns in -ние/-тие (решение, соглашение, сотрудничество) and chains of genitive modifiers (условия договора).",
+    "u17": "Scientific and academic Russian relies on passive constructions, short passive participles (подтверждён, основан), and objective third-person phrasing.",
+    "u18": "Environmental and policy writing uses active/passive participles (меняющийся климат, возобновляемые источники) and modal expressions of duty (необходимо, должно).",
+    "u19": "Civic and legal prose highlights abstract feminine nouns ending in -ость (справедливость, прозрачность, солидарность) and formal prepositional phrases (в соответствии с законом).",
+    "u20": "Debate and critical analysis employ adverbial participles (деепричастия, e.g., увидев, осознавая) and nuanced discourse connectors (тем не менее, прежде чем).",
+    "u21": "Literary Russian achieves expressive nuance through flexible word order (placing new/emphatic information last), rich epithets, and precise aesthetic terminology.",
+    "u22": "Philosophical and psychological writing contrasts ideas using в то время как ('whereas'), reflexive verbs of inner reflection, and abstract nouns of state.",
+    "u23": "Russian proverbs (пословицы) and idioms (фразеологизмы) are concise, often omitting verbs with an em-dash (В единстве — сила; Повторенье — мать ученья).",
+    "u24": "High diplomatic, legal, and academic discourse relies on formal prepositions and connectors: несмотря на ('notwithstanding'), в свете ('in light of'), следовательно, при всём уважении.",
+    "u25": "C2 Russian mastery integrates parenthetical expressions (вводные слова: вне всякого сомнения, в конечном счёте), rhetorical balance, and effortless stylistic precision."
+  },
+  "items": {
+    "c001": {
+      "t": "Здравствуйте",
+      "r": "Zdravstvuyte",
+      "x": "Здравствуйте, приятно познакомиться.",
+      "xr": "Zdravstvuyte, priyatno poznakomit'sya."
+    },
+    "c002": {
+      "t": "Доброе утро",
+      "r": "Dobroye utro",
+      "x": "Доброе утро, как вы спали?",
+      "xr": "Dobroye utro, kak vy spali?"
+    },
+    "c003": {
+      "t": "Добрый день",
+      "r": "Dobryy den'",
+      "x": "Добрый день всем.",
+      "xr": "Dobryy den' vsem."
+    },
+    "c004": {
+      "t": "Добрый вечер",
+      "r": "Dobryy vecher",
+      "x": "Добрый вечер, добро пожаловать домой.",
+      "xr": "Dobryy vecher, dobro pozhalovat' domoy."
+    },
+    "c005": {
+      "t": "Спокойной ночи",
+      "r": "Spokoynoy nochi",
+      "x": "Спокойной ночи, до завтра.",
+      "xr": "Spokoynoy nochi, do zavtra."
+    },
+    "c006": {
+      "t": "Спасибо",
+      "r": "Spasibo",
+      "x": "Большое спасибо за вашу помощь.",
+      "xr": "Bol'shoye spasibo za vashu pomoshch'."
+    },
+    "c007": {
+      "t": "Не за что",
+      "r": "Ne za chto",
+      "x": "Не за что, обращайтесь в любое время.",
+      "xr": "Ne za chto, obrashchaytes' v lyuboye vremya."
+    },
+    "c008": {
+      "t": "Пожалуйста",
+      "r": "Pozhaluysta",
+      "x": "Пожалуйста, входите и присаживайтесь.",
+      "xr": "Pozhaluysta, vkhodite i prisazhivaytes'."
+    },
+    "c009": {
+      "t": "Извините",
+      "r": "Izvinite",
+      "x": "Извините, можно задать вопрос?",
+      "xr": "Izvinite, mozhno zadat' vopros?"
+    },
+    "c010": {
+      "t": "Простите",
+      "r": "Prostite",
+      "x": "Простите за опоздание.",
+      "xr": "Prostite za opozdaniye."
+    },
+    "c011": {
+      "t": "Да",
+      "r": "Da",
+      "x": "Да, я всё прекрасно понимаю.",
+      "xr": "Da, ya vsyo prekrasno ponimayu."
+    },
+    "c012": {
+      "t": "Нет",
+      "r": "Net",
+      "x": "Нет, спасибо, у меня всё в порядке.",
+      "xr": "Net, spasibo, u menya vsyo v poryadke."
+    },
+    "c013": {
+      "t": "До свидания",
+      "r": "Do svidaniya",
+      "x": "До свидания, счастливого пути.",
+      "xr": "Do svidaniya, schastlivogo puti."
+    },
+    "c014": {
+      "t": "Меня зовут",
+      "r": "Menya zovut",
+      "x": "Меня зовут Майя.",
+      "xr": "Menya zovut Mayya."
+    },
+    "c015": {
+      "t": "Как дела?",
+      "r": "Kak dela?",
+      "x": "Как ваши дела сегодня?",
+      "xr": "Kak vashi dela segodnya?"
+    },
+    "c016": {
+      "t": "Я",
+      "r": "Ya",
+      "x": "Я изучаю новый язык.",
+      "xr": "Ya izuchayu novyy yazyk."
+    },
+    "c017": {
+      "t": "Вы",
+      "r": "Vy",
+      "x": "Вы говорите очень чётко.",
+      "xr": "Vy govorite ochen' chyotko."
+    },
+    "c018": {
+      "t": "Он",
+      "r": "On",
+      "x": "Он мой старший брат.",
+      "xr": "On moy starshiy brat."
+    },
+    "c019": {
+      "t": "Она",
+      "r": "Ona",
+      "x": "Она опытный врач.",
+      "xr": "Ona opytnyy vrach."
+    },
+    "c020": {
+      "t": "Мы",
+      "r": "My",
+      "x": "Мы живём в одном городе.",
+      "xr": "My zhivyom v odnom gorode."
+    },
+    "c021": {
+      "t": "Мать",
+      "r": "Mat'",
+      "x": "Моя мама готовит очень вкусную еду.",
+      "xr": "Moya mama gotovit ochen' vkusnuyu yedu."
+    },
+    "c022": {
+      "t": "Отец",
+      "r": "Otets",
+      "x": "Мой отец каждое утро читает газету.",
+      "xr": "Moy otets kazhdoye utro chitayet gazetu."
+    },
+    "c023": {
+      "t": "Брат",
+      "r": "Brat",
+      "x": "Мой брат играет в футбол.",
+      "xr": "Moy brat igrayet v futbol."
+    },
+    "c024": {
+      "t": "Сестра",
+      "r": "Sestra",
+      "x": "Моя сестра изучает медицину.",
+      "xr": "Moya sestra izuchayet meditsinu."
+    },
+    "c025": {
+      "t": "Семья",
+      "r": "Sem'ya",
+      "x": "Наша семья собирается каждое воскресенье.",
+      "xr": "Nasha sem'ya sobirayetsya kazhdoye voskresen'ye."
+    },
+    "c026": {
+      "t": "Друг",
+      "r": "Drug",
+      "x": "Она мой самый близкий друг.",
+      "xr": "Ona moy samyy blizkiy drug."
+    },
+    "c027": {
+      "t": "Ребёнок",
+      "r": "Rebyonok",
+      "x": "Ребёнок рисует картинку.",
+      "xr": "Rebyonok risuyet kartinku."
+    },
+    "c028": {
+      "t": "Учитель",
+      "r": "Uchitel'",
+      "x": "Наш учитель понятно объясняет грамматику.",
+      "xr": "Nash uchitel' ponyatno obyasnyayet grammatiku."
+    },
+    "c029": {
+      "t": "Студент",
+      "r": "Student",
+      "x": "Каждый студент принёс тетрадь.",
+      "xr": "Kazhdyy student prinyos tetrad'."
+    },
+    "c030": {
+      "t": "Сосед",
+      "r": "Sosed",
+      "x": "Наш сосед очень добрый человек.",
+      "xr": "Nash sosed ochen' dobryy chelovek."
+    },
+    "c031": {
+      "t": "Один",
+      "r": "Odin",
+      "x": "Мне, пожалуйста, одну чашку чая.",
+      "xr": "Mne, pozhaluysta, odnu chashku chaya."
+    },
+    "c032": {
+      "t": "Два",
+      "r": "Dva",
+      "x": "Нам нужно два билета, пожалуйста.",
+      "xr": "Nam nuzhno dva bileta, pozhaluysta."
+    },
+    "c033": {
+      "t": "Три",
+      "r": "Tri",
+      "x": "На столе лежат три книги.",
+      "xr": "Na stole lezhat tri knigi."
+    },
+    "c034": {
+      "t": "Пять",
+      "r": "Pyat'",
+      "x": "Занятие начнётся через пять минут.",
+      "xr": "Zanyatiye nachnyotsya cherez pyat' minut."
+    },
+    "c035": {
+      "t": "Десять",
+      "r": "Desyat'",
+      "x": "Она досчитала от одного до десяти.",
+      "xr": "Ona doschitala ot odnogo do desyati."
+    },
+    "c036": {
+      "t": "Сегодня",
+      "r": "Segodnya",
+      "x": "Сегодня солнечный день.",
+      "xr": "Segodnya solnechnyy den'."
+    },
+    "c037": {
+      "t": "Завтра",
+      "r": "Zavtra",
+      "x": "Завтра мы пойдём в музей.",
+      "xr": "Zavtra my poydyom v muzey."
+    },
+    "c038": {
+      "t": "Вчера",
+      "r": "Vchera",
+      "x": "Вчера весь день шёл дождь.",
+      "xr": "Vchera ves' den' shyol dozhd'."
+    },
+    "c039": {
+      "t": "Сейчас",
+      "r": "Seychas",
+      "x": "Я готов выходить прямо сейчас.",
+      "xr": "Ya gotov vykhodit' pryamo seychas."
+    },
+    "c040": {
+      "t": "Позже",
+      "r": "Pozzhe",
+      "x": "Давайте поговорим об этом позже.",
+      "xr": "Davayte pogovorim ob etom pozzhe."
+    },
+    "c041": {
+      "t": "Утро",
+      "r": "Utro",
+      "x": "Я делаю зарядку каждое утро.",
+      "xr": "Ya delayu zaryadku kazhdoye utro."
+    },
+    "c042": {
+      "t": "Ночь",
+      "r": "Noch'",
+      "x": "Ночью звёзды светят особенно ярко.",
+      "xr": "Noch'yu zvyozdy svetyat osobenno yarko."
+    },
+    "c043": {
+      "t": "Неделя",
+      "r": "Nedelya",
+      "x": "Эта неделя выдалась очень напряжённой.",
+      "xr": "Eta nedelya vydalas' ochen' napryazhyonnoy."
+    },
+    "c044": {
+      "t": "Месяц",
+      "r": "Mesyats",
+      "x": "В следующем месяце мы едем за границу.",
+      "xr": "V sleduyushchem mesyatse my yedem za granitsu."
+    },
+    "c045": {
+      "t": "Год",
+      "r": "God",
+      "x": "Поздравляю всех с Новым годом.",
+      "xr": "Pozdravlyayu vsekh s Novym godom."
+    },
+    "c046": {
+      "t": "Вода",
+      "r": "Voda",
+      "x": "Можно мне стакан воды?",
+      "xr": "Mozhno mne stakan vody?"
+    },
+    "c047": {
+      "t": "Рис",
+      "r": "Ris",
+      "x": "Мы едим отварной рис с карри.",
+      "xr": "My yedim otvarnoy ris s karri."
+    },
+    "c048": {
+      "t": "Хлеб",
+      "r": "Khleb",
+      "x": "Свежий хлеб чудесно пахнет.",
+      "xr": "Svezhiy khleb chudesno pakhnet."
+    },
+    "c049": {
+      "t": "Фрукты",
+      "r": "Frukty",
+      "x": "Ешьте побольше свежих фруктов каждый день.",
+      "xr": "Yesh'te pobol'she svezhikh fruktov kazhdyy den'."
+    },
+    "c050": {
+      "t": "Молоко",
+      "r": "Moloko",
+      "x": "Вы добавляете молоко в кофе?",
+      "xr": "Vy dobavlyayete moloko v kofe?"
+    },
+    "c051": {
+      "t": "Чай",
+      "r": "Chay",
+      "x": "Горячий чай прекрасно согревает зимой.",
+      "xr": "Goryachiy chay prekrasno sogrevayet zimoy."
+    },
+    "c052": {
+      "t": "Кофе",
+      "r": "Kofe",
+      "x": "По утрам я пью чёрный кофе.",
+      "xr": "Po utram ya p'yu chyornyy kofe."
+    },
+    "c053": {
+      "t": "Завтрак",
+      "r": "Zavtrak",
+      "x": "Завтрак — это первый приём пищи за день.",
+      "xr": "Zavtrak — eto pervyy priyom pishchi za den'."
+    },
+    "c054": {
+      "t": "Обед",
+      "r": "Obed",
+      "x": "Куда мы пойдём на обед?",
+      "xr": "Kuda my poydyom na obed?"
+    },
+    "c055": {
+      "t": "Ужин",
+      "r": "Uzhin",
+      "x": "Ужин будет готов в семь часов.",
+      "xr": "Uzhin budet gotov v sem' chasov."
+    },
+    "c056": {
+      "t": "Вкусный",
+      "r": "Vkusnyy",
+      "x": "Это блюдо действительно очень вкусное.",
+      "xr": "Eto blyudo deystvitel'no ochen' vkusnoye."
+    },
+    "c057": {
+      "t": "Голодный",
+      "r": "Golodnyy",
+      "x": "После прогулки я очень проголодался.",
+      "xr": "Posle progulki ya ochen' progolodalsya."
+    },
+    "c058": {
+      "t": "Хотеть пить",
+      "r": "Khotet' pit'",
+      "x": "В такую жару очень хочется пить.",
+      "xr": "V takuyu zharu ochen' khochetsya pit'."
+    },
+    "c059": {
+      "t": "Меню",
+      "r": "Menyu",
+      "x": "Можно посмотреть меню, пожалуйста?",
+      "xr": "Mozhno posmotret' menyu, pozhaluysta?"
+    },
+    "c060": {
+      "t": "Счёт",
+      "r": "Schyot",
+      "x": "Принесите, пожалуйста, счёт.",
+      "xr": "Prinesite, pozhaluysta, schyot."
+    },
+    "c061": {
+      "t": "Дом",
+      "r": "Dom",
+      "x": "Возле их дома есть небольшой сад.",
+      "xr": "Vozle ikh doma yest' nebol'shoy sad."
+    },
+    "c062": {
+      "t": "Комната",
+      "r": "Komnata",
+      "x": "В моей комнате большое окно.",
+      "xr": "V moyey komnate bol'shoye okno."
+    },
+    "c063": {
+      "t": "Стол",
+      "r": "Stol",
+      "x": "Положи ключи на стол.",
+      "xr": "Polozhi klyuchi na stol."
+    },
+    "c064": {
+      "t": "Книга",
+      "r": "Kniga",
+      "x": "Эта книга читается очень легко.",
+      "xr": "Eta kniga chitayetsya ochen' legko."
+    },
+    "c065": {
+      "t": "Дверь",
+      "r": "Dver'",
+      "x": "Пожалуйста, закройте дверь тихо.",
+      "xr": "Pozhaluysta, zakroyte dver' tikho."
+    },
+    "c066": {
+      "t": "Красный",
+      "r": "Krasnyy",
+      "x": "Она купила ярко-красный зонт.",
+      "xr": "Ona kupila yarko-krasnyy zont."
+    },
+    "c067": {
+      "t": "Синий",
+      "r": "Siniy",
+      "x": "Небо чистое и синее.",
+      "xr": "Nebo chistoye i sineye."
+    },
+    "c068": {
+      "t": "Белый",
+      "r": "Belyy",
+      "x": "Снег покрыл землю белым ковром.",
+      "xr": "Sneg pokryl zemlyu belym kovrom."
+    },
+    "c069": {
+      "t": "Большой",
+      "r": "Bol'shoy",
+      "x": "Они переехали в большой город.",
+      "xr": "Oni pereyekhali v bol'shoy gorod."
+    },
+    "c070": {
+      "t": "Маленький",
+      "r": "Malen'kiy",
+      "x": "Маленькая птица пела на ветке.",
+      "xr": "Malen'kaya ptitsa pela na vetke."
+    },
+    "c071": {
+      "t": "Идти",
+      "r": "Idti",
+      "x": "Я езжу на работу на поезде.",
+      "xr": "Ya yezzhu na rabotu na poyezde."
+    },
+    "c072": {
+      "t": "Приходить",
+      "r": "Prikhodit'",
+      "x": "Пожалуйста, приходите на наш праздник.",
+      "xr": "Pozhaluysta, prikhodite na nash prazdnik."
+    },
+    "c073": {
+      "t": "Есть",
+      "r": "Yest'",
+      "x": "Мы ужинаем вместе в восемь часов.",
+      "xr": "My uzhinayem vmeste v vosem' chasov."
+    },
+    "c074": {
+      "t": "Пить",
+      "r": "Pit'",
+      "x": "Не забывайте пить достаточно воды.",
+      "xr": "Ne zabyvayte pit' dostatochno vody."
+    },
+    "c075": {
+      "t": "Спать",
+      "r": "Spat'",
+      "x": "Я стараюсь спать по восемь часов каждую ночь.",
+      "xr": "Ya starayus' spat' po vosem' chasov kazhduyu noch'."
+    },
+    "c076": {
+      "t": "Поезд",
+      "r": "Poyezd",
+      "x": "Скорый поезд прибывает ровно в полдень.",
+      "xr": "Skoryy poyezd pribyvayet rovno v polden'."
+    },
+    "c077": {
+      "t": "Автобус",
+      "r": "Avtobus",
+      "x": "Сядьте на второй автобус до центра.",
+      "xr": "Syad'te na vtoroy avtobus do tsentra."
+    },
+    "c078": {
+      "t": "Аэропорт",
+      "r": "Aeroport",
+      "x": "Мы приехали в аэропорт за два часа до вылета.",
+      "xr": "My priyekhali v aeroport za dva chasa do vyleta."
+    },
+    "c079": {
+      "t": "Билет",
+      "r": "Bilet",
+      "x": "Сохраняйте билет до выхода со станции.",
+      "xr": "Sokhranyayte bilet do vykhoda so stantsii."
+    },
+    "c080": {
+      "t": "Станция",
+      "r": "Stantsiya",
+      "x": "Станция находится в пяти минутах ходьбы.",
+      "xr": "Stantsiya nakhoditsya v pyati minutakh khod'by."
+    },
+    "c081": {
+      "t": "Налево",
+      "r": "Nalevo",
+      "x": "Поверните налево на следующем светофоре.",
+      "xr": "Povernite nalevo na sleduyushchem svetofore."
+    },
+    "c082": {
+      "t": "Направо",
+      "r": "Napravo",
+      "x": "Аптека находится справа от вас.",
+      "xr": "Apteka nakhoditsya sprava ot vas."
+    },
+    "c083": {
+      "t": "Прямо",
+      "r": "Pryamo",
+      "x": "Идите прямо два квартала.",
+      "xr": "Idite pryamo dva kvartala."
+    },
+    "c084": {
+      "t": "Рядом",
+      "r": "Ryadom",
+      "x": "Здесь рядом есть гостиница?",
+      "xr": "Zdes' ryadom yest' gostinitsa?"
+    },
+    "c085": {
+      "t": "Далеко",
+      "r": "Daleko",
+      "x": "Пляж находится недалеко от города.",
+      "xr": "Plyazh nakhoditsya nedaleko ot goroda."
+    },
+    "c086": {
+      "t": "Карта",
+      "r": "Karta",
+      "x": "Давайте посмотрим маршрут на карте.",
+      "xr": "Davayte posmotrim marshrut na karte."
+    },
+    "c087": {
+      "t": "Гостиница",
+      "r": "Gostinitsa",
+      "x": "Мы забронировали тихую гостиницу в центре.",
+      "xr": "My zabronirovali tikhuyu gostinitsu v tsentre."
+    },
+    "c088": {
+      "t": "Паспорт",
+      "r": "Pasport",
+      "x": "Не забудьте паспорт дома.",
+      "xr": "Ne zabud'te pasport doma."
+    },
+    "c089": {
+      "t": "Багаж",
+      "r": "Bagazh",
+      "x": "Мой багаж сегодня довольно тяжёлый.",
+      "xr": "Moy bagazh segodnya dovol'no tyazhyolyy."
+    },
+    "c090": {
+      "t": "Где находится?",
+      "r": "Gde nakhoditsya?",
+      "x": "Где находится ближайший выход из метро?",
+      "xr": "Gde nakhoditsya blizhayshiy vykhod iz metro?"
+    },
+    "c091": {
+      "t": "Деньги",
+      "r": "Den'gi",
+      "x": "Откладывайте часть денег каждый месяц.",
+      "xr": "Otkladyvayte chast' deneg kazhdyy mesyats."
+    },
+    "c092": {
+      "t": "Цена",
+      "r": "Tsena",
+      "x": "Какова цена этой куртки?",
+      "xr": "Kakova tsena etoy kurtki?"
+    },
+    "c093": {
+      "t": "Дешёвый",
+      "r": "Deshyovyy",
+      "x": "На утреннем рынке овощи очень дешёвые.",
+      "xr": "Na utrennem rynke ovoshchi ochen' deshyovyye."
+    },
+    "c094": {
+      "t": "Дорогой",
+      "r": "Dorogoy",
+      "x": "Эти часы слишком дорогие для меня.",
+      "xr": "Eti chasy slishkom dorogiye dlya menya."
+    },
+    "c095": {
+      "t": "Скидка",
+      "r": "Skidka",
+      "x": "У вас есть скидка для студентов?",
+      "xr": "U vas yest' skidka dlya studentov?"
+    },
+    "c096": {
+      "t": "Магазин",
+      "r": "Magazin",
+      "x": "Тот магазин на углу открывается в восемь.",
+      "xr": "Tot magazin na uglu otkryvayetsya v vosem'."
+    },
+    "c097": {
+      "t": "Рынок",
+      "r": "Rynok",
+      "x": "По субботам на местном рынке очень оживлённо.",
+      "xr": "Po subbotam na mestnom rynke ochen' ozhivlyonno."
+    },
+    "c098": {
+      "t": "Купить",
+      "r": "Kupit'",
+      "x": "Я хочу купить тёплое пальто.",
+      "xr": "Ya khochu kupit' tyoploye pal'to."
+    },
+    "c099": {
+      "t": "Оплатить",
+      "r": "Oplatit'",
+      "x": "Можно оплатить картой или наличными?",
+      "xr": "Mozhno oplatit' kartoy ili nalichnymi?"
+    },
+    "c100": {
+      "t": "Чек",
+      "r": "Chek",
+      "x": "Дайте, пожалуйста, чек.",
+      "xr": "Dayte, pozhaluysta, chek."
+    },
+    "c101": {
+      "t": "Рубашка",
+      "r": "Rubashka",
+      "x": "Эта хлопковая рубашка очень удобная.",
+      "xr": "Eta khlopkovaya rubashka ochen' udobnaya."
+    },
+    "c102": {
+      "t": "Обувь",
+      "r": "Obuv'",
+      "x": "Мне нужна прочная обувь для походов.",
+      "xr": "Mne nuzhna prochnaya obuv' dlya pokhodov."
+    },
+    "c103": {
+      "t": "Сумка",
+      "r": "Sumka",
+      "x": "Она несла кожаную сумку.",
+      "xr": "Ona nesla kozhanuyu sumku."
+    },
+    "c104": {
+      "t": "Новый",
+      "r": "Novyy",
+      "x": "Сегодня он надел новую куртку.",
+      "xr": "Segodnya on nadel novuyu kurtku."
+    },
+    "c105": {
+      "t": "Размер",
+      "r": "Razmer",
+      "x": "У вас есть это в среднем размере?",
+      "xr": "U vas yest' eto v srednem razmere?"
+    },
+    "c106": {
+      "t": "Солнце",
+      "r": "Solntse",
+      "x": "Тёплое солнце быстро высушило мокрую дорогу.",
+      "xr": "Tyoploye solntse bystro vysushilo mokruyu dorogu."
+    },
+    "c107": {
+      "t": "Дождь",
+      "r": "Dozhd'",
+      "x": "Возьмите зонт на случай дождя.",
+      "xr": "Voz'mite zont na sluchay dozhdya."
+    },
+    "c108": {
+      "t": "Ветер",
+      "r": "Veter",
+      "x": "С моря подул прохладный ветер.",
+      "xr": "S morya podul prokhladnyy veter."
+    },
+    "c109": {
+      "t": "Жарко",
+      "r": "Zharko",
+      "x": "Летними днями здесь очень жарко.",
+      "xr": "Letnimi dnyami zdes' ochen' zharko."
+    },
+    "c110": {
+      "t": "Холодно",
+      "r": "Kholodno",
+      "x": "Надевайте шарф, когда на улице холодно.",
+      "xr": "Nadevayte sharf, kogda na ulitse kholodno."
+    },
+    "c111": {
+      "t": "Лето",
+      "r": "Leto",
+      "x": "Летом мы часто плаваем.",
+      "xr": "Letom my chasto plavayem."
+    },
+    "c112": {
+      "t": "Зима",
+      "r": "Zima",
+      "x": "Зимние ночи долгие и тихие.",
+      "xr": "Zimniye nochi dolgiye i tikhiye."
+    },
+    "c113": {
+      "t": "Весна",
+      "r": "Vesna",
+      "x": "Весной повсюду распускаются цветы.",
+      "xr": "Vesnoy povsyudu raspuskayutsya tsvety."
+    },
+    "c114": {
+      "t": "Облако",
+      "r": "Oblako",
+      "x": "Перед грозой собрались тёмные тучи.",
+      "xr": "Pered grozoy sobralis' tyomnyye tuchi."
+    },
+    "c115": {
+      "t": "Снег",
+      "r": "Sneg",
+      "x": "Дети слепили снеговика из свежего снега.",
+      "xr": "Deti slepili snegovika iz svezhego snega."
+    },
+    "c116": {
+      "t": "Гора",
+      "r": "Gora",
+      "x": "Мы поднялись на гору ещё до рассвета.",
+      "xr": "My podnyalis' na goru yeshchyo do rassveta."
+    },
+    "c117": {
+      "t": "Река",
+      "r": "Reka",
+      "x": "Широкая река протекает через всю долину.",
+      "xr": "Shirokaya reka protekayet cherez vsyu dolinu."
+    },
+    "c118": {
+      "t": "Море",
+      "r": "More",
+      "x": "Сегодня вечером море кажется спокойным.",
+      "xr": "Segodnya vecherom more kazhetsya spokoynym."
+    },
+    "c119": {
+      "t": "Дерево",
+      "r": "Derevo",
+      "x": "Древнее дерево даёт тень всему двору.",
+      "xr": "Drevneye derevo dayot ten' vsemu dvoru."
+    },
+    "c120": {
+      "t": "Цветок",
+      "r": "Tsvetok",
+      "x": "Каждый цветок в саду уже распустился.",
+      "xr": "Kazhdyy tsvetok v sadu uzhe raspustilsya."
+    },
+    "c121": {
+      "t": "Голова",
+      "r": "Golova",
+      "x": "У меня болит голова после целого дня чтения.",
+      "xr": "U menya bolit golova posle tselogo dnya chteniya."
+    },
+    "c122": {
+      "t": "Рука",
+      "r": "Ruka",
+      "x": "Мойте руки перед едой.",
+      "xr": "Moyte ruki pered yedoy."
+    },
+    "c123": {
+      "t": "Глаз",
+      "r": "Glaz",
+      "x": "Давайте глазам отдых от экранов.",
+      "xr": "Davayte glazam otdykh ot ekranov."
+    },
+    "c124": {
+      "t": "Сердце",
+      "r": "Serdtse",
+      "x": "Физические упражнения укрепляют сердце.",
+      "xr": "Fizicheskiye uprazhneniya ukreplyayut serdtse."
+    },
+    "c125": {
+      "t": "Желудок",
+      "r": "Zheludok",
+      "x": "Выпейте тёплой воды, если болит живот.",
+      "xr": "Vypeyte tyoploy vody, yesli bolit zhivot."
+    },
+    "c126": {
+      "t": "Врач",
+      "r": "Vrach",
+      "x": "Вам следует обратиться к врачу сегодня.",
+      "xr": "Vam sleduyet obratit'sya k vrachu segodnya."
+    },
+    "c127": {
+      "t": "Больница",
+      "r": "Bol'nitsa",
+      "x": "Эта больница работает круглосуточно.",
+      "xr": "Eta bol'nitsa rabotayet kruglosutochno."
+    },
+    "c128": {
+      "t": "Лекарство",
+      "r": "Lekarstvo",
+      "x": "Принимайте это лекарство после еды.",
+      "xr": "Prinimayte eto lekarstvo posle yedy."
+    },
+    "c129": {
+      "t": "Боль",
+      "r": "Bol'",
+      "x": "Покажите медсестре, где именно чувствуется боль.",
+      "xr": "Pokazhite medsestre, gde imenno chuvstvuyetsya bol'."
+    },
+    "c130": {
+      "t": "Температура",
+      "r": "Temperatura",
+      "x": "Он остался дома с небольшой температурой.",
+      "xr": "On ostalsya doma s nebol'shoy temperaturoy."
+    },
+    "c131": {
+      "t": "Помощь",
+      "r": "Pomoshch'",
+      "x": "Пожалуйста, помогите мне донести эту коробку.",
+      "xr": "Pozhaluysta, pomogite mne donesti etu korobku."
+    },
+    "c132": {
+      "t": "Полиция",
+      "r": "Politsiya",
+      "x": "В экстренной ситуации звоните в полицию.",
+      "xr": "V ekstrennoy situatsii zvonite v politsiyu."
+    },
+    "c133": {
+      "t": "Чрезвычайная ситуация",
+      "r": "Chrezvychaynaya situatsiya",
+      "x": "Сохраните номера экстренных служб в телефоне.",
+      "xr": "Sokhranite nomera ekstrennykh sluzhb v telefone."
+    },
+    "c134": {
+      "t": "Отдых",
+      "r": "Otdykh",
+      "x": "Полноценный отдых поможет вам быстро восстановиться.",
+      "xr": "Polnotsennyy otdykh pomozhet vam bystro vosstanovit'sya."
+    },
+    "c135": {
+      "t": "Здоровый",
+      "r": "Zdorovyy",
+      "x": "Сбалансированное питание помогает оставаться здоровым.",
+      "xr": "Sbalansirovannoye pitaniye pomogayet ostavat'sya zdorovym."
+    },
+    "c136": {
+      "t": "Школа",
+      "r": "Shkola",
+      "x": "Дети вместе идут пешком в школу.",
+      "xr": "Deti vmeste idut peshkom v shkolu."
+    },
+    "c137": {
+      "t": "Университет",
+      "r": "Universitet",
+      "x": "Она изучает инженерию в университете.",
+      "xr": "Ona izuchayet inzheneriyu v universitete."
+    },
+    "c138": {
+      "t": "Экзамен",
+      "r": "Ekzamen",
+      "x": "Я тщательно подготовился к выпускному экзамену.",
+      "xr": "Ya tshchatel'no podgotovilsya k vypusknomu ekzamenu."
+    },
+    "c139": {
+      "t": "Язык",
+      "r": "Yazyk",
+      "x": "Изучение языка открывает новые горизонты.",
+      "xr": "Izucheniye yazyka otkryvayet novyye gorizonty."
+    },
+    "c140": {
+      "t": "Вопрос",
+      "r": "Vopros",
+      "x": "Это очень глубокий и вдумчивый вопрос.",
+      "xr": "Eto ochen' glubokiy i vdumchivyy vopros."
+    },
+    "c141": {
+      "t": "Работа",
+      "r": "Rabota",
+      "x": "Он заканчивает работу в шесть часов.",
+      "xr": "On zakanchivayet rabotu v shest' chasov."
+    },
+    "c142": {
+      "t": "Офис",
+      "r": "Ofis",
+      "x": "Наш офис находится на четвёртом этаже.",
+      "xr": "Nash ofis nakhoditsya na chetvyortom etazhe."
+    },
+    "c143": {
+      "t": "Встреча",
+      "r": "Vstrecha",
+      "x": "Командное совещание начинается в десять.",
+      "xr": "Komandnoye soveshchaniye nachinayetsya v desyat'."
+    },
+    "c144": {
+      "t": "Коллега",
+      "r": "Kollega",
+      "x": "Мой коллега помог исправить ошибку в программе.",
+      "xr": "Moy kollega pomog ispravit' oshibku v programme."
+    },
+    "c145": {
+      "t": "Занят",
+      "r": "Zanyat",
+      "x": "Я довольно занят до самой пятницы.",
+      "xr": "Ya dovol'no zanyat do samoy pyatnitsy."
+    },
+    "c146": {
+      "t": "Музыка",
+      "r": "Muzyka",
+      "x": "Прослушивание музыки помогает мне расслабиться.",
+      "xr": "Proslushivaniye muzyki pomogayet mne rasslabit'sya."
+    },
+    "c147": {
+      "t": "Фильм",
+      "r": "Fil'm",
+      "x": "Вчера вечером мы посмотрели вдохновляющий фильм.",
+      "xr": "Vchera vecherom my posmotreli vdokhnovlyayushchiy fil'm."
+    },
+    "c148": {
+      "t": "Спорт",
+      "r": "Sport",
+      "x": "Какой вид спорта вы любите смотреть?",
+      "xr": "Kakoy vid sporta vy lyubite smotret'?"
+    },
+    "c149": {
+      "t": "Путешествие",
+      "r": "Puteshestviye",
+      "x": "Я обожаю путешествовать на поезде.",
+      "xr": "Ya obozhayu puteshestvovat' na poyezde."
+    },
+    "c150": {
+      "t": "Хобби",
+      "r": "Khobbi",
+      "x": "Фотография — моё любимое хобби на выходных.",
+      "xr": "Fotografiya — moyo lyubimoye khobbi na vykhodnykh."
+    },
+    "c151": {
+      "t": "Счастливый",
+      "r": "Schastlivyy",
+      "x": "Я искренне рад услышать ваши новости.",
+      "xr": "Ya iskrenne rad uslyshat' vashi novosti."
+    },
+    "c152": {
+      "t": "Грустный",
+      "r": "Grustnyy",
+      "x": "Иногда чувствовать грусть вполне естественно.",
+      "xr": "Inogda chuvstvovat' grust' vpolne yestestvenno."
+    },
+    "c153": {
+      "t": "Сердитый",
+      "r": "Serdityy",
+      "x": "Когда сердитесь, сделайте глубокий вдох, прежде чем говорить.",
+      "xr": "Kogda serdites', sdelayte glubokiy vdokh, prezhde chem govorit'."
+    },
+    "c154": {
+      "t": "Удивлённый",
+      "r": "Udivlyonnyy",
+      "x": "Все были удивлены неожиданным объявлением.",
+      "xr": "Vse byli udivleny neozhidannym obyavleniyem."
+    },
+    "c155": {
+      "t": "Обеспокоенный",
+      "r": "Obespokoyennyy",
+      "x": "Не переживайте, всё обязательно наладится.",
+      "xr": "Ne perezhivayte, vsyo obyazatel'no naladitsya."
+    },
+    "c156": {
+      "t": "Добрый",
+      "r": "Dobryy",
+      "x": "Один добрый поступок может украсить чей-то день.",
+      "xr": "Odin dobryy postupok mozhet ukrasit' chey-to den'."
+    },
+    "c157": {
+      "t": "Честный",
+      "r": "Chestnyy",
+      "x": "Я очень ценю ваш честный отзыв.",
+      "xr": "Ya ochen' tsenyu vash chestnyy otzyv."
+    },
+    "c158": {
+      "t": "Терпеливый",
+      "r": "Terpelivyy",
+      "x": "Свободное владение языком требует терпения.",
+      "xr": "Svobodnoye vladeniye yazykom trebuyet terpeniya."
+    },
+    "c159": {
+      "t": "Смелый",
+      "r": "Smelyy",
+      "x": "Было очень смело выступить открыто перед всеми.",
+      "xr": "Bylo ochen' smelo vystupit' otkryto pered vsemi."
+    },
+    "c160": {
+      "t": "Любознательный",
+      "r": "Lyuboznatel'nyy",
+      "x": "Любознательные умы никогда не перестают открывать новое.",
+      "xr": "Lyuboznatel'nyye umy nikogda ne perestayut otkryvat' novoye."
+    },
+    "c161": {
+      "t": "Я думаю",
+      "r": "Ya dumayu",
+      "x": "Я думаю, что это решение весьма практично.",
+      "xr": "Ya dumayu, chto eto resheniye ves'ma praktichno."
+    },
+    "c162": {
+      "t": "Я согласен",
+      "r": "Ya soglasen",
+      "x": "Я полностью согласен с вашей главной мыслью.",
+      "xr": "Ya polnost'yu soglasen s vashey glavnoy mysl'yu."
+    },
+    "c163": {
+      "t": "Мнение",
+      "r": "Mneniye",
+      "x": "Каждый человек имеет право на собственное мнение.",
+      "xr": "Kazhdyy chelovek imeyet pravo na sobstvennoye mneniye."
+    },
+    "c164": {
+      "t": "Важный",
+      "r": "Vazhnyy",
+      "x": "Чёткое общение чрезвычайно важно.",
+      "xr": "Chyotkoye obshcheniye chrezvychayno vazhno."
+    },
+    "c165": {
+      "t": "Возможный",
+      "r": "Vozmozhnyy",
+      "x": "При постоянных усилиях возможно всё.",
+      "xr": "Pri postoyannykh usiliyakh vozmozhno vsyo."
+    },
+    "c166": {
+      "t": "Приглашение",
+      "r": "Priglasheniye",
+      "x": "Спасибо за тёплое приглашение.",
+      "xr": "Spasibo za tyoploye priglasheniye."
+    },
+    "c167": {
+      "t": "Празднование",
+      "r": "Prazdnovaniye",
+      "x": "К празднованию присоединились все соседи.",
+      "xr": "K prazdnovaniyu prisoyedinilis' vse sosedi."
+    },
+    "c168": {
+      "t": "Обещание",
+      "r": "Obeshchaniye",
+      "x": "Всегда держите данное вами обещание.",
+      "xr": "Vsegda derzhite dannoye vami obeshchaniye."
+    },
+    "c169": {
+      "t": "Запись на приём",
+      "r": "Zapis' na priyom",
+      "x": "У меня запись к стоматологу на три часа.",
+      "xr": "U menya zapis' k stomatologu na tri chasa."
+    },
+    "c170": {
+      "t": "Сюрприз",
+      "r": "Syurpriz",
+      "x": "Мы подготовили для неё сюрприз на день рождения.",
+      "xr": "My podgotovili dlya neyo syurpriz na den' rozhdeniya."
+    },
+    "c171": {
+      "t": "Воспоминание",
+      "r": "Vospominaniye",
+      "x": "Та поездка остаётся моим самым светлым воспоминанием.",
+      "xr": "Ta poyezdka ostayotsya moim samym svetlym vospominaniyem."
+    },
+    "c172": {
+      "t": "Опыт",
+      "r": "Opyt",
+      "x": "Жизнь за границей стала для меня преобразующим опытом.",
+      "xr": "Zhizn' za granitsey stala dlya menya preobrazuyushchim opytom."
+    },
+    "c173": {
+      "t": "Рассказ",
+      "r": "Rasskaz",
+      "x": "Дедушка рассказал захватывающую историю.",
+      "xr": "Dedushka rasskazal zakhvatyvayushchuyu istoriyu."
+    },
+    "c174": {
+      "t": "Мечта",
+      "r": "Mechta",
+      "x": "Никогда не отказывайтесь от своей самой большой мечты.",
+      "xr": "Nikogda ne otkazyvaytes' ot svoyey samoy bol'shoy mechty."
+    },
+    "c175": {
+      "t": "Путь",
+      "r": "Put'",
+      "x": "Любой долгий путь начинается с первого шага.",
+      "xr": "Lyuboy dolgiy put' nachinayetsya s pervogo shaga."
+    },
+    "c176": {
+      "t": "Доверие",
+      "r": "Doveriye",
+      "x": "Доверие выстраивается годами.",
+      "xr": "Doveriye vystraivayetsya godami."
+    },
+    "c177": {
+      "t": "Уважение",
+      "r": "Uvazheniye",
+      "x": "Относитесь к каждому человеку с искренним уважением.",
+      "xr": "Otnosites' k kazhdomu cheloveku s iskrennim uvazheniyem."
+    },
+    "c178": {
+      "t": "Совет",
+      "r": "Sovet",
+      "x": "Не могли бы вы дать мне совет по карьере?",
+      "xr": "Ne mogli by vy dat' mne sovet po kar'yere?"
+    },
+    "c179": {
+      "t": "Поддержка",
+      "r": "Podderzhka",
+      "x": "Благодарю вас за неизменную поддержку.",
+      "xr": "Blagodaryu vas za neizmennuyu podderzhku."
+    },
+    "c180": {
+      "t": "Прощать",
+      "r": "Proshchat'",
+      "x": "Нужна внутренняя сила, чтобы простить и идти дальше.",
+      "xr": "Nuzhna vnutrennyaya sila, chtoby prostit' i idti dal'she."
+    },
+    "c181": {
+      "t": "Компьютер",
+      "r": "Komp'yuter",
+      "x": "Мой компьютер обновился за ночь.",
+      "xr": "Moy komp'yuter obnovilsya za noch'."
+    },
+    "c182": {
+      "t": "Интернет",
+      "r": "Internet",
+      "x": "Быстрый интернет соединяет даже отдалённые деревни.",
+      "xr": "Bystryy internet soyedinyayet dazhe otdalyonnyye derevni."
+    },
+    "c183": {
+      "t": "Телефон",
+      "r": "Telefon",
+      "x": "Пожалуйста, переведите телефон в беззвучный режим на лекции.",
+      "xr": "Pozhaluysta, perevedite telefon v bezzvuchnyy rezhim na lektsii."
+    },
+    "c184": {
+      "t": "Пароль",
+      "r": "Parol'",
+      "x": "Используйте надёжный и уникальный пароль для каждого аккаунта.",
+      "xr": "Ispol'zuyte nadyozhnyy i unikal'nyy parol' dlya kazhdogo akkaunta."
+    },
+    "c185": {
+      "t": "Скачать",
+      "r": "Skachat'",
+      "x": "Вы можете скачать офлайн-пакет совершенно бесплатно.",
+      "xr": "Vy mozhete skachat' oflayn-paket sovershenno besplatno."
+    },
+    "c186": {
+      "t": "Сообщение",
+      "r": "Soobshcheniye",
+      "x": "Я отправил вам сообщение сегодня утром.",
+      "xr": "Ya otpravil vam soobshcheniye segodnya utrom."
+    },
+    "c187": {
+      "t": "Поиск",
+      "r": "Poisk",
+      "x": "Давайте найдём надёжную документацию.",
+      "xr": "Davayte naydyom nadyozhnuyu dokumentatsiyu."
+    },
+    "c188": {
+      "t": "Приложение",
+      "r": "Prilozheniye",
+      "x": "Это приложение с открытым исходным кодом работает офлайн.",
+      "xr": "Eto prilozheniye s otkrytym iskhodnym kodom rabotayet oflayn."
+    },
+    "c189": {
+      "t": "Конфиденциальность",
+      "r": "Konfidentsial'nost'",
+      "x": "Защита конфиденциальности пользователей должна быть на первом месте.",
+      "xr": "Zashchita konfidentsial'nosti pol'zovateley dolzhna byt' na pervom meste."
+    },
+    "c190": {
+      "t": "Обновление",
+      "r": "Obnovleniye",
+      "x": "Последнее обновление значительно ускорило работу.",
+      "xr": "Posledneye obnovleniye znachitel'no uskorilo rabotu."
+    },
+    "c191": {
+      "t": "Новости",
+      "r": "Novosti",
+      "x": "Всегда проверяйте новости по нескольким источникам.",
+      "xr": "Vsegda proveryayte novosti po neskol'kim istochnikam."
+    },
+    "c192": {
+      "t": "Статья",
+      "r": "Stat'ya",
+      "x": "Я прочитал увлекательную статью по лингвистике.",
+      "xr": "Ya prochital uvlekatel'nuyu stat'yu po lingvistike."
+    },
+    "c193": {
+      "t": "Информация",
+      "r": "Informatsiya",
+      "x": "Точная информация помогает принимать взвешенные решения.",
+      "xr": "Tochnaya informatsiya pomogayet prinimat' vzveshennyye resheniya."
+    },
+    "c194": {
+      "t": "Камера",
+      "r": "Kamera",
+      "x": "Она взяла с собой камеру на фестиваль.",
+      "xr": "Ona vzyala s soboy kameru na festival'."
+    },
+    "c195": {
+      "t": "Экран",
+      "r": "Ekran",
+      "x": "Уменьшайте яркость экрана в тёмное время суток.",
+      "xr": "Umen'shayte yarkost' ekrana v tyomnoye vremya sutok."
+    },
+    "c196": {
+      "t": "Культура",
+      "r": "Kul'tura",
+      "x": "Язык — это живое сердце культуры.",
+      "xr": "Yazyk — eto zhivoye serdtse kul'tury."
+    },
+    "c197": {
+      "t": "Традиция",
+      "r": "Traditsiya",
+      "x": "Каждый регион бережно хранит свою традицию праздника урожая.",
+      "xr": "Kazhdyy region berezhno khranit svoyu traditsiyu prazdnika urozhaya."
+    },
+    "c198": {
+      "t": "Фестиваль",
+      "r": "Festival'",
+      "x": "Во время фестиваля фонари осветили весь город.",
+      "xr": "Vo vremya festivalya fonari osvetili ves' gorod."
+    },
+    "c199": {
+      "t": "История",
+      "r": "Istoriya",
+      "x": "Этот музей охватывает пять тысяч лет истории.",
+      "xr": "Etot muzey okhvatyvayet pyat' tysyach let istorii."
+    },
+    "c200": {
+      "t": "Наследие",
+      "r": "Naslediye",
+      "x": "Мы обязаны беречь наше общее культурное наследие.",
+      "xr": "My obyazany berech' nashe obshcheye kul'turnoye naslediye."
+    },
+    "c201": {
+      "t": "Искусство",
+      "r": "Iskusstvo",
+      "x": "Великое искусство преодолевает границы и столетия.",
+      "xr": "Velikoye iskusstvo preodolevayet granitsy i stoletiya."
+    },
+    "c202": {
+      "t": "Танец",
+      "r": "Tanets",
+      "x": "Классический танец рассказывает истории языком движений.",
+      "xr": "Klassicheskiy tanets rasskazyvayet istorii yazykom dvizheniy."
+    },
+    "c203": {
+      "t": "Песня",
+      "r": "Pesnya",
+      "x": "Эту народную песню поют уже много поколений.",
+      "xr": "Etu narodnuyu pesnyu poyut uzhe mnogo pokoleniy."
+    },
+    "c204": {
+      "t": "Архитектура",
+      "r": "Arkhitektura",
+      "x": "Архитектура этого храма поразительно искусна.",
+      "xr": "Arkhitektura etogo khrama porazitel'no iskusna."
+    },
+    "c205": {
+      "t": "Поэзия",
+      "r": "Poeziya",
+      "x": "Поэзия вмещает глубокие чувства всего в несколько строк.",
+      "xr": "Poeziya vmeshchayet glubokiye chuvstva vsego v neskol'ko strok."
+    },
+    "c206": {
+      "t": "Гость",
+      "r": "Gost'",
+      "x": "Каждого гостя здесь встречают с радушием.",
+      "xr": "Kazhdogo gostya zdes' vstrechayut s radushiyem."
+    },
+    "c207": {
+      "t": "Подарок",
+      "r": "Podarok",
+      "x": "Небольшой подарок — это знак внимания и заботы.",
+      "xr": "Nebol'shoy podarok — eto znak vnimaniya i zaboty."
+    },
+    "c208": {
+      "t": "Обычай",
+      "r": "Obychay",
+      "x": "Изучите местные обычаи перед поездкой в новую страну.",
+      "xr": "Izuchite mestnyye obychai pered poyezdkoy v novuyu stranu."
+    },
+    "c209": {
+      "t": "Церемония",
+      "r": "Tseremoniya",
+      "x": "Церемония вручения дипломов длилась два часа.",
+      "xr": "Tseremoniya vrucheniya diplomov dlilas' dva chasa."
+    },
+    "c210": {
+      "t": "Благословение",
+      "r": "Blagosloveniye",
+      "x": "Старейшины дали молодым своё благословение.",
+      "xr": "Stareyshiny dali molodym svoyo blagosloveniye."
+    },
+    "c211": {
+      "t": "Потому что",
+      "r": "Potomu chto",
+      "x": "Мы остались дома, потому что надвигалась буря.",
+      "xr": "My ostalis' doma, potomu chto nadvigalas' burya."
+    },
+    "c212": {
+      "t": "Однако",
+      "r": "Odnako",
+      "x": "Задача была сложной; однако мы справились.",
+      "xr": "Zadacha byla slozhnoy; odnako my spravilis'."
+    },
+    "c213": {
+      "t": "Хотя",
+      "r": "Khotya",
+      "x": "Хотя было уже поздно, он дочитал главу до конца.",
+      "xr": "Khotya bylo uzhe pozdno, on dochital glavu do kontsa."
+    },
+    "c214": {
+      "t": "Поэтому",
+      "r": "Poetomu",
+      "x": "Данные очевидны; поэтому нам нужно действовать.",
+      "xr": "Dannyye ochevidny; poetomu nam nuzhno deystvovat'."
+    },
+    "c215": {
+      "t": "Тем временем",
+      "r": "Tem vremenem",
+      "x": "Я приготовлю ужин; тем временем накрой, пожалуйста, на стол.",
+      "xr": "Ya prigotovlyu uzhin; tem vremenem nakroy, pozhaluysta, na stol."
+    },
+    "c216": {
+      "t": "Проблема",
+      "r": "Problema",
+      "x": "Давайте определим первопричину этой проблемы.",
+      "xr": "Davayte opredelim pervoprichinu etoy problemy."
+    },
+    "c217": {
+      "t": "Решение",
+      "r": "Resheniye",
+      "x": "Простые решения зачастую оказываются самыми надёжными.",
+      "xr": "Prostyye resheniya zachastuyu okazyvayutsya samymi nadyozhnymi."
+    },
+    "c218": {
+      "t": "Принятие решения",
+      "r": "Prinyatiye resheniya",
+      "x": "Спокойно всё обдумайте, прежде чем принимать серьёзное решение.",
+      "xr": "Spokoyno vsyo obdumayte, prezhde chem prinimat' ser'yoznoye resheniye."
+    },
+    "c219": {
+      "t": "Ошибка",
+      "r": "Oshibka",
+      "x": "Каждая ошибка учит нас чему-то ценному.",
+      "xr": "Kazhdaya oshibka uchit nas chemu-to tsennomu."
+    },
+    "c220": {
+      "t": "Успех",
+      "r": "Uspekh",
+      "x": "Командная работа стала залогом нашего успеха.",
+      "xr": "Komandnaya rabota stala zalogom nashego uspekha."
+    },
+    "c221": {
+      "t": "Если",
+      "r": "Yesli",
+      "x": "Если вы будете заниматься ежедневно, прогресс не заставит себя ждать.",
+      "xr": "Yesli vy budete zanimat'sya yezhednevno, progress ne zastavit sebya zhdat'."
+    },
+    "c222": {
+      "t": "Вместо",
+      "r": "Vmesto",
+      "x": "Пройдитесь до магазина пешком вместо того, чтобы ехать на машине.",
+      "xr": "Proydites' do magazina peshkom vmesto togo, chtoby yekhat' na mashine."
+    },
+    "c223": {
+      "t": "Сравнивать",
+      "r": "Sravnivat'",
+      "x": "Внимательно сравните оба предложения перед голосованием.",
+      "xr": "Vnimatel'no sravnite oba predlozheniya pered golosovaniyem."
+    },
+    "c224": {
+      "t": "Разница",
+      "r": "Raznitsa",
+      "x": "Небольшие привычки со временем создают огромную разницу.",
+      "xr": "Nebol'shiye privychki so vremenem sozdayut ogromnuyu raznitsu."
+    },
+    "c225": {
+      "t": "Причина",
+      "r": "Prichina",
+      "x": "Объясните причину вашего выбора.",
+      "xr": "Obyasnite prichinu vashego vybora."
+    },
+    "c226": {
+      "t": "Стратегия",
+      "r": "Strategiya",
+      "x": "Мы пересмотрели нашу долгосрочную продуктовую стратегию.",
+      "xr": "My peresmotreli nashu dolgosrochnuyu produktovuyu strategiyu."
+    },
+    "c227": {
+      "t": "Проект",
+      "r": "Proyekt",
+      "x": "Этот инженерный проект был запущен раньше намеченного срока.",
+      "xr": "Etot inzhenernyy proyekt byl zapushchen ran'she namechennogo sroka."
+    },
+    "c228": {
+      "t": "Крайний срок",
+      "r": "Krayniy srok",
+      "x": "Мы завершили все этапы до установленного крайнего срока.",
+      "xr": "My zavershili vse etapy do ustanovlennogo kraynego sroka."
+    },
+    "c229": {
+      "t": "Ответственность",
+      "r": "Otvetstvennost'",
+      "x": "Лидерство означает готовность брать на себя полную ответственность.",
+      "xr": "Liderstvo oznachayet gotovnost' brat' na sebya polnuyu otvetstvennost'."
+    },
+    "c230": {
+      "t": "Сотрудничество",
+      "r": "Sotrudnichestvo",
+      "x": "Открытое сотрудничество ускоряет внедрение инноваций.",
+      "xr": "Otkrytoye sotrudnichestvo uskoryayet vnedreniye innovatsiy."
+    },
+    "c231": {
+      "t": "Экономика",
+      "r": "Ekonomika",
+      "x": "Малый бизнес составляет основу современной экономики.",
+      "xr": "Malyy biznes sostavlyayet osnovu sovremennoy ekonomiki."
+    },
+    "c232": {
+      "t": "Бюджет",
+      "r": "Byudzhet",
+      "x": "Муниципалитет утвердил бюджет на образование на следующий год.",
+      "xr": "Munitsipalitet utverdil byudzhet na obrazovaniye na sleduyushchiy god."
+    },
+    "c233": {
+      "t": "Инвестиция",
+      "r": "Investitsiya",
+      "x": "Образование — самая разумная долгосрочная инвестиция.",
+      "xr": "Obrazovaniye — samaya razumnaya dolgosrochnaya investitsiya."
+    },
+    "c234": {
+      "t": "Договор",
+      "r": "Dogovor",
+      "x": "Внимательно прочитайте каждый пункт договора.",
+      "xr": "Vnimatel'no prochitayte kazhdyy punkt dogovora."
+    },
+    "c235": {
+      "t": "Прибыль",
+      "r": "Pribyl'",
+      "x": "Устойчивый рост важнее краткосрочной прибыли.",
+      "xr": "Ustoychivyy rost vazhneye kratkosrochnoy pribyli."
+    },
+    "c236": {
+      "t": "Предложение",
+      "r": "Predlozheniye",
+      "x": "Комитет рассмотрел наше подробное предложение.",
+      "xr": "Komitet rassmotrel nashe podrobnoye predlozheniye."
+    },
+    "c237": {
+      "t": "Переговоры",
+      "r": "Peregovory",
+      "x": "Обе стороны вступили в переговоры с добрыми намерениями.",
+      "xr": "Obe storony vstupili v peregovory s dobrymi namereniyami."
+    },
+    "c238": {
+      "t": "Соглашение",
+      "r": "Soglasheniye",
+      "x": "Они подписали взаимовыгодное торговое соглашение.",
+      "xr": "Oni podpisali vzaimovygodnoye torgovoye soglasheniye."
+    },
+    "c239": {
+      "t": "Компромисс",
+      "r": "Kompromiss",
+      "x": "Справедливый компромисс позволил урегулировать спор.",
+      "xr": "Spravedlivyy kompromiss pozvolil uregulirovat' spor."
+    },
+    "c240": {
+      "t": "Возможность",
+      "r": "Vozmozhnost'",
+      "x": "За каждым вызовом скрывается новая возможность.",
+      "xr": "Za kazhdym vyzovom skryvayetsya novaya vozmozhnost'."
+    },
+    "c241": {
+      "t": "Исследование",
+      "r": "Issledovaniye",
+      "x": "Рецензируемые исследования определяют развитие современной медицины.",
+      "xr": "Retsenziruyemyye issledovaniya opredelyayut razvitiye sovremennoy meditsiny."
+    },
+    "c242": {
+      "t": "Эксперимент",
+      "r": "Eksperiment",
+      "x": "Лабораторный эксперимент подтвердил наш прогноз.",
+      "xr": "Laboratornyy eksperiment podtverdil nash prognoz."
+    },
+    "c243": {
+      "t": "Доказательство",
+      "r": "Dokazatel'stvo",
+      "x": "Убедительные выводы должны опираться на веские доказательства.",
+      "xr": "Ubeditel'nyye vyvody dolzhny opirat'sya na veskiye dokazatel'stva."
+    },
+    "c244": {
+      "t": "Теория",
+      "r": "Teoriya",
+      "x": "Эта теория объясняет, как гравитация искривляет свет.",
+      "xr": "Eta teoriya obyasnyayet, kak gravitatsiya iskrivlyayet svet."
+    },
+    "c245": {
+      "t": "Открытие",
+      "r": "Otkrytiye",
+      "x": "Это открытие преобразило технологии хранения чистой энергии.",
+      "xr": "Eto otkrytiye preobrazilo tekhnologii khraneniya chistoy energii."
+    },
+    "c246": {
+      "t": "Инновация",
+      "r": "Innovatsiya",
+      "x": "Местные инновации решают реальные задачи общества.",
+      "xr": "Mestnyye innovatsii reshayut real'nyye zadachi obshchestva."
+    },
+    "c247": {
+      "t": "Алгоритм",
+      "r": "Algoritm",
+      "x": "Эффективный алгоритм экономит и энергию, и время.",
+      "xr": "Effektivnyy algoritm ekonomit i energiyu, i vremya."
+    },
+    "c248": {
+      "t": "Энергия",
+      "r": "Energiya",
+      "x": "Солнечные панели напрямую преобразуют солнечный свет в энергию.",
+      "xr": "Solnechnyye paneli napryamuyu preobrazuyut solnechnyy svet v energiyu."
+    },
+    "c249": {
+      "t": "Лаборатория",
+      "r": "Laboratoriya",
+      "x": "Учёные откалибровали датчики в лаборатории.",
+      "xr": "Uchyonyye otkalibrovali datchiki v laboratorii."
+    },
+    "c250": {
+      "t": "Точность",
+      "r": "Tochnost'",
+      "x": "Микрохирургия требует исключительной точности.",
+      "xr": "Mikrokhirurgiya trebuyet isklyuchitel'noy tochnosti."
+    },
+    "c251": {
+      "t": "Вселенная",
+      "r": "Vselennaya",
+      "x": "Телескопы позволяют увидеть самые ранние галактики во Вселенной.",
+      "xr": "Teleskopy pozvolyayut uvidet' samyye ranniye galaktiki vo Vselennoy."
+    },
+    "c252": {
+      "t": "Планета",
+      "r": "Planeta",
+      "x": "Вода необходима для существования жизни на любой планете.",
+      "xr": "Voda neobkhodima dlya sushchestvovaniya zhizni na lyuboy planete."
+    },
+    "c253": {
+      "t": "Гравитация",
+      "r": "Gravitatsiya",
+      "x": "Гравитация удерживает Луну на орбите вокруг Земли.",
+      "xr": "Gravitatsiya uderzhivayet Lunu na orbite vokrug Zemli."
+    },
+    "c254": {
+      "t": "Эволюция",
+      "r": "Evolyutsiya",
+      "x": "Эволюция формирует живые организмы на протяжении миллионов лет.",
+      "xr": "Evolyutsiya formiruyet zhivyye organizmy na protyazhenii millionov let."
+    },
+    "c255": {
+      "t": "Любопытство",
+      "r": "Lyubopytstvo",
+      "x": "Научное любопытство движет человечество вперёд.",
+      "xr": "Nauchnoye lyubopytstvo dvizhet chelovechestvo vperyod."
+    },
+    "c256": {
+      "t": "Окружающая среда",
+      "r": "Okruzhayushchaya sreda",
+      "x": "Защищая окружающую среду, мы защищаем будущие поколения.",
+      "xr": "Zashchishchaya okruzhayushchuyu sredu, my zashchishchayem budushchiye pokoleniya."
+    },
+    "c257": {
+      "t": "Климат",
+      "r": "Klimat",
+      "x": "Изменение климата напрямую влияет на мировые урожаи.",
+      "xr": "Izmeneniye klimata napryamuyu vliyayet na mirovyye urozhai."
+    },
+    "c258": {
+      "t": "Экосистема",
+      "r": "Ekosistema",
+      "x": "Водно-болотные угодья жизненно важны для прибрежной экосистемы.",
+      "xr": "Vodno-bolotnyye ugod'ya zhiznenno vazhny dlya pribrezhnoy ekosistemy."
+    },
+    "c259": {
+      "t": "Биоразнообразие",
+      "r": "Bioraznoobraziye",
+      "x": "Тропические леса служат домом для удивительного биоразнообразия.",
+      "xr": "Tropicheskiye lesa sluzhat domom dlya udivitel'nogo bioraznoobraziya."
+    },
+    "c260": {
+      "t": "Загрязнение",
+      "r": "Zagryazneniye",
+      "x": "Электрический транспорт заметно снижает загрязнение городского воздуха.",
+      "xr": "Elektricheskiy transport zametno snizhayet zagryazneniye gorodskogo vozdukha."
+    },
+    "c261": {
+      "t": "Возобновляемый",
+      "r": "Vozobnovlyayemyy",
+      "x": "Ветер и солнце — неисчерпаемые возобновляемые источники энергии.",
+      "xr": "Veter i solntse — neischerpayemyye vozobnovlyayemyye istochniki energii."
+    },
+    "c262": {
+      "t": "Устойчивое развитие",
+      "r": "Ustoychivoye razvitiye",
+      "x": "Подлинное устойчивое развитие гармонично сочетает природу и процветание.",
+      "xr": "Podlinnoye ustoychivoye razvitiye garmonichno sochetayet prirodu i protsvetaniye."
+    },
+    "c263": {
+      "t": "Охрана природы",
+      "r": "Okhrana prirody",
+      "x": "Природоохранные инициативы местных жителей помогли возродить лес.",
+      "xr": "Prirodookhrannyye initsiativy mestnykh zhiteley pomogli vozrodit' les."
+    },
+    "c264": {
+      "t": "Перерабатывать",
+      "r": "Pererabatyvat'",
+      "x": "Сортируйте стекло, бумагу и металл, чтобы города могли их перерабатывать.",
+      "xr": "Sortiruyte steklo, bumagu i metall, chtoby goroda mogli ikh pererabatyvat'."
+    },
+    "c265": {
+      "t": "Ресурс",
+      "r": "Resurs",
+      "x": "Пресная вода — драгоценный общий ресурс.",
+      "xr": "Presnaya voda — dragotsennyy obshchiy resurs."
+    },
+    "c266": {
+      "t": "Лес",
+      "r": "Les",
+      "x": "Восстановление естественных лесов охлаждает окрестные города.",
+      "xr": "Vosstanovleniye yestestvennykh lesov okhlazhdayet okrestnyye goroda."
+    },
+    "c267": {
+      "t": "Океан",
+      "r": "Okean",
+      "x": "Здоровые океаны поглощают огромные объёмы углекислого газа.",
+      "xr": "Zdorovyye okeany pogloshchayut ogromnyye obyomy uglekislogo gaza."
+    },
+    "c268": {
+      "t": "Засуха",
+      "r": "Zasukha",
+      "x": "Умное орошение помогает фермерам пережить засуху.",
+      "xr": "Umnoye orosheniye pomogayet fermeram perezhit' zasukhu."
+    },
+    "c269": {
+      "t": "Гармония",
+      "r": "Garmoniya",
+      "x": "Прогресс человечества должен развиваться в гармонии с природой.",
+      "xr": "Progress chelovechestva dolzhen razvivat'sya v garmonii s prirodoy."
+    },
+    "c270": {
+      "t": "Будущее",
+      "r": "Budushcheye",
+      "x": "Решения, принятые сегодня, формируют наше будущее.",
+      "xr": "Resheniya, prinyatyye segodnya, formiruyut nashe budushcheye."
+    },
+    "c271": {
+      "t": "Справедливость",
+      "r": "Spravedlivost'",
+      "x": "Равная справедливость перед законом укрепляет общество.",
+      "xr": "Ravnaya spravedlivost' pered zakonom ukreplyayet obshchestvo."
+    },
+    "c272": {
+      "t": "Свобода",
+      "r": "Svoboda",
+      "x": "Свобода слова неразрывно связана с взаимной ответственностью.",
+      "xr": "Svoboda slova nerazryvno svyazana s vzaimnoy otvetstvennost'yu."
+    },
+    "c273": {
+      "t": "Равенство",
+      "r": "Ravenstvo",
+      "x": "Образование способствует социальному и экономическому равенству.",
+      "xr": "Obrazovaniye sposobstvuyet sotsial'nomu i ekonomicheskomu ravenstvu."
+    },
+    "c274": {
+      "t": "Конституция",
+      "r": "Konstitutsiya",
+      "x": "Конституция гарантирует фундаментальные права человека.",
+      "xr": "Konstitutsiya garantiruyet fundamental'nyye prava cheloveka."
+    },
+    "c275": {
+      "t": "Гражданин",
+      "r": "Grazhdanin",
+      "x": "Каждый активный гражданин вносит вклад в общественную жизнь.",
+      "xr": "Kazhdyy aktivnyy grazhdanin vnosit vklad v obshchestvennuyu zhizn'."
+    },
+    "c276": {
+      "t": "Демократия",
+      "r": "Demokratiya",
+      "x": "Здоровая демократия опирается на информированных избирателей.",
+      "xr": "Zdorovaya demokratiya opirayetsya na informirovannykh izbirateley."
+    },
+    "c277": {
+      "t": "Правительство",
+      "r": "Pravitel'stvo",
+      "x": "Местные органы власти содержат дороги, парки и школы.",
+      "xr": "Mestnyye organy vlasti soderzhat dorogi, parki i shkoly."
+    },
+    "c278": {
+      "t": "Политика",
+      "r": "Politika",
+      "x": "Грамотная политика здравоохранения спасла миллионы жизней.",
+      "xr": "Gramotnaya politika zdravookhraneniya spasla milliony zhizney."
+    },
+    "c279": {
+      "t": "Закон",
+      "r": "Zakon",
+      "x": "Прозрачные законы формируют доверие в обществе.",
+      "xr": "Prozrachnyye zakony formiruyut doveriye v obshchestve."
+    },
+    "c280": {
+      "t": "Прозрачность",
+      "r": "Prozrachnost'",
+      "x": "Финансовая прозрачность предотвращает коррупцию.",
+      "xr": "Finansovaya prozrachnost' predotvrashchayet korruptsiyu."
+    },
+    "c281": {
+      "t": "Сообщество",
+      "r": "Soobshchestvo",
+      "x": "Сплочённые сообщества поддерживают наиболее уязвимых людей.",
+      "xr": "Splochyonnyye soobshchestva podderzhivayut naiboleye uyazvimykh lyudey."
+    },
+    "c282": {
+      "t": "Мир",
+      "r": "Mir",
+      "x": "Прочный мир требует диалога и сопереживания.",
+      "xr": "Prochnyy mir trebuyet dialoga i soperezhivaniya."
+    },
+    "c283": {
+      "t": "Образование",
+      "r": "Obrazovaniye",
+      "x": "Всеобщее образование возвышает целые народы.",
+      "xr": "Vseobshcheye obrazovaniye vozvyshayet tselyye narody."
+    },
+    "c284": {
+      "t": "Волонтёр",
+      "r": "Volontyor",
+      "x": "Сотни волонтёров помогали восстанавливать город после наводнения.",
+      "xr": "Sotni volontyorov pomogali vosstanavlivat' gorod posle navodneniya."
+    },
+    "c285": {
+      "t": "Солидарность",
+      "r": "Solidarnost'",
+      "x": "Международная солидарность позволяет быстрее преодолевать кризисы.",
+      "xr": "Mezhdunarodnaya solidarnost' pozvolyayet bystreye preodolevat' krizisy."
+    },
+    "c286": {
+      "t": "Аргумент",
+      "r": "Argument",
+      "x": "Подкрепляйте каждый аргумент проверяемыми фактами.",
+      "xr": "Podkreplyayte kazhdyy argument proveryayemymi faktami."
+    },
+    "c287": {
+      "t": "Точка зрения",
+      "r": "Tochka zreniya",
+      "x": "Умение увидеть иную точку зрения углубляет понимание.",
+      "xr": "Umeniye uvidet' inuyu tochku zreniya uglublyayet ponimaniye."
+    },
+    "c288": {
+      "t": "Анализ",
+      "r": "Analiz",
+      "x": "Её экономический анализ выявил три скрытых риска.",
+      "xr": "Yeyo ekonomicheskiy analiz vyyavil tri skrytykh riska."
+    },
+    "c289": {
+      "t": "Допущение",
+      "r": "Dopushcheniye",
+      "x": "Всегда подвергайте проверке свои исходные допущения.",
+      "xr": "Vsegda podvergayte proverke svoi iskhodnyye dopushcheniya."
+    },
+    "c290": {
+      "t": "Вывод",
+      "r": "Vyvod",
+      "x": "Дождитесь всех фактов, прежде чем делать поспешный вывод.",
+      "xr": "Dozhdites' vsekh faktov, prezhde chem delat' pospeshnyy vyvod."
+    },
+    "c291": {
+      "t": "Объективный",
+      "r": "Obyektivnyy",
+      "x": "Добросовестный журналист стремится оставаться объективным.",
+      "xr": "Dobrosovestnyy zhurnalist stremitsya ostavat'sya obyektivnym."
+    },
+    "c292": {
+      "t": "Предвзятость",
+      "r": "Predvzyatost'",
+      "x": "Осознание собственной предвзятости ведёт к более верным суждениям.",
+      "xr": "Osoznaniye sobstvennoy predvzyatosti vedyot k boleye vernym suzhdeniyam."
+    },
+    "c293": {
+      "t": "Критерий",
+      "r": "Kriteriy",
+      "x": "Надёжность — наш главный критерий оценки.",
+      "xr": "Nadyozhnost' — nash glavnyy kriteriy otsenki."
+    },
+    "c294": {
+      "t": "Противоречие",
+      "r": "Protivorechiye",
+      "x": "Свидетель заметил явное противоречие в хронологии событий.",
+      "xr": "Svidetel' zametil yavnoye protivorechiye v khronologii sobytiy."
+    },
+    "c295": {
+      "t": "Консенсус",
+      "r": "Konsensus",
+      "x": "После оживлённых дебатов комиссия достигла консенсуса.",
+      "xr": "Posle ozhivlyonnykh debatov komissiya dostigla konsensusa."
+    },
+    "c296": {
+      "t": "Уточнить",
+      "r": "Utochnit'",
+      "x": "Не могли бы вы уточнить, что имели в виду под этой фразой?",
+      "xr": "Ne mogli by vy utochnit', chto imeli v vidu pod etoy frazoy?"
+    },
+    "c297": {
+      "t": "Подчеркнуть",
+      "r": "Podcherknut'",
+      "x": "Я хочу особо подчеркнуть важность доступности.",
+      "xr": "Ya khochu osobo podcherknut' vazhnost' dostupnosti."
+    },
+    "c298": {
+      "t": "Тем не менее",
+      "r": "Tem ne meneye",
+      "x": "Дорога была крутой; тем не менее мы достигли вершины.",
+      "xr": "Doroga byla krutoy; tem ne meneye my dostigli vershiny."
+    },
+    "c299": {
+      "t": "Последствие",
+      "r": "Posledstviye",
+      "x": "Взвесьте все долгосрочные последствия, прежде чем решаться.",
+      "xr": "Vzves'te vse dolgosrochnyye posledstviya, prezhde chem reshat'sya."
+    },
+    "c300": {
+      "t": "Проницательность",
+      "r": "Pronitsatel'nost'",
+      "x": "В её замечании проявилась поразительная проницательность.",
+      "xr": "V yeyo zamechanii proyavilas' porazitel'naya pronitsatel'nost'."
+    },
+    "c301": {
+      "t": "Метафора",
+      "r": "Metafora",
+      "x": "Река служит метафорой неумолимого бега времени.",
+      "xr": "Reka sluzhit metaforoy neumolimogo bega vremeni."
+    },
+    "c302": {
+      "t": "Символизм",
+      "r": "Simvolizm",
+      "x": "Этот роман насыщен многослойным символизмом.",
+      "xr": "Etot roman nasyshchen mnogosloynym simvolizmom."
+    },
+    "c303": {
+      "t": "Повествование",
+      "r": "Povestvovaniye",
+      "x": "Автор искусно переплетает три линии повествования.",
+      "xr": "Avtor iskusno perepletayet tri linii povestvovaniya."
+    },
+    "c304": {
+      "t": "Шедевр",
+      "r": "Shedevr",
+      "x": "Эту симфонию по праву называют бессмертным шедевром.",
+      "xr": "Etu simfoniyu po pravu nazyvayut bessmertnym shedevrom."
+    },
+    "c305": {
+      "t": "Эстетика",
+      "r": "Estetika",
+      "x": "Минималистичный дизайн тяготеет к сдержанной эстетической гармонии.",
+      "xr": "Minimalistichnyy dizayn tyagoteyet k sderzhannoy esteticheskoy garmonii."
+    },
+    "c306": {
+      "t": "Нюанс",
+      "r": "Nyuans",
+      "x": "Подлинное мастерство заключается в чуткости к тонким культурным нюансам.",
+      "xr": "Podlinnoye masterstvo zaklyuchayetsya v chutkosti k tonkim kul'turnym nyuansam."
+    },
+    "c307": {
+      "t": "Неоднозначность",
+      "r": "Neodnoznachnost'",
+      "x": "Стихотворение завершается намеренной, притягательной неоднозначностью.",
+      "xr": "Stikhotvoreniye zavershayetsya namerennoy, prityagatel'noy neodnoznachnost'yu."
+    },
+    "c308": {
+      "t": "Ирония",
+      "r": "Ironiya",
+      "x": "Драматург использовал тонкую иронию для критики тщеславия.",
+      "xr": "Dramaturg ispol'zoval tonkuyu ironiyu dlya kritiki tshcheslaviya."
+    },
+    "c309": {
+      "t": "Красноречие",
+      "r": "Krasnorechiye",
+      "x": "Она выступала с поразительным достоинством и красноречием.",
+      "xr": "Ona vystupala s porazitel'nym dostoinstvom i krasnorechiyem."
+    },
+    "c310": {
+      "t": "Духовное наследие",
+      "r": "Dukhovnoye naslediye",
+      "x": "Великая литература оставляет непреходящее интеллектуальное наследие.",
+      "xr": "Velikaya literatura ostavlyayet neprekhodyashcheye intellektual'noye naslediye."
+    },
+    "c311": {
+      "t": "Ностальгия",
+      "r": "Nostal'giya",
+      "x": "Запах дождя на тёплой земле пробудил глубокую ностальгию.",
+      "xr": "Zapakh dozhdya na tyoploy zemle probudil glubokuyu nostal'giyu."
+    },
+    "c312": {
+      "t": "Отклик",
+      "r": "Otklik",
+      "x": "Эта мелодия вызвала глубокий душевный отклик.",
+      "xr": "Eta melodiya vyzvala glubokiy dushevnyy otklik."
+    },
+    "c313": {
+      "t": "Возвышенный",
+      "r": "Vozvyshennyy",
+      "x": "Стоять под северным сиянием было поистине возвышенным переживанием.",
+      "xr": "Stoyat' pod severnym siyaniyem bylo poistine vozvyshennym perezhivaniyem."
+    },
+    "c314": {
+      "t": "Преодолевать",
+      "r": "Preodolevat'",
+      "x": "Сострадание способно преодолевать языковые и исторические барьеры.",
+      "xr": "Sostradaniye sposobno preodolevat' yazykovyye i istoricheskiye bar'yery."
+    },
+    "c315": {
+      "t": "Подлинность",
+      "r": "Podlinnost'",
+      "x": "Читатели мгновенно чувствуют искреннюю подлинность.",
+      "xr": "Chitateli mgnovenno chuvstvuyut iskrennyuyu podlinnost'."
+    },
+    "c316": {
+      "t": "Совесть",
+      "r": "Sovest'",
+      "x": "Поступайте в согласии с чистой совестью.",
+      "xr": "Postupayte v soglasii s chistoy sovest'yu."
+    },
+    "c317": {
+      "t": "Порядочность",
+      "r": "Poryadochnost'",
+      "x": "Порядочность означает поступать правильно даже тогда, когда никто не видит.",
+      "xr": "Poryadochnost' oznachayet postupat' pravil'no dazhe togda, kogda nikto ne vidit."
+    },
+    "c318": {
+      "t": "Эмпатия",
+      "r": "Empatiya",
+      "x": "Эмпатия наводит мосты даже через самые глубокие разногласия.",
+      "xr": "Empatiya navodit mosty dazhe cherez samyye glubokiye raznoglasiya."
+    },
+    "c319": {
+      "t": "Дилемма",
+      "r": "Dilemma",
+      "x": "Комитет столкнулся со сложной этической дилеммой.",
+      "xr": "Komitet stolknulsya so slozhnoy eticheskoy dilemmoy."
+    },
+    "c320": {
+      "t": "Мудрость",
+      "r": "Mudrost'",
+      "x": "Знание говорит, в то время как мудрость слушает.",
+      "xr": "Znaniye govorit, v to vremya kak mudrost' slushayet."
+    },
+    "c321": {
+      "t": "Сознание",
+      "r": "Soznaniye",
+      "x": "Философы до сих пор спорят о природе сознания.",
+      "xr": "Filosofy do sikh por sporyat o prirode soznaniya."
+    },
+    "c322": {
+      "t": "Восприятие",
+      "r": "Vospriyatiye",
+      "x": "Язык незаметно формирует наше восприятие времени.",
+      "xr": "Yazyk nezametno formiruyet nashe vospriyatiye vremeni."
+    },
+    "c323": {
+      "t": "Жизнестойкость",
+      "r": "Zhiznestoykost'",
+      "x": "Внутренняя жизнестойкость закаляется в преодолении трудностей.",
+      "xr": "Vnutrennyaya zhiznestoykost' zakalyayetsya v preodolenii trudnostey."
+    },
+    "c324": {
+      "t": "Самоанализ",
+      "r": "Samoanaliz",
+      "x": "Спокойный самоанализ приносит ясность в минуты смятения.",
+      "xr": "Spokoynyy samoanaliz prinosit yasnost' v minuty smyateniya."
+    },
+    "c325": {
+      "t": "Парадокс",
+      "r": "Paradoks",
+      "x": "Парадокс выбора показывает, что избыток вариантов способен подавлять.",
+      "xr": "Paradoks vybora pokazyvayet, chto izbytok variantov sposoben podavlyat'."
+    },
+    "c326": {
+      "t": "Бренность",
+      "r": "Brennost'",
+      "x": "Осознание быстротечности и бренности учит ценить сегодняшний день.",
+      "xr": "Osoznaniye bystrotechnosti i brennosti uchit tsenit' segodnyashniy den'."
+    },
+    "c327": {
+      "t": "Самообладание",
+      "r": "Samoobladaniye",
+      "x": "Она встречала и триумф, и неудачи с неизменным самообладанием.",
+      "xr": "Ona vstrechala i triumf, i neudachi s neizmennym samoobladaniyem."
+    },
+    "c328": {
+      "t": "Предназначение",
+      "r": "Prednaznacheniye",
+      "x": "Общее предназначение превращает повседневный труд в радость.",
+      "xr": "Obshcheye prednaznacheniye prevrashchayet povsednevnyy trud v radost'."
+    },
+    "c329": {
+      "t": "Автономия",
+      "r": "Avtonomiya",
+      "x": "Интеллектуальная автономия начинается с независимого мышления.",
+      "xr": "Intellektual'naya avtonomiya nachinayetsya s nezavisimogo myshleniya."
+    },
+    "c330": {
+      "t": "Скромность",
+      "r": "Skromnost'",
+      "x": "Подлинное мастерство всегда идёт рука об руку со скромностью.",
+      "xr": "Podlinnoye masterstvo vsegda idyot ruka ob ruku so skromnost'yu."
+    },
+    "c331": {
+      "t": "Дела говорят громче слов",
+      "r": "Dela govoryat gromche slov",
+      "x": "Держите свои обещания — дела говорят громче слов.",
+      "xr": "Derzhite svoi obeshchaniya — dela govoryat gromche slov."
+    },
+    "c332": {
+      "t": "Повторенье — мать ученья",
+      "r": "Povtoren'ye — mat' uchen'ya",
+      "x": "Не бойтесь ошибок: повторенье — мать ученья.",
+      "xr": "Ne boytes' oshibok: povtoren'ye — mat' uchen'ya."
+    },
+    "c333": {
+      "t": "Нет худа без добра",
+      "r": "Net khuda bez dobra",
+      "x": "Не теряйте надежды — нет худа без добра.",
+      "xr": "Ne teryayte nadezhdy — net khuda bez dobra."
+    },
+    "c334": {
+      "t": "Время лечит все раны",
+      "r": "Vremya lechit vse rany",
+      "x": "Будьте бережны к себе: время лечит все раны.",
+      "xr": "Bud'te berezhny k sebe: vremya lechit vse rany."
+    },
+    "c335": {
+      "t": "В единстве — сила",
+      "r": "V yedinstve — sila",
+      "x": "Совместная работа доказывает, что в единстве — сила.",
+      "xr": "Sovmestnaya rabota dokazyvayet, chto v yedinstve — sila."
+    },
+    "c336": {
+      "t": "Растопить лёд",
+      "r": "Rastopit' lyod",
+      "x": "Удачная добрая шутка помогла растопить лёд за ужином.",
+      "xr": "Udachnaya dobraya shutka pomogla rastopit' lyod za uzhinom."
+    },
+    "c337": {
+      "t": "Проще пареной репы",
+      "r": "Proshche parenoy repy",
+      "x": "После недель тренировок экзамен показался проще пареной репы.",
+      "xr": "Posle nedel' trenirovok ekzamen pokazalsya proshche parenoy repy."
+    },
+    "c338": {
+      "t": "Раз в сто лет",
+      "r": "Raz v sto let",
+      "x": "Снег в этой долине выпадает раз в сто лет.",
+      "xr": "Sneg v etoy doline vypadayet raz v sto let."
+    },
+    "c339": {
+      "t": "Попасть в самую точку",
+      "r": "Popast' v samuyu tochku",
+      "x": "Ваш диагноз попал в самую точку.",
+      "xr": "Vash diagnoz popal v samuyu tochku."
+    },
+    "c340": {
+      "t": "Засиживаться до глубокой ночи",
+      "r": "Zasizhivat'sya do glubokoy nochi",
+      "x": "Команда засиживалась до глубокой ночи, чтобы выпустить проект вовремя.",
+      "xr": "Komanda zasizhivalas' do glubokoy nochi, chtoby vypustit' proyekt vovremya."
+    },
+    "c341": {
+      "t": "Читать между строк",
+      "r": "Chitat' mezhdu strok",
+      "x": "В дипломатии необходимо уметь читать между строк.",
+      "xr": "V diplomatii neobkhodimo umet' chitat' mezhdu strok."
+    },
+    "c342": {
+      "t": "Начать с чистого листа",
+      "r": "Nachat' s chistogo lista",
+      "x": "Этой весной она решила начать жизнь с чистого листа.",
+      "xr": "Etoy vesnoy ona reshila nachat' zhizn' s chistogo lista."
+    },
+    "c343": {
+      "t": "Не было бы счастья, да несчастье помогло",
+      "r": "Ne bylo by schast'ya, da neschast'ye pomoglo",
+      "x": "Потеря той работы обернулась удачей: не было бы счастья, да несчастье помогло.",
+      "xr": "Poterya toy raboty obernulas' udachey: ne bylo by schast'ya, da neschast'ye pomoglo."
+    },
+    "c344": {
+      "t": "Не жалеть усилий",
+      "r": "Ne zhalet' usiliy",
+      "x": "Настоящие учителя никогда не жалеют усилий ради учеников.",
+      "xr": "Nastoyashchiye uchitelya nikogda ne zhaleyut usiliy radi uchenikov."
+    },
+    "c345": {
+      "t": "Видеть картину целиком",
+      "r": "Videt' kartinu tselikom",
+      "x": "Отвлекитесь от мелочей, чтобы увидеть картину целиком.",
+      "xr": "Otvlekites' ot melochey, chtoby uvidet' kartinu tselikom."
+    },
+    "c346": {
+      "t": "Суверенитет",
+      "r": "Suverenitet",
+      "x": "Международное право закрепляет взаимное уважение суверенитета.",
+      "xr": "Mezhdunarodnoye pravo zakreplyayet vzaimnoye uvazheniye suvereniteta."
+    },
+    "c347": {
+      "t": "Дипломатия",
+      "r": "Diplomatiya",
+      "x": "Терпеливая дипломатия предотвратила эскалацию конфликта.",
+      "xr": "Terpelivaya diplomatiya predotvratila eskalatsiyu konflikta."
+    },
+    "c348": {
+      "t": "Международный договор",
+      "r": "Mezhdunarodnyy dogovor",
+      "x": "Сорок государств ратифицировали экологический договор.",
+      "xr": "Sorok gosudarstv ratifitsirovali ekologicheskiy dogovor."
+    },
+    "c349": {
+      "t": "Многосторонний",
+      "r": "Mnogostoronniy",
+      "x": "Многостороннее сотрудничество позволяет решать общие глобальные задачи.",
+      "xr": "Mnogostoronneye sotrudnichestvo pozvolyayet reshat' obshchiye global'nyye zadachi."
+    },
+    "c350": {
+      "t": "Юрисдикция",
+      "r": "Yurisdiktsiya",
+      "x": "Этот трибунал обладает юрисдикцией в отношении морских споров.",
+      "xr": "Etot tribunal obladayet yurisdiktsiyey v otnoshenii morskikh sporov."
+    },
+    "c351": {
+      "t": "Гипотеза",
+      "r": "Gipoteza",
+      "x": "В данной статье проверяется новая лингвистическая гипотеза.",
+      "xr": "V dannoy stat'ye proveryayetsya novaya lingvisticheskaya gipoteza."
+    },
+    "c352": {
+      "t": "Методология",
+      "r": "Metodologiya",
+      "x": "Прозрачная методология обеспечивает возможность независимой проверки.",
+      "xr": "Prozrachnaya metodologiya obespechivayet vozmozhnost' nezavisimoy proverki."
+    },
+    "c353": {
+      "t": "Синтез",
+      "r": "Sintez",
+      "x": "Её лекция представила блестящий синтез обеих научных областей.",
+      "xr": "Yeyo lektsiya predstavila blestyashchiy sintez obeikh nauchnykh oblastey."
+    },
+    "c354": {
+      "t": "Прецедент",
+      "r": "Pretsedent",
+      "x": "Это постановление создало важный правовой прецедент.",
+      "xr": "Eto postanovleniye sozdalo vazhnyy pravovoy pretsedent."
+    },
+    "c355": {
+      "t": "Реализация",
+      "r": "Realizatsiya",
+      "x": "От продуманной реализации зависит успех любой реформы.",
+      "xr": "Ot produmannoy realizatsii zavisit uspekh lyuboy reformy."
+    },
+    "c356": {
+      "t": "Несмотря на",
+      "r": "Nesmotrya na",
+      "x": "Несмотря на первоначальные задержки, мост был благополучно открыт.",
+      "xr": "Nesmotrya na pervonachal'nyye zaderzhki, most byl blagopoluchno otkryt."
+    },
+    "c357": {
+      "t": "Следовательно",
+      "r": "Sledovatel'no",
+      "x": "Финансирование возросло; следовательно, сеть сельских клиник расширилась.",
+      "xr": "Finansirovaniye vozroslo; sledovatel'no, set' sel'skikh klinik rasshirilas'."
+    },
+    "c358": {
+      "t": "Более того",
+      "r": "Boleye togo",
+      "x": "Более того, открытые данные приносят огромную пользу независимым исследователям.",
+      "xr": "Boleye togo, otkrytyye dannyye prinosyat ogromnuyu pol'zu nezavisimym issledovatelyam."
+    },
+    "c359": {
+      "t": "В свете",
+      "r": "V svete",
+      "x": "В свете новых данных мы пересмотрели данное руководство.",
+      "xr": "V svete novykh dannykh my peresmotreli dannoye rukovodstvo."
+    },
+    "c360": {
+      "t": "При всём уважении",
+      "r": "Pri vsyom uvazhenii",
+      "x": "При всём уважении, позвольте предложить альтернативный подход.",
+      "xr": "Pri vsyom uvazhenii, pozvol'te predlozhit' al'ternativnyy podkhod."
+    },
+    "c361": {
+      "t": "Чётко формулировать",
+      "r": "Chyotko formulirovat'",
+      "x": "Она с лёгкостью умеет чётко формулировать самые сложные идеи.",
+      "xr": "Ona s lyogkost'yu umeyet chyotko formulirovat' samyye slozhnyye idei."
+    },
+    "c362": {
+      "t": "Лаконичный",
+      "r": "Lakonichnyy",
+      "x": "Лаконичное объяснение намного яснее пространной речи.",
+      "xr": "Lakonichnoye obyasneniye namnogo yasneye prostrannoy rechi."
+    },
+    "c363": {
+      "t": "Связный",
+      "r": "Svyaznyy",
+      "x": "Выстраивайте связное повествование от начала до конца.",
+      "xr": "Vystraivayte svyaznoye povestvovaniye ot nachala do kontsa."
+    },
+    "c364": {
+      "t": "Убедительный",
+      "r": "Ubeditel'nyy",
+      "x": "Реальные истории делают любой довод гораздо более убедительным.",
+      "xr": "Real'nyye istorii delayut lyuboy dovod gorazdo boleye ubeditel'nym."
+    },
+    "c365": {
+      "t": "Прагматичный",
+      "r": "Pragmatichnyy",
+      "x": "Мы приняли прагматичный пошаговый план внедрения.",
+      "xr": "My prinyali pragmatichnyy poshagovyy plan vnedreniya."
+    },
+    "c366": {
+      "t": "Беспрецедентный",
+      "r": "Bespretsedentnyy",
+      "x": "Обсерватория получила снимки беспрецедентной чёткости.",
+      "xr": "Observatoriya poluchila snimki bespretsedentnoy chyotkosti."
+    },
+    "c367": {
+      "t": "Неизбежный",
+      "r": "Neizbezhnyy",
+      "x": "Постепенное изменение языка совершенно неизбежно.",
+      "xr": "Postepennoye izmeneniye yazyka sovershenno neizbezhno."
+    },
+    "c368": {
+      "t": "Незаменимый",
+      "r": "Nezamenimyy",
+      "x": "Внимательное слушание незаменимо для глубокого владения языком.",
+      "xr": "Vnimatel'noye slushaniye nezamenimo dlya glubokogo vladeniya yazykom."
+    },
+    "c369": {
+      "t": "Глубокий",
+      "r": "Glubokiy",
+      "x": "Чтение классики оставляет глубокое впечатление.",
+      "xr": "Chteniye klassiki ostavlyayet glubokoye vpechatleniye."
+    },
+    "c370": {
+      "t": "Безупречно плавный",
+      "r": "Bezuprechno plavnyy",
+      "x": "Наша цель — безупречно плавная работа на любом устройстве.",
+      "xr": "Nasha tsel' — bezuprechno plavnaya rabota na lyubom ustroystve."
+    },
+    "c371": {
+      "t": "Вне всякого сомнения",
+      "r": "Vne vsyakogo somneniya",
+      "x": "Вне всякого сомнения, последовательность всегда приводит к победе.",
+      "xr": "Vne vsyakogo somneniya, posledovatel'nost' vsegda privodit k pobede."
+    },
+    "c372": {
+      "t": "Точно так же",
+      "r": "Tochno tak zhe",
+      "x": "Мы ценим скорость; точно так же мы никогда не поступаемся качеством.",
+      "xr": "My tsenim skorost'; tochno tak zhe my nikogda ne postupayemsya kachestvom."
+    },
+    "c373": {
+      "t": "Учитывая все обстоятельства",
+      "r": "Uchityvaya vse obstoyatel'stva",
+      "x": "Учитывая все обстоятельства, это был наш лучший год.",
+      "xr": "Uchityvaya vse obstoyatel'stva, eto byl nash luchshiy god."
+    },
+    "c374": {
+      "t": "Выдержать испытание временем",
+      "r": "Vyderzhat' ispytaniye vremenem",
+      "x": "Открытые знания, созданные с заботой, выдержат испытание временем.",
+      "xr": "Otkrytyye znaniya, sozdannyye s zabotoy, vyderzhat ispytaniye vremenem."
+    },
+    "c375": {
+      "t": "Обучение на протяжении всей жизни",
+      "r": "Obucheniye na protyazhenii vsey zhizni",
+      "x": "Освоение языков — это увлекательное приключение обучения на протяжении всей жизни.",
+      "xr": "Osvoyeniye yazykov — eto uvlekatel'noye priklyucheniye obucheniya na protyazhenii vsey zhizni."
+    }
+  }
+}

@@ -1,0 +1,2285 @@
+{
+  "code": "en",
+  "name": "English",
+  "nativeName": "English",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "First Steps & Greetings: Polite greetings, gratitude, apologies & introductions. Practice active recall and read each example aloud.",
+    "u2": "People, Family & Pronouns: Pronouns, relatives, friends, and basic identities. Practice active recall and read each example aloud.",
+    "u3": "Numbers, Time & Calendar: Counting, telling time, days, and schedules. Practice active recall and read each example aloud.",
+    "u4": "Food, Drink & Dining: Essential meals, ingredients, and restaurant phrases. Practice active recall and read each example aloud.",
+    "u5": "Home, Colors & Daily Actions: Rooms, everyday objects, colors, and core verbs. Practice active recall and read each example aloud.",
+    "u6": "Travel, Transport & Directions: Getting around cities, stations, and airports. Practice active recall and read each example aloud.",
+    "u7": "Shopping, Money & Numbers: Prices, stores, payments, and clothing. Practice active recall and read each example aloud.",
+    "u8": "Weather, Seasons & Nature: Forecasts, landscapes, and outdoor life. Practice active recall and read each example aloud.",
+    "u9": "Health, Body & Emergencies: Body parts, symptoms, clinics, and urgent help. Practice active recall and read each example aloud.",
+    "u10": "Work, School & Hobbies: Occupations, studying, music, and free time. Practice active recall and read each example aloud.",
+    "u11": "Emotions, Personality & Opinions: Express feelings, traits, and viewpoints. Practice active recall and read each example aloud.",
+    "u12": "Social Life & Storytelling: Plans, invitations, memories, and experiences. Practice active recall and read each example aloud.",
+    "u13": "Technology, Internet & Media: Digital life, software, privacy, and news. Practice active recall and read each example aloud.",
+    "u14": "Culture, Festivals & Traditions: Heritage, arts, cuisine, and hospitality. Practice active recall and read each example aloud.",
+    "u15": "Problem Solving & Connectors: Link ideas with cause, contrast, and condition. Practice active recall and read each example aloud.",
+    "u16": "Career, Business & Negotiations: Strategy, contracts, leadership, and finance. Practice active recall and read each example aloud.",
+    "u17": "Science, Innovation & Space: Research, hypotheses, medicine, and discovery. Practice active recall and read each example aloud.",
+    "u18": "Environment, Climate & Sustainability: Ecology, conservation, and green transition. Practice active recall and read each example aloud.",
+    "u19": "Society, Law & Governance: Rights, justice, democracy, and public policy. Practice active recall and read each example aloud.",
+    "u20": "Critical Thinking & Debate: Arguments, perspective, nuance, and analysis. Practice active recall and read each example aloud.",
+    "u21": "Literature, Art & Aesthetics: Critique narratives, symbolism, and beauty. Practice active recall and read each example aloud.",
+    "u22": "Philosophy, Ethics & Psychology: Explore consciousness, virtue, and meaning. Practice active recall and read each example aloud.",
+    "u23": "Idioms, Proverbs & Cultural Wisdom: Speak with authentic figurative expressions. Practice active recall and read each example aloud.",
+    "u24": "Formal, Diplomatic & Legal Discourse: High-register speeches, treaties, and academia. Practice active recall and read each example aloud.",
+    "u25": "Nuance, Rhetoric & Native Mastery: Master subtle tone, persuasion, and precision. Practice active recall and read each example aloud."
+  },
+  "items": {
+    "c001": {
+      "t": "Hello",
+      "r": "",
+      "x": "Hello, nice to meet you.",
+      "xr": ""
+    },
+    "c002": {
+      "t": "Good morning",
+      "r": "",
+      "x": "Good morning, did you sleep well?",
+      "xr": ""
+    },
+    "c003": {
+      "t": "Good afternoon",
+      "r": "",
+      "x": "Good afternoon, everyone.",
+      "xr": ""
+    },
+    "c004": {
+      "t": "Good evening",
+      "r": "",
+      "x": "Good evening, welcome home.",
+      "xr": ""
+    },
+    "c005": {
+      "t": "Good night",
+      "r": "",
+      "x": "Good night, see you tomorrow.",
+      "xr": ""
+    },
+    "c006": {
+      "t": "Thank you",
+      "r": "",
+      "x": "Thank you very much for your help.",
+      "xr": ""
+    },
+    "c007": {
+      "t": "You are welcome",
+      "r": "",
+      "x": "You are welcome, anytime.",
+      "xr": ""
+    },
+    "c008": {
+      "t": "Please",
+      "r": "",
+      "x": "Please come in and sit down.",
+      "xr": ""
+    },
+    "c009": {
+      "t": "Excuse me",
+      "r": "",
+      "x": "Excuse me, may I ask a question?",
+      "xr": ""
+    },
+    "c010": {
+      "t": "I am sorry",
+      "r": "",
+      "x": "I am sorry for being late.",
+      "xr": ""
+    },
+    "c011": {
+      "t": "Yes",
+      "r": "",
+      "x": "Yes, I understand completely.",
+      "xr": ""
+    },
+    "c012": {
+      "t": "No",
+      "r": "",
+      "x": "No, thank you, I am fine.",
+      "xr": ""
+    },
+    "c013": {
+      "t": "Goodbye",
+      "r": "",
+      "x": "Goodbye, have a safe trip.",
+      "xr": ""
+    },
+    "c014": {
+      "t": "My name is",
+      "r": "",
+      "x": "My name is Maya.",
+      "xr": ""
+    },
+    "c015": {
+      "t": "How are you?",
+      "r": "",
+      "x": "How are you doing today?",
+      "xr": ""
+    },
+    "c016": {
+      "t": "I",
+      "r": "",
+      "x": "I am learning a new language.",
+      "xr": ""
+    },
+    "c017": {
+      "t": "You",
+      "r": "",
+      "x": "You speak very clearly.",
+      "xr": ""
+    },
+    "c018": {
+      "t": "He",
+      "r": "",
+      "x": "He is my older brother.",
+      "xr": ""
+    },
+    "c019": {
+      "t": "She",
+      "r": "",
+      "x": "She is a skilled doctor.",
+      "xr": ""
+    },
+    "c020": {
+      "t": "We",
+      "r": "",
+      "x": "We live in the same city.",
+      "xr": ""
+    },
+    "c021": {
+      "t": "Mother",
+      "r": "",
+      "x": "My mother cooks delicious food.",
+      "xr": ""
+    },
+    "c022": {
+      "t": "Father",
+      "r": "",
+      "x": "My father reads the newspaper every morning.",
+      "xr": ""
+    },
+    "c023": {
+      "t": "Brother",
+      "r": "",
+      "x": "My brother plays football.",
+      "xr": ""
+    },
+    "c024": {
+      "t": "Sister",
+      "r": "",
+      "x": "My sister studies medicine.",
+      "xr": ""
+    },
+    "c025": {
+      "t": "Family",
+      "r": "",
+      "x": "My family gathers every Sunday.",
+      "xr": ""
+    },
+    "c026": {
+      "t": "Friend",
+      "r": "",
+      "x": "She is my closest friend.",
+      "xr": ""
+    },
+    "c027": {
+      "t": "Child",
+      "r": "",
+      "x": "The child is drawing a picture.",
+      "xr": ""
+    },
+    "c028": {
+      "t": "Teacher",
+      "r": "",
+      "x": "Our teacher explains grammar clearly.",
+      "xr": ""
+    },
+    "c029": {
+      "t": "Student",
+      "r": "",
+      "x": "Every student brought a notebook.",
+      "xr": ""
+    },
+    "c030": {
+      "t": "Neighbor",
+      "r": "",
+      "x": "Our neighbor is very kind.",
+      "xr": ""
+    },
+    "c031": {
+      "t": "One",
+      "r": "",
+      "x": "I would like one cup of tea.",
+      "xr": ""
+    },
+    "c032": {
+      "t": "Two",
+      "r": "",
+      "x": "We need two tickets, please.",
+      "xr": ""
+    },
+    "c033": {
+      "t": "Three",
+      "r": "",
+      "x": "There are three books on the table.",
+      "xr": ""
+    },
+    "c034": {
+      "t": "Five",
+      "r": "",
+      "x": "The class starts in five minutes.",
+      "xr": ""
+    },
+    "c035": {
+      "t": "Ten",
+      "r": "",
+      "x": "She counted from one to ten.",
+      "xr": ""
+    },
+    "c036": {
+      "t": "Today",
+      "r": "",
+      "x": "Today is a sunny day.",
+      "xr": ""
+    },
+    "c037": {
+      "t": "Tomorrow",
+      "r": "",
+      "x": "Tomorrow we will visit the museum.",
+      "xr": ""
+    },
+    "c038": {
+      "t": "Yesterday",
+      "r": "",
+      "x": "Yesterday it rained all afternoon.",
+      "xr": ""
+    },
+    "c039": {
+      "t": "Now",
+      "r": "",
+      "x": "I am ready to leave right now.",
+      "xr": ""
+    },
+    "c040": {
+      "t": "Later",
+      "r": "",
+      "x": "Let us talk about this later.",
+      "xr": ""
+    },
+    "c041": {
+      "t": "Morning",
+      "r": "",
+      "x": "I exercise every morning.",
+      "xr": ""
+    },
+    "c042": {
+      "t": "Night",
+      "r": "",
+      "x": "The stars shine brightly at night.",
+      "xr": ""
+    },
+    "c043": {
+      "t": "Week",
+      "r": "",
+      "x": "This week has been very busy.",
+      "xr": ""
+    },
+    "c044": {
+      "t": "Month",
+      "r": "",
+      "x": "Next month we travel abroad.",
+      "xr": ""
+    },
+    "c045": {
+      "t": "Year",
+      "r": "",
+      "x": "Happy new year to you all.",
+      "xr": ""
+    },
+    "c046": {
+      "t": "Water",
+      "r": "",
+      "x": "Could I have a glass of water?",
+      "xr": ""
+    },
+    "c047": {
+      "t": "Rice",
+      "r": "",
+      "x": "We eat steamed rice with curry.",
+      "xr": ""
+    },
+    "c048": {
+      "t": "Bread",
+      "r": "",
+      "x": "Fresh bread smells wonderful.",
+      "xr": ""
+    },
+    "c049": {
+      "t": "Fruit",
+      "r": "",
+      "x": "Eat plenty of fresh fruit daily.",
+      "xr": ""
+    },
+    "c050": {
+      "t": "Milk",
+      "r": "",
+      "x": "Do you take milk in your coffee?",
+      "xr": ""
+    },
+    "c051": {
+      "t": "Tea",
+      "r": "",
+      "x": "Hot tea is soothing in winter.",
+      "xr": ""
+    },
+    "c052": {
+      "t": "Coffee",
+      "r": "",
+      "x": "I drink black coffee in the morning.",
+      "xr": ""
+    },
+    "c053": {
+      "t": "Breakfast",
+      "r": "",
+      "x": "Breakfast is the first meal of the day.",
+      "xr": ""
+    },
+    "c054": {
+      "t": "Lunch",
+      "r": "",
+      "x": "Where shall we go for lunch?",
+      "xr": ""
+    },
+    "c055": {
+      "t": "Dinner",
+      "r": "",
+      "x": "Dinner will be ready at seven.",
+      "xr": ""
+    },
+    "c056": {
+      "t": "Delicious",
+      "r": "",
+      "x": "This dish is truly delicious.",
+      "xr": ""
+    },
+    "c057": {
+      "t": "Hungry",
+      "r": "",
+      "x": "I am very hungry after the walk.",
+      "xr": ""
+    },
+    "c058": {
+      "t": "Thirsty",
+      "r": "",
+      "x": "I feel thirsty in this heat.",
+      "xr": ""
+    },
+    "c059": {
+      "t": "Menu",
+      "r": "",
+      "x": "May I see the menu, please?",
+      "xr": ""
+    },
+    "c060": {
+      "t": "Bill",
+      "r": "",
+      "x": "Could we have the bill, please?",
+      "xr": ""
+    },
+    "c061": {
+      "t": "House",
+      "r": "",
+      "x": "Their house has a small garden.",
+      "xr": ""
+    },
+    "c062": {
+      "t": "Room",
+      "r": "",
+      "x": "My room has a large window.",
+      "xr": ""
+    },
+    "c063": {
+      "t": "Table",
+      "r": "",
+      "x": "Put the keys on the table.",
+      "xr": ""
+    },
+    "c064": {
+      "t": "Book",
+      "r": "",
+      "x": "This book is easy to read.",
+      "xr": ""
+    },
+    "c065": {
+      "t": "Door",
+      "r": "",
+      "x": "Please close the door gently.",
+      "xr": ""
+    },
+    "c066": {
+      "t": "Red",
+      "r": "",
+      "x": "She bought a bright red umbrella.",
+      "xr": ""
+    },
+    "c067": {
+      "t": "Blue",
+      "r": "",
+      "x": "The sky is clear and blue.",
+      "xr": ""
+    },
+    "c068": {
+      "t": "White",
+      "r": "",
+      "x": "Snow covered the ground in white.",
+      "xr": ""
+    },
+    "c069": {
+      "t": "Big",
+      "r": "",
+      "x": "They moved to a big city.",
+      "xr": ""
+    },
+    "c070": {
+      "t": "Small",
+      "r": "",
+      "x": "A small bird sang on the branch.",
+      "xr": ""
+    },
+    "c071": {
+      "t": "To go",
+      "r": "",
+      "x": "I go to work by train.",
+      "xr": ""
+    },
+    "c072": {
+      "t": "To come",
+      "r": "",
+      "x": "Please come to our celebration.",
+      "xr": ""
+    },
+    "c073": {
+      "t": "To eat",
+      "r": "",
+      "x": "We eat dinner together at eight.",
+      "xr": ""
+    },
+    "c074": {
+      "t": "To drink",
+      "r": "",
+      "x": "Remember to drink enough water.",
+      "xr": ""
+    },
+    "c075": {
+      "t": "To sleep",
+      "r": "",
+      "x": "I try to sleep eight hours every night.",
+      "xr": ""
+    },
+    "c076": {
+      "t": "Train",
+      "r": "",
+      "x": "The express train arrives at noon.",
+      "xr": ""
+    },
+    "c077": {
+      "t": "Bus",
+      "r": "",
+      "x": "Take the second bus to the center.",
+      "xr": ""
+    },
+    "c078": {
+      "t": "Airport",
+      "r": "",
+      "x": "We reached the airport two hours early.",
+      "xr": ""
+    },
+    "c079": {
+      "t": "Ticket",
+      "r": "",
+      "x": "Keep your ticket until you exit.",
+      "xr": ""
+    },
+    "c080": {
+      "t": "Station",
+      "r": "",
+      "x": "The station is five minutes away.",
+      "xr": ""
+    },
+    "c081": {
+      "t": "Left",
+      "r": "",
+      "x": "Turn left at the next traffic light.",
+      "xr": ""
+    },
+    "c082": {
+      "t": "Right",
+      "r": "",
+      "x": "The pharmacy is on your right.",
+      "xr": ""
+    },
+    "c083": {
+      "t": "Straight",
+      "r": "",
+      "x": "Walk straight for two blocks.",
+      "xr": ""
+    },
+    "c084": {
+      "t": "Near",
+      "r": "",
+      "x": "Is there a hotel near here?",
+      "xr": ""
+    },
+    "c085": {
+      "t": "Far",
+      "r": "",
+      "x": "The beach is not far from town.",
+      "xr": ""
+    },
+    "c086": {
+      "t": "Map",
+      "r": "",
+      "x": "Let us check the route on the map.",
+      "xr": ""
+    },
+    "c087": {
+      "t": "Hotel",
+      "r": "",
+      "x": "We booked a quiet hotel downtown.",
+      "xr": ""
+    },
+    "c088": {
+      "t": "Passport",
+      "r": "",
+      "x": "Do not forget your passport at home.",
+      "xr": ""
+    },
+    "c089": {
+      "t": "Luggage",
+      "r": "",
+      "x": "My luggage is quite heavy today.",
+      "xr": ""
+    },
+    "c090": {
+      "t": "Where is?",
+      "r": "",
+      "x": "Where is the nearest subway exit?",
+      "xr": ""
+    },
+    "c091": {
+      "t": "Money",
+      "r": "",
+      "x": "Save a portion of your money monthly.",
+      "xr": ""
+    },
+    "c092": {
+      "t": "Price",
+      "r": "",
+      "x": "What is the price of this jacket?",
+      "xr": ""
+    },
+    "c093": {
+      "t": "Cheap",
+      "r": "",
+      "x": "Vegetables are cheap at the morning market.",
+      "xr": ""
+    },
+    "c094": {
+      "t": "Expensive",
+      "r": "",
+      "x": "That watch is too expensive for me.",
+      "xr": ""
+    },
+    "c095": {
+      "t": "Discount",
+      "r": "",
+      "x": "Is there a student discount available?",
+      "xr": ""
+    },
+    "c096": {
+      "t": "Shop",
+      "r": "",
+      "x": "That corner shop opens at eight.",
+      "xr": ""
+    },
+    "c097": {
+      "t": "Market",
+      "r": "",
+      "x": "The local market is lively on Saturdays.",
+      "xr": ""
+    },
+    "c098": {
+      "t": "To buy",
+      "r": "",
+      "x": "I want to buy a warm coat.",
+      "xr": ""
+    },
+    "c099": {
+      "t": "To pay",
+      "r": "",
+      "x": "Can I pay by card or cash?",
+      "xr": ""
+    },
+    "c100": {
+      "t": "Receipt",
+      "r": "",
+      "x": "Please give me the receipt.",
+      "xr": ""
+    },
+    "c101": {
+      "t": "Shirt",
+      "r": "",
+      "x": "This cotton shirt feels comfortable.",
+      "xr": ""
+    },
+    "c102": {
+      "t": "Shoes",
+      "r": "",
+      "x": "I need sturdy shoes for hiking.",
+      "xr": ""
+    },
+    "c103": {
+      "t": "Bag",
+      "r": "",
+      "x": "She carried a leather bag.",
+      "xr": ""
+    },
+    "c104": {
+      "t": "New",
+      "r": "",
+      "x": "He wore his new jacket today.",
+      "xr": ""
+    },
+    "c105": {
+      "t": "Size",
+      "r": "",
+      "x": "Do you have this in a medium size?",
+      "xr": ""
+    },
+    "c106": {
+      "t": "Sun",
+      "r": "",
+      "x": "The warm sun dried the wet road.",
+      "xr": ""
+    },
+    "c107": {
+      "t": "Rain",
+      "r": "",
+      "x": "Bring an umbrella in case of rain.",
+      "xr": ""
+    },
+    "c108": {
+      "t": "Wind",
+      "r": "",
+      "x": "A cool wind blew from the sea.",
+      "xr": ""
+    },
+    "c109": {
+      "t": "Hot",
+      "r": "",
+      "x": "Summer afternoons are very hot here.",
+      "xr": ""
+    },
+    "c110": {
+      "t": "Cold",
+      "r": "",
+      "x": "Wear a scarf when it is cold.",
+      "xr": ""
+    },
+    "c111": {
+      "t": "Summer",
+      "r": "",
+      "x": "We swim often during summer.",
+      "xr": ""
+    },
+    "c112": {
+      "t": "Winter",
+      "r": "",
+      "x": "Winter nights are long and quiet.",
+      "xr": ""
+    },
+    "c113": {
+      "t": "Spring",
+      "r": "",
+      "x": "Flowers bloom everywhere in spring.",
+      "xr": ""
+    },
+    "c114": {
+      "t": "Cloud",
+      "r": "",
+      "x": "Dark clouds gathered before the storm.",
+      "xr": ""
+    },
+    "c115": {
+      "t": "Snow",
+      "r": "",
+      "x": "Children built a snowman in the fresh snow.",
+      "xr": ""
+    },
+    "c116": {
+      "t": "Mountain",
+      "r": "",
+      "x": "We climbed the mountain before sunrise.",
+      "xr": ""
+    },
+    "c117": {
+      "t": "River",
+      "r": "",
+      "x": "A wide river flows through the valley.",
+      "xr": ""
+    },
+    "c118": {
+      "t": "Sea",
+      "r": "",
+      "x": "The sea looks calm this evening.",
+      "xr": ""
+    },
+    "c119": {
+      "t": "Tree",
+      "r": "",
+      "x": "An ancient tree shades the courtyard.",
+      "xr": ""
+    },
+    "c120": {
+      "t": "Flower",
+      "r": "",
+      "x": "Every flower in the garden has opened.",
+      "xr": ""
+    },
+    "c121": {
+      "t": "Head",
+      "r": "",
+      "x": "My head aches from reading all day.",
+      "xr": ""
+    },
+    "c122": {
+      "t": "Hand",
+      "r": "",
+      "x": "Wash your hands before eating.",
+      "xr": ""
+    },
+    "c123": {
+      "t": "Eye",
+      "r": "",
+      "x": "Rest your eyes away from screens.",
+      "xr": ""
+    },
+    "c124": {
+      "t": "Heart",
+      "r": "",
+      "x": "Exercise keeps your heart strong.",
+      "xr": ""
+    },
+    "c125": {
+      "t": "Stomach",
+      "r": "",
+      "x": "Drink warm water if your stomach hurts.",
+      "xr": ""
+    },
+    "c126": {
+      "t": "Doctor",
+      "r": "",
+      "x": "You should see a doctor today.",
+      "xr": ""
+    },
+    "c127": {
+      "t": "Hospital",
+      "r": "",
+      "x": "The hospital is open twenty-four hours.",
+      "xr": ""
+    },
+    "c128": {
+      "t": "Medicine",
+      "r": "",
+      "x": "Take this medicine after meals.",
+      "xr": ""
+    },
+    "c129": {
+      "t": "Pain",
+      "r": "",
+      "x": "Tell the nurse where the pain is.",
+      "xr": ""
+    },
+    "c130": {
+      "t": "Fever",
+      "r": "",
+      "x": "He stayed home with a mild fever.",
+      "xr": ""
+    },
+    "c131": {
+      "t": "Help",
+      "r": "",
+      "x": "Please help me carry this box.",
+      "xr": ""
+    },
+    "c132": {
+      "t": "Police",
+      "r": "",
+      "x": "Call the police in an emergency.",
+      "xr": ""
+    },
+    "c133": {
+      "t": "Emergency",
+      "r": "",
+      "x": "Keep emergency numbers saved on your phone.",
+      "xr": ""
+    },
+    "c134": {
+      "t": "Rest",
+      "r": "",
+      "x": "Get plenty of rest to recover quickly.",
+      "xr": ""
+    },
+    "c135": {
+      "t": "Healthy",
+      "r": "",
+      "x": "A balanced diet keeps you healthy.",
+      "xr": ""
+    },
+    "c136": {
+      "t": "School",
+      "r": "",
+      "x": "The children walk to school together.",
+      "xr": ""
+    },
+    "c137": {
+      "t": "University",
+      "r": "",
+      "x": "She studies engineering at university.",
+      "xr": ""
+    },
+    "c138": {
+      "t": "Exam",
+      "r": "",
+      "x": "I prepared carefully for the final exam.",
+      "xr": ""
+    },
+    "c139": {
+      "t": "Language",
+      "r": "",
+      "x": "Learning a language opens new worlds.",
+      "xr": ""
+    },
+    "c140": {
+      "t": "Question",
+      "r": "",
+      "x": "That is a very thoughtful question.",
+      "xr": ""
+    },
+    "c141": {
+      "t": "Work",
+      "r": "",
+      "x": "He finishes work at six o'clock.",
+      "xr": ""
+    },
+    "c142": {
+      "t": "Office",
+      "r": "",
+      "x": "Our office is on the fourth floor.",
+      "xr": ""
+    },
+    "c143": {
+      "t": "Meeting",
+      "r": "",
+      "x": "The team meeting starts at ten.",
+      "xr": ""
+    },
+    "c144": {
+      "t": "Colleague",
+      "r": "",
+      "x": "My colleague helped solve the bug.",
+      "xr": ""
+    },
+    "c145": {
+      "t": "Busy",
+      "r": "",
+      "x": "I am quite busy until Friday.",
+      "xr": ""
+    },
+    "c146": {
+      "t": "Music",
+      "r": "",
+      "x": "Listening to music helps me relax.",
+      "xr": ""
+    },
+    "c147": {
+      "t": "Movie",
+      "r": "",
+      "x": "We watched an inspiring movie last night.",
+      "xr": ""
+    },
+    "c148": {
+      "t": "Sport",
+      "r": "",
+      "x": "Which sport do you enjoy watching?",
+      "xr": ""
+    },
+    "c149": {
+      "t": "Travel",
+      "r": "",
+      "x": "I love to travel by train.",
+      "xr": ""
+    },
+    "c150": {
+      "t": "Hobby",
+      "r": "",
+      "x": "Photography is my favorite weekend hobby.",
+      "xr": ""
+    },
+    "c151": {
+      "t": "Happy",
+      "r": "",
+      "x": "I am truly happy to hear your news.",
+      "xr": ""
+    },
+    "c152": {
+      "t": "Sad",
+      "r": "",
+      "x": "It is natural to feel sad sometimes.",
+      "xr": ""
+    },
+    "c153": {
+      "t": "Angry",
+      "r": "",
+      "x": "Take a deep breath before speaking when angry.",
+      "xr": ""
+    },
+    "c154": {
+      "t": "Surprised",
+      "r": "",
+      "x": "Everyone was surprised by the sudden announcement.",
+      "xr": ""
+    },
+    "c155": {
+      "t": "Worried",
+      "r": "",
+      "x": "Do not be worried; everything will work out.",
+      "xr": ""
+    },
+    "c156": {
+      "t": "Kind",
+      "r": "",
+      "x": "A kind gesture can brighten someone's day.",
+      "xr": ""
+    },
+    "c157": {
+      "t": "Honest",
+      "r": "",
+      "x": "I appreciate your honest feedback.",
+      "xr": ""
+    },
+    "c158": {
+      "t": "Patient",
+      "r": "",
+      "x": "Learning fluency requires being patient.",
+      "xr": ""
+    },
+    "c159": {
+      "t": "Brave",
+      "r": "",
+      "x": "It was brave to speak up in public.",
+      "xr": ""
+    },
+    "c160": {
+      "t": "Curious",
+      "r": "",
+      "x": "Curious minds never stop discovering.",
+      "xr": ""
+    },
+    "c161": {
+      "t": "I think",
+      "r": "",
+      "x": "I think this solution is practical.",
+      "xr": ""
+    },
+    "c162": {
+      "t": "I agree",
+      "r": "",
+      "x": "I agree with your main point.",
+      "xr": ""
+    },
+    "c163": {
+      "t": "Opinion",
+      "r": "",
+      "x": "Everyone has a right to an opinion.",
+      "xr": ""
+    },
+    "c164": {
+      "t": "Important",
+      "r": "",
+      "x": "Clear communication is very important.",
+      "xr": ""
+    },
+    "c165": {
+      "t": "Possible",
+      "r": "",
+      "x": "Anything is possible with consistent effort.",
+      "xr": ""
+    },
+    "c166": {
+      "t": "Invitation",
+      "r": "",
+      "x": "Thank you for the warm invitation.",
+      "xr": ""
+    },
+    "c167": {
+      "t": "Celebration",
+      "r": "",
+      "x": "The whole neighborhood joined the celebration.",
+      "xr": ""
+    },
+    "c168": {
+      "t": "Promise",
+      "r": "",
+      "x": "Always keep a promise you make.",
+      "xr": ""
+    },
+    "c169": {
+      "t": "Appointment",
+      "r": "",
+      "x": "I have a dental appointment at three.",
+      "xr": ""
+    },
+    "c170": {
+      "t": "Surprise",
+      "r": "",
+      "x": "We planned a birthday surprise for her.",
+      "xr": ""
+    },
+    "c171": {
+      "t": "Memory",
+      "r": "",
+      "x": "That trip remains my fondest memory.",
+      "xr": ""
+    },
+    "c172": {
+      "t": "Experience",
+      "r": "",
+      "x": "Living abroad was a transformative experience.",
+      "xr": ""
+    },
+    "c173": {
+      "t": "Story",
+      "r": "",
+      "x": "Grandfather told a captivating story.",
+      "xr": ""
+    },
+    "c174": {
+      "t": "Dream",
+      "r": "",
+      "x": "Never give up on your biggest dream.",
+      "xr": ""
+    },
+    "c175": {
+      "t": "Journey",
+      "r": "",
+      "x": "Every long journey begins with one step.",
+      "xr": ""
+    },
+    "c176": {
+      "t": "Trust",
+      "r": "",
+      "x": "Trust takes years to build.",
+      "xr": ""
+    },
+    "c177": {
+      "t": "Respect",
+      "r": "",
+      "x": "Treat every person with genuine respect.",
+      "xr": ""
+    },
+    "c178": {
+      "t": "Advice",
+      "r": "",
+      "x": "Could you give me some career advice?",
+      "xr": ""
+    },
+    "c179": {
+      "t": "Support",
+      "r": "",
+      "x": "Thank you for your unwavering support.",
+      "xr": ""
+    },
+    "c180": {
+      "t": "Forgive",
+      "r": "",
+      "x": "It takes strength to forgive and move on.",
+      "xr": ""
+    },
+    "c181": {
+      "t": "Computer",
+      "r": "",
+      "x": "My computer updated overnight.",
+      "xr": ""
+    },
+    "c182": {
+      "t": "Internet",
+      "r": "",
+      "x": "Fast internet connects remote villages.",
+      "xr": ""
+    },
+    "c183": {
+      "t": "Phone",
+      "r": "",
+      "x": "Please silence your phone during lectures.",
+      "xr": ""
+    },
+    "c184": {
+      "t": "Password",
+      "r": "",
+      "x": "Use a strong, unique password for every account.",
+      "xr": ""
+    },
+    "c185": {
+      "t": "Download",
+      "r": "",
+      "x": "You can download the offline pack for free.",
+      "xr": ""
+    },
+    "c186": {
+      "t": "Message",
+      "r": "",
+      "x": "I sent you a message earlier today.",
+      "xr": ""
+    },
+    "c187": {
+      "t": "Search",
+      "r": "",
+      "x": "Let us search for reliable documentation.",
+      "xr": ""
+    },
+    "c188": {
+      "t": "Application",
+      "r": "",
+      "x": "This open-source application works offline.",
+      "xr": ""
+    },
+    "c189": {
+      "t": "Privacy",
+      "r": "",
+      "x": "Protecting user privacy should come first.",
+      "xr": ""
+    },
+    "c190": {
+      "t": "Update",
+      "r": "",
+      "x": "The latest update improved speed significantly.",
+      "xr": ""
+    },
+    "c191": {
+      "t": "News",
+      "r": "",
+      "x": "Always verify news from multiple sources.",
+      "xr": ""
+    },
+    "c192": {
+      "t": "Article",
+      "r": "",
+      "x": "I read a fascinating article on linguistics.",
+      "xr": ""
+    },
+    "c193": {
+      "t": "Information",
+      "r": "",
+      "x": "Accurate information helps people decide wisely.",
+      "xr": ""
+    },
+    "c194": {
+      "t": "Camera",
+      "r": "",
+      "x": "She brought her camera to the festival.",
+      "xr": ""
+    },
+    "c195": {
+      "t": "Screen",
+      "r": "",
+      "x": "Adjust the screen brightness at night.",
+      "xr": ""
+    },
+    "c196": {
+      "t": "Culture",
+      "r": "",
+      "x": "Language is the living heart of culture.",
+      "xr": ""
+    },
+    "c197": {
+      "t": "Tradition",
+      "r": "",
+      "x": "Each region preserves its own harvest tradition.",
+      "xr": ""
+    },
+    "c198": {
+      "t": "Festival",
+      "r": "",
+      "x": "Lanterns lit up the entire city during the festival.",
+      "xr": ""
+    },
+    "c199": {
+      "t": "History",
+      "r": "",
+      "x": "The museum traces five thousand years of history.",
+      "xr": ""
+    },
+    "c200": {
+      "t": "Heritage",
+      "r": "",
+      "x": "We must safeguard our shared cultural heritage.",
+      "xr": ""
+    },
+    "c201": {
+      "t": "Art",
+      "r": "",
+      "x": "Great art transcends borders and centuries.",
+      "xr": ""
+    },
+    "c202": {
+      "t": "Dance",
+      "r": "",
+      "x": "Classical dance tells stories through movement.",
+      "xr": ""
+    },
+    "c203": {
+      "t": "Song",
+      "r": "",
+      "x": "That folk song has been sung for generations.",
+      "xr": ""
+    },
+    "c204": {
+      "t": "Architecture",
+      "r": "",
+      "x": "The temple architecture is remarkably intricate.",
+      "xr": ""
+    },
+    "c205": {
+      "t": "Poetry",
+      "r": "",
+      "x": "Poetry captures emotion in just a few lines.",
+      "xr": ""
+    },
+    "c206": {
+      "t": "Guest",
+      "r": "",
+      "x": "Every guest is welcomed with warmth.",
+      "xr": ""
+    },
+    "c207": {
+      "t": "Gift",
+      "r": "",
+      "x": "Bringing a small gift shows thoughtfulness.",
+      "xr": ""
+    },
+    "c208": {
+      "t": "Custom",
+      "r": "",
+      "x": "Learn local customs before visiting a new country.",
+      "xr": ""
+    },
+    "c209": {
+      "t": "Ceremony",
+      "r": "",
+      "x": "The graduation ceremony lasted two hours.",
+      "xr": ""
+    },
+    "c210": {
+      "t": "Blessing",
+      "r": "",
+      "x": "Elders offered their blessings to the couple.",
+      "xr": ""
+    },
+    "c211": {
+      "t": "Because",
+      "r": "",
+      "x": "We stayed indoors because a storm was coming.",
+      "xr": ""
+    },
+    "c212": {
+      "t": "However",
+      "r": "",
+      "x": "The task was difficult; however, we succeeded.",
+      "xr": ""
+    },
+    "c213": {
+      "t": "Although",
+      "r": "",
+      "x": "Although it was late, he finished the chapter.",
+      "xr": ""
+    },
+    "c214": {
+      "t": "Therefore",
+      "r": "",
+      "x": "The data is clear; therefore, we must act.",
+      "xr": ""
+    },
+    "c215": {
+      "t": "Meanwhile",
+      "r": "",
+      "x": "I will cook dinner; meanwhile, please set the table.",
+      "xr": ""
+    },
+    "c216": {
+      "t": "Problem",
+      "r": "",
+      "x": "Let us identify the root cause of the problem.",
+      "xr": ""
+    },
+    "c217": {
+      "t": "Solution",
+      "r": "",
+      "x": "Simple solutions are often the most reliable.",
+      "xr": ""
+    },
+    "c218": {
+      "t": "Decision",
+      "r": "",
+      "x": "Think calmly before making a major decision.",
+      "xr": ""
+    },
+    "c219": {
+      "t": "Mistake",
+      "r": "",
+      "x": "Every mistake teaches us something valuable.",
+      "xr": ""
+    },
+    "c220": {
+      "t": "Success",
+      "r": "",
+      "x": "Teamwork was the key to our success.",
+      "xr": ""
+    },
+    "c221": {
+      "t": "If",
+      "r": "",
+      "x": "If you practice daily, you will improve rapidly.",
+      "xr": ""
+    },
+    "c222": {
+      "t": "Instead of",
+      "r": "",
+      "x": "Walk to the shop instead of driving.",
+      "xr": ""
+    },
+    "c223": {
+      "t": "Compare",
+      "r": "",
+      "x": "Compare both proposals carefully before voting.",
+      "xr": ""
+    },
+    "c224": {
+      "t": "Difference",
+      "r": "",
+      "x": "Small habits create a huge difference over time.",
+      "xr": ""
+    },
+    "c225": {
+      "t": "Reason",
+      "r": "",
+      "x": "Explain the reason behind your choice.",
+      "xr": ""
+    },
+    "c226": {
+      "t": "Strategy",
+      "r": "",
+      "x": "We revised our long-term product strategy.",
+      "xr": ""
+    },
+    "c227": {
+      "t": "Project",
+      "r": "",
+      "x": "The engineering project launched ahead of schedule.",
+      "xr": ""
+    },
+    "c228": {
+      "t": "Deadline",
+      "r": "",
+      "x": "We completed every milestone before the deadline.",
+      "xr": ""
+    },
+    "c229": {
+      "t": "Responsibility",
+      "r": "",
+      "x": "Leadership means taking full responsibility.",
+      "xr": ""
+    },
+    "c230": {
+      "t": "Collaboration",
+      "r": "",
+      "x": "Open collaboration accelerates innovation.",
+      "xr": ""
+    },
+    "c231": {
+      "t": "Economy",
+      "r": "",
+      "x": "Small businesses form the backbone of the economy.",
+      "xr": ""
+    },
+    "c232": {
+      "t": "Budget",
+      "r": "",
+      "x": "The municipality approved next year's education budget.",
+      "xr": ""
+    },
+    "c233": {
+      "t": "Investment",
+      "r": "",
+      "x": "Education is the wisest long-term investment.",
+      "xr": ""
+    },
+    "c234": {
+      "t": "Contract",
+      "r": "",
+      "x": "Read every clause of the contract carefully.",
+      "xr": ""
+    },
+    "c235": {
+      "t": "Profit",
+      "r": "",
+      "x": "Sustainable growth matters more than short-term profit.",
+      "xr": ""
+    },
+    "c236": {
+      "t": "Proposal",
+      "r": "",
+      "x": "The committee reviewed our detailed proposal.",
+      "xr": ""
+    },
+    "c237": {
+      "t": "Negotiation",
+      "r": "",
+      "x": "Both sides entered the negotiation in good faith.",
+      "xr": ""
+    },
+    "c238": {
+      "t": "Agreement",
+      "r": "",
+      "x": "They signed a mutually beneficial trade agreement.",
+      "xr": ""
+    },
+    "c239": {
+      "t": "Compromise",
+      "r": "",
+      "x": "A fair compromise resolved the dispute.",
+      "xr": ""
+    },
+    "c240": {
+      "t": "Opportunity",
+      "r": "",
+      "x": "Every challenge brings a hidden opportunity.",
+      "xr": ""
+    },
+    "c241": {
+      "t": "Research",
+      "r": "",
+      "x": "Peer-reviewed research guides modern medicine.",
+      "xr": ""
+    },
+    "c242": {
+      "t": "Experiment",
+      "r": "",
+      "x": "The laboratory experiment confirmed our prediction.",
+      "xr": ""
+    },
+    "c243": {
+      "t": "Evidence",
+      "r": "",
+      "x": "Strong conclusions must rest on solid evidence.",
+      "xr": ""
+    },
+    "c244": {
+      "t": "Theory",
+      "r": "",
+      "x": "The theory explains how gravity bends light.",
+      "xr": ""
+    },
+    "c245": {
+      "t": "Discovery",
+      "r": "",
+      "x": "That discovery transformed clean energy storage.",
+      "xr": ""
+    },
+    "c246": {
+      "t": "Innovation",
+      "r": "",
+      "x": "Grassroots innovation solves real community needs.",
+      "xr": ""
+    },
+    "c247": {
+      "t": "Algorithm",
+      "r": "",
+      "x": "An efficient algorithm saves power and time.",
+      "xr": ""
+    },
+    "c248": {
+      "t": "Energy",
+      "r": "",
+      "x": "Solar panels convert sunlight directly into energy.",
+      "xr": ""
+    },
+    "c249": {
+      "t": "Laboratory",
+      "r": "",
+      "x": "Scientists calibrated the sensors in the laboratory.",
+      "xr": ""
+    },
+    "c250": {
+      "t": "Precision",
+      "r": "",
+      "x": "Microsurgery demands extraordinary precision.",
+      "xr": ""
+    },
+    "c251": {
+      "t": "Universe",
+      "r": "",
+      "x": "Telescopes reveal the earliest galaxies in the universe.",
+      "xr": ""
+    },
+    "c252": {
+      "t": "Planet",
+      "r": "",
+      "x": "Water is essential for life on any planet.",
+      "xr": ""
+    },
+    "c253": {
+      "t": "Gravity",
+      "r": "",
+      "x": "Gravity keeps the moon in orbit around Earth.",
+      "xr": ""
+    },
+    "c254": {
+      "t": "Evolution",
+      "r": "",
+      "x": "Evolution shapes organisms across millions of years.",
+      "xr": ""
+    },
+    "c255": {
+      "t": "Curiosity",
+      "r": "",
+      "x": "Scientific curiosity drives humanity forward.",
+      "xr": ""
+    },
+    "c256": {
+      "t": "Environment",
+      "r": "",
+      "x": "Protecting the environment protects future generations.",
+      "xr": ""
+    },
+    "c257": {
+      "t": "Climate",
+      "r": "",
+      "x": "Changing climate patterns affect global harvests.",
+      "xr": ""
+    },
+    "c258": {
+      "t": "Ecosystem",
+      "r": "",
+      "x": "Wetlands are vital to the coastal ecosystem.",
+      "xr": ""
+    },
+    "c259": {
+      "t": "Biodiversity",
+      "r": "",
+      "x": "Rainforests shelter extraordinary biodiversity.",
+      "xr": ""
+    },
+    "c260": {
+      "t": "Pollution",
+      "r": "",
+      "x": "Electric transit sharply reduces urban air pollution.",
+      "xr": ""
+    },
+    "c261": {
+      "t": "Renewable",
+      "r": "",
+      "x": "Wind and solar are abundant renewable sources.",
+      "xr": ""
+    },
+    "c262": {
+      "t": "Sustainability",
+      "r": "",
+      "x": "True sustainability balances nature and prosperity.",
+      "xr": ""
+    },
+    "c263": {
+      "t": "Conservation",
+      "r": "",
+      "x": "Community-led conservation revived the forest.",
+      "xr": ""
+    },
+    "c264": {
+      "t": "Recycle",
+      "r": "",
+      "x": "Sort glass, paper, and metal so cities can recycle them.",
+      "xr": ""
+    },
+    "c265": {
+      "t": "Resource",
+      "r": "",
+      "x": "Freshwater is a precious shared resource.",
+      "xr": ""
+    },
+    "c266": {
+      "t": "Forest",
+      "r": "",
+      "x": "Restoring native forests cools surrounding towns.",
+      "xr": ""
+    },
+    "c267": {
+      "t": "Ocean",
+      "r": "",
+      "x": "Healthy oceans absorb vast amounts of carbon.",
+      "xr": ""
+    },
+    "c268": {
+      "t": "Drought",
+      "r": "",
+      "x": "Smart irrigation helps farmers endure drought.",
+      "xr": ""
+    },
+    "c269": {
+      "t": "Harmony",
+      "r": "",
+      "x": "Human progress must exist in harmony with nature.",
+      "xr": ""
+    },
+    "c270": {
+      "t": "Future",
+      "r": "",
+      "x": "Choices made today shape tomorrow's future.",
+      "xr": ""
+    },
+    "c271": {
+      "t": "Justice",
+      "r": "",
+      "x": "Equal justice under law strengthens society.",
+      "xr": ""
+    },
+    "c272": {
+      "t": "Freedom",
+      "r": "",
+      "x": "Freedom of expression requires mutual responsibility.",
+      "xr": ""
+    },
+    "c273": {
+      "t": "Equality",
+      "r": "",
+      "x": "Education promotes social and economic equality.",
+      "xr": ""
+    },
+    "c274": {
+      "t": "Constitution",
+      "r": "",
+      "x": "The constitution safeguards fundamental human rights.",
+      "xr": ""
+    },
+    "c275": {
+      "t": "Citizen",
+      "r": "",
+      "x": "Every engaged citizen contributes to civic life.",
+      "xr": ""
+    },
+    "c276": {
+      "t": "Democracy",
+      "r": "",
+      "x": "A healthy democracy relies on informed voters.",
+      "xr": ""
+    },
+    "c277": {
+      "t": "Government",
+      "r": "",
+      "x": "Local government maintains roads, parks, and schools.",
+      "xr": ""
+    },
+    "c278": {
+      "t": "Policy",
+      "r": "",
+      "x": "Public health policy saved millions of lives.",
+      "xr": ""
+    },
+    "c279": {
+      "t": "Law",
+      "r": "",
+      "x": "Transparent laws build confidence across communities.",
+      "xr": ""
+    },
+    "c280": {
+      "t": "Transparency",
+      "r": "",
+      "x": "Financial transparency prevents corruption.",
+      "xr": ""
+    },
+    "c281": {
+      "t": "Community",
+      "r": "",
+      "x": "Strong communities look out for the vulnerable.",
+      "xr": ""
+    },
+    "c282": {
+      "t": "Peace",
+      "r": "",
+      "x": "Lasting peace requires dialogue and empathy.",
+      "xr": ""
+    },
+    "c283": {
+      "t": "Education",
+      "r": "",
+      "x": "Universal education lifts entire nations.",
+      "xr": ""
+    },
+    "c284": {
+      "t": "Volunteer",
+      "r": "",
+      "x": "Hundreds of volunteers helped rebuild after the flood.",
+      "xr": ""
+    },
+    "c285": {
+      "t": "Solidarity",
+      "r": "",
+      "x": "Global solidarity overcomes crises faster.",
+      "xr": ""
+    },
+    "c286": {
+      "t": "Argument",
+      "r": "",
+      "x": "Support every argument with verifiable facts.",
+      "xr": ""
+    },
+    "c287": {
+      "t": "Perspective",
+      "r": "",
+      "x": "Seeing another perspective deepens understanding.",
+      "xr": ""
+    },
+    "c288": {
+      "t": "Analysis",
+      "r": "",
+      "x": "Her economic analysis highlighted three hidden risks.",
+      "xr": ""
+    },
+    "c289": {
+      "t": "Assumption",
+      "r": "",
+      "x": "Always question your underlying assumptions.",
+      "xr": ""
+    },
+    "c290": {
+      "t": "Conclusion",
+      "r": "",
+      "x": "Wait for all facts before jumping to a conclusion.",
+      "xr": ""
+    },
+    "c291": {
+      "t": "Objective",
+      "r": "",
+      "x": "A fair journalist strives to remain objective.",
+      "xr": ""
+    },
+    "c292": {
+      "t": "Bias",
+      "r": "",
+      "x": "Recognizing our own bias leads to better judgment.",
+      "xr": ""
+    },
+    "c293": {
+      "t": "Criterion",
+      "r": "",
+      "x": "Reliability is our primary evaluation criterion.",
+      "xr": ""
+    },
+    "c294": {
+      "t": "Contradiction",
+      "r": "",
+      "x": "The witness noticed a contradiction in the timeline.",
+      "xr": ""
+    },
+    "c295": {
+      "t": "Consensus",
+      "r": "",
+      "x": "After lively debate, the panel reached consensus.",
+      "xr": ""
+    },
+    "c296": {
+      "t": "Clarify",
+      "r": "",
+      "x": "Could you clarify what you meant by that phrase?",
+      "xr": ""
+    },
+    "c297": {
+      "t": "Emphasize",
+      "r": "",
+      "x": "I want to emphasize the importance of accessibility.",
+      "xr": ""
+    },
+    "c298": {
+      "t": "Nevertheless",
+      "r": "",
+      "x": "The road was steep; nevertheless, we reached the summit.",
+      "xr": ""
+    },
+    "c299": {
+      "t": "Consequence",
+      "r": "",
+      "x": "Consider every long-term consequence before deciding.",
+      "xr": ""
+    },
+    "c300": {
+      "t": "Insight",
+      "r": "",
+      "x": "Her remark offered a remarkable insight.",
+      "xr": ""
+    },
+    "c301": {
+      "t": "Metaphor",
+      "r": "",
+      "x": "The river serves as a metaphor for passing time.",
+      "xr": ""
+    },
+    "c302": {
+      "t": "Symbolism",
+      "r": "",
+      "x": "The novel is rich with layered symbolism.",
+      "xr": ""
+    },
+    "c303": {
+      "t": "Narrative",
+      "r": "",
+      "x": "The author weaves three intertwined narratives.",
+      "xr": ""
+    },
+    "c304": {
+      "t": "Masterpiece",
+      "r": "",
+      "x": "That symphony is hailed as a timeless masterpiece.",
+      "xr": ""
+    },
+    "c305": {
+      "t": "Aesthetic",
+      "r": "",
+      "x": "Minimalist design favors quiet aesthetic harmony.",
+      "xr": ""
+    },
+    "c306": {
+      "t": "Nuance",
+      "r": "",
+      "x": "True fluency lies in grasping subtle cultural nuance.",
+      "xr": ""
+    },
+    "c307": {
+      "t": "Ambiguity",
+      "r": "",
+      "x": "The poem ends in deliberate, haunting ambiguity.",
+      "xr": ""
+    },
+    "c308": {
+      "t": "Irony",
+      "r": "",
+      "x": "The playwright used sharp irony to critique vanity.",
+      "xr": ""
+    },
+    "c309": {
+      "t": "Eloquence",
+      "r": "",
+      "x": "She spoke with remarkable poise and eloquence.",
+      "xr": ""
+    },
+    "c310": {
+      "t": "Legacy",
+      "r": "",
+      "x": "Great literature leaves an enduring intellectual legacy.",
+      "xr": ""
+    },
+    "c311": {
+      "t": "Nostalgia",
+      "r": "",
+      "x": "The scent of rain on warm earth stirred deep nostalgia.",
+      "xr": ""
+    },
+    "c312": {
+      "t": "Resonance",
+      "r": "",
+      "x": "The melody carried profound emotional resonance.",
+      "xr": ""
+    },
+    "c313": {
+      "t": "Sublime",
+      "r": "",
+      "x": "Standing beneath the aurora felt utterly sublime.",
+      "xr": ""
+    },
+    "c314": {
+      "t": "Transcend",
+      "r": "",
+      "x": "Compassion can transcend language and history.",
+      "xr": ""
+    },
+    "c315": {
+      "t": "Authenticity",
+      "r": "",
+      "x": "Readers immediately sense genuine authenticity.",
+      "xr": ""
+    },
+    "c316": {
+      "t": "Conscience",
+      "r": "",
+      "x": "Act in accordance with an honest conscience.",
+      "xr": ""
+    },
+    "c317": {
+      "t": "Integrity",
+      "r": "",
+      "x": "Integrity means doing right when nobody is watching.",
+      "xr": ""
+    },
+    "c318": {
+      "t": "Empathy",
+      "r": "",
+      "x": "Empathy bridges even the deepest divides.",
+      "xr": ""
+    },
+    "c319": {
+      "t": "Dilemma",
+      "r": "",
+      "x": "The committee faced a difficult ethical dilemma.",
+      "xr": ""
+    },
+    "c320": {
+      "t": "Wisdom",
+      "r": "",
+      "x": "Knowledge speaks, whereas wisdom listens.",
+      "xr": ""
+    },
+    "c321": {
+      "t": "Consciousness",
+      "r": "",
+      "x": "Philosophers still debate the nature of consciousness.",
+      "xr": ""
+    },
+    "c322": {
+      "t": "Perception",
+      "r": "",
+      "x": "Language subtly shapes our perception of time.",
+      "xr": ""
+    },
+    "c323": {
+      "t": "Resilience",
+      "r": "",
+      "x": "Inner resilience grows through overcoming adversity.",
+      "xr": ""
+    },
+    "c324": {
+      "t": "Introspection",
+      "r": "",
+      "x": "Quiet introspection brings clarity during turmoil.",
+      "xr": ""
+    },
+    "c325": {
+      "t": "Paradox",
+      "r": "",
+      "x": "The paradox of choice shows more options can overwhelm.",
+      "xr": ""
+    },
+    "c326": {
+      "t": "Impermanence",
+      "r": "",
+      "x": "Accepting impermanence teaches us to cherish today.",
+      "xr": ""
+    },
+    "c327": {
+      "t": "Equanimity",
+      "r": "",
+      "x": "She met both triumph and setback with equanimity.",
+      "xr": ""
+    },
+    "c328": {
+      "t": "Purpose",
+      "r": "",
+      "x": "Shared purpose turns routine effort into joy.",
+      "xr": ""
+    },
+    "c329": {
+      "t": "Autonomy",
+      "r": "",
+      "x": "Intellectual autonomy begins with independent thought.",
+      "xr": ""
+    },
+    "c330": {
+      "t": "Humility",
+      "r": "",
+      "x": "True mastery is always paired with humility.",
+      "xr": ""
+    },
+    "c331": {
+      "t": "Actions speak louder than words",
+      "r": "",
+      "x": "Keep your commitments—actions speak louder than words.",
+      "xr": ""
+    },
+    "c332": {
+      "t": "Practice makes perfect",
+      "r": "",
+      "x": "Do not fear mistakes; practice makes perfect.",
+      "xr": ""
+    },
+    "c333": {
+      "t": "Every cloud has a silver lining",
+      "r": "",
+      "x": "Stay hopeful—every cloud has a silver lining.",
+      "xr": ""
+    },
+    "c334": {
+      "t": "Time heals all wounds",
+      "r": "",
+      "x": "Be gentle with yourself; time heals all wounds.",
+      "xr": ""
+    },
+    "c335": {
+      "t": "Unity is strength",
+      "r": "",
+      "x": "Working together proves that unity is strength.",
+      "xr": ""
+    },
+    "c336": {
+      "t": "Break the ice",
+      "r": "",
+      "x": "A warm joke helped break the ice at dinner.",
+      "xr": ""
+    },
+    "c337": {
+      "t": "Piece of cake",
+      "r": "",
+      "x": "After weeks of drills, the exam was a piece of cake.",
+      "xr": ""
+    },
+    "c338": {
+      "t": "Once in a blue moon",
+      "r": "",
+      "x": "We see snow in this valley once in a blue moon.",
+      "xr": ""
+    },
+    "c339": {
+      "t": "Hit the nail on the head",
+      "r": "",
+      "x": "Your diagnosis hit the nail on the head.",
+      "xr": ""
+    },
+    "c340": {
+      "t": "Burn the midnight oil",
+      "r": "",
+      "x": "The team burned the midnight oil to ship on time.",
+      "xr": ""
+    },
+    "c341": {
+      "t": "Read between the lines",
+      "r": "",
+      "x": "In diplomacy, you must read between the lines.",
+      "xr": ""
+    },
+    "c342": {
+      "t": "Turn over a new leaf",
+      "r": "",
+      "x": "She decided to turn over a new leaf this spring.",
+      "xr": ""
+    },
+    "c343": {
+      "t": "A blessing in disguise",
+      "r": "",
+      "x": "Losing that job turned out to be a blessing in disguise.",
+      "xr": ""
+    },
+    "c344": {
+      "t": "Go the extra mile",
+      "r": "",
+      "x": "Great teachers always go the extra mile.",
+      "xr": ""
+    },
+    "c345": {
+      "t": "See the big picture",
+      "r": "",
+      "x": "Step back from details to see the big picture.",
+      "xr": ""
+    },
+    "c346": {
+      "t": "Sovereignty",
+      "r": "",
+      "x": "International law affirms mutual respect for sovereignty.",
+      "xr": ""
+    },
+    "c347": {
+      "t": "Diplomacy",
+      "r": "",
+      "x": "Patient diplomacy prevented an escalation.",
+      "xr": ""
+    },
+    "c348": {
+      "t": "Treaty",
+      "r": "",
+      "x": "Forty nations ratified the environmental treaty.",
+      "xr": ""
+    },
+    "c349": {
+      "t": "Multilateral",
+      "r": "",
+      "x": "Multilateral cooperation addresses shared global risks.",
+      "xr": ""
+    },
+    "c350": {
+      "t": "Jurisdiction",
+      "r": "",
+      "x": "That tribunal holds jurisdiction over maritime disputes.",
+      "xr": ""
+    },
+    "c351": {
+      "t": "Hypothesis",
+      "r": "",
+      "x": "The paper tests a novel linguistic hypothesis.",
+      "xr": ""
+    },
+    "c352": {
+      "t": "Methodology",
+      "r": "",
+      "x": "Transparent methodology enables independent replication.",
+      "xr": ""
+    },
+    "c353": {
+      "t": "Synthesis",
+      "r": "",
+      "x": "Her lecture offered a brilliant synthesis of both fields.",
+      "xr": ""
+    },
+    "c354": {
+      "t": "Precedent",
+      "r": "",
+      "x": "The ruling established an important legal precedent.",
+      "xr": ""
+    },
+    "c355": {
+      "t": "Implementation",
+      "r": "",
+      "x": "Careful implementation determines whether a reform succeeds.",
+      "xr": ""
+    },
+    "c356": {
+      "t": "Notwithstanding",
+      "r": "",
+      "x": "Notwithstanding initial delays, the bridge opened safely.",
+      "xr": ""
+    },
+    "c357": {
+      "t": "Consequently",
+      "r": "",
+      "x": "Funding increased; consequently, rural clinics expanded.",
+      "xr": ""
+    },
+    "c358": {
+      "t": "Furthermore",
+      "r": "",
+      "x": "Furthermore, open data benefits independent researchers.",
+      "xr": ""
+    },
+    "c359": {
+      "t": "In light of",
+      "r": "",
+      "x": "In light of new evidence, we revised the guideline.",
+      "xr": ""
+    },
+    "c360": {
+      "t": "With due respect",
+      "r": "",
+      "x": "With due respect, I propose an alternative approach.",
+      "xr": ""
+    },
+    "c361": {
+      "t": "Articulate",
+      "r": "",
+      "x": "She can articulate intricate ideas effortlessly.",
+      "xr": ""
+    },
+    "c362": {
+      "t": "Concise",
+      "r": "",
+      "x": "A concise explanation is clearer than a long speech.",
+      "xr": ""
+    },
+    "c363": {
+      "t": "Coherent",
+      "r": "",
+      "x": "Build a coherent narrative from start to finish.",
+      "xr": ""
+    },
+    "c364": {
+      "t": "Persuasive",
+      "r": "",
+      "x": "Real stories make an argument far more persuasive.",
+      "xr": ""
+    },
+    "c365": {
+      "t": "Pragmatic",
+      "r": "",
+      "x": "We adopted a pragmatic roadmap for the rollout.",
+      "xr": ""
+    },
+    "c366": {
+      "t": "Unprecedented",
+      "r": "",
+      "x": "The observatory captured images of unprecedented clarity.",
+      "xr": ""
+    },
+    "c367": {
+      "t": "Inevitable",
+      "r": "",
+      "x": "Gradual language change is completely inevitable.",
+      "xr": ""
+    },
+    "c368": {
+      "t": "Indispensable",
+      "r": "",
+      "x": "Active listening is indispensable for deep fluency.",
+      "xr": ""
+    },
+    "c369": {
+      "t": "Profound",
+      "r": "",
+      "x": "Reading classics leaves a profound impression.",
+      "xr": ""
+    },
+    "c370": {
+      "t": "Seamless",
+      "r": "",
+      "x": "Our goal is a seamless experience across every device.",
+      "xr": ""
+    },
+    "c371": {
+      "t": "Without a shadow of a doubt",
+      "r": "",
+      "x": "Without a shadow of a doubt, consistency wins.",
+      "xr": ""
+    },
+    "c372": {
+      "t": "By the same token",
+      "r": "",
+      "x": "We value speed; by the same token, we never cut quality.",
+      "xr": ""
+    },
+    "c373": {
+      "t": "All things considered",
+      "r": "",
+      "x": "All things considered, this was our finest year.",
+      "xr": ""
+    },
+    "c374": {
+      "t": "Stand the test of time",
+      "r": "",
+      "x": "Open knowledge built with care will stand the test of time.",
+      "xr": ""
+    },
+    "c375": {
+      "t": "Lifelong learning",
+      "r": "",
+      "x": "Mastering languages is a joyful adventure of lifelong learning.",
+      "xr": ""
+    }
+  }
+}

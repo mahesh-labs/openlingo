@@ -61,4 +61,17 @@ jobs:
               print(f'OK {cid}: {count} items validated')
 
           print(f'ALL COURSES VALID! Total unique items: {len(seen_item_ids)}')
+
+          # Also validate universal 13-language course matrix (156 any-to-any pairs)
+          syl = json.load(open('courses/matrix/syllabus.json', encoding='utf-8'))
+          cids = [cid for t in syl['tiers'] for u in t['units'] for l in u['lessons'] for cid in l['concepts']]
+          assert len(cids) == 375, f'Expected 375 matrix concepts, got {len(cids)}'
+          for lang in syl['languages']:
+              lp = f"courses/langs/{lang['code']}.json"
+              assert os.path.exists(lp), f'Missing language pack: {lp}'
+              pack = json.load(open(lp, encoding='utf-8'))
+              for cid in cids:
+                  assert cid in pack['items'] and pack['items'][cid].get('t') and pack['items'][cid].get('x'), f'Invalid {cid} in {lp}'
+              print(f"OK matrix lang {lang['code']}: {len(pack['items'])} concepts")
+          print(f"ALL {len(syl['languages'])} MATRIX LANGUAGES VALID ({len(syl['languages']) * (len(syl['languages']) - 1)} pairs)!")
           PY

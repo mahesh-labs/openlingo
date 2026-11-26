@@ -1,0 +1,2285 @@
+{
+  "code": "kn",
+  "name": "Kannada",
+  "nativeName": "ಕನ್ನಡ",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Kannada Greetings & Politeness: Kannada uses Subject-Object-Verb (SOV) order. Add '-ri' (ರಿ) or use 'neevu' (ನೀವು) for polite address. 'Namaskara' works at any time of day, while 'Shubhodaya' (morning) and 'Shubharatri' (night) mark specific times.",
+    "u2": "Pronouns & Family Terms: Kannada distinguishes gender in 3rd-person singular: 'avanu' (he), 'avalu' (she), and polite 'avaru' (they/he/she respectful). Kinship terms often distinguish elder vs. younger (e.g., 'anna' older brother, 'tamma' younger brother).",
+    "u3": "Numbers, Time & Calendar: Kannada cardinal numbers precede the noun without pluralizing inanimate nouns ('eradu tiketu'). Time expressions use locative '-alli' (in) or '-ge' (at), as in 'aidu nimishadalli' (in five minutes).",
+    "u4": "Food, Dining & Dative Experiencers: Hunger and thirst use dative subjects with '-ge': 'Nanage hasivagide' (literally 'To me hunger has happened'). Polite requests add 'dayavittu' (please) or the '-bahude?' (may I?) ending.",
+    "u5": "Home, Adjectives & Core Verbs: Attributive adjectives precede nouns unchanged ('dodda nagara' big city). Dictionary verb forms end in '-uvudu' (e.g., 'hoguvudu' to go, 'baruvudu' to come) and conjugate for tense, person, number, and gender.",
+    "u6": "Travel & Spatial Postpositions: Direction and location use postpositions attached to oblique/genitive stems: 'pakka' (near), 'doora' (far), 'edakke' (to the left), 'balakke' (to the right). 'Elli ide?' asks 'Where is it?'",
+    "u7": "Shopping, Prices & Transactions: Ask prices with 'Idara bele eshtu?' (How much is its price?). Modal 'beku' (want/need) pairs with dative subjects: 'Nanage ondu kottu beku' (I need a coat). 'Kodi' (please give) is essential at shops.",
+    "u8": "Weather, Nature & Aspect: Weather statements often use existential 'ide' (is) or 'aaguttade' (becomes/happens). Progressive actions use '-uttide' / '-uttiddare', while habitual nature facts use the non-past '-uttade' ending.",
+    "u9": "Health, Body & Imperatives: Express pain with dative + 'novu' (pain): 'Nanna tale noyuttide' (My head is aching). Polite imperatives end in '-i' or '-ri' ('toli' wash, 'tegedukolli' take, 'sahaya maadi' please help).",
+    "u10": "Work, Education & Gerunds: Verbal nouns ending in '-uvudu' act like English '-ing' subjects: 'Bhashe kaliyuvudu' (learning a language), 'Sangeeta keluvudu' (listening to music). Use '-alli' for 'at/in' workplaces and schools.",
+    "u11": "Emotions, Traits & Reported Thought: Opinions often end with quotative 'endu' (that) before 'bhaavisuttene' (I think) or 'annuttade' (it seems). Adverbs of manner add '-aagi' to adjectives ('spashtavaagi' clearly, 'pramaanikavaagi' honestly).",
+    "u12": "Social Life & Past Narrative: Past tense stems take '-id-' or '-t-' before personal endings ('helidaru' told, 'kaluhiside' sent). Use 'matte' (and/again) and relative participles ('maadida' that was made) to link stories smoothly.",
+    "u13": "Technology & Loanword Integration: Modern Kannada pairs native verbs like 'maadu' (do) or 'aagu' (become) with both Sanskritized compounds ('antarjaala' internet, 'gopyate' privacy) and everyday tech loans adapted to Kannada script.",
+    "u14": "Culture, Heritage & Passive/Participial Style: Cultural writing uses past participles ('haadalaaguttide' has been sung) and compound nouns ('saamskrutika parampare' cultural heritage). Plural respectful '-aru' shows honor to elders and artists.",
+    "u15": "Connectors, Conditionals & Contrast: Subordinating clauses precede the main clause! Use '-dare' for 'if' ('abhyasa maadidare' if you practice), '-daroo' for 'although' ('tadavadaroo' although late), and 'aadare/aadaru' for 'however'.",
+    "u16": "Business, Strategy & Nominalization: Formal workplace Kannada uses abstract '-te' / '-tva' nouns ('javaabdaari' responsibility, 'nayakatva' leadership) and verbal compounds with 'vahisu' (undertake) and 'nirvahisu' (manage).",
+    "u17": "Science, Precision & Causatives: Scientific prose uses causative verbs ending in '-isu' ('parivartisu' convert, 'drudhapadisu' confirm, 'vivarisu' explain) and Sanskritic tatsama nouns ('siddhaanta' theory, 'parishodhane' research).",
+    "u18": "Environment & Obligation ('Beku'): Express civic or ecological duty with verb infinitive + 'beku' (must): 'rakshisabeku' (must protect), 'balasabeku' (must use). 'Kooda' (also) and 'maatra' (only) add focus.",
+    "u19": "Society, Law & Governance: Civic discourse relies on precise institutional compounds ('samvidhaana' constitution, 'prajaaprabhutva' democracy, 'paaradarshakate' transparency) and formal plural verb agreement ('nirvahisuttade' maintains).",
+    "u20": "Critical Thinking & Logical Discourse: Frame nuanced arguments with 'aadaroo saha' (nevertheless), 'aadudarinda' (therefore), and 'drushtikona' (perspective). Emphatic '-e' ('mukhyavaagi' / 'ide') highlights your core thesis.",
+    "u21": "Literature, Aesthetics & Literary Register: Literary Kannada (Granthika/Shishta style) enriches prose with classical compounds ('roopaka' metaphor, 'dhvani' resonance, 'vyangya' irony) and expressive adjectival participles.",
+    "u22": "Philosophy, Ethics & Abstract Nouns: Philosophical Kannada draws on deep Indian intellectual terminology ('antahkarana' conscience, 'sthitaprajnate' equanimity, 'anityate' impermanence, 'aatmaavalokana' introspection).",
+    "u23": "Kannada Proverbs (Gaadegalu) & Idioms: Authentic Kannada wisdom uses concise rhythmic sayings ('Oggattinalli balavide', 'Neeru kudidashtu sulabha'). Notice the emphatic clitic '-e' and comparative '-ginta' (more than) in proverbs.",
+    "u24": "Formal, Diplomatic & Legal Discourse: Diplomatic and academic Kannada employs high-register postpositions ('hinneleyalli' in light of, 'horataagiyoo' notwithstanding) and courteous framing ('poorna gauravadondige' with due respect).",
+    "u25": "C2 Nuance, Rhetoric & Native Mastery: Mastery in Kannada blends crisp phrasing ('samkshipta'), rhythmic parallelism, idiomatic discourse markers ('ellaavannoo pariganisidaaga'), and seamless control of spoken and literary registers."
+  },
+  "items": {
+    "c001": {
+      "t": "ನಮಸ್ಕಾರ",
+      "r": "Namaskara",
+      "x": "ನಮಸ್ಕಾರ, ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ ತುಂಬಾ ಸಂತೋಷವಾಯಿತು.",
+      "xr": "Namaskara, nimmannu bhetiyaagi tumbaa santoshavaayitu."
+    },
+    "c002": {
+      "t": "ಶುಭೋದಯ",
+      "r": "Shubhodaya",
+      "x": "ಶುಭೋದಯ, ಚೆನ್ನಾಗಿ ನಿದ್ದೆ ಮಾಡಿದಿರಾ?",
+      "xr": "Shubhodaya, chennaagi nidde maadidiraa?"
+    },
+    "c003": {
+      "t": "ಶುಭ ಮಧ್ಯಾಹ್ನ",
+      "r": "Shubha madhyaahna",
+      "x": "ಎಲ್ಲರಿಗೂ ಶುಭ ಮಧ್ಯಾಹ್ನ.",
+      "xr": "Ellarigoo shubha madhyaahna."
+    },
+    "c004": {
+      "t": "ಶುಭ ಸಂಜೆ",
+      "r": "Shubha sanje",
+      "x": "ಶುಭ ಸಂಜೆ, ಮನೆಗೆ ಸುಸ್ವಾಗತ.",
+      "xr": "Shubha sanje, manege susvaagata."
+    },
+    "c005": {
+      "t": "ಶುಭ ರಾತ್ರಿ",
+      "r": "Shubha raatri",
+      "x": "ಶುಭ ರಾತ್ರಿ, ನಾಳೆ ಭೇಟಿಯಾಗೋಣ.",
+      "xr": "Shubha raatri, naale bhetiyaagona."
+    },
+    "c006": {
+      "t": "ಧನ್ಯವಾದಗಳು",
+      "r": "Dhanyavaadagalu",
+      "x": "ನಿಮ್ಮ ಸಹಾಯಕ್ಕೆ ತುಂಬಾ ಧನ್ಯವಾದಗಳು.",
+      "xr": "Nimma sahaayakke tumbaa dhanyavaadagalu."
+    },
+    "c007": {
+      "t": "ಪರವಾಗಿಲ್ಲ",
+      "r": "Paravaagilla",
+      "x": "ಪರವಾಗಿಲ್ಲ, ಯಾವಾಗ ಬೇಕಾದರೂ ಕೇಳಿ.",
+      "xr": "Paravaagilla, yaavaaga bekaadaroo keli."
+    },
+    "c008": {
+      "t": "ದಯವಿಟ್ಟು",
+      "r": "Dayavittu",
+      "x": "ದಯವಿಟ್ಟು ಒಳಗೆ ಬಂದು ಕುಳಿತುಕೊಳ್ಳಿ.",
+      "xr": "Dayavittu olage bandu kulitukolli."
+    },
+    "c009": {
+      "t": "ಕ್ಷಮಿಸಿ",
+      "r": "Kshamisi",
+      "x": "ಕ್ಷಮಿಸಿ, ನಾನು ಒಂದು ಪ್ರಶ್ನೆ ಕೇಳಬಹುದೇ?",
+      "xr": "Kshamisi, naanu ondu prashne kelabahude?"
+    },
+    "c010": {
+      "t": "ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ",
+      "r": "Nannannu kshamisi",
+      "x": "ತಡವಾಗಿ ಬಂದಿದ್ದಕ್ಕೆ ನನ್ನನ್ನು ಕ್ಷಮಿಸಿ.",
+      "xr": "Tadavaagi bandiddakke nannannu kshamisi."
+    },
+    "c011": {
+      "t": "ಹೌದು",
+      "r": "Haudu",
+      "x": "ಹೌದು, ನನಗೆ ಸಂಪೂರ್ಣವಾಗಿ ಅರ್ಥವಾಯಿತು.",
+      "xr": "Haudu, nanage sampoornavaagi arthavaayitu."
+    },
+    "c012": {
+      "t": "ಇಲ್ಲ",
+      "r": "Illa",
+      "x": "ಇಲ್ಲ, ಧನ್ಯವಾದಗಳು, ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ.",
+      "xr": "Illa, dhanyavaadagalu, naanu chennaagiddene."
+    },
+    "c013": {
+      "t": "ಹೋಗಿ ಬರುತ್ತೇನೆ",
+      "r": "Hogi baruttene",
+      "x": "ಹೋಗಿ ಬರುತ್ತೇನೆ, ನಿಮ್ಮ ಪ್ರಯಾಣ ಸುರಕ್ಷಿತವಾಗಿರಲಿ.",
+      "xr": "Hogi baruttene, nimma prayaana surakshitavaagirali."
+    },
+    "c014": {
+      "t": "ನನ್ನ ಹೆಸರು",
+      "r": "Nanna hesaru",
+      "x": "ನನ್ನ ಹೆಸರು ಮಾಯಾ.",
+      "xr": "Nanna hesaru Maayaa."
+    },
+    "c015": {
+      "t": "ನೀವು ಹೇಗಿದ್ದೀರಿ?",
+      "r": "Neevu hegiddeeri?",
+      "x": "ನೀವು ಇಂದು ಹೇಗಿದ್ದೀರಿ?",
+      "xr": "Neevu indu hegiddeeri?"
+    },
+    "c016": {
+      "t": "ನಾನು",
+      "r": "Naanu",
+      "x": "ನಾನು ಹೊಸ ಭಾಷೆಯನ್ನು ಕಲಿಯುತ್ತಿದ್ದೇನೆ.",
+      "xr": "Naanu hosa bhaasheyannu kaliyuttiddene."
+    },
+    "c017": {
+      "t": "ನೀವು",
+      "r": "Neevu",
+      "x": "ನೀವು ತುಂಬಾ ಸ್ಪಷ್ಟವಾಗಿ ಮಾತನಾಡುತ್ತೀರಿ.",
+      "xr": "Neevu tumbaa spashtavaagi maatanaadutteeri."
+    },
+    "c018": {
+      "t": "ಅವನು",
+      "r": "Avanu",
+      "x": "ಅವನು ನನ್ನ ಅಣ್ಣ.",
+      "xr": "Avanu nanna anna."
+    },
+    "c019": {
+      "t": "ಅವಳು",
+      "r": "Avalu",
+      "x": "ಅವಳು ಒಬ್ಬ ನುರಿತ ವೈದ್ಯೆ.",
+      "xr": "Avalu obba nurita vaidye."
+    },
+    "c020": {
+      "t": "ನಾವು",
+      "r": "Naavu",
+      "x": "ನಾವು ಒಂದೇ ನಗರದಲ್ಲಿ ವಾಸಿಸುತ್ತೇವೆ.",
+      "xr": "Naavu onde nagaradalli vaasisutteve."
+    },
+    "c021": {
+      "t": "ಅಮ್ಮ",
+      "r": "Amma",
+      "x": "ನನ್ನ ಅಮ್ಮ ರುಚಿಕರವಾದ ಅಡುಗೆ ಮಾಡುತ್ತಾರೆ.",
+      "xr": "Nanna amma ruchikaravaada aduge maaduttaare."
+    },
+    "c022": {
+      "t": "ಅಪ್ಪ",
+      "r": "Appa",
+      "x": "ನನ್ನ ಅಪ್ಪ ಪ್ರತಿದಿನ ಬೆಳಗ್ಗೆ ಪತ್ರಿಕೆ ಓದುತ್ತಾರೆ.",
+      "xr": "Nanna appa pratidina belagge patrike oduttaare."
+    },
+    "c023": {
+      "t": "ಸಹೋದರ",
+      "r": "Sahodara",
+      "x": "ನನ್ನ ಸಹೋದರ ಫುಟ್ಬಾಲ್ ಆಡುತ್ತಾನೆ.",
+      "xr": "Nanna sahodara phutbaal aaduttaane."
+    },
+    "c024": {
+      "t": "ಸಹೋದರಿ",
+      "r": "Sahodari",
+      "x": "ನನ್ನ ಸಹೋದರಿ ವೈದ್ಯಕೀಯ ಓದುತ್ತಿದ್ದಾಳೆ.",
+      "xr": "Nanna sahodari vaidyakeeya oduttiddaale."
+    },
+    "c025": {
+      "t": "ಕುಟುಂಬ",
+      "r": "Kutumba",
+      "x": "ನನ್ನ ಕುಟುಂಬ ಪ್ರತಿ ಭಾನುವಾರ ಒಟ್ಟಿಗೆ ಸೇರುತ್ತದೆ.",
+      "xr": "Nanna kutumba prati bhaanuvaara ottige seruttade."
+    },
+    "c026": {
+      "t": "ಸ್ನೇಹಿತ",
+      "r": "Snehita",
+      "x": "ಅವಳು ನನ್ನ ಅತ್ಯಂತ ಆಪ್ತ ಸ್ನೇಹಿತೆ.",
+      "xr": "Avalu nanna atyanta aapta snehite."
+    },
+    "c027": {
+      "t": "ಮಗು",
+      "r": "Magu",
+      "x": "ಮಗು ಒಂದು ಚಿತ್ರ ಬರೆಯುತ್ತಿದೆ.",
+      "xr": "Magu ondu chitra bareyuttide."
+    },
+    "c028": {
+      "t": "ಶಿಕ್ಷಕ",
+      "r": "Shikshaka",
+      "x": "ನಮ್ಮ ಶಿಕ್ಷಕರು ವ್ಯಾಕರಣವನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ವಿವರಿಸುತ್ತಾರೆ.",
+      "xr": "Namma shikshakaru vyaakaranavannu spashtavaagi vivarisuttaare."
+    },
+    "c029": {
+      "t": "ವಿದ್ಯಾರ್ಥಿ",
+      "r": "Vidyaarthi",
+      "x": "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯೂ ನೋಟ್‌ಬುಕ್ ತಂದಿದ್ದಾರೆ.",
+      "xr": "Prati vidyaarthiyoo notbuk tandiddaare."
+    },
+    "c030": {
+      "t": "ನೆರೆಯವರು",
+      "r": "Nereyavaru",
+      "x": "ನಮ್ಮ ನೆರೆಯವರು ತುಂಬಾ ದಯಾಳುಗಳು.",
+      "xr": "Namma nereyavaru tumbaa dayaalugalu."
+    },
+    "c031": {
+      "t": "ಒಂದು",
+      "r": "Ondu",
+      "x": "ನನಗೆ ಒಂದು ಕಪ್ ಚಹಾ ಬೇಕು.",
+      "xr": "Nanage ondu kap chahaa beku."
+    },
+    "c032": {
+      "t": "ಎರಡು",
+      "r": "Eradu",
+      "x": "ದಯವಿಟ್ಟು ನಮಗೆ ಎರಡು ಟಿಕೆಟ್ ಬೇಕು.",
+      "xr": "Dayavittu namage eradu tiket beku."
+    },
+    "c033": {
+      "t": "ಮೂರು",
+      "r": "Mooru",
+      "x": "ಮೇಜಿನ ಮೇಲೆ ಮೂರು ಪುಸ್ತಕಗಳಿವೆ.",
+      "xr": "Mejina mele mooru pustakagalive."
+    },
+    "c034": {
+      "t": "ಐದು",
+      "r": "Aidu",
+      "x": "ತರಗತಿ ಐದು ನಿಮಿಷಗಳಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.",
+      "xr": "Taragati aidu nimishagalalli praarambhavaaguttade."
+    },
+    "c035": {
+      "t": "ಹತ್ತು",
+      "r": "Hattu",
+      "x": "ಅವಳು ಒಂದರಿಂದ ಹತ್ತರವರೆಗೆ ಎಣಿಸಿದಳು.",
+      "xr": "Avalu ondarinda hattaravarege enisidalu."
+    },
+    "c036": {
+      "t": "ಇಂದು",
+      "r": "Indu",
+      "x": "ಇಂದು ಬಿಸಿಲಿನ ಸುಂದರ ದಿನ.",
+      "xr": "Indu bisilina sundara dina."
+    },
+    "c037": {
+      "t": "ನಾಳೆ",
+      "r": "Naale",
+      "x": "ನಾಳೆ ನಾವು ವಸ್ತುಸಂಗ್ರಹಾಲಯಕ್ಕೆ ಭೇಟಿ ನೀಡುತ್ತೇವೆ.",
+      "xr": "Naale naavu vastusangrahaalayakke bheti needutteve."
+    },
+    "c038": {
+      "t": "ನಿನ್ನೆ",
+      "r": "Ninne",
+      "x": "ನಿನ್ನೆ ಮಧ್ಯಾಹ್ನವಿಡೀ ಮಳೆ ಸುರಿಯಿತು.",
+      "xr": "Ninne madhyaahnavidee male suriyitu."
+    },
+    "c039": {
+      "t": "ಈಗ",
+      "r": "Eega",
+      "x": "ನಾನು ಈಗಲೇ ಹೊರಡಲು ಸಿದ್ಧನಾಗಿದ್ದೇನೆ.",
+      "xr": "Naanu eegale horadalu siddhanaagiddene."
+    },
+    "c040": {
+      "t": "ನಂತರ",
+      "r": "Nantara",
+      "x": "ನಾವು ಇದರ ಬಗ್ಗೆ ನಂತರ ಮಾತನಾಡೋಣ.",
+      "xr": "Naavu idara bagge nantara maatanaadona."
+    },
+    "c041": {
+      "t": "ಬೆಳಗ್ಗೆ",
+      "r": "Belagge",
+      "x": "ನಾನು ಪ್ರತಿದಿನ ಬೆಳಗ್ಗೆ ವ್ಯಾಯಾಮ ಮಾಡುತ್ತೇನೆ.",
+      "xr": "Naanu pratidina belagge vyaayaama maaduttene."
+    },
+    "c042": {
+      "t": "ರಾತ್ರಿ",
+      "r": "Raatri",
+      "x": "ರಾತ್ರಿ ನಕ್ಷತ್ರಗಳು ಪ್ರಕಾಶಮಾನವಾಗಿ ಹೊಳೆಯುತ್ತವೆ.",
+      "xr": "Raatri nakshatragalu prakaashamaanavaagi holeyuttave."
+    },
+    "c043": {
+      "t": "ವಾರ",
+      "r": "Vaara",
+      "x": "ಈ ವಾರ ತುಂಬಾ ಕೆಲಸದ ಒತ್ತಡವಿತ್ತು.",
+      "xr": "Ee vaara tumbaa kelasada ottadavittu."
+    },
+    "c044": {
+      "t": "ತಿಂಗಳು",
+      "r": "Tingalu",
+      "x": "ಮುಂದಿನ ತಿಂಗಳು ನಾವು ವಿದೇಶಕ್ಕೆ ಪ್ರಯಾಣಿಸುತ್ತೇವೆ.",
+      "xr": "Mundina tingalu naavu videshakke prayaanisutteve."
+    },
+    "c045": {
+      "t": "ವರ್ಷ",
+      "r": "Varsha",
+      "x": "ನಿಮ್ಮೆಲ್ಲರಿಗೂ ಹೊಸ ವರ್ಷದ ಶುಭಾಶಯಗಳು.",
+      "xr": "Nimmellarigoo hosa varshada shubhaashayagalu."
+    },
+    "c046": {
+      "t": "ನೀರು",
+      "r": "Neeru",
+      "x": "ನನಗೆ ಒಂದು ಲೋಟ ನೀರು ಸಿಗಬಹುದೇ?",
+      "xr": "Nanage ondu lota neeru sigabahude?"
+    },
+    "c047": {
+      "t": "ಅನ್ನ",
+      "r": "Anna",
+      "x": "ನಾವು ಬಿಸಿ ಅನ್ನದ ಜೊತೆ ಸಾರು ತಿನ್ನುತ್ತೇವೆ.",
+      "xr": "Naavu bisi annada jote saaru tinnutteve."
+    },
+    "c048": {
+      "t": "ರೊಟ್ಟಿ",
+      "r": "Rotti",
+      "x": "ತಾಜಾ ರೊಟ್ಟಿಯ ಸುವಾಸನೆ ಅದ್ಭುತವಾಗಿದೆ.",
+      "xr": "Taajaa rottiya suvaasane adbhutavaagide."
+    },
+    "c049": {
+      "t": "ಹಣ್ಣು",
+      "r": "Hannu",
+      "x": "ಪ್ರತಿದಿನ ಸಾಕಷ್ಟು ತಾಜಾ ಹಣ್ಣುಗಳನ್ನು ತಿನ್ನಿ.",
+      "xr": "Pratidina saakashtu taajaa hannugalannu tinni."
+    },
+    "c050": {
+      "t": "ಹಾಲು",
+      "r": "Haalu",
+      "x": "ನೀವು ಕಾಫಿಗೆ ಹಾಲು ಹಾಕಿಕೊಳ್ಳುತ್ತೀರಾ?",
+      "xr": "Neevu kaaphige haalu haakikollutteeraa?"
+    },
+    "c051": {
+      "t": "ಚಹಾ",
+      "r": "Chahaa",
+      "x": "ಚಳಿಗಾಲದಲ್ಲಿ ಬಿಸಿ ಚಹಾ ಹಿತವಾಗಿರುತ್ತದೆ.",
+      "xr": "Chaligaaladalli bisi chahaa hitavaagiruttade."
+    },
+    "c052": {
+      "t": "ಕಾಫಿ",
+      "r": "Kaaphi",
+      "x": "ನಾನು ಬೆಳಗ್ಗೆ ಕಪ್ಪು ಕಾಫಿ ಕುಡಿಯುತ್ತೇನೆ.",
+      "xr": "Naanu belagge kappu kaaphi kudiyuttene."
+    },
+    "c053": {
+      "t": "ಉಪಾಹಾರ",
+      "r": "Upaahaara",
+      "x": "ಉಪಾಹಾರವು ದಿನದ ಮೊದಲ ಆಹಾರವಾಗಿದೆ.",
+      "xr": "Upaahaaravu dinada modala aahaaravaagide."
+    },
+    "c054": {
+      "t": "ಮಧ್ಯಾಹ್ನದ ಊಟ",
+      "r": "Madhyaahnada oota",
+      "x": "ಮಧ್ಯಾಹ್ನದ ಊಟಕ್ಕೆ ನಾವು ಎಲ್ಲಿಗೆ ಹೋಗೋಣ?",
+      "xr": "Madhyaahnada ootakke naavu ellige hogona?"
+    },
+    "c055": {
+      "t": "ರಾತ್ರಿಯ ಊಟ",
+      "r": "Raatriya oota",
+      "x": "ರಾತ್ರಿಯ ಊಟ ಏಳು ಗಂಟೆಗೆ ಸಿದ್ಧವಾಗುತ್ತದೆ.",
+      "xr": "Raatriya oota elu gantege siddhavaaguttade."
+    },
+    "c056": {
+      "t": "ರುಚಿಕರ",
+      "r": "Ruchikara",
+      "x": "ಈ ಅಡುಗೆ ನಿಜಕ್ಕೂ ತುಂಬಾ ರುಚಿಕರವಾಗಿದೆ.",
+      "xr": "Ee aduge nijakkoo tumbaa ruchikaravaagide."
+    },
+    "c057": {
+      "t": "ಹಸಿವು",
+      "r": "Hasivu",
+      "x": "ನಡಿಗೆಯ ನಂತರ ನನಗೆ ತುಂಬಾ ಹಸಿವಾಗಿದೆ.",
+      "xr": "Nadigeya nantara nanage tumbaa hasivaagide."
+    },
+    "c058": {
+      "t": "ಬಾಯಾರಿಕೆ",
+      "r": "Baayaarike",
+      "x": "ಈ ಬಿಸಿಲಿನಲ್ಲಿ ನನಗೆ ಬಾಯಾರಿಕೆಯಾಗುತ್ತಿದೆ.",
+      "xr": "Ee bisilinalli nanage baayaarikeyaaguttide."
+    },
+    "c059": {
+      "t": "ಮೆನು",
+      "r": "Menu",
+      "x": "ದಯವಿಟ್ಟು ನಾನು ಮೆನು ನೋಡಬಹುದೇ?",
+      "xr": "Dayavittu naanu menu nodabahude?"
+    },
+    "c060": {
+      "t": "ಬಿಲ್",
+      "r": "Bil",
+      "x": "ದಯವಿಟ್ಟು ನಮಗೆ ಬಿಲ್ ಕೊಡುತ್ತೀರಾ?",
+      "xr": "Dayavittu namage bil kodutteeraa?"
+    },
+    "c061": {
+      "t": "ಮನೆ",
+      "r": "Mane",
+      "x": "ಅವರ ಮನೆಗೆ ಒಂದು ಪುಟ್ಟ ತೋಟವಿದೆ.",
+      "xr": "Avara manege ondu putta totavide."
+    },
+    "c062": {
+      "t": "ಕೋಣೆ",
+      "r": "Kone",
+      "x": "ನನ್ನ ಕೋಣೆಯಲ್ಲಿ ದೊಡ್ಡ ಕಿಟಕಿ ಇದೆ.",
+      "xr": "Nanna koneyalli dodda kitaki ide."
+    },
+    "c063": {
+      "t": "ಮೇಜು",
+      "r": "Meju",
+      "x": "ಬೀಗದ ಕೈಗಳನ್ನು ಮೇಜಿನ ಮೇಲೆ ಇಡಿ.",
+      "xr": "Beegada kaigalannu mejina mele idi."
+    },
+    "c064": {
+      "t": "ಪುಸ್ತಕ",
+      "r": "Pustaka",
+      "x": "ಈ ಪುಸ್ತಕ ಓದಲು ಸುಲಭವಾಗಿದೆ.",
+      "xr": "Ee pustaka odalu sulabhavaagide."
+    },
+    "c065": {
+      "t": "ಬಾಗಿಲು",
+      "r": "Baagilu",
+      "x": "ದಯವಿಟ್ಟು ಬಾಗಿಲನ್ನು ನಿಧಾನವಾಗಿ ಮುಚ್ಚಿ.",
+      "xr": "Dayavittu baagilannu nidhaanavaagi muchchi."
+    },
+    "c066": {
+      "t": "ಕೆಂಪು",
+      "r": "Kempu",
+      "x": "ಅವಳು ಪ್ರಕಾಶಮಾನವಾದ ಕೆಂಪು ಛತ್ರಿ ಕೊಂಡಳು.",
+      "xr": "Avalu prakaashamaanavaada kempu chatri kondalu."
+    },
+    "c067": {
+      "t": "ನೀಲಿ",
+      "r": "Neeli",
+      "x": "ಆಕಾಶವು ಶುಭ್ರವಾಗಿ ಮತ್ತು ನೀಲಿಯಾಗಿದೆ.",
+      "xr": "Aakaashavu shubhravaagi mattu neeliyaagide."
+    },
+    "c068": {
+      "t": "ಬಿಳಿ",
+      "r": "Bili",
+      "x": "ಹಿಮವು ನೆಲವನ್ನು ಬಿಳಿ ಬಣ್ಣದಿಂದ ಮುಚ್ಚಿದೆ.",
+      "xr": "Himavu nelavannu bili bannadinda muchchide."
+    },
+    "c069": {
+      "t": "ದೊಡ್ಡ",
+      "r": "Dodda",
+      "x": "ಅವರು ಒಂದು ದೊಡ್ಡ ನಗರಕ್ಕೆ ಸ್ಥಳಾಂತರಗೊಂಡರು.",
+      "xr": "Avaru ondu dodda nagarakke sthalaantaragondaru."
+    },
+    "c070": {
+      "t": "ಚಿಕ್ಕ",
+      "r": "Chikka",
+      "x": "ಒಂದು ಚಿಕ್ಕ ಹಕ್ಕಿ ಕೊಂಬೆಯ ಮೇಲೆ ಹಾಡಿತು.",
+      "xr": "Ondu chikka hakki kombeya mele haaditu."
+    },
+    "c071": {
+      "t": "ಹೋಗುವುದು",
+      "r": "Hoguvudu",
+      "x": "ನಾನು ರೈಲಿನಲ್ಲಿ ಕೆಲಸಕ್ಕೆ ಹೋಗುತ್ತೇನೆ.",
+      "xr": "Naanu railinalli kelasakke hoguttene."
+    },
+    "c072": {
+      "t": "ಬರುವುದು",
+      "r": "Baruvudu",
+      "x": "ದಯವಿಟ್ಟು ನಮ್ಮ ಸಂಭ್ರಮಕ್ಕೆ ಬನ್ನಿ.",
+      "xr": "Dayavittu namma sambhramakke banni."
+    },
+    "c073": {
+      "t": "ತಿನ್ನುವುದು",
+      "r": "Tinnuvudu",
+      "x": "ನಾವು ಎಂಟು ಗಂಟೆಗೆ ಒಟ್ಟಿಗೆ ರಾತ್ರಿ ಊಟ ತಿನ್ನುತ್ತೇವೆ.",
+      "xr": "Naavu entu gantege ottige raatri oota tinnutteve."
+    },
+    "c074": {
+      "t": "ಕುಡಿಯುವುದು",
+      "r": "Kudiyuvudu",
+      "x": "ಸಾಕಷ್ಟು ನೀರು ಕುಡಿಯಲು ಮರೆಯಬೇಡಿ.",
+      "xr": "Saakashtu neeru kudiyalu mareyabedi."
+    },
+    "c075": {
+      "t": "ನಿದ್ರಿಸುವುದು",
+      "r": "Nidrisuvudu",
+      "x": "ನಾನು ಪ್ರತಿ ರಾತ್ರಿ ಎಂಟು ಗಂಟೆ ನಿದ್ದೆ ಮಾಡಲು ಪ್ರಯತ್ನಿಸುತ್ತೇನೆ.",
+      "xr": "Naanu prati raatri entu gante nidde maadalu prayatnisuttene."
+    },
+    "c076": {
+      "t": "ರೈಲು",
+      "r": "Railu",
+      "x": "ವೇಗದ ರೈಲು ಮಧ್ಯಾಹ್ನ ಹನ್ನೆರಡಕ್ಕೆ ಬರುತ್ತದೆ.",
+      "xr": "Vegada railu madhyaahna hanneradakke baruttade."
+    },
+    "c077": {
+      "t": "ಬಸ್",
+      "r": "Bas",
+      "x": "ನಗರದ ಕೇಂದ್ರಕ್ಕೆ ಹೋಗಲು ಎರಡನೇ ಬಸ್ ಹತ್ತಿ.",
+      "xr": "Nagarada kendrakke hogalu eradane bas hatti."
+    },
+    "c078": {
+      "t": "ವಿಮಾನ ನಿಲ್ದಾಣ",
+      "r": "Vimaana nildaana",
+      "x": "ನಾವು ಎರಡು ಗಂಟೆ ಮೊದಲೇ ವಿಮಾನ ನಿಲ್ದಾಣವನ್ನು ತಲುಪಿದೆವು.",
+      "xr": "Naavu eradu gante modale vimaana nildaanavannu talupidevu."
+    },
+    "c079": {
+      "t": "ಟಿಕೆಟ್",
+      "r": "Tiket",
+      "x": "ಹೊರಬರುವವರೆಗೆ ನಿಮ್ಮ ಟಿಕೆಟ್ ಅನ್ನು ಜೋಪಾನವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
+      "xr": "Horabaruvavarege nimma tiket annu jopaanavaagi ittukolli."
+    },
+    "c080": {
+      "t": "ನಿಲ್ದಾಣ",
+      "r": "Nildaana",
+      "x": "ನಿಲ್ದಾಣವು ಇಲ್ಲಿಂದ ಐದು ನಿಮಿಷದ ದೂರದಲ್ಲಿದೆ.",
+      "xr": "Nildaanavu illinda aidu nimishada dooradallide."
+    },
+    "c081": {
+      "t": "ಎಡ",
+      "r": "Eda",
+      "x": "ಮುಂದಿನ ಸಿಗ್ನಲ್ ಬಳಿ ಎಡಕ್ಕೆ ತಿರುಗಿ.",
+      "xr": "Mundina signal bali edakke tirugi."
+    },
+    "c082": {
+      "t": "ಬಲ",
+      "r": "Bala",
+      "x": "ಔಷಧಿ ಅಂಗಡಿ ನಿಮ್ಮ ಬಲಭಾಗದಲ್ಲಿದೆ.",
+      "xr": "Aushadhi angadi nimma balabhaagadallide."
+    },
+    "c083": {
+      "t": "ನೇರ",
+      "r": "Nera",
+      "x": "ಎರಡು ಬೀದಿಗಳವರೆಗೆ ನೇರವಾಗಿ ನಡೆಯಿರಿ.",
+      "xr": "Eradu beedigalavarege neravaagi nadeyiri."
+    },
+    "c084": {
+      "t": "ಹತ್ತಿರ",
+      "r": "Hattira",
+      "x": "ಇಲ್ಲಿ ಹತ್ತಿರದಲ್ಲಿ ಯಾವುದಾದರೂ ಹೋಟೆಲ್ ಇದೆಯೇ?",
+      "xr": "Illi hattiradalli yaavudaadaroo hotel ideye?"
+    },
+    "c085": {
+      "t": "ದೂರ",
+      "r": "Doora",
+      "x": "ಸಮುದ್ರತೀರವು ಪಟ್ಟಣದಿಂದ ದೂರವಿಲ್ಲ.",
+      "xr": "Samudrateeravu pattanadinda dooravilla."
+    },
+    "c086": {
+      "t": "ನಕ್ಷೆ",
+      "r": "Nakshe",
+      "x": "ನಕ್ಷೆಯಲ್ಲಿ ದಾರಿಯನ್ನು ಪರಿಶೀಲಿಸೋಣ.",
+      "xr": "Naksheyalli daariyannu parisheelisona."
+    },
+    "c087": {
+      "t": "ಹೋಟೆಲ್",
+      "r": "Hotel",
+      "x": "ನಾವು ನಗರದ ಮಧ್ಯಭಾಗದಲ್ಲಿ ಶಾಂತವಾದ ಹೋಟೆಲ್ ಕಾಯ್ದಿರಿಸಿದ್ದೇವೆ.",
+      "xr": "Naavu nagarada madhyabhaagadalli shaantavaada hotel kaaydirisiddeve."
+    },
+    "c088": {
+      "t": "ಪಾಸ್‌ಪೋರ್ಟ್",
+      "r": "Paasport",
+      "x": "ನಿಮ್ಮ ಪಾಸ್‌ಪೋರ್ಟ್ ಅನ್ನು ಮನೆಯಲ್ಲಿ ಮರೆಯಬೇಡಿ.",
+      "xr": "Nimma paasport annu maneyalli mareyabedi."
+    },
+    "c089": {
+      "t": "ಸಾಮಾನು",
+      "r": "Saamaanu",
+      "x": "ಇಂದು ನನ್ನ ಸಾಮಾನು ತುಂಬಾ ಭಾರವಾಗಿದೆ.",
+      "xr": "Indu nanna saamaanu tumbaa bhaaravaagide."
+    },
+    "c090": {
+      "t": "ಎಲ್ಲಿದೆ?",
+      "r": "Ellide?",
+      "x": "ಅತ್ಯಂತ ಹತ್ತಿರದ ಮೆಟ್ರೋ ನಿರ್ಗಮನ ಎಲ್ಲಿದೆ?",
+      "xr": "Atyanta hattirada metro nirgamana ellide?"
+    },
+    "c091": {
+      "t": "ಹಣ",
+      "r": "Hana",
+      "x": "ಪ್ರತಿ ತಿಂಗಳು ನಿಮ್ಮ ಹಣದ ಸ್ವಲ್ಪ ಭಾಗವನ್ನು ಉಳಿಸಿ.",
+      "xr": "Prati tingalu nimma hanada svalpa bhaagavannu ulisi."
+    },
+    "c092": {
+      "t": "ಬೆಲೆ",
+      "r": "Bele",
+      "x": "ಈ ಜಾಕೆಟ್‌ನ ಬೆಲೆ ಎಷ್ಟು?",
+      "xr": "Ee jaaketna bele eshtu?"
+    },
+    "c093": {
+      "t": "ಅಗ್ಗ",
+      "r": "Agga",
+      "x": "ಬೆಳಗಿನ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ತರಕಾರಿಗಳು ಅಗ್ಗವಾಗಿ ಸಿಗುತ್ತವೆ.",
+      "xr": "Belagina maarukatteyalli tarakaarigalu aggavaagi siguttave."
+    },
+    "c094": {
+      "t": "ದುಬಾರಿ",
+      "r": "Dubaari",
+      "x": "ಆ ಗಡಿಯಾರ ನನಗೆ ತುಂಬಾ ದುಬಾರಿಯಾಗಿದೆ.",
+      "xr": "Aa gadiyaara nanage tumbaa dubaariyaagide."
+    },
+    "c095": {
+      "t": "ರಿಯಾಯಿತಿ",
+      "r": "Riyaayiti",
+      "x": "ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ರಿಯಾಯಿತಿ ಲಭ್ಯವಿದೆಯೇ?",
+      "xr": "Vidyaarthigalige riyaayiti labhyavideye?"
+    },
+    "c096": {
+      "t": "ಅಂಗಡಿ",
+      "r": "Angadi",
+      "x": "ಆ ಮೂಲೆಯ ಅಂಗಡಿ ಎಂಟು ಗಂಟೆಗೆ ತೆರೆಯುತ್ತದೆ.",
+      "xr": "Aa mooleya angadi entu gantege tereyuttade."
+    },
+    "c097": {
+      "t": "ಮಾರುಕಟ್ಟೆ",
+      "r": "Maarukatte",
+      "x": "ಶನಿವಾರಗಳಂದು ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆ ತುಂಬಾ ಚಟುವಟಿಕೆಯಿಂದ ಕೂಡಿರುತ್ತದೆ.",
+      "xr": "Shanivaaragalandu sthaleeya maarukatte tumbaa chatuvatikeyinda koodiruttade."
+    },
+    "c098": {
+      "t": "ಕೊಳ್ಳುವುದು",
+      "r": "Kolluvudu",
+      "x": "ನಾನು ಒಂದು ಬೆಚ್ಚಗಿನ ಕೋಟ್ ಕೊಳ್ಳಲು ಬಯಸುತ್ತೇನೆ.",
+      "xr": "Naanu ondu bechchagina kot kollalu bayasuttene."
+    },
+    "c099": {
+      "t": "ಪಾವತಿಸುವುದು",
+      "r": "Paavatisuvudu",
+      "x": "ನಾನು ಕಾರ್ಡ್ ಅಥವಾ ನಗದು ಮೂಲಕ ಪಾವತಿಸಬಹುದೇ?",
+      "xr": "Naanu kaard athavaa nagadu moolaka paavatisabahude?"
+    },
+    "c100": {
+      "t": "ರಸೀದಿ",
+      "r": "Raseedi",
+      "x": "ದಯವಿಟ್ಟು ನನಗೆ ರಸೀದಿ ಕೊಡಿ.",
+      "xr": "Dayavittu nanage raseedi kodi."
+    },
+    "c101": {
+      "t": "ಅಂಗಿ",
+      "r": "Angi",
+      "x": "ಈ ಹತ್ತಿಯ ಅಂಗಿ ಧರಿಸಲು ಆರಾಮದಾಯಕವಾಗಿದೆ.",
+      "xr": "Ee hattiya angi dharisalu aaraamadaayakavaagide."
+    },
+    "c102": {
+      "t": "ಪಾದರಕ್ಷೆಗಳು",
+      "r": "Paadarakshegalu",
+      "x": "ಚಾರಣಕ್ಕೆ ನನಗೆ ಗಟ್ಟಿಯಾದ ಪಾದರಕ್ಷೆಗಳು ಬೇಕು.",
+      "xr": "Chaaranakke nanage gattiyaada paadarakshegalu beku."
+    },
+    "c103": {
+      "t": "ಚೀಲ",
+      "r": "Cheela",
+      "x": "ಅವಳು ಚರ್ಮದ ಚೀಲವನ್ನು ಹಿಡಿದಿದ್ದಳು.",
+      "xr": "Avalu charmada cheelavannu hidididdalu."
+    },
+    "c104": {
+      "t": "ಹೊಸ",
+      "r": "Hosa",
+      "x": "ಅವನು ಇಂದು ತನ್ನ ಹೊಸ ಜಾಕೆಟ್ ಧರಿಸಿದ್ದಾನೆ.",
+      "xr": "Avanu indu tanna hosa jaaket dharisiddaane."
+    },
+    "c105": {
+      "t": "ಅಳತೆ",
+      "r": "Alate",
+      "x": "ಇದರಲ್ಲಿ ಮಧ್ಯಮ ಅಳತೆ ನಿಮ್ಮ ಬಳಿ ಇದೆಯೇ?",
+      "xr": "Idaralli madhyama alate nimma bali ideye?"
+    },
+    "c106": {
+      "t": "ಸೂರ್ಯ",
+      "r": "Soorya",
+      "x": "ಬೆಚ್ಚಗಿನ ಸೂರ್ಯನ ಬಿಸಿಲು ಒದ್ದೆಯಾದ ರಸ್ತೆಯನ್ನು ಒಣಗಿಸಿತು.",
+      "xr": "Bechchagina sooryana bisilu oddeyaada rasteyannu onagisitu."
+    },
+    "c107": {
+      "t": "ಮಳೆ",
+      "r": "Male",
+      "x": "ಮಳೆ ಬರುವ ಸಾಧ್ಯತೆ ಇರುವುದರಿಂದ ಛತ್ರಿ ತೆಗೆದುಕೊಂಡು ಹೋಗಿ.",
+      "xr": "Male baruva saadhyate iruvudarinda chatri tegedukondu hogi."
+    },
+    "c108": {
+      "t": "ಗಾಳಿ",
+      "r": "Gaali",
+      "x": "ಸಮುದ್ರದಿಂದ ತಂಪಾದ ಗಾಳಿ ಬೀಸಿತು.",
+      "xr": "Samudradinda tampaada gaali beesitu."
+    },
+    "c109": {
+      "t": "ಬಿಸಿ",
+      "r": "Bisi",
+      "x": "ಇಲ್ಲಿ ಬೇಸಿಗೆಯ ಮಧ್ಯಾಹ್ನಗಳು ತುಂಬಾ ಬಿಸಿಯಾಗಿರುತ್ತವೆ.",
+      "xr": "Illi besigeya madhyaahnagalu tumbaa bisiyaagiruttave."
+    },
+    "c110": {
+      "t": "ಚಳಿ",
+      "r": "Chali",
+      "x": "ಚಳಿ ಇರುವಾಗ ಕಂಠವಸ್ತ್ರವನ್ನು ಧರಿಸಿ.",
+      "xr": "Chali iruvaaga kanthavastravannu dharisi."
+    },
+    "c111": {
+      "t": "ಬೇಸಿಗೆ",
+      "r": "Besige",
+      "x": "ಬೇಸಿಗೆಯಲ್ಲಿ ನಾವು ಆಗಾಗ ಈಜುತ್ತೇವೆ.",
+      "xr": "Besigeyalli naavu aagaaga eejutteve."
+    },
+    "c112": {
+      "t": "ಚಳಿಗಾಲ",
+      "r": "Chaligaala",
+      "x": "ಚಳಿಗಾಲದ ರಾತ್ರಿಗಳು ಉದ್ದವಾಗಿಯೂ ಶಾಂತವಾಗಿಯೂ ಇರುತ್ತವೆ.",
+      "xr": "Chaligaalada raatrigalu uddavaagiyoo shaantavaagiyoo iruttave."
+    },
+    "c113": {
+      "t": "ವಸಂತ",
+      "r": "Vasanta",
+      "x": "ವಸಂತ ಋತುವಿನಲ್ಲಿ ಎಲ್ಲೆಡೆ ಹೂವುಗಳು ಅರಳುತ್ತವೆ.",
+      "xr": "Vasanta rutuvinalli ellede hoovugalu araluttave."
+    },
+    "c114": {
+      "t": "ಮೋಡ",
+      "r": "Moda",
+      "x": "ಬಿರುಗಾಳಿಗೆ ಮುನ್ನ ಕಪ್ಪು ಮೋಡಗಳು ಕವಿದವು.",
+      "xr": "Birugaalige munna kappu modagalu kavidavu."
+    },
+    "c115": {
+      "t": "ಹಿಮ",
+      "r": "Hima",
+      "x": "ಮಕ್ಕಳು ತಾಜಾ ಹಿಮದಲ್ಲಿ ಹಿಮಮಾನವನನ್ನು ಕಟ್ಟಿದರು.",
+      "xr": "Makkalu taajaa himadalli himamaanavanannu kattidaru."
+    },
+    "c116": {
+      "t": "ಬೆಟ್ಟ",
+      "r": "Betta",
+      "x": "ಸೂರ್ಯೋದಯಕ್ಕೆ ಮುನ್ನ ನಾವು ಬೆಟ್ಟವನ್ನು ಹತ್ತಿದೆವು.",
+      "xr": "Sooryodayakke munna naavu bettavannu hattidevu."
+    },
+    "c117": {
+      "t": "ನದಿ",
+      "r": "Nadi",
+      "x": "ವಿಶಾಲವಾದ ನದಿಯು ಕಣಿವೆಯ ಮೂಲಕ ಹರಿಯುತ್ತದೆ.",
+      "xr": "Vishaalavaada nadiyu kaniveya moolaka hariyuttade."
+    },
+    "c118": {
+      "t": "ಸಮುದ್ರ",
+      "r": "Samudra",
+      "x": "ಇಂದು ಸಂಜೆ ಸಮುದ್ರವು ಶಾಂತವಾಗಿ ಕಾಣುತ್ತಿದೆ.",
+      "xr": "Indu sanje samudravu shaantavaagi kaanuttide."
+    },
+    "c119": {
+      "t": "ಮರ",
+      "r": "Mara",
+      "x": "ಒಂದು ಪುರಾತನ ಮರವು ಅಂಗಳಕ್ಕೆ ನೆರಳು ನೀಡುತ್ತದೆ.",
+      "xr": "Ondu puraatana maravu angalakke neralu needuttade."
+    },
+    "c120": {
+      "t": "ಹೂವು",
+      "r": "Hoovu",
+      "x": "ತೋಟದ ಪ್ರತಿ ಹೂವೂ ಅರಳಿದೆ.",
+      "xr": "Totada prati hoovoo aralide."
+    },
+    "c121": {
+      "t": "ತಲೆ",
+      "r": "Tale",
+      "x": "ದಿನವಿಡೀ ಓದಿದ್ದರಿಂದ ನನ್ನ ತಲೆ ನೋಯುತ್ತಿದೆ.",
+      "xr": "Dinavidee odiddarinda nanna tale noyuttide."
+    },
+    "c122": {
+      "t": "ಕೈ",
+      "r": "Kai",
+      "x": "ಊಟಕ್ಕೆ ಮುನ್ನ ನಿಮ್ಮ ಕೈಗಳನ್ನು ತೊಳೆಯಿರಿ.",
+      "xr": "Ootakke munna nimma kaigalannu toleyiri."
+    },
+    "c123": {
+      "t": "ಕಣ್ಣು",
+      "r": "Kannu",
+      "x": "ಪರದೆಯಿಂದ ದೂರವಿದ್ದು ನಿಮ್ಮ ಕಣ್ಣುಗಳಿಗೆ ವಿಶ್ರಾಂತಿ ನೀಡಿ.",
+      "xr": "Paradeyinda dooraviddu nimma kannugalige vishraanti needi."
+    },
+    "c124": {
+      "t": "ಹೃದಯ",
+      "r": "Hrudaya",
+      "x": "ವ್ಯಾಯಾಮವು ನಿಮ್ಮ ಹೃದಯವನ್ನು ಬಲವಾಗಿಡುತ್ತದೆ.",
+      "xr": "Vyaayaamavu nimma hrudayavannu balavaagiduttade."
+    },
+    "c125": {
+      "t": "ಹೊಟ್ಟೆ",
+      "r": "Hotte",
+      "x": "ಹೊಟ್ಟೆ ನೋವಿದ್ದರೆ ಉಗುರುಬೆಚ್ಚಗಿನ ನೀರು ಕುಡಿಯಿರಿ.",
+      "xr": "Hotte noviddare ugurubechchagina neeru kudiyiri."
+    },
+    "c126": {
+      "t": "ವೈದ್ಯರು",
+      "r": "Vaidyaru",
+      "x": "ನೀವು ಇಂದು ವೈದ್ಯರನ್ನು ಭೇಟಿಯಾಗಬೇಕು.",
+      "xr": "Neevu indu vaidyarannu bhetiyaagabeku."
+    },
+    "c127": {
+      "t": "ಆಸ್ಪತ್ರೆ",
+      "r": "Aaspatre",
+      "x": "ಆಸ್ಪತ್ರೆಯು ಇಪ್ಪತ್ತನಾಲ್ಕು ಗಂಟೆಗಳೂ ತೆರೆದಿರುತ್ತದೆ.",
+      "xr": "Aaspatreyu ippattanaalku gantegaloo terediruttade."
+    },
+    "c128": {
+      "t": "ಔಷಧಿ",
+      "r": "Aushadhi",
+      "x": "ಊಟದ ನಂತರ ಈ ಔಷಧಿಯನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.",
+      "xr": "Ootada nantara ee aushadhiyannu tegedukolli."
+    },
+    "c129": {
+      "t": "ನೋವು",
+      "r": "Novu",
+      "x": "ನೋವು ಎಲ್ಲಿದೆ ಎಂದು ದಾದಿಗೆ ತಿಳಿಸಿ.",
+      "xr": "Novu ellide endu daadige tilisi."
+    },
+    "c130": {
+      "t": "ಜ್ವರ",
+      "r": "Jvara",
+      "x": "ಸೌಮ್ಯ ಜ್ವರದಿಂದಾಗಿ ಅವನು ಮನೆಯಲ್ಲೇ ಉಳಿದನು.",
+      "xr": "Saumya jvaradindaagi avanu maneyalle ulidanu."
+    },
+    "c131": {
+      "t": "ಸಹಾಯ",
+      "r": "Sahaaya",
+      "x": "ದಯವಿಟ್ಟು ಈ ಪೆಟ್ಟಿಗೆಯನ್ನು ಹೊರಲು ನನಗೆ ಸಹಾಯ ಮಾಡಿ.",
+      "xr": "Dayavittu ee pettigeyannu horalu nanage sahaaya maadi."
+    },
+    "c132": {
+      "t": "ಪೊಲೀಸ್",
+      "r": "Polees",
+      "x": "ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಪೊಲೀಸರಿಗೆ ಕರೆ ಮಾಡಿ.",
+      "xr": "Turtu sandarbhadalli poleesarige kare maadi."
+    },
+    "c133": {
+      "t": "ತುರ್ತು ಪರಿಸ್ಥಿತಿ",
+      "r": "Turtu paristhiti",
+      "x": "ತುರ್ತು ಪರಿಸ್ಥಿತಿಯ ಸಂಖ್ಯೆಗಳನ್ನು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಉಳಿಸಿಡಿ.",
+      "xr": "Turtu paristhitiya sankhyegalannu nimma phonnalli ulisidi."
+    },
+    "c134": {
+      "t": "ವಿಶ್ರಾಂತಿ",
+      "r": "Vishraanti",
+      "x": "ಬೇಗ ಗುಣಮುಖರಾಗಲು ಸಾಕಷ್ಟು ವಿಶ್ರಾಂತಿ ಪಡೆಯಿರಿ.",
+      "xr": "Bega gunamukharaagalu saakashtu vishraanti padeyiri."
+    },
+    "c135": {
+      "t": "ಆರೋಗ್ಯಕರ",
+      "r": "Aarogyakara",
+      "x": "ಸಮತೋಲಿತ ಆಹಾರವು ನಿಮ್ಮನ್ನು ಆರೋಗ್ಯಕರವಾಗಿ ಇಡುತ್ತದೆ.",
+      "xr": "Samatolita aahaaravu nimmannu aarogyakaravaagi iduttade."
+    },
+    "c136": {
+      "t": "ಶಾಲೆ",
+      "r": "Shaale",
+      "x": "ಮಕ್ಕಳು ಒಟ್ಟಿಗೆ ಶಾಲೆಗೆ ನಡೆದುಕೊಂಡು ಹೋಗುತ್ತಾರೆ.",
+      "xr": "Makkalu ottige shaalege nadedukondu hoguttaare."
+    },
+    "c137": {
+      "t": "ವಿಶ್ವವಿದ್ಯಾಲಯ",
+      "r": "Vishvavidyaalaya",
+      "x": "ಅವಳು ವಿಶ್ವವಿದ್ಯಾಲಯದಲ್ಲಿ ಎಂಜಿನಿಯರಿಂಗ್ ಓದುತ್ತಿದ್ದಾಳೆ.",
+      "xr": "Avalu vishvavidyaalayadalli enjiniyaring oduttiddaale."
+    },
+    "c138": {
+      "t": "ಪರೀಕ್ಷೆ",
+      "r": "Pareekshe",
+      "x": "ನಾನು ಅಂತಿಮ ಪರೀಕ್ಷೆಗೆ ಎಚ್ಚರಿಕೆಯಿಂದ ಸಿದ್ಧತೆ ನಡೆಸಿದೆ.",
+      "xr": "Naanu antima pareekshege echcharikeyinda siddhate nadeside."
+    },
+    "c139": {
+      "t": "ಭಾಷೆ",
+      "r": "Bhaashe",
+      "x": "ಹೊಸ ಭಾಷೆ ಕಲಿಯುವುದು ಹೊಸ ಜಗತ್ತನ್ನು ತೆರೆಯುತ್ತದೆ.",
+      "xr": "Hosa bhaashe kaliyuvudu hosa jagattannu tereyuttade."
+    },
+    "c140": {
+      "t": "ಪ್ರಶ್ನೆ",
+      "r": "Prashne",
+      "x": "ಅದು ತುಂಬಾ ಚಿಂತನಶೀಲ ಪ್ರಶ್ನೆಯಾಗಿದೆ.",
+      "xr": "Adu tumbaa chintanasheela prashneyaagide."
+    },
+    "c141": {
+      "t": "ಕೆಲಸ",
+      "r": "Kelasa",
+      "x": "ಅವನು ಆರು ಗಂಟೆಗೆ ಕೆಲಸ ಮುಗಿಸುತ್ತಾನೆ.",
+      "xr": "Avanu aaru gantege kelasa mugisuttaane."
+    },
+    "c142": {
+      "t": "ಕಚೇರಿ",
+      "r": "Kacheri",
+      "x": "ನಮ್ಮ ಕಚೇರಿ ನಾಲ್ಕನೇ ಮಹಡಿಯಲ್ಲಿದೆ.",
+      "xr": "Namma kacheri naalkane mahadiyallide."
+    },
+    "c143": {
+      "t": "ಸಭೆ",
+      "r": "Sabhe",
+      "x": "ತಂಡದ ಸಭೆ ಹತ್ತು ಗಂಟೆಗೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.",
+      "xr": "Tandada sabhe hattu gantege praarambhavaaguttade."
+    },
+    "c144": {
+      "t": "ಸಹೋದ್ಯೋಗಿ",
+      "r": "Sahodyogi",
+      "x": "ತಾಂತ್ರಿಕ ದೋಷವನ್ನು ಸರಿಪಡಿಸಲು ನನ್ನ ಸಹೋದ್ಯೋಗಿ ಸಹಾಯ ಮಾಡಿದರು.",
+      "xr": "Taantrika doshavannu saripadisalu nanna sahodyogi sahaaya maadidaru."
+    },
+    "c145": {
+      "t": "ಕಾರ್ಯನಿರತ",
+      "r": "Kaaryanirata",
+      "x": "ಶುಕ್ರವಾರದವರೆಗೆ ನಾನು ತುಂಬಾ ಕಾರ್ಯನಿರತನಾಗಿದ್ದೇನೆ.",
+      "xr": "Shukravaaradavarege naanu tumbaa kaaryaniratanaagiddene."
+    },
+    "c146": {
+      "t": "ಸಂಗೀತ",
+      "r": "Sangeeta",
+      "x": "ಸಂಗೀತ ಕೇಳುವುದು ನನಗೆ ಮನಸ್ಸಿಗೆ ನೆಮ್ಮದಿ ನೀಡುತ್ತದೆ.",
+      "xr": "Sangeeta keluvudu nanage manassige nemmadi needuttade."
+    },
+    "c147": {
+      "t": "ಚಲನಚಿತ್ರ",
+      "r": "Chalanachitra",
+      "x": "ನಾವು ನಿನ್ನೆ ರಾತ್ರಿ ಒಂದು ಸ್ಫೂರ್ತಿದಾಯಕ ಚಲನಚಿತ್ರ ನೋಡಿದೆವು.",
+      "xr": "Naavu ninne raatri ondu sphoortidaayaka chalanachitra nodidevu."
+    },
+    "c148": {
+      "t": "ಕ್ರೀಡೆ",
+      "r": "Kreede",
+      "x": "ನೀವು ಯಾವ ಕ್ರೀಡೆಯನ್ನು ನೋಡಲು ಇಷ್ಟಪಡುತ್ತೀರಿ?",
+      "xr": "Neevu yaava kreedeyannu nodalu ishtapadutteeri?"
+    },
+    "c149": {
+      "t": "ಪ್ರಯಾಣ",
+      "r": "Prayaana",
+      "x": "ನನಗೆ ರೈಲಿನಲ್ಲಿ ಪ್ರಯಾಣಿಸುವುದು ತುಂಬಾ ಇಷ್ಟ.",
+      "xr": "Nanage railinalli prayaanisuvudu tumbaa ishta."
+    },
+    "c150": {
+      "t": "ಹವ್ಯಾಸ",
+      "r": "Havyaasa",
+      "x": "ಛಾಯಾಗ್ರಹಣವು ನನ್ನ ನೆಚ್ಚಿನ ವಾರಾಂತ್ಯದ ಹವ್ಯಾಸವಾಗಿದೆ.",
+      "xr": "Chaayaagrahanavu nanna nechchina vaaraantyada havyaasavaagide."
+    },
+    "c151": {
+      "t": "ಸಂತೋಷ",
+      "r": "Santosha",
+      "x": "ನಿಮ್ಮ ಸುದ್ದಿ ಕೇಳಿ ನನಗೆ ನಿಜಕ್ಕೂ ಸಂತೋಷವಾಯಿತು.",
+      "xr": "Nimma suddi keli nanage nijakkoo santoshavaayitu."
+    },
+    "c152": {
+      "t": "ದುಃಖ",
+      "r": "Duhkha",
+      "x": "ಕೆಲವೊಮ್ಮೆ ದುಃಖವಾಗುವುದು ಸಹಜ.",
+      "xr": "Kelavomme duhkhavaaguvudu sahaja."
+    },
+    "c153": {
+      "t": "ಕೋಪ",
+      "r": "Kopa",
+      "x": "ಕೋಪ ಬಂದಾಗ ಮಾತನಾಡುವ ಮುನ್ನ ದೀರ್ಘವಾಗಿ ಉಸಿರೆಳೆದುಕೊಳ್ಳಿ.",
+      "xr": "Kopa bandaaga maatanaaduva munna deerghavaagi usireledukolli."
+    },
+    "c154": {
+      "t": "ಆಶ್ಚರ್ಯ",
+      "r": "Aashcharya",
+      "x": "ದಿಢೀರ್ ಪ್ರಕಟಣೆಯಿಂದ ಎಲ್ಲರಿಗೂ ಆಶ್ಚರ್ಯವಾಯಿತು.",
+      "xr": "Didheer prakataneyinda ellarigoo aashcharyavaayitu."
+    },
+    "c155": {
+      "t": "ಚಿಂತೆ",
+      "r": "Chinte",
+      "x": "ಚಿಂತೆ ಮಾಡಬೇಡಿ; ಎಲ್ಲವೂ ಸರಿಯಾಗುತ್ತದೆ.",
+      "xr": "Chinte maadabedi; ellavoo sariyaaguttade."
+    },
+    "c156": {
+      "t": "ದಯಾಳು",
+      "r": "Dayaalu",
+      "x": "ಒಂದು ದಯಾಳು ನಡೆ ಯಾರೊಬ್ಬರ ದಿನವನ್ನೂ ಬೆಳಗಿಸಬಲ್ಲದು.",
+      "xr": "Ondu dayaalu nade yaarobbara dinavannoo belagisaballadu."
+    },
+    "c157": {
+      "t": "ಪ್ರಾಮಾಣಿಕ",
+      "r": "Pramaanika",
+      "x": "ನಿಮ್ಮ ಪ್ರಾಮಾಣಿಕ ಅಭಿಪ್ರಾಯವನ್ನು ನಾನು ಮೆಚ್ಚುತ್ತೇನೆ.",
+      "xr": "Nimma pramaanika abhipraayavannu naanu mechchuttene."
+    },
+    "c158": {
+      "t": "ತಾಳ್ಮೆ",
+      "r": "Taalme",
+      "x": "ಭಾಷೆಯಲ್ಲಿ ಪ್ರಾವೀಣ್ಯತೆ ಪಡೆಯಲು ತಾಳ್ಮೆ ಅಗತ್ಯ.",
+      "xr": "Bhaasheyalli praaveenyate padeyalu taalme agatya."
+    },
+    "c159": {
+      "t": "ಧೈರ್ಯಶಾಲಿ",
+      "r": "Dhairyashaali",
+      "x": "ಸಾರ್ವಜನಿಕವಾಗಿ ಧ್ವನಿ ಎತ್ತಿದ್ದು ನಿಜಕ್ಕೂ ಧೈರ್ಯಶಾಲಿ ನಡೆ.",
+      "xr": "Saarvajanikavaagi dhvani ettiddu nijakkoo dhairyashaali nade."
+    },
+    "c160": {
+      "t": "ಕುತೂಹಲಿ",
+      "r": "Kutoohali",
+      "x": "ಕುತೂಹಲಿ ಮನಸ್ಸುಗಳು ಹೊಸದನ್ನು ಅನ್ವೇಷಿಸುವುದನ್ನು ಎಂದಿಗೂ ನಿಲ್ಲಿಸುವುದಿಲ್ಲ.",
+      "xr": "Kutoohali manassugalu hosadannu anveshisuvudannu endigoo nillisuvudilla."
+    },
+    "c161": {
+      "t": "ನನ್ನ ಪ್ರಕಾರ",
+      "r": "Nanna prakaara",
+      "x": "ನನ್ನ ಪ್ರಕಾರ ಈ ಪರಿಹಾರವು ಪ್ರಾಯೋಗಿಕವಾಗಿದೆ.",
+      "xr": "Nanna prakaara ee parihaaravu praayogikavaagide."
+    },
+    "c162": {
+      "t": "ನಾನು ಒಪ್ಪುತ್ತೇನೆ",
+      "r": "Naanu opputtene",
+      "x": "ನಿಮ್ಮ ಮುಖ್ಯ ಅಂಶವನ್ನು ನಾನು ಒಪ್ಪುತ್ತೇನೆ.",
+      "xr": "Nimma mukhya amshavannu naanu opputtene."
+    },
+    "c163": {
+      "t": "ಅಭಿಪ್ರಾಯ",
+      "r": "Abhipraaya",
+      "x": "ಪ್ರತಿಯೊಬ್ಬರಿಗೂ ತಮ್ಮ ಅಭಿಪ್ರಾಯ ಹೊಂದುವ ಹಕ್ಕಿದೆ.",
+      "xr": "Pratiyobbarigoo tamma abhipraaya honduva hakkide."
+    },
+    "c164": {
+      "t": "ಮುಖ್ಯ",
+      "r": "Mukhya",
+      "x": "ಸ್ಪಷ್ಟ ಸಂವಹನವು ತುಂಬಾ ಮುಖ್ಯವಾಗಿದೆ.",
+      "xr": "Spashta samvahanavu tumbaa mukhyavaagide."
+    },
+    "c165": {
+      "t": "ಸಾಧ್ಯ",
+      "r": "Saadhya",
+      "x": "ನಿರಂತರ ಪ್ರಯತ್ನದಿಂದ ಏನನ್ನಾದರೂ ಸಾಧಿಸಲು ಸಾಧ್ಯ.",
+      "xr": "Nirantara prayatnadinda enannaadaroo saadhisalu saadhya."
+    },
+    "c166": {
+      "t": "ಆಮಂತ್ರಣ",
+      "r": "Aamantrana",
+      "x": "ನಿಮ್ಮ ಆತ್ಮೀಯ ಆಮಂತ್ರಣಕ್ಕೆ ಧನ್ಯವಾದಗಳು.",
+      "xr": "Nimma aatmeeya aamantranakke dhanyavaadagalu."
+    },
+    "c167": {
+      "t": "ಸಂಭ್ರಮ",
+      "r": "Sambhrama",
+      "x": "ಇಡೀ ಬಡಾವಣೆಯು ಈ ಸಂಭ್ರಮದಲ್ಲಿ ಭಾಗವಹಿಸಿತು.",
+      "xr": "Idee badaavaneyu ee sambhramadalli bhaagavahisitu."
+    },
+    "c168": {
+      "t": "ಭರವಸೆ",
+      "r": "Bharavase",
+      "x": "ನೀವು ನೀಡಿದ ಭರವಸೆಯನ್ನು ಯಾವಾಗಲೂ ಉಳಿಸಿಕೊಳ್ಳಿ.",
+      "xr": "Neevu needida bharavaseyannu yaavaagaloo ulisikolli."
+    },
+    "c169": {
+      "t": "ಭೇಟಿ ಸಮಯ",
+      "r": "Bheti samaya",
+      "x": "ಮೂರು ಗಂಟೆಗೆ ನನಗೆ ದಂತವೈದ್ಯರ ಭೇಟಿ ಸಮಯವಿದೆ.",
+      "xr": "Mooru gantege nanage dantavaidyara bheti samayavide."
+    },
+    "c170": {
+      "t": "ಅಚ್ಚರಿ",
+      "r": "Achchari",
+      "x": "ಅವಳ ಹುಟ್ಟುಹಬ್ಬಕ್ಕಾಗಿ ನಾವು ಒಂದು ಅಚ್ಚರಿಯನ್ನು ಯೋಜಿಸಿದೆವು.",
+      "xr": "Avala huttuhabbakkaagi naavu ondu achchariyannu yojisidevu."
+    },
+    "c171": {
+      "t": "ನೆನಪು",
+      "r": "Nenapu",
+      "x": "ಆ ಪ್ರವಾಸವು ನನ್ನ ಅತ್ಯಂತ ಸಿಹಿಯಾದ ನೆನಪಾಗಿ ಉಳಿದಿದೆ.",
+      "xr": "Aa pravaasavu nanna atyanta sihiyaada nenapaagi ulidide."
+    },
+    "c172": {
+      "t": "ಅನುಭವ",
+      "r": "Anubhava",
+      "x": "ವಿದೇಶದಲ್ಲಿ ವಾಸಿಸಿದ್ದು ಜೀವನ ಬದಲಿಸಿದ ಅನುಭವವಾಗಿತ್ತು.",
+      "xr": "Videshadalli vaasisiddu jeevana badalisida anubhavavaagittu."
+    },
+    "c173": {
+      "t": "ಕಥೆ",
+      "r": "Kathe",
+      "x": "ಅಜ್ಜ ಒಂದು ಆಕರ್ಷಕ ಕಥೆಯನ್ನು ಹೇಳಿದರು.",
+      "xr": "Ajja ondu aakarshaka katheyannu helidaru."
+    },
+    "c174": {
+      "t": "ಕನಸು",
+      "r": "Kanasu",
+      "x": "ನಿಮ್ಮ ದೊಡ್ಡ ಕನಸನ್ನು ಎಂದಿಗೂ ಕೈಬಿಡಬೇಡಿ.",
+      "xr": "Nimma dodda kanasannu endigoo kaibidabedi."
+    },
+    "c175": {
+      "t": "ಪಯಣ",
+      "r": "Payana",
+      "x": "ಪ್ರತಿ ದೀರ್ಘ ಪಯಣವೂ ಮೊದಲ ಹೆಜ್ಜೆಯಿಂದಲೇ ಆರಂಭವಾಗುತ್ತದೆ.",
+      "xr": "Prati deergha payanavoo modala hejjeyindale aarambhavaaguttade."
+    },
+    "c176": {
+      "t": "ನಂಬಿಕೆ",
+      "r": "Nambike",
+      "x": "ನಂಬಿಕೆಯನ್ನು ಬೆಳೆಸಲು ವರ್ಷಗಳೇ ಬೇಕಾಗುತ್ತವೆ.",
+      "xr": "Nambikeyannu belesalu varshagale bekaaguttave."
+    },
+    "c177": {
+      "t": "ಗೌರವ",
+      "r": "Gaurava",
+      "x": "ಪ್ರತಿಯೊಬ್ಬರನ್ನೂ ನಿಜವಾದ ಗೌರವದಿಂದ ಕಾಣಿರಿ.",
+      "xr": "Pratiyobbarannoo nijavaada gauravadinda kaaniri."
+    },
+    "c178": {
+      "t": "ಸಲಹೆ",
+      "r": "Salahe",
+      "x": "ವೃತ್ತಿಜೀವನದ ಬಗ್ಗೆ ನೀವು ನನಗೆ ಸ್ವಲ್ಪ ಸಲಹೆ ನೀಡಬಹುದೇ?",
+      "xr": "Vruttijeevanada bagge neevu nanage svalpa salahe needabahude?"
+    },
+    "c179": {
+      "t": "ಬೆಂಬಲ",
+      "r": "Bembala",
+      "x": "ನಿಮ್ಮ ಅಚಲ ಬೆಂಬಲಕ್ಕೆ ಹೃತ್ಪೂರ್ವಕ ಧನ್ಯವಾದಗಳು.",
+      "xr": "Nimma achala bembalakke hrutpoorvaka dhanyavaadagalu."
+    },
+    "c180": {
+      "t": "ಕ್ಷಮಿಸುವುದು",
+      "r": "Kshamisuvudu",
+      "x": "ಕ್ಷಮಿಸಿ ಮುಂದೆ ಸಾಗಲು ದೊಡ್ಡ ಮನಸ್ಸು ಬೇಕು.",
+      "xr": "Kshamisi munde saagalu dodda manassu beku."
+    },
+    "c181": {
+      "t": "ಗಣಕಯಂತ್ರ",
+      "r": "Ganakayantra",
+      "x": "ನನ್ನ ಗಣಕಯಂತ್ರ ರಾತ್ರೋರಾತ್ರಿ ನವೀಕರಣಗೊಂಡಿತು.",
+      "xr": "Nanna ganakayantra raatroraatri naveekaranagonditu."
+    },
+    "c182": {
+      "t": "ಅಂತರ್ಜಾಲ",
+      "r": "Antarjaala",
+      "x": "ವೇಗದ ಅಂತರ್ಜಾಲವು ದೂರದ ಹಳ್ಳಿಗಳನ್ನು ಜೋಡಿಸುತ್ತದೆ.",
+      "xr": "Vegada antarjaalavu doorada halligalannu jodisuttade."
+    },
+    "c183": {
+      "t": "ದೂರವಾಣಿ",
+      "r": "Dooravaani",
+      "x": "ಉಪನ್ಯಾಸದ ಸಮಯದಲ್ಲಿ ದಯವಿಟ್ಟು ನಿಮ್ಮ ದೂರವಾಣಿಯನ್ನು ನಿಶ್ಯಬ್ದಗೊಳಿಸಿ.",
+      "xr": "Upanyaasada samayadalli dayavittu nimma dooravaaniyannu nishyabdagolisi."
+    },
+    "c184": {
+      "t": "ಗುಪ್ತಪದ",
+      "r": "Guptapada",
+      "x": "ಪ್ರತಿ ಖಾತೆಗೂ ಬಲಿಷ್ಠವಾದ, ವಿಶಿಷ್ಟ ಗುಪ್ತಪದವನ್ನು ಬಳಸಿ.",
+      "xr": "Prati khaategoo balishthavaada, vishishta guptapadavannu balasi."
+    },
+    "c185": {
+      "t": "ಡೌನ್‌ಲೋಡ್",
+      "r": "Daunlod",
+      "x": "ನೀವು ಆಫ್‌ಲೈನ್ ಪ್ಯಾಕ್ ಅನ್ನು ಉಚಿತವಾಗಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಬಹುದು.",
+      "xr": "Neevu aaphlain pyaak annu uchitavaagi daunlod maadabahudu."
+    },
+    "c186": {
+      "t": "ಸಂದೇಶ",
+      "r": "Sandesha",
+      "x": "ನಾನು ಇಂದು ಬೆಳಗ್ಗೆ ನಿಮಗೆ ಒಂದು ಸಂದೇಶ ಕಳುಹಿಸಿದ್ದೆ.",
+      "xr": "Naanu indu belagge nimage ondu sandesha kaluhisidde."
+    },
+    "c187": {
+      "t": "ಹುಡುಕಾಟ",
+      "r": "Hudukaata",
+      "x": "ವಿಶ್ವಾಸಾರ್ಹ ದಾಖಲೆಗಳಿಗಾಗಿ ಹುಡುಕಾಟ ನಡೆಸೋಣ.",
+      "xr": "Vishvaasaarha daakhalegaligaagi hudukaata nadesona."
+    },
+    "c188": {
+      "t": "ತಂತ್ರಾಂಶ",
+      "r": "Tantraamsha",
+      "x": "ಈ ಮುಕ್ತ-ಮೂಲ ತಂತ್ರಾಂಶವು ಅಂತರ್ಜಾಲವಿಲ್ಲದೆಯೂ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ.",
+      "xr": "Ee mukta-moola tantraamshavu antarjaalavilladeyoo kaaryanirvahisuttade."
+    },
+    "c189": {
+      "t": "ಗೌಪ್ಯತೆ",
+      "r": "Gaupyate",
+      "x": "ಬಳಕೆದಾರರ ಗೌಪ್ಯತೆಯನ್ನು ರಕ್ಷಿಸುವುದು ಮೊದಲ ಆದ್ಯತೆಯಾಗಿರಬೇಕು.",
+      "xr": "Balakedaarara gaupyateyannu rakshisuvudu modala aadyateyaagirabeku."
+    },
+    "c190": {
+      "t": "ನವೀಕರಣ",
+      "r": "Naveekarana",
+      "x": "ಇತ್ತೀಚಿನ ನವೀಕರಣವು ವೇಗವನ್ನು ಗಮನಾರ್ಹವಾಗಿ ಹೆಚ್ಚಿಸಿದೆ.",
+      "xr": "Itteechina naveekaranavu vegavannu gamanaarhavaagi hechchiside."
+    },
+    "c191": {
+      "t": "ಸುದ್ದಿ",
+      "r": "Suddi",
+      "x": "ಸುದ್ದಿಯನ್ನು ಯಾವಾಗಲೂ ಹಲವು ಮೂಲಗಳಿಂದ ಪರಿಶೀಲಿಸಿ.",
+      "xr": "Suddiyannu yaavaagaloo halavu moolagalinda parisheelisi."
+    },
+    "c192": {
+      "t": "ಲೇಖನ",
+      "r": "Lekhana",
+      "x": "ಭಾಷಾಶಾಸ್ತ್ರದ ಕುರಿತು ನಾನು ಒಂದು ಕುತೂಹಲಕಾರಿ ಲೇಖನ ಓದಿದೆ.",
+      "xr": "Bhaashaashaastrada kuritu naanu ondu kutoohalakaari lekhana odide."
+    },
+    "c193": {
+      "t": "ಮಾಹಿತಿ",
+      "r": "Maahiti",
+      "x": "ನಿಖರವಾದ ಮಾಹಿತಿಯು ಜನರು ವಿವೇಕದಿಂದ ನಿರ್ಧರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+      "xr": "Nikharavaada maahitiyu janaru vivekadinda nirdharisalu sahaaya maaduttade."
+    },
+    "c194": {
+      "t": "ಕ್ಯಾಮೆರಾ",
+      "r": "Kyaameraa",
+      "x": "ಅವಳು ಹಬ್ಬಕ್ಕೆ ತನ್ನ ಕ್ಯಾಮೆರಾವನ್ನು ತಂದಳು.",
+      "xr": "Avalu habbakke tanna kyaameraavannu tandalu."
+    },
+    "c195": {
+      "t": "ಪರದೆ",
+      "r": "Parade",
+      "x": "ರಾತ್ರಿ ವೇಳೆ ಪರದೆಯ ಬೆಳಕನ್ನು ಕಡಿಮೆ ಮಾಡಿಕೊಳ್ಳಿ.",
+      "xr": "Raatri vele paradeya belakannu kadime maadikolli."
+    },
+    "c196": {
+      "t": "ಸಂಸ್ಕೃತಿ",
+      "r": "Samskruti",
+      "x": "ಭಾಷೆಯು ಸಂಸ್ಕೃತಿಯ ಜೀವಂತ ಹೃದಯವಾಗಿದೆ.",
+      "xr": "Bhaasheyu samskrutiya jeevanta hrudayavaagide."
+    },
+    "c197": {
+      "t": "ಸಂಪ್ರದಾಯ",
+      "r": "Sampradaaya",
+      "x": "ಪ್ರತಿಯೊಂದು ಪ್ರದೇಶವೂ ತನ್ನದೇ ಆದ ಸುಗ್ಗಿಯ ಸಂಪ್ರದಾಯವನ್ನು ಕಾಪಾಡಿಕೊಂಡಿದೆ.",
+      "xr": "Pratiyondu pradeshavoo tannade aada suggiya sampradaayavannu kaapaadikondide."
+    },
+    "c198": {
+      "t": "ಹಬ್ಬ",
+      "r": "Habba",
+      "x": "ಹಬ್ಬದ ಸಮಯದಲ್ಲಿ ದೀಪಗಳು ಇಡೀ ನಗರವನ್ನು ಬೆಳಗಿಸಿದವು.",
+      "xr": "Habbada samayadalli deepagalu idee nagaravannu belagisidavu."
+    },
+    "c199": {
+      "t": "ಇತಿಹಾಸ",
+      "r": "Itihaasa",
+      "x": "ಈ ವಸ್ತುಸಂಗ್ರಹಾಲಯವು ಐದು ಸಾವಿರ ವರ್ಷಗಳ ಇತಿಹಾಸವನ್ನು ತೆರೆದಿಡುತ್ತದೆ.",
+      "xr": "Ee vastusangrahaalayavu aidu saavira varshagala itihaasavannu terediduttade."
+    },
+    "c200": {
+      "t": "ಪರಂಪರೆ",
+      "r": "Parampare",
+      "x": "ನಮ್ಮ ಹಂಚಿಕೊಂಡ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯನ್ನು ನಾವು ರಕ್ಷಿಸಬೇಕು.",
+      "xr": "Namma hanchikonda saamskrutika parampareyannu naavu rakshisabeku."
+    },
+    "c201": {
+      "t": "ಕಲೆ",
+      "r": "Kale",
+      "x": "ಮಹಾನ್ ಕಲೆಯು ಗಡಿಗಳನ್ನು ಮತ್ತು ಶತಮಾನಗಳನ್ನು ಮೀರುತ್ತದೆ.",
+      "xr": "Mahaan kaleyu gadigalannu mattu shatamaanagalannu meeruttade."
+    },
+    "c202": {
+      "t": "ನೃತ್ಯ",
+      "r": "Nrutya",
+      "x": "ಶಾಸ್ತ್ರೀಯ ನೃತ್ಯವು ಅಭಿನಯ ಮತ್ತು ಚಲನೆಯ ಮೂಲಕ ಕಥೆಗಳನ್ನು ಹೇಳುತ್ತದೆ.",
+      "xr": "Shaastreeya nrutyavu abhinaya mattu chalaneya moolaka kathegalannu heluttade."
+    },
+    "c203": {
+      "t": "ಹಾಡು",
+      "r": "Haadu",
+      "x": "ಆ ಜಾನಪದ ಹಾಡನ್ನು ತಲೆಮಾರುಗಳಿಂದ ಹಾಡಲಾಗುತ್ತಿದೆ.",
+      "xr": "Aa jaanapada haadannu talemaarugalinda haadalaaguttide."
+    },
+    "c204": {
+      "t": "ವಾಸ್ತುಶಿಲ್ಪ",
+      "r": "Vaastushilpa",
+      "x": "ಈ ದೇವಾಲಯದ ವಾಸ್ತುಶಿಲ್ಪವು ಅತ್ಯಂತ ಸೂಕ್ಷ್ಮವಾಗಿದೆ.",
+      "xr": "Ee devaalayada vaastushilpavu atyanta sookshmavaagide."
+    },
+    "c205": {
+      "t": "ಕಾವ್ಯ",
+      "r": "Kaavya",
+      "x": "ಕಾವ್ಯವು ಕೆಲವೇ ಸಾಲುಗಳಲ್ಲಿ ಆಳವಾದ ಭಾವನೆಗಳನ್ನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ.",
+      "xr": "Kaavyavu kelave saalugalalli aalavaada bhaavanegalannu serehidiyuttade."
+    },
+    "c206": {
+      "t": "ಅತಿಥಿ",
+      "r": "Atithi",
+      "x": "ಪ್ರತಿ ಅತಿಥಿಯನ್ನೂ ಆತ್ಮೀಯತೆಯಿಂದ ಸ್ವಾಗತಿಸಲಾಗುತ್ತದೆ.",
+      "xr": "Prati atithiyannoo aatmeeyateyinda svaagatisalaaguttade."
+    },
+    "c207": {
+      "t": "ಉಡುಗೊರೆ",
+      "r": "Udugore",
+      "x": "ಒಂದು ಸಣ್ಣ ಉಡುಗೊರೆ ತರುವುದು ನಮ್ಮ ಕಾಳಜಿಯನ್ನು ತೋರಿಸುತ್ತದೆ.",
+      "xr": "Ondu sanna udugore taruvudu namma kaalajiyannu torisuttade."
+    },
+    "c208": {
+      "t": "ಆಚಾರ",
+      "r": "Aachaara",
+      "x": "ಹೊಸ ದೇಶಕ್ಕೆ ಭೇಟಿ ನೀಡುವ ಮುನ್ನ ಸ್ಥಳೀಯ ಆಚಾರಗಳನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ.",
+      "xr": "Hosa deshakke bheti needuva munna sthaleeya aachaaragalannu tilidukolli."
+    },
+    "c209": {
+      "t": "ಸಮಾರಂಭ",
+      "r": "Samaarambha",
+      "x": "ಪದವಿ ಪ್ರದಾನ ಸಮಾರಂಭವು ಎರಡು ಗಂಟೆಗಳ ಕಾಲ ನಡೆಯಿತು.",
+      "xr": "Padavi pradaana samaarambhavu eradu gantegala kaala nadeyitu."
+    },
+    "c210": {
+      "t": "ಆಶೀರ್ವಾದ",
+      "r": "Aasheervaada",
+      "x": "ಹಿರಿಯರು ನವದಂಪತಿಗಳಿಗೆ ತಮ್ಮ ಆಶೀರ್ವಾದ ನೀಡಿದರು.",
+      "xr": "Hiriyaru navadampatigalige tamma aasheervaada needidaru."
+    },
+    "c211": {
+      "t": "ಏಕೆಂದರೆ",
+      "r": "Ekendare",
+      "x": "ನಾವು ಮನೆಯೊಳಗೇ ಉಳಿದೆವು, ಏಕೆಂದರೆ ಬಿರುಗಾಳಿ ಬರುತ್ತಿತ್ತು.",
+      "xr": "Naavu maneyolage ulidevu, ekendare birugaali baruttittu."
+    },
+    "c212": {
+      "t": "ಆದಾಗ್ಯೂ",
+      "r": "Aadaagyoo",
+      "x": "ಕೆಲಸವು ಕಠಿಣವಾಗಿತ್ತು; ಆದಾಗ್ಯೂ, ನಾವು ಯಶಸ್ವಿಯಾದೆವು.",
+      "xr": "Kelasavu kathinavaagittu; aadaagyoo, naavu yashasviyaadevu."
+    },
+    "c213": {
+      "t": "ಆದರೂ",
+      "r": "Aadaroo",
+      "x": "ತಡವಾಗಿದ್ದರೂ, ಅವನು ಆ ಅಧ್ಯಾಯವನ್ನು ಓದಿ ಮುಗಿಸಿದನು.",
+      "xr": "Tadavaagiddaroo, avanu aa adhyaayavannu odi mugisidanu."
+    },
+    "c214": {
+      "t": "ಆದ್ದರಿಂದ",
+      "r": "Aaddarinda",
+      "x": "ದತ್ತಾಂಶವು ಸ್ಪಷ್ಟವಾಗಿದೆ; ಆದ್ದರಿಂದ, ನಾವು ಕ್ರಮ ಕೈಗೊಳ್ಳಬೇಕು.",
+      "xr": "Dattaamshavu spashtavaagide; aaddarinda, naavu krama kaigollabeku."
+    },
+    "c215": {
+      "t": "ಈ ಮಧ್ಯೆ",
+      "r": "Ee madhye",
+      "x": "ನಾನು ರಾತ್ರಿ ಊಟ ತಯಾರಿಸುತ್ತೇನೆ; ಈ ಮಧ್ಯೆ, ದಯವಿಟ್ಟು ಮೇಜು ಸಿದ್ಧಪಡಿಸಿ.",
+      "xr": "Naanu raatri oota tayaarisuttene; ee madhye, dayavittu meju siddhapadisi."
+    },
+    "c216": {
+      "t": "ಸಮಸ್ಯೆ",
+      "r": "Samasye",
+      "x": "ಈ ಸಮಸ್ಯೆಯ ಮೂಲ ಕಾರಣವನ್ನು ಗುರುತಿಸೋಣ.",
+      "xr": "Ee samasyeya moola kaaranavannu gurutisona."
+    },
+    "c217": {
+      "t": "ಪರಿಹಾರ",
+      "r": "Parihaara",
+      "x": "ಸರಳ ಪರಿಹಾರಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಅತ್ಯಂತ ವಿಶ್ವಾಸಾರ್ಹವಾಗಿರುತ್ತವೆ.",
+      "xr": "Sarala parihaaragalu saamaanyavaagi atyanta vishvaasaarhavaagiruttave."
+    },
+    "c218": {
+      "t": "ನಿರ್ಧಾರ",
+      "r": "Nirdhaara",
+      "x": "ದೊಡ್ಡ ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳುವ ಮುನ್ನ ಶಾಂತವಾಗಿ ಯೋಚಿಸಿ.",
+      "xr": "Dodda nirdhaara tegedukolluva munna shaantavaagi yochisi."
+    },
+    "c219": {
+      "t": "ತಪ್ಪು",
+      "r": "Tappu",
+      "x": "ಪ್ರತಿಯೊಂದು ತಪ್ಪೂ ನಮಗೆ ಅಮೂಲ್ಯವಾದ ಪಾಠ ಕಲಿಸುತ್ತದೆ.",
+      "xr": "Pratiyondu tappoo namage amoolyavaada paatha kalisuttade."
+    },
+    "c220": {
+      "t": "ಯಶಸ್ಸು",
+      "r": "Yashassu",
+      "x": "ಒಗ್ಗಟ್ಟಿನ ಕೆಲಸವೇ ನಮ್ಮ ಯಶಸ್ಸಿಗೆ ಕಾರಣವಾಯಿತು.",
+      "xr": "Oggattina kelasave namma yashassige kaaranavaayitu."
+    },
+    "c221": {
+      "t": "ಒಂದು ವೇಳೆ",
+      "r": "Ondu vele",
+      "x": "ಒಂದು ವೇಳೆ ನೀವು ಪ್ರತಿದಿನ ಅಭ್ಯಾಸ ಮಾಡಿದರೆ, ಬೇಗನೆ ಸುಧಾರಿಸುತ್ತೀರಿ.",
+      "xr": "Ondu vele neevu pratidina abhyaasa maadidare, begane sudhaarisutteeri."
+    },
+    "c222": {
+      "t": "ಬದಲಾಗಿ",
+      "r": "Badalaagi",
+      "x": "ವಾಹನ ಚಲಾಯಿಸುವ ಬದಲಾಗಿ ಅಂಗಡಿಗೆ ನಡೆದುಕೊಂಡು ಹೋಗಿ.",
+      "xr": "Vaahana chalaayisuva badalaagi angadige nadedukondu hogi."
+    },
+    "c223": {
+      "t": "ಹೋಲಿಸುವುದು",
+      "r": "Holisuvudu",
+      "x": "ಮತದಾನ ಮಾಡುವ ಮುನ್ನ ಎರಡೂ ಪ್ರಸ್ತಾವನೆಗಳನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಹೋಲಿಸಿ.",
+      "xr": "Matadaana maaduva munna eradoo prastaavanegalannu echcharikeyinda holisi."
+    },
+    "c224": {
+      "t": "ವ್ಯತ್ಯಾಸ",
+      "r": "Vyatyaasa",
+      "x": "ಸಣ್ಣ ಅಭ್ಯಾಸಗಳು ಕಾಲಕ್ರಮೇಣ ದೊಡ್ಡ ವ್ಯತ್ಯಾಸವನ್ನುಂಟು ಮಾಡುತ್ತವೆ.",
+      "xr": "Sanna abhyaasagalu kaalakramena dodda vyatyaasavannuntu maaduttave."
+    },
+    "c225": {
+      "t": "ಕಾರಣ",
+      "r": "Kaarana",
+      "x": "ನಿಮ್ಮ ಆಯ್ಕೆಯ ಹಿಂದಿನ ಕಾರಣವನ್ನು ವಿವರಿಸಿ.",
+      "xr": "Nimma aaykeya hindina kaaranavannu vivarisi."
+    },
+    "c226": {
+      "t": "ಕಾರ್ಯತಂತ್ರ",
+      "r": "Kaaryatantra",
+      "x": "ನಾವು ನಮ್ಮ ದೀರ್ಘಕಾಲೀನ ಉತ್ಪನ್ನ ಕಾರ್ಯತಂತ್ರವನ್ನು ಪರಿಷ್ಕರಿಸಿದೆವು.",
+      "xr": "Naavu namma deerghakaaleena utpanna kaaryatantravannu parishkarisidevu."
+    },
+    "c227": {
+      "t": "ಯೋಜನೆ",
+      "r": "Yojane",
+      "x": "ಎಂಜಿನಿಯರಿಂಗ್ ಯೋಜನೆಯು ನಿಗದಿತ ಸಮಯಕ್ಕಿಂತ ಮೊದಲೇ ಆರಂಭವಾಯಿತು.",
+      "xr": "Enjiniyaring yojaneyu nigadita samayakkinta modale aarambhavaayitu."
+    },
+    "c228": {
+      "t": "ಗಡುವು",
+      "r": "Gaduvu",
+      "x": "ಗಡುವಿಗಿಂತ ಮೊದಲೇ ನಾವು ಎಲ್ಲಾ ಮೈಲಿಗಲ್ಲುಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದೆವು.",
+      "xr": "Gaduviginta modale naavu ellaa mailigallugalannu poornagolisidevu."
+    },
+    "c229": {
+      "t": "ಜವಾಬ್ದಾರಿ",
+      "r": "Javaabdaari",
+      "x": "ನಾಯಕತ್ವ ಎಂದರೆ ಸಂಪೂರ್ಣ ಜವಾಬ್ದಾರಿಯನ್ನು ವಹಿಸಿಕೊಳ್ಳುವುದು.",
+      "xr": "Naayakatva endare sampoorna javaabdaariyannu vahisikolluvudu."
+    },
+    "c230": {
+      "t": "ಸಹಯೋಗ",
+      "r": "Sahayoga",
+      "x": "ಮುಕ್ತ ಸಹಯೋಗವು ನಾವೀನ್ಯತೆಗೆ ವೇಗ ನೀಡುತ್ತದೆ.",
+      "xr": "Mukta sahayogavu naaveenyatege vega needuttade."
+    },
+    "c231": {
+      "t": "ಆರ್ಥಿಕತೆ",
+      "r": "Aarthikate",
+      "x": "ಸಣ್ಣ ಉದ್ಯಮಗಳು ಆರ್ಥಿಕತೆಯ ಬೆನ್ನೆಲುಬಾಗಿವೆ.",
+      "xr": "Sanna udyamagalu aarthikateya bennelubaagive."
+    },
+    "c232": {
+      "t": "ಆಯವ್ಯಯ",
+      "r": "Aayavyaya",
+      "x": "ನಗರಸಭೆಯು ಮುಂದಿನ ವರ್ಷದ ಶಿಕ್ಷಣ ಆಯವ್ಯಯಕ್ಕೆ ಅನುಮೋದನೆ ನೀಡಿತು.",
+      "xr": "Nagarasabheyu mundina varshada shikshana aayavyayakke anumodane needitu."
+    },
+    "c233": {
+      "t": "ಹೂಡಿಕೆ",
+      "r": "Hoodike",
+      "x": "ಶಿಕ್ಷಣವು ಅತ್ಯಂತ ವಿವೇಕಯುತ ದೀರ್ಘಕಾಲೀನ ಹೂಡಿಕೆಯಾಗಿದೆ.",
+      "xr": "Shikshanavu atyanta vivekayuta deerghakaaleena hoodikeyaagide."
+    },
+    "c234": {
+      "t": "ಒಪ್ಪಂದ ಪತ್ರ",
+      "r": "Oppanda patra",
+      "x": "ಒಪ್ಪಂದ ಪತ್ರದ ಪ್ರತಿಯೊಂದು ಷರತ್ತನ್ನೂ ಎಚ್ಚರಿಕೆಯಿಂದ ಓದಿ.",
+      "xr": "Oppanda patrada pratiyondu sharattannoo echcharikeyinda odi."
+    },
+    "c235": {
+      "t": "ಲಾಭ",
+      "r": "Laabha",
+      "x": "ಅಲ್ಪಕಾಲೀನ ಲಾಭಕ್ಕಿಂತ ಸುಸ್ಥಿರ ಬೆಳವಣಿಗೆ ಹೆಚ್ಚು ಮುಖ್ಯ.",
+      "xr": "Alpakaaleena laabhakkinta susthira belavanige hechchu mukhya."
+    },
+    "c236": {
+      "t": "ಪ್ರಸ್ತಾವನೆ",
+      "r": "Prastaavane",
+      "x": "ಸಮಿತಿಯು ನಮ್ಮ ವಿವರವಾದ ಪ್ರಸ್ತಾವನೆಯನ್ನು ಪರಿಶೀಲಿಸಿತು.",
+      "xr": "Samitiyu namma vivaravaada prastaavaneyannu parisheelisitu."
+    },
+    "c237": {
+      "t": "ಸಂಧಾನ",
+      "r": "Sandhaana",
+      "x": "ಎರಡೂ ಪಕ್ಷಗಳು ಸದ್ಭಾವನೆಯಿಂದ ಸಂಧಾನದಲ್ಲಿ ಪಾಲ್ಗೊಂಡವು.",
+      "xr": "Eradoo pakshagalu sadbhaavaneyinda sandhaanadalli paalgondavu."
+    },
+    "c238": {
+      "t": "ಒಪ್ಪಂದ",
+      "r": "Oppanda",
+      "x": "ಅವರು ಪರಸ್ಪರ ಲಾಭದಾಯಕ ವ್ಯಾಪಾರ ಒಪ್ಪಂದಕ್ಕೆ ಸಹಿ ಹಾಕಿದರು.",
+      "xr": "Avaru paraspara laabhadaayaka vyaapaara oppandakke sahi haakidaru."
+    },
+    "c239": {
+      "t": "ರಾಜಿ",
+      "r": "Raaji",
+      "x": "ನ್ಯಾಯಯುತ ರಾಜಿಯು ವಿವಾದವನ್ನು ಬಗೆಹರಿಸಿತು.",
+      "xr": "Nyaayayuta raajiyu vivaadavannu bageharisitu."
+    },
+    "c240": {
+      "t": "ಅವಕಾಶ",
+      "r": "Avakaasha",
+      "x": "ಪ್ರತಿಯೊಂದು ಸವಾಲೂ ಒಂದು ಅಡಗಿರುವ ಅವಕಾಶವನ್ನು ತರುತ್ತದೆ.",
+      "xr": "Pratiyondu savaaloo ondu adagiruva avakaashavannu taruttade."
+    },
+    "c241": {
+      "t": "ಸಂಶೋಧನೆ",
+      "r": "Samshodhane",
+      "x": "ತಜ್ಞರಿಂದ ಪರಿಶೀಲಿಸಲ್ಪಟ್ಟ ಸಂಶೋಧನೆಯು ಆಧುನಿಕ ವೈದ್ಯಕೀಯಕ್ಕೆ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ.",
+      "xr": "Tajnarinda parisheelisalpatta samshodhaneyu aadhunika vaidyakeeyakke maargadarshana needuttade."
+    },
+    "c242": {
+      "t": "ಪ್ರಯೋಗ",
+      "r": "Prayoga",
+      "x": "ಪ್ರಯೋಗಾಲಯದ ಪ್ರಯೋಗವು ನಮ್ಮ ಮುನ್ಸೂಚನೆಯನ್ನು ದೃಢಪಡಿಸಿತು.",
+      "xr": "Prayogaalayada prayogavu namma munsoochaneyannu drudhapadisitu."
+    },
+    "c243": {
+      "t": "ಪುರಾವೆ",
+      "r": "Puraave",
+      "x": "ಬಲವಾದ ತೀರ್ಮಾನಗಳು ಗಟ್ಟಿ ಪುರಾವೆಗಳ ಮೇಲೆ ನಿಂತಿರಬೇಕು.",
+      "xr": "Balavaada teermaanagalu gatti puraavegala mele nintirabeku."
+    },
+    "c244": {
+      "t": "ಸಿದ್ಧಾಂತ",
+      "r": "Siddhaanta",
+      "x": "ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಬೆಳಕನ್ನು ಹೇಗೆ ಬಾಗಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ಈ ಸಿದ್ಧಾಂತ ವಿವರಿಸುತ್ತದೆ.",
+      "xr": "Gurutvaakarshaneyu belakannu hege baagisuttade embudannu ee siddhaanta vivarisuttade."
+    },
+    "c245": {
+      "t": "ಆವಿಷ್ಕಾರ",
+      "r": "Aavishkaara",
+      "x": "ಆ ಆವಿಷ್ಕಾರವು ಶುದ್ಧ ಇಂಧನ ಸಂಗ್ರಹಣೆಯನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬದಲಾಯಿಸಿತು.",
+      "xr": "Aa aavishkaaravu shuddha indhana sangrahaneyannu sampoornavaagi badalaayisitu."
+    },
+    "c246": {
+      "t": "ನಾವೀನ್ಯತೆ",
+      "r": "Naaveenyate",
+      "x": "ತಳಮಟ್ಟದ ನಾವೀನ್ಯತೆಯು ಸಮುದಾಯದ ನೈಜ ಅಗತ್ಯಗಳನ್ನು ಪೂರೈಸುತ್ತದೆ.",
+      "xr": "Talamattada naaveenyateyu samudaayada naija agatyagalannu pooraisuttade."
+    },
+    "c247": {
+      "t": "ಅಲ್ಗಾರಿದಮ್",
+      "r": "Algaaridam",
+      "x": "ದಕ್ಷ ಅಲ್ಗಾರಿದಮ್ ವಿದ್ಯುತ್ ಮತ್ತು ಸಮಯ ಎರಡನ್ನೂ ಉಳಿಸುತ್ತದೆ.",
+      "xr": "Daksha algaaridam vidyut mattu samaya eradannoo ulisuttade."
+    },
+    "c248": {
+      "t": "ಶಕ್ತಿ",
+      "r": "Shakti",
+      "x": "ಸೌರಫಲಕಗಳು ಸೂರ್ಯನ ಬೆಳಕನ್ನು ನೇರವಾಗಿ ಶಕ್ತಿಯಾಗಿ ಪರಿವರ್ತಿಸುತ್ತವೆ.",
+      "xr": "Sauraphalakagalu sooryana belakannu neravaagi shaktiyaagi parivartisuttave."
+    },
+    "c249": {
+      "t": "ಪ್ರಯೋಗಾಲಯ",
+      "r": "Prayogaalaya",
+      "x": "ವಿಜ್ಞಾನಿಗಳು ಪ್ರಯೋಗಾಲಯದಲ್ಲಿ ಸಂವೇದಕಗಳನ್ನು ನಿಖರಗೊಳಿಸಿದರು.",
+      "xr": "Vijnaanigalu prayogaalayadalli samvedakagalannu nikharagolisidaru."
+    },
+    "c250": {
+      "t": "ನಿಖರತೆ",
+      "r": "Nikharate",
+      "x": "ಸೂಕ್ಷ್ಮ ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಗೆ ಅಸಾಧಾರಣ ನಿಖರತೆ ಅಗತ್ಯ.",
+      "xr": "Sookshma shastrachikitsege asaadhaarana nikharate agatya."
+    },
+    "c251": {
+      "t": "ವಿಶ್ವ",
+      "r": "Vishva",
+      "x": "ದೂರದರ್ಶಕಗಳು ವಿಶ್ವದ ಅತ್ಯಂತ ಪ್ರಾಚೀನ ನಕ್ಷತ್ರಪುಂಜಗಳನ್ನು ಅನಾವರಣಗೊಳಿಸುತ್ತವೆ.",
+      "xr": "Dooradarshakagalu vishvada atyanta praacheena nakshatrapunjagalannu anaavaranagolisuttave."
+    },
+    "c252": {
+      "t": "ಗ್ರಹ",
+      "r": "Graha",
+      "x": "ಯಾವುದೇ ಗ್ರಹದಲ್ಲಿ ಜೀವವಿರಲು ನೀರು ಅತ್ಯಗತ್ಯ.",
+      "xr": "Yaavude grahadalli jeevaviralu neeru atyagatya."
+    },
+    "c253": {
+      "t": "ಗುರುತ್ವಾಕರ್ಷಣೆ",
+      "r": "Gurutvaakarshane",
+      "x": "ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಚಂದ್ರನನ್ನು ಭೂಮಿಯ ಸುತ್ತ ಕಕ್ಷೆಯಲ್ಲಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+      "xr": "Gurutvaakarshaneyu chandranannu bhoomiya sutta kaksheyalli hidididuttade."
+    },
+    "c254": {
+      "t": "ವಿಕಾಸ",
+      "r": "Vikaasa",
+      "x": "ವಿಕಾಸವು ಲಕ್ಷಾಂತರ ವರ್ಷಗಳಲ್ಲಿ ಜೀವಿಗಳನ್ನು ರೂಪಿಸುತ್ತದೆ.",
+      "xr": "Vikaasavu lakshaantara varshagalalli jeevigalannu roopisuttade."
+    },
+    "c255": {
+      "t": "ಜಿಜ್ಞಾಸೆ",
+      "r": "Jijnaase",
+      "x": "ವೈಜ್ಞಾನಿಕ ಜಿಜ್ಞಾಸೆಯು ಮಾನವಕುಲವನ್ನು ಮುನ್ನಡೆಸುತ್ತದೆ.",
+      "xr": "Vaijnaanika jijnaaseyu maanavakulavannu munnadesuttade."
+    },
+    "c256": {
+      "t": "ಪರಿಸರ",
+      "r": "Parisara",
+      "x": "ಪರಿಸರವನ್ನು ರಕ್ಷಿಸುವುದು ಮುಂದಿನ ಪೀಳಿಗೆಯನ್ನು ರಕ್ಷಿಸಿದಂತೆ.",
+      "xr": "Parisaravannu rakshisuvudu mundina peeligeyannu rakshisidante."
+    },
+    "c257": {
+      "t": "ಹವಾಮಾನ",
+      "r": "Havaamaana",
+      "x": "ಬದಲಾಗುತ್ತಿರುವ ಹವಾಮಾನದ ಮಾದರಿಗಳು ಜಾಗತಿಕ ಬೆಳೆಗಳ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ.",
+      "xr": "Badalaaguttiruva havaamaanada maadarigalu jaagatika belegala mele parinaama beeruttave."
+    },
+    "c258": {
+      "t": "ಪರಿಸರ ವ್ಯವಸ್ಥೆ",
+      "r": "Parisara vyavasthe",
+      "x": "ಜೌಗು ಪ್ರದೇಶಗಳು ಕರಾವಳಿ ಪರಿಸರ ವ್ಯವಸ್ಥೆಗೆ ಅತ್ಯಂತ ಮುಖ್ಯವಾಗಿವೆ.",
+      "xr": "Jaugu pradeshagalu karaavali parisara vyavasthege atyanta mukhyavaagive."
+    },
+    "c259": {
+      "t": "ಜೀವವೈವಿಧ್ಯ",
+      "r": "Jeevavaividhya",
+      "x": "ಮಳೆಕಾಡುಗಳು ಅಸಾಧಾರಣ ಜೀವವೈವಿಧ್ಯಕ್ಕೆ ಆಶ್ರಯ ನೀಡುತ್ತವೆ.",
+      "xr": "Malekaadugalu asaadhaarana jeevavaividhyakke aashraya needuttave."
+    },
+    "c260": {
+      "t": "ಮಾಲಿನ್ಯ",
+      "r": "Maalinya",
+      "x": "ವಿದ್ಯುತ್ ಸಾರಿಗೆಯು ನಗರದ ವಾಯು ಮಾಲಿನ್ಯವನ್ನು ತೀವ್ರವಾಗಿ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
+      "xr": "Vidyut saarigeyu nagarada vaayu maalinyavannu teevravaagi kadime maaduttade."
+    },
+    "c261": {
+      "t": "ನವೀಕರಿಸಬಹುದಾದ",
+      "r": "Naveekarisabahudaada",
+      "x": "ಗಾಳಿ ಮತ್ತು ಸೌರಶಕ್ತಿ ಹೇರಳವಾದ ನವೀಕರಿಸಬಹುದಾದ ಮೂಲಗಳಾಗಿವೆ.",
+      "xr": "Gaali mattu saurashakti heralavaada naveekarisabahudaada moolagalaagive."
+    },
+    "c262": {
+      "t": "ಸುಸ್ಥಿರತೆ",
+      "r": "Susthirate",
+      "x": "ನಿಜವಾದ ಸುಸ್ಥಿರತೆಯು ಪ್ರಕೃತಿ ಮತ್ತು ಸಮೃದ್ಧಿಯ ನಡುವೆ ಸಮತೋಲನ ಸಾಧಿಸುತ್ತದೆ.",
+      "xr": "Nijavaada susthirateyu prakruti mattu samruddhiya naduve samatolana saadhisuttade."
+    },
+    "c263": {
+      "t": "ಸಂರಕ್ಷಣೆ",
+      "r": "Samrakshane",
+      "x": "ಸಮುದಾಯ ನೇತೃತ್ವದ ಸಂರಕ್ಷಣೆಯು ಕಾಡಿಗೆ ಮರುಜೀವ ನೀಡಿತು.",
+      "xr": "Samudaaya netrutvada samrakshaneyu kaadige marujeeva needitu."
+    },
+    "c264": {
+      "t": "ಮರುಬಳಕೆ",
+      "r": "Marubalake",
+      "x": "ನಗರಗಳು ಮರುಬಳಕೆ ಮಾಡಲು ಗಾಜು, ಕಾಗದ ಮತ್ತು ಲೋಹವನ್ನು ಬೇರ್ಪಡಿಸಿ.",
+      "xr": "Nagaragalu marubalake maadalu gaaju, kaagada mattu lohavannu berpadisi."
+    },
+    "c265": {
+      "t": "ಸಂಪನ್ಮೂಲ",
+      "r": "Sampanmoola",
+      "x": "ಸಿಹಿನೀರು ಅಮೂಲ್ಯವಾದ ಹಂಚಿಕೊಂಡ ಸಂಪನ್ಮೂಲವಾಗಿದೆ.",
+      "xr": "Sihineeru amoolyavaada hanchikonda sampanmoolavaagide."
+    },
+    "c266": {
+      "t": "ಅರಣ್ಯ",
+      "r": "Aranya",
+      "x": "ಸ್ಥಳೀಯ ಅರಣ್ಯಗಳನ್ನು ಪುನರುಜ್ಜೀವನಗೊಳಿಸುವುದರಿಂದ ಸುತ್ತಮುತ್ತಲಿನ ಪಟ್ಟಣಗಳು ತಂಪಾಗುತ್ತವೆ.",
+      "xr": "Sthaleeya aranyagalannu punarujjeevanagolisuvudarinda suttamuttalina pattanagalu tampaaguttave."
+    },
+    "c267": {
+      "t": "ಮಹಾಸಾಗರ",
+      "r": "Mahaasaagara",
+      "x": "ಆರೋಗ್ಯಕರ ಮಹಾಸಾಗರಗಳು ಅಪಾರ ಪ್ರಮಾಣದ ಇಂಗಾಲವನ್ನು ಹೀರಿಕೊಳ್ಳುತ್ತವೆ.",
+      "xr": "Aarogyakara mahaasaagaragalu apaara pramaanada ingaalavannu heerikolluttave."
+    },
+    "c268": {
+      "t": "ಬರಗಾಲ",
+      "r": "Baragaala",
+      "x": "ಸ್ಮಾರ್ಟ್ ನೀರಾವರಿಯು ರೈತರಿಗೆ ಬರಗಾಲವನ್ನು ಎದುರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+      "xr": "Smaart neeraavariyu raitarige baragaalavannu edurisalu sahaaya maaduttade."
+    },
+    "c269": {
+      "t": "ಸಾಮರಸ್ಯ",
+      "r": "Saamarasya",
+      "x": "ಮಾನವ ಪ್ರಗತಿಯು ಪ್ರಕೃತಿಯೊಂದಿಗೆ ಸಾಮರಸ್ಯದಿಂದ ಕೂಡಿರಬೇಕು.",
+      "xr": "Maanava pragatiyu prakrutiyondige saamarasyadinda koodirabeku."
+    },
+    "c270": {
+      "t": "ಭವಿಷ್ಯ",
+      "r": "Bhavishya",
+      "x": "ಇಂದು ನಾವು ಮಾಡುವ ಆಯ್ಕೆಗಳು ನಾಳೆಯ ಭವಿಷ್ಯವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "xr": "Indu naavu maaduva aaykegalu naaleya bhavishyavannu roopisuttave."
+    },
+    "c271": {
+      "t": "ನ್ಯಾಯ",
+      "r": "Nyaaya",
+      "x": "ಕಾನೂನಿನ ಅಡಿಯಲ್ಲಿ ಸಮಾನ ನ್ಯಾಯವು ಸಮಾಜವನ್ನು ಬಲಪಡಿಸುತ್ತದೆ.",
+      "xr": "Kaanoonina adiyalli samaana nyaayavu samaajavannu balapadisuttade."
+    },
+    "c272": {
+      "t": "ಸ್ವಾತಂತ್ರ್ಯ",
+      "r": "Svaatantrya",
+      "x": "ಅಭಿವ್ಯಕ್ತಿ ಸ್ವಾತಂತ್ರ್ಯಕ್ಕೆ ಪರಸ್ಪರ ಜವಾಬ್ದಾರಿಯ ಅಗತ್ಯವಿದೆ.",
+      "xr": "Abhivyakti svaatantryakke paraspara javaabdaariya agatyavide."
+    },
+    "c273": {
+      "t": "ಸಮಾನತೆ",
+      "r": "Samaanate",
+      "x": "ಶಿಕ್ಷಣವು ಸಾಮಾಜಿಕ ಮತ್ತು ಆರ್ಥಿಕ ಸಮಾನತೆಯನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ.",
+      "xr": "Shikshanavu saamaajika mattu aarthika samaanateyannu uttejisuttade."
+    },
+    "c274": {
+      "t": "ಸಂವಿಧಾನ",
+      "r": "Samvidhaana",
+      "x": "ಸಂವಿಧಾನವು ಮೂಲಭೂತ ಮಾನವ ಹಕ್ಕುಗಳನ್ನು ರಕ್ಷಿಸುತ್ತದೆ.",
+      "xr": "Samvidhaanavu moolabhoota maanava hakkugalannu rakshisuttade."
+    },
+    "c275": {
+      "t": "ನಾಗರಿಕ",
+      "r": "Naagarika",
+      "x": "ಪ್ರತಿಯೊಬ್ಬ ಜಾಗೃತ ನಾಗರಿಕನೂ ನಾಗರಿಕ ಜೀವನಕ್ಕೆ ಕೊಡುಗೆ ನೀಡುತ್ತಾನೆ.",
+      "xr": "Pratiyobba jaagruta naagarikanoo naagarika jeevanakke koduge needuttaane."
+    },
+    "c276": {
+      "t": "ಪ್ರಜಾಪ್ರಭುತ್ವ",
+      "r": "Prajaaprabhutva",
+      "x": "ಆರೋಗ್ಯಕರ ಪ್ರಜಾಪ್ರಭುತ್ವವು ಜಾಗೃತ ಮತದಾರರ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿದೆ.",
+      "xr": "Aarogyakara prajaaprabhutvavu jaagruta matadaarara mele avalambitavaagide."
+    },
+    "c277": {
+      "t": "ಸರ್ಕಾರ",
+      "r": "Sarkaara",
+      "x": "ಸ್ಥಳೀಯ ಸರ್ಕಾರವು ರಸ್ತೆಗಳು, ಉದ್ಯಾನವನಗಳು ಮತ್ತು ಶಾಲೆಗಳನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ.",
+      "xr": "Sthaleeya sarkaaravu rastegalu, udyaanavanagalu mattu shaalegalannu nirvahisuttade."
+    },
+    "c278": {
+      "t": "ನೀತಿ",
+      "r": "Neeti",
+      "x": "ಸಾರ್ವಜನಿಕ ಆರೋಗ್ಯ ನೀತಿಯು ಲಕ್ಷಾಂತರ ಜೀವಗಳನ್ನು ಉಳಿಸಿತು.",
+      "xr": "Saarvajanika aarogya neetiyu lakshaantara jeevagalannu ulisitu."
+    },
+    "c279": {
+      "t": "ಕಾನೂನು",
+      "r": "Kaanoonu",
+      "x": "ಪಾರದರ್ಶಕ ಕಾನೂನುಗಳು ಸಮುದಾಯಗಳಲ್ಲಿ ವಿಶ್ವಾಸವನ್ನು ಬೆಳೆಸುತ್ತವೆ.",
+      "xr": "Paaradarshaka kaanoonugalu samudaayagalalli vishvaasavannu belesuttave."
+    },
+    "c280": {
+      "t": "ಪಾರದರ್ಶಕತೆ",
+      "r": "Paaradarshakate",
+      "x": "ಆರ್ಥಿಕ ಪಾರದರ್ಶಕತೆಯು ಭ್ರಷ್ಟಾಚಾರವನ್ನು ತಡೆಯುತ್ತದೆ.",
+      "xr": "Aarthika paaradarshakateyu bhrashtaachaaravannu tadeyuttade."
+    },
+    "c281": {
+      "t": "ಸಮುದಾಯ",
+      "r": "Samudaaya",
+      "x": "ಬಲಿಷ್ಠ ಸಮುದಾಯಗಳು ದುರ್ಬಲರ ಕಾಳಜಿ ವಹಿಸುತ್ತವೆ.",
+      "xr": "Balishtha samudaayagalu durbalara kaalaji vahisuttave."
+    },
+    "c282": {
+      "t": "ಶಾಂತಿ",
+      "r": "Shaanti",
+      "x": "ಶಾಶ್ವತ ಶಾಂತಿಗೆ ಸಂವಾದ ಮತ್ತು ಸಹಾನುಭೂತಿ ಅತ್ಯಗತ್ಯ.",
+      "xr": "Shaashvata shaantige samvaada mattu sahaanubhooti atyagatya."
+    },
+    "c283": {
+      "t": "ಶಿಕ್ಷಣ",
+      "r": "Shikshana",
+      "x": "ಸಾರ್ವತ್ರಿಕ ಶಿಕ್ಷಣವು ಇಡೀ ರಾಷ್ಟ್ರಗಳನ್ನು ಉನ್ನತಿಗೇರಿಸುತ್ತದೆ.",
+      "xr": "Saarvatrika shikshanavu idee raashtragalannu unnatigerisuttade."
+    },
+    "c284": {
+      "t": "ಸ್ವಯಂಸೇವಕ",
+      "r": "Svayamsevaka",
+      "x": "ಪ್ರವಾಹದ ನಂತರ ಪುನರ್ನಿರ್ಮಾಣಕ್ಕೆ ನೂರಾರು ಸ್ವಯಂಸೇವಕರು ಸಹಾಯ ಮಾಡಿದರು.",
+      "xr": "Pravaahada nantara punarnirmaanakke nooraaru svayamsevakaru sahaaya maadidaru."
+    },
+    "c285": {
+      "t": "ಒಗ್ಗಟ್ಟು",
+      "r": "Oggattu",
+      "x": "ಜಾಗತಿಕ ಒಗ್ಗಟ್ಟು ಬಿಕ್ಕಟ್ಟುಗಳನ್ನು ವೇಗವಾಗಿ ನಿವಾರಿಸುತ್ತದೆ.",
+      "xr": "Jaagatika oggattu bikkattugalannu vegavaagi nivaarisuttade."
+    },
+    "c286": {
+      "t": "ವಾದ",
+      "r": "Vaada",
+      "x": "ಪ್ರತಿ ವಾದವನ್ನೂ ಪರಿಶೀಲಿಸಬಹುದಾದ ಸತ್ಯಾಂಶಗಳಿಂದ ಬೆಂಬಲಿಸಿ.",
+      "xr": "Prati vaadavannoo parisheelisabahudaada satyaamshagalinda bembalisi."
+    },
+    "c287": {
+      "t": "ದೃಷ್ಟಿಕೋನ",
+      "r": "Drushtikona",
+      "x": "ಇನ್ನೊಬ್ಬರ ದೃಷ್ಟಿಕೋನವನ್ನು ನೋಡುವುದರಿಂದ ತಿಳಿವಳಿಕೆ ಆಳವಾಗುತ್ತದೆ.",
+      "xr": "Innobbara drushtikonavannu noduvudarinda tilivalike aalavaaguttade."
+    },
+    "c288": {
+      "t": "ವಿಶ್ಲೇಷಣೆ",
+      "r": "Vishleshane",
+      "x": "ಅವಳ ಆರ್ಥಿಕ ವಿಶ್ಲೇಷಣೆಯು ಮೂರು ಗುಪ್ತ ಅಪಾಯಗಳನ್ನು ಎತ್ತಿ ತೋರಿಸಿತು.",
+      "xr": "Avala aarthika vishleshaneyu mooru gupta apaayagalannu etti torisitu."
+    },
+    "c289": {
+      "t": "ಊಹೆ",
+      "r": "Oohe",
+      "x": "ನಿಮ್ಮ ಮೂಲಭೂತ ಊಹೆಗಳನ್ನು ಯಾವಾಗಲೂ ಪ್ರಶ್ನಿಸಿ.",
+      "xr": "Nimma moolabhoota oohegalannu yaavaagaloo prashnisi."
+    },
+    "c290": {
+      "t": "ತೀರ್ಮಾನ",
+      "r": "Teermaana",
+      "x": "ತೀರ್ಮಾನಕ್ಕೆ ಬರುವ ಮುನ್ನ ಎಲ್ಲಾ ಸತ್ಯಾಂಶಗಳಿಗಾಗಿ ಕಾಯಿರಿ.",
+      "xr": "Teermaanakke baruva munna ellaa satyaamshagaligaagi kaayiri."
+    },
+    "c291": {
+      "t": "ನಿಷ್ಪಕ್ಷಪಾತ",
+      "r": "Nishpakshapaata",
+      "x": "ನ್ಯಾಯಯುತ ಪತ್ರಕರ್ತನು ನಿಷ್ಪಕ್ಷಪಾತವಾಗಿರಲು ಶ್ರಮಿಸುತ್ತಾನೆ.",
+      "xr": "Nyaayayuta patrakartanu nishpakshapaatavaagiralu shramisuttaane."
+    },
+    "c292": {
+      "t": "ಪೂರ್ವಾಗ್ರಹ",
+      "r": "Poorvaagraha",
+      "x": "ನಮ್ಮದೇ ಪೂರ್ವಾಗ್ರಹವನ್ನು ಗುರುತಿಸುವುದು ಉತ್ತಮ ನಿರ್ಧಾರಕ್ಕೆ ದಾರಿ ಮಾಡಿಕೊಡುತ್ತದೆ.",
+      "xr": "Nammade poorvaagrahavannu gurutisuvudu uttama nirdhaarakke daari maadikoduttade."
+    },
+    "c293": {
+      "t": "ಮಾನದಂಡ",
+      "r": "Maanadanda",
+      "x": "ವಿಶ್ವಾಸಾರ್ಹತೆಯು ನಮ್ಮ ಪ್ರಾಥಮಿಕ ಮೌಲ್ಯಮಾಪನ ಮಾನದಂಡವಾಗಿದೆ.",
+      "xr": "Vishvaasaarhateyu namma praathamika maulyamaapana maanadandavaagide."
+    },
+    "c294": {
+      "t": "ವೈರುಧ್ಯ",
+      "r": "Vairudhya",
+      "x": "ಸಾಕ್ಷಿಯು ಕಾಲಾನುಕ್ರಮದಲ್ಲಿ ಒಂದು ವೈರುಧ್ಯವನ್ನು ಗಮನಿಸಿದರು.",
+      "xr": "Saakshiyu kaalaanukramadalli ondu vairudhyavannu gamanisidaru."
+    },
+    "c295": {
+      "t": "ಒಮ್ಮತ",
+      "r": "Ommata",
+      "x": "ಉತ್ಸಾಹಭರಿತ ಚರ್ಚೆಯ ನಂತರ ಸಮಿತಿಯು ಒಮ್ಮತಕ್ಕೆ ಬಂದಿತು.",
+      "xr": "Utsaahabharita charcheya nantara samitiyu ommatakke banditu."
+    },
+    "c296": {
+      "t": "ಸ್ಪಷ್ಟಪಡಿಸುವುದು",
+      "r": "Spashtapadisuvudu",
+      "x": "ಆ ಮಾತಿನಿಂದ ನೀವು ಏನನ್ನು ಉದ್ದೇಶಿಸಿದ್ದೀರಿ ಎಂದು ಸ್ಪಷ್ಟಪಡಿಸಬಹುದೇ?",
+      "xr": "Aa maatininda neevu enannu uddeshisiddeeri endu spashtapadisabahude?"
+    },
+    "c297": {
+      "t": "ಒತ್ತಿಹೇಳುವುದು",
+      "r": "Ottiheluvudu",
+      "x": "ಲಭ್ಯತೆಯ ಮಹತ್ವವನ್ನು ನಾನು ಒತ್ತಿಹೇಳಲು ಬಯಸುತ್ತೇನೆ.",
+      "xr": "Labhyateya mahatvavannu naanu ottihelalu bayasuttene."
+    },
+    "c298": {
+      "t": "ಹಾಗಿದ್ದರೂ",
+      "r": "Haagiddaroo",
+      "x": "ದಾರಿಯು ಕಡಿದಾಗಿತ್ತು; ಹಾಗಿದ್ದರೂ, ನಾವು ಶಿಖರವನ್ನು ತಲುಪಿದೆವು.",
+      "xr": "Daariyu kadidaagittu; haagiddaroo, naavu shikharavannu talupidevu."
+    },
+    "c299": {
+      "t": "ಪರಿಣಾಮ",
+      "r": "Parinaama",
+      "x": "ನಿರ್ಧರಿಸುವ ಮುನ್ನ ಪ್ರತಿಯೊಂದು ದೀರ್ಘಕಾಲೀನ ಪರಿಣಾಮವನ್ನೂ ಪರಿಗಣಿಸಿ.",
+      "xr": "Nirdharisuva munna pratiyondu deerghakaaleena parinaamavannoo pariganisi."
+    },
+    "c300": {
+      "t": "ಒಳನೋಟ",
+      "r": "Olanota",
+      "x": "ಅವಳ ಮಾತು ಒಂದು ಅಸಾಧಾರಣ ಒಳನೋಟವನ್ನು ನೀಡಿತು.",
+      "xr": "Avala maatu ondu asaadhaarana olanotavannu needitu."
+    },
+    "c301": {
+      "t": "ರೂಪಕ",
+      "r": "Roopaka",
+      "x": "ನದಿಯು ಕಳೆದುಹೋಗುವ ಸಮಯಕ್ಕೆ ಒಂದು ರೂಪಕವಾಗಿ ನಿಲ್ಲುತ್ತದೆ.",
+      "xr": "Nadiyu kaleduhoguva samayakke ondu roopakavaagi nilluttade."
+    },
+    "c302": {
+      "t": "ಪ್ರತೀಕಾತ್ಮಕತೆ",
+      "r": "Prateekaatmakate",
+      "x": "ಈ ಕಾದಂಬರಿಯು ಬಹುಸ್ತರದ ಪ್ರತೀಕಾತ್ಮಕತೆಯಿಂದ ಸಮೃದ್ಧವಾಗಿದೆ.",
+      "xr": "Ee kaadambariyu bahustarada prateekaatmakateyinda samruddhavaagide."
+    },
+    "c303": {
+      "t": "ಕಥನ",
+      "r": "Kathana",
+      "x": "ಲೇಖಕರು ಪರಸ್ಪರ ಹೆಣೆದುಕೊಂಡಿರುವ ಮೂರು ಕಥನಗಳನ್ನು ನೇಯ್ದಿದ್ದಾರೆ.",
+      "xr": "Lekhakaru paraspara henedukondiruva mooru kathanagalannu neydiddaare."
+    },
+    "c304": {
+      "t": "ಮೇರುಕೃತಿ",
+      "r": "Merukruti",
+      "x": "ಆ ಸ್ವರಸಂಯೋಜನೆಯನ್ನು ಕಾಲಾತೀತ ಮೇರುಕೃತಿ ಎಂದು ಕೊಂಡಾಡಲಾಗುತ್ತದೆ.",
+      "xr": "Aa svarasamyojaneyannu kaalaateeta merukruti endu kondaadalaaguttade."
+    },
+    "c305": {
+      "t": "ಸೌಂದರ್ಯಪ್ರಜ್ಞೆ",
+      "r": "Saundaryaprajne",
+      "x": "ಸರಳ ವಿನ್ಯಾಸವು ಶಾಂತ ಸೌಂದರ್ಯಪ್ರಜ್ಞೆಯ ಸಾಮರಸ್ಯವನ್ನು ಮೆಚ್ಚುತ್ತದೆ.",
+      "xr": "Sarala vinyaasavu shaanta saundaryaprajneya saamarasyavannu mechchuttade."
+    },
+    "c306": {
+      "t": "ಸೂಕ್ಷ್ಮತೆ",
+      "r": "Sookshmate",
+      "x": "ಸೂಕ್ಷ್ಮ ಸಾಂಸ್ಕೃತಿಕ ಸೂಕ್ಷ್ಮತೆಗಳನ್ನು ಗ್ರಹಿಸುವುದರಲ್ಲಿ ನಿಜವಾದ ಪ್ರಾವೀಣ್ಯತೆ ಇದೆ.",
+      "xr": "Sookshma saamskrutika sookshmategalannu grahisuvudaralli nijavaada praaveenyate ide."
+    },
+    "c307": {
+      "t": "ದ್ವಂದ್ವಾರ್ಥ",
+      "r": "Dvandvaartha",
+      "x": "ಕವಿತೆಯು ಉದ್ದೇಶಪೂರ್ವಕ, ಮನಕಲಕುವ ದ್ವಂದ್ವಾರ್ಥದಲ್ಲಿ ಕೊನೆಗೊಳ್ಳುತ್ತದೆ.",
+      "xr": "Kaviteyu uddeshapoorvaka, manakalakuva dvandvaarthadalli konegolluttade."
+    },
+    "c308": {
+      "t": "ವ್ಯಂಗ್ಯ",
+      "r": "Vyangya",
+      "x": "ನಾಟಕಕಾರರು ಅಹಂಕಾರವನ್ನು ಟೀಕಿಸಲು ತೀಕ್ಷ್ಣ ವ್ಯಂಗ್ಯವನ್ನು ಬಳಸಿದರು.",
+      "xr": "Naatakakaararu ahamkaaravannu teekisalu teekshna vyangyavannu balasidaru."
+    },
+    "c309": {
+      "t": "ವಾಕ್ಚಾತುರ್ಯ",
+      "r": "Vaakchaaturya",
+      "x": "ಅವಳು ಗಮನಾರ್ಹ ಸಂಯಮ ಮತ್ತು ವಾಕ್ಚಾತುರ್ಯದಿಂದ ಮಾತನಾಡಿದಳು.",
+      "xr": "Avalu gamanaarha samyama mattu vaakchaaturyadinda maatanaadidalu."
+    },
+    "c310": {
+      "t": "ಪರಂಪರೆಯ ಕೊಡುಗೆ",
+      "r": "Parampareya koduge",
+      "x": "ಮಹಾನ್ ಸಾಹಿತ್ಯವು ಶಾಶ್ವತ ಬೌದ್ಧಿಕ ಪರಂಪರೆಯ ಕೊಡುಗೆಯನ್ನು ಬಿಟ್ಟುಹೋಗುತ್ತದೆ.",
+      "xr": "Mahaan saahityavu shaashvata bauddhika parampareya kodugeyannu bittuhoguttade."
+    },
+    "c311": {
+      "t": "ಹಳಹಳಿ",
+      "r": "Halahali",
+      "x": "ಬಿಸಿ ಮಣ್ಣಿನ ಮೇಲೆ ಬಿದ್ದ ಮಳೆಯ ಘಮವು ಆಳವಾದ ಹಳಹಳಿಯನ್ನು ಎಬ್ಬಿಸಿತು.",
+      "xr": "Bisi mannina mele bidda maleya ghamavu aalavaada halahaliyannu ebbisitu."
+    },
+    "c312": {
+      "t": "ಪ್ರತಿಧ್ವನಿ",
+      "r": "Pratidhvani",
+      "x": "ಆ ರಾಗವು ಆಳವಾದ ಭಾವನಾತ್ಮಕ ಪ್ರತಿಧ್ವನಿಯನ್ನು ಹೊಂದಿತ್ತು.",
+      "xr": "Aa raagavu aalavaada bhaavanaatmaka pratidhvaniyannu hondittu."
+    },
+    "c313": {
+      "t": "ಉದಾತ್ತ",
+      "r": "Udaatta",
+      "x": "ಧ್ರುವಪ್ರಭೆಯ ಕೆಳಗೆ ನಿಲ್ಲುವುದು ಸಂಪೂರ್ಣವಾಗಿ ಉದಾತ್ತವಾಗಿ ಭಾಸವಾಯಿತು.",
+      "xr": "Dhruvaprabheya kelege nilluvudu sampoornavaagi udaattavaagi bhaasavaayitu."
+    },
+    "c314": {
+      "t": "ಮೀರುವುದು",
+      "r": "Meeruvudu",
+      "x": "ಕರುಣೆಯು ಭಾಷೆ ಮತ್ತು ಇತಿಹಾಸವನ್ನು ಮೀರಬಲ್ಲದು.",
+      "xr": "Karuneyu bhaashe mattu itihaasavannu meeraballadu."
+    },
+    "c315": {
+      "t": "ನೈಜತೆ",
+      "r": "Naijate",
+      "x": "ಓದುಗರು ನಿಜವಾದ ನೈಜತೆಯನ್ನು ತಕ್ಷಣವೇ ಗುರುತಿಸುತ್ತಾರೆ.",
+      "xr": "Odugaru nijavaada naijateyannu takshanave gurutisuttaare."
+    },
+    "c316": {
+      "t": "ಅಂತಃಕರಣ",
+      "r": "Antahkarana",
+      "x": "ಪ್ರಾಮಾಣಿಕ ಅಂತಃಕರಣಕ್ಕೆ ಅನುಗುಣವಾಗಿ ನಡೆದುಕೊಳ್ಳಿ.",
+      "xr": "Pramaanika antahkaranakke anugunavaagi nadedukolli."
+    },
+    "c317": {
+      "t": "ಸಮಗ್ರತೆ",
+      "r": "Samagrate",
+      "x": "ಯಾರೂ ನೋಡದಿರುವಾಗಲೂ ಸರಿಯಾದದ್ದನ್ನು ಮಾಡುವುದೇ ಸಮಗ್ರತೆ.",
+      "xr": "Yaaroo nodadiruvaagaloo sariyaadaddannu maaduvude samagrate."
+    },
+    "c318": {
+      "t": "ಸಹಾನುಭೂತಿ",
+      "r": "Sahaanubhooti",
+      "x": "ಸಹಾನುಭೂತಿಯು ಅತ್ಯಂತ ಆಳವಾದ ಅಂತರಗಳನ್ನೂ ಬೆಸೆಯುತ್ತದೆ.",
+      "xr": "Sahaanubhootiyu atyanta aalavaada antaragalannoo beseyuttade."
+    },
+    "c319": {
+      "t": "ಧರ್ಮಸಂಕಟ",
+      "r": "Dharmasankata",
+      "x": "ಸಮಿತಿಯು ಕಠಿಣವಾದ ನೈತಿಕ ಧರ್ಮಸಂಕಟವನ್ನು ಎದುರಿಸಿತು.",
+      "xr": "Samitiyu kathinavaada naitika dharmasankatavannu edurisitu."
+    },
+    "c320": {
+      "t": "ವಿವೇಕ",
+      "r": "Viveka",
+      "x": "ಜ್ಞಾನವು ಮಾತನಾಡುತ್ತದೆ, ಆದರೆ ವಿವೇಕವು ಆಲಿಸುತ್ತದೆ.",
+      "xr": "Jnaanavu maatanaaduttade, aadare vivekavu aalisuttade."
+    },
+    "c321": {
+      "t": "ಪ್ರಜ್ಞೆ",
+      "r": "Prajne",
+      "x": "ತತ್ವಜ್ಞಾನಿಗಳು ಇಂದಿಗೂ ಪ್ರಜ್ಞೆಯ ಸ್ವರೂಪದ ಬಗ್ಗೆ ಚರ್ಚಿಸುತ್ತಾರೆ.",
+      "xr": "Tatvajnaanigalu indigoo prajneya svaroopada bagge charchisuttaare."
+    },
+    "c322": {
+      "t": "ಗ್ರಹಿಕೆ",
+      "r": "Grahike",
+      "x": "ಭಾಷೆಯು ಕಾಲದ ಬಗೆಗಿನ ನಮ್ಮ ಗ್ರಹಿಕೆಯನ್ನು ಸೂಕ್ಷ್ಮವಾಗಿ ರೂಪಿಸುತ್ತದೆ.",
+      "xr": "Bhaasheyu kaalada bagegina namma grahikeyannu sookshmavaagi roopisuttade."
+    },
+    "c323": {
+      "t": "ಸ್ಥಿತಿಸ್ಥಾಪಕತ್ವ",
+      "r": "Sthitisthaapakatva",
+      "x": "ಸಂಕಷ್ಟಗಳನ್ನು ಮೆಟ್ಟಿನಿಂತಾಗ ಆಂತರಿಕ ಸ್ಥಿತಿಸ್ಥಾಪಕತ್ವ ಬೆಳೆಯುತ್ತದೆ.",
+      "xr": "Sankashtagalannu mettinintaaga aantarika sthitisthaapakatva beleyuttade."
+    },
+    "c324": {
+      "t": "ಆತ್ಮಾವಲೋಕನ",
+      "r": "Aatmaavalokana",
+      "x": "ಗೊಂದಲದ ಸಮಯದಲ್ಲಿ ಶಾಂತ ಆತ್ಮಾವಲೋಕನವು ಸ್ಪಷ್ಟತೆ ತರುತ್ತದೆ.",
+      "xr": "Gondalada samayadalli shaanta aatmaavalokanavu spashtate taruttade."
+    },
+    "c325": {
+      "t": "ವಿರೋಧಾಭಾಸ",
+      "r": "Virodhaabhaasa",
+      "x": "ಆಯ್ಕೆಯ ವಿರೋಧಾಭಾಸವು ಹೆಚ್ಚು ಆಯ್ಕೆಗಳು ಗೊಂದಲ ಮೂಡಿಸಬಲ್ಲವು ಎಂದು ತೋರಿಸುತ್ತದೆ.",
+      "xr": "Aaykeya virodhaabhaasavu hechchu aaykegalu gondala moodisaballavu endu torisuttade."
+    },
+    "c326": {
+      "t": "ಅನಿತ್ಯತೆ",
+      "r": "Anityate",
+      "x": "ಅನಿತ್ಯತೆಯನ್ನು ಒಪ್ಪಿಕೊಳ್ಳುವುದು ಇಂದಿನ ದಿನವನ್ನು ಪ್ರೀತಿಸಲು ಕಲಿಸುತ್ತದೆ.",
+      "xr": "Anityateyannu oppikolluvudu indina dinavannu preetisalu kalisuttade."
+    },
+    "c327": {
+      "t": "ಸ್ಥಿತಪ್ರಜ್ಞತೆ",
+      "r": "Sthitaprajnate",
+      "x": "ಅವಳು ಗೆಲುವು ಮತ್ತು ಹಿನ್ನಡೆ ಎರಡನ್ನೂ ಸ್ಥಿತಪ್ರಜ್ಞತೆಯಿಂದ ಸ್ವೀಕರಿಸಿದಳು.",
+      "xr": "Avalu geluvu mattu hinnade eradannoo sthitaprajnateyinda sveekarisidalu."
+    },
+    "c328": {
+      "t": "ಉದ್ದೇಶ",
+      "r": "Uddesha",
+      "x": "ಹಂಚಿಕೊಂಡ ಉದ್ದೇಶವು ದಿನನಿತ್ಯದ ಶ್ರಮವನ್ನು ಆನಂದವಾಗಿ ಮಾರ್ಪಡಿಸುತ್ತದೆ.",
+      "xr": "Hanchikonda uddeshavu dinanityada shramavannu aanandavaagi maarpadisuttade."
+    },
+    "c329": {
+      "t": "ಸ್ವಾಯತ್ತತೆ",
+      "r": "Svaayattate",
+      "x": "ಬೌದ್ಧಿಕ ಸ್ವಾಯತ್ತತೆಯು ಸ್ವತಂತ್ರ ಚಿಂತನೆಯಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.",
+      "xr": "Bauddhika svaayattateyu svatantra chintaneyinda aarambhavaaguttade."
+    },
+    "c330": {
+      "t": "ವಿನಯ",
+      "r": "Vinaya",
+      "x": "ನಿಜವಾದ ಪಾಂಡಿತ್ಯವು ಯಾವಾಗಲೂ ವಿನಯದೊಂದಿಗೆ ಕೂಡಿರುತ್ತದೆ.",
+      "xr": "Nijavaada paandityavu yaavaagaloo vinayadondige koodiruttade."
+    },
+    "c331": {
+      "t": "ಮಾತಿಗಿಂತ ಕೃತಿ ಮೇಲು",
+      "r": "Maatiginta kruti melu",
+      "x": "ನಿಮ್ಮ ಬದ್ಧತೆಯನ್ನು ಉಳಿಸಿಕೊಳ್ಳಿ—ಮಾತಿಗಿಂತ ಕೃತಿ ಮೇಲು.",
+      "xr": "Nimma baddhateyannu ulisikolli—maatiginta kruti melu."
+    },
+    "c332": {
+      "t": "ಸತತ ಅಭ್ಯಾಸವೇ ಸಿದ್ಧಿಗೆ ಮೂಲ",
+      "r": "Satata abhyaasave siddhige moola",
+      "x": "ತಪ್ಪುಗಳಿಗೆ ಹೆದರಬೇಡಿ; ಸತತ ಅಭ್ಯಾಸವೇ ಸಿದ್ಧಿಗೆ ಮೂಲ.",
+      "xr": "Tappugalige hedarabedi; satata abhyaasave siddhige moola."
+    },
+    "c333": {
+      "t": "ಕತ್ತಲೆಯ ಹಿಂದೆ ಬೆಳಕಿದೆ",
+      "r": "Kattaleya hinde belakide",
+      "x": "ಆಶಾವಾದಿಯಾಗಿರಿ—ಕತ್ತಲೆಯ ಹಿಂದೆ ಬೆಳಕಿದೆ.",
+      "xr": "Aashaavaadiyaagiri—kattaleya hinde belakide."
+    },
+    "c334": {
+      "t": "ಕಾಲ ಎಲ್ಲಾ ಗಾಯಗಳನ್ನು ಮಾಗಿಸುತ್ತದೆ",
+      "r": "Kaala ellaa gaayagalannu maagisuttade",
+      "x": "ನಿಮ್ಮ ಬಗ್ಗೆ ಮೃದುವಾಗಿರಿ; ಕಾಲ ಎಲ್ಲಾ ಗಾಯಗಳನ್ನು ಮಾಗಿಸುತ್ತದೆ.",
+      "xr": "Nimma bagge mruduvaagiri; kaala ellaa gaayagalannu maagisuttade."
+    },
+    "c335": {
+      "t": "ಒಗ್ಗಟ್ಟಿನಲ್ಲಿ ಬಲವಿದೆ",
+      "r": "Oggattinalli balavide",
+      "x": "ಒಟ್ಟಿಗೆ ಕೆಲಸ ಮಾಡುವುದು ಒಗ್ಗಟ್ಟಿನಲ್ಲಿ ಬಲವಿದೆ ಎಂಬುದನ್ನು ಸಾಬೀತುಪಡಿಸುತ್ತದೆ.",
+      "xr": "Ottige kelasa maaduvudu oggattinalli balavide embudannu saabeetupadisuttade."
+    },
+    "c336": {
+      "t": "ಸಂಕೋಚವನ್ನು ಕಳೆಯುವುದು",
+      "r": "Sankochavannu kaleyuvudu",
+      "x": "ರಾತ್ರಿ ಊಟದ ವೇಳೆ ಒಂದು ಆತ್ಮೀಯ ಹಾಸ್ಯವು ಸಂಕೋಚವನ್ನು ಕಳೆಯಲು ನೆರವಾಯಿತು.",
+      "xr": "Raatri ootada vele ondu aatmeeya haasyavu sankochavannu kaleyalu neravaayitu."
+    },
+    "c337": {
+      "t": "ನೀರು ಕುಡಿದಷ್ಟು ಸುಲಭ",
+      "r": "Neeru kudidashtu sulabha",
+      "x": "ವಾರಗಟ್ಟಲೆ ಅಭ್ಯಾಸ ಮಾಡಿದ ನಂತರ, ಪರೀಕ್ಷೆಯು ನೀರು ಕುಡಿದಷ್ಟು ಸುಲಭವಾಗಿತ್ತು.",
+      "xr": "Vaaragattale abhyaasa maadida nantara, pareeksheyu neeru kudidashtu sulabhavaagittu."
+    },
+    "c338": {
+      "t": "ಅಮಾವಾಸ್ಯೆಗೋ ಹುಣ್ಣಿಮೆಗೋ ಒಮ್ಮೆ",
+      "r": "Amaavaasyego hunnimego omme",
+      "x": "ಈ ಕಣಿವೆಯಲ್ಲಿ ಅಮಾವಾಸ್ಯೆಗೋ ಹುಣ್ಣಿಮೆಗೋ ಒಮ್ಮೆ ಹಿಮ ಕಾಣಸಿಗುತ್ತದೆ.",
+      "xr": "Ee kaniveyalli amaavaasyego hunnimego omme hima kaanasiguttade."
+    },
+    "c339": {
+      "t": "ಮರ್ಮವನ್ನು ಸರಿಯಾಗಿ ಮುಟ್ಟುವುದು",
+      "r": "Marmavannu sariyaagi muttuvudu",
+      "x": "ನಿಮ್ಮ ರೋಗನಿರ್ಣಯವು ಮರ್ಮವನ್ನು ಸರಿಯಾಗಿ ಮುಟ್ಟಿದೆ.",
+      "xr": "Nimma roganirnayavu marmavannu sariyaagi muttide."
+    },
+    "c340": {
+      "t": "ಹಗಲಿರುಳು ಶ್ರಮಿಸುವುದು",
+      "r": "Hagalirulu shramisuvudu",
+      "x": "ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಬಿಡುಗಡೆ ಮಾಡಲು ತಂಡವು ಹಗಲಿರುಳು ಶ್ರಮಿಸಿತು.",
+      "xr": "Samayakke sariyaagi bidugade maadalu tandavu hagalirulu shramisitu."
+    },
+    "c341": {
+      "t": "ಅಂತರಾರ್ಥವನ್ನು ಗ್ರಹಿಸುವುದು",
+      "r": "Antaraarthavannu grahisuvudu",
+      "x": "ರಾಜತಾಂತ್ರಿಕತೆಯಲ್ಲಿ ನೀವು ಮಾತುಗಳ ಅಂತರಾರ್ಥವನ್ನು ಗ್ರಹಿಸಬೇಕು.",
+      "xr": "Raajataantrikateyalli neevu maatugala antaraarthavannu grahisabeku."
+    },
+    "c342": {
+      "t": "ಹೊಸ ಅಧ್ಯಾಯ ಆರಂಭಿಸುವುದು",
+      "r": "Hosa adhyaaya aarambhisuvudu",
+      "x": "ಈ ವಸಂತದಲ್ಲಿ ಅವಳು ಜೀವನದ ಹೊಸ ಅಧ್ಯಾಯ ಆರಂಭಿಸಲು ನಿರ್ಧರಿಸಿದಳು.",
+      "xr": "Ee vasantadalli avalu jeevanada hosa adhyaaya aarambhisalu nirdharisidalu."
+    },
+    "c343": {
+      "t": "ಆಪತ್ತಿನಲ್ಲಿ ಅಡಗಿದ ವರ",
+      "r": "Aapattinalli adagida vara",
+      "x": "ಆ ಕೆಲಸ ಕಳೆದುಕೊಂಡದ್ದು ಆಪತ್ತಿನಲ್ಲಿ ಅಡಗಿದ ವರವಾಗಿ ಪರಿಣಮಿಸಿತು.",
+      "xr": "Aa kelasa kaledukondaddu aapattinalli adagida varavaagi parinamisitu."
+    },
+    "c344": {
+      "t": "ನಿರೀಕ್ಷೆಗೂ ಮೀರಿ ಶ್ರಮಿಸುವುದು",
+      "r": "Nireekshegoo meeri shramisuvudu",
+      "x": "ಶ್ರೇಷ್ಠ ಶಿಕ್ಷಕರು ಯಾವಾಗಲೂ ನಿರೀಕ್ಷೆಗೂ ಮೀರಿ ಶ್ರಮಿಸುತ್ತಾರೆ.",
+      "xr": "Shreshtha shikshakaru yaavaagaloo nireekshegoo meeri shramisuttaare."
+    },
+    "c345": {
+      "t": "ಸಮಗ್ರ ಚಿತ್ರಣವನ್ನು ನೋಡುವುದು",
+      "r": "Samagra chitranavannu noduvudu",
+      "x": "ಸಮಗ್ರ ಚಿತ್ರಣವನ್ನು ನೋಡಲು ಸಣ್ಣ ವಿವರಗಳಿಂದ ಸ್ವಲ್ಪ ಹಿಂದೆ ಸರಿಯಿರಿ.",
+      "xr": "Samagra chitranavannu nodalu sanna vivaragalinda svalpa hinde sariyiri."
+    },
+    "c346": {
+      "t": "ಸಾರ್ವಭೌಮತ್ವ",
+      "r": "Saarvabhaumatva",
+      "x": "ಅಂತರರಾಷ್ಟ್ರೀಯ ಕಾನೂನು ಸಾರ್ವಭೌಮತ್ವಕ್ಕೆ ಪರಸ್ಪರ ಗೌರವವನ್ನು ದೃಢಪಡಿಸುತ್ತದೆ.",
+      "xr": "Antararaashtreeya kaanoonu saarvabhaumatvakke paraspara gauravavannu drudhapadisuttade."
+    },
+    "c347": {
+      "t": "ರಾಜತಾಂತ್ರಿಕತೆ",
+      "r": "Raajataantrikate",
+      "x": "ತಾಳ್ಮೆಯ ರಾಜತಾಂತ್ರಿಕತೆಯು ಉದ್ವಿಗ್ನತೆ ಹೆಚ್ಚುವುದನ್ನು ತಡೆಯಿತು.",
+      "xr": "Taalmeya raajataantrikateyu udvignate hechchuvudannu tadeyitu."
+    },
+    "c348": {
+      "t": "ಒಡಂಬಡಿಕೆ",
+      "r": "Odambadike",
+      "x": "ನಲವತ್ತು ರಾಷ್ಟ್ರಗಳು ಪರಿಸರ ಒಡಂಬಡಿಕೆಯನ್ನು ಅನುಮೋದಿಸಿದವು.",
+      "xr": "Nalavattu raashtragalu parisara odambadikeyannu anumodisidavu."
+    },
+    "c349": {
+      "t": "ಬಹುಪಕ್ಷೀಯ",
+      "r": "Bahupaksheeya",
+      "x": "ಬಹುಪಕ್ಷೀಯ ಸಹಕಾರವು ಹಂಚಿಕೊಂಡ ಜಾಗತಿಕ ಅಪಾಯಗಳನ್ನು ಎದುರಿಸುತ್ತದೆ.",
+      "xr": "Bahupaksheeya sahakaaravu hanchikonda jaagatika apaayagalannu edurisuttade."
+    },
+    "c350": {
+      "t": "ನ್ಯಾಯವ್ಯಾಪ್ತಿ",
+      "r": "Nyaayavyaapti",
+      "x": "ಆ ನ್ಯಾಯಮಂಡಳಿಯು ಕಡಲ ವಿವಾದಗಳ ಮೇಲೆ ನ್ಯಾಯವ್ಯಾಪ್ತಿಯನ್ನು ಹೊಂದಿದೆ.",
+      "xr": "Aa nyaayamandaliyu kadala vivaadagala mele nyaayavyaaptiyannu hondide."
+    },
+    "c351": {
+      "t": "ಪರಿಕಲ್ಪನೆ",
+      "r": "Parikalpane",
+      "x": "ಈ ಸಂಶೋಧನಾ ಪ್ರಬಂಧವು ನವೀನ ಭಾಷಾ ಪರಿಕಲ್ಪನೆಯನ್ನು ಪರೀಕ್ಷಿಸುತ್ತದೆ.",
+      "xr": "Ee samshodhanaa prabandhavu naveena bhaashaa parikalpaneyannu pareekshisuttade."
+    },
+    "c352": {
+      "t": "ವಿಧಾನಶಾಸ್ತ್ರ",
+      "r": "Vidhaanashaastra",
+      "x": "ಪಾರದರ್ಶಕ ವಿಧಾನಶಾಸ್ತ್ರವು ಸ್ವತಂತ್ರ ಪುನರಾವರ್ತನೆಗೆ ಅವಕಾಶ ನೀಡುತ್ತದೆ.",
+      "xr": "Paaradarshaka vidhaanashaastravu svatantra punaraavartanege avakaasha needuttade."
+    },
+    "c353": {
+      "t": "ಸಂಶ್ಲೇಷಣೆ",
+      "r": "Samshleshane",
+      "x": "ಅವಳ ಉಪನ್ಯಾಸವು ಎರಡೂ ಕ್ಷೇತ್ರಗಳ ಅದ್ಭುತ ಸಂಶ್ಲೇಷಣೆಯನ್ನು ನೀಡಿತು.",
+      "xr": "Avala upanyaasavu eradoo kshetragala adbhuta samshleshaneyannu needitu."
+    },
+    "c354": {
+      "t": "ಪೂರ್ವನಿದರ್ಶನ",
+      "r": "Poorvanidarshana",
+      "x": "ಆ ತೀರ್ಪು ಮಹತ್ವದ ಕಾನೂನು ಪೂರ್ವನಿದರ್ಶನವನ್ನು ಸ್ಥಾಪಿಸಿತು.",
+      "xr": "Aa teerpu mahatvada kaanoonu poorvanidarshanavannu sthaapisitu."
+    },
+    "c355": {
+      "t": "ಅನುಷ್ಠಾನ",
+      "r": "Anushthaana",
+      "x": "ಎಚ್ಚರಿಕೆಯ ಅನುಷ್ಠಾನವು ಸುಧಾರಣೆಯ ಯಶಸ್ಸನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ.",
+      "xr": "Echcharikeya anushthaanavu sudhaaraneya yashassannu nirdharisuttade."
+    },
+    "c356": {
+      "t": "ಹೊರತಾಗಿಯೂ",
+      "r": "Horataagiyoo",
+      "x": "ಆರಂಭಿಕ ವಿಳಂಬಗಳ ಹೊರತಾಗಿಯೂ, ಸೇತುವೆಯು ಸುರಕ್ಷಿತವಾಗಿ ಉದ್ಘಾಟನೆಯಾಯಿತು.",
+      "xr": "Aarambhika vilambagala horataagiyoo, setuveyu surakshitavaagi udghaataneyaayitu."
+    },
+    "c357": {
+      "t": "ಪರಿಣಾಮವಾಗಿ",
+      "r": "Parinaamavaagi",
+      "x": "ಅನುದಾನ ಹೆಚ್ಚಾಯಿತು; ಪರಿಣಾಮವಾಗಿ, ಗ್ರಾಮೀಣ ಚಿಕಿತ್ಸಾಲಯಗಳು ವಿಸ್ತರಣೆಗೊಂಡವು.",
+      "xr": "Anudaana hechchaayitu; parinaamavaagi, graameena chikitsaalayagalu vistaranegondavu."
+    },
+    "c358": {
+      "t": "ಇದಲ್ಲದೆ",
+      "r": "Idallade",
+      "x": "ಇದಲ್ಲದೆ, ಮುಕ್ತ ದತ್ತಾಂಶವು ಸ್ವತಂತ್ರ ಸಂಶೋಧಕರಿಗೆ ಪ್ರಯೋಜನ ನೀಡುತ್ತದೆ.",
+      "xr": "Idallade, mukta dattaamshavu svatantra samshodhakarige prayojana needuttade."
+    },
+    "c359": {
+      "t": "ಹಿನ್ನೆಲೆಯಲ್ಲಿ",
+      "r": "Hinneleyalli",
+      "x": "ಹೊಸ ಪುರಾವೆಗಳ ಹಿನ್ನೆಲೆಯಲ್ಲಿ, ನಾವು ಮಾರ್ಗಸೂಚಿಯನ್ನು ಪರಿಷ್ಕರಿಸಿದೆವು.",
+      "xr": "Hosa puraavegala hinneleyalli, naavu maargasoochiyannu parishkarisidevu."
+    },
+    "c360": {
+      "t": "ಪೂರ್ಣ ಗೌರವದೊಂದಿಗೆ",
+      "r": "Poorna gauravadondige",
+      "x": "ಪೂರ್ಣ ಗೌರವದೊಂದಿಗೆ, ನಾನು ಪರ್ಯಾಯ ವಿಧಾನವನ್ನು ಪ್ರಸ್ತಾಪಿಸುತ್ತೇನೆ.",
+      "xr": "Poorna gauravadondige, naanu paryaaya vidhaanavannu prastaapisuttene."
+    },
+    "c361": {
+      "t": "ಸ್ಪಷ್ಟವಾಗಿ ಅಭಿವ್ಯಕ್ತಿಸುವುದು",
+      "r": "Spashtavaagi abhivyaktisuvudu",
+      "x": "ಅವಳು ಸಂಕೀರ್ಣ ವಿಚಾರಗಳನ್ನು ಸಲೀಸಾಗಿ ಸ್ಪಷ್ಟವಾಗಿ ಅಭಿವ್ಯಕ್ತಿಸಬಲ್ಲಳು.",
+      "xr": "Avalu sankeerna vichaaragalannu saleesaagi spashtavaagi abhivyaktisaballalu."
+    },
+    "c362": {
+      "t": "ಸಂಕ್ಷಿಪ್ತ",
+      "r": "Samkshipta",
+      "x": "ದೀರ್ಘ ಭಾಷಣಕ್ಕಿಂತ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆಯು ಹೆಚ್ಚು ಸ್ಪಷ್ಟವಾಗಿರುತ್ತದೆ.",
+      "xr": "Deergha bhaashanakkinta samkshipta vivaraneyu hechchu spashtavaagiruttade."
+    },
+    "c363": {
+      "t": "ಸುಸಂಬದ್ಧ",
+      "r": "Susambaddha",
+      "x": "ಆರಂಭದಿಂದ ಅಂತ್ಯದವರೆಗೆ ಸುಸಂಬದ್ಧ ಕಥನವನ್ನು ಕಟ್ಟಿ.",
+      "xr": "Aarambhadinda antyadavarege susambaddha kathanavannu katti."
+    },
+    "c364": {
+      "t": "ಮನವೊಲಿಸುವ",
+      "r": "Manavolisuva",
+      "x": "ನೈಜ ಕಥೆಗಳು ವಾದವನ್ನು ಇನ್ನಷ್ಟು ಮನವೊಲಿಸುವಂತೆ ಮಾಡುತ್ತವೆ.",
+      "xr": "Naija kathegalu vaadavannu innashtu manavolisuvante maaduttave."
+    },
+    "c365": {
+      "t": "ಪ್ರಾಯೋಗಿಕ",
+      "r": "Praayogika",
+      "x": "ಅನುಷ್ಠಾನಕ್ಕಾಗಿ ನಾವು ಪ್ರಾಯೋಗಿಕ ಮಾರ್ಗಸೂಚಿಯನ್ನು ಅಳವಡಿಸಿಕೊಂಡೆವು.",
+      "xr": "Anushthaanakkaagi naavu praayogika maargasoochiyannu alavadisikondevu."
+    },
+    "c366": {
+      "t": "ಅಭೂತಪೂರ್ವ",
+      "r": "Abhootapoorva",
+      "x": "ವೀಕ್ಷಣಾಲಯವು ಅಭೂತಪೂರ್ವ ಸ್ಪಷ್ಟತೆಯ ಚಿತ್ರಗಳನ್ನು ಸೆರೆಹಿಡಿಯಿತು.",
+      "xr": "Veekshanaalayavu abhootapoorva spashtateya chitragalannu serehidiyitu."
+    },
+    "c367": {
+      "t": "ಅನಿವಾರ್ಯ",
+      "r": "Anivaarya",
+      "x": "ಭಾಷೆಯಲ್ಲಿ ಕ್ರಮೇಣ ಬದಲಾವಣೆ ಸಂಪೂರ್ಣವಾಗಿ ಅನಿವಾರ್ಯ.",
+      "xr": "Bhaasheyalli kramena badalaavane sampoornavaagi anivaarya."
+    },
+    "c368": {
+      "t": "ಅತ್ಯಾವಶ್ಯಕ",
+      "r": "Atyaavashyaka",
+      "x": "ಆಳವಾದ ಪ್ರಾವೀಣ್ಯತೆಗೆ ಸಕ್ರಿಯ ಆಲಿಸುವಿಕೆ ಅತ್ಯಾವಶ್ಯಕವಾಗಿದೆ.",
+      "xr": "Aalavaada praaveenyatege sakriya aalisuvike atyaavashyakavaagide."
+    },
+    "c369": {
+      "t": "ಆಳವಾದ",
+      "r": "Aalavaada",
+      "x": "ಶ್ರೇಷ್ಠ ಕೃತಿಗಳನ್ನು ಓದುವುದು ಮನಸ್ಸಿನ ಮೇಲೆ ಆಳವಾದ ಪ್ರಭಾವ ಬೀರುತ್ತದೆ.",
+      "xr": "Shreshtha krutigalannu oduvudu manassina mele aalavaada prabhaava beeruttade."
+    },
+    "c370": {
+      "t": "ನಿರ್ವಿಘ್ನ",
+      "r": "Nirvighna",
+      "x": "ಪ್ರತಿ ಸಾಧನದಲ್ಲೂ ನಿರ್ವಿಘ್ನ ಅನುಭವ ನೀಡುವುದೇ ನಮ್ಮ ಗುರಿ.",
+      "xr": "Prati saadhanadalloo nirvighna anubhava needuvude namma guri."
+    },
+    "c371": {
+      "t": "ಯಾವುದೇ ಅನುಮಾನವಿಲ್ಲದೆ",
+      "r": "Yaavude anumaanavillade",
+      "x": "ಯಾವುದೇ ಅನುಮಾನವಿಲ್ಲದೆ, ನಿರಂತರತೆಯೇ ಗೆಲ್ಲುತ್ತದೆ.",
+      "xr": "Yaavude anumaanavillade, nirantarateye gelluttade."
+    },
+    "c372": {
+      "t": "ಅದೇ ರೀತಿಯಲ್ಲಿ",
+      "r": "Ade reetiyalli",
+      "x": "ನಾವು ವೇಗವನ್ನು ಗೌರವಿಸುತ್ತೇವೆ; ಅದೇ ರೀತಿಯಲ್ಲಿ, ಗುಣಮಟ್ಟದಲ್ಲಿ ಎಂದಿಗೂ ರಾಜಿ ಮಾಡಿಕೊಳ್ಳುವುದಿಲ್ಲ.",
+      "xr": "Naavu vegavannu gauravisutteve; ade reetiyalli, gunamattadalli endigoo raaji maadikolluvudilla."
+    },
+    "c373": {
+      "t": "ಎಲ್ಲವನ್ನೂ ಪರಿಗಣಿಸಿದಾಗ",
+      "r": "Ellavannoo pariganisidaaga",
+      "x": "ಎಲ್ಲವನ್ನೂ ಪರಿಗಣಿಸಿದಾಗ, ಇದು ನಮ್ಮ ಅತ್ಯುತ್ತಮ ವರ್ಷವಾಗಿತ್ತು.",
+      "xr": "Ellavannoo pariganisidaaga, idu namma atyuttama varshavaagittu."
+    },
+    "c374": {
+      "t": "ಕಾಲದ ಪರೀಕ್ಷೆಯಲ್ಲಿ ನಿಲ್ಲುವುದು",
+      "r": "Kaalada pareeksheyalli nilluvudu",
+      "x": "ಕಾಳಜಿಯಿಂದ ನಿರ್ಮಿಸಿದ ಮುಕ್ತ ಜ್ಞಾನವು ಕಾಲದ ಪರೀಕ್ಷೆಯಲ್ಲಿ ನಿಲ್ಲುತ್ತದೆ.",
+      "xr": "Kaalajiyinda nirmisida mukta jnaanavu kaalada pareeksheyalli nilluttade."
+    },
+    "c375": {
+      "t": "ಆಜೀವ ಕಲಿಕೆ",
+      "r": "Aajeeva kalike",
+      "x": "ಭಾಷೆಗಳನ್ನು ಕರಗತ ಮಾಡಿಕೊಳ್ಳುವುದು ಆಜೀವ ಕಲಿಕೆಯ ಆನಂದದಾಯಕ ಪಯಣವಾಗಿದೆ.",
+      "xr": "Bhaashegalannu karagata maadikolluvudu aajeeva kalikeya aanandadaayaka payanavaagide."
+    }
+  }
+}

@@ -1,0 +1,2285 @@
+{
+  "code": "ta",
+  "name": "Tamil",
+  "nativeName": "தமிழ்",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Tamil Greetings & Politeness: 'வணக்கம்' (Vanakkam) is the universal respectful greeting at any time of day. Add '-ஆ' (-aa) to the end of a word or verb to ask a yes/no question, e.g., 'நன்றாக இருக்கிறீர்களா?' (Are you doing well?).",
+    "u2": "Pronouns, Honorifics & Verb Agreement: Unlike Malayalam, Tamil finite verbs agree with the subject's person, number, and gender: 'நான் கற்கிறேன்' (I learn, -ēn), 'அவன் விளையாடுகிறான்' (he plays, -aan), 'அவள் படிக்கிறாள்' (she studies, -aal), and polite 'நீங்கள் பேசுகிறீர்கள்' (you speak, -eergal).",
+    "u3": "Numbers, Time & SOV Structure: Tamil uses Subject–Object–Verb (SOV) order. 'ஒன்று' (ondru, one) becomes the attributive form 'ஒரு' (oru, a/one) before nouns: 'ஒரு கோப்பை தேநீர்' (oru koppai theneer, one cup of tea). Time words typically open the sentence.",
+    "u4": "Food, Dining & Dative States: Feelings like hunger and thirst take a dative subject ('எனக்கு', enakku, 'to me'): 'எனக்கு மிகவும் பசிக்கிறது' (I am very hungry), 'எனக்குத் தாகமாக இருக்கிறது' (I feel thirsty). Polite requests use 'தயவுசெய்து' (dhayavuseydhu, please) and 'முடியுமா?' (mudiyumaa?, could I/we?).",
+    "u5": "Home, Adjectives & Sandhi (புணர்ச்சி): When a noun or modifier precedes a word starting with க், ச், த், or ப், Tamil often doubles the initial consonant for euphony (வல்லினம் மிகுதல்), as in 'புதிய பறவை' vs 'கதவைத் தட்டு'. Infinitives end in '-அ' (-a) or verbal nouns in '-தல்' (-dhal).",
+    "u6": "Directions & Case Suffixes: Tamil attaches case suffixes directly to nouns: '-இல்' (-il, in/at), '-க்கு' (-kku, to/toward), and '-இலிருந்து' (-ilirundhu, from). Notice 'விமான நிலையத்திற்கு' (to the airport) and 'நகரத்திலிருந்து' (from the town).",
+    "u7": "Shopping, Modals & Desire: Express 'want' with infinitive + 'வேண்டும்' (vendum): 'வாங்க வேண்டும்' (vaanga vendum, want/need to buy). Ask prices with 'இதன் விலை என்ன?' (idhan vilai enna?) and availability with 'உள்ளதா?' (ulladhaa?).",
+    "u8": "Weather, Nature & Past Tense: Tamil past tense uses markers '-த்-' (-th-), '-ந்த்-' (-ndh-), '-ட்ட்-' (-tt-), or '-இன்-' (-in-) depending on the verb class, e.g., 'பெய்தது' (peydhadhu, rained), 'ஏறினோம்' (erinom, we climbed), 'வீசியது' (veesiyadhu, blew).",
+    "u9": "Health, Body & Obligation: Give polite advice using infinitive + 'வேண்டும்' (vendum, should/must): 'மருத்துவரைப் பார்க்க வேண்டும்' (should see a doctor). Express negative imperatives ('do not') with '-ஆதீர்கள்' (-aadheergal, polite) or '-ஆதே' (-aadhe, informal).",
+    "u10": "Work, Study & Verbal Nouns: Turn actions into nouns using '-வது' (-vadhu) or '-தல்' (-dhal), e.g., 'கற்பது' (karpadhu, learning) and 'கேட்பது' (ketpadhu, listening). Habitual present tense uses '-கிற-' (-kira-) or '-க்கிற-' (-kkira-).",
+    "u11": "Emotions, Opinions & 'என்று' (enru): Report opinions and thoughts by placing the quotative particle 'என்று' (endru, 'that') at the end of the embedded clause: 'இந்தத் தீர்வு நடைமுறைக்கு ஏற்றது என்று நான் நினைக்கிறேன்' (I think this solution is practical).",
+    "u12": "Social Life, Aspect & Participles: Chain sequential actions smoothly using adverbial participles ('மன்னித்து முன்னேறுவதற்கு', forgiving and moving on). Completed states often combine the participle with 'இரு' (iru, be) as an auxiliary.",
+    "u13": "Technology, Media & Pure Tamil Coinages: Tamil excels at coining transparent native equivalents for modern technology alongside global terms: 'கணினி' (kanini, computer), 'இணையம்' (inaiyam, internet), 'கடவுச்சொல்' (kadavuchol, password), 'தனியுரிமை' (thaniyurimai, privacy).",
+    "u14": "Culture, Heritage & Passive Voice: Formal Tamil forms the passive voice with infinitive + 'படு' (padu), e.g., 'வரவேற்கப்படுகிறார்' (varaverkappadugiraar, is welcomed) and 'பாடப்பட்டு வருகிறது' (paadappattu varugiradhu, has been sung).",
+    "u15": "Connectors & Conditional Clauses: Form 'if' clauses by adding '-ஆல்' (-aal) to the past stem: 'பயிற்சி செய்தால்' (payirchi seydhaal, if you practice). Express 'although' with '-ஆலும்' (-aalum): 'தாமதமானாலும்' (thaamadhamanaalum, although it was late).",
+    "u16": "Business, Negotiations & Compound Nouns: Formal commercial Tamil builds crisp noun-noun compounds without prepositions ('பொருளாதாரம்' economy, 'ஒப்பந்தம்' contract, 'முதலீடு' investment) paired with precise action verbs like 'ஒப்புதல் அளித்தல்' (approve) and 'கையெழுத்திடுதல்' (sign).",
+    "u17": "Science, Research & Transitive Pairs: Tamil systematically pairs weak intransitive verbs with strong transitive/causative verbs (e.g., 'மாறு' maaru 'change' vs 'மாற்று' maatru 'transform'; 'வளர்' valar 'grow' vs 'வளர்/வளர்த்து' 'cultivate').",
+    "u18": "Environment & Relative Participles (பெயரெச்சம்): Tamil creates relative clauses before nouns using '-அ' (-a) participial endings instead of relative pronouns: 'இன்று எடுக்கும் முடிவுகள்' (indru edukum mudivugal, the choices made today).",
+    "u19": "Society, Law & Abstract Nouns: Civic vocabulary uses productive native suffixes like '-மை' (-mai) and '-த்துவம்' (-thuvam), e.g., 'சமத்துவம்' (samathuvam, equality), 'வெளிப்படைத்தன்மை' (velippadaithanmai, transparency), 'அரசியலமைப்பு' (arasiyalamaippu, constitution).",
+    "u20": "Critical Thinking & Discourse Connectors: Anchor rigorous debate with logical transitions such as 'ஆகவே' (aagave, therefore), 'இருப்பினும்' (iruppinum, nevertheless), and nominalized clauses ending in '-என்பது' (-enbadhu, the fact that).",
+    "u21": "Literature, Art & Classical Register (செந்தமிழ்): Aesthetic Tamil draws on over two millennia of Sangam and classical literary heritage—using evocative terms like 'உருவகம்' (uruvagam, metaphor), 'அழகியல்' (azhagiyal, aesthetics), and 'நுட்பம்' (nutpam, nuance).",
+    "u22": "Philosophy, Ethics & Inner Virtues: Echoing the Thirukkural tradition, ethical Tamil articulates deep psychological concepts concisely: 'மனசாட்சி' (manasaatchi, conscience), 'நேர்மை' (nermai, integrity), 'நிலையாமை' (nilaiyaamai, impermanence), and 'சமநிலை' (samanilai, equanimity).",
+    "u23": "Proverbs & Idioms (பழமொழிகள் & மரபுத்தொடர்கள்): Tamil proverbs shine through alliteration and imagery—like 'அத்தி பூத்தாற்போல்' (like a fig tree blooming = once in a blue moon), 'சித்திரமும் கைப்பழக்கம்' (practice makes perfect), and 'ஒற்றுமையே வலிமை' (unity is strength).",
+    "u24": "Formal, Diplomatic & Legal Discourse: High-register Tamil employs elevated legal/academic vocabulary ('இறையாண்மை' sovereignty, 'உடன்படிக்கை' treaty, 'முன்னுதாரணம்' precedent) and formal postpositions ('பின்னணியில்' in light of, 'பொருட்படுத்தாமல்' notwithstanding).",
+    "u25": "Nuance, Rhetoric & C2 Mastery: Native mastery combines concise adjectival participles ('முன்னெப்போதும் இல்லாத', unprecedented; 'தவிர்க்க முடியாத', inevitable) with emphatic clitics ('-ஏ' -e, '-தான்' -dhaan) for precision, cadence, and persuasion."
+  },
+  "items": {
+    "c001": {
+      "t": "வணக்கம்",
+      "r": "Vanakkam",
+      "x": "வணக்கம், உங்களைச் சந்தித்ததில் மகிழ்ச்சி.",
+      "xr": "Vanakkam, ungalai sandhithadhil magizhchi."
+    },
+    "c002": {
+      "t": "காலை வணக்கம்",
+      "r": "Kaalai vanakkam",
+      "x": "காலை வணக்கம், நன்றாகத் தூங்கினீர்களா?",
+      "xr": "Kaalai vanakkam, nandraaga thoongineergalaa?"
+    },
+    "c003": {
+      "t": "மதிய வணக்கம்",
+      "r": "Madhiya vanakkam",
+      "x": "அனைவருக்கும் மதிய வணக்கம்.",
+      "xr": "Anaivarukkum madhiya vanakkam."
+    },
+    "c004": {
+      "t": "மாலை வணக்கம்",
+      "r": "Maalai vanakkam",
+      "x": "மாலை வணக்கம், வீட்டிற்கு நல்வரவு.",
+      "xr": "Maalai vanakkam, veettirku nalvaravu."
+    },
+    "c005": {
+      "t": "இனிய இரவு",
+      "r": "Iniya iravu",
+      "x": "இனிய இரவு, நாளை சந்திப்போம்.",
+      "xr": "Iniya iravu, naalai sandhippom."
+    },
+    "c006": {
+      "t": "நன்றி",
+      "r": "Nandri",
+      "x": "உங்கள் உதவிக்கு மிக்க நன்றி.",
+      "xr": "Ungal udhavikku mikka nandri."
+    },
+    "c007": {
+      "t": "பரவாயில்லை",
+      "r": "Paravaayillai",
+      "x": "பரவாயில்லை, எப்போது வேண்டுமானாலும் கேளுங்கள்.",
+      "xr": "Paravaayillai, eppodhu vendumaanaalum kelungal."
+    },
+    "c008": {
+      "t": "தயவுசெய்து",
+      "r": "Dhayavuseydhu",
+      "x": "தயவுசெய்து உள்ளே வந்து அமருங்கள்.",
+      "xr": "Dhayavuseydhu ulle vandhu amarungal."
+    },
+    "c009": {
+      "t": "மன்னிக்கவும்",
+      "r": "Mannikkavum",
+      "x": "மன்னிக்கவும், நான் ஒரு கேள்வி கேட்கலாமா?",
+      "xr": "Mannikkavum, naan oru kelvi ketkalaamaa?"
+    },
+    "c010": {
+      "t": "என்னை மன்னித்துவிடுங்கள்",
+      "r": "Ennai mannithuvidungal",
+      "x": "தாமதமாக வந்ததற்கு என்னை மன்னித்துவிடுங்கள்.",
+      "xr": "Thaamadhamaaga vandhadharku ennai mannithuvidungal."
+    },
+    "c011": {
+      "t": "ஆம்",
+      "r": "Aam",
+      "x": "ஆம், எனக்கு முழுமையாகப் புரிந்தது.",
+      "xr": "Aam, enakku muzhumaiyaaga purindhadhu."
+    },
+    "c012": {
+      "t": "இல்லை",
+      "r": "Illai",
+      "x": "இல்லை, நன்றி, நான் நன்றாக இருக்கிறேன்.",
+      "xr": "Illai, nandri, naan nandraaga irukkiren."
+    },
+    "c013": {
+      "t": "சென்று வாருங்கள்",
+      "r": "Sendru vaarungal",
+      "x": "சென்று வாருங்கள், உங்கள் பயணம் பாதுகாப்பாக அமையட்டும்.",
+      "xr": "Sendru vaarungal, ungal payanam paadhugaappaaga amaiyattum."
+    },
+    "c014": {
+      "t": "என் பெயர்",
+      "r": "En peyar",
+      "x": "என் பெயர் மாயா.",
+      "xr": "En peyar Maayaa."
+    },
+    "c015": {
+      "t": "எப்படி இருக்கிறீர்கள்?",
+      "r": "Eppadi irukkireergal?",
+      "x": "இன்று நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "xr": "Indru neengal eppadi irukkireergal?"
+    },
+    "c016": {
+      "t": "நான்",
+      "r": "Naan",
+      "x": "நான் ஒரு புதிய மொழியைக் கற்றுக்கொண்டிருக்கிறேன்.",
+      "xr": "Naan oru pudhiya mozhiyai katrukkondirukkiren."
+    },
+    "c017": {
+      "t": "நீங்கள்",
+      "r": "Neengal",
+      "x": "நீங்கள் மிகவும் தெளிவாகப் பேசுகிறீர்கள்.",
+      "xr": "Neengal migavum thelivaaga pesugireergal."
+    },
+    "c018": {
+      "t": "அவன்",
+      "r": "Avan",
+      "x": "அவன் என் அண்ணன்.",
+      "xr": "Avan en annan."
+    },
+    "c019": {
+      "t": "அவள்",
+      "r": "Aval",
+      "x": "அவள் ஒரு திறமையான மருத்துவர்.",
+      "xr": "Aval oru thiramaiyaana maruthuvar."
+    },
+    "c020": {
+      "t": "நாம்",
+      "r": "Naam",
+      "x": "நாங்கள் ஒரே நகரத்தில் வசிக்கிறோம்.",
+      "xr": "Naangal ore nagarathil vasikkirom."
+    },
+    "c021": {
+      "t": "அம்மா",
+      "r": "Ammaa",
+      "x": "என் அம்மா சுவையான உணவு சமைக்கிறார்.",
+      "xr": "En ammaa suvaiyaana unavu samaikkiraar."
+    },
+    "c022": {
+      "t": "அப்பா",
+      "r": "Appaa",
+      "x": "என் அப்பா தினமும் காலையில் செய்தித்தாள் படிக்கிறார்.",
+      "xr": "En appaa dhinamum kaalaiyil seydhithaal padikkiraar."
+    },
+    "c023": {
+      "t": "சகோதரன்",
+      "r": "Sagodharan",
+      "x": "என் சகோதரன் கால்பந்து விளையாடுகிறான்.",
+      "xr": "En sagodharan kaalpandhu vilaiyaadugiraan."
+    },
+    "c024": {
+      "t": "சகோதரி",
+      "r": "Sagodhari",
+      "x": "என் சகோதரி மருத்துவம் படிக்கிறாள்.",
+      "xr": "En sagodhari maruthuvam padikkiraal."
+    },
+    "c025": {
+      "t": "குடும்பம்",
+      "r": "Kudumbam",
+      "x": "என் குடும்பம் ஒவ்வொரு ஞாயிற்றுக்கிழமையும் ஒன்றுகூடுகிறது.",
+      "xr": "En kudumbam ovvoru nyaayitrukkizhamaiyum ondrukoodugiradhu."
+    },
+    "c026": {
+      "t": "நண்பர்",
+      "r": "Nanbar",
+      "x": "அவள் என் நெருங்கிய தோழி.",
+      "xr": "Aval en nerungiya thozhi."
+    },
+    "c027": {
+      "t": "குழந்தை",
+      "r": "Kuzhandhai",
+      "x": "குழந்தை ஒரு படம் வரைந்து கொண்டிருக்கிறது.",
+      "xr": "Kuzhandhai oru padam varaindhu kondirukkiradhu."
+    },
+    "c028": {
+      "t": "ஆசிரியர்",
+      "r": "Aasiriyar",
+      "x": "எங்கள் ஆசிரியர் இலக்கணத்தைத் தெளிவாக விளக்குகிறார்.",
+      "xr": "Engal aasiriyar ilakkanathai thelivaaga vilakkugiraar."
+    },
+    "c029": {
+      "t": "மாணவர்",
+      "r": "Maanavar",
+      "x": "ஒவ்வொரு மாணவரும் ஒரு குறிப்பேடு கொண்டு வந்தார்.",
+      "xr": "Ovvoru maanavarum oru kurippedu kondu vandhaar."
+    },
+    "c030": {
+      "t": "அண்டை வீட்டார்",
+      "r": "Andai veettaar",
+      "x": "எங்கள் அண்டை வீட்டார் மிகவும் அன்பானவர்கள்.",
+      "xr": "Engal andai veettaar migavum anbaanavargal."
+    },
+    "c031": {
+      "t": "ஒன்று",
+      "r": "Ondru",
+      "x": "எனக்கு ஒரு கோப்பை தேநீர் வேண்டும்.",
+      "xr": "Enakku oru koppai theneer vendum."
+    },
+    "c032": {
+      "t": "இரண்டு",
+      "r": "Irandu",
+      "x": "தயவுசெய்து எங்களுக்கு இரண்டு பயணச்சீட்டுகள் கொடுங்கள்.",
+      "xr": "Dhayavuseydhu engalukku irandu payanacheettugal kodungal."
+    },
+    "c033": {
+      "t": "மூன்று",
+      "r": "Moondru",
+      "x": "மேசையின் மீது மூன்று புத்தகங்கள் உள்ளன.",
+      "xr": "Mesaiyin meedhu moondru puthagangal ullana."
+    },
+    "c034": {
+      "t": "ஐந்து",
+      "r": "Aindhu",
+      "x": "வகுப்பு ஐந்து நிமிடங்களில் தொடங்கும்.",
+      "xr": "Vaguppu aindhu nimidangalil thodangum."
+    },
+    "c035": {
+      "t": "பத்து",
+      "r": "Pathu",
+      "x": "அவள் ஒன்று முதல் பத்து வரை எண்ணினாள்.",
+      "xr": "Aval ondru mudhal pathu varai enninaal."
+    },
+    "c036": {
+      "t": "இன்று",
+      "r": "Indru",
+      "x": "இன்று வெயில் நிறைந்த இனிய நாள்.",
+      "xr": "Indru veyil niraindha iniya naal."
+    },
+    "c037": {
+      "t": "நாளை",
+      "r": "Naalai",
+      "x": "நாளை நாங்கள் அருங்காட்சியகத்திற்குச் செல்வோம்.",
+      "xr": "Naalai naangal arungaatchiyagathirku selvom."
+    },
+    "c038": {
+      "t": "நேற்று",
+      "r": "Netru",
+      "x": "நேற்று மதியம் முழுவதும் மழை பெய்தது.",
+      "xr": "Netru madhiyam muzhuvadhum mazhai peydhadhu."
+    },
+    "c039": {
+      "t": "இப்போது",
+      "r": "Ippodhu",
+      "x": "நான் இப்போதே புறப்படத் தயாராக இருக்கிறேன்.",
+      "xr": "Naan ippodhe purappada thayaaraaga irukkiren."
+    },
+    "c040": {
+      "t": "பிறகு",
+      "r": "Piragu",
+      "x": "இதைப் பற்றி நாம் பிறகு பேசலாம்.",
+      "xr": "Idhai patri naam piragu pesalaam."
+    },
+    "c041": {
+      "t": "காலை",
+      "r": "Kaalai",
+      "x": "நான் தினமும் காலையில் உடற்பயிற்சி செய்கிறேன்.",
+      "xr": "Naan dhinamum kaalaiyil udarpayirchi seygiren."
+    },
+    "c042": {
+      "t": "இரவு",
+      "r": "Iravu",
+      "x": "இரவில் நட்சத்திரங்கள் பிரகாசமாக மின்னுகின்றன.",
+      "xr": "Iravil natchathirangal pragaasamaaga minnugindrana."
+    },
+    "c043": {
+      "t": "வாரம்",
+      "r": "Vaaram",
+      "x": "இந்த வாரம் மிகவும் பரபரப்பாக இருந்தது.",
+      "xr": "Indha vaaram migavum paraparappaaga irundhadhu."
+    },
+    "c044": {
+      "t": "மாதம்",
+      "r": "Maadham",
+      "x": "அடுத்த மாதம் நாங்கள் வெளிநாடு பயணம் செய்கிறோம்.",
+      "xr": "Adutha maadham naangal velinaadu payanam seygirom."
+    },
+    "c045": {
+      "t": "ஆண்டு",
+      "r": "Aandu",
+      "x": "உங்கள் அனைவருக்கும் இனிய புத்தாண்டு நல்வாழ்த்துகள்.",
+      "xr": "Ungal anaivarukkum iniya puthaandu nalvaazhthugal."
+    },
+    "c046": {
+      "t": "தண்ணீர்",
+      "r": "Thanneer",
+      "x": "எனக்கு ஒரு குவளைத் தண்ணீர் கிடைக்குமா?",
+      "xr": "Enakku oru kuvalai thanneer kidaikkumaa?"
+    },
+    "c047": {
+      "t": "சாதம்",
+      "r": "Saadham",
+      "x": "நாங்கள் குழம்புடன் சூடான சாதம் சாப்பிடுகிறோம்.",
+      "xr": "Naangal kuzhambudan soodaana saadham saappidugirom."
+    },
+    "c048": {
+      "t": "ரொட்டி",
+      "r": "Rotti",
+      "x": "புதிய ரொட்டியின் மணம் அருமையாக உள்ளது.",
+      "xr": "Pudhiya rottiyin manam arumaiyaaga ulladhu."
+    },
+    "c049": {
+      "t": "பழம்",
+      "r": "Pazham",
+      "x": "தினமும் புதிய பழங்களை நிறைய சாப்பிடுங்கள்.",
+      "xr": "Dhinamum pudhiya pazhangalai niraiya saappidungal."
+    },
+    "c050": {
+      "t": "பால்",
+      "r": "Paal",
+      "x": "நீங்கள் காபியில் பால் சேர்த்துக் கொள்வீர்களா?",
+      "xr": "Neengal kaabiyil paal serthu kolveergalaa?"
+    },
+    "c051": {
+      "t": "தேநீர்",
+      "r": "Theneer",
+      "x": "குளிர்காலத்தில் சூடான தேநீர் இதமாக இருக்கும்.",
+      "xr": "Kulirkaalathil soodaana theneer idhamaaga irukkum."
+    },
+    "c052": {
+      "t": "காபி",
+      "r": "Kaabi",
+      "x": "நான் காலையில் கருப்பு காபி குடிக்கிறேன்.",
+      "xr": "Naan kaalaiyil karuppu kaabi kudikkiren."
+    },
+    "c053": {
+      "t": "காலை உணவு",
+      "r": "Kaalai unavu",
+      "x": "காலை உணவு நாளின் முதல் உணவாகும்.",
+      "xr": "Kaalai unavu naalin mudhal unavaagum."
+    },
+    "c054": {
+      "t": "மதிய உணவு",
+      "r": "Madhiya unavu",
+      "x": "மதிய உணவிற்கு நாம் எங்கே செல்லலாம்?",
+      "xr": "Madhiya unavirku naam enge sellalaam?"
+    },
+    "c055": {
+      "t": "இரவு உணவு",
+      "r": "Iravu unavu",
+      "x": "ஏழு மணிக்கு இரவு உணவு தயாராகிவிடும்.",
+      "xr": "Ezhu manikku iravu unavu thayaaraagividum."
+    },
+    "c056": {
+      "t": "சுவையான",
+      "r": "Suvaiyaana",
+      "x": "இந்த உணவு உண்மையிலேயே மிகவும் சுவையானது.",
+      "xr": "Indha unavu unmaiyileye migavum suvaiyaanadhu."
+    },
+    "c057": {
+      "t": "பசி",
+      "r": "Pasi",
+      "x": "நடைப்பயிற்சிக்குப் பிறகு எனக்கு மிகவும் பசிக்கிறது.",
+      "xr": "Nadaippayirchikku piragu enakku migavum pasikkiradhu."
+    },
+    "c058": {
+      "t": "தாகம்",
+      "r": "Dhaagam",
+      "x": "இந்த வெயிலில் எனக்கு மிகவும் தாகமாக இருக்கிறது.",
+      "xr": "Indha veyilil enakku migavum dhaagamaaga irukkiradhu."
+    },
+    "c059": {
+      "t": "உணவுப் பட்டியல்",
+      "r": "Unavu pattiyal",
+      "x": "தயவுசெய்து உணவுப் பட்டியலைப் பார்க்கலாமா?",
+      "xr": "Dhayavuseydhu unavu pattiyalai paarkkalaamaa?"
+    },
+    "c060": {
+      "t": "பில்",
+      "r": "Bil",
+      "x": "தயவுசெய்து எங்களுக்கு பில் தர முடியுமா?",
+      "xr": "Dhayavuseydhu engalukku bil thara mudiyumaa?"
+    },
+    "c061": {
+      "t": "வீடு",
+      "r": "Veedu",
+      "x": "அவர்களின் வீட்டில் ஒரு சிறிய தோட்டம் உள்ளது.",
+      "xr": "Avargalin veettil oru siriya thottam ulladhu."
+    },
+    "c062": {
+      "t": "அறை",
+      "r": "Arai",
+      "x": "என் அறையில் ஒரு பெரிய சாளரம் உள்ளது.",
+      "xr": "En araiyil oru periya saalaram ulladhu."
+    },
+    "c063": {
+      "t": "மேசை",
+      "r": "Mesai",
+      "x": "சாவிகளை மேசையின் மீது வையுங்கள்.",
+      "xr": "Saavigalai mesaiyin meedhu vaiyungal."
+    },
+    "c064": {
+      "t": "புத்தகம்",
+      "r": "Puthagam",
+      "x": "இந்தப் புத்தகம் படிப்பதற்கு எளிதாக உள்ளது.",
+      "xr": "Indha puthagam padippadharku elidhaaga ulladhu."
+    },
+    "c065": {
+      "t": "கதவு",
+      "r": "Kadhavu",
+      "x": "தயவுசெய்து கதவை மெதுவாக மூடுங்கள்.",
+      "xr": "Dhayavuseydhu kadhavai medhuvaaga moodungal."
+    },
+    "c066": {
+      "t": "சிவப்பு",
+      "r": "Sivappu",
+      "x": "அவள் பிரகாசமான சிவப்பு நிறக் குடை வாங்கினாள்.",
+      "xr": "Aval pragaasamaana sivappu nira kudai vaanginaal."
+    },
+    "c067": {
+      "t": "நீலம்",
+      "r": "Neelam",
+      "x": "வானம் தெளிவாகவும் நீல நிறமாகவும் உள்ளது.",
+      "xr": "Vaanam thelivaagavum neela niramaagavum ulladhu."
+    },
+    "c068": {
+      "t": "வெள்ளை",
+      "r": "Vellai",
+      "x": "பனி தரையை வெள்ளை நிறத்தால் போர்த்தியது.",
+      "xr": "Pani tharaiyai vellai nirathaal porthiyadhu."
+    },
+    "c069": {
+      "t": "பெரிய",
+      "r": "Periya",
+      "x": "அவர்கள் ஒரு பெரிய நகரத்திற்குக் குடிபெயர்ந்தனர்.",
+      "xr": "Avargal oru periya nagarathirku kudipeyarndhanar."
+    },
+    "c070": {
+      "t": "சிறிய",
+      "r": "Siriya",
+      "x": "ஒரு சிறிய பறவை கிளையில் அமர்ந்து பாடியது.",
+      "xr": "Oru siriya paravai kilaiyil amarndhu paadiyadhu."
+    },
+    "c071": {
+      "t": "செல்லுதல்",
+      "r": "Selludhal",
+      "x": "நான் தொடர்வண்டியில் வேலைக்குச் செல்கிறேன்.",
+      "xr": "Naan thodarvandiyil velaikku selgiren."
+    },
+    "c072": {
+      "t": "வருதல்",
+      "r": "Varudhal",
+      "x": "தயவுசெய்து எங்கள் கொண்டாட்டத்திற்கு வாருங்கள்.",
+      "xr": "Dhayavuseydhu engal kondaattathirku vaarungal."
+    },
+    "c073": {
+      "t": "சாப்பிடுதல்",
+      "r": "Saappidudhal",
+      "x": "நாங்கள் எட்டு மணிக்கு ஒன்றாக இரவு உணவு சாப்பிடுகிறோம்.",
+      "xr": "Naangal ettu manikku ondraaga iravu unavu saappidugirom."
+    },
+    "c074": {
+      "t": "குடித்தல்",
+      "r": "Kudithal",
+      "x": "போதுமான தண்ணீர் குடிக்க மறக்காதீர்கள்.",
+      "xr": "Podhumaana thanneer kudikka marakkaadheergal."
+    },
+    "c075": {
+      "t": "தூங்குதல்",
+      "r": "Thoongudhal",
+      "x": "நான் தினமும் இரவு எட்டு மணி நேரம் தூங்க முயற்சிக்கிறேன்.",
+      "xr": "Naan dhinamum iravu ettu mani neram thoonga muyarchikkiren."
+    },
+    "c076": {
+      "t": "தொடர்வண்டி",
+      "r": "Thodarvandi",
+      "x": "விரைவுத் தொடர்வண்டி மதியம் வந்து சேரும்.",
+      "xr": "Viraivu thodarvandi madhiyam vandhu serum."
+    },
+    "c077": {
+      "t": "பேருந்து",
+      "r": "Perundhu",
+      "x": "நகர மையத்திற்கு இரண்டாவது பேருந்தில் ஏறுங்கள்.",
+      "xr": "Nagara maiyathirku irandaavadhu perundhil erungal."
+    },
+    "c078": {
+      "t": "விமான நிலையம்",
+      "r": "Vimaana nilaiyam",
+      "x": "நாங்கள் இரண்டு மணி நேரம் முன்பே விமான நிலையத்தை அடைந்தோம்.",
+      "xr": "Naangal irandu mani neram munbe vimaana nilaiyathai adaindhom."
+    },
+    "c079": {
+      "t": "பயணச்சீட்டு",
+      "r": "Payanacheettu",
+      "x": "வெளியேறும் வரை உங்கள் பயணச்சீட்டைப் பாதுகாப்பாக வைத்திருங்கள்.",
+      "xr": "Veliyerum varai ungal payanacheettai paadhugaappaaga vaithirungal."
+    },
+    "c080": {
+      "t": "நிலையம்",
+      "r": "Nilaiyam",
+      "x": "நிலையம் இங்கிருந்து ஐந்து நிமிடத் தொலைவில் உள்ளது.",
+      "xr": "Nilaiyam ingirundhu aindhu nimida tholaivil ulladhu."
+    },
+    "c081": {
+      "t": "இடது",
+      "r": "Idadhu",
+      "x": "அடுத்த போக்குவரத்து சமிக்ஞையில் இடதுபுறம் திரும்புங்கள்.",
+      "xr": "Adutha pokkuvarathu samignaiyil idadhupuram thirumbungal."
+    },
+    "c082": {
+      "t": "வலது",
+      "r": "Valadhu",
+      "x": "மருந்தகம் உங்கள் வலதுபுறத்தில் உள்ளது.",
+      "xr": "Marundhagam ungal valadhupurathil ulladhu."
+    },
+    "c083": {
+      "t": "நேராக",
+      "r": "Neraaga",
+      "x": "இரண்டு தெருக்கள் நேராக நடந்து செல்லுங்கள்.",
+      "xr": "Irandu therukkal neraaga nadandhu sellungal."
+    },
+    "c084": {
+      "t": "அருகில்",
+      "r": "Arugil",
+      "x": "இதற்கு அருகில் ஏதேனும் தங்கும் விடுதி உள்ளதா?",
+      "xr": "Idharku arugil edhenum thangum vidudhi ulladhaa?"
+    },
+    "c085": {
+      "t": "தொலைவில்",
+      "r": "Tholaivil",
+      "x": "கடற்கரை நகரத்திலிருந்து அதிகத் தொலைவில் இல்லை.",
+      "xr": "Kadarkarai nagarathilirundhu adhiga tholaivil illai."
+    },
+    "c086": {
+      "t": "வரைபடம்",
+      "r": "Varaipadam",
+      "x": "வரைபடத்தில் வழியைச் சரிபார்ப்போம்.",
+      "xr": "Varaipadathil vazhiyai saribaarppom."
+    },
+    "c087": {
+      "t": "விடுதி",
+      "r": "Vidudhi",
+      "x": "நகர மையத்தில் அமைதியான ஒரு விடுதியை முன்பதிவு செய்தோம்.",
+      "xr": "Nagara maiyathil amaidhiyaana oru vidudhiyai munpadhivu seydhom."
+    },
+    "c088": {
+      "t": "கடவுச்சீட்டு",
+      "r": "Kadavucheettu",
+      "x": "உங்கள் கடவுச்சீட்டை வீட்டில் மறந்துவிடாதீர்கள்.",
+      "xr": "Ungal kadavucheettai veettil marandhuvidaadheergal."
+    },
+    "c089": {
+      "t": "பயணப் பொதி",
+      "r": "Payana podhi",
+      "x": "இன்று என் பயணப் பொதி மிகவும் கனமாக உள்ளது.",
+      "xr": "Indru en payana podhi migavum kanamaaga ulladhu."
+    },
+    "c090": {
+      "t": "எங்கே உள்ளது?",
+      "r": "Enge ulladhu?",
+      "x": "மிக அருகிலுள்ள மெட்ரோ வெளியேறும் வழி எங்கே உள்ளது?",
+      "xr": "Miga arugilulla metro veliyerum vazhi enge ulladhu?"
+    },
+    "c091": {
+      "t": "பணம்",
+      "r": "Panam",
+      "x": "ஒவ்வொரு மாதமும் உங்கள் பணத்தில் ஒரு பகுதியைச் சேமியுங்கள்.",
+      "xr": "Ovvoru maadhamum ungal panathil oru pagudhiyai semiyungal."
+    },
+    "c092": {
+      "t": "விலை",
+      "r": "Vilai",
+      "x": "இந்த மேலங்கியின் விலை என்ன?",
+      "xr": "Indha melangiyin vilai enna?"
+    },
+    "c093": {
+      "t": "மலிவான",
+      "r": "Malivaana",
+      "x": "காலைச் சந்தையில் காய்கறிகள் மலிவாகக் கிடைக்கும்.",
+      "xr": "Kaalai sandhaiyil kaaygarigal malivaaga kidaikkum."
+    },
+    "c094": {
+      "t": "விலையுயர்ந்த",
+      "r": "Vilaiyuyarndha",
+      "x": "அந்தக் கைக்கடிகாரம் எனக்கு மிகவும் விலையுயர்ந்ததாக உள்ளது.",
+      "xr": "Andha kaikkadigaaram enakku migavum vilaiyuyarndhadhaaga ulladhu."
+    },
+    "c095": {
+      "t": "தள்ளுபடி",
+      "r": "Thallubadi",
+      "x": "மாணவர்களுக்குத் தள்ளுபடி உள்ளதா?",
+      "xr": "Maanavargalukku thallubadi ulladhaa?"
+    },
+    "c096": {
+      "t": "கடை",
+      "r": "Kadai",
+      "x": "மூலையில் உள்ள அந்தக் கடை எட்டு மணிக்குத் திறக்கும்.",
+      "xr": "Moolaiyil ulla andha kadai ettu manikku thirakkum."
+    },
+    "c097": {
+      "t": "சந்தை",
+      "r": "Sandhai",
+      "x": "சனிக்கிழமைகளில் உள்ளூர் சந்தை மிகவும் கலகலப்பாக இருக்கும்.",
+      "xr": "Sanikkizhamaigalil ulloor sandhai migavum kalakalappaaga irukkum."
+    },
+    "c098": {
+      "t": "வாங்குதல்",
+      "r": "Vaangudhal",
+      "x": "எனக்குக் குளிருக்கு ஏற்ற ஒரு மேலங்கி வாங்க வேண்டும்.",
+      "xr": "Enakku kulirukku etra oru melangi vaanga vendum."
+    },
+    "c099": {
+      "t": "செலுத்துதல்",
+      "r": "Seluthudhal",
+      "x": "நான் அட்டை மூலமாகவோ பணமாகவோ செலுத்தலாமா?",
+      "xr": "Naan attai moolamaagavo panamaagavo seluthalaamaa?"
+    },
+    "c100": {
+      "t": "ரசீது",
+      "r": "Raseedhu",
+      "x": "தயவுசெய்து எனக்கு ரசீது கொடுங்கள்.",
+      "xr": "Dhayavuseydhu enakku raseedhu kodungal."
+    },
+    "c101": {
+      "t": "சட்டை",
+      "r": "Sattai",
+      "x": "இந்தப் பருத்திச் சட்டை அணிய மிகவும் வசதியாக உள்ளது.",
+      "xr": "Indha paruthi sattai aniya migavum vasadhiyaaga ulladhu."
+    },
+    "c102": {
+      "t": "காலணிகள்",
+      "r": "Kaalanigal",
+      "x": "மலையேற்றத்திற்கு எனக்கு உறுதியான காலணிகள் தேவை.",
+      "xr": "Malaiyetrathirku enakku urudhiyaana kaalanigal thevai."
+    },
+    "c103": {
+      "t": "பை",
+      "r": "Pai",
+      "x": "அவள் ஒரு தோல் பையை எடுத்துச் சென்றாள்.",
+      "xr": "Aval oru thol paiyai eduthu sendraal."
+    },
+    "c104": {
+      "t": "புதிய",
+      "r": "Pudhiya",
+      "x": "அவன் இன்று தன் புதிய மேலங்கியை அணிந்தான்.",
+      "xr": "Avan indru than pudhiya melangiyai anindhaan."
+    },
+    "c105": {
+      "t": "அளவு",
+      "r": "Alavu",
+      "x": "இதில் நடுத்தர அளவு உங்களிடம் உள்ளதா?",
+      "xr": "Idhil naduthara alavu ungalidam ulladhaa?"
+    },
+    "c106": {
+      "t": "சூரியன்",
+      "r": "Sooriyan",
+      "x": "இதமான சூரிய வெயில் ஈரமான சாலையை உலர்த்தியது.",
+      "xr": "Idhamaana sooriya veyil eeramaana saalaiyai ularthiyadhu."
+    },
+    "c107": {
+      "t": "மழை",
+      "r": "Mazhai",
+      "x": "மழை பெய்ய வாய்ப்புள்ளதால் ஒரு குடை எடுத்துச் செல்லுங்கள்.",
+      "xr": "Mazhai peyya vaayppulladhaal oru kudai eduthu sellungal."
+    },
+    "c108": {
+      "t": "காற்று",
+      "r": "Kaatru",
+      "x": "கடலிலிருந்து குளிர்ந்த காற்று வீசியது.",
+      "xr": "Kadalilirundhu kulirndha kaatru veesiyadhu."
+    },
+    "c109": {
+      "t": "வெப்பம்",
+      "r": "Veppam",
+      "x": "இங்கு கோடைக்கால மதிய நேரங்கள் மிகவும் வெப்பமாக இருக்கும்.",
+      "xr": "Ingu kodaikkaala madhiya nerangal migavum veppamaaga irukkum."
+    },
+    "c110": {
+      "t": "குளிர்",
+      "r": "Kulir",
+      "x": "குளிராக இருக்கும்போது கழுத்துத் துண்டு அணியுங்கள்.",
+      "xr": "Kuliraaga irukkumpodhu kazhuthu thundu aniyungal."
+    },
+    "c111": {
+      "t": "கோடைக்காலம்",
+      "r": "Kodaikkaalam",
+      "x": "கோடைக்காலத்தில் நாங்கள் அடிக்கடி நீச்சலடிப்போம்.",
+      "xr": "Kodaikkaalathil naangal adikkadi neechaladippom."
+    },
+    "c112": {
+      "t": "குளிர்காலம்",
+      "r": "Kulirkaalam",
+      "x": "குளிர்கால இரவுகள் நீளமாகவும் அமைதியாகவும் இருக்கும்.",
+      "xr": "Kulirkaala iravugal neelamaagavum amaidhiyaagavum irukkum."
+    },
+    "c113": {
+      "t": "வசந்தகாலம்",
+      "r": "Vasandhakaalam",
+      "x": "வசந்தகாலத்தில் எங்கும் பூக்கள் மலர்கின்றன.",
+      "xr": "Vasandhakaalathil engum pookkal malargindrana."
+    },
+    "c114": {
+      "t": "மேகம்",
+      "r": "Megam",
+      "x": "புயலுக்கு முன் கருமேகங்கள் திரண்டன.",
+      "xr": "Puyalukku mun karumegangal thirandana."
+    },
+    "c115": {
+      "t": "பனி",
+      "r": "Pani",
+      "x": "குழந்தைகள் புதிய பனியில் ஒரு பனிமனிதனை உருவாக்கினர்.",
+      "xr": "Kuzhandhaigal pudhiya paniyil oru panimanidhanai uruvaakkinar."
+    },
+    "c116": {
+      "t": "மலை",
+      "r": "Malai",
+      "x": "சூரிய உதயத்திற்கு முன்பே நாங்கள் மலையில் ஏறினோம்.",
+      "xr": "Sooriya udhayathirku munbe naangal malaiyil erinom."
+    },
+    "c117": {
+      "t": "ஆறு",
+      "r": "Aaru",
+      "x": "பள்ளத்தாக்கின் வழியாக ஒரு அகன்ற ஆறு பாய்கிறது.",
+      "xr": "Pallathaakkin vazhiyaaga oru agandra aaru paaygiradhu."
+    },
+    "c118": {
+      "t": "கடல்",
+      "r": "Kadal",
+      "x": "இன்று மாலை கடல் அமைதியாகக் காட்சியளிக்கிறது.",
+      "xr": "Indru maalai kadal amaidhiyaaga kaatchiyalikkiradhu."
+    },
+    "c119": {
+      "t": "மரம்",
+      "r": "Maram",
+      "x": "ஒரு பழமையான மரம் முற்றத்திற்கு நிழல் தருகிறது.",
+      "xr": "Oru pazhamaiyaana maram mutrathirku nizhal tharugiradhu."
+    },
+    "c120": {
+      "t": "மலர்",
+      "r": "Malar",
+      "x": "தோட்டத்தில் உள்ள ஒவ்வொரு மலரும் விரிந்துள்ளது.",
+      "xr": "Thottathil ulla ovvoru malarum virindhulladhu."
+    },
+    "c121": {
+      "t": "தலை",
+      "r": "Thalai",
+      "x": "நாள் முழுவதும் படித்ததால் என் தலை வலிக்கிறது.",
+      "xr": "Naal muzhuvadhum padithadhaal en thalai valikkiradhu."
+    },
+    "c122": {
+      "t": "கை",
+      "r": "Kai",
+      "x": "சாப்பிடுவதற்கு முன் கைகளைக் கழுவுங்கள்.",
+      "xr": "Saappiduvadharku mun kaigalai kazhuvungal."
+    },
+    "c123": {
+      "t": "கண்",
+      "r": "Kan",
+      "x": "திரைகளைப் பார்ப்பதை நிறுத்தி கண்களுக்கு ஓய்வு கொடுங்கள்.",
+      "xr": "Thiraigalai paarppadhai niruthi kangalukku oyvu kodungal."
+    },
+    "c124": {
+      "t": "இதயம்",
+      "r": "Idhayam",
+      "x": "உடற்பயிற்சி உங்கள் இதயத்தை வலுவாக வைத்திருக்கும்.",
+      "xr": "Udarpayirchi ungal idhayathai valuvaaga vaithirukkum."
+    },
+    "c125": {
+      "t": "வயிறு",
+      "r": "Vayiru",
+      "x": "வயிறு வலித்தால் வெதுவெதுப்பான தண்ணீர் குடியுங்கள்.",
+      "xr": "Vayiru valithaal vedhuvedhuppaana thanneer kudiyungal."
+    },
+    "c126": {
+      "t": "மருத்துவர்",
+      "r": "Maruthuvar",
+      "x": "நீங்கள் இன்று ஒரு மருத்துவரைப் பார்க்க வேண்டும்.",
+      "xr": "Neengal indru oru maruthuvarai paarkka vendum."
+    },
+    "c127": {
+      "t": "மருத்துவமனை",
+      "r": "Maruthuvamanai",
+      "x": "மருத்துவமனை இருபத்து நான்கு மணி நேரமும் திறந்திருக்கும்.",
+      "xr": "Maruthuvamanai irubathu naangu mani neramum thirandhirukkum."
+    },
+    "c128": {
+      "t": "மருந்து",
+      "r": "Marundhu",
+      "x": "உணவுக்குப் பிறகு இந்த மருந்தை உட்கொள்ளுங்கள்.",
+      "xr": "Unavukku piragu indha marundhai utkolungal."
+    },
+    "c129": {
+      "t": "வலி",
+      "r": "Vali",
+      "x": "வலி எங்கே இருக்கிறது என்று செவிலியரிடம் சொல்லுங்கள்.",
+      "xr": "Vali enge irukkiradhu endru seviliyaridam sollungal."
+    },
+    "c130": {
+      "t": "காய்ச்சல்",
+      "r": "Kaaychal",
+      "x": "லேசான காய்ச்சல் இருந்ததால் அவன் வீட்டிலேயே இருந்தான்.",
+      "xr": "Lesaana kaaychal irundhadhaal avan veettileye irundhaan."
+    },
+    "c131": {
+      "t": "உதவி",
+      "r": "Udhavi",
+      "x": "தயவுசெய்து இந்தப் பெட்டியைத் தூக்க எனக்கு உதவுங்கள்.",
+      "xr": "Dhayavuseydhu indha pettiyai thookka enakku udhavungal."
+    },
+    "c132": {
+      "t": "காவல்துறை",
+      "r": "Kaavalthurai",
+      "x": "அவசர நிலையில் காவல்துறையை அழைக்கவும்.",
+      "xr": "Avasara nilaiyil kaavalthuraiyai azhaikkavum."
+    },
+    "c133": {
+      "t": "அவசரநிலை",
+      "r": "Avasaranilai",
+      "x": "அவசர உதவி எண்களை உங்கள் தொலைபேசியில் சேமித்து வையுங்கள்.",
+      "xr": "Avasara udhavi engalai ungal tholaipesiyil semithu vaiyungal."
+    },
+    "c134": {
+      "t": "ஓய்வு",
+      "r": "Oyvu",
+      "x": "விரைவில் குணமடையப் போதுமான ஓய்வு எடுங்கள்.",
+      "xr": "Viraivil gunamadaiya podhumaana oyvu edungal."
+    },
+    "c135": {
+      "t": "ஆரோக்கியமான",
+      "r": "Aarokkiyamaana",
+      "x": "சமச்சீர் உணவு உங்களை ஆரோக்கியமாக வைத்திருக்கும்.",
+      "xr": "Samacheer unavu ungalai aarokkiyamaaga vaithirukkum."
+    },
+    "c136": {
+      "t": "பள்ளி",
+      "r": "Palli",
+      "x": "குழந்தைகள் ஒன்றாகப் பள்ளிக்கு நடந்து செல்கிறார்கள்.",
+      "xr": "Kuzhandhaigal ondraaga pallikku nadandhu selgiraargal."
+    },
+    "c137": {
+      "t": "பல்கலைக்கழகம்",
+      "r": "Palkalaikazhagam",
+      "x": "அவள் பல்கலைக்கழகத்தில் பொறியியல் படிக்கிறாள்.",
+      "xr": "Aval palkalaikazhagathil poriyiyal padikkiraal."
+    },
+    "c138": {
+      "t": "தேர்வு",
+      "r": "Thervu",
+      "x": "இறுதித் தேர்விற்கு நான் கவனமாகத் தயாரானேன்.",
+      "xr": "Irudhi thervirku naan gavanamaaga thayaaraanen."
+    },
+    "c139": {
+      "t": "மொழி",
+      "r": "Mozhi",
+      "x": "ஒரு மொழியைக் கற்பது புதிய உலகங்களைத் திறக்கும்.",
+      "xr": "Oru mozhiyai karpadhu pudhiya ulagangalai thirakkum."
+    },
+    "c140": {
+      "t": "கேள்வி",
+      "r": "Kelvi",
+      "x": "அது மிகவும் சிந்தனையைத் தூண்டும் கேள்வி.",
+      "xr": "Adhu migavum sindhanaiyai thoondum kelvi."
+    },
+    "c141": {
+      "t": "வேலை",
+      "r": "Velai",
+      "x": "அவன் ஆறு மணிக்கு வேலையை முடிக்கிறான்.",
+      "xr": "Avan aaru manikku velaiyai mudikkiraan."
+    },
+    "c142": {
+      "t": "அலுவலகம்",
+      "r": "Aluvalagam",
+      "x": "எங்கள் அலுவலகம் நான்காவது தளத்தில் உள்ளது.",
+      "xr": "Engal aluvalagam naangaavadhu thalathil ulladhu."
+    },
+    "c143": {
+      "t": "கூட்டம்",
+      "r": "Koottam",
+      "x": "குழுக் கூட்டம் பத்து மணிக்குத் தொடங்கும்.",
+      "xr": "Kuzhu koottam pathu manikku thodangum."
+    },
+    "c144": {
+      "t": "சக ஊழியர்",
+      "r": "Saga oozhiyar",
+      "x": "மென்பொருள் பிழையைச் சரிசெய்ய என் சக ஊழியர் உதவினார்.",
+      "xr": "Menporul pizhaiyai sariseyya en saga oozhiyar udhavinaar."
+    },
+    "c145": {
+      "t": "வேலைப்பளுவான",
+      "r": "Velaippaluvaana",
+      "x": "வெள்ளிக்கிழமை வரை எனக்கு மிகவும் வேலைப்பளு அதிகம்.",
+      "xr": "Vellikkizhamai varai enakku migavum velaippalu adhigam."
+    },
+    "c146": {
+      "t": "இசை",
+      "r": "Isai",
+      "x": "இசை கேட்பது எனக்கு மன அமைதியைத் தருகிறது.",
+      "xr": "Isai ketpadhu enakku mana amaidhiyai tharugiradhu."
+    },
+    "c147": {
+      "t": "திரைப்படம்",
+      "r": "Thiraippadam",
+      "x": "நேற்று இரவு நாங்கள் ஊக்கமளிக்கும் ஒரு திரைப்படத்தைப் பார்த்தோம்.",
+      "xr": "Netru iravu naangal ookkamalikkum oru thiraippadathai paarthom."
+    },
+    "c148": {
+      "t": "விளையாட்டு",
+      "r": "Vilaiyaattu",
+      "x": "எந்த விளையாட்டைப் பார்ப்பது உங்களுக்குப் பிடிக்கும்?",
+      "xr": "Endha vilaiyaattai paarppadhu ungalukku pidikkum?"
+    },
+    "c149": {
+      "t": "பயணம்",
+      "r": "Payanam",
+      "x": "தொடர்வண்டியில் பயணம் செய்ய எனக்கு மிகவும் பிடிக்கும்.",
+      "xr": "Thodarvandiyil payanam seyya enakku migavum pidikkum."
+    },
+    "c150": {
+      "t": "பொழுதுபோக்கு",
+      "r": "Pozhudhupokku",
+      "x": "புகைப்படம் எடுப்பது என் விருப்பமான வார இறுதிப் பொழுதுபோக்கு.",
+      "xr": "Pugaippadam eduppadhu en viruppamaana vaara irudhi pozhudhupokku."
+    },
+    "c151": {
+      "t": "மகிழ்ச்சி",
+      "r": "Magizhchi",
+      "x": "உங்கள் செய்தியைக் கேட்டதில் எனக்கு உண்மையிலேயே மகிழ்ச்சி.",
+      "xr": "Ungal seydhiyai kettadhil enakku unmaiyileye magizhchi."
+    },
+    "c152": {
+      "t": "வருத்தம்",
+      "r": "Varutham",
+      "x": "சில நேரங்களில் வருத்தமாக உணர்வது இயல்பானது.",
+      "xr": "Sila nerangalil varuthamaaga unarvadhu iyalbaanadhu."
+    },
+    "c153": {
+      "t": "கோபம்",
+      "r": "Kobam",
+      "x": "கோபமாக இருக்கும்போது பேசுவதற்கு முன் ஆழமாக மூச்சு விடுங்கள்.",
+      "xr": "Kobamaaga irukkumpodhu pesuvadharku mun aazhamaaga moochu vidungal."
+    },
+    "c154": {
+      "t": "வியப்பு",
+      "r": "Viyappu",
+      "x": "திடீர் அறிவிப்பால் அனைவரும் வியப்படைந்தனர்.",
+      "xr": "Thideer arivippaal anaivarum viyappadaindhanar."
+    },
+    "c155": {
+      "t": "கவலை",
+      "r": "Kavalai",
+      "x": "கவலைப்படாதீர்கள்; எல்லாம் சரியாகிவிடும்.",
+      "xr": "Kavalaippadaadheergal; ellaam sariyaagividum."
+    },
+    "c156": {
+      "t": "அன்பான",
+      "r": "Anbaana",
+      "x": "ஒரு அன்பான செயல் ஒருவரின் நாளை ஒளிரச் செய்யும்.",
+      "xr": "Oru anbaana seyal oruvarin naalai olira seyyum."
+    },
+    "c157": {
+      "t": "நேர்மையான",
+      "r": "Nermaiyaana",
+      "x": "உங்கள் நேர்மையான கருத்தைப் பாராட்டுகிறேன்.",
+      "xr": "Ungal nermaiyaana karuthai paaraattugiren."
+    },
+    "c158": {
+      "t": "பொறுமையான",
+      "r": "Porumaiyaana",
+      "x": "சரளமாகப் பேசக் கற்றுக்கொள்ளப் பொறுமை தேவை.",
+      "xr": "Saralamaaga pesa katrukkolla porumai thevai."
+    },
+    "c159": {
+      "t": "துணிச்சலான",
+      "r": "Thunichalaana",
+      "x": "பொதுவெளியில் துணிந்து பேசியது பாராட்டத்தக்க துணிச்சல்.",
+      "xr": "Podhuveliyil thunindhu pesiyadhu paaraattathakka thunichal."
+    },
+    "c160": {
+      "t": "ஆர்வமுள்ள",
+      "r": "Aarvamulla",
+      "x": "ஆர்வமுள்ள மனங்கள் ஒருபோதும் புதியவற்றைக் கண்டறிவதை நிறுத்துவதில்லை.",
+      "xr": "Aarvamulla manangal orupodhum pudhiyavatrai kandarivadhai niruthuvadhillai."
+    },
+    "c161": {
+      "t": "நான் நினைக்கிறேன்",
+      "r": "Naan ninaikkiren",
+      "x": "இந்தத் தீர்வு நடைமுறைக்கு ஏற்றது என்று நான் நினைக்கிறேன்.",
+      "xr": "Indha theervu nadaimuraikku etradhu endru naan ninaikkiren."
+    },
+    "c162": {
+      "t": "நான் ஒப்புக்கொள்கிறேன்",
+      "r": "Naan oppukkolgiren",
+      "x": "உங்கள் முக்கியக் கருத்துடன் நான் ஒப்புக்கொள்கிறேன்.",
+      "xr": "Ungal mukkiya karuthudan naan oppukkolgiren."
+    },
+    "c163": {
+      "t": "கருத்து",
+      "r": "Karuthu",
+      "x": "அனைவருக்கும் கருத்துச் சொல்ல உரிமை உண்டு.",
+      "xr": "Anaivarukkum karuthu solla urimai undu."
+    },
+    "c164": {
+      "t": "முக்கியமான",
+      "r": "Mukkiyamaana",
+      "x": "தெளிவான தொடர்பாடல் மிகவும் முக்கியமானது.",
+      "xr": "Thelivaana thodarbaadal migavum mukkiyamaanadhu."
+    },
+    "c165": {
+      "t": "சாத்தியமான",
+      "r": "Saathiyamaana",
+      "x": "தொடர் முயற்சியால் எதுவும் சாத்தியமே.",
+      "xr": "Thodar muyarchiyaal edhuvum saathiyame."
+    },
+    "c166": {
+      "t": "அழைப்பு",
+      "r": "Azhaippu",
+      "x": "உங்கள் அன்பான அழைப்புக்கு நன்றி.",
+      "xr": "Ungal anbaana azhaippukku nandri."
+    },
+    "c167": {
+      "t": "கொண்டாட்டம்",
+      "r": "Kondaattam",
+      "x": "முழுப் பகுதியினரும் கொண்டாட்டத்தில் கலந்துகொண்டனர்.",
+      "xr": "Muzhu pagudhiyinarum kondaattathil kalandhukondanar."
+    },
+    "c168": {
+      "t": "வாக்குறுதி",
+      "r": "Vaakkurudhi",
+      "x": "நீங்கள் கொடுத்த வாக்குறுதியை எப்போதும் காப்பாற்றுங்கள்.",
+      "xr": "Neengal kodutha vaakkurudhiyai eppodhum kaappaatrungal."
+    },
+    "c169": {
+      "t": "சந்திப்பு நேரம்",
+      "r": "Sandhippu neram",
+      "x": "எனக்கு மூன்று மணிக்கு பல் மருத்துவருடன் சந்திப்பு நேரம் உள்ளது.",
+      "xr": "Enakku moondru manikku pal maruthuvarudan sandhippu neram ulladhu."
+    },
+    "c170": {
+      "t": "இன்ப அதிர்ச்சி",
+      "r": "Inba adhirchi",
+      "x": "அவளின் பிறந்தநாளிற்கு நாங்கள் ஒரு இன்ப அதிர்ச்சியைத் திட்டமிட்டோம்.",
+      "xr": "Avalin pirandhanaalirku naangal oru inba adhirchiyai thittamittom."
+    },
+    "c171": {
+      "t": "நினைவு",
+      "r": "Ninaivu",
+      "x": "அந்தப் பயணம் என் மிகவும் இனிய நினைவாக இன்றும் உள்ளது.",
+      "xr": "Andha payanam en migavum iniya ninaivaaga indrum ulladhu."
+    },
+    "c172": {
+      "t": "அனுபவம்",
+      "r": "Anubavam",
+      "x": "வெளிநாட்டில் வசித்தது வாழ்க்கையை மாற்றியமைத்த அனுபவம்.",
+      "xr": "Velinaattil vasithadhu vaazhkkaiyai maatriyamaitha anubavam."
+    },
+    "c173": {
+      "t": "கதை",
+      "r": "Kadhai",
+      "x": "தாத்தா ஒரு சுவாரசியமான கதையைச் சொன்னார்.",
+      "xr": "Thaaththaa oru suvaarasiyamaana kadhaiyai sonnaar."
+    },
+    "c174": {
+      "t": "கனவு",
+      "r": "Kanavu",
+      "x": "உங்கள் மிகப் பெரிய கனவை ஒருபோதும் கைவிடாதீர்கள்.",
+      "xr": "Ungal miga periya kanavai orupodhum kaividaadheergal."
+    },
+    "c175": {
+      "t": "நெடும்பயணம்",
+      "r": "Nedumpayanam",
+      "x": "ஒவ்வொரு நீண்ட பயணமும் முதல் அடியிலிருந்தே தொடங்குகிறது.",
+      "xr": "Ovvoru neenda payanamum mudhal adiyilirundhe thodangugiradhu."
+    },
+    "c176": {
+      "t": "நம்பிக்கை",
+      "r": "Nambikkai",
+      "x": "நம்பிக்கையை வளர்த்தெடுக்க பல ஆண்டுகள் ஆகும்.",
+      "xr": "Nambikkaiyai valarthedukka pala aandugal aagum."
+    },
+    "c177": {
+      "t": "மரியாதை",
+      "r": "Mariyaadhai",
+      "x": "ஒவ்வொரு மனிதரையும் உண்மையான மரியாதையுடன் நடத்துங்கள்.",
+      "xr": "Ovvoru manidharaiyum unmaiyaana mariyaadhaiyudan nadathungal."
+    },
+    "c178": {
+      "t": "அறிவுரை",
+      "r": "Arivurai",
+      "x": "தொழில் வாழ்க்கை குறித்து எனக்குச் சிறிது அறிவுரை கூற முடியுமா?",
+      "xr": "Thozhil vaazhkkai kurithu enakku siridhu arivurai koora mudiyumaa?"
+    },
+    "c179": {
+      "t": "ஆதரவு",
+      "r": "Aadharavu",
+      "x": "உங்கள் தளராத ஆதரவிற்கு மனமார்ந்த நன்றி.",
+      "xr": "Ungal thalaraadha aadharavirku manamaarndha nandri."
+    },
+    "c180": {
+      "t": "மன்னித்தல்",
+      "r": "Mannithal",
+      "x": "மன்னித்து முன்னேறிச் செல்வதற்கு மனவலிமை தேவை.",
+      "xr": "Mannithu munneri selvadharku manavalimai thevai."
+    },
+    "c181": {
+      "t": "கணினி",
+      "r": "Kanini",
+      "x": "என் கணினி இரவு முழுவதும் புதுப்பிக்கப்பட்டது.",
+      "xr": "En kanini iravu muzhuvadhum pudhuppikkappattadhu."
+    },
+    "c182": {
+      "t": "இணையம்",
+      "r": "Inaiyam",
+      "x": "வேகமான இணையம் தொலைதூரக் கிராமங்களை இணைக்கிறது.",
+      "xr": "Vegamaana inaiyam tholaidhoora giraamangalai inaikkiradhu."
+    },
+    "c183": {
+      "t": "தொலைபேசி",
+      "r": "Tholaipesi",
+      "x": "விரிவுரைகளின் போது தயவுசெய்து உங்கள் தொலைபேசியை அமைதி நிலையில் வையுங்கள்.",
+      "xr": "Virivuraigalin podhu dhayavuseydhu ungal tholaipesiyai amaidhi nilaiyil vaiyungal."
+    },
+    "c184": {
+      "t": "கடவுச்சொல்",
+      "r": "Kadavuchol",
+      "x": "ஒவ்வொரு கணக்கிற்கும் வலுவான, தனித்துவமான கடவுச்சொல்லைப் பயன்படுத்துங்கள்.",
+      "xr": "Ovvoru kanakkirkum valuvaana, thanithuvamaana kadavuchollai payanpaduthungal."
+    },
+    "c185": {
+      "t": "பதிவிறக்கம்",
+      "r": "Padhivirakkam",
+      "x": "இணையமில்லாத் தொகுப்பை நீங்கள் இலவசமாகப் பதிவிறக்கம் செய்யலாம்.",
+      "xr": "Inaiyamillaa thoguppai neengal ilavasamaaga padhivirakkam seyyalaam."
+    },
+    "c186": {
+      "t": "செய்தி",
+      "r": "Seydhi",
+      "x": "இன்று முன்பே உங்களுக்கு ஒரு செய்தி அனுப்பியிருந்தேன்.",
+      "xr": "Indru munbe ungalukku oru seydhi anuppiyirundhen."
+    },
+    "c187": {
+      "t": "தேடல்",
+      "r": "Thedal",
+      "x": "நம்பகமான ஆவணங்களைத் தேடுவோம்.",
+      "xr": "Nambagamaana aavanangalai theduvom."
+    },
+    "c188": {
+      "t": "செயலி",
+      "r": "Seyali",
+      "x": "இந்தத் திறந்த மூலச் செயலி இணையமின்றியும் இயங்கும்.",
+      "xr": "Indha thirandha moola seyali inaiyamindriyum iyangum."
+    },
+    "c189": {
+      "t": "தனியுரிமை",
+      "r": "Thaniyurimai",
+      "x": "பயனர் தனியுரிமையைப் பாதுகாப்பதற்கு முதலிடம் அளிக்க வேண்டும்.",
+      "xr": "Payanar thaniyurimaiyai paadhugaappadharku mudhalidam alikka vendum."
+    },
+    "c190": {
+      "t": "புதுப்பிப்பு",
+      "r": "Pudhuppippu",
+      "x": "அண்மைய புதுப்பிப்பு வேகத்தைக் கணிசமாக அதிகரித்துள்ளது.",
+      "xr": "Anmaiya pudhuppippu vegathai kanisamaaga adhigarithulladhu."
+    },
+    "c191": {
+      "t": "செய்திகள்",
+      "r": "Seydhigal",
+      "x": "செய்திகளை எப்போதும் பல ஆதாரங்களில் சரிபாருங்கள்.",
+      "xr": "Seydhigalai eppodhum pala aadhaarangalil saribaarungal."
+    },
+    "c192": {
+      "t": "கட்டுரை",
+      "r": "Katturai",
+      "x": "மொழியியல் குறித்த ஒரு சுவாரசியமான கட்டுரையைப் படித்தேன்.",
+      "xr": "Mozhiyiyal kuritha oru suvaarasiyamaana katturaiyai padithen."
+    },
+    "c193": {
+      "t": "தகவல்",
+      "r": "Thagaval",
+      "x": "துல்லியமான தகவல் மக்கள் புத்திசாலித்தனமாக முடிவெடுக்க உதவுகிறது.",
+      "xr": "Thulliyamaana thagaval makkal puthisaalithanamaaga mudivedukka udhavugiradhu."
+    },
+    "c194": {
+      "t": "புகைப்படக் கருவி",
+      "r": "Pugaippada karuvi",
+      "x": "அவள் திருவிழாவிற்குத் தன் புகைப்படக் கருவியைக் கொண்டு வந்தாள்.",
+      "xr": "Aval thiruvizhaavirku than pugaippada karuviyai kondu vandhaal."
+    },
+    "c195": {
+      "t": "திரை",
+      "r": "Thirai",
+      "x": "இரவில் திரையின் ஒளி அளவைக் குறைத்து வையுங்கள்.",
+      "xr": "Iravil thiraiyin oli alavai kuraithu vaiyungal."
+    },
+    "c196": {
+      "t": "பண்பாடு",
+      "r": "Panbaadu",
+      "x": "மொழியே ஒரு பண்பாட்டின் உயிரோட்டமான இதயம்.",
+      "xr": "Mozhiye oru panbaattin uyirottamaana idhayam."
+    },
+    "c197": {
+      "t": "மரபு",
+      "r": "Marabu",
+      "x": "ஒவ்வொரு பகுதியும் தனக்கென ஒரு அறுவடை மரபைப் பேணுகிறது.",
+      "xr": "Ovvoru pagudhiyum thanakkena oru aruvadai marabai penugiradhu."
+    },
+    "c198": {
+      "t": "திருவிழா",
+      "r": "Thiruvizhaa",
+      "x": "திருவிழாவின் போது விளக்குகள் நகரம் முழுவதையும் ஒளிரச் செய்தன.",
+      "xr": "Thiruvizhaavin podhu vilakkugal nagaram muzhuvadhaiyum olira seydhana."
+    },
+    "c199": {
+      "t": "வரலாறு",
+      "r": "Varalaaru",
+      "x": "இந்த அருங்காட்சியகம் ஐந்தாயிரம் ஆண்டு கால வரலாற்றைக் காட்சிப்படுத்துகிறது.",
+      "xr": "Indha arungaatchiyagam aindhaayiram aandu kaala varalaatrai kaatchippaduthugiradhu."
+    },
+    "c200": {
+      "t": "பாரம்பரியம்",
+      "r": "Paarambariyam",
+      "x": "நம் பொதுவான பண்பாட்டுப் பாரம்பரியத்தை நாம் பாதுகாக்க வேண்டும்.",
+      "xr": "Nam podhuvaana panbaattu paarambariyathai naam paadhugaakka vendum."
+    },
+    "c201": {
+      "t": "கலை",
+      "r": "Kalai",
+      "x": "உயர்ந்த கலை எல்லைகளையும் நூற்றாண்டுகளையும் கடந்து நிற்கும்.",
+      "xr": "Uyarndha kalai ellaigalaiyum nootraandugalaiyum kadandhu nirkum."
+    },
+    "c202": {
+      "t": "நடனம்",
+      "r": "Nadanam",
+      "x": "செவ்வியல் நடனம் அசைவுகளின் வழியே கதைகளைச் சொல்கிறது.",
+      "xr": "Sevviyal nadanam asaivugalin vazhiye kadhaigalai solgiradhu."
+    },
+    "c203": {
+      "t": "பாடல்",
+      "r": "Paadal",
+      "x": "அந்த நாட்டுப்புறப் பாடல் பல தலைமுறைகளாகப் பாடப்பட்டு வருகிறது.",
+      "xr": "Andha naattuppura paadal pala thalaimuraigalaaga paadappattu varugiradhu."
+    },
+    "c204": {
+      "t": "கட்டிடக்கலை",
+      "r": "Kattidakkalai",
+      "x": "கோயிலின் கட்டிடக்கலை வியக்கத்தக்க நுணுக்கம் கொண்டது.",
+      "xr": "Koyilin kattidakkalai viyakkathakka nunukkam kondadhu."
+    },
+    "c205": {
+      "t": "கவிதை",
+      "r": "Kavidhai",
+      "x": "சில வரிகளிலேயே ஆழமான உணர்வுகளைக் கவிதை வெளிப்படுத்துகிறது.",
+      "xr": "Sila varigalileye aazhamaana unarvugalai kavidhai velippaduthugiradhu."
+    },
+    "c206": {
+      "t": "விருந்தினர்",
+      "r": "Virundhinar",
+      "x": "ஒவ்வொரு விருந்தினரும் அன்புடன் வரவேற்கப்படுகிறார்.",
+      "xr": "Ovvoru virundhinarum anbudan varaverkappadugiraar."
+    },
+    "c207": {
+      "t": "பரிசு",
+      "r": "Parisu",
+      "x": "சிறிய பரிசு ஒன்றைக் கொண்டு செல்வது அக்கறையின் வெளிப்பாடு.",
+      "xr": "Siriya parisu ondrai kondu selvadhu akkaraiyin velippaadu."
+    },
+    "c208": {
+      "t": "வழக்கம்",
+      "r": "Vazhakkam",
+      "x": "புதிய நாட்டிற்குச் செல்லும் முன் உள்ளூர் வழக்கங்களை அறிந்துகொள்ளுங்கள்.",
+      "xr": "Pudhiya naattirku sellum mun ulloor vazhakkangalai arindhukollungal."
+    },
+    "c209": {
+      "t": "விழா",
+      "r": "Vizhaa",
+      "x": "பட்டமளிப்பு விழா இரண்டு மணி நேரம் நடைபெற்றது.",
+      "xr": "Pattamalippu vizhaa irandu mani neram nadaipetradhu."
+    },
+    "c210": {
+      "t": "ஆசி",
+      "r": "Aasi",
+      "x": "பெரியவர்கள் மணமக்களுக்குத் தங்கள் ஆசியை வழங்கினர்.",
+      "xr": "Periyavargal manamakkalukku thangal aasiyai vazhanginar."
+    },
+    "c211": {
+      "t": "ஏனெனில்",
+      "r": "Enenil",
+      "x": "நாங்கள் வீட்டிற்குள்ளேயே இருந்தோம், ஏனெனில் புயல் வந்துகொண்டிருந்தது.",
+      "xr": "Naangal veettirkulleye irundhom, enenil puyal vandhukondirundhadhu."
+    },
+    "c212": {
+      "t": "இருப்பினும்",
+      "r": "Iruppinum",
+      "x": "பணி கடினமாக இருந்தது; இருப்பினும், நாங்கள் வெற்றி பெற்றோம்.",
+      "xr": "Pani kadinamaaga irundhadhu; iruppinum, naangal vetri petrom."
+    },
+    "c213": {
+      "t": "இருந்தாலும்",
+      "r": "Irundhaalum",
+      "x": "நேரம் தாமதமானாலும், அவன் அந்த அத்தியாயத்தை முடித்தான்.",
+      "xr": "Neram thaamadhamanaalum, avan andha athiyaayathai mudithaan."
+    },
+    "c214": {
+      "t": "எனவே",
+      "r": "Enave",
+      "x": "தரவுகள் தெளிவாக உள்ளன; எனவே, நாம் செயல்பட வேண்டும்.",
+      "xr": "Tharavugal thelivaaga ullana; enave, naam seyalpada vendum."
+    },
+    "c215": {
+      "t": "இதற்கிடையில்",
+      "r": "Idharkidaiyil",
+      "x": "நான் இரவு உணவு சமைக்கிறேன்; இதற்கிடையில், தயவுசெய்து மேசையைத் தயார் செய்யுங்கள்.",
+      "xr": "Naan iravu unavu samaikkiren; idharkidaiyil, dhayavuseydhu mesaiyai thayaar seyyungal."
+    },
+    "c216": {
+      "t": "சிக்கல்",
+      "r": "Sikkal",
+      "x": "இந்தச் சிக்கலின் மூல காரணத்தைக் கண்டறிவோம்.",
+      "xr": "Indha sikkalin moola kaaranathai kandarivom."
+    },
+    "c217": {
+      "t": "தீர்வு",
+      "r": "Theervu",
+      "x": "எளிய தீர்வுகளே பெரும்பாலும் மிகவும் நம்பகமானவை.",
+      "xr": "Eliya theervugale perumbaalum migavum nambagamaanavai."
+    },
+    "c218": {
+      "t": "முடிவு",
+      "r": "Mudivu",
+      "x": "பெரிய முடிவெடுக்கும் முன் அமைதியாகச் சிந்தியுங்கள்.",
+      "xr": "Periya mudivedukkum mun amaidhiyaaga sindhiyungal."
+    },
+    "c219": {
+      "t": "தவறு",
+      "r": "Thavaru",
+      "x": "ஒவ்வொரு தவறும் நமக்கு மதிப்புமிக்க பாடத்தைக் கற்றுத் தருகிறது.",
+      "xr": "Ovvoru thavarum namakku madhippumikka paadathai katru tharugiradhu."
+    },
+    "c220": {
+      "t": "வெற்றி",
+      "r": "Vetri",
+      "x": "குழுவாக இணைந்து செயல்பட்டதே எங்கள் வெற்றியின் திறவுகோல்.",
+      "xr": "Kuzhuvaaga inaindhu seyalpattadhe engal vetriyin thiravugol."
+    },
+    "c221": {
+      "t": "என்றால்",
+      "r": "Endraal",
+      "x": "தினமும் பயிற்சி செய்தால், நீங்கள் விரைவில் முன்னேறுவீர்கள்.",
+      "xr": "Dhinamum payirchi seydhaal, neengal viraivil munneruveergal."
+    },
+    "c222": {
+      "t": "பதிலாக",
+      "r": "Padhilaaga",
+      "x": "வண்டி ஓட்டுவதற்குப் பதிலாகக் கடைக்கு நடந்து செல்லுங்கள்.",
+      "xr": "Vandi ottuvadharku padhilaaga kadaikku nadandhu sellungal."
+    },
+    "c223": {
+      "t": "ஒப்பிடுதல்",
+      "r": "Oppidudhal",
+      "x": "வாக்களிப்பதற்கு முன் இரண்டு பரிந்துரைகளையும் கவனமாக ஒப்பிடுங்கள்.",
+      "xr": "Vaakkalippadharku mun irandu parindhuraigalaiyum gavanamaaga oppidungal."
+    },
+    "c224": {
+      "t": "வேறுபாடு",
+      "r": "Verupaadu",
+      "x": "சிறிய பழக்கங்கள் காலப்போக்கில் பெரிய வேறுபாட்டை உருவாக்குகின்றன.",
+      "xr": "Siriya pazhakkangal kaalappokkil periya verupaattai uruvaakkugindrana."
+    },
+    "c225": {
+      "t": "காரணம்",
+      "r": "Kaaranam",
+      "x": "உங்கள் தேர்வின் பின்னணியில் உள்ள காரணத்தை விளக்குங்கள்.",
+      "xr": "Ungal thervin pinnaniyil ulla kaaranathai vilakkungal."
+    },
+    "c226": {
+      "t": "உத்தி",
+      "r": "Uthi",
+      "x": "எங்கள் நீண்டகால தயாரிப்பு உத்தியை நாங்கள் மாற்றியமைத்தோம்.",
+      "xr": "Engal neendakaala thayaarippu uthiyai naangal maatriyamaithom."
+    },
+    "c227": {
+      "t": "திட்டம்",
+      "r": "Thittam",
+      "x": "பொறியியல் திட்டம் நிர்ணயிக்கப்பட்ட நேரத்திற்கு முன்பே தொடங்கப்பட்டது.",
+      "xr": "Poriyiyal thittam nirnayikkappatta nerathirku munbe thodangappattadhu."
+    },
+    "c228": {
+      "t": "காலக்கெடு",
+      "r": "Kaalakkedu",
+      "x": "காலக்கெடுவிற்கு முன்பே ஒவ்வொரு மைல்கல்லையும் முடித்தோம்.",
+      "xr": "Kaalakkeduvirku munbe ovvoru mailkallaiyum mudithom."
+    },
+    "c229": {
+      "t": "பொறுப்பு",
+      "r": "Poruppu",
+      "x": "தலைமைத்துவம் என்பது முழுப் பொறுப்பை ஏற்பதாகும்.",
+      "xr": "Thalaimaithuvam enbadhu muzhu poruppai erpadhaagum."
+    },
+    "c230": {
+      "t": "ஒத்துழைப்பு",
+      "r": "Othuzhaippu",
+      "x": "திறந்த ஒத்துழைப்பு புதுமையை விரைவுபடுத்துகிறது.",
+      "xr": "Thirandha othuzhaippu pudhumaiyai viraivupaduthugiradhu."
+    },
+    "c231": {
+      "t": "பொருளாதாரம்",
+      "r": "Porulaadhaaram",
+      "x": "சிறு வணிகங்களே பொருளாதாரத்தின் முதுகெலும்பாகத் திகழ்கின்றன.",
+      "xr": "Siru vanigangale porulaadhaarathin mudhugelumbaaga thigazhgindrana."
+    },
+    "c232": {
+      "t": "நிதிநிலை அறிக்கை",
+      "r": "Nidhinilai arikkai",
+      "x": "அடுத்த ஆண்டிற்கான கல்வி நிதி ஒதுக்கீட்டிற்கு நகராட்சி ஒப்புதல் அளித்தது.",
+      "xr": "Adutha aandirkaana kalvi nidhi odhukkeettirku nagaraatchi oppudhal alithadhu."
+    },
+    "c233": {
+      "t": "முதலீடு",
+      "r": "Mudhaleedu",
+      "x": "கல்வியே மிகச் சிறந்த நீண்டகால முதலீடாகும்.",
+      "xr": "Kalviye miga sirandha neendakaala mudhaleedaagum."
+    },
+    "c234": {
+      "t": "ஒப்பந்தம்",
+      "r": "Oppandham",
+      "x": "ஒப்பந்தத்தின் ஒவ்வொரு நிபந்தனையையும் கவனமாகப் படியுங்கள்.",
+      "xr": "Oppandhathin ovvoru nibandhanaiyaiyum gavanamaaga padiyungal."
+    },
+    "c235": {
+      "t": "லாபம்",
+      "r": "Laabam",
+      "x": "குறுகிய கால லாபத்தை விட நிலையான வளர்ச்சியே முக்கியம்.",
+      "xr": "Kurugiya kaala laabathai vida nilaiyaana valarchiye mukkiyam."
+    },
+    "c236": {
+      "t": "முன்மொழிவு",
+      "r": "Munmozhivu",
+      "x": "எங்கள் விரிவான முன்மொழிவைக் குழு ஆய்வு செய்தது.",
+      "xr": "Engal virivaana munmozhivai kuzhu aayvu seydhadhu."
+    },
+    "c237": {
+      "t": "பேச்சுவார்த்தை",
+      "r": "Pechuvaarthai",
+      "x": "இரு தரப்பினரும் நல்லெண்ணத்துடன் பேச்சுவார்த்தையில் ஈடுபட்டனர்.",
+      "xr": "Iru tharappinarum nallennathudan pechuvaarthaiyil eedupattanar."
+    },
+    "c238": {
+      "t": "உடன்பாடு",
+      "r": "Udanbaadu",
+      "x": "இருவருக்கும் பயனளிக்கும் வணிக உடன்பாட்டில் அவர்கள் கையெழுத்திட்டனர்.",
+      "xr": "Iruvarukkum payanalikkum vaniga udanbaattil avargal kaiyezhuthittanar."
+    },
+    "c239": {
+      "t": "சமரசம்",
+      "r": "Samarasam",
+      "x": "நியாயமான சமரசம் அந்தத் தகராறைத் தீர்த்து வைத்தது.",
+      "xr": "Nyaayamaana samarasam andha thagaaraarai theerthu vaithadhu."
+    },
+    "c240": {
+      "t": "வாய்ப்பு",
+      "r": "Vaayppu",
+      "x": "ஒவ்வொரு சவாலும் மறைந்திருக்கும் ஒரு வாய்ப்பைக் கொண்டுவருகிறது.",
+      "xr": "Ovvoru savaalum maraindhirukkum oru vaayppai konduvarugiradhu."
+    },
+    "c241": {
+      "t": "ஆராய்ச்சி",
+      "r": "Aaraaychi",
+      "x": "வல்லுநர்களால் மதிப்பாய்வு செய்யப்பட்ட ஆராய்ச்சி நவீன மருத்துவத்தை வழிநடத்துகிறது.",
+      "xr": "Vallunargalaal madhippaayvu seyyappatta aaraaychi naveena maruthuvathai vazhinadathugiradhu."
+    },
+    "c242": {
+      "t": "பரிசோதனை",
+      "r": "Parisodhanai",
+      "x": "ஆய்வகப் பரிசோதனை எங்கள் கணிப்பை உறுதிப்படுத்தியது.",
+      "xr": "Aayvaga parisodhanai engal kanippai urudhippaduthiyadhu."
+    },
+    "c243": {
+      "t": "ஆதாரம்",
+      "r": "Aadhaaram",
+      "x": "வலுவான முடிவுகள் உறுதியான ஆதாரங்களின் அடிப்படையில் அமைய வேண்டும்.",
+      "xr": "Valuvaana mudivugal urudhiyaana aadhaarangalin adippadaiyil amaiya vendum."
+    },
+    "c244": {
+      "t": "கோட்பாடு",
+      "r": "Kotpaadu",
+      "x": "புவியீர்ப்பு ஒளியை எவ்வாறு வளைக்கிறது என்பதை இந்தக் கோட்பாடு விளக்குகிறது.",
+      "xr": "Puviyeerppu oliyai evvaaru valaikkiradhu enbadhai indha kotpaadu vilakkugiradhu."
+    },
+    "c245": {
+      "t": "கண்டுபிடிப்பு",
+      "r": "Kandupidippu",
+      "x": "அந்தக் கண்டுபிடிப்பு தூய்மையான ஆற்றல் சேமிப்பில் பெரும் மாற்றத்தை ஏற்படுத்தியது.",
+      "xr": "Andha kandupidippu thooymaiyaana aatral semippil perum maatrathai erpaduthiyadhu."
+    },
+    "c246": {
+      "t": "புதுமை",
+      "r": "Pudhumai",
+      "x": "அடித்தளப் புதுமைகள் உண்மையான சமூகத் தேவைகளைத் தீர்க்கின்றன.",
+      "xr": "Adithala pudhumaigal unmaiyaana samooga thevaigalai theerkkindrana."
+    },
+    "c247": {
+      "t": "நெறிமுறை",
+      "r": "Nerimurai",
+      "x": "திறமையான கணித நெறிமுறை மின்சாரத்தையும் நேரத்தையும் சேமிக்கிறது.",
+      "xr": "Thiramaiyaana kanidha nerimurai minsaarathaiyum nerathaiyum semikkiradhu."
+    },
+    "c248": {
+      "t": "ஆற்றல்",
+      "r": "Aatral",
+      "x": "சூரிய மின்தகடுகள் சூரிய ஒளியை நேரடியாக ஆற்றலாக மாற்றுகின்றன.",
+      "xr": "Sooriya minthagadugal sooriya oliyai neradiyaaga aatralaaga maatrugindrana."
+    },
+    "c249": {
+      "t": "ஆய்வகம்",
+      "r": "Aayvagam",
+      "x": "அறிவியலாளர்கள் ஆய்வகத்தில் உணரிகளைத் துல்லியமாக அளவுத்திருத்தம் செய்தனர்.",
+      "xr": "Ariviyalaalargal aayvagathil unarigalai thulliyamaaga alavuthirutham seydhanar."
+    },
+    "c250": {
+      "t": "துல்லியம்",
+      "r": "Thulliyam",
+      "x": "நுண் அறுவை சிகிச்சைக்கு அசாதாரணத் துல்லியம் தேவைப்படுகிறது.",
+      "xr": "Nun aruvai sigichaikku asaadhaarana thulliyam thevaippadugiradhu."
+    },
+    "c251": {
+      "t": "பிரபஞ்சம்",
+      "r": "Prabanjam",
+      "x": "தொலைநோக்கிகள் பிரபஞ்சத்தின் தொடக்ககால விண்மீன் திரள்களை வெளிப்படுத்துகின்றன.",
+      "xr": "Tholainokkigal prabanjathin thodakkakaala vinmeen thiralgalai velippaduthugindrana."
+    },
+    "c252": {
+      "t": "கோள்",
+      "r": "Kol",
+      "x": "எந்தக் கோளிலும் உயிர் வாழத் தண்ணீர் இன்றியமையாதது.",
+      "xr": "Endha kolilum uyir vaazha thanneer indriyamaiyaadhadhu."
+    },
+    "c253": {
+      "t": "புவியீர்ப்பு",
+      "r": "Puviyeerppu",
+      "x": "புவியீர்ப்பு விசையே நிலவைப் பூமியின் சுற்றுப்பாதையில் நிலைநிறுத்துகிறது.",
+      "xr": "Puviyeerppu visaiye nilavai boomiyin sutruppaathaiyil nilainiruthugiradhu."
+    },
+    "c254": {
+      "t": "பரிணாமம்",
+      "r": "Parinaamam",
+      "x": "பல மில்லியன் ஆண்டுகளாகப் பரிணாமம் உயிரினங்களை வடிவமைக்கிறது.",
+      "xr": "Pala milliyan aandugalaaga parinaamam uyirinangalai vadivamaikkiradhu."
+    },
+    "c255": {
+      "t": "ஆராயும் ஆர்வம்",
+      "r": "Aaraayum aarvam",
+      "x": "அறிவியல் ஆர்வம் மனிதகுலத்தை முன்னோக்கி வழிநடத்துகிறது.",
+      "xr": "Ariviyal aarvam manidhagulathai munnokki vazhinadathugiradhu."
+    },
+    "c256": {
+      "t": "சுற்றுச்சூழல்",
+      "r": "Sutruchoozhal",
+      "x": "சுற்றுச்சூழலைப் பாதுகாப்பது வருங்காலத் தலைமுறைகளைப் பாதுகாப்பதாகும்.",
+      "xr": "Sutruchoozhalai paadhugaappadhu varungaala thalaimuraigalai paadhugaappadhaagum."
+    },
+    "c257": {
+      "t": "காலநிலை",
+      "r": "Kaalanilai",
+      "x": "மாறிவரும் காலநிலை முறைகள் உலகளாவிய அறுவடையைப் பாதிக்கின்றன.",
+      "xr": "Maarivarum kaalanilai muraigal ulagalaaviya aruvadaiyai paadhikkindrana."
+    },
+    "c258": {
+      "t": "சூழல் மண்டலம்",
+      "r": "Soozhal mandalam",
+      "x": "கடலோரச் சூழல் மண்டலத்திற்கு ஈரநிலங்கள் மிகவும் அவசியமானவை.",
+      "xr": "Kadalora soozhal mandalathirku eeranilangal migavum avasiyamaanavai."
+    },
+    "c259": {
+      "t": "பல்லுயிர் பெருக்கம்",
+      "r": "Palluyir perukkam",
+      "x": "மழைக்காடுகள் அசாதாரணமான பல்லுயிர் பெருக்கத்திற்கு அடைக்கலம் தருகின்றன.",
+      "xr": "Mazhaikkaadugal asaadhaaranamaana palluyir perukkathirku adaikkalam tharugindrana."
+    },
+    "c260": {
+      "t": "மாசுபாடு",
+      "r": "Maasubaadu",
+      "x": "மின்சாரப் போக்குவரத்து நகர்ப்புறக் காற்று மாசுபாட்டைப் பெரிதும் குறைக்கிறது.",
+      "xr": "Minsaara pokkuvarathu nagarppura kaatru maasubaattai peridhum kuraikkiradhu."
+    },
+    "c261": {
+      "t": "புதுப்பிக்கத்தக்க",
+      "r": "Pudhuppikkathakka",
+      "x": "காற்றும் சூரிய ஒளியும் வளமான புதுப்பிக்கத்தக்க ஆற்றல் மூலங்கள்.",
+      "xr": "Kaatrum sooriya oliyum valamaana pudhuppikkathakka aatral moolangal."
+    },
+    "c262": {
+      "t": "நிலைத்தன்மை",
+      "r": "Nilaithanmai",
+      "x": "உண்மையான நிலைத்தன்மை இயற்கையையும் வளத்தையும் சமநிலையில் வைக்கிறது.",
+      "xr": "Unmaiyaana nilaithanmai iyarkaiyaiyum valathaiyum samanilaiyil vaikkiradhu."
+    },
+    "c263": {
+      "t": "பாதுகாப்பு",
+      "r": "Paadhugaappu",
+      "x": "சமூகத் தலைமையிலான பாதுகாப்பு முயற்சி காட்டை மீண்டும் உயிர்ப்பித்தது.",
+      "xr": "Samooga thalaimaiyilaana paadhugaappu muyarchi kaattai meendum uyirppithadhu."
+    },
+    "c264": {
+      "t": "மறுசுழற்சி",
+      "r": "Marusuzharchi",
+      "x": "நகரங்கள் மறுசுழற்சி செய்ய உதவுமாறு கண்ணாடி, காகிதம், உலோகத்தைப் பிரித்து வையுங்கள்.",
+      "xr": "Nagarangal marusuzharchi seyya udhavumaaru kannaadi, kaagidham, ulogathai pirithu vaiyungal."
+    },
+    "c265": {
+      "t": "வளம்",
+      "r": "Valam",
+      "x": "நன்னீர் என்பது நாம் அனைவரும் பகிர்ந்துகொள்ளும் விலைமதிப்பற்ற வளம்.",
+      "xr": "Nanneer enbadhu naam anaivarum pagirndhukollum vilaimadhippatra valam."
+    },
+    "c266": {
+      "t": "காடு",
+      "r": "Kaadu",
+      "x": "உள்ளூர் காடுகளை மீட்டெடுப்பது அருகிலுள்ள நகரங்களைக் குளிர்விக்கிறது.",
+      "xr": "Ulloor kaadugalai meetteduppadhu arugilulla nagarangalai kulirvikkiradhu."
+    },
+    "c267": {
+      "t": "பெருங்கடல்",
+      "r": "Perungadal",
+      "x": "ஆரோக்கியமான பெருங்கடல்கள் பெருமளவு கார்பனை உறிஞ்சுகின்றன.",
+      "xr": "Aarokkiyamaana perungadalgal perumalavu kaarbanai urinjugindrana."
+    },
+    "c268": {
+      "t": "வறட்சி",
+      "r": "Varatchi",
+      "x": "திறன்மிகு நீர்ப்பாசனம் விவசாயிகள் வறட்சியைத் தாங்க உதவுகிறது.",
+      "xr": "Thiranmigu neerppaasanam vivasaayigal varatchiyai thaanga udhavugiradhu."
+    },
+    "c269": {
+      "t": "நல்லிணக்கம்",
+      "r": "Nallinakkam",
+      "x": "மனித முன்னேற்றம் இயற்கையுடன் நல்லிணக்கமாக அமைய வேண்டும்.",
+      "xr": "Manidha munnetram iyarkaiyudan nallinakkamaaga amaiya vendum."
+    },
+    "c270": {
+      "t": "எதிர்காலம்",
+      "r": "Edhirkaalam",
+      "x": "இன்று எடுக்கும் முடிவுகளே நாளைய எதிர்காலத்தை வடிவமைக்கின்றன.",
+      "xr": "Indru edukum mudivugale naalaiya edhirkaalathai vadivamaikkindrana."
+    },
+    "c271": {
+      "t": "நீதி",
+      "r": "Needhi",
+      "x": "சட்டத்தின் முன் சமநீதி சமூகத்தை வலுப்படுத்துகிறது.",
+      "xr": "Sattathin mun samaneedhi samoogathai valuppaduthugiradhu."
+    },
+    "c272": {
+      "t": "சுதந்திரம்",
+      "r": "Sudhandhiram",
+      "x": "கருத்துச் சுதந்திரத்திற்குப் பரஸ்பர பொறுப்புணர்வு அவசியம்.",
+      "xr": "Karuthu sudhandhirathirku paraspara poruppunarvu avasiyam."
+    },
+    "c273": {
+      "t": "சமத்துவம்",
+      "r": "Samathuvam",
+      "x": "கல்வி சமூக மற்றும் பொருளாதார சமத்துவத்தை மேம்படுத்துகிறது.",
+      "xr": "Kalvi samooga matrum porulaadhaara samathuvathai mempaduthugiradhu."
+    },
+    "c274": {
+      "t": "அரசியலமைப்பு",
+      "r": "Arasiyalamaippu",
+      "x": "அரசியலமைப்பு அடிப்படை மனித உரிமைகளைப் பாதுகாக்கிறது.",
+      "xr": "Arasiyalamaippu adippadai manidha urimaigalai paadhugaakkiradhu."
+    },
+    "c275": {
+      "t": "குடிமகன்",
+      "r": "Kudimagan",
+      "x": "பொறுப்புணர்வுள்ள ஒவ்வொரு குடிமகனும் குடிமை வாழ்க்கைக்குப் பங்களிக்கிறார்.",
+      "xr": "Poruppunarvulla ovvoru kudimaganum kudimai vaazhkkaikku pangalikkiraar."
+    },
+    "c276": {
+      "t": "மக்களாட்சி",
+      "r": "Makkalaatchi",
+      "x": "ஆரோக்கியமான மக்களாட்சி விழிப்புணர்வுள்ள வாக்காளர்களைச் சார்ந்துள்ளது.",
+      "xr": "Aarokkiyamaana makkalaatchi vizhippunarvulla vaakkaalargalai saarndhulladhu."
+    },
+    "c277": {
+      "t": "அரசாங்கம்",
+      "r": "Arasaangam",
+      "x": "உள்ளாட்சி அரசாங்கம் சாலைகள், பூங்காக்கள் மற்றும் பள்ளிகளைப் பராமரிக்கிறது.",
+      "xr": "Ullaatchi arasaangam saalaigal, poongaakkal matrum palligalai paraamarikkiradhu."
+    },
+    "c278": {
+      "t": "கொள்கை",
+      "r": "Kolgai",
+      "x": "பொது சுகாதாரக் கொள்கை பல மில்லியன் உயிர்களைக் காப்பாற்றியது.",
+      "xr": "Podhu sugaadhaara kolgai pala milliyan uyirgalai kaappaatriyadhu."
+    },
+    "c279": {
+      "t": "சட்டம்",
+      "r": "Sattam",
+      "x": "வெளிப்படையான சட்டங்கள் சமூகங்களிடையே நம்பிக்கையை வளர்க்கின்றன.",
+      "xr": "Velippadaiyaana sattangal samoogangalidaiye nambikkaiyai valarkkindrana."
+    },
+    "c280": {
+      "t": "வெளிப்படைத்தன்மை",
+      "r": "Velippadaithanmai",
+      "x": "நிதி வெளிப்படைத்தன்மை ஊழலைத் தடுக்கிறது.",
+      "xr": "Nidhi velippadaithanmai oozhalai thadukkiradhu."
+    },
+    "c281": {
+      "t": "சமூகம்",
+      "r": "Samoogam",
+      "x": "வலுவான சமூகங்கள் எளியவர்களைப் பாதுகாத்து அரவணைக்கின்றன.",
+      "xr": "Valuvaana samoogangal eliyavargalai paadhugaathu aravanaikkindrana."
+    },
+    "c282": {
+      "t": "அமைதி",
+      "r": "Amaidhi",
+      "x": "நிலையான அமைதிக்கு உரையாடலும் பரிவும் தேவை.",
+      "xr": "Nilaiyaana amaidhikku uraiyaadalum parivum thevai."
+    },
+    "c283": {
+      "t": "கல்வி",
+      "r": "Kalvi",
+      "x": "அனைவருக்கும் கல்வி என்பது முழு நாடுகளையும் உயர்த்துகிறது.",
+      "xr": "Anaivarukkum kalvi enbadhu muzhu naadugalaiyum uyarthugiradhu."
+    },
+    "c284": {
+      "t": "தன்னார்வலர்",
+      "r": "Thannaarvalar",
+      "x": "வெள்ளத்திற்குப் பிறகு மறுகட்டமைப்பிற்கு நூற்றுக்கணக்கான தன்னார்வலர்கள் உதவினர்.",
+      "xr": "Vellathirku piragu marukattamaippirku nootrukkanakkaana thannaarvalargal udhavinar."
+    },
+    "c285": {
+      "t": "ஒருமைப்பாடு",
+      "r": "Orumaippaadu",
+      "x": "உலகளாவிய ஒருமைப்பாடு நெருக்கடிகளை விரைவாகக் கடக்க உதவுகிறது.",
+      "xr": "Ulagalaaviya orumaippaadu nerukkadigalai viraivaaga kadakka udhavugiradhu."
+    },
+    "c286": {
+      "t": "வாதம்",
+      "r": "Vaadham",
+      "x": "ஒவ்வொரு வாதத்தையும் சரிபார்க்கக்கூடிய உண்மைகளால் வலுப்படுத்துங்கள்.",
+      "xr": "Ovvoru vaadhathaiyum saribaarkkakkoodiya unmaigalaal valuppaduthungal."
+    },
+    "c287": {
+      "t": "பார்வைக்கோணம்",
+      "r": "Paarvaikkonam",
+      "x": "மற்றொரு பார்வைக்கோணத்தைப் பார்ப்பது புரிதலை ஆழப்படுத்துகிறது.",
+      "xr": "Matroru paarvaikkonathai paarppadhu puridhalai aazhappaduthugiradhu."
+    },
+    "c288": {
+      "t": "பகுப்பாய்வு",
+      "r": "Paguppaayvu",
+      "x": "அவளின் பொருளாதாரப் பகுப்பாய்வு மறைந்திருந்த மூன்று அபாயங்களை வெளிச்சமிட்டது.",
+      "xr": "Avalin porulaadhaara paguppaayvu maraindhirundha moondru abaayangalai velichamittadhu."
+    },
+    "c289": {
+      "t": "அனுமானம்",
+      "r": "Anumaanam",
+      "x": "உங்கள் அடிப்படை அனுமானங்களை எப்போதும் கேள்விக்குட்படுத்துங்கள்.",
+      "xr": "Ungal adippadai anumaanangalai eppodhum kelvikkutpaduthungal."
+    },
+    "c290": {
+      "t": "முடிவுரை",
+      "r": "Mudivurai",
+      "x": "ஒரு முடிவுக்கு வரும் முன் அனைத்து உண்மைகளையும் அறிந்துகொள்ளக் காத்திருங்கள்.",
+      "xr": "Oru mudivukku varum mun anaithu unmaigalaiyum arindhukolla kaathirungal."
+    },
+    "c291": {
+      "t": "நடுநிலையான",
+      "r": "Nadunilaiyaana",
+      "x": "நேர்மையான இதழாளர் எப்போதும் நடுநிலையுடன் செயல்பட முயல்கிறார்.",
+      "xr": "Nermaiyaana idhazhaalar eppodhum nadunilaiyudan seyalpada muyalgiraar."
+    },
+    "c292": {
+      "t": "சார்புநிலை",
+      "r": "Saarbunilai",
+      "x": "நம் சொந்த சார்புநிலையை உணர்வது சிறந்த தீர்ப்பிற்கு வழிவகுக்கும்.",
+      "xr": "Nam sondha saarbunilaiyai unarvadhu sirandha theerppirku vazhivagukkum."
+    },
+    "c293": {
+      "t": "அளவுகோல்",
+      "r": "Alavugol",
+      "x": "நம்பகத்தன்மையே எங்கள் முதன்மை மதிப்பீட்டு அளவுகோல்.",
+      "xr": "Nambagathanmaiye engal mudhanmai madhippeettu alavugol."
+    },
+    "c294": {
+      "t": "முரண்பாடு",
+      "r": "Muranbaadu",
+      "x": "காலவரிசையில் இருந்த ஒரு முரண்பாட்டைச் சாட்சி கவனித்தார்.",
+      "xr": "Kaalavarisaiyil irundha oru muranbaattai saatchi gavanithaar."
+    },
+    "c295": {
+      "t": "ஒருமித்த கருத்து",
+      "r": "Orumitha karuthu",
+      "x": "உயிரோட்டமான விவாதத்திற்குப் பிறகு குழு ஒருமித்த கருத்தை எட்டியது.",
+      "xr": "Uyirottamaana vivaadhathirku piragu kuzhu orumitha karuthai ettiyadhu."
+    },
+    "c296": {
+      "t": "தெளிவுபடுத்துதல்",
+      "r": "Thelivupaduthudhal",
+      "x": "அந்தச் சொற்றொடரால் நீங்கள் என்ன கூற வந்தீர்கள் என்பதைத் தெளிவுபடுத்த முடியுமா?",
+      "xr": "Andha sotrodaraal neengal enna koora vandheergal enbadhai thelivupadutha mudiyumaa?"
+    },
+    "c297": {
+      "t": "வலியுறுத்துதல்",
+      "r": "Valiyuruthudhal",
+      "x": "அணுகல்தன்மையின் முக்கியத்துவத்தை நான் வலியுறுத்த விரும்புகிறேன்.",
+      "xr": "Anugalthanmaiyin mukkiyathuvathai naan valiyurutha virumbugiren."
+    },
+    "c298": {
+      "t": "இருந்தபோதிலும்",
+      "r": "Irundhapodhilum",
+      "x": "பாதை செங்குத்தாக இருந்தது; இருந்தபோதிலும், நாங்கள் சிகரத்தை அடைந்தோம்.",
+      "xr": "Paadhai senguthaaga irundhadhu; irundhapodhilum, naangal sigarathai adaindhom."
+    },
+    "c299": {
+      "t": "விளைவு",
+      "r": "Vilaivu",
+      "x": "முடிவெடுப்பதற்கு முன் ஒவ்வொரு நீண்டகால விளைவையும் எண்ணிப் பாருங்கள்.",
+      "xr": "Mudiveduppadharku mun ovvoru neendakaala vilaivaiyum ennip paarungal."
+    },
+    "c300": {
+      "t": "உள்ளொளி",
+      "r": "Ulloli",
+      "x": "அவளின் கருத்து குறிப்பிடத்தக்க ஒரு ஆழமான உள்ளொளியை வழங்கியது.",
+      "xr": "Avalin karuthu kurippidathakka oru aazhamaana ulloliyai vazhangiyadhu."
+    },
+    "c301": {
+      "t": "உருவகம்",
+      "r": "Uruvagam",
+      "x": "கடந்து செல்லும் காலத்திற்கு ஆறு ஒரு உருவகமாக அமைகிறது.",
+      "xr": "Kadandhu sellum kaalathirku aaru oru uruvagamaaga amaigiradhu."
+    },
+    "c302": {
+      "t": "குறியீட்டியல்",
+      "r": "Kuriyeettiyal",
+      "x": "இந்த நாவல் பல அடுக்குக் குறியீட்டியலால் செறிந்துள்ளது.",
+      "xr": "Indha naaval pala adukku kuriyeettiyalaal serindhulladhu."
+    },
+    "c303": {
+      "t": "கதைசொல்லல்",
+      "r": "Kadhaisollal",
+      "x": "ஆசிரியர் ஒன்றோடொன்று பின்னிப்பிணைந்த மூன்று கதைப்போக்குகளை நெய்கிறார்.",
+      "xr": "Aasiriyar ondrodondru pinnippinaindha moondru kadhaippokkugalai neygiraar."
+    },
+    "c304": {
+      "t": "தலைசிறந்த படைப்பு",
+      "r": "Thalaisirandha padaippu",
+      "x": "அந்த இசைக்கோவை காலத்தை வென்ற தலைசிறந்த படைப்பாகப் போற்றப்படுகிறது.",
+      "xr": "Andha isaikkovai kaalathai vendra thalaisirandha padaippaaga potrappadugiradhu."
+    },
+    "c305": {
+      "t": "அழகியல்",
+      "r": "Azhagiyal",
+      "x": "எளிய வடிவமைப்பு அமைதியான அழகியல் ஒத்திசைவை விரும்புகிறது.",
+      "xr": "Eliya vadivamaippu amaidhiyaana azhagiyal othisaivai virumbugiradhu."
+    },
+    "c306": {
+      "t": "நுட்பம்",
+      "r": "Nutpam",
+      "x": "நுண்ணிய பண்பாட்டு நுட்பங்களைப் புரிந்துகொள்வதில்தான் உண்மையான மொழிப்புலமை உள்ளது.",
+      "xr": "Nunniya panbaattu nutpangalai purindhukolvadhildhaan unmaiyaana mozhippulamai ulladhu."
+    },
+    "c307": {
+      "t": "பொருள் மயக்கம்",
+      "r": "Porul mayakkam",
+      "x": "அந்தக் கவிதை திட்டமிட்ட, நெஞ்சை விட்டு நீங்காத ஒரு பொருள் மயக்கத்தில் முடிகிறது.",
+      "xr": "Andha kavidhai thittamitta, nenjai vittu neengaadha oru porul mayakkathil mudigiradhu."
+    },
+    "c308": {
+      "t": "வஞ்சப்புகழ்ச்சி",
+      "r": "Vanjappugazhchi",
+      "x": "தற்பெருமையை விமர்சிக்க நாடகாசிரியர் கூர்மையான நையாண்டியைப் பயன்படுத்தினார்.",
+      "xr": "Tharperumaiyai vimarsikka naadagaasiriyar koormaiyaana naiyaandiyai payanpaduthinaar."
+    },
+    "c309": {
+      "t": "சொல்வளம்",
+      "r": "Solvalam",
+      "x": "அவள் குறிப்பிடத்தக்க அமைதியுடனும் சொல்வளத்துடனும் பேசினாள்.",
+      "xr": "Aval kurippidathakka amaidhiyudanum solvalathudanum pesinaal."
+    },
+    "c310": {
+      "t": "மரபுச்செல்வம்",
+      "r": "Marabuchelvam",
+      "x": "உயர்ந்த இலக்கியம் நிலைத்திருக்கும் அறிவுசார் மரபுச்செல்வத்தை விட்டுச் செல்கிறது.",
+      "xr": "Uyarndha ilakkiyam nilaithirukkum arivusaar marabuchelvathai vittu selgiradhu."
+    },
+    "c311": {
+      "t": "பசுமை நினைவு",
+      "r": "Pasumai ninaivu",
+      "x": "சூடான மண்ணில் விழும் மழையின் மணம் ஆழமான பசுமை நினைவுகளைத் தூண்டியது.",
+      "xr": "Soodaana mannil vizhum mazhaiyin manam aazhamaana pasumai ninaivugalai thoondiyadhu."
+    },
+    "c312": {
+      "t": "எதிரொலி",
+      "r": "Edhiroli",
+      "x": "அந்த இசை ஆழமான உணர்வுபூர்வமான எதிரொலியைத் தாங்கியிருந்தது.",
+      "xr": "Andha isai aazhamaana unarvupoorvamaana edhiroliyai thaangiyirundhadhu."
+    },
+    "c313": {
+      "t": "உன்னதமான",
+      "r": "Unnadhamaana",
+      "x": "துருவ ஒளியின் கீழ் நின்றது முற்றிலும் உன்னதமான அனுபவமாக இருந்தது.",
+      "xr": "Dhuruva oliyin keezh nindradhu mutrilum unnadhamaana anubavamaaga irundhadhu."
+    },
+    "c314": {
+      "t": "கடந்து செல்லுதல்",
+      "r": "Kadandhu selludhal",
+      "x": "கருணை மொழியையும் வரலாற்றையும் கடந்து செல்ல வல்லது.",
+      "xr": "Karunai mozhiyaiyum varalaatraiyum kadandhu sella valladhu."
+    },
+    "c315": {
+      "t": "உண்மைத்தன்மை",
+      "r": "Unmaithanmai",
+      "x": "வாசகர்கள் உண்மையான படைப்புத்தன்மையை உடனடியாக உணர்ந்துகொள்கிறார்கள்.",
+      "xr": "Vaasagargal unmaiyaana padaipputhanmaiyai udanadiyaaga unarndhukolgiraargal."
+    },
+    "c316": {
+      "t": "மனசாட்சி",
+      "r": "Manasaatchi",
+      "x": "நேர்மையான மனசாட்சிக்கு ஏற்ப செயல்படுங்கள்.",
+      "xr": "Nermaiyaana manasaatchikku erpa seyalpadungal."
+    },
+    "c317": {
+      "t": "நேர்மை",
+      "r": "Nermai",
+      "x": "யாரும் கவனிக்காதபோதும் சரியானதைச் செய்வதே நேர்மை.",
+      "xr": "Yaarum gavanikkaadhapodhum sariyaanadhai seyvadhe nermai."
+    },
+    "c318": {
+      "t": "பரிவுணர்வு",
+      "r": "Parivunarvu",
+      "x": "பரிவுணர்வு மிக ஆழமான பிரிவுகளையும் இணைக்கும் பாலமாகிறது.",
+      "xr": "Parivunarvu miga aazhamaana pirivugalaiyum inaikkum paalamaagiradhu."
+    },
+    "c319": {
+      "t": "தர்மசங்கடம்",
+      "r": "Dharmasangadam",
+      "x": "அந்தக் குழு ஒரு கடினமான அறநெறித் தர்மசங்கடத்தை எதிர்கொண்டது.",
+      "xr": "Andha kuzhu oru kadinamaana araneri dharmasangadathai edhirkondadhu."
+    },
+    "c320": {
+      "t": "மெய்யறிவு",
+      "r": "Meyyarivu",
+      "x": "அறிவு பேசுகிறது, ஆனால் மெய்யறிவு செவிமடுக்கிறது.",
+      "xr": "Arivu pesugiradhu, aanaal meyyarivu sevimadukkiradhu."
+    },
+    "c321": {
+      "t": "உணர்வுநிலை",
+      "r": "Unarvunilai",
+      "x": "உணர்வுநிலையின் இயல்பைப் பற்றித் தத்துவஞானிகள் இன்றும் விவாதிக்கின்றனர்.",
+      "xr": "Unarvunilaiyin iyalbai patri thathuvagnaanigal indrum vivaadhikkindranar."
+    },
+    "c322": {
+      "t": "புலனுணர்வு",
+      "r": "Pulanunarvu",
+      "x": "மொழி காலத்தைப் பற்றிய நம் புலனுணர்வை நுட்பமாக வடிவமைக்கிறது.",
+      "xr": "Mozhi kaalathai patriya nam pulanunarvai nutpamaaga vadivamaikkiradhu."
+    },
+    "c323": {
+      "t": "மீள்தன்மை",
+      "r": "Meelthanmai",
+      "x": "துன்பங்களைக் கடந்து வருவதன் மூலம் உள்ளார்ந்த மீள்தன்மை வளர்கிறது.",
+      "xr": "Thunbangalai kadandhu varuvadhan moolam ullaarndha meelthanmai valargiradhu."
+    },
+    "c324": {
+      "t": "அகநோக்கு",
+      "r": "Aganokku",
+      "x": "குழப்பமான நேரங்களில் அமைதியான அகநோக்கு தெளிவைத் தருகிறது.",
+      "xr": "Kuzhappamaana nerangalil amaidhiyaana aganokku thelivai tharugiradhu."
+    },
+    "c325": {
+      "t": "முரண்மெய்மை",
+      "r": "Muranmeymai",
+      "x": "அதிக வாய்ப்புகள் திணறலை ஏற்படுத்தும் என்பதைத் தேர்வின் முரண்மெய்மை காட்டுகிறது.",
+      "xr": "Adhiga vaayppugal thinaralai erpaduthum enbadhai thervin muranmeymai kaattugiradhu."
+    },
+    "c326": {
+      "t": "நிலையாமை",
+      "r": "Nilaiyaamai",
+      "x": "நிலையாமையை ஏற்றுக்கொள்வது இன்றைய நாளைப் போற்றக் கற்றுத் தருகிறது.",
+      "xr": "Nilaiyaamaiyai etrukkolvadhu indraiya naalai potra katru tharugiradhu."
+    },
+    "c327": {
+      "t": "சமநிலை",
+      "r": "Samanilai",
+      "x": "வெற்றியையும் பின்னடைவையும் அவள் சமநிலையுடன் எதிர்கொண்டாள்.",
+      "xr": "Vetriyaiyum pinnadaivaiyum aval samanilaiyudan edhirkondaal."
+    },
+    "c328": {
+      "t": "நோக்கம்",
+      "r": "Nokkam",
+      "x": "பொதுவான உயர்ந்த நோக்கம் அன்றாட உழைப்பை மகிழ்ச்சியாக மாற்றுகிறது.",
+      "xr": "Podhuvaana uyarndha nokkam andraada uzhaippai magizhchiyaaga maatrugiradhu."
+    },
+    "c329": {
+      "t": "தன்னாட்சி",
+      "r": "Thannaatchi",
+      "x": "அறிவுசார் தன்னாட்சி சுயாதீன சிந்தனையிலிருந்தே தொடங்குகிறது.",
+      "xr": "Arivusaar thannaatchi suyaadheena sindhanaiyilirundhe thodangugiradhu."
+    },
+    "c330": {
+      "t": "அடக்கம்",
+      "r": "Adakkam",
+      "x": "உண்மையான புலமை எப்போதும் அடக்கத்துடனே இணைந்திருக்கும்.",
+      "xr": "Unmaiyaana pulamai eppodhum adakkathudane inaindhirukkum."
+    },
+    "c331": {
+      "t": "சொல்லிலும் செயல் பெரிது",
+      "r": "Sollilum seyal peridhu",
+      "x": "உங்கள் வாக்குறுதியைக் காப்பாற்றுங்கள்—சொல்லிலும் செயல் பெரிது.",
+      "xr": "Ungal vaakkurudhiyai kaappaatrungal—sollilum seyal peridhu."
+    },
+    "c332": {
+      "t": "சித்திரமும் கைப்பழக்கம்",
+      "r": "Sithiramum kaippazhakkam",
+      "x": "தவறுகளுக்கு அஞ்சாதீர்கள்; சித்திரமும் கைப்பழக்கம், பயிற்சியே முழுமை தரும்.",
+      "xr": "Thavarugalukku anjaadheergal; sithiramum kaippazhakkam, payirchiye muzhumai tharum."
+    },
+    "c333": {
+      "t": "இருளுக்குப் பின் ஒளி உண்டு",
+      "r": "Irulukku pin oli undu",
+      "x": "நம்பிக்கையுடன் இருங்கள்—இருளுக்குப் பின் ஒளி உண்டு.",
+      "xr": "Nambikkaiyudan irungal—irulukku pin oli undu."
+    },
+    "c334": {
+      "t": "காலம் எல்லா காயங்களையும் ஆற்றும்",
+      "r": "Kaalam ellaa kaayangalaiyum aatrum",
+      "x": "உங்களிடம் மென்மையாக நடந்துகொள்ளுங்கள்; காலம் எல்லா காயங்களையும் ஆற்றும்.",
+      "xr": "Ungalidam menmaiyaaga nadandhukollungal; kaalam ellaa kaayangalaiyum aatrum."
+    },
+    "c335": {
+      "t": "ஒற்றுமையே வலிமை",
+      "r": "Otrumaiye valimai",
+      "x": "ஒன்றாக இணைந்து பணியாற்றுவது ஒற்றுமையே வலிமை என்பதை நிரூபிக்கிறது.",
+      "xr": "Ondraaga inaindhu paniyaatruvadhu otrumaiye valimai enbadhai niroobikkiradhu."
+    },
+    "c336": {
+      "t": "தயக்கத்தை உடைத்தல்",
+      "r": "Thayakkathai udaithal",
+      "x": "விருந்தில் சொன்ன இனிய நகைச்சுவை தயக்கத்தை உடைக்க உதவியது.",
+      "xr": "Virundhil sonna iniya nagaichuvai thayakkathai udaikka udhaviyadhu."
+    },
+    "c337": {
+      "t": "கைவந்த கலை",
+      "r": "Kaivandha kalai",
+      "x": "பல வாரப் பயிற்சிக்குப் பிறகு அந்தத் தேர்வு அவளுக்குக் கைவந்த கலையாக இருந்தது.",
+      "xr": "Pala vaara payirchikku piragu andha thervu avalukku kaivandha kalaiyaaga irundhadhu."
+    },
+    "c338": {
+      "t": "அத்தி பூத்தாற்போல்",
+      "r": "Athi poothaarpol",
+      "x": "இந்தப் பள்ளத்தாக்கில் அத்தி பூத்தாற்போல் எப்போதாவதுதான் பனி பெய்யும்.",
+      "xr": "Indha pallathaakkil athi poothaarpol eppodhaavadhu dhaan pani peyyum."
+    },
+    "c339": {
+      "t": "ஆணித்தரமாகக் குறிப்பிடுதல்",
+      "r": "Aanitharamaaga kurippidudhal",
+      "x": "உங்கள் நோய் கண்டறிதல் உண்மையை ஆணித்தரமாகத் தொட்டது.",
+      "xr": "Ungal noy kandaridhal unmaiyai aanitharamaaga thottadhu."
+    },
+    "c340": {
+      "t": "இரவு பகலாக உழைத்தல்",
+      "r": "Iravu pagalaaga uzhaithal",
+      "x": "குறித்த நேரத்தில் வெளியிடக் குழு இரவு பகலாக உழைத்தது.",
+      "xr": "Kuritha nerathil veliyida kuzhu iravu pagalaaga uzhaithadhu."
+    },
+    "c341": {
+      "t": "உட்பொருளை உணர்தல்",
+      "r": "Utporulai unardhal",
+      "x": "அரசதந்திரத்தில் வரிகளுக்கு இடையே உள்ள உட்பொருளை உணர வேண்டும்.",
+      "xr": "Arasathandhirathil varigalukku idaiye ulla utporulai unara vendum."
+    },
+    "c342": {
+      "t": "புதிய அத்தியாயம் தொடங்குதல்",
+      "r": "Pudhiya athiyaayam thodangudhal",
+      "x": "இந்த வசந்தகாலத்தில் வாழ்வில் புதிய அத்தியாயம் தொடங்க அவள் முடிவெடுத்தாள்.",
+      "xr": "Indha vasandhakaalathil vaazhvil pudhiya athiyaayam thodanga aval mudiveduthaal."
+    },
+    "c343": {
+      "t": "மறைமுகமான நன்மை",
+      "r": "Maraimugamaana nanmai",
+      "x": "அந்த வேலையை இழந்தது பிற்காலத்தில் மறைமுகமான நன்மையாக மாறியது.",
+      "xr": "Andha velaiyai izhandhadhu pirkaalathil maraimugamaana nanmaiyaaga maariyadhu."
+    },
+    "c344": {
+      "t": "கூடுதல் முயற்சி செய்தல்",
+      "r": "Koodudhal muyarchi seydhal",
+      "x": "சிறந்த ஆசிரியர்கள் எப்போதும் மாணவர்களுக்காகக் கூடுதல் முயற்சி செய்கிறார்கள்.",
+      "xr": "Sirandha aasiriyargal eppodhum maanavargalukkaaga koodudhal muyarchi seygiraargal."
+    },
+    "c345": {
+      "t": "பரந்த பார்வையுடன் பார்த்தல்",
+      "r": "Parandha paarvaiyudan paarthal",
+      "x": "நுணுக்கங்களிலிருந்து சற்று விலகி நின்று பரந்த பார்வையுடன் பாருங்கள்.",
+      "xr": "Nunukkangalilirundhu satru vilagi nindru parandha paarvaiyudan paarungal."
+    },
+    "c346": {
+      "t": "இறையாண்மை",
+      "r": "Iraiyaanmai",
+      "x": "பன்னாட்டுச் சட்டம் இறையாண்மைக்கான பரஸ்பர மரியாதையை உறுதிப்படுத்துகிறது.",
+      "xr": "Pannaattu sattam iraiyaanmaikkaana paraspara mariyaadhaiyai urudhippaduthugiradhu."
+    },
+    "c347": {
+      "t": "அரசதந்திரம்",
+      "r": "Arasathandhiram",
+      "x": "பொறுமையான அரசதந்திரம் பதற்றம் அதிகரிப்பதைத் தடுத்தது.",
+      "xr": "Porumaiyaana arasathandhiram padhatram adhigarippadhai thaduthadhu."
+    },
+    "c348": {
+      "t": "உடன்படிக்கை",
+      "r": "Udanpadikkai",
+      "x": "நாற்பது நாடுகள் சுற்றுச்சூழல் உடன்படிக்கைக்கு ஒப்புதல் அளித்தன.",
+      "xr": "Naarpadhu naadugal sutruchoozhal udanpadikkaikku oppudhal alithana."
+    },
+    "c349": {
+      "t": "பல்தரப்பு",
+      "r": "Paltharappu",
+      "x": "பல்தரப்பு ஒத்துழைப்பு பொதுவான உலகளாவிய சவால்களை எதிர்கொள்கிறது.",
+      "xr": "Paltharappu othuzhaippu podhuvaana ulagalaaviya savaalgalai edhirkolgiradhu."
+    },
+    "c350": {
+      "t": "அதிகார வரம்பு",
+      "r": "Adhigaara varambu",
+      "x": "கடல்சார் தகராறுகளில் அந்தத் தீர்ப்பாயத்திற்கு அதிகார வரம்பு உள்ளது.",
+      "xr": "Kadalsaar thagaaraarugalil andha theerppaayathirku adhigaara varambu ulladhu."
+    },
+    "c351": {
+      "t": "கருதுகோள்",
+      "r": "Karudhugol",
+      "x": "இந்த ஆய்வுக்கட்டுரை புதிய மொழியியல் கருதுகோள் ஒன்றைச் சோதிக்கிறது.",
+      "xr": "Indha aayvukkatturai pudhiya mozhiyiyal karudhugol ondrai sodhikkiradhu."
+    },
+    "c352": {
+      "t": "செயல்முறை",
+      "r": "Seyalmurai",
+      "x": "வெளிப்படையான ஆய்வுச் செயல்முறை சுயாதீன மீளாய்வைச் சாத்தியமாக்குகிறது.",
+      "xr": "Velippadaiyaana aayvu seyalmurai suyaadheena meelaayvai saathiyamaakkugiradhu."
+    },
+    "c353": {
+      "t": "ஒருங்கிணைப்பு",
+      "r": "Orunginaippu",
+      "x": "அவளின் உரை இரு துறைகளின் சிறந்த ஒருங்கிணைப்பை வழங்கியது.",
+      "xr": "Avalin urai iru thuraigalin sirandha orunginaippai vazhangiyadhu."
+    },
+    "c354": {
+      "t": "முன்னுதாரணம்",
+      "r": "Munnudhaaranam",
+      "x": "அந்தத் தீர்ப்பு முக்கியமான ஒரு சட்ட முன்னுதாரணத்தை நிறுவியது.",
+      "xr": "Andha theerppu mukkiyamaana oru satta munnudhaaranathai niruviyadhu."
+    },
+    "c355": {
+      "t": "செயல்படுத்துதல்",
+      "r": "Seyalpaduthudhal",
+      "x": "ஒரு சீர்திருத்தம் வெற்றி பெறுமா என்பதைக் கவனமான செயல்படுத்துதலே தீர்மானிக்கிறது.",
+      "xr": "Oru seerdhirutham vetri perumaa enbadhai gavanamaana seyalpaduthudhale theermaanikkiradhu."
+    },
+    "c356": {
+      "t": "பொருட்படுத்தாமல்",
+      "r": "Porutpaduthaamal",
+      "x": "தொடக்கத் தாமதங்களைப் பொருட்படுத்தாமல் பாலம் பாதுகாப்பாகத் திறக்கப்பட்டது.",
+      "xr": "Thodakka thaamadhangalai porutpaduthaamal paalam paadhugaappaaga thirakkappattadhu."
+    },
+    "c357": {
+      "t": "இதன் விளைவாக",
+      "r": "Idhan vilaivaaga",
+      "x": "நிதி ஒதுக்கீடு அதிகரித்தது; இதன் விளைவாகக் கிராமப்புற மருத்துவமனைகள் விரிவுபடுத்தப்பட்டன.",
+      "xr": "Nidhi odhukkeedu adhigarithadhu; idhan vilaivaaga giraamappura maruthuvamanaigal virivupaduthappattana."
+    },
+    "c358": {
+      "t": "மேலும்",
+      "r": "Melum",
+      "x": "மேலும், திறந்த தரவுகள் சுயாதீன ஆய்வாளர்களுக்குப் பெரிதும் உதவுகின்றன.",
+      "xr": "Melum, thirandha tharavugal suyaadheena aayvaalargalukku peridhum udhavugindrana."
+    },
+    "c359": {
+      "t": "பின்னணியில்",
+      "r": "Pinnaniyil",
+      "x": "புதிய ஆதாரங்களின் பின்னணியில் நாங்கள் வழிகாட்டுதலைத் திருத்தியமைத்தோம்.",
+      "xr": "Pudhiya aadhaarangalin pinnaniyil naangal vazhikaattudhalai thiruthiyamaithom."
+    },
+    "c360": {
+      "t": "முழு மரியாதையுடன்",
+      "r": "Muzhu mariyaadhaiyudan",
+      "x": "முழு மரியாதையுடன், நான் ஒரு மாற்று அணுகுமுறையை முன்மொழிகிறேன்.",
+      "xr": "Muzhu mariyaadhaiyudan, naan oru maatru anugumuraiyai munmozhigiren."
+    },
+    "c361": {
+      "t": "தெளிவாக எடுத்துரைத்தல்",
+      "r": "Thelivaaga eduthuraithal",
+      "x": "சிக்கலான கருத்துகளை அவள் எளிதாகத் தெளிவாக எடுத்துரைக்கிறாள்.",
+      "xr": "Sikkalaana karuthugalai aval elidhaaga thelivaaga eduthuraikkiraal."
+    },
+    "c362": {
+      "t": "சுருக்கமான",
+      "r": "Surukkamaana",
+      "x": "நீண்ட உரையை விடச் சுருக்கமான விளக்கம் மிகவும் தெளிவானது.",
+      "xr": "Neenda uraiyai vida surukkamaana vilakkam migavum thelivaanadhu."
+    },
+    "c363": {
+      "t": "ஒத்திசைவான",
+      "r": "Othisaivaana",
+      "x": "தொடக்கம் முதல் இறுதி வரை ஒத்திசைவான ஒரு விவரிப்பை உருவாக்குங்கள்.",
+      "xr": "Thodakkam mudhal irudhi varai othisaivaana oru vivarippai uruvaakkungal."
+    },
+    "c364": {
+      "t": "நம்பவைக்கும்",
+      "r": "Nambavaikkum",
+      "x": "உண்மையான கதைகள் ஒரு வாதத்தை மிகவும் நம்பவைக்கும் தன்மையுடையதாக்குகின்றன.",
+      "xr": "Unmaiyaana kadhaigal oru vaadhathai migavum nambavaikkum thanmaiyudaiyadhaakkugindrana."
+    },
+    "c365": {
+      "t": "நடைமுறைக்கேற்ற",
+      "r": "Nadaimuraikketra",
+      "x": "திட்டத்தை நடைமுறைப்படுத்த நாங்கள் நடைமுறைக்கேற்ற ஒரு வழிகாட்டியைப் பின்பற்றினோம்.",
+      "xr": "Thittathai nadaimuraippadutha naangal nadaimuraikketra oru vazhikaattiyai pinpatrinom."
+    },
+    "c366": {
+      "t": "முன்னெப்போதும் இல்லாத",
+      "r": "Munneppodhum illaadha",
+      "x": "வான்வெளி ஆய்வகம் முன்னெப்போதும் இல்லாத தெளிவுடன் படங்களைப் பதிவு செய்தது.",
+      "xr": "Vaanveli aayvagam munneppodhum illaadha thelivudan padangalai padhivu seydhadhu."
+    },
+    "c367": {
+      "t": "தவிர்க்க முடியாத",
+      "r": "Thavirkka mudiyaadha",
+      "x": "மொழியில் படிப்படியாக ஏற்படும் மாற்றம் முற்றிலும் தவிர்க்க முடியாதது.",
+      "xr": "Mozhiyil padippadiyaaga erpadum maatram mutrilum thavirkka mudiyaadhadhu."
+    },
+    "c368": {
+      "t": "இன்றியமையாத",
+      "r": "Indriyamaiyaadha",
+      "x": "ஆழமான மொழிப்புலமைக்குக் கவனத்துடன் செவிமடுப்பது இன்றியமையாதது.",
+      "xr": "Aazhamaana mozhippulamaikku gavanathudan sevimaduppadhu indriyamaiyaadhadhu."
+    },
+    "c369": {
+      "t": "ஆழமான",
+      "r": "Aazhamaana",
+      "x": "செவ்வியல் இலக்கியங்களைப் படிப்பது ஆழமான தாக்கத்தை ஏற்படுத்துகிறது.",
+      "xr": "Sevviyal ilakkiyangalai padippadhu aazhamaana thaakkathai erpaduthugiradhu."
+    },
+    "c370": {
+      "t": "தடையற்ற",
+      "r": "Thadaiyatra",
+      "x": "அனைத்துச் சாதனங்களிலும் தடையற்ற அனுபவத்தை வழங்குவதே எங்கள் இலக்கு.",
+      "xr": "Anaithu saadhanangalilum thadaiyatra anubavathai vazhanguvadhe engal ilakku."
+    },
+    "c371": {
+      "t": "சந்தேகத்திற்கு இடமின்றி",
+      "r": "Sandhegathirku idamindri",
+      "x": "சந்தேகத்திற்கு இடமின்றி, தொடர் முயற்சியே எப்போதும் வெல்லும்.",
+      "xr": "Sandhegathirku idamindri, thodar muyarchiye eppodhum vellum."
+    },
+    "c372": {
+      "t": "அதேபோல்",
+      "r": "Adhepol",
+      "x": "நாங்கள் வேகத்தை மதிக்கிறோம்; அதேபோல், தரத்தில் ஒருபோதும் சமரசம் செய்வதில்லை.",
+      "xr": "Naangal vegathai madhikkirom; adhepol, tharathil orupodhum samarasam seyvadhillai."
+    },
+    "c373": {
+      "t": "அனைத்தையும் கருத்தில் கொண்டு",
+      "r": "Anaithaiyum karuthil kondu",
+      "x": "அனைத்தையும் கருத்தில் கொண்டு பார்த்தால், இதுவே எங்கள் மிகச் சிறந்த ஆண்டு.",
+      "xr": "Anaithaiyum karuthil kondu paarthaal, idhuve engal miga sirandha aandu."
+    },
+    "c374": {
+      "t": "காலத்தை வென்று நிற்றல்",
+      "r": "Kaalathai vendru nitral",
+      "x": "அக்கறையுடன் உருவாக்கப்பட்ட திறந்த அறிவு காலத்தை வென்று நிற்கும்.",
+      "xr": "Akkaraiyudan uruvaakkappatta thirandha arivu kaalathai vendru nirkum."
+    },
+    "c375": {
+      "t": "வாழ்நாள் கற்றல்",
+      "r": "Vaazhnaal katral",
+      "x": "மொழிகளில் புலமை பெறுவது வாழ்நாள் கற்றலின் இனிய சாகசப் பயணமாகும்.",
+      "xr": "Mozhigalil pulamai peruvadhu vaazhnaal katralin iniya saagasa payanamaagum."
+    }
+  }
+}

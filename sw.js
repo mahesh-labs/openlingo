@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v20';
+const CACHE_NAME = 'openlingo-v21';
 const ASSETS = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const ASSETS = [
   './assets/icons/openlingo-192.png',
   './assets/icons/openlingo-512.png',
   './src/icons.js',
+  './src/courseMatrix.js',
   './src/srs.js',
   './src/exercises.js',
   './src/scripts.js',
@@ -19,24 +20,20 @@ const ASSETS = [
   './manifest.webmanifest',
   './courses/registry.json',
   './courses/schema.json',
-  './courses/en-ja/course.json',
-  './courses/en-ja/levels/n5.json',
-  './courses/en-ja/levels/n4.json',
-  './courses/en-ja/levels/n3.json',
-  './courses/en-ja/levels/n2.json',
-  './courses/en-ja/levels/n1.json',
-  './courses/en-es/course.json',
-  './courses/en-es/levels/a1.json',
-  './courses/en-es/levels/a2.json',
-  './courses/en-es/levels/b1.json',
-  './courses/en-es/levels/b2.json',
-  './courses/en-es/levels/c1.json',
-  './courses/en-ml/course.json',
-  './courses/en-ml/levels/s1.json',
-  './courses/en-ml/levels/s2.json',
-  './courses/en-ml/levels/s3.json',
-  './courses/en-ml/levels/s4.json',
-  './courses/en-ml/levels/s5.json'
+  './courses/matrix/syllabus.json',
+  './courses/langs/en.json',
+  './courses/langs/ml.json',
+  './courses/langs/ta.json',
+  './courses/langs/kn.json',
+  './courses/langs/te.json',
+  './courses/langs/hi.json',
+  './courses/langs/ja.json',
+  './courses/langs/zh.json',
+  './courses/langs/ko.json',
+  './courses/langs/ar.json',
+  './courses/langs/es.json',
+  './courses/langs/fr.json',
+  './courses/langs/ru.json'
 ];
 
 self.addEventListener('install', (event) => {

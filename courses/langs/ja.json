@@ -1,0 +1,2660 @@
+{
+  "code": "ja",
+  "name": "Japanese",
+  "nativeName": "日本語",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Polite Greetings & Desu/Masu: Japanese politeness is encoded in verb endings like です (desu) and ます (masu). Notice how greetings shift by time of day, and phrases like よろしくお願いします carry deep social warmth.",
+    "u2": "Pronouns, Particles は & の: Japanese often omits pronouns once context is clear. Use は (wa) to mark the topic and の (no) to show possession (e.g., 私の母 = my mother). Family terms also distinguish your own family (母, 父) from others' (お母さん, お父さん).",
+    "u3": "Numbers, Counters & Time Particle に: Japanese uses counters matched to object shapes (杯 for cups, 枚 for flat tickets, 冊 for books). Specific points in time take に (ni), while relative words like 今日 (today) and 明日 (tomorrow) do not.",
+    "u4": "Food, Dining & Polite Requests: Use を (o) to mark direct objects of verbs like 食べる (to eat) and 飲む (to drink). Adding お願いします (onegaishimasu) or いただけますか makes restaurant requests naturally polite.",
+    "u5": "I-Adjectives, Na-Adjectives & Verb Dictionary Forms: Japanese adjectives fall into い-adjectives (赤い, 大きい) and な-adjectives (静かな). Verbs end in an -u sound in dictionary form (行く, 来る, 食べる) and follow Subject-Object-Verb (SOV) order.",
+    "u6": "Direction Particles に・へ・で & Giving Directions: Mark destinations with に or へ, and means of transport with で (電車で = by train). The て-form connects sequential directions such as 左に曲がってください (please turn left).",
+    "u7": "Shopping Expressions & Potential Forms: Ask prices with いくらですか and express desire with ～たい (買いたい = want to buy). Use ～てもいいですか or potential verbs (払えますか) when asking about payment options.",
+    "u8": "Weather, Nature & Existence Verbs ある/いる: Use 降る (furu) for falling rain or snow and 吹く (fuku) for blowing wind. Note the distinction between 熱い (hot to the touch) and 暑い (hot weather), and between 冷たい and 寒い.",
+    "u9": "Health, Body Parts & Giving Advice: Describe physical states with が痛い (hurts) or 熱がある (have a fever). Use ～たほうがいい (should) and ～てください (please do) for medical advice and urgent requests.",
+    "u10": "Work, Study & Nominalizing Actions with こと/の: Turn verbs into nouns with こと or の to talk about hobbies and habits (音楽を聴くこと = listening to music). Mark locations of action with で (大学で勉強する).",
+    "u11": "Expressing Feelings & Opinions with と思う: Quote thoughts and opinions using ～と思う (I think that...) after the plain form. Note that Japanese distinguishes your own internal feelings (嬉しい) from observing others' (嬉しそうだ).",
+    "u12": "Past Experiences, Promises & Modifiers: Relative clauses precede the noun they modify without a relative pronoun (私がした約束 = the promise I made). Express past life experiences with ～たことがある.",
+    "u13": "Katakana Loanwords & Suru-Verbs: Tech vocabulary frequently uses Katakana (パソコン, アプリ) or Sino-Japanese compounds paired with する (検索する = to search, 更新する = to update).",
+    "u14": "Cultural Terms, Passive Voice & Honorifics: Passive forms (～られる, e.g., 歌い継がれている) are common when describing traditions and heritage. Notice the honorific prefix お/ご in hospitality terms like お客様 and ご挨拶.",
+    "u15": "Logical Connectors & Conditionals (ば・たら・なら): Link clauses smoothly using ので/から (because), しかし (however), ～のに/～けれども (although), and conditionals like ～ば or ～たら (if). Contrast alternatives with ～の代わりに (instead of).",
+    "u16": "Business Japanese & Formal Sino-Japanese (漢語): Workplace discourse relies heavily on two-kanji compound nouns (戦略, 契約, 交渉) and humble/respectful phrasing to maintain professional harmony.",
+    "u17": "Academic Prose & Objective Style (だ・である): Scientific writing often uses the plain declarative style (である), passive constructions, and precise compound nouns (仮説, 実験, 精密さ) to convey objectivity.",
+    "u18": "Causative, Potential & Sustainability Discourse: Discuss environmental cause and effect with によって (by means of), ～につながる (leads to), and causative/transitive verbs (守る, 削減する, 再生する).",
+    "u19": "Civic Vocabulary & Formal Obligations: Legal and civic discourse uses expressions like ～なければならない (must), ～に基づき (based on), and ～を保障する (guarantees) to articulate rights and institutional duties.",
+    "u20": "Critical Debate & Hedging Expressions: Structure persuasive analysis with ～を踏まえて (taking into account), ～にもかかわらず (nevertheless), and ～という観点から (from the perspective of).",
+    "u21": "Aesthetics, Literary Expressions & Nuance: Japanese literary criticism draws on evocative compounds (象徴性, 余韻, 崇高) and delicate aspectual nuances like ～ていく and ～てくる to trace shifting emotion.",
+    "u22": "Philosophical Discourse & Abstract Nominalization: Express abstract concepts using suffixes like ～性 (nature/quality), ～観 (view/outlook), and formal structures such as ～とは何か (what is...?) and ～を通じて (through).",
+    "u23": "Proverbs (ことわざ), Four-Character Idioms (四字熟語) & Set Phrases: Authentic Japanese relies on vivid proverbs (七転び八起き, 継続は力なり) and somatic idioms (行間を読む, 心を入れ替える) rather than literal translations of English idioms.",
+    "u24": "Diplomatic, Legal & High-Register Keigo: Treaties and formal speeches employ literary grammar such as ～にもかかわらず (notwithstanding), ～に鑑み (in light of), したがって (consequently), and deferential formulas like 恐れ入りますが.",
+    "u25": "Rhetorical Precision & Native-Level Mastery: Master C2 nuance through refined qualifiers (疑いの余地なく, 同様に, 総合的に見て), rhythmic parallelism, and effortless command of register from poetic understatement to persuasive clarity."
+  },
+  "items": {
+    "c001": {
+      "t": "こんにちは",
+      "reading": "こんにちは",
+      "r": "konnichiwa",
+      "x": "こんにちは、初めまして。",
+      "xr": "Konnichiwa, hajimemashite."
+    },
+    "c002": {
+      "t": "おはようございます",
+      "reading": "おはようございます",
+      "r": "ohayō gozaimasu",
+      "x": "おはようございます、よく眠れましたか。",
+      "xr": "Ohayō gozaimasu, yoku nemuremashita ka."
+    },
+    "c003": {
+      "t": "こんにちは",
+      "reading": "こんにちは",
+      "r": "konnichiwa",
+      "x": "皆さん、こんにちは。",
+      "xr": "Minasan, konnichiwa."
+    },
+    "c004": {
+      "t": "こんばんは",
+      "reading": "こんばんは",
+      "r": "konbanwa",
+      "x": "こんばんは、おかえりなさい。",
+      "xr": "Konbanwa, okaerinasai."
+    },
+    "c005": {
+      "t": "おやすみなさい",
+      "reading": "おやすみなさい",
+      "r": "oyasuminasai",
+      "x": "おやすみなさい、また明日。",
+      "xr": "Oyasuminasai, mata ashita."
+    },
+    "c006": {
+      "t": "ありがとうございます",
+      "reading": "ありがとうございます",
+      "r": "arigatō gozaimasu",
+      "x": "助けていただき、本当にありがとうございます。",
+      "xr": "Tasukete itadaki, hontō ni arigatō gozaimasu."
+    },
+    "c007": {
+      "t": "どういたしまして",
+      "reading": "どういたしまして",
+      "r": "dō itashimashite",
+      "x": "どういたしまして、いつでもどうぞ。",
+      "xr": "Dō itashimashite, itsudemo dōzo."
+    },
+    "c008": {
+      "t": "どうぞ",
+      "reading": "どうぞ",
+      "r": "dōzo",
+      "x": "どうぞ中に入って、お掛けください。",
+      "xr": "Dōzo naka ni haitte, okake kudasai."
+    },
+    "c009": {
+      "t": "すみません",
+      "reading": "すみません",
+      "r": "sumimasen",
+      "x": "すみません、一つ質問してもいいですか。",
+      "xr": "Sumimasen, hitotsu shitsumon shitemo ii desu ka."
+    },
+    "c010": {
+      "t": "ごめんなさい",
+      "reading": "ごめんなさい",
+      "r": "gomen nasai",
+      "x": "遅れてしまって、ごめんなさい。",
+      "xr": "Okurete shimatte, gomen nasai."
+    },
+    "c011": {
+      "t": "はい",
+      "reading": "はい",
+      "r": "hai",
+      "x": "はい、よく分かりました。",
+      "xr": "Hai, yoku wakarimashita."
+    },
+    "c012": {
+      "t": "いいえ",
+      "reading": "いいえ",
+      "r": "iie",
+      "x": "いいえ、結構です。大丈夫ですよ。",
+      "xr": "Iie, kekkō desu. Daijōbu desu yo."
+    },
+    "c013": {
+      "t": "さようなら",
+      "reading": "さようなら",
+      "r": "sayōnara",
+      "x": "さようなら、よい旅を。",
+      "xr": "Sayōnara, yoi tabi o."
+    },
+    "c014": {
+      "t": "私の名前は",
+      "reading": "わたしのなまえは",
+      "r": "watashi no namae wa",
+      "x": "私の名前はマヤです。",
+      "xr": "Watashi no namae wa Maya desu."
+    },
+    "c015": {
+      "t": "お元気ですか",
+      "reading": "おげんきですか",
+      "r": "ogenki desu ka",
+      "x": "今日はお元気ですか。",
+      "xr": "Kyō wa ogenki desu ka."
+    },
+    "c016": {
+      "t": "私",
+      "reading": "わたし",
+      "r": "watashi",
+      "x": "私は新しい言語を学んでいます。",
+      "xr": "Watashi wa atarashii gengo o manande imasu."
+    },
+    "c017": {
+      "t": "あなた",
+      "reading": "あなた",
+      "r": "anata",
+      "x": "あなたはとてもはっきり話しますね。",
+      "xr": "Anata wa totemo hakkiri hanashimasu ne."
+    },
+    "c018": {
+      "t": "彼",
+      "reading": "かれ",
+      "r": "kare",
+      "x": "彼は私の兄です。",
+      "xr": "Kare wa watashi no ani desu."
+    },
+    "c019": {
+      "t": "彼女",
+      "reading": "かのじょ",
+      "r": "kanojo",
+      "x": "彼女は優秀な医者です。",
+      "xr": "Kanojo wa yūshū na isha desu."
+    },
+    "c020": {
+      "t": "私たち",
+      "reading": "わたしたち",
+      "r": "watashitachi",
+      "x": "私たちは同じ街に住んでいます。",
+      "xr": "Watashitachi wa onaji machi ni sunde imasu."
+    },
+    "c021": {
+      "t": "母",
+      "reading": "はは",
+      "r": "haha",
+      "x": "母はおいしい料理を作ります。",
+      "xr": "Haha wa oishii ryōri o tsukurimasu."
+    },
+    "c022": {
+      "t": "父",
+      "reading": "ちち",
+      "r": "chichi",
+      "x": "父は毎朝新聞を読みます。",
+      "xr": "Chichi wa maiasa shinbun o yomimasu."
+    },
+    "c023": {
+      "t": "兄弟",
+      "reading": "きょうだい",
+      "r": "kyōdai",
+      "x": "兄はサッカーをしています。",
+      "xr": "Ani wa sakkā o shite imasu."
+    },
+    "c024": {
+      "t": "姉妹",
+      "reading": "しまい",
+      "r": "shimai",
+      "x": "姉は医学を勉強しています。",
+      "xr": "Ane wa igaku o benkyō shite imasu."
+    },
+    "c025": {
+      "t": "家族",
+      "reading": "かぞく",
+      "r": "kazoku",
+      "x": "私の家族は毎週日曜日に集まります。",
+      "xr": "Watashi no kazoku wa maishū nichiyōbi ni atsumarimasu."
+    },
+    "c026": {
+      "t": "友達",
+      "reading": "ともだち",
+      "r": "tomodachi",
+      "x": "彼女は私の一番親しい友達です。",
+      "xr": "Kanojo wa watashi no ichiban shitashii tomodachi desu."
+    },
+    "c027": {
+      "t": "子供",
+      "reading": "こども",
+      "r": "kodomo",
+      "x": "子供が絵を描いています。",
+      "xr": "Kodomo ga e o kaite imasu."
+    },
+    "c028": {
+      "t": "先生",
+      "reading": "せんせい",
+      "r": "sensei",
+      "x": "私たちの先生は文法を分かりやすく説明します。",
+      "xr": "Watashitachi no sensei wa bunpō o wakariyasuku setsumei shimasu."
+    },
+    "c029": {
+      "t": "学生",
+      "reading": "がくせい",
+      "r": "gakusei",
+      "x": "学生は全員ノートを持ってきました。",
+      "xr": "Gakusei wa zen'in nōto o motte kimashita."
+    },
+    "c030": {
+      "t": "近所の人",
+      "reading": "きんじょのひと",
+      "r": "kinjo no hito",
+      "x": "近所の人はとても親切です。",
+      "xr": "Kinjo no hito wa totemo shinsetsu desu."
+    },
+    "c031": {
+      "t": "一",
+      "reading": "いち",
+      "r": "ichi",
+      "x": "お茶を一杯いただけますか。",
+      "xr": "Ocha o ippai itadakemasu ka."
+    },
+    "c032": {
+      "t": "二",
+      "reading": "に",
+      "r": "ni",
+      "x": "チケットを二枚お願いします。",
+      "xr": "Chiketto o nimai onegaishimasu."
+    },
+    "c033": {
+      "t": "三",
+      "reading": "さん",
+      "r": "san",
+      "x": "テーブルの上に本が三冊あります。",
+      "xr": "Tēburu no ue ni hon ga sansatsu arimasu."
+    },
+    "c034": {
+      "t": "五",
+      "reading": "ご",
+      "r": "go",
+      "x": "授業は五分後に始まります。",
+      "xr": "Jugyō wa gofungo ni hajimarimasu."
+    },
+    "c035": {
+      "t": "十",
+      "reading": "じゅう",
+      "r": "jū",
+      "x": "彼女は一から十まで数えました。",
+      "xr": "Kanojo wa ichi kara jū made kazoemashita."
+    },
+    "c036": {
+      "t": "今日",
+      "reading": "きょう",
+      "r": "kyō",
+      "x": "今日はよく晴れた日です。",
+      "xr": "Kyō wa yoku hareta hi desu."
+    },
+    "c037": {
+      "t": "明日",
+      "reading": "あした",
+      "r": "ashita",
+      "x": "明日、私たちは博物館を訪れます。",
+      "xr": "Ashita, watashitachi wa hakubutsukan o otozuremasu."
+    },
+    "c038": {
+      "t": "昨日",
+      "reading": "きのう",
+      "r": "kinō",
+      "x": "昨日は午後じゅう雨が降りました。",
+      "xr": "Kinō wa gogojū ame ga furimashita."
+    },
+    "c039": {
+      "t": "今",
+      "reading": "いま",
+      "r": "ima",
+      "x": "今すぐ出発する準備ができています。",
+      "xr": "Ima sugu shuppatsu suru junbi ga dekite imasu."
+    },
+    "c040": {
+      "t": "後で",
+      "reading": "あとで",
+      "r": "ato de",
+      "x": "このことについては後で話しましょう。",
+      "xr": "Kono koto ni tsuite wa ato de hanashimashō."
+    },
+    "c041": {
+      "t": "朝",
+      "reading": "あさ",
+      "r": "asa",
+      "x": "私は毎朝運動しています。",
+      "xr": "Watashi wa maiasa undō shite imasu."
+    },
+    "c042": {
+      "t": "夜",
+      "reading": "よる",
+      "r": "yoru",
+      "x": "夜になると星が明るく輝きます。",
+      "xr": "Yoru ni naru to hoshi ga akaruku kagayakimasu."
+    },
+    "c043": {
+      "t": "週",
+      "reading": "しゅう",
+      "r": "shū",
+      "x": "今週はとても忙しかったです。",
+      "xr": "Konshū wa totemo isogashikatta desu."
+    },
+    "c044": {
+      "t": "月",
+      "reading": "つき",
+      "r": "tsuki",
+      "x": "来月、私たちは海外へ旅行します。",
+      "xr": "Raigetsu, watashitachi wa kaigai e ryokō shimasu."
+    },
+    "c045": {
+      "t": "年",
+      "reading": "とし",
+      "r": "toshi",
+      "x": "皆様、明けましておめでとうございます。",
+      "xr": "Minasama, akemashite omedetō gozaimasu."
+    },
+    "c046": {
+      "t": "水",
+      "reading": "みず",
+      "r": "mizu",
+      "x": "お水を一杯いただけますか。",
+      "xr": "Omizu o ippai itadakemasu ka."
+    },
+    "c047": {
+      "t": "ご飯",
+      "reading": "ごはん",
+      "r": "gohan",
+      "x": "私たちはカレーと炊きたてのご飯を食べます。",
+      "xr": "Watashitachi wa karē to takitate no gohan o tabemasu."
+    },
+    "c048": {
+      "t": "パン",
+      "reading": "パン",
+      "r": "pan",
+      "x": "焼きたてのパンは素晴らしい香りがします。",
+      "xr": "Yakitate no pan wa subarashii kaori ga shimasu."
+    },
+    "c049": {
+      "t": "果物",
+      "reading": "くだもの",
+      "r": "kudamono",
+      "x": "毎日新鮮な果物をたっぷり食べましょう。",
+      "xr": "Mainichi shinsen na kudamono o tappuri tabemashō."
+    },
+    "c050": {
+      "t": "牛乳",
+      "reading": "ぎゅうにゅう",
+      "r": "gyūnyū",
+      "x": "コーヒーに牛乳は入れますか。",
+      "xr": "Kōhī ni gyūnyū wa iremasu ka."
+    },
+    "c051": {
+      "t": "お茶",
+      "reading": "おちゃ",
+      "r": "ocha",
+      "x": "温かいお茶は冬に心を落ち着かせてくれます。",
+      "xr": "Atatakai ocha wa fuyu ni kokoro o ochitsukasete kuremasu."
+    },
+    "c052": {
+      "t": "コーヒー",
+      "reading": "コーヒー",
+      "r": "kōhī",
+      "x": "朝はブラックコーヒーを飲みます。",
+      "xr": "Asa wa burakku kōhī o nomimasu."
+    },
+    "c053": {
+      "t": "朝ご飯",
+      "reading": "あさごはん",
+      "r": "asagohan",
+      "x": "朝ご飯は一日の最初の食事です。",
+      "xr": "Asagohan wa ichinichi no saisho no shokuji desu."
+    },
+    "c054": {
+      "t": "昼ご飯",
+      "reading": "ひるごはん",
+      "r": "hirugohan",
+      "x": "昼ご飯はどこへ食べに行きましょうか。",
+      "xr": "Hirugohan wa doko e tabe ni ikimashō ka."
+    },
+    "c055": {
+      "t": "晩ご飯",
+      "reading": "ばんごはん",
+      "r": "bangohan",
+      "x": "晩ご飯は七時にできあがります。",
+      "xr": "Bangohan wa shichiji ni dekiagarimasu."
+    },
+    "c056": {
+      "t": "おいしい",
+      "reading": "おいしい",
+      "r": "oishii",
+      "x": "この料理は本当においしいです。",
+      "xr": "Kono ryōri wa hontō ni oishii desu."
+    },
+    "c057": {
+      "t": "お腹が空いた",
+      "reading": "おなかがすいた",
+      "r": "onaka ga suita",
+      "x": "散歩の後でとてもお腹が空いています。",
+      "xr": "Sanpo no ato de totemo onaka ga suite imasu."
+    },
+    "c058": {
+      "t": "喉が渇いた",
+      "reading": "のどがかわいた",
+      "r": "nodo ga kawaita",
+      "x": "この暑さで喉が渇きました。",
+      "xr": "Kono atsusa de nodo ga kawakimashita."
+    },
+    "c059": {
+      "t": "メニュー",
+      "reading": "メニュー",
+      "r": "menyū",
+      "x": "メニューを見せていただけますか。",
+      "xr": "Menyū o misete itadakemasu ka."
+    },
+    "c060": {
+      "t": "お会計",
+      "reading": "おかいけい",
+      "r": "okaikei",
+      "x": "お会計をお願いできますか。",
+      "xr": "Okaikei o onegai dekimasu ka."
+    },
+    "c061": {
+      "t": "家",
+      "reading": "いえ",
+      "r": "ie",
+      "x": "彼らの家には小さな庭があります。",
+      "xr": "Karera no ie ni wa chiisana niwa ga arimasu."
+    },
+    "c062": {
+      "t": "部屋",
+      "reading": "へや",
+      "r": "heya",
+      "x": "私の部屋には大きな窓があります。",
+      "xr": "Watashi no heya ni wa ōkina mado ga arimasu."
+    },
+    "c063": {
+      "t": "テーブル",
+      "reading": "テーブル",
+      "r": "tēburu",
+      "x": "鍵をテーブルの上に置いてください。",
+      "xr": "Kagi o tēburu no ue ni oite kudasai."
+    },
+    "c064": {
+      "t": "本",
+      "reading": "ほん",
+      "r": "hon",
+      "x": "この本はとても読みやすいです。",
+      "xr": "Kono hon wa totemo yomiyasui desu."
+    },
+    "c065": {
+      "t": "ドア",
+      "reading": "ドア",
+      "r": "doa",
+      "x": "ドアを静かに閉めてください。",
+      "xr": "Doa o shizuka ni shimete kudasai."
+    },
+    "c066": {
+      "t": "赤",
+      "reading": "あか",
+      "r": "aka",
+      "x": "彼女は鮮やかな赤い傘を買いました。",
+      "xr": "Kanojo wa azayaka na akai kasa o kaimashita."
+    },
+    "c067": {
+      "t": "青",
+      "reading": "あお",
+      "r": "ao",
+      "x": "空は澄んでいて真っ青です。",
+      "xr": "Sora wa sunde ite massao desu."
+    },
+    "c068": {
+      "t": "白",
+      "reading": "しろ",
+      "r": "shiro",
+      "x": "雪が地面を真っ白に覆いました。",
+      "xr": "Yuki ga jimen o masshiro ni ōimashita."
+    },
+    "c069": {
+      "t": "大きい",
+      "reading": "おおきい",
+      "r": "ōkii",
+      "x": "彼らは大きな都市へ引っ越しました。",
+      "xr": "Karera wa ōkina toshi e hikkoshimashita."
+    },
+    "c070": {
+      "t": "小さい",
+      "reading": "ちいさい",
+      "r": "chiisai",
+      "x": "小さな鳥が枝の上でさえずっていました。",
+      "xr": "Chiisana tori ga eda no ue de saezutte imashita."
+    },
+    "c071": {
+      "t": "行く",
+      "reading": "いく",
+      "r": "iku",
+      "x": "私は電車で会社へ行きます。",
+      "xr": "Watashi wa densha de kaisha e ikimasu."
+    },
+    "c072": {
+      "t": "来る",
+      "reading": "くる",
+      "r": "kuru",
+      "x": "ぜひ私たちのお祝いに来てください。",
+      "xr": "Zehi watashitachi no oiwai ni kite kudasai."
+    },
+    "c073": {
+      "t": "食べる",
+      "reading": "たべる",
+      "r": "taberu",
+      "x": "私たちは八時に一緒に夕食を食べます。",
+      "xr": "Watashitachi wa hachiji ni issho ni yūshoku o tabemasu."
+    },
+    "c074": {
+      "t": "飲む",
+      "reading": "のむ",
+      "r": "nomu",
+      "x": "忘れずに十分な水を飲んでください。",
+      "xr": "Wasurezu ni jūbun na mizu o nonde kudasai."
+    },
+    "c075": {
+      "t": "眠る",
+      "reading": "ねむる",
+      "r": "nemuru",
+      "x": "毎晩八時間は眠るようにしています。",
+      "xr": "Maiban hachijikan wa nemuru yō ni shite imasu."
+    },
+    "c076": {
+      "t": "電車",
+      "reading": "でんしゃ",
+      "r": "densha",
+      "x": "急行電車は正午に到着します。",
+      "xr": "Kyūkō densha wa shōgo ni tōchaku shimasu."
+    },
+    "c077": {
+      "t": "バス",
+      "reading": "バス",
+      "r": "basu",
+      "x": "中心部へ行くには二番目のバスに乗ってください。",
+      "xr": "Chūshinbu e iku ni wa nibanme no basu ni notte kudasai."
+    },
+    "c078": {
+      "t": "空港",
+      "reading": "くうこう",
+      "r": "kūkō",
+      "x": "私たちは二時間早く空港に着きました。",
+      "xr": "Watashitachi wa nijikan hayaku kūkō ni tsukimashita."
+    },
+    "c079": {
+      "t": "切符",
+      "reading": "きっぷ",
+      "r": "kippu",
+      "x": "出口を出るまで切符をなくさないでください。",
+      "xr": "Deguchi o deru made kippu o nakusanaide kudasai."
+    },
+    "c080": {
+      "t": "駅",
+      "reading": "えき",
+      "r": "eki",
+      "x": "駅は歩いて五分のところにあります。",
+      "xr": "Eki wa aruite gofun no tokoro ni arimasu."
+    },
+    "c081": {
+      "t": "左",
+      "reading": "ひだり",
+      "r": "hidari",
+      "x": "次の信号で左に曲がってください。",
+      "xr": "Tsugi no shingō de hidari ni magatte kudasai."
+    },
+    "c082": {
+      "t": "右",
+      "reading": "みぎ",
+      "r": "migi",
+      "x": "薬局はあなたの右側にあります。",
+      "xr": "Yakkyoku wa anata no migigawa ni arimasu."
+    },
+    "c083": {
+      "t": "まっすぐ",
+      "reading": "まっすぐ",
+      "r": "massugu",
+      "x": "二ブロックまっすぐ歩いてください。",
+      "xr": "Niburokku massugu aruite kudasai."
+    },
+    "c084": {
+      "t": "近い",
+      "reading": "ちかい",
+      "r": "chikai",
+      "x": "この近くにホテルはありますか。",
+      "xr": "Kono chikaku ni hoteru wa arimasu ka."
+    },
+    "c085": {
+      "t": "遠い",
+      "reading": "とおい",
+      "r": "tōi",
+      "x": "海岸は街からそれほど遠くありません。",
+      "xr": "Kaigan wa machi kara sorehodo tōku arimasen."
+    },
+    "c086": {
+      "t": "地図",
+      "reading": "ちず",
+      "r": "chizu",
+      "x": "地図で経路を確認しましょう。",
+      "xr": "Chizu de keiro o kakunin shimashō."
+    },
+    "c087": {
+      "t": "ホテル",
+      "reading": "ホテル",
+      "r": "hoteru",
+      "x": "繁華街の静かなホテルを予約しました。",
+      "xr": "Hankagai no shizuka na hoteru o yoyaku shimashita."
+    },
+    "c088": {
+      "t": "パスポート",
+      "reading": "パスポート",
+      "r": "pasupōto",
+      "x": "家にパスポートを忘れないでください。",
+      "xr": "Ie ni pasupōto o wasurenaide kudasai."
+    },
+    "c089": {
+      "t": "荷物",
+      "reading": "にもつ",
+      "r": "nimotsu",
+      "x": "今日は荷物がとても重いです。",
+      "xr": "Kyō wa nimotsu ga totemo omoi desu."
+    },
+    "c090": {
+      "t": "どこですか",
+      "reading": "どこですか",
+      "r": "doko desu ka",
+      "x": "一番近い地下鉄の出口はどこですか。",
+      "xr": "Ichiban chikai chikatetsu no deguchi wa doko desu ka."
+    },
+    "c091": {
+      "t": "お金",
+      "reading": "おかね",
+      "r": "okane",
+      "x": "毎月お金の一部を貯金しましょう。",
+      "xr": "Maitsuki okane no ichibu o chokin shimashō."
+    },
+    "c092": {
+      "t": "値段",
+      "reading": "ねだん",
+      "r": "nedan",
+      "x": "このジャケットの値段はいくらですか。",
+      "xr": "Kono jaketto no nedan wa ikura desu ka."
+    },
+    "c093": {
+      "t": "安い",
+      "reading": "やすい",
+      "r": "yasui",
+      "x": "朝市では野菜がとても安いです。",
+      "xr": "Asaichi de wa yasai ga totemo yasui desu."
+    },
+    "c094": {
+      "t": "高い",
+      "reading": "たかい",
+      "r": "takai",
+      "x": "あの時計は私には高すぎます。",
+      "xr": "Ano tokei wa watashi ni wa takasugimasu."
+    },
+    "c095": {
+      "t": "割引",
+      "reading": "わりびき",
+      "r": "waribiki",
+      "x": "学生割引はありますか。",
+      "xr": "Gakusei waribiki wa arimasu ka."
+    },
+    "c096": {
+      "t": "店",
+      "reading": "みせ",
+      "r": "mise",
+      "x": "あの角の店は八時に開きます。",
+      "xr": "Ano kado no mise wa hachiji ni akimasu."
+    },
+    "c097": {
+      "t": "市場",
+      "reading": "いちば",
+      "r": "ichiba",
+      "x": "地元の市場は土曜日にとても賑わいます。",
+      "xr": "Jimoto no ichiba wa doyōbi ni totemo nigiwaimasu."
+    },
+    "c098": {
+      "t": "買う",
+      "reading": "かう",
+      "r": "kau",
+      "x": "暖かいコートを一着買いたいです。",
+      "xr": "Atatakai kōto o itchaku kaitai desu."
+    },
+    "c099": {
+      "t": "払う",
+      "reading": "はらう",
+      "r": "harau",
+      "x": "カードか現金で払えますか。",
+      "xr": "Kādo ka genkin de haraemasu ka."
+    },
+    "c100": {
+      "t": "領収書",
+      "reading": "りょうしゅうしょ",
+      "r": "ryōshūsho",
+      "x": "領収書をいただけますか。",
+      "xr": "Ryōshūsho o itadakemasu ka."
+    },
+    "c101": {
+      "t": "シャツ",
+      "reading": "シャツ",
+      "r": "shatsu",
+      "x": "この綿のシャツは着心地がいいです。",
+      "xr": "Kono men no shatsu wa kigokochi ga ii desu."
+    },
+    "c102": {
+      "t": "靴",
+      "reading": "くつ",
+      "r": "kutsu",
+      "x": "ハイキング用に丈夫な靴が必要です。",
+      "xr": "Haikingu-yō ni jōbu na kutsu ga hitsuyō desu."
+    },
+    "c103": {
+      "t": "かばん",
+      "reading": "かばん",
+      "r": "kaban",
+      "x": "彼女は革のかばんを持っていました。",
+      "xr": "Kanojo wa kawa no kaban o motte imashita."
+    },
+    "c104": {
+      "t": "新しい",
+      "reading": "あたらしい",
+      "r": "atarashii",
+      "x": "彼は今日新しいジャケットを着ていました。",
+      "xr": "Kare wa kyō atarashii jaketto o kite imashita."
+    },
+    "c105": {
+      "t": "サイズ",
+      "reading": "サイズ",
+      "r": "saizu",
+      "x": "これのMサイズはありますか。",
+      "xr": "Kore no Emu-saizu wa arimasu ka."
+    },
+    "c106": {
+      "t": "太陽",
+      "reading": "たいよう",
+      "r": "taiyō",
+      "x": "暖かい太陽が濡れた道路を乾かしました。",
+      "xr": "Atatakai taiyō ga nureta dōro o kawakashimashita."
+    },
+    "c107": {
+      "t": "雨",
+      "reading": "あめ",
+      "r": "ame",
+      "x": "雨に備えて傘を持っていきましょう。",
+      "xr": "Ame ni sonaete kasa o motte ikimashō."
+    },
+    "c108": {
+      "t": "風",
+      "reading": "かぜ",
+      "r": "kaze",
+      "x": "海から涼しい風が吹いてきました。",
+      "xr": "Umi kara suzushii kaze ga fuite kimashita."
+    },
+    "c109": {
+      "t": "暑い",
+      "reading": "あつい",
+      "r": "atsui",
+      "x": "ここの夏の午後はとても暑いです。",
+      "xr": "Koko no natsu no gogo wa totemo atsui desu."
+    },
+    "c110": {
+      "t": "寒い",
+      "reading": "さむい",
+      "r": "samui",
+      "x": "寒いときはマフラーを巻いてください。",
+      "xr": "Samui toki wa mafurā o maite kudasai."
+    },
+    "c111": {
+      "t": "夏",
+      "reading": "なつ",
+      "r": "natsu",
+      "x": "夏の間、私たちはよく泳ぎます。",
+      "xr": "Natsu no aida, watashitachi wa yoku oyogimasu."
+    },
+    "c112": {
+      "t": "冬",
+      "reading": "ふゆ",
+      "r": "fuyu",
+      "x": "冬の夜は長くて静かです。",
+      "xr": "Fuyu no yoru wa nagakute shizuka desu."
+    },
+    "c113": {
+      "t": "春",
+      "reading": "はる",
+      "r": "haru",
+      "x": "春になるとあちこちで花が咲きます。",
+      "xr": "Haru ni naru to achikochi de hana ga sakimasu."
+    },
+    "c114": {
+      "t": "雲",
+      "reading": "くも",
+      "r": "kumo",
+      "x": "嵐の前に暗い雲が集まってきました。",
+      "xr": "Arashi no mae ni kurai kumo ga atsumatte kimashita."
+    },
+    "c115": {
+      "t": "雪",
+      "reading": "ゆき",
+      "r": "yuki",
+      "x": "子供たちは新雪で雪だるまを作りました。",
+      "xr": "Kodomotachi wa shinsetsu de yukidaruma o tsukurimashita."
+    },
+    "c116": {
+      "t": "山",
+      "reading": "やま",
+      "r": "yama",
+      "x": "私たちは日の出前に山に登りました。",
+      "xr": "Watashitachi wa hinode mae ni yama ni noborimashita."
+    },
+    "c117": {
+      "t": "川",
+      "reading": "かわ",
+      "r": "kawa",
+      "x": "広い川が谷間を流れています。",
+      "xr": "Hiroi kawa ga tanima o nagarete imasu."
+    },
+    "c118": {
+      "t": "海",
+      "reading": "うみ",
+      "r": "umi",
+      "x": "今夜の海は穏やかに見えます。",
+      "xr": "Kon'ya no umi wa odayaka ni miemasu."
+    },
+    "c119": {
+      "t": "木",
+      "reading": "き",
+      "r": "ki",
+      "x": "古い大木が中庭に木陰を作っています。",
+      "xr": "Furui taiboku ga nakaniwa ni kokage o tsukutte imasu."
+    },
+    "c120": {
+      "t": "花",
+      "reading": "はな",
+      "r": "hana",
+      "x": "庭の花がすべて咲きました。",
+      "xr": "Niwa no hana ga subete sakimashita."
+    },
+    "c121": {
+      "t": "頭",
+      "reading": "あたま",
+      "r": "atama",
+      "x": "一日じゅう本を読んでいたので頭が痛いです。",
+      "xr": "Ichinichijū hon o yonde ita node atama ga itai desu."
+    },
+    "c122": {
+      "t": "手",
+      "reading": "て",
+      "r": "te",
+      "x": "食事の前に手を洗ってください。",
+      "xr": "Shokuji no mae ni te o aratte kudasai."
+    },
+    "c123": {
+      "t": "目",
+      "reading": "め",
+      "r": "me",
+      "x": "画面から離れて目を休めてください。",
+      "xr": "Gamen kara hanarete me o yasumete kudasai."
+    },
+    "c124": {
+      "t": "心臓",
+      "reading": "しんぞう",
+      "r": "shinzō",
+      "x": "運動をすると心臓が丈夫になります。",
+      "xr": "Undō o suru to shinzō ga jōbu ni narimasu."
+    },
+    "c125": {
+      "t": "お腹",
+      "reading": "おなか",
+      "r": "onaka",
+      "x": "お腹が痛いときは温かいお湯を飲んでください。",
+      "xr": "Onaka ga itai toki wa atatakai oyu o nonde kudasai."
+    },
+    "c126": {
+      "t": "医者",
+      "reading": "いしゃ",
+      "r": "isha",
+      "x": "今日のうちに医者に診てもらったほうがいいですよ。",
+      "xr": "Kyō no uchi ni isha ni mite moratta hō ga ii desu yo."
+    },
+    "c127": {
+      "t": "病院",
+      "reading": "びょういん",
+      "r": "byōin",
+      "x": "その病院は二十四時間開いています。",
+      "xr": "Sono byōin wa nijūyojikan aite imasu."
+    },
+    "c128": {
+      "t": "薬",
+      "reading": "くすり",
+      "r": "kusuri",
+      "x": "この薬は食後に飲んでください。",
+      "xr": "Kono kusuri wa shokugo ni nonde kudasai."
+    },
+    "c129": {
+      "t": "痛み",
+      "reading": "いたみ",
+      "r": "itami",
+      "x": "どこに痛みがあるか看護師に伝えてください。",
+      "xr": "Doko ni itami ga aru ka kangoshi ni tsutaete kudasai."
+    },
+    "c130": {
+      "t": "熱",
+      "reading": "ねつ",
+      "r": "netsu",
+      "x": "彼は微熱があったので家で休みました。",
+      "xr": "Kare wa binetsu ga atta node ie de yasumimashita."
+    },
+    "c131": {
+      "t": "手伝う",
+      "reading": "てつだう",
+      "r": "tetsudau",
+      "x": "この箱を運ぶのを手伝っていただけますか。",
+      "xr": "Kono hako o hakobu no o tetsudatte itadakemasu ka."
+    },
+    "c132": {
+      "t": "警察",
+      "reading": "けいさつ",
+      "r": "keisatsu",
+      "x": "緊急時には警察に電話してください。",
+      "xr": "Kinkyūji ni wa keisatsu ni denwa shite kudasai."
+    },
+    "c133": {
+      "t": "緊急",
+      "reading": "きんきゅう",
+      "r": "kinkyū",
+      "x": "緊急連絡先を携帯電話に登録しておきましょう。",
+      "xr": "Kinkyū renrakusaki o keitai denwa ni tōroku shite okimashō."
+    },
+    "c134": {
+      "t": "休息",
+      "reading": "きゅうそく",
+      "r": "kyūsoku",
+      "x": "早く回復するために十分な休息をとってください。",
+      "xr": "Hayaku kaifuku suru tame ni jūbun na kyūsoku o totte kudasai."
+    },
+    "c135": {
+      "t": "健康",
+      "reading": "けんこう",
+      "r": "kenkō",
+      "x": "バランスの良い食事は健康を保ちます。",
+      "xr": "Baransu no yoi shokuji wa kenkō o tamochimasu."
+    },
+    "c136": {
+      "t": "学校",
+      "reading": "がっこう",
+      "r": "gakkō",
+      "x": "子供たちは一緒に学校へ歩いて行きます。",
+      "xr": "Kodomotachi wa issho ni gakkō e aruite ikimasu."
+    },
+    "c137": {
+      "t": "大学",
+      "reading": "だいがく",
+      "r": "daigaku",
+      "x": "彼女は大学で工学を専攻しています。",
+      "xr": "Kanojo wa daigaku de kōgaku o senkō shite imasu."
+    },
+    "c138": {
+      "t": "試験",
+      "reading": "しけん",
+      "r": "shiken",
+      "x": "期末試験に向けて入念に準備しました。",
+      "xr": "Kimatsu shiken ni mukete nyūnen ni junbi shimashita."
+    },
+    "c139": {
+      "t": "言語",
+      "reading": "げんご",
+      "r": "gengo",
+      "x": "言語を学ぶことは新しい世界を開きます。",
+      "xr": "Gengo o manabu koto wa atarashii sekai o hirakimasu."
+    },
+    "c140": {
+      "t": "質問",
+      "reading": "しつもん",
+      "r": "shitsumon",
+      "x": "それはとても鋭い質問ですね。",
+      "xr": "Sore wa totemo surudoi shitsumon desu ne."
+    },
+    "c141": {
+      "t": "仕事",
+      "reading": "しごと",
+      "r": "shigoto",
+      "x": "彼は六時に仕事を終えます。",
+      "xr": "Kare wa rokuji ni shigoto o oemasu."
+    },
+    "c142": {
+      "t": "オフィス",
+      "reading": "オフィス",
+      "r": "ofisu",
+      "x": "私たちのオフィスは四階にあります。",
+      "xr": "Watashitachi no ofisu wa yonkai ni arimasu."
+    },
+    "c143": {
+      "t": "会議",
+      "reading": "かいぎ",
+      "r": "kaigi",
+      "x": "チーム会議は十時に始まります。",
+      "xr": "Chīmu kaigi wa jūji ni hajimarimasu."
+    },
+    "c144": {
+      "t": "同僚",
+      "reading": "どうりょう",
+      "r": "dōryō",
+      "x": "同僚がバグの解決を手伝ってくれました。",
+      "xr": "Dōryō ga bagu no kaiketsu o tetsudatte kuremashita."
+    },
+    "c145": {
+      "t": "忙しい",
+      "reading": "いそがしい",
+      "r": "isogashii",
+      "x": "金曜日までかなり忙しいです。",
+      "xr": "Kin'yōbi made kanari isogashii desu."
+    },
+    "c146": {
+      "t": "音楽",
+      "reading": "おんがく",
+      "r": "ongaku",
+      "x": "音楽を聴くとリラックスできます。",
+      "xr": "Ongaku o kiku to rirakkusu dekimasu."
+    },
+    "c147": {
+      "t": "映画",
+      "reading": "えいが",
+      "r": "eiga",
+      "x": "昨夜、心に響く映画を観ました。",
+      "xr": "Sakuya, kokoro ni hibiku eiga o mimashita."
+    },
+    "c148": {
+      "t": "スポーツ",
+      "reading": "スポーツ",
+      "r": "supōtsu",
+      "x": "どのスポーツを観戦するのが好きですか。",
+      "xr": "Dono supōtsu o kansen suru no ga suki desu ka."
+    },
+    "c149": {
+      "t": "旅行",
+      "reading": "りょこう",
+      "r": "ryokō",
+      "x": "私は電車で旅行するのが大好きです。",
+      "xr": "Watashi wa densha de ryokō suru no ga daisuki desu."
+    },
+    "c150": {
+      "t": "趣味",
+      "reading": "しゅみ",
+      "r": "shumi",
+      "x": "写真撮影は私の一番の週末の趣味です。",
+      "xr": "Shashin satsuei wa watashi no ichiban no shūmatsu no shumi desu."
+    },
+    "c151": {
+      "t": "嬉しい",
+      "reading": "うれしい",
+      "r": "ureshii",
+      "x": "その知らせを聞いて本当に嬉しいです。",
+      "xr": "Sono shirase o kiite hontō ni ureshii desu."
+    },
+    "c152": {
+      "t": "悲しい",
+      "reading": "かなしい",
+      "r": "kanashii",
+      "x": "時々悲しくなるのは自然なことです。",
+      "xr": "Tokidoki kanashiku naru no wa shizen na koto desu."
+    },
+    "c153": {
+      "t": "怒っている",
+      "reading": "おこっている",
+      "r": "okotte iru",
+      "x": "怒っているときは話す前に深呼吸しましょう。",
+      "xr": "Okotte iru toki wa hanasu mae ni shinkokyū shimashō."
+    },
+    "c154": {
+      "t": "驚いた",
+      "reading": "おどろいた",
+      "r": "odoroita",
+      "x": "突然の発表に皆が驚きました。",
+      "xr": "Totsuzen no happyō ni mina ga odorokimashita."
+    },
+    "c155": {
+      "t": "心配",
+      "reading": "しんぱい",
+      "r": "shinpai",
+      "x": "心配しないでください。きっとうまくいきます。",
+      "xr": "Shinpai shinaide kudasai. Kitto umaku ikimasu."
+    },
+    "c156": {
+      "t": "親切",
+      "reading": "しんせつ",
+      "r": "shinsetsu",
+      "x": "親切な行いが誰かの一日を明るくします。",
+      "xr": "Shinsetsu na okonai ga dareka no ichinichi o akaruku shimasu."
+    },
+    "c157": {
+      "t": "正直",
+      "reading": "しょうじき",
+      "r": "shōjiki",
+      "x": "正直なフィードバックに感謝します。",
+      "xr": "Shōjiki na fīdobakku ni kansha shimasu."
+    },
+    "c158": {
+      "t": "忍耐強い",
+      "reading": "にんたいづよい",
+      "r": "nintaizuyoi",
+      "x": "流暢さを身につけるには忍耐強さが必要です。",
+      "xr": "Ryūchōsa o mi ni tsukeru ni wa nintaizuyosa ga hitsuyō desu."
+    },
+    "c159": {
+      "t": "勇敢",
+      "reading": "ゆうかん",
+      "r": "yūkan",
+      "x": "人前で声を上げるのは勇敢なことでした。",
+      "xr": "Hitomae de koe o ageru no wa yūkan na koto deshita."
+    },
+    "c160": {
+      "t": "好奇心旺盛",
+      "reading": "こうきしんおうせい",
+      "r": "kōkishin ōsei",
+      "x": "好奇心旺盛な心は発見をやめません。",
+      "xr": "Kōkishin ōsei na kokoro wa hakken o yamemasen."
+    },
+    "c161": {
+      "t": "と思います",
+      "reading": "とおもいます",
+      "r": "to omoimasu",
+      "x": "この解決策は実用的だと思います。",
+      "xr": "Kono kaiketsusaku wa jitsuyōteki da to omoimasu."
+    },
+    "c162": {
+      "t": "賛成です",
+      "reading": "さんせいです",
+      "r": "sansei desu",
+      "x": "あなたの主な意見に賛成です。",
+      "xr": "Anata no omo na iken ni sansei desu."
+    },
+    "c163": {
+      "t": "意見",
+      "reading": "いけん",
+      "r": "iken",
+      "x": "誰にでも意見を持つ権利があります。",
+      "xr": "Dare ni demo iken o motsu kenri ga arimasu."
+    },
+    "c164": {
+      "t": "大切",
+      "reading": "たいせつ",
+      "r": "taisetsu",
+      "x": "明確なコミュニケーションはとても大切です。",
+      "xr": "Meikaku na komyunikēshon wa totemo taisetsu desu."
+    },
+    "c165": {
+      "t": "可能",
+      "reading": "かのう",
+      "r": "kanō",
+      "x": "継続的な努力があれば何でも可能です。",
+      "xr": "Keizokuteki na doryoku ga areba nandemo kanō desu."
+    },
+    "c166": {
+      "t": "招待",
+      "reading": "しょうたい",
+      "r": "shōtai",
+      "x": "温かいご招待をありがとうございます。",
+      "xr": "Atatakai goshōtai o arigatō gozaimasu."
+    },
+    "c167": {
+      "t": "お祝い",
+      "reading": "おいわい",
+      "r": "oiwai",
+      "x": "近所じゅうの人々がお祝いに参加しました。",
+      "xr": "Kinjojū no hitobito ga oiwai ni sanka shimashita."
+    },
+    "c168": {
+      "t": "約束",
+      "reading": "やくそく",
+      "r": "yakusoku",
+      "x": "一度交わした約束は必ず守りましょう。",
+      "xr": "Ichido kawashita yakusoku wa kanarazu mamorimashō."
+    },
+    "c169": {
+      "t": "予約",
+      "reading": "よやく",
+      "r": "yoyaku",
+      "x": "三時に歯医者の予約があります。",
+      "xr": "Sanji ni haisha no yoyaku ga arimasu."
+    },
+    "c170": {
+      "t": "サプライズ",
+      "reading": "サプライズ",
+      "r": "sapuraizu",
+      "x": "彼女のために誕生日のサプライズを計画しました。",
+      "xr": "Kanojo no tame ni tanjōbi no sapuraizu o keikaku shimashita."
+    },
+    "c171": {
+      "t": "思い出",
+      "reading": "おもいで",
+      "r": "omoide",
+      "x": "あの旅は私の一番大切な思い出です。",
+      "xr": "Ano tabi wa watashi no ichiban taisetsu na omoide desu."
+    },
+    "c172": {
+      "t": "経験",
+      "reading": "けいけん",
+      "r": "keiken",
+      "x": "海外での生活は人生を変える経験でした。",
+      "xr": "Kaigai de no seikatsu wa jinsei o kaeru keiken deshita."
+    },
+    "c173": {
+      "t": "物語",
+      "reading": "ものがたり",
+      "r": "monogatari",
+      "x": "祖父は心を引きつける物語を語ってくれました。",
+      "xr": "Sofu wa kokoro o hikitsukeru monogatari o katatte kuremashita."
+    },
+    "c174": {
+      "t": "夢",
+      "reading": "ゆめ",
+      "r": "yume",
+      "x": "どんなに大きな夢でも決して諦めないでください。",
+      "xr": "Donna ni ōkina yume demo kesshite akiramenaide kudasai."
+    },
+    "c175": {
+      "t": "旅路",
+      "reading": "たびじ",
+      "r": "tabiji",
+      "x": "どんな長い旅路も一歩から始まります。",
+      "xr": "Donna nagai tabiji mo ippo kara hajimarimasu."
+    },
+    "c176": {
+      "t": "信頼",
+      "reading": "しんらい",
+      "r": "shinrai",
+      "x": "信頼を築くには長い年月がかかります。",
+      "xr": "Shinrai o kizuku ni wa nagai nengetsu ga kakarimasu."
+    },
+    "c177": {
+      "t": "敬意",
+      "reading": "けいい",
+      "r": "keii",
+      "x": "すべての人に心からの敬意をもって接しましょう。",
+      "xr": "Subete no hito ni kokoro kara no keii o motte sesshimashō."
+    },
+    "c178": {
+      "t": "助言",
+      "reading": "じょげん",
+      "r": "jogen",
+      "x": "キャリアについて少し助言をいただけますか。",
+      "xr": "Kyaria ni tsuite sukoshi jogen o itadakemasu ka."
+    },
+    "c179": {
+      "t": "支援",
+      "reading": "しえん",
+      "r": "shien",
+      "x": "変わらぬご支援に心より感謝いたします。",
+      "xr": "Kawaranu goshien ni kokoro yori kansha itashimasu."
+    },
+    "c180": {
+      "t": "許す",
+      "reading": "ゆるす",
+      "r": "yurusu",
+      "x": "相手を許して前へ進むには強さが必要です。",
+      "xr": "Aite o yurushite mae e susumu ni wa tsuyosa ga hitsuyō desu."
+    },
+    "c181": {
+      "t": "パソコン",
+      "reading": "パソコン",
+      "r": "pasokon",
+      "x": "昨夜のうちにパソコンがアップデートされました。",
+      "xr": "Sakuya no uchi ni pasokon ga appudēto saremashita."
+    },
+    "c182": {
+      "t": "インターネット",
+      "reading": "インターネット",
+      "r": "intānetto",
+      "x": "高速インターネットは遠隔地の村々を結びます。",
+      "xr": "Kōsoku intānetto wa enkakuchi no muramura o musubimasu."
+    },
+    "c183": {
+      "t": "電話",
+      "reading": "でんわ",
+      "r": "denwa",
+      "x": "講義中は携帯電話をマナーモードにしてください。",
+      "xr": "Kōgichū wa keitai denwa o manā mōdo ni shite kudasai."
+    },
+    "c184": {
+      "t": "パスワード",
+      "reading": "パスワード",
+      "r": "pasuwādo",
+      "x": "アカウントごとに強力で固有のパスワードを使いましょう。",
+      "xr": "Akaunto goto ni kyōryoku de koyū no pasuwādo o tsukaimashō."
+    },
+    "c185": {
+      "t": "ダウンロード",
+      "reading": "ダウンロード",
+      "r": "daunrōdo",
+      "x": "オフラインパックは無料でダウンロードできます。",
+      "xr": "Ofurain pakku wa muryō de daunrōdo dekimasu."
+    },
+    "c186": {
+      "t": "メッセージ",
+      "reading": "メッセージ",
+      "r": "messēji",
+      "x": "先ほどあなたにメッセージを送りました。",
+      "xr": "Sakihodo anata ni messēji o okurimashita."
+    },
+    "c187": {
+      "t": "検索",
+      "reading": "けんさく",
+      "r": "kensaku",
+      "x": "信頼できる資料を検索しましょう。",
+      "xr": "Shinrai dekiru shiryō o kensaku shimashō."
+    },
+    "c188": {
+      "t": "アプリ",
+      "reading": "アプリ",
+      "r": "apuri",
+      "x": "このオープンソースのアプリはオフラインで動作します。",
+      "xr": "Kono ōpun sōsu no apuri wa ofurain de dōsa shimasu."
+    },
+    "c189": {
+      "t": "プライバシー",
+      "reading": "プライバシー",
+      "r": "puraibashī",
+      "x": "利用者のプライバシー保護が最優先であるべきです。",
+      "xr": "Riyōsha no puraibashī hogo ga saiyūsen de aru beki desu."
+    },
+    "c190": {
+      "t": "更新",
+      "reading": "こうしん",
+      "r": "kōshin",
+      "x": "最新の更新によって速度が大幅に向上しました。",
+      "xr": "Saishin no kōshin ni yotte sokudo ga ōhaba ni kōjō shimashita."
+    },
+    "c191": {
+      "t": "ニュース",
+      "reading": "ニュース",
+      "r": "nyūsu",
+      "x": "ニュースは必ず複数の情報源で確認しましょう。",
+      "xr": "Nyūsu wa kanarazu fukusū no jōhōgen de kakunin shimashō."
+    },
+    "c192": {
+      "t": "記事",
+      "reading": "きじ",
+      "r": "kiji",
+      "x": "言語学に関するとても興味深い記事を読みました。",
+      "xr": "Gengogaku ni kansuru totemo kyōmibukai kiji o yomimashita."
+    },
+    "c193": {
+      "t": "情報",
+      "reading": "じょうほう",
+      "r": "jōhō",
+      "x": "正確な情報は賢明な判断を助けます。",
+      "xr": "Seikaku na jōhō wa kenmei na handan o tasukemasu."
+    },
+    "c194": {
+      "t": "カメラ",
+      "reading": "カメラ",
+      "r": "kamera",
+      "x": "彼女は祭りにカメラを持って行きました。",
+      "xr": "Kanojo wa matsuri ni kamera o motte ikimashita."
+    },
+    "c195": {
+      "t": "画面",
+      "reading": "がめん",
+      "r": "gamen",
+      "x": "夜は画面の明るさを調整してください。",
+      "xr": "Yoru wa gamen no akarusa o chōsei shite kudasai."
+    },
+    "c196": {
+      "t": "文化",
+      "reading": "ぶんか",
+      "r": "bunka",
+      "x": "言語は文化の生きた心臓部です。",
+      "xr": "Gengo wa bunka no ikita shinzōbu desu."
+    },
+    "c197": {
+      "t": "伝統",
+      "reading": "でんとう",
+      "r": "dentō",
+      "x": "それぞれの地域が独自の収穫の伝統を守っています。",
+      "xr": "Sorezore no chiiki ga dokuji no shūkaku no dentō o mamotte imasu."
+    },
+    "c198": {
+      "t": "祭り",
+      "reading": "まつり",
+      "r": "matsuri",
+      "x": "祭りの間、提灯が街全体を照らしました。",
+      "xr": "Matsuri no aida, chōchin ga machi zentai o terashimashita."
+    },
+    "c199": {
+      "t": "歴史",
+      "reading": "れきし",
+      "r": "rekishi",
+      "x": "その博物館は五千年の歴史をたどっています。",
+      "xr": "Sono hakubutsukan wa gosennen no rekishi o tadotte imasu."
+    },
+    "c200": {
+      "t": "遺産",
+      "reading": "いさん",
+      "r": "isan",
+      "x": "私たちは共有の文化遺産を守り抜かなければなりません。",
+      "xr": "Watashitachi wa kyōyū no bunka isan o mamorinukanakereba narimasen."
+    },
+    "c201": {
+      "t": "芸術",
+      "reading": "げいじゅつ",
+      "r": "geijutsu",
+      "x": "偉大な芸術は国境と時代を超えます。",
+      "xr": "Idai na geijutsu wa kokkyō to jidai o koemasu."
+    },
+    "c202": {
+      "t": "舞踊",
+      "reading": "ぶよう",
+      "r": "buyō",
+      "x": "古典舞踊は動きを通して物語を語ります。",
+      "xr": "Koten buyō wa ugoki o tōshite monogatari o katarimasu."
+    },
+    "c203": {
+      "t": "歌",
+      "reading": "うた",
+      "r": "uta",
+      "x": "その民謡は何世代にもわたって歌い継がれています。",
+      "xr": "Sono min'yō wa nansedai ni mo watatte utaitsugarete imasu."
+    },
+    "c204": {
+      "t": "建築",
+      "reading": "けんちく",
+      "r": "kenchiku",
+      "x": "その寺院の建築は驚くほど精巧です。",
+      "xr": "Sono jiin no kenchiku wa odoroku hodo seikō desu."
+    },
+    "c205": {
+      "t": "詩",
+      "reading": "し",
+      "r": "shi",
+      "x": "詩はわずか数行で深い感情を捉えます。",
+      "xr": "Shi wa wazuka sūgyō de fukai kanjō o toraemasu."
+    },
+    "c206": {
+      "t": "お客様",
+      "reading": "おきゃくさま",
+      "r": "okyakusama",
+      "x": "お客様は皆、温かく迎えられます。",
+      "xr": "Okyakusama wa mina, atatakaku mukaeraremasu."
+    },
+    "c207": {
+      "t": "贈り物",
+      "reading": "おくりもの",
+      "r": "okurimono",
+      "x": "ささやかな贈り物を持参することは心遣いを表します。",
+      "xr": "Sasayaka na okurimono o jisan suru koto wa kokorozukai o arawashimasu."
+    },
+    "c208": {
+      "t": "習慣",
+      "reading": "しゅうかん",
+      "r": "shūkan",
+      "x": "新しい国を訪れる前に現地の習慣を学びましょう。",
+      "xr": "Atarashii kuni o otozureru mae ni genchi no shūkan o manabimashō."
+    },
+    "c209": {
+      "t": "式典",
+      "reading": "しきてん",
+      "r": "shikiten",
+      "x": "卒業式典は二時間にわたって行われました。",
+      "xr": "Sotsugyō shikiten wa nijikan ni watatte okonawaremashita."
+    },
+    "c210": {
+      "t": "祝福",
+      "reading": "しゅくふく",
+      "r": "shukufuku",
+      "x": "年長者たちが二人に祝福の言葉を贈りました。",
+      "xr": "Nenchōshatachi ga futari ni shukufuku no kotoba o okurimashita."
+    },
+    "c211": {
+      "t": "なぜなら",
+      "reading": "なぜなら",
+      "r": "nazenara",
+      "x": "嵐が近づいていたので、私たちは屋内に留まりました。",
+      "xr": "Arashi ga chikazuite ita node, watashitachi wa okunai ni todomarimashita."
+    },
+    "c212": {
+      "t": "しかし",
+      "reading": "しかし",
+      "r": "shikashi",
+      "x": "課題は困難でした。しかし、私たちは成功しました。",
+      "xr": "Kadai wa konnan deshita. Shikashi, watashitachi wa seikō shimashita."
+    },
+    "c213": {
+      "t": "けれども",
+      "reading": "けれども",
+      "r": "keredomo",
+      "x": "遅い時間だったけれども、彼はその章を読み終えました。",
+      "xr": "Osoi jikan datta keredomo, kare wa sono shō o yomioemashita."
+    },
+    "c214": {
+      "t": "そのため",
+      "reading": "そのため",
+      "r": "sono tame",
+      "x": "データは明白です。そのため、私たちは行動しなければなりません。",
+      "xr": "Dēta wa meihaku desu. Sono tame, watashitachi wa kōdō shinakereba narimasen."
+    },
+    "c215": {
+      "t": "その間に",
+      "reading": "そのあいだに",
+      "r": "sono aida ni",
+      "x": "私が夕食を作りますので、その間にテーブルを整えてください。",
+      "xr": "Watashi ga yūshoku o tsukurimasu node, sono aida ni tēburu o totonoete kudasai."
+    },
+    "c216": {
+      "t": "問題",
+      "reading": "もんだい",
+      "r": "mondai",
+      "x": "問題の根本原因を特定しましょう。",
+      "xr": "Mondai no konpon gen'in o tokutei shimashō."
+    },
+    "c217": {
+      "t": "解決策",
+      "reading": "かいけつさく",
+      "r": "kaiketsusaku",
+      "x": "シンプルな解決策が最も信頼できることが多いです。",
+      "xr": "Shinpuru na kaiketsusaku ga mottomo shinrai dekiru koto ga ōi desu."
+    },
+    "c218": {
+      "t": "決定",
+      "reading": "けってい",
+      "r": "kettei",
+      "x": "重要な決定を下す前には冷静に考えましょう。",
+      "xr": "Jūyō na kettei o kudasu mae ni wa reisei ni kangaemashō."
+    },
+    "c219": {
+      "t": "失敗",
+      "reading": "しっぱい",
+      "r": "shippai",
+      "x": "すべての失敗は私たちに貴重な何かを教えてくれます。",
+      "xr": "Subete no shippai wa watashitachi ni kichō na nanika o oshiete kuremasu."
+    },
+    "c220": {
+      "t": "成功",
+      "reading": "せいこう",
+      "r": "seikō",
+      "x": "チームワークこそが私たちの成功の鍵でした。",
+      "xr": "Chīmuwāku koso ga watashitachi no seikō no kagi deshita."
+    },
+    "c221": {
+      "t": "もし",
+      "reading": "もし",
+      "r": "moshi",
+      "x": "もし毎日練習すれば、急速に上達します。",
+      "xr": "Moshi mainichi renshū sureba, kyūsoku ni jōtatsu shimasu."
+    },
+    "c222": {
+      "t": "の代わりに",
+      "reading": "のかわりに",
+      "r": "no kawari ni",
+      "x": "車で運転する代わりに、店まで歩きましょう。",
+      "xr": "Kuruma de unten suru kawari ni, mise made arukimashō."
+    },
+    "c223": {
+      "t": "比較する",
+      "reading": "ひかくする",
+      "r": "hikaku suru",
+      "x": "投票する前に両方の提案を慎重に比較してください。",
+      "xr": "Tōhyō suru mae ni ryōhō no teian o shinchō ni hikaku shite kudasai."
+    },
+    "c224": {
+      "t": "違い",
+      "reading": "ちがい",
+      "r": "chigai",
+      "x": "小さな習慣が時を経て大きな違いを生み出します。",
+      "xr": "Chiisana shūkan ga toki o hete ōkina chigai o umidashimasu."
+    },
+    "c225": {
+      "t": "理由",
+      "reading": "りゆう",
+      "r": "riyū",
+      "x": "その選択をした理由を説明してください。",
+      "xr": "Sono sentaku o shita riyū o setsumei shite kudasai."
+    },
+    "c226": {
+      "t": "戦略",
+      "reading": "せんりゃく",
+      "r": "senryaku",
+      "x": "私たちは長期的な製品戦略を見直しました。",
+      "xr": "Watashitachi wa chōkiteki na seihin senryaku o minaoshimashita."
+    },
+    "c227": {
+      "t": "プロジェクト",
+      "reading": "プロジェクト",
+      "r": "purojekuto",
+      "x": "その工学プロジェクトは予定より早く始動しました。",
+      "xr": "Sono kōgaku purojekuto wa yotei yori hayaku shidō shimashita."
+    },
+    "c228": {
+      "t": "締め切り",
+      "reading": "しめきり",
+      "r": "shimekiri",
+      "x": "私たちは締め切り前にすべての目標を達成しました。",
+      "xr": "Watashitachi wa shimekiri mae ni subete no mokuhyō o tassei shimashita."
+    },
+    "c229": {
+      "t": "責任",
+      "reading": "せきにん",
+      "r": "sekinin",
+      "x": "リーダーシップとは全責任を引き受けることです。",
+      "xr": "Rīdāshippu to wa zensekinin o hikiukeru koto desu."
+    },
+    "c230": {
+      "t": "協働",
+      "reading": "きょうどう",
+      "r": "kyōdō",
+      "x": "開かれた協働はイノベーションを加速させます。",
+      "xr": "Hirakareta kyōdō wa inobēshon o kasoku sasemasu."
+    },
+    "c231": {
+      "t": "経済",
+      "reading": "けいざい",
+      "r": "keizai",
+      "x": "中小企業は経済の屋台骨を支えています。",
+      "xr": "Chūshō kigyō wa keizai no yataibone o sasaete imasu."
+    },
+    "c232": {
+      "t": "予算",
+      "reading": "よさん",
+      "r": "yosan",
+      "x": "市議会は来年度の教育予算を承認しました。",
+      "xr": "Shigikai wa rainendo no kyōiku yosan o shōnin shimashita."
+    },
+    "c233": {
+      "t": "投資",
+      "reading": "とうし",
+      "r": "tōshi",
+      "x": "教育は最も賢明な長期投資です。",
+      "xr": "Kyōiku wa mottomo kenmei na chōki tōshi desu."
+    },
+    "c234": {
+      "t": "契約",
+      "reading": "けいやく",
+      "r": "keiyaku",
+      "x": "契約のすべての条項を注意深く読んでください。",
+      "xr": "Keiyaku no subete no jōkō o chūibukaku yonde kudasai."
+    },
+    "c235": {
+      "t": "利益",
+      "reading": "りえき",
+      "r": "rieki",
+      "x": "持続可能な成長は短期的な利益より重要です。",
+      "xr": "Jizoku kanō na seichō wa tankiteki na rieki yori jūyō desu."
+    },
+    "c236": {
+      "t": "提案",
+      "reading": "ていあん",
+      "r": "teian",
+      "x": "委員会は私たちの詳細な提案を検討しました。",
+      "xr": "Iinkai wa watashitachi no shōsai na teian o kentō shimashita."
+    },
+    "c237": {
+      "t": "交渉",
+      "reading": "こうしょう",
+      "r": "kōshō",
+      "x": "双方は誠意をもって交渉に臨みました。",
+      "xr": "Sōhō wa seii o motte kōshō ni nozomimashita."
+    },
+    "c238": {
+      "t": "合意",
+      "reading": "ごうい",
+      "r": "gōi",
+      "x": "両者は互恵的な貿易合意に署名しました。",
+      "xr": "Ryōsha wa gokeiteki na bōeki gōi ni shomei shimashita."
+    },
+    "c239": {
+      "t": "妥協",
+      "reading": "だきょう",
+      "r": "dakyō",
+      "x": "公正な妥協によってその紛争は解決しました。",
+      "xr": "Kōsei na dakyō ni yotte sono funsō wa kaiketsu shimashita."
+    },
+    "c240": {
+      "t": "機会",
+      "reading": "きかい",
+      "r": "kikai",
+      "x": "あらゆる困難には隠れた機会が潜んでいます。",
+      "xr": "Arayuru konnan ni wa kakureta kikai ga hisonde imasu."
+    },
+    "c241": {
+      "t": "研究",
+      "reading": "けんきゅう",
+      "r": "kenkyū",
+      "x": "査読を受けた研究が現代医学を導いています。",
+      "xr": "Sadoku o uketa kenkyū ga gendai igaku o michibiite imasu."
+    },
+    "c242": {
+      "t": "実験",
+      "reading": "じっけん",
+      "r": "jikken",
+      "x": "研究室の実験によって私たちの予測が裏付けられました。",
+      "xr": "Kenkyūshitsu no jikken ni yotte watashitachi no yosoku ga urazukeraremashita."
+    },
+    "c243": {
+      "t": "証拠",
+      "reading": "しょうこ",
+      "r": "shōko",
+      "x": "説得力のある結論は確かな証拠に基づく必要があります。",
+      "xr": "Settokuryoku no aru ketsuron wa tashika na shōko ni motozuku hitsuyō ga arimasu."
+    },
+    "c244": {
+      "t": "理論",
+      "reading": "りろん",
+      "r": "riron",
+      "x": "その理論は重力が光を曲げる仕組みを説明しています。",
+      "xr": "Sono riron wa jūryoku ga hikari o mageru shikumi o setsumei shite imasu."
+    },
+    "c245": {
+      "t": "発見",
+      "reading": "はっけん",
+      "r": "hakken",
+      "x": "その発見はクリーンエネルギーの貯蔵技術を一変させました。",
+      "xr": "Sono hakken wa kurīn enerugī no chozō gijutsu o ippen sasemashita."
+    },
+    "c246": {
+      "t": "革新",
+      "reading": "かくしん",
+      "r": "kakushin",
+      "x": "草の根の技術革新が地域の切実な課題を解決します。",
+      "xr": "Kusanone no gijutsu kakushin ga chiiki no setsujitsu na kadai o kaiketsu shimasu."
+    },
+    "c247": {
+      "t": "アルゴリズム",
+      "reading": "アルゴリズム",
+      "r": "arugorizumu",
+      "x": "効率的なアルゴリズムは電力と時間の両方を節約します。",
+      "xr": "Kōritsuteki na arugorizumu wa denryoku to jikan no ryōhō o setsuyaku shimasu."
+    },
+    "c248": {
+      "t": "エネルギー",
+      "reading": "エネルギー",
+      "r": "enerugī",
+      "x": "太陽光パネルは太陽光を直接エネルギーに変換します。",
+      "xr": "Taiyōkō paneru wa taiyōkō o chokusetsu enerugī ni henkan shimasu."
+    },
+    "c249": {
+      "t": "研究室",
+      "reading": "けんきゅうしつ",
+      "r": "kenkyūshitsu",
+      "x": "科学者たちは研究室でセンサーを較正しました。",
+      "xr": "Kagakushatachi wa kenkyūshitsu de sensā o kōsei shimashita."
+    },
+    "c250": {
+      "t": "精密さ",
+      "reading": "せいみつさ",
+      "r": "seimitsusa",
+      "x": "顕微鏡手術には極めて高度な精密さが求められます。",
+      "xr": "Kenbikyō shujutsu ni wa kiwamete kōdo na seimitsusa ga motomeraremasu."
+    },
+    "c251": {
+      "t": "宇宙",
+      "reading": "うちゅう",
+      "r": "uchū",
+      "x": "望遠鏡は宇宙で最も初期の銀河の姿を映し出します。",
+      "xr": "Bōenkyō wa uchū de mottomo shoki no ginga no sugata o utsushidashimasu."
+    },
+    "c252": {
+      "t": "惑星",
+      "reading": "わくせい",
+      "r": "wakusei",
+      "x": "どの惑星においても水は生命にとって不可欠です。",
+      "xr": "Dono wakusei ni oitemo mizu wa seimei ni totte fukaketsu desu."
+    },
+    "c253": {
+      "t": "重力",
+      "reading": "じゅうりょく",
+      "r": "jūryoku",
+      "x": "重力が月を地球の軌道上に保っています。",
+      "xr": "Jūryoku ga tsuki o chikyū no kidōjō ni tamotte imasu."
+    },
+    "c254": {
+      "t": "進化",
+      "reading": "しんか",
+      "r": "shinka",
+      "x": "進化は何百万年もの歳月をかけて生物を形作ります。",
+      "xr": "Shinka wa nanbyakumannen mo no saigetsu o kakete seibutsu o katachizukurimasu."
+    },
+    "c255": {
+      "t": "好奇心",
+      "reading": "こうきしん",
+      "r": "kōkishin",
+      "x": "科学的好奇心が人類を前へと推し進めます。",
+      "xr": "Kagakuteki kōkishin ga jinrui o mae e to oshisusumemasu."
+    },
+    "c256": {
+      "t": "環境",
+      "reading": "かんきょう",
+      "r": "kankyō",
+      "x": "環境を守ることは未来の世代を守ることにつながります。",
+      "xr": "Kankyō o mamoru koto wa mirai no sedai o mamoru koto ni tsunagarimasu."
+    },
+    "c257": {
+      "t": "気候",
+      "reading": "きこう",
+      "r": "kikō",
+      "x": "変化する気候パターンが世界の農作物に影響を与えています。",
+      "xr": "Henka suru kikō patān ga sekai no nōsakubutsu ni eikyō o ataete imasu."
+    },
+    "c258": {
+      "t": "生態系",
+      "reading": "せいたいけい",
+      "r": "seitaikei",
+      "x": "湿地帯は沿岸の生態系にとって極めて重要です。",
+      "xr": "Shitchitai wa engan no seitaikei ni totte kiwamete jūyō desu."
+    },
+    "c259": {
+      "t": "生物多様性",
+      "reading": "せいぶつたようせい",
+      "r": "seibutsu tayōsei",
+      "x": "熱帯雨林は驚くべき生物多様性を育んでいます。",
+      "xr": "Nettai urin wa odorokubeki seibutsu tayōsei o hagukunde imasu."
+    },
+    "c260": {
+      "t": "汚染",
+      "reading": "おせん",
+      "r": "osen",
+      "x": "電動公共交通機関は都市の大気汚染を大幅に削減します。",
+      "xr": "Dendō kōkyō kōtsū kikan wa toshi no taiki osen o ōhaba ni sakugen shimasu."
+    },
+    "c261": {
+      "t": "再生可能",
+      "reading": "さいせいかのう",
+      "r": "saisei kanō",
+      "x": "風力と太陽光は豊富な再生可能エネルギー源です。",
+      "xr": "Fūryoku to taiyōkō wa hōfu na saisei kanō enerugīgen desu."
+    },
+    "c262": {
+      "t": "持続可能性",
+      "reading": "じぞくかのうせい",
+      "r": "jizoku kanōsei",
+      "x": "真の持続可能性は自然と繁栄の調和を保ちます。",
+      "xr": "Shin no jizoku kanōsei wa shizen to han'ei no chōwa o tamochimasu."
+    },
+    "c263": {
+      "t": "保全",
+      "reading": "ほぜん",
+      "r": "hozen",
+      "x": "地域主導の保全活動が森を蘇らせました。",
+      "xr": "Chiiki shudō no hozen katsudō ga mori o yomigaerasemashita."
+    },
+    "c264": {
+      "t": "リサイクル",
+      "reading": "リサイクル",
+      "r": "risaikuru",
+      "x": "自治体がリサイクルできるよう、ガラス・紙・金属を分別しましょう。",
+      "xr": "Jichitai ga risaikuru dekiru yō, garasu, kami, kinzoku o bunbetsu shimashō."
+    },
+    "c265": {
+      "t": "資源",
+      "reading": "しげん",
+      "r": "shigen",
+      "x": "淡水は誰もが共有する貴重な資源です。",
+      "xr": "Tansui wa daremo ga kyōyū suru kichō na shigen desu."
+    },
+    "c266": {
+      "t": "森林",
+      "reading": "しんりん",
+      "r": "shinrin",
+      "x": "在来の森林を再生させることで周辺の街の気温が下がります。",
+      "xr": "Zairai no shinrin o saisei saseru koto de shūhen no machi no kion ga sagarimasu."
+    },
+    "c267": {
+      "t": "海洋",
+      "reading": "かいよう",
+      "r": "kaiyō",
+      "x": "健全な海洋は膨大な量の二酸化炭素を吸収します。",
+      "xr": "Kenzen na kaiyō wa bōdai na ryō no nisanka tanso o kyūshū shimasu."
+    },
+    "c268": {
+      "t": "干ばつ",
+      "reading": "かんばつ",
+      "r": "kanbatsu",
+      "x": "スマート灌漑は農家が干ばつを乗り切るのを助けます。",
+      "xr": "Sumāto kangai wa nōka ga kanbatsu o norikiru no o tasukemasu."
+    },
+    "c269": {
+      "t": "調和",
+      "reading": "ちょうわ",
+      "r": "chōwa",
+      "x": "人類の進歩は自然との調和のうちに存在しなければなりません。",
+      "xr": "Jinrui no shinpo wa shizen to no chōwa no uchi ni sonzai shinakereba narimasen."
+    },
+    "c270": {
+      "t": "未来",
+      "reading": "みらい",
+      "r": "mirai",
+      "x": "今日の選択が明日の未来を形作ります。",
+      "xr": "Kyō no sentaku ga asu no mirai o katachizukurimasu."
+    },
+    "c271": {
+      "t": "正義",
+      "reading": "せいぎ",
+      "r": "seigi",
+      "x": "法の下の平等な正義が社会を強くします。",
+      "xr": "Hō no moto no byōdō na seigi ga shakai o tsuyoku shimasu."
+    },
+    "c272": {
+      "t": "自由",
+      "reading": "じゆう",
+      "r": "jiyū",
+      "x": "表現の自由には相互の責任が伴います。",
+      "xr": "Hyōgen no jiyū ni wa sōgo no sekinin ga tomonaimasu."
+    },
+    "c273": {
+      "t": "平等",
+      "reading": "びょうどう",
+      "r": "byōdō",
+      "x": "教育は社会的および経済的な平等を促進します。",
+      "xr": "Kyōiku wa shakaiteki oyobi keizaiteki na byōdō o sokushin shimasu."
+    },
+    "c274": {
+      "t": "憲法",
+      "reading": "けんぽう",
+      "r": "kenpō",
+      "x": "憲法は基本的人権を保障しています。",
+      "xr": "Kenpō wa kihonteki jinken o hoshō shite imasu."
+    },
+    "c275": {
+      "t": "市民",
+      "reading": "しみん",
+      "r": "shimin",
+      "x": "積極的に関わる市民一人ひとりが市民社会に貢献します。",
+      "xr": "Sekkyokuteki ni kakawaru shimin hitorihitori ga shimin shakai ni kōken shimasu."
+    },
+    "c276": {
+      "t": "民主主義",
+      "reading": "みんしゅしゅぎ",
+      "r": "minshushugi",
+      "x": "健全な民主主義は十分な情報を持つ有権者によって支えられます。",
+      "xr": "Kenzen na minshushugi wa jūbun na jōhō o motsu yūkensha ni yotte sasaeraremasu."
+    },
+    "c277": {
+      "t": "政府",
+      "reading": "せいふ",
+      "r": "seifu",
+      "x": "地方自治体は道路、公園、学校を維持管理しています。",
+      "xr": "Chihō jichitai wa dōro, kōen, gakkō o iji kanri shite imasu."
+    },
+    "c278": {
+      "t": "政策",
+      "reading": "せいさく",
+      "r": "seisaku",
+      "x": "公衆衛生政策は何百万人もの命を救いました。",
+      "xr": "Kōshū eisei seisaku wa nanbyakumannin mo no inochi o sukuimashita."
+    },
+    "c279": {
+      "t": "法律",
+      "reading": "ほうりつ",
+      "r": "hōritsu",
+      "x": "透明性の高い法律は地域社会全体の信頼を築きます。",
+      "xr": "Tōmeisei no takai hōritsu wa chiiki shakai zentai no shinrai o kizukimasu."
+    },
+    "c280": {
+      "t": "透明性",
+      "reading": "とうめいせい",
+      "r": "tōmeisei",
+      "x": "財政の透明性は汚職を防ぎます。",
+      "xr": "Zaisei no tōmeisei wa oshoku o fusegimasu."
+    },
+    "c281": {
+      "t": "地域社会",
+      "reading": "ちいきしゃかい",
+      "r": "chiiki shakai",
+      "x": "強い地域社会は弱い立場の人々を支え合います。",
+      "xr": "Tsuyoi chiiki shakai wa yowai tachiba no hitobito o sasaeaimasu."
+    },
+    "c282": {
+      "t": "平和",
+      "reading": "へいわ",
+      "r": "heiwa",
+      "x": "永続的な平和には対話と共感が不可欠です。",
+      "xr": "Eizokuteki na heiwa ni wa taiwa to kyōkan ga fukaketsu desu."
+    },
+    "c283": {
+      "t": "教育",
+      "reading": "きょういく",
+      "r": "kyōiku",
+      "x": "誰もが受けられる教育は国全体を引き上げます。",
+      "xr": "Daremo ga ukerareru kyōiku wa kuni zentai o hikiagemasu."
+    },
+    "c284": {
+      "t": "ボランティア",
+      "reading": "ボランティア",
+      "r": "borantia",
+      "x": "何百人ものボランティアが洪水後の復興を手伝いました。",
+      "xr": "Nanbyakunin mo no borantia ga kōzuigo no fukkō o tetsudaimashita."
+    },
+    "c285": {
+      "t": "連帯",
+      "reading": "れんたい",
+      "r": "rentai",
+      "x": "国際的な連帯は危機をより速やかに乗り越えます。",
+      "xr": "Kokusaiteki na rentai wa kiki o yori sumiyaka ni norikoemasu."
+    },
+    "c286": {
+      "t": "主張",
+      "reading": "しゅちょう",
+      "r": "shuchō",
+      "x": "すべての主張は検証可能な事実で裏付けてください。",
+      "xr": "Subete no shuchō wa kenshō kanō na jijitsu de urazukete kudasai."
+    },
+    "c287": {
+      "t": "視点",
+      "reading": "してん",
+      "r": "shiten",
+      "x": "異なる視点を知ることは理解を深めます。",
+      "xr": "Kotonaru shiten o shiru koto wa rikai o fukamemasu."
+    },
+    "c288": {
+      "t": "分析",
+      "reading": "ぶんせき",
+      "r": "bunseki",
+      "x": "彼女の経済分析は三つの隠れたリスクを浮き彫りにしました。",
+      "xr": "Kanojo no keizai bunseki wa mittsu no kakureta risuku o ukibori ni shimashita."
+    },
+    "c289": {
+      "t": "前提",
+      "reading": "ぜんてい",
+      "r": "zentei",
+      "x": "根底にある自分の前提を常に疑うことが大切です。",
+      "xr": "Kontei ni aru jibun no zentei o tsune ni utagau koto ga taisetsu desu."
+    },
+    "c290": {
+      "t": "結論",
+      "reading": "けつろん",
+      "r": "ketsuron",
+      "x": "結論に飛びつく前にすべての事実が出揃うのを待ちましょう。",
+      "xr": "Ketsuron ni tobitsuku mae ni subete no jijitsu ga desorou no o machimashō."
+    },
+    "c291": {
+      "t": "客観的",
+      "reading": "きゃっかんてき",
+      "r": "kyakkanteki",
+      "x": "公正なジャーナリストは客観的であり続けるよう努めます。",
+      "xr": "Kōsei na jānarisuto wa kyakkanteki de aritsuzukeru yō tsutomemasu."
+    },
+    "c292": {
+      "t": "偏見",
+      "reading": "へんけん",
+      "r": "henken",
+      "x": "自分自身の偏見に気づくことがより良い判断につながります。",
+      "xr": "Jibun jishin no henken ni kizuku koto ga yori yoi handan ni tsunagarimasu."
+    },
+    "c293": {
+      "t": "基準",
+      "reading": "きじゅん",
+      "r": "kijun",
+      "x": "信頼性は私たちの最優先の評価基準です。",
+      "xr": "Shinraisei wa watashitachi no saiyūsen no hyōka kijun desu."
+    },
+    "c294": {
+      "t": "矛盾",
+      "reading": "むじゅん",
+      "r": "mujun",
+      "x": "証人は時系列の中に矛盾があることに気づきました。",
+      "xr": "Shōnin wa jikeiretsu no naka ni mujun ga aru koto ni kizukimashita."
+    },
+    "c295": {
+      "t": "合意形成",
+      "reading": "ごういけいせい",
+      "r": "gōi keisei",
+      "x": "活発な議論の末、委員会は合意形成に至りました。",
+      "xr": "Kappatsu na giron no sue, iinkai wa gōi keisei ni itarimashita."
+    },
+    "c296": {
+      "t": "明確にする",
+      "reading": "めいかくにする",
+      "r": "meikaku ni suru",
+      "x": "その表現で何を意図されたのか明確にしていただけますか。",
+      "xr": "Sono hyōgen de nani o ito sareta no ka meikaku ni shite itadakemasu ka."
+    },
+    "c297": {
+      "t": "強調する",
+      "reading": "きょうちょうする",
+      "r": "kyōchō suru",
+      "x": "私はアクセシビリティの重要性を強調したいと思います。",
+      "xr": "Watashi wa akuseshibiriti no jūyōsei o kyōchō shitai to omoimasu."
+    },
+    "c298": {
+      "t": "それにもかかわらず",
+      "reading": "それにもかかわらず",
+      "r": "sore ni mo kakawarazu",
+      "x": "道は険しかった。それにもかかわらず、私たちは頂上に到達しました。",
+      "xr": "Michi wa kewashikatta. Sore ni mo kakawarazu, watashitachi wa chōjō ni tōtatsu shimashita."
+    },
+    "c299": {
+      "t": "結果",
+      "reading": "けっか",
+      "r": "kekka",
+      "x": "決定を下す前に長期的なあらゆる結果を考慮してください。",
+      "xr": "Kettei o kudasu mae ni chōkiteki na arayuru kekka o kōryo shite kudasai."
+    },
+    "c300": {
+      "t": "洞察",
+      "reading": "どうさつ",
+      "r": "dōsatsu",
+      "x": "彼女の発言は卓越した洞察をもたらしました。",
+      "xr": "Kanojo no hatsugen wa takuetsu shita dōsatsu o motarashimashita."
+    },
+    "c301": {
+      "t": "隠喩",
+      "reading": "いんゆ",
+      "r": "in'yu",
+      "x": "川は過ぎゆく時の隠喩として描かれています。",
+      "xr": "Kawa wa sugiyuku toki no in'yu to shite egakarete imasu."
+    },
+    "c302": {
+      "t": "象徴性",
+      "reading": "しょうちょうせい",
+      "r": "shōchōsei",
+      "x": "その小説は幾重にも重なる象徴性に富んでいます。",
+      "xr": "Sono shōsetsu wa ikue ni mo kasanaru shōchōsei ni tonde imasu."
+    },
+    "c303": {
+      "t": "物語構造",
+      "reading": "ものがたりこうぞう",
+      "r": "monogatari kōzō",
+      "x": "著者は三つの絡み合う物語構造を巧みに織り上げています。",
+      "xr": "Chosha wa mittsu no karamiau monogatari kōzō o takumi ni oriagete imasu."
+    },
+    "c304": {
+      "t": "傑作",
+      "reading": "けっさく",
+      "r": "kessaku",
+      "x": "その交響曲は時代を超えた傑作として称賛されています。",
+      "xr": "Sono kōkyōkyoku wa jidai o koeta kessaku to shite shōsan sarete imasu."
+    },
+    "c305": {
+      "t": "美意識",
+      "reading": "びいしき",
+      "r": "biishiki",
+      "x": "ミニマルなデザインは静かな美意識の調和を重んじます。",
+      "xr": "Minimaru na dezain wa shizuka na biishiki no chōwa o omonjimasu."
+    },
+    "c306": {
+      "t": "ニュアンス",
+      "reading": "ニュアンス",
+      "r": "nyuansu",
+      "x": "真の流暢さは微妙な文化的ニュアンスを捉えることにあります。",
+      "xr": "Shin no ryūchōsa wa bimyō na bunkateki nyuansu o toraeru koto ni arimasu."
+    },
+    "c307": {
+      "t": "曖昧さ",
+      "reading": "あいまいさ",
+      "r": "aimaisa",
+      "x": "その詩は意図的で余韻を残す曖昧さのうちに幕を閉じます。",
+      "xr": "Sono shi wa itoteki de yoin o nokosu aimaisa no uchi ni maku o tojimasu."
+    },
+    "c308": {
+      "t": "皮肉",
+      "reading": "ひにく",
+      "r": "hiniku",
+      "x": "劇作家は鋭い皮肉を用いて虚栄心を風刺しました。",
+      "xr": "Gekisakka wa surudoi hiniku o mochiite kyoeishin o fūshi shimashita."
+    },
+    "c309": {
+      "t": "雄弁",
+      "reading": "ゆうべん",
+      "r": "yūben",
+      "x": "彼女は際立った落ち着きと雄弁さをもって語りました。",
+      "xr": "Kanojo wa kiwadatta ochitsuki to yūbensa o motte katarimashita."
+    },
+    "c310": {
+      "t": "知的遺産",
+      "reading": "ちてきいさん",
+      "r": "chiteki isan",
+      "x": "偉大な文学は時代を超えて残る知的遺産を生み出します。",
+      "xr": "Idai na bungaku wa jidai o koete nokoru chiteki isan o umidashimasu."
+    },
+    "c311": {
+      "t": "郷愁",
+      "reading": "きょうしゅう",
+      "r": "kyōshū",
+      "x": "暖かい大地に降る雨の匂いが深い郷愁を呼び起こしました。",
+      "xr": "Atatakai daichi ni furu ame no nioi ga fukai kyōshū o yobiokoshimashita."
+    },
+    "c312": {
+      "t": "共鳴",
+      "reading": "きょうめい",
+      "r": "kyōmei",
+      "x": "その旋律は深い感情的な共鳴を呼び起こしました。",
+      "xr": "Sono senritsu wa fukai kanjōteki na kyōmei o yobiokoshimashita."
+    },
+    "c313": {
+      "t": "崇高",
+      "reading": "すうこう",
+      "r": "sūkō",
+      "x": "オーロラの下に立つ体験は実に崇高なものでした。",
+      "xr": "Ōrora no shita ni tatsu taiken wa jitsu ni sūkō na mono deshita."
+    },
+    "c314": {
+      "t": "超越する",
+      "reading": "ちょうえつする",
+      "r": "chōetsu suru",
+      "x": "思いやりは言語や歴史を超越することができます。",
+      "xr": "Omoiyari wa gengo ya rekishi o chōetsu suru koto ga dekimasu."
+    },
+    "c315": {
+      "t": "真正性",
+      "reading": "しんせいせい",
+      "r": "shinseisei",
+      "x": "読者は本物の真正性を瞬時に感じ取ります。",
+      "xr": "Dokusha wa honmono no shinseisei o shunji ni kanjitorimasu."
+    },
+    "c316": {
+      "t": "良心",
+      "reading": "りょうしん",
+      "r": "ryōshin",
+      "x": "誠実な良心に従って行動しましょう。",
+      "xr": "Seijitsu na ryōshin ni shitagatte kōdō shimashō."
+    },
+    "c317": {
+      "t": "誠実さ",
+      "reading": "せいじつさ",
+      "r": "seijitsusa",
+      "x": "誠実さとは、誰も見ていないときに正しいことを行うことです。",
+      "xr": "Seijitsusa to wa, daremo mite inai toki ni tadashii koto o okonau koto desu."
+    },
+    "c318": {
+      "t": "共感",
+      "reading": "きょうかん",
+      "r": "kyōkan",
+      "x": "共感はどれほど深い隔たりにも橋を架けます。",
+      "xr": "Kyōkan wa dorehodo fukai hedatari ni mo hashi o kakemasu."
+    },
+    "c319": {
+      "t": "ジレンマ",
+      "reading": "ジレンマ",
+      "r": "jirenma",
+      "x": "委員会は困難な倫理的ジレンマに直面しました。",
+      "xr": "Iinkai wa konnan na rinriteki jirenma ni chokumen shimashita."
+    },
+    "c320": {
+      "t": "知恵",
+      "reading": "ちえ",
+      "r": "chie",
+      "x": "知識は語り、知恵は耳を傾けます。",
+      "xr": "Chishiki wa katari, chie wa mimi o katamukemasu."
+    },
+    "c321": {
+      "t": "意識",
+      "reading": "いしき",
+      "r": "ishiki",
+      "x": "哲学者たちは今も意識の本質について議論しています。",
+      "xr": "Tetsugakushatachi wa ima mo ishiki no honshitsu ni tsuite giron shite imasu."
+    },
+    "c322": {
+      "t": "知覚",
+      "reading": "ちかく",
+      "r": "chikaku",
+      "x": "言語は私たちの時間に対する知覚を繊細に形作ります。",
+      "xr": "Gengo wa watashitachi no jikan ni taisuru chikaku o sensai ni katachizukurimasu."
+    },
+    "c323": {
+      "t": "回復力",
+      "reading": "かいふくりょく",
+      "r": "kaifukuryoku",
+      "x": "内なる回復力は逆境を乗り越えることで育まれます。",
+      "xr": "Uchinaru kaifukuryoku wa gyakkyō o norikoeru koto de hagukumaremasu."
+    },
+    "c324": {
+      "t": "内省",
+      "reading": "ないせい",
+      "r": "naisei",
+      "x": "静かな内省は混乱のさなかに明晰さをもたらします。",
+      "xr": "Shizuka na naisei wa konran no sanaka ni meisekisa o motarashimasu."
+    },
+    "c325": {
+      "t": "逆説",
+      "reading": "ぎゃくせつ",
+      "r": "gyakusetsu",
+      "x": "選択の逆説は、選択肢が多すぎるとかえって圧倒されることを示しています。",
+      "xr": "Sentaku no gyakusetsu wa, sentakushi ga ōsugiru to kaette attō sareru koto o shimeshite imasu."
+    },
+    "c326": {
+      "t": "無常",
+      "reading": "むじょう",
+      "r": "mujō",
+      "x": "無常を受け入れることは、今日という日を大切にする心を教えてくれます。",
+      "xr": "Mujō o ukeireru koto wa, kyō to iu hi o taisetsu ni suru kokoro o oshiete kuremasu."
+    },
+    "c327": {
+      "t": "平静",
+      "reading": "へいせい",
+      "r": "heisei",
+      "x": "彼女は栄光にも挫折にも平静さをもって向き合いました。",
+      "xr": "Kanojo wa eikō ni mo zasetsu ni mo heiseisa o motte mukiaimashita."
+    },
+    "c328": {
+      "t": "目的意識",
+      "reading": "もくてきいしき",
+      "r": "mokuteki ishiki",
+      "x": "共有された目的意識は日々の努力を喜びに変えます。",
+      "xr": "Kyōyū sareta mokuteki ishiki wa hibi no doryoku o yorokobi ni kaemasu."
+    },
+    "c329": {
+      "t": "自律性",
+      "reading": "じりつせい",
+      "r": "jiritsusei",
+      "x": "知的な自律性は独立した思考から始まります。",
+      "xr": "Chiteki na jiritsusei wa dokuritsu shita shikō kara hajimarimasu."
+    },
+    "c330": {
+      "t": "謙虚さ",
+      "reading": "けんきょさ",
+      "r": "kenkyosa",
+      "x": "真の熟達には常に謙虚さが伴います。",
+      "xr": "Shin no jukutatsu ni wa tsune ni kenkyosa ga tomonaimasu."
+    },
+    "c331": {
+      "t": "不言実行",
+      "reading": "ふげんじっこう",
+      "r": "fugen jikkō",
+      "x": "約束は必ず守りましょう。不言実行こそが信頼を生みます。",
+      "xr": "Yakusoku wa kanarazu mamorimashō. Fugen jikkō koso ga shinrai o umimasu."
+    },
+    "c332": {
+      "t": "習うより慣れろ",
+      "reading": "ならうよりなれろ",
+      "r": "narau yori narero",
+      "x": "失敗を恐れないでください。習うより慣れろと言います。",
+      "xr": "Shippai o osorenaide kudasai. Narau yori narero to iimasu."
+    },
+    "c333": {
+      "t": "止まない雨はない",
+      "reading": "やまないあめはない",
+      "r": "yamanai ame wa nai",
+      "x": "希望を持ち続けてください。止まない雨はないのです。",
+      "xr": "Kibō o mochitsuzukete kudasai. Yamanai ame wa nai no desu."
+    },
+    "c334": {
+      "t": "時がすべてを癒やす",
+      "reading": "ときがすべてをいやす",
+      "r": "toki ga subete o iyasu",
+      "x": "どうか自分を責めないでください。時がすべてを癒やしてくれます。",
+      "xr": "Dōka jibun o semenaide kudasai. Toki ga subete o iyashite kuremasu."
+    },
+    "c335": {
+      "t": "団結は力なり",
+      "reading": "だんけつはちからなり",
+      "r": "danketsu wa chikara nari",
+      "x": "共に力を合わせることで、団結は力なりと証明されます。",
+      "xr": "Tomo ni chikara o awaseru koto de, danketsu wa chikara nari to shōmei saremasu."
+    },
+    "c336": {
+      "t": "場を和ませる",
+      "reading": "ばをなごませる",
+      "r": "ba o nagomaseru",
+      "x": "温かな冗談が夕食会の場を和ませました。",
+      "xr": "Atataka na jōdan ga yūshokukai no ba o nagomasemashita."
+    },
+    "c337": {
+      "t": "朝飯前",
+      "reading": "あさめしまえ",
+      "r": "asameshimae",
+      "x": "何週間も特訓したおかげで、その試験は朝飯前でした。",
+      "xr": "Nanshūkan mo tokkun shita okage de, sono shiken wa asameshimae deshita."
+    },
+    "c338": {
+      "t": "滅多にない",
+      "reading": "めったにない",
+      "r": "metta ni nai",
+      "x": "この谷で雪を見るのは滅多にないことです。",
+      "xr": "Kono tani de yuki o miru no wa metta ni nai koto desu."
+    },
+    "c339": {
+      "t": "的を射る",
+      "reading": "まとをいる",
+      "r": "mato o iru",
+      "x": "あなたの診断はまさに的を射ていました。",
+      "xr": "Anata no shindan wa masa ni mato o ite imashita."
+    },
+    "c340": {
+      "t": "夜を徹する",
+      "reading": "よをてっする",
+      "r": "yo o tessuru",
+      "x": "チームは納期に間に合わせるため夜を徹して作業しました。",
+      "xr": "Chīmu wa nōki ni maniawaseru tame yo o tesshite sagyō shimashita."
+    },
+    "c341": {
+      "t": "行間を読む",
+      "reading": "ぎょうかんをよむ",
+      "r": "gyōkan o yomu",
+      "x": "外交の場では行間を読む力が不可欠です。",
+      "xr": "Gaikō no ba de wa gyōkan o yomu chikara ga fukaketsu desu."
+    },
+    "c342": {
+      "t": "心機一転する",
+      "reading": "しんきいってんする",
+      "r": "shinki itten suru",
+      "x": "彼女はこの春に心機一転することを決意しました。",
+      "xr": "Kanojo wa kono haru ni shinki itten suru koto o ketsui shimashita."
+    },
+    "c343": {
+      "t": "災い転じて福となす",
+      "reading": "わざわいてんじてふくとなす",
+      "r": "wazawai tenjite fuku to nasu",
+      "x": "あの仕事を失ったことは、結果的に災い転じて福となす出来事でした。",
+      "xr": "Ano shigoto o ushinatta koto wa, kekkateki ni wazawai tenjite fuku to nasu dekigoto deshita."
+    },
+    "c344": {
+      "t": "労を惜しまない",
+      "reading": "ろうをおしまない",
+      "r": "rō o oshimanai",
+      "x": "優れた教師は生徒のために労を惜しみません。",
+      "xr": "Sugureta kyōshi wa seito no tame ni rō o oshimimasen."
+    },
+    "c345": {
+      "t": "大局を見る",
+      "reading": "たいきょくをみる",
+      "r": "taikyoku o miru",
+      "x": "細部から一歩引いて大局を見ることが大切です。",
+      "xr": "Saibu kara ippo hiite taikyoku o miru koto ga taisetsu desu."
+    },
+    "c346": {
+      "t": "主権",
+      "reading": "しゅけん",
+      "r": "shuken",
+      "x": "国際法は主権の相互尊重を定めています。",
+      "xr": "Kokusaihō wa shuken no sōgo sonchō o sadamete imasu."
+    },
+    "c347": {
+      "t": "外交",
+      "reading": "がいこう",
+      "r": "gaikō",
+      "x": "粘り強い外交が事態の悪化を防ぎました。",
+      "xr": "Nebarizuyoi gaikō ga jitai no akka o fusegimashita."
+    },
+    "c348": {
+      "t": "条約",
+      "reading": "じょうやく",
+      "r": "jōyaku",
+      "x": "四十か国がその環境条約を批准しました。",
+      "xr": "Yonjukkakoku ga sono kankyō jōyaku o hijun shimashita."
+    },
+    "c349": {
+      "t": "多国間",
+      "reading": "たこくかん",
+      "r": "takokukan",
+      "x": "多国間協力は共通の地球規模の課題に対処します。",
+      "xr": "Takokukan kyōryoku wa kyōtsū no chikyū kibo no kadai ni taisho shimasu."
+    },
+    "c350": {
+      "t": "管轄権",
+      "reading": "かんかつけん",
+      "r": "kankatsuken",
+      "x": "その裁判所は海洋紛争に対する管轄権を有しています。",
+      "xr": "Sono saibansho wa kaiyō funsō ni taisuru kankatsuken o yūshite imasu."
+    },
+    "c351": {
+      "t": "仮説",
+      "reading": "かせつ",
+      "r": "kasetsu",
+      "x": "その論文は新たな言語学的仮説を検証しています。",
+      "xr": "Sono ronbun wa arata na gengogakuteki kasetsu o kenshō shite imasu."
+    },
+    "c352": {
+      "t": "方法論",
+      "reading": "ほうほうろん",
+      "r": "hōhōron",
+      "x": "透明な方法論は独立した再現検証を可能にします。",
+      "xr": "Tōmei na hōhōron wa dokuritsu shita saigen kenshō o kanō ni shimasu."
+    },
+    "c353": {
+      "t": "統合",
+      "reading": "とうごう",
+      "r": "tōgō",
+      "x": "彼女の講演は二つの分野の見事な統合を提示しました。",
+      "xr": "Kanojo no kōen wa futatsu no bun'ya no migoto na tōgō o teiji shimashita."
+    },
+    "c354": {
+      "t": "先例",
+      "reading": "せんれい",
+      "r": "senrei",
+      "x": "その判決は重要な法的先例を確立しました。",
+      "xr": "Sono hanketsu wa jūyō na hōteki senrei o kakuritsu shimashita."
+    },
+    "c355": {
+      "t": "実施",
+      "reading": "じっし",
+      "r": "jisshi",
+      "x": "慎重な実施こそが改革の成否を左右します。",
+      "xr": "Shinchō na jisshi koso ga kaikaku no seihi o sayū shimasu."
+    },
+    "c356": {
+      "t": "にもかかわらず",
+      "reading": "にもかかわらず",
+      "r": "ni mo kakawarazu",
+      "x": "当初の遅延にもかかわらず、その橋は安全に開通しました。",
+      "xr": "Tōsho no chien ni mo kakawarazu, sono hashi wa anzen ni kaitsū shimashita."
+    },
+    "c357": {
+      "t": "したがって",
+      "reading": "したがって",
+      "r": "shitagatte",
+      "x": "予算が増額されました。したがって、地方の診療所も拡充されました。",
+      "xr": "Yosan ga zōgaku saremashita. Shitagatte, chihō no shinryōjo mo kakujū saremashita."
+    },
+    "c358": {
+      "t": "さらに",
+      "reading": "さらに",
+      "r": "sara ni",
+      "x": "さらに、オープンデータは独立した研究者にも恩恵をもたらします。",
+      "xr": "Sara ni, ōpun dēta wa dokuritsu shita kenkyūsha ni mo onkei o motarashimasu."
+    },
+    "c359": {
+      "t": "に鑑み",
+      "reading": "にかんがみ",
+      "r": "ni kangami",
+      "x": "新たな証拠に鑑み、私たちは指針を改定いたしました。",
+      "xr": "Arata na shōko ni kangami, watashitachi wa shishin o kaitei itashimashita."
+    },
+    "c360": {
+      "t": "恐れ入りますが",
+      "reading": "おそれいりますが",
+      "r": "osoreirimasu ga",
+      "x": "恐れ入りますが、別のアプローチをご提案申し上げます。",
+      "xr": "Osoreirimasu ga, betsu no apurōchi o goteian mōshiagemasu."
+    },
+    "c361": {
+      "t": "明晰に表現する",
+      "reading": "めいせきにひょうげんする",
+      "r": "meiseki ni hyōgen suru",
+      "x": "彼女は複雑な概念をいとも容易く明晰に表現することができます。",
+      "xr": "Kanojo wa fukuzatsu na gainen o itomo tayasuku meiseki ni hyōgen suru koto ga dekimasu."
+    },
+    "c362": {
+      "t": "簡潔",
+      "reading": "かんけつ",
+      "r": "kanketsu",
+      "x": "簡潔な説明は長い演説よりもはるかに明快です。",
+      "xr": "Kanketsu na setsumei wa nagai enzetsu yori mo haruka ni meikai desu."
+    },
+    "c363": {
+      "t": "一貫した",
+      "reading": "いっかんした",
+      "r": "ikkan shita",
+      "x": "初めから終わりまで一貫した物語を組み立てましょう。",
+      "xr": "Hajime kara owari made ikkan shita monogatari o kumitatemashō."
+    },
+    "c364": {
+      "t": "説得力のある",
+      "reading": "せっとくりょくのある",
+      "r": "settokuryoku no aru",
+      "x": "実体験の物語は議論をはるかに説得力のあるものにします。",
+      "xr": "Jittaiken no monogatari wa giron o haruka ni settokuryoku no aru mono ni shimasu."
+    },
+    "c365": {
+      "t": "現実的",
+      "reading": "げんじつてき",
+      "r": "genjitsuteki",
+      "x": "私たちは導入に向けて現実的な工程表を採用しました。",
+      "xr": "Watashitachi wa dōnyū ni mukete genjitsuteki na kōteihyō o saiyō shimashita."
+    },
+    "c366": {
+      "t": "前例のない",
+      "reading": "ぜんれいのない",
+      "r": "zenrei no nai",
+      "x": "天文台は前例のない鮮明さの画像を撮影しました。",
+      "xr": "Tenmondai wa zenrei no nai senmeisa no gazō o satsuei shimashita."
+    },
+    "c367": {
+      "t": "不可避",
+      "reading": "ふかひ",
+      "r": "fukahi",
+      "x": "言語の緩やかな変化は完全に不可避なものです。",
+      "xr": "Gengo no yuruyaka na henka wa kanzen ni fukahi na mono desu."
+    },
+    "c368": {
+      "t": "不可欠",
+      "reading": "ふかけつ",
+      "r": "fukaketsu",
+      "x": "深い流暢さを身につけるには積極的な傾聴が不可欠です。",
+      "xr": "Fukai ryūchōsa o mi ni tsukeru ni wa sekkyokuteki na keichō ga fukaketsu desu."
+    },
+    "c369": {
+      "t": "深い",
+      "reading": "ふかい",
+      "r": "fukai",
+      "x": "古典を読むことは心に深い感銘を残します。",
+      "xr": "Koten o yomu koto wa kokoro ni fukai kanmei o nokoshimasu."
+    },
+    "c370": {
+      "t": "継ぎ目のない",
+      "reading": "つぎめのない",
+      "r": "tsugime no nai",
+      "x": "私たちの目標はすべての端末で継ぎ目のない体験を提供することです。",
+      "xr": "Watashitachi no mokuhyō wa subete no tanmatsu de tsugime no nai taiken o teikyō suru koto desu."
+    },
+    "c371": {
+      "t": "疑いの余地なく",
+      "reading": "うたがいのよちなく",
+      "r": "utagai no yochi naku",
+      "x": "疑いの余地なく、継続こそが勝利をもたらします。",
+      "xr": "Utagai no yochi naku, keizoku koso ga shōri o motarashimasu."
+    },
+    "c372": {
+      "t": "同様に",
+      "reading": "どうように",
+      "r": "dōyō ni",
+      "x": "私たちは迅速さを重視します。同様に、品質を決して妥協しません。",
+      "xr": "Watashitachi wa jinsokusa o jūshi shimasu. Dōyō ni, hinshitsu o kesshite dakyō shimasen."
+    },
+    "c373": {
+      "t": "総合的に見て",
+      "reading": "そうごうてきにみて",
+      "r": "sōgōteki ni mite",
+      "x": "総合的に見て、今年は私たちにとって最高の年でした。",
+      "xr": "Sōgōteki ni mite, kotoshi wa watashitachi ni totte saikō no toshi deshita."
+    },
+    "c374": {
+      "t": "時の試練に耐える",
+      "reading": "ときのしれんにたえる",
+      "r": "toki no shiren ni taeru",
+      "x": "誠実に築かれた開かれた知は時の試練に耐え抜きます。",
+      "xr": "Seijitsu ni kizukareta hirakareta chi wa toki no shiren ni taenukimasu."
+    },
+    "c375": {
+      "t": "生涯学習",
+      "reading": "しょうがいがくしゅう",
+      "r": "shōgai gakushū",
+      "x": "言語の習得は喜びに満ちた生涯学習の冒険です。",
+      "xr": "Gengo no shūtoku wa yorokobi ni michita shōgai gakushū no bōken desu."
+    }
+  }
+}

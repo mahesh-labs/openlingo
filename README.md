@@ -30,13 +30,25 @@ Start learning immediately in any desktop or mobile browser — no installation 
 
 ---
 
-## 📚 Included Curricula (66 Units · 198 Lessons · 990 Curated Items)
+## 📚 Universal 13-Language Curriculum Matrix (156 Courses · 25 Units · 75 Lessons · 375 Items Each)
 
-| Course | Standard | Levels | Units | Lessons | Items |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **English → Japanese** (`en-ja`) | JLPT N5 → N1 | 5 | 24 | 72 | 360 |
-| **English → Spanish** (`en-es`) | CEFR A1 → C1 | 5 | 24 | 72 | 360 |
-| **English → Malayalam** (`en-ml`) | Stage 1 → Stage 5 | 5 | 18 | 54 | 270 |
+Every language below can teach **every other language** (`13 × 12 = 156` complete any-to-any courses from Absolute Beginner to Super Advanced Mastery — e.g. Malayalam → Japanese, Tamil → Korean, Hindi → Arabic, Chinese → French, Russian → Telugu, English → Kannada, and more):
+
+| Language | Native Script | Proficiency Path | Script & Handwriting Board |
+| :--- | :--- | :--- | :--- |
+| **English** (`en`) | English | CEFR A1 → C2 | Vowels & Consonant Digraphs |
+| **Malayalam** (`ml`) | മലയാളം | Stage 1 → Stage 5 | Vowels & Consonants |
+| **Tamil** (`ta`) | தமிழ் | Stage 1 → Stage 5 | 12 Uyir Vowels & 18 Mei Consonants |
+| **Kannada** (`kn`) | ಕನ್ನಡ | Stage 1 → Stage 5 | Swaragalu & Vyanjanagalu |
+| **Telugu** (`te`) | తెలుగు | Stage 1 → Stage 5 | Achulu & Hallulu |
+| **Hindi** (`hi`) | हिन्दी | Stage 1 → Stage 5 | Devanagari Swar & Vyanjan |
+| **Japanese** (`ja`) | 日本語 | JLPT N5 → N1 | 46 Hiragana, 46 Katakana, 86 Kanji |
+| **Chinese (Mandarin)** (`zh`) | 中文 | HSK 1 → HSK 6 | 50 Core Simplified Hanzi + Pinyin |
+| **Korean** (`ko`) | 한국어 | TOPIK 1 → TOPIK 5–6 | 40 Hangul Jamo (Consonants & Vowels) |
+| **Arabic** (`ar`) | العربية | CEFR A1 → C2 (RTL) | 28 Arabic Alphabet Letters (RTL) |
+| **Spanish** (`es`) | Español | CEFR A1 → C2 | Alphabet & Accents |
+| **French** (`fr`) | Français | CEFR A1 → C2 | Accents & Ligatures |
+| **Russian** (`ru`) | Русский | TRKI A1 → C2 | 33 Cyrillic Alphabet Letters |
 
 ---
 

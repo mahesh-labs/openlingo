@@ -4,6 +4,12 @@ import { getScriptSetForCourse } from './src/scripts.js';
 import { mountDrawBoard } from './src/drawboard.js';
 import { APP_CONFIG } from './src/config.js';
 import { uiIcon } from './src/icons.js';
+import {
+  loadMatrixSyllabus,
+  getMatrixLanguages,
+  parseMatrixCourseId,
+  buildMatrixCourse
+} from './src/courseMatrix.js';
 import { normalizeRegistryEntries, fetchGitHubCatalog, fetchCourseFromGitHub } from './src/catalog.js';
 import {
   getGoogleSession,
@@ -34,6 +40,8 @@ const state = {
   courses: [],
   enrolledCourseIds: [],
   activeCourseId: '',
+  pickerSourceLang: 'en',
+  loadingCourse: false,
   showAddCoursePicker: false,
   selectedSectionId: 'sec-n5',
   activeScriptTab: null,
@@ -107,8 +115,30 @@ function shuffle(list) {
 }
 
 function getCourseFlag(course) {
-  const code = (course?.targetLang?.code || 'LN').toUpperCase();
-  return code;
+  const src = (course?.sourceLang?.code || 'EN').toUpperCase();
+  const tgt = (course?.targetLang?.code || 'LN').toUpperCase();
+  return `${src}→${tgt}`;
+}
+
+async function ensureCourseLoaded(courseId) {
+  const existing = state.courses.find((c) => c.id === courseId);
+  if (existing) return existing;
+  const pair = parseMatrixCourseId(courseId);
+  if (!pair) return null;
+  const built = await buildMatrixCourse(pair.sourceCode, pair.targetCode);
+  if (!state.courses.some((c) => c.id === built.id)) {
+    state.courses.push(built);
+  }
+  return built;
+}
+
+function getAvailableMatrixTargets(sourceCode, excludeEnrolled = false) {
+  const langs = getMatrixLanguages();
+  return langs.filter((l) => {
+    if (l.code === sourceCode) return false;
+    if (excludeEnrolled && state.enrolledCourseIds.includes(`${sourceCode}-${l.code}`)) return false;
+    return true;
+  });
 }
 
 function getUnitSolidColor(unitColor) {
@@ -135,9 +165,23 @@ function getActiveCourse() {
   return enrolled.find((c) => c.id === state.activeCourseId) || enrolled[0];
 }
 
-function enrollCourse(courseId, openPath = false) {
-  const target = state.courses.find((c) => c.id === courseId);
-  if (!target) return;
+async function enrollCourse(courseId, openPath = false) {
+  state.loadingCourse = true;
+  render();
+  let target = null;
+  try {
+    target = await ensureCourseLoaded(courseId);
+  } catch (err) {
+    state.profileMessage = `Could not load course ${courseId}: ${err.message}`;
+    state.loadingCourse = false;
+    render();
+    return;
+  }
+  state.loadingCourse = false;
+  if (!target) {
+    render();
+    return;
+  }
   if (!state.enrolledCourseIds.includes(courseId)) {
     state.enrolledCourseIds = [...state.enrolledCourseIds, courseId];
   }
@@ -796,14 +840,16 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
   if (typeof data.audioRate === 'number') state.audioRate = data.audioRate;
   if (typeof data.autoSync === 'boolean') state.autoSync = data.autoSync;
   if (Array.isArray(data.enrolledCourseIds)) {
-    state.enrolledCourseIds = data.enrolledCourseIds.filter((id) => state.courses.some((c) => c.id === id));
+    state.enrolledCourseIds = data.enrolledCourseIds.filter(
+      (id) => state.courses.some((c) => c.id === id) || Boolean(parseMatrixCourseId(id))
+    );
   } else {
     const inferred = new Set();
     Object.keys(state.progress.completedLessons || {}).forEach((k) => {
       const cid = k.split(':')[0];
-      if (cid && state.courses.some((c) => c.id === cid)) inferred.add(cid);
+      if (cid && (state.courses.some((c) => c.id === cid) || parseMatrixCourseId(cid))) inferred.add(cid);
     });
-    if (data.activeCourseId && state.courses.some((c) => c.id === data.activeCourseId)) {
+    if (data.activeCourseId && (state.courses.some((c) => c.id === data.activeCourseId) || parseMatrixCourseId(data.activeCourseId))) {
       inferred.add(data.activeCourseId);
     }
     if (inferred.size > 0) state.enrolledCourseIds = [...inferred];
@@ -813,6 +859,13 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
   } else {
     state.activeCourseId = state.enrolledCourseIds[0] || '';
   }
+
+  // Ensure any matrix courses from the backup are synthesized into memory
+  Promise.all(state.enrolledCourseIds.map((id) => ensureCourseLoaded(id).catch(() => null))).then(() => {
+    const act = getActiveCourse();
+    if (act) state.selectedSectionId = getSections(act)[0]?.id || 'all';
+    render();
+  });
 
   saveLocalState();
   recordSyncTimestamp(sourceLabel, remoteTime || data.exportedAt || new Date().toISOString());
@@ -1001,9 +1054,9 @@ function renderAuthGate() {
         </p>
 
         <div class="auth-pills">
-          <span class="pill accent">JA · Japanese N5–N1</span>
-          <span class="pill accent">ES · Spanish A1–C1</span>
-          <span class="pill accent">ML · Malayalam S1–S5</span>
+          <span class="pill accent">13 Languages</span>
+          <span class="pill accent">156 Language Pairs</span>
+          <span class="pill accent">Beginner → Mastery</span>
         </div>
 
         ${state.authError ? `<div class="draw-feedback retry" style="max-width:none;margin-bottom:14px;">${escapeHtml(state.authError)}</div>` : ''}
@@ -1028,44 +1081,57 @@ function renderAuthGate() {
 function renderCourseOnboarding() {
   const googleSession = getGoogleSession();
   const greetingName = getDisplayName();
+  const langs = getMatrixLanguages();
+  const srcMeta = langs.find((l) => l.code === state.pickerSourceLang) || langs[0];
+  const targets = getAvailableMatrixTargets(srcMeta?.code || 'en', false);
+
   return `
     <div class="auth-screen">
       <div class="onboarding-card">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:46px;height:46px;border-radius:12px;display:block;box-shadow:0 6px 16px rgba(16,185,129,0.25);" />
+          <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:48px;height:48px;border-radius:14px;display:block;box-shadow:0 5px 0 var(--accent-lip);" />
           <div>
-            <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;">Welcome, ${escapeHtml(greetingName)}</div>
-            <h1 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-0.01em;">Pick a course to start</h1>
+            <div style="font-size:12px;font-weight:700;color:var(--accent-text);text-transform:uppercase;letter-spacing:0.05em;">Welcome, ${escapeHtml(greetingName)}</div>
+            <h1 style="margin:0;font-size:24px;font-weight:700;">Pick a course to start</h1>
           </div>
         </div>
-        <p style="margin:6px 0 0;font-size:13px;color:var(--text-muted);">
-          Choose your first language below. You can add or switch extra courses anytime from your <strong>Profile</strong> screen.
+        <p style="margin:6px 0 14px;font-size:14px;color:var(--text-muted);">
+          Choose the language you speak and any language you want to learn (156 pairs · Beginner to Mastery). You can add more anytime from your <strong>Profile</strong>.
         </p>
 
-        <div class="onboarding-course-grid">
-          ${state.courses
-            .map((c) => {
-              const unitsCount = getAllUnits(c).length;
-              const itemsCount = getAllItems(c).length;
-              const sections = getSections(c);
-              const firstLvl = sections[0]?.jlptLevel || '';
-              const lastLvl = sections[sections.length - 1]?.jlptLevel || '';
-              const lvlRange = firstLvl && lastLvl && firstLvl !== lastLvl ? `${firstLvl} → ${lastLvl}` : firstLvl || 'Full Course';
+        <div style="margin-bottom:14px;">
+          <label class="field-label" for="onboarding-source-lang">I speak</label>
+          <select id="onboarding-source-lang" class="course-picker" aria-label="Language you speak">
+            ${langs
+              .map(
+                (l) =>
+                  `<option value="${escapeHtml(l.code)}" ${l.code === srcMeta?.code ? 'selected' : ''}>${escapeHtml(l.name)} (${escapeHtml(l.nativeName)})</option>`
+              )
+              .join('')}
+          </select>
+        </div>
+
+        <label class="field-label">I want to learn</label>
+        <div class="onboarding-course-grid" style="max-height:370px;overflow-y:auto;padding-right:4px;margin-top:8px;">
+          ${targets
+            .map((t) => {
+              const pairId = `${srcMeta.code}-${t.code}`;
+              const lvlRange = `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`;
               return `
-                <button type="button" class="onboarding-course-btn" data-onboarding-pick="${escapeHtml(c.id)}">
+                <button type="button" class="onboarding-course-btn" data-onboarding-pick="${escapeHtml(pairId)}" ${state.loadingCourse ? 'disabled' : ''}>
                   <div style="display:flex;align-items:center;gap:14px;min-width:0;">
-                    <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
+                    <span class="lang-badge">${escapeHtml(t.code.toUpperCase())}</span>
                     <div style="min-width:0;">
                       <div style="font-size:17px;font-weight:700;font-family:var(--font-display);">
-                        ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}
-                        ${c.targetLang.nativeName ? `<span style="color:var(--accent-text);margin-left:4px;">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
+                        ${escapeHtml(srcMeta.name)} → ${escapeHtml(t.name)}
+                        <span style="color:var(--accent-text);margin-left:4px;">(${escapeHtml(t.nativeName)})</span>
                       </div>
                       <div style="font-size:13px;color:var(--text-muted);margin-top:3px;">
-                        ${escapeHtml(lvlRange)} · ${unitsCount} units · ${itemsCount} items
+                        ${escapeHtml(lvlRange)} · 25 units · 375 items
                       </div>
                     </div>
                   </div>
-                  <span class="pill accent">Start ${uiIcon('arrowRight', 15)}</span>
+                  <span class="pill accent">${state.loadingCourse ? 'Loading...' : `Start ${uiIcon('arrowRight', 15)}`}</span>
                 </button>
               `;
             })
@@ -1781,6 +1847,7 @@ function renderPlacementView(course) {
 function renderGuidebookView(course) {
   const unit = state.guidebookUnit;
   if (!unit) return renderSyllabusView(course);
+  const tDir = course.targetLang?.dir === 'rtl' ? 'rtl' : 'ltr';
 
   return `
     ${renderHudBar(course)}
@@ -1799,21 +1866,21 @@ function renderGuidebookView(course) {
       <section class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
           <h3 style="margin:0;">${escapeHtml(lesson.title)}</h3>
-          <button class="btn btn-primary btn-sm" data-start-lesson="${escapeHtml(unit.id)}|${escapeHtml(lesson.id)}">Practice Lesson</button>
+          <button class="btn btn-primary btn-sm" data-start-lesson="${escapeHtml(unit.id)}|${escapeHtml(lesson.id)}">${uiIcon('play', 15)} Practice Lesson</button>
         </div>
         ${lesson.grammarNote ? `<div class="grammar-box"><strong>Grammar Tip:</strong> ${escapeHtml(lesson.grammarNote)}</div>` : ''}
-        <div style="display:grid;gap:8px;">
+        <div style="display:grid;gap:10px;">
           ${lesson.items
             .map(
               (item) => `
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;background:var(--surface-elevated);border:1px solid var(--border);border-radius:10px;">
-              <div>
-                <div style="font-size:17px;font-weight:700;">${escapeHtml(item.term)} ${item.reading && item.reading !== item.term ? `<span style="font-size:13px;color:var(--blue);font-weight:500;">(${escapeHtml(item.reading)})</span>` : ''}</div>
-                ${state.showRomaji && item.transliteration ? `<div style="font-size:12px;color:var(--text-muted);">${escapeHtml(item.transliteration)}</div>` : ''}
-                <div style="font-size:13px;font-weight:600;margin-top:2px;">${escapeHtml(item.translation)}</div>
-                ${item.example ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${escapeHtml(item.example.term)} — ${escapeHtml(item.example.translation)}</div>` : ''}
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;background:var(--surface-elevated);border:2px solid var(--border);border-radius:14px;">
+              <div style="min-width:0;flex:1;">
+                <div dir="${tDir}" style="font-size:19px;font-weight:700;">${escapeHtml(item.term)} ${item.reading && item.reading !== item.term ? `<span style="font-size:13px;color:var(--accent-text);font-weight:600;">(${escapeHtml(item.reading)})</span>` : ''}</div>
+                ${state.showRomaji && item.transliteration ? `<div style="font-size:13px;color:var(--text-muted);">${escapeHtml(item.transliteration)}</div>` : ''}
+                <div style="font-size:14px;font-weight:700;margin-top:2px;">${escapeHtml(item.translation)}</div>
+                ${item.example?.term ? `<div dir="${tDir}" style="font-size:13px;color:var(--text-muted);margin-top:4px;">${escapeHtml(item.example.term)} — ${escapeHtml(item.example.translation)}</div>` : ''}
               </div>
-              <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">🔊</button>
+              <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}" aria-label="Listen">${uiIcon('volume', 17)}</button>
             </div>
           `
             )
@@ -1829,6 +1896,8 @@ function renderGuidebookView(course) {
 function renderLessonView(course) {
   const session = state.lessonSession;
   if (!session) return renderSyllabusView(course);
+  const tDir = course.targetLang?.dir === 'rtl' ? 'rtl' : 'ltr';
+  const sDir = course.sourceLang?.dir === 'rtl' ? 'rtl' : 'ltr';
 
   if (session.showIntro) {
     return `
@@ -1850,19 +1919,19 @@ function renderLessonView(course) {
           ${session.lesson.items
             .map(
               (item) => `
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px;background:var(--surface-elevated);border:1px solid var(--border);border-radius:10px;">
-              <div>
-                <div style="font-size:18px;font-weight:700;">${escapeHtml(item.term)} ${item.reading && item.reading !== item.term ? `<span style="font-size:13px;color:var(--blue);font-weight:500;">(${escapeHtml(item.reading)})</span>` : ''}</div>
-                ${state.showRomaji && item.transliteration ? `<div style="font-size:13px;color:var(--blue);">${escapeHtml(item.transliteration)}</div>` : ''}
-                <div style="font-size:13px;color:var(--text-muted);">${escapeHtml(item.translation)}</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;background:var(--surface-elevated);border:2px solid var(--border);border-radius:14px;">
+              <div style="min-width:0;flex:1;">
+                <div dir="${tDir}" style="font-size:20px;font-weight:700;">${escapeHtml(item.term)} ${item.reading && item.reading !== item.term ? `<span style="font-size:13px;color:var(--accent-text);font-weight:600;">(${escapeHtml(item.reading)})</span>` : ''}</div>
+                ${state.showRomaji && item.transliteration ? `<div style="font-size:13px;color:var(--accent-text);">${escapeHtml(item.transliteration)}</div>` : ''}
+                <div dir="${sDir}" style="font-size:14px;color:var(--text-muted);">${escapeHtml(item.translation)}</div>
               </div>
-              <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">🔊 Listen</button>
+              <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} Listen</button>
             </div>
           `
             )
             .join('')}
         </div>
-        <button class="btn btn-primary" id="begin-drills-btn">Begin Interactive Drills (${session.exercises.length}) →</button>
+        <button class="btn btn-primary" id="begin-drills-btn">Begin Interactive Drills (${session.exercises.length}) ${uiIcon('arrowRight', 18)}</button>
       </section>
     `;
   }
@@ -1872,14 +1941,14 @@ function renderLessonView(course) {
     return `
       ${renderHudBar(course)}
       <section class="card" style="text-align:center;padding:40px 24px;">
-        <div style="font-size:52px;margin-bottom:8px;">🏆</div>
+        <div style="color:var(--gold);margin-bottom:10px;">${uiIcon('trophy', 56)}</div>
         <h1 class="page-title">Lesson Complete!</h1>
         <p class="page-sub">${escapeHtml(session.lesson.title)} · ${accuracy}% accuracy · +25 XP</p>
-        <p style="font-size:13px;color:var(--text-muted);max-width:460px;margin:12px auto 22px;">
+        <p style="font-size:14px;color:var(--text-muted);max-width:460px;margin:12px auto 22px;">
           The next lesson on your path is now unlocked, and all ${session.lesson.items.length} items are synced to your Spaced Repetition flashcards.
         </p>
         <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-          <button class="btn btn-primary" data-nav="syllabus">Continue Learning Path →</button>
+          <button class="btn btn-primary" data-nav="syllabus">Continue Learning Path ${uiIcon('arrowRight', 18)}</button>
           <button class="btn" data-nav="flashcards">Review Flashcards</button>
         </div>
       </section>
@@ -1888,16 +1957,18 @@ function renderLessonView(course) {
 
   const ex = session.exercises[session.index];
   const pct = Math.round((session.index / session.exercises.length) * 100);
+  const promptDir = ex.type === 'mc-to-source' ? tDir : sDir;
+  const optionDir = ex.type === 'mc-to-source' ? sDir : tDir;
 
   return `
     <div class="header-bar" style="margin-bottom:12px;">
       <div>
-        <h1 class="page-title" style="font-size:20px;">${escapeHtml(session.lesson.title)}</h1>
+        <h1 class="page-title" style="font-size:22px;">${escapeHtml(session.lesson.title)}</h1>
         <p class="page-sub">Exercise ${session.index + 1} of ${session.exercises.length}</p>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <span class="hud-chip" style="color:#f43f5e;">❤️ ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
-        <button class="btn btn-sm" data-nav="syllabus">✕ Exit</button>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 17)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
+        <button class="btn btn-sm" data-nav="syllabus">${uiIcon('x', 16)} Exit</button>
       </div>
     </div>
 
@@ -1906,18 +1977,18 @@ function renderLessonView(course) {
     <section class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
         <span class="pill">${escapeHtml(ex.promptLabel)}</span>
-        ${ex.type === 'mc-to-source' ? `<button class="btn btn-sm" data-speak="${escapeHtml(ex.item.term)}">🔊 Audio</button>` : ''}
+        ${ex.type === 'mc-to-source' ? `<button class="btn btn-sm" data-speak="${escapeHtml(ex.item.term)}">${uiIcon('volume', 16)} Audio</button>` : ''}
       </div>
 
-      <div class="prompt-main">${escapeHtml(ex.promptMain)}</div>
-      ${ex.promptSub ? `<div class="prompt-sub">${escapeHtml(ex.promptSub)}</div>` : ''}
-      ${state.showRomaji && ex.type === 'mc-to-source' && ex.promptHint ? `<div style="font-size:14px;color:var(--text-muted);">${escapeHtml(ex.promptHint)}</div>` : ''}
+      <div class="prompt-main" dir="${promptDir}">${escapeHtml(ex.promptMain)}</div>
+      ${ex.promptSub ? `<div class="prompt-sub" dir="${promptDir}">${escapeHtml(ex.promptSub)}</div>` : ''}
+      ${state.showRomaji && ex.type === 'mc-to-source' && ex.promptHint ? `<div style="font-size:15px;color:var(--text-muted);">${escapeHtml(ex.promptHint)}</div>` : ''}
 
       ${
         ex.type === 'type-recall'
           ? `
         <form id="type-answer-form" style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
-          <input class="input" id="type-answer-input" placeholder="Type your answer in ${escapeHtml(course.targetLang.name)}..." value="${escapeHtml(session.typedValue)}" ${session.answered ? 'disabled' : ''} autocomplete="off" />
+          <input class="input" id="type-answer-input" dir="${tDir}" placeholder="Type your answer in ${escapeHtml(course.targetLang.name)}..." value="${escapeHtml(session.typedValue)}" ${session.answered ? 'disabled' : ''} autocomplete="off" />
           ${!session.answered ? `<button class="btn btn-primary" type="submit">Check Answer</button>` : ''}
         </form>
       `
@@ -1931,9 +2002,9 @@ function renderLessonView(course) {
                 else if (opt.id === session.selectedId) cls += ' wrong';
               }
               return `
-              <button class="${cls}" data-option-id="${escapeHtml(opt.id)}" ${session.answered ? 'disabled' : ''}>
+              <button class="${cls}" dir="${optionDir}" data-option-id="${escapeHtml(opt.id)}" ${session.answered ? 'disabled' : ''}>
                 <span>${escapeHtml(opt.label)}</span>
-                ${state.showRomaji && opt.sub ? `<span style="font-size:12px;color:var(--text-muted);font-weight:500;">${escapeHtml(opt.sub)}</span>` : ''}
+                ${state.showRomaji && opt.sub ? `<span style="font-size:13px;color:var(--text-muted);font-weight:600;">${escapeHtml(opt.sub)}</span>` : ''}
               </button>
             `;
             })
@@ -1945,14 +2016,14 @@ function renderLessonView(course) {
       ${
         session.answered
           ? `
-        <div style="margin-top:18px;padding:14px;border-radius:12px;background:${session.wasCorrect ? 'var(--accent-soft)' : 'rgba(244,63,94,0.14)'};display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="margin-top:18px;padding:14px;border-radius:14px;background:${session.wasCorrect ? 'var(--accent-soft)' : 'rgba(225,29,72,0.16)'};display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
           <div>
             <strong>${session.wasCorrect ? 'Nicely done!' : 'Keep practicing!'}</strong>
-            <div style="font-size:13px;color:var(--text-muted);">
-              ${escapeHtml(ex.item.term)} (${escapeHtml(ex.item.transliteration || '')}) — ${escapeHtml(ex.item.translation)}
+            <div style="font-size:14px;color:var(--text-muted);">
+              <span dir="${tDir}">${escapeHtml(ex.item.term)}</span> ${ex.item.transliteration ? `(${escapeHtml(ex.item.transliteration)})` : ''} — <span dir="${sDir}">${escapeHtml(ex.item.translation)}</span>
             </div>
           </div>
-          <button class="btn btn-primary btn-sm" id="next-exercise-btn">Continue →</button>
+          <button class="btn btn-primary btn-sm" id="next-exercise-btn">Continue ${uiIcon('arrowRight', 16)}</button>
         </div>
       `
           : ''
@@ -2373,41 +2444,76 @@ function renderProfileView(course) {
 
       ${
         state.showAddCoursePicker
-          ? `
+          ? (() => {
+              const langs = getMatrixLanguages();
+              const srcMeta = langs.find((l) => l.code === state.pickerSourceLang) || langs[0];
+              const matrixTargets = srcMeta ? getAvailableMatrixTargets(srcMeta.code, true) : [];
+              const customAvailable = availableCourses.filter((c) => !c._matrix);
+              return `
             <div class="add-course-panel" style="margin-bottom:14px;">
-              <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-text);">Available Courses to Add</div>
-              ${
-                availableCourses.length
-                  ? availableCourses
-                      .map((c) => {
-                        const unitsCount = getAllUnits(c).length;
-                        const itemsCount = getAllItems(c).length;
-                        return `
-                          <div class="add-course-row">
-                            <div style="display:flex;align-items:center;gap:12px;min-width:0;">
-                              <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
-                              <div>
-                                <div style="font-weight:700;font-size:15px;font-family:var(--font-display);">
-                                  ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}
-                                  ${c.targetLang.nativeName ? `<span style="color:var(--accent-text);">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
-                                </div>
-                                <div style="font-size:12px;color:var(--text-muted);">${unitsCount} units · ${itemsCount} items</div>
-                              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-text);">Add Any Language Pair (156 Courses)</div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:13px;color:var(--text-muted);white-space:nowrap;">I speak:</span>
+                  <select id="profile-source-lang" class="level-select" style="min-width:160px;padding:7px 10px;font-size:13px;" aria-label="Source language">
+                    ${langs
+                      .map(
+                        (l) =>
+                          `<option value="${escapeHtml(l.code)}" ${l.code === srcMeta?.code ? 'selected' : ''}>${escapeHtml(l.name)} (${escapeHtml(l.nativeName)})</option>`
+                      )
+                      .join('')}
+                  </select>
+                </div>
+              </div>
+              <div style="display:grid;gap:10px;max-height:320px;overflow-y:auto;padding-right:4px;">
+                ${matrixTargets
+                  .map((t) => {
+                    const pairId = `${srcMeta.code}-${t.code}`;
+                    const lvlRange = `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`;
+                    return `
+                      <div class="add-course-row">
+                        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+                          <span class="lang-badge">${escapeHtml(srcMeta.code.toUpperCase())}→${escapeHtml(t.code.toUpperCase())}</span>
+                          <div>
+                            <div style="font-weight:700;font-size:15px;font-family:var(--font-display);">
+                              ${escapeHtml(srcMeta.name)} → ${escapeHtml(t.name)}
+                              <span style="color:var(--accent-text);">(${escapeHtml(t.nativeName)})</span>
                             </div>
-                            <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(c.id)}">${uiIcon('plus', 15)} Add</button>
+                            <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(lvlRange)} · 25 units · 375 items</div>
                           </div>
-                        `;
-                      })
-                      .join('')
-                  : `
-                    <div style="font-size:14px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-                      <span>You've added all built-in courses! Want more languages?</span>
-                      <button type="button" class="btn btn-sm" data-nav="studio">${uiIcon('wrench', 15)} Open Course Studio</button>
-                    </div>
-                  `
-              }
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(pairId)}" ${state.loadingCourse ? 'disabled' : ''}>${uiIcon('plus', 15)} Add</button>
+                      </div>
+                    `;
+                  })
+                  .join('')}
+                ${customAvailable
+                  .map((c) => {
+                    const unitsCount = getAllUnits(c).length;
+                    const itemsCount = getAllItems(c).length;
+                    return `
+                      <div class="add-course-row">
+                        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+                          <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
+                          <div>
+                            <div style="font-weight:700;font-size:15px;font-family:var(--font-display);">${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</div>
+                            <div style="font-size:12px;color:var(--text-muted);">${unitsCount} units · ${itemsCount} items · Custom</div>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(c.id)}">${uiIcon('plus', 15)} Add</button>
+                      </div>
+                    `;
+                  })
+                  .join('')}
+                ${
+                  !matrixTargets.length && !customAvailable.length
+                    ? `<div style="font-size:14px;color:var(--text-muted);">All courses for ${escapeHtml(srcMeta?.name || '')} speakers are already active! Pick another "I speak" language above or open Course Studio.</div>`
+                    : ''
+                }
+              </div>
             </div>
-          `
+          `;
+            })()
           : ''
       }
 
@@ -2667,13 +2773,14 @@ function renderSettingsView(course) {
 }
 
 /* ---------- Events ---------- */
-function switchCourse(newId) {
+async function switchCourse(newId) {
   if (newId === '__add__') {
     state.view = 'profile';
     state.showAddCoursePicker = true;
     render();
     return;
   }
+  await ensureCourseLoaded(newId);
   if (!state.enrolledCourseIds.includes(newId) && state.courses.some((c) => c.id === newId)) {
     state.enrolledCourseIds = [...state.enrolledCourseIds, newId];
     saveLocalState();
@@ -2845,12 +2952,23 @@ function attachEvents(course) {
     });
   }
 
+  const profileSourceLang = document.getElementById('profile-source-lang');
+  if (profileSourceLang) {
+    profileSourceLang.addEventListener('change', (e) => {
+      state.pickerSourceLang = e.target.value;
+      render();
+    });
+  }
+
   document.querySelectorAll('[data-enroll-course]').forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const cid = btn.dataset.enrollCourse;
+      await enrollCourse(cid, false);
       const target = state.courses.find((c) => c.id === cid);
-      state.profileMessage = target ? `Added "${target.sourceLang.name} → ${target.targetLang.name}" to your active courses!` : '';
-      enrollCourse(cid, false);
+      if (target) {
+        state.profileMessage = `Added "${target.sourceLang.name} → ${target.targetLang.name}" to your active courses!`;
+        render();
+      }
     });
   });
 
@@ -3716,16 +3834,16 @@ function renderLessonSheet(course) {
 }
 
 function render() {
-  if (!state.courses.length) return;
+  if (!getMatrixLanguages().length && !state.courses.length) return;
 
   // Cloud pre-sync screen: pull latest Google Drive progress BEFORE loading main UI
   if (state.syncingCloud) {
     document.getElementById('app').innerHTML = `
       <div class="auth-screen">
         <div class="auth-card">
-          <div class="auth-logo">☁️</div>
-          <h1 style="margin:0;font-size:22px;font-weight:800;">Syncing your progress...</h1>
-          <p style="margin:8px 0 0;font-size:14px;color:var(--text-muted);">
+          <div class="auth-logo">${uiIcon('cloud', 38)}</div>
+          <h1 style="margin:0;font-size:24px;font-weight:700;">Syncing your progress...</h1>
+          <p style="margin:8px 0 0;font-size:15px;color:var(--text-muted);">
             Loading your latest lessons, streak, and flashcards from Google Drive.
           </p>
         </div>
@@ -3753,6 +3871,13 @@ function render() {
   // New user onboarding: start with 0 courses and ask which course to begin
   if (getEnrolledCourses().length === 0) {
     document.getElementById('app').innerHTML = renderCourseOnboarding();
+    const onbSrc = document.getElementById('onboarding-source-lang');
+    if (onbSrc) {
+      onbSrc.addEventListener('change', (e) => {
+        state.pickerSourceLang = e.target.value;
+        render();
+      });
+    }
     document.querySelectorAll('[data-onboarding-pick]').forEach((btn) => {
       btn.addEventListener('click', () => {
         enrollCourse(btn.dataset.onboardingPick, true);
@@ -3812,27 +3937,22 @@ async function loadCourseManifest(manifestUrl) {
 async function init() {
   loadLocalState();
 
-  let courseManifestUrls = [
-    './courses/en-ja/course.json',
-    './courses/en-es/course.json',
-    './courses/en-ml/course.json'
-  ];
+  try {
+    await loadMatrixSyllabus();
+  } catch (err) {
+    console.error('Matrix syllabus load failed:', err);
+  }
+
   try {
     const regRes = await fetch('./courses/registry.json');
     if (regRes.ok) {
       const reg = await regRes.json();
       const normalized = normalizeRegistryEntries(reg);
-      if (normalized.length) {
-        state.catalogEntries = normalized;
-        courseManifestUrls = normalized.map((e) => `./${e.path}`);
-      }
+      if (normalized.length) state.catalogEntries = normalized;
     }
   } catch {
-    // Fallback to built-in course list
+    // Ignore optional catalog fetch errors
   }
-
-  const loadedCourses = await Promise.all(courseManifestUrls.map(loadCourseManifest));
-  state.courses = loadedCourses;
 
   try {
     const ghCourses = JSON.parse(localStorage.getItem(STORAGE_KEYS.GITHUB_COURSES) || '[]');
@@ -3850,6 +3970,9 @@ async function init() {
   } catch {
     // Ignore storage errors
   }
+
+  // Synthesize any already-enrolled matrix courses before rendering
+  await Promise.all(state.enrolledCourseIds.map((id) => ensureCourseLoaded(id).catch(() => null)));
 
   const active = getActiveCourse();
   state.selectedSectionId = active?.sections?.[0]?.id || 'all';

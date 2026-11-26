@@ -1,0 +1,2285 @@
+{
+  "code": "ar",
+  "name": "Arabic",
+  "nativeName": "العربية",
+  "version": "3.0.0",
+  "grammarNotes": {
+    "u1": "Arabic Script & Greetings: Arabic is written right-to-left in a connected cursive script. Notice how greetings often come in call-and-response pairs (مرحباً / أهلاً بك، صباح الخير / صباح النور). Read the transliteration alongside the script to master emphatic consonants (ص، ض، ط، ظ) and ع (‘ayn).",
+    "u2": "Nominal Sentences & Attached Pronouns: Arabic has no present-tense verb 'to be'. Simply place subject and predicate together: 'هو أخي الأكبر' (He [is] my older brother). Possessive pronouns attach directly to the end of nouns: -ي (my), -كَ/-كِ (your m./f.), -هُ (his), -ها (her), -نا (our).",
+    "u3": "Numbers, Dual & Time Expressions: Arabic distinguishes singular, dual (-انِ / -ينِ, e.g., تذكرتان = two tickets), and plural! Numbers 3–10 take the opposite gender of the singular noun and are followed by a plural noun (ثلاثة كتب = three books). Future tense adds سَـ or سوف before the present verb.",
+    "u4": "Dining, Definiteness ('الـ') & Construct State (الإضافة): Prefix 'الـ' (al-) makes a noun definite; before sun letters (ت، ث، د، ذ، ر، ز، س، ش، ص، ض، ط، ظ، ل، ن) the 'l' assimilates (الشاي = ash-shāy). Two nouns linked as 'X of Y' form an Iḍāfah where only the final noun takes 'الـ' (كوبُ شايٍ / قائمةُ الطعام).",
+    "u5": "Gender Agreement & Core Verbs: Nouns are masculine or feminine (most feminine nouns end in ة tā’ marbūṭah). Adjectives follow the noun and match it in gender, number, and definiteness (مظلةٌ حمراء / السماءُ صافيةٌ). Present verbs conjugate with prefixes (أ- I, ت- you/she, ي- he, ن- we).",
+    "u6": "Directions, Imperatives & Prepositions: Commands drop the present prefix and use a short ending: 'انعطف يساراً' (turn left), 'سِرْ مباشرةً' (walk straight). Key spatial prepositions include في (in), على (on), إلى (to), من (from), بجانب (next to), and بالقرب من (near).",
+    "u7": "Shopping, Interrogatives & Negation: Ask prices with 'كم سعر...؟' (how much is the price of...?) and yes/no questions with 'هل...؟'. Negate present verbs with 'لا', past verbs with 'لم + jussive', and nominal sentences with 'ليس' (not).",
+    "u8": "Weather, Broken Plurals & Past Tense: Many Arabic plurals are formed internally by changing vowel patterns rather than adding a suffix—called broken plurals (جمع التكسير): جبل -> جبال (mountains), زهرة -> أزهار (flowers), سحابة -> سُحُب (clouds). Past-tense verbs take suffixes for person and gender.",
+    "u9": "Health, Obligation & 'يجب أن': Express necessity or advice with 'يجب أن + subjunctive verb' (يجب أن تزور طبيباً = you must/should see a doctor) or 'ينبغي أن' (ought to). Notice how body parts in pairs (يد hand, عين eye) are grammatically feminine in Arabic!",
+    "u10": "Work, Study & Verbal Nouns (المصدر): Arabic verbal nouns (maṣdar) function like English gerunds: 'تعلّم لغةٍ جديدة يفتح عوالم جديدة' (learning a new language opens new worlds). Notice VSO (Verb–Subject–Object) is classic in formal Arabic, while SVO is also common.",
+    "u11": "Emotions, Opinions & 'أنَّ' Clauses: After verbs of thinking or stating ('أعتقد أنَّ' = I think that), use 'أنَّ' followed by a noun or attached pronoun (أعتقد أنَّ هذا الحل عملي). Adjectives describing feelings often follow the pattern فَعِل or مَفْعُول (سعيد، حزين، قلق، متفاجئ).",
+    "u12": "Storytelling, Past Continuity & Relatives: Relative pronouns agree with their antecedent in gender and number: الذي (m. sg.), التي (f. sg.), الذين (m. pl.). Notice 'قد + past verb' emphasizes completed action, while 'كان + present verb' expresses habitual past.",
+    "u13": "Technology & Derived Verb Forms (الأوزان): Arabic builds modern technical terms from three-letter roots using systematic verb forms (Forms I–X). For example, from ح-د-ث comes تَحْديث (update, Form II), and from ح-م-ل comes تَحْميل (download, Form II).",
+    "u14": "Culture, Passive Voice & Participles: The internal passive changes the verb's vowels (u-i in past, u-a in present): 'يُرحَّب بكل ضيف' (every guest is welcomed). Active participles (اسم الفاعل) and passive participles (اسم المفعول) act as rich descriptive nouns and adjectives.",
+    "u15": "Connectors & Conditionals (الشرط): Master logical connectors: لأنَّ (because), غير أنَّ / لكن (however), على الرغم من أنَّ (although), ولذلك (therefore), وفي الأثناء (meanwhile). Conditional sentences pair إذا (if, likely) or إن (if) with فـ before non-verbal results.",
+    "u16": "Business Register & Form III / VI / X Verbs: Professional Arabic relies heavily on Form III (مفاعلة: تفاوض/مفاوضة negotiation), Form VI (تفاعل: تعاون collaboration), and Form X (استفعال: استثمار investment). Pay attention to precise Iḍāfah chains in contracts and reports.",
+    "u17": "Science & Root-Pattern Productivity: Scientific Fuṣḥā derives crisp terminology from classical roots: بَحْث (research), تَجْرِبة (experiment), نَظَرِيَّة (theory), جاذِبِيَّة (gravity), مُخْتَبَر (laboratory). The suffix -يَّة (-iyyah) forms abstract scientific and conceptual nouns.",
+    "u18": "Environment & Nisbah Adjectives (-يّ / -يَّة): Turn any noun into a relational adjective (النسبة) by adding -يّ (m.) or -يَّة (f.): بيئة -> بيئيّ (environmental), ساحل -> ساحليّ (coastal), طاقة متجدّدة (renewable energy). Non-human plurals always take feminine singular agreement!",
+    "u19": "Civic, Legal & Institutional Discourse: Governance prose frequently uses formal prepositional phrases like بموجب القانون (under the law), في ظل (under/amid), and من خلال (through), alongside passive constructions and abstract nouns ending in -يَّة (شفافية، ديمقراطية، مساواة).",
+    "u20": "Critical Thinking & Subjunctive Nuance: Use 'أنْ' (that/to), 'كي/لكي' (in order to), and 'قبل أنْ' (before) to trigger the subjunctive mood (المنصوب), framing careful hypotheses, clarifications, and balanced counterarguments in debate.",
+    "u21": "Literary Arabic & Rhetoric (البلاغة): Arabic literary criticism draws on the classical sciences of Balāghah—استعارة (metaphor), رمزية (symbolism), مفارقة/سخرية (irony), and فصاحة وبلاغة (eloquence). Notice parallel structures and balanced clauses that give high Arabic prose its musical cadence.",
+    "u22": "Philosophy, Ethics & Abstract Morphology: Philosophical Fuṣḥā makes rich use of Form V/VI/VIII verbal nouns and -يَّة abstracts: وعي (consciousness), استبطان (introspection), مرونة نفسية (resilience), استقلالية (autonomy), تواضع (humility).",
+    "u23": "Arabic Proverbs (الأمثال) & Idioms: Classical and modern Arabic idioms pack vivid imagery into compact phrasing—like 'أصاب كبد الحقيقة' (struck the liver/heart of truth) and 'رُبَّ ضارّةٍ نافعة' (perhaps a harmful thing brings benefit). Learn them as complete idiomatic units.",
+    "u24": "Formal, Diplomatic & Legal Fuṣḥā: Diplomatic and academic Arabic uses elevated discourse markers—على الرغم من (notwithstanding), وبناءً عليه / وبالتالي (consequently), وعلاوةً على ذلك (furthermore), في ضوء (in light of), مع بالغ الاحترام (with due respect)—for authoritative precision.",
+    "u25": "Rhetorical Precision & Native Mastery: At C2 mastery, command concise elegance (الإيجاز), cohesive discourse transitions (بلا أدنى شك، وبالقدر نفسه، وباختصار جامع), and nuanced lexical choice across journalism, academia, diplomacy, and literature."
+  },
+  "items": {
+    "c001": {
+      "t": "مرحباً",
+      "r": "Marḥaban",
+      "x": "مرحباً، يسرّني لقاؤك.",
+      "xr": "Marḥaban, yasurrunī liqā’uk."
+    },
+    "c002": {
+      "t": "صباح الخير",
+      "r": "Ṣabāḥ al-khayr",
+      "x": "صباح الخير، هل نمتَ جيداً؟",
+      "xr": "Ṣabāḥ al-khayr, hal nimta jayyidan?"
+    },
+    "c003": {
+      "t": "طاب مساؤكم",
+      "r": "Ṭāba masā’ukum",
+      "x": "طاب يومكم جميعاً.",
+      "xr": "Ṭāba yawmukum jamī‘an."
+    },
+    "c004": {
+      "t": "مساء الخير",
+      "r": "Masā’ al-khayr",
+      "x": "مساء الخير، أهلاً بك في البيت.",
+      "xr": "Masā’ al-khayr, ahlan bika fī al-bayt."
+    },
+    "c005": {
+      "t": "تصبح على خير",
+      "r": "Tuṣbiḥ ‘alā khayr",
+      "x": "تصبح على خير، أراك غداً.",
+      "xr": "Tuṣbiḥ ‘alā khayr, arāka ghadan."
+    },
+    "c006": {
+      "t": "شكراً لك",
+      "r": "Shukran lak",
+      "x": "شكراً جزيلاً على مساعدتك.",
+      "xr": "Shukran jazīlan ‘alā musā‘adatik."
+    },
+    "c007": {
+      "t": "عفواً",
+      "r": "‘Afwan",
+      "x": "عفواً، في أي وقت.",
+      "xr": "‘Afwan, fī ayy waqt."
+    },
+    "c008": {
+      "t": "من فضلك",
+      "r": "Min faḍlik",
+      "x": "من فضلك تفضّل بالدخول واجلس.",
+      "xr": "Min faḍlik tafaḍḍal bid-dukhūl wajlis."
+    },
+    "c009": {
+      "t": "عذراً",
+      "r": "‘Udhran",
+      "x": "عذراً، هل يمكنني طرح سؤال؟",
+      "xr": "‘Udhran, hal yumkinunī ṭarḥ su’āl?"
+    },
+    "c010": {
+      "t": "أنا آسف",
+      "r": "Anā āsif",
+      "x": "أنا آسف على التأخير.",
+      "xr": "Anā āsif ‘alā at-ta’khīr."
+    },
+    "c011": {
+      "t": "نعم",
+      "r": "Na‘am",
+      "x": "نعم، أفهم ذلك تماماً.",
+      "xr": "Na‘am, afhamu dhālika tamāman."
+    },
+    "c012": {
+      "t": "لا",
+      "r": "Lā",
+      "x": "لا، شكراً لك، أنا بخير.",
+      "xr": "Lā, shukran lak, anā bi-khayr."
+    },
+    "c013": {
+      "t": "وداعاً",
+      "r": "Wadā‘an",
+      "x": "وداعاً، أتمنى لك رحلةً آمنة.",
+      "xr": "Wadā‘an, atamannā laka riḥlatan āminah."
+    },
+    "c014": {
+      "t": "اسمي ...",
+      "r": "Ismī ...",
+      "x": "اسمي مايا.",
+      "xr": "Ismī Māyā."
+    },
+    "c015": {
+      "t": "كيف حالك؟",
+      "r": "Kayfa ḥāluk?",
+      "x": "كيف حالك اليوم؟",
+      "xr": "Kayfa ḥāluk al-yawm?"
+    },
+    "c016": {
+      "t": "أنا",
+      "r": "Anā",
+      "x": "أنا أتعلّم لغةً جديدة.",
+      "xr": "Anā ata‘allamu lughatan jadīdah."
+    },
+    "c017": {
+      "t": "أنتَ",
+      "r": "Anta",
+      "x": "أنتَ تتحدّث بوضوحٍ شديد.",
+      "xr": "Anta tataḥaddathu bi-wuḍūḥin shadīd."
+    },
+    "c018": {
+      "t": "هو",
+      "r": "Huwa",
+      "x": "هو أخي الأكبر.",
+      "xr": "Huwa akhī al-akbar."
+    },
+    "c019": {
+      "t": "هي",
+      "r": "Hiya",
+      "x": "هي طبيبةٌ ماهرة.",
+      "xr": "Hiya ṭabībatun māhirah."
+    },
+    "c020": {
+      "t": "نحن",
+      "r": "Naḥnu",
+      "x": "نحن نعيش في المدينة نفسها.",
+      "xr": "Naḥnu na‘īshu fī al-madīnah nafsihā."
+    },
+    "c021": {
+      "t": "أم",
+      "r": "Umm",
+      "x": "أمي تطبخ طعاماً لذيذاً.",
+      "xr": "Ummī taṭbukhu ṭa‘āman ladhīdhan."
+    },
+    "c022": {
+      "t": "أب",
+      "r": "Ab",
+      "x": "أبي يقرأ الصحيفة كل صباح.",
+      "xr": "Abī yaqra’u aṣ-ṣaḥīfah kull ṣabāḥ."
+    },
+    "c023": {
+      "t": "أخ",
+      "r": "Akh",
+      "x": "أخي يلعب كرة القدم.",
+      "xr": "Akhī yal‘abu kurat al-qadam."
+    },
+    "c024": {
+      "t": "أخت",
+      "r": "Ukht",
+      "x": "أختي تدرس الطب.",
+      "xr": "Ukhtī tadrusu aṭ-ṭibb."
+    },
+    "c025": {
+      "t": "عائلة",
+      "r": "‘Ā’ilah",
+      "x": "تجتمع عائلتي كل يوم أحد.",
+      "xr": "Tajtami‘u ‘ā’ilatī kull yawm aḥad."
+    },
+    "c026": {
+      "t": "صديق",
+      "r": "Ṣadīq",
+      "x": "هي أقرب صديقةٍ إليّ.",
+      "xr": "Hiya aqrabu ṣadīqatin ilayy."
+    },
+    "c027": {
+      "t": "طفل",
+      "r": "Ṭifl",
+      "x": "الطفل يرسم صورةً جميلة.",
+      "xr": "Aṭ-ṭiflu yarsumu ṣūratan jamīlah."
+    },
+    "c028": {
+      "t": "معلّم",
+      "r": "Mu‘allim",
+      "x": "يشرح معلّمنا القواعد بوضوح.",
+      "xr": "Yashraḥu mu‘allimunā al-qawā‘id bi-wuḍūḥ."
+    },
+    "c029": {
+      "t": "طالب",
+      "r": "Ṭālib",
+      "x": "أحضر كل طالبٍ دفتراً.",
+      "xr": "Aḥḍara kull ṭālibin daftaran."
+    },
+    "c030": {
+      "t": "جار",
+      "r": "Jār",
+      "x": "جارنا لطيفٌ جداً.",
+      "xr": "Jārunā laṭīfun jiddan."
+    },
+    "c031": {
+      "t": "واحد",
+      "r": "Wāḥid",
+      "x": "أودّ كوباً واحداً من الشاي.",
+      "xr": "Awaddu kūban wāḥidan min ash-shāy."
+    },
+    "c032": {
+      "t": "اثنان",
+      "r": "Ithnān",
+      "x": "نحتاج إلى تذكرتين من فضلك.",
+      "xr": "Naḥtāju ilā tadhkiratayn min faḍlik."
+    },
+    "c033": {
+      "t": "ثلاثة",
+      "r": "Thalāthah",
+      "x": "توجد ثلاثة كتبٍ على الطاولة.",
+      "xr": "Tūjadu thalāthatu kutubin ‘alā aṭ-ṭāwilah."
+    },
+    "c034": {
+      "t": "خمسة",
+      "r": "Khamsah",
+      "x": "يبدأ الدرس بعد خمس دقائق.",
+      "xr": "Yabda’u ad-dars ba‘da khams daqā’iq."
+    },
+    "c035": {
+      "t": "عشرة",
+      "r": "‘Asharah",
+      "x": "عدّت من واحدٍ إلى عشرة.",
+      "xr": "‘Addat min wāḥidin ilā ‘asharah."
+    },
+    "c036": {
+      "t": "اليوم",
+      "r": "Al-yawm",
+      "x": "اليوم يومٌ مشمس.",
+      "xr": "Al-yawm yawmun mushmis."
+    },
+    "c037": {
+      "t": "غداً",
+      "r": "Ghadan",
+      "x": "غداً سنزور المتحف.",
+      "xr": "Ghadan sanazūru al-matḥaf."
+    },
+    "c038": {
+      "t": "أمس",
+      "r": "Ams",
+      "x": "أمطرت أمس طوال بعد الظهر.",
+      "xr": "Amṭarat ams ṭiwāla ba‘d aẓ-ẓuhr."
+    },
+    "c039": {
+      "t": "الآن",
+      "r": "Al-ān",
+      "x": "أنا مستعدٌ للمغادرة الآن.",
+      "xr": "Anā musta‘iddun lil-mughādarah al-ān."
+    },
+    "c040": {
+      "t": "لاحقاً",
+      "r": "Lāḥiqan",
+      "x": "دعنا نتحدّث عن هذا لاحقاً.",
+      "xr": "Da‘nā nataḥaddath ‘an hādhā lāḥiqan."
+    },
+    "c041": {
+      "t": "صباح",
+      "r": "Ṣabāḥ",
+      "x": "أتمرّن كل صباح.",
+      "xr": "Atamarranu kull ṣabāḥ."
+    },
+    "c042": {
+      "t": "ليل",
+      "r": "Layl",
+      "x": "تلمع النجوم بوضوحٍ في الليل.",
+      "xr": "Talma‘u an-nujūm bi-wuḍūḥin fī al-layl."
+    },
+    "c043": {
+      "t": "أسبوع",
+      "r": "Usbū‘",
+      "x": "كان هذا الأسبوع حافلاً جداً.",
+      "xr": "Kāna hādhā al-usbū‘ ḥāfilan jiddan."
+    },
+    "c044": {
+      "t": "شهر",
+      "r": "Shahr",
+      "x": "في الشهر القادم سنسافر إلى الخارج.",
+      "xr": "Fī ash-shahr al-qādim sanusāfiru ilā al-khārij."
+    },
+    "c045": {
+      "t": "سنة",
+      "r": "Sanah",
+      "x": "كل عامٍ وأنتم بخير بمناسبة السنة الجديدة.",
+      "xr": "Kull ‘āmin wa-antum bi-khayr bi-munāsabat as-sanah al-jadīdah."
+    },
+    "c046": {
+      "t": "ماء",
+      "r": "Mā’",
+      "x": "هل يمكنني الحصول على كوب ماء؟",
+      "xr": "Hal yumkinunī al-ḥuṣūl ‘alā kūb mā’?"
+    },
+    "c047": {
+      "t": "أرز",
+      "r": "Aruzz",
+      "x": "نأكل الأرز المطهوّ بالبخار مع الكاري.",
+      "xr": "Na’kulu al-aruzz al-maṭhuww bil-bukhār ma‘a al-kārī."
+    },
+    "c048": {
+      "t": "خبز",
+      "r": "Khubz",
+      "x": "للخبز الطازج رائحةٌ رائعة.",
+      "xr": "Lil-khubz aṭ-ṭāzaj rā’iḥatun rā’i‘ah."
+    },
+    "c049": {
+      "t": "فاكهة",
+      "r": "Fākihah",
+      "x": "تناول الكثير من الفاكهة الطازجة يومياً.",
+      "xr": "Tanāwal al-kathīr min al-fākihah aṭ-ṭāzajah yawmiyyan."
+    },
+    "c050": {
+      "t": "حليب",
+      "r": "Ḥalīb",
+      "x": "هل تضيف الحليب إلى قهوتك؟",
+      "xr": "Hal tuḍīfu al-ḥalīb ilā qahwatik?"
+    },
+    "c051": {
+      "t": "شاي",
+      "r": "Shāy",
+      "x": "الشاي الساخن مريحٌ جداً في الشتاء.",
+      "xr": "Ash-shāy as-sākhin murīḥun jiddan fī ash-shitā’."
+    },
+    "c052": {
+      "t": "قهوة",
+      "r": "Qahwah",
+      "x": "أشرب القهوة السوداء في الصباح.",
+      "xr": "Ashrabu al-qahwah as-sawdā’ fī aṣ-ṣabāḥ."
+    },
+    "c053": {
+      "t": "إفطار",
+      "r": "Ifṭār",
+      "x": "الإفطار هو الوجبة الأولى في اليوم.",
+      "xr": "Al-ifṭār huwa al-wajbah al-ūlā fī al-yawm."
+    },
+    "c054": {
+      "t": "غداء",
+      "r": "Ghadā’",
+      "x": "إلى أين نذهب لتناول الغداء؟",
+      "xr": "Ilā ayna nadhhabu li-tanāwul al-ghadā’?"
+    },
+    "c055": {
+      "t": "عشاء",
+      "r": "‘Ashā’",
+      "x": "سيكون العشاء جاهزاً في الساعة السابعة.",
+      "xr": "Sayakūnu al-‘ashā’ jāhizan fī as-sā‘ah as-sābi‘ah."
+    },
+    "c056": {
+      "t": "لذيذ",
+      "r": "Ladhīdh",
+      "x": "هذا الطبق لذيذٌ حقاً.",
+      "xr": "Hādhā aṭ-ṭabaq ladhīdhun ḥaqqan."
+    },
+    "c057": {
+      "t": "جائع",
+      "r": "Jā’i‘",
+      "x": "أنا جائعٌ جداً بعد المشي.",
+      "xr": "Anā jā’i‘un jiddan ba‘da al-mashy."
+    },
+    "c058": {
+      "t": "عطشان",
+      "r": "‘Aṭshān",
+      "x": "أشعر بالعطش في هذا الحرّ.",
+      "xr": "Ash‘uru bil-‘aṭash fī hādhā al-ḥarr."
+    },
+    "c059": {
+      "t": "قائمة الطعام",
+      "r": "Qā’imat aṭ-ṭa‘ām",
+      "x": "هل يمكنني رؤية قائمة الطعام من فضلك؟",
+      "xr": "Hal yumkinunī ru’yat qā’imat aṭ-ṭa‘ām min faḍlik?"
+    },
+    "c060": {
+      "t": "فاتورة",
+      "r": "Fātūrah",
+      "x": "هل يمكننا الحصول على الفاتورة من فضلك؟",
+      "xr": "Hal yumkinunā al-ḥuṣūl ‘alā al-fātūrah min faḍlik?"
+    },
+    "c061": {
+      "t": "بيت",
+      "r": "Bayt",
+      "x": "يضمّ بيتهم حديقةً صغيرة.",
+      "xr": "Yaḍummu baytuhum ḥadīqatan ṣaghīrah."
+    },
+    "c062": {
+      "t": "غرفة",
+      "r": "Ghurfah",
+      "x": "في غرفتي نافذةٌ كبيرة.",
+      "xr": "Fī ghurfatī nāfidhatun kabīrah."
+    },
+    "c063": {
+      "t": "طاولة",
+      "r": "Ṭāwilah",
+      "x": "ضع المفاتيح على الطاولة.",
+      "xr": "Ḍa‘ al-mafātīḥ ‘alā aṭ-ṭāwilah."
+    },
+    "c064": {
+      "t": "كتاب",
+      "r": "Kitāb",
+      "x": "هذا الكتاب سهل القراءة.",
+      "xr": "Hādhā al-kitāb sahl al-qirā’ah."
+    },
+    "c065": {
+      "t": "باب",
+      "r": "Bāb",
+      "x": "من فضلك أغلق الباب برفق.",
+      "xr": "Min faḍlik aghliq al-bāb bi-rifq."
+    },
+    "c066": {
+      "t": "أحمر",
+      "r": "Aḥmar",
+      "x": "اشترت مظلّةً حمراء زاهية.",
+      "xr": "Ishtarat miẓallatan ḥamrā’ zāhiyah."
+    },
+    "c067": {
+      "t": "أزرق",
+      "r": "Azraq",
+      "x": "السماء صافيةٌ وزرقاء.",
+      "xr": "As-samā’ ṣāfiyatun wa-zarqā’."
+    },
+    "c068": {
+      "t": "أبيض",
+      "r": "Abyaḍ",
+      "x": "غطّى الثلج الأرض باللون الأبيض.",
+      "xr": "Ghaṭṭā ath-thalj al-arḍ bil-lawn al-abyaḍ."
+    },
+    "c069": {
+      "t": "كبير",
+      "r": "Kabīr",
+      "x": "انتقلوا للعيش في مدينةٍ كبيرة.",
+      "xr": "Intaqalū lil-‘aysh fī madīnatin kabīrah."
+    },
+    "c070": {
+      "t": "صغير",
+      "r": "Ṣaghīr",
+      "x": "غرّد طائرٌ صغير على الغصن.",
+      "xr": "Gharrada ṭā’irun ṣaghīr ‘alā al-ghuṣn."
+    },
+    "c071": {
+      "t": "ذهب",
+      "r": "Dhahaba",
+      "x": "أذهب إلى العمل بالقطار.",
+      "xr": "Adhhabu ilā al-‘amal bil-qiṭār."
+    },
+    "c072": {
+      "t": "أتى",
+      "r": "Atā",
+      "x": "من فضلك تعال إلى احتفالنا.",
+      "xr": "Min faḍlik ta‘āl ilā iḥtifālinā."
+    },
+    "c073": {
+      "t": "أكل",
+      "r": "Akala",
+      "x": "نتناول العشاء معاً في الثامنة.",
+      "xr": "Natanāwalu al-‘ashā’ ma‘an fī ath-thāminah."
+    },
+    "c074": {
+      "t": "شرب",
+      "r": "Shariba",
+      "x": "تذكّر أن تشرب كميةً كافية من الماء.",
+      "xr": "Tadhakkar an tashraba kammiyyatan kāfiyah min al-mā’."
+    },
+    "c075": {
+      "t": "نام",
+      "r": "Nāma",
+      "x": "أحاول أن أنام ثماني ساعاتٍ كل ليلة.",
+      "xr": "Uḥāwilu an anāma thamānī sā‘ātin kull laylah."
+    },
+    "c076": {
+      "t": "قطار",
+      "r": "Qiṭār",
+      "x": "يصل القطار السريع عند الظهيرة.",
+      "xr": "Yaṣilu al-qiṭār as-sarī‘ ‘inda aẓ-ẓahīrah."
+    },
+    "c077": {
+      "t": "حافلة",
+      "r": "Ḥāfilah",
+      "x": "استقلّ الحافلة الثانية إلى وسط المدينة.",
+      "xr": "Istaqill al-ḥāfilah ath-thāniyah ilā wasaṭ al-madīnah."
+    },
+    "c078": {
+      "t": "مطار",
+      "r": "Maṭār",
+      "x": "وصلنا إلى المطار قبل ساعتين.",
+      "xr": "Waṣalnā ilā al-maṭār qabla sā‘atayn."
+    },
+    "c079": {
+      "t": "تذكرة",
+      "r": "Tadhkirah",
+      "x": "احتفظ بتذكرتك حتى الخروج.",
+      "xr": "Iḥtafiẓ bi-tadhkiratik ḥattā al-khurūj."
+    },
+    "c080": {
+      "t": "محطة",
+      "r": "Maḥaṭṭah",
+      "x": "تبعد المحطة خمس دقائق سيراً.",
+      "xr": "Tab‘udu al-maḥaṭṭah khams daqā’iq sayran."
+    },
+    "c081": {
+      "t": "يسار",
+      "r": "Yasār",
+      "x": "انعطف يساراً عند إشارة المرور القادمة.",
+      "xr": "In‘aṭif yasāran ‘inda ishārat al-murūr al-qādimah."
+    },
+    "c082": {
+      "t": "يمين",
+      "r": "Yamīn",
+      "x": "تقع الصيدلية على يمينك.",
+      "xr": "Taqa‘u aṣ-ṣaydaliyyah ‘alā yamīnik."
+    },
+    "c083": {
+      "t": "مباشرة",
+      "r": "Mubāsharatan",
+      "x": "سِرْ مباشرةً لمسافة شارعين.",
+      "xr": "Sir mubāsharatan li-masāfat shāri‘ayn."
+    },
+    "c084": {
+      "t": "قريب",
+      "r": "Qarīb",
+      "x": "هل يوجد فندقٌ قريب من هنا؟",
+      "xr": "Hal yūjadu funduqun qarīb min hunā?"
+    },
+    "c085": {
+      "t": "بعيد",
+      "r": "Ba‘īd",
+      "x": "الشاطئ ليس بعيداً عن البلدة.",
+      "xr": "Ash-shāṭi’ laysa ba‘īdan ‘an al-baldah."
+    },
+    "c086": {
+      "t": "خريطة",
+      "r": "Kharīṭah",
+      "x": "دعنا نتحقّق من المسار على الخريطة.",
+      "xr": "Da‘nā nataḥaqqaq min al-masār ‘alā al-kharīṭah."
+    },
+    "c087": {
+      "t": "فندق",
+      "r": "Funduq",
+      "x": "حجزنا فندقاً هادئاً في وسط المدينة.",
+      "xr": "Ḥajaznā funduqan hādi’an fī wasaṭ al-madīnah."
+    },
+    "c088": {
+      "t": "جواز سفر",
+      "r": "Jawāz safar",
+      "x": "لا تنسَ جواز سفرك في البيت.",
+      "xr": "Lā tansa jawāz safarik fī al-bayt."
+    },
+    "c089": {
+      "t": "أمتعة",
+      "r": "Amti‘ah",
+      "x": "أمتعتي ثقيلةٌ جداً اليوم.",
+      "xr": "Amti‘atī thaqīlatun jiddan al-yawm."
+    },
+    "c090": {
+      "t": "أين ...؟",
+      "r": "Ayna ...?",
+      "x": "أين أقرب مخرجٍ للمترو؟",
+      "xr": "Ayna aqrabu makhrajin lil-mitrū?"
+    },
+    "c091": {
+      "t": "مال",
+      "r": "Māl",
+      "x": "ادّخر جزءاً من مالك شهرياً.",
+      "xr": "Iddakhir juz’an min mālik shahriyyan."
+    },
+    "c092": {
+      "t": "سعر",
+      "r": "Si‘r",
+      "x": "كم سعر هذه السترة؟",
+      "xr": "Kam si‘r hādhihi as-sutrah?"
+    },
+    "c093": {
+      "t": "رخيص",
+      "r": "Rakhīṣ",
+      "x": "الخضروات رخيصةٌ في سوق الصباح.",
+      "xr": "Al-khaḍrawāt rakhīṣatun fī sūq aṣ-ṣabāḥ."
+    },
+    "c094": {
+      "t": "غالٍ",
+      "r": "Ghālin",
+      "x": "تلك الساعة غاليةٌ جداً بالنسبة لي.",
+      "xr": "Tilka as-sā‘ah ghāliyatun jiddan bin-nisbah lī."
+    },
+    "c095": {
+      "t": "خصم",
+      "r": "Khaṣm",
+      "x": "هل يتوفّر خصمٌ للطلاب؟",
+      "xr": "Hal yatawaffaru khaṣmun liṭ-ṭullāb?"
+    },
+    "c096": {
+      "t": "متجر",
+      "r": "Matjar",
+      "x": "يفتح ذلك المتجر عند الزاوية الساعة الثامنة.",
+      "xr": "Yaftaḥu dhālika al-matjar ‘inda az-zāwiyah as-sā‘ah ath-thāminah."
+    },
+    "c097": {
+      "t": "سوق",
+      "r": "Sūq",
+      "x": "يكون السوق المحلي مفعماً بالحياة أيام السبت.",
+      "xr": "Yakūnu as-sūq al-maḥallī muf‘aman bil-ḥayāh ayyām as-sabt."
+    },
+    "c098": {
+      "t": "اشترى",
+      "r": "Ishtarā",
+      "x": "أريد أن أشتري معطفاً دافئاً.",
+      "xr": "Urīdu an ashtariya mi‘ṭafan dāfi’an."
+    },
+    "c099": {
+      "t": "دفع",
+      "r": "Dafa‘a",
+      "x": "هل يمكنني الدفع بالبطاقة أم نقداً؟",
+      "xr": "Hal yumkinunī ad-daf‘ bil-biṭāqah am naqdan?"
+    },
+    "c100": {
+      "t": "إيصال",
+      "r": "Īṣāl",
+      "x": "من فضلك أعطني الإيصال.",
+      "xr": "Min faḍlik a‘ṭinī al-īṣāl."
+    },
+    "c101": {
+      "t": "قميص",
+      "r": "Qamīṣ",
+      "x": "هذا القميص القطني مريحٌ جداً.",
+      "xr": "Hādhā al-qamīṣ al-quṭnī murīḥun jiddan."
+    },
+    "c102": {
+      "t": "حذاء",
+      "r": "Ḥidhā’",
+      "x": "أحتاج إلى حذاءٍ متين للمشي في الجبال.",
+      "xr": "Aḥtāju ilā ḥidhā’in matīn lil-mashy fī al-jibāl."
+    },
+    "c103": {
+      "t": "حقيبة",
+      "r": "Ḥaqībah",
+      "x": "كانت تحمل حقيبةً جلدية.",
+      "xr": "Kānat taḥmilu ḥaqībatan jildiyyah."
+    },
+    "c104": {
+      "t": "جديد",
+      "r": "Jadīd",
+      "x": "ارتدى سترته الجديدة اليوم.",
+      "xr": "Irtadā sutratahu al-jadīdah al-yawm."
+    },
+    "c105": {
+      "t": "مقاس",
+      "r": "Maqās",
+      "x": "هل لديكم هذا بمقاسٍ متوسط؟",
+      "xr": "Hal ladaykum hādhā bi-maqāsin mutawassiṭ?"
+    },
+    "c106": {
+      "t": "شمس",
+      "r": "Shams",
+      "x": "جفّفت الشمس الدافئة الطريق المبلّل.",
+      "xr": "Jaffafat ash-shams ad-dāfi’ah aṭ-ṭarīq al-muballal."
+    },
+    "c107": {
+      "t": "مطر",
+      "r": "Maṭar",
+      "x": "أحضر مظلّةً تحسّباً لهطول المطر.",
+      "xr": "Aḥḍir miẓallatan taḥassuban li-huṭūl al-maṭar."
+    },
+    "c108": {
+      "t": "ريح",
+      "r": "Rīḥ",
+      "x": "هبّت ريحٌ باردة من البحر.",
+      "xr": "Habbat rīḥun bāridah min al-baḥr."
+    },
+    "c109": {
+      "t": "حارّ",
+      "r": "Ḥārr",
+      "x": "فترة بعد الظهر في الصيف حارّةٌ جداً هنا.",
+      "xr": "Fatrat ba‘d aẓ-ẓuhr fī aṣ-ṣayf ḥārratun jiddan hunā."
+    },
+    "c110": {
+      "t": "بارد",
+      "r": "Bārid",
+      "x": "ارتدِ وشاحاً عندما يكون الجوّ بارداً.",
+      "xr": "Irtadi wishāḥan ‘indamā yakūnu al-jaww bāridan."
+    },
+    "c111": {
+      "t": "صيف",
+      "r": "Ṣayf",
+      "x": "نسبح كثيراً خلال فصل الصيف.",
+      "xr": "Nasbaḥu kathīran khilāla faṣl aṣ-ṣayf."
+    },
+    "c112": {
+      "t": "شتاء",
+      "r": "Shitā’",
+      "x": "ليالي الشتاء طويلةٌ وهادئة.",
+      "xr": "Layālī ash-shitā’ ṭawīlatun wa-hādi’ah."
+    },
+    "c113": {
+      "t": "ربيع",
+      "r": "Rabī‘",
+      "x": "تتفتّح الأزهار في كل مكانٍ في الربيع.",
+      "xr": "Tatafattaḥu al-azhār fī kull makānin fī ar-rabī‘."
+    },
+    "c114": {
+      "t": "سحابة",
+      "r": "Saḥābah",
+      "x": "تجمّعت السحب الداكنة قبل العاصفة.",
+      "xr": "Tajamma‘at as-suḥub ad-dākinah qabla al-‘āṣifah."
+    },
+    "c115": {
+      "t": "ثلج",
+      "r": "Thalj",
+      "x": "صنع الأطفال رجل ثلجٍ من الثلج الطازج.",
+      "xr": "Ṣana‘a al-aṭfāl rajula thaljin min ath-thalj aṭ-ṭāzaj."
+    },
+    "c116": {
+      "t": "جبل",
+      "r": "Jabal",
+      "x": "تسلّقنا الجبل قبل شروق الشمس.",
+      "xr": "Tasallaqnā al-jabal qabla shurūq ash-shams."
+    },
+    "c117": {
+      "t": "نهر",
+      "r": "Nahr",
+      "x": "يجري نهرٌ واسع عبر الوادي.",
+      "xr": "Yajrī nahrun wāsi‘ ‘abra al-wādī."
+    },
+    "c118": {
+      "t": "بحر",
+      "r": "Baḥr",
+      "x": "يبدو البحر هادئاً هذا المساء.",
+      "xr": "Yabdū al-baḥr hādi’an hādhā al-masā’."
+    },
+    "c119": {
+      "t": "شجرة",
+      "r": "Shajarah",
+      "x": "تظلّل شجرةٌ عريقة فناء الدار.",
+      "xr": "Tuẓallilu shajaratun ‘arīqah finā’ ad-dār."
+    },
+    "c120": {
+      "t": "زهرة",
+      "r": "Zahrah",
+      "x": "تفتّحت كل زهرةٍ في الحديقة.",
+      "xr": "Tafattaḥat kull zahratin fī al-ḥadīqah."
+    },
+    "c121": {
+      "t": "رأس",
+      "r": "Ra’s",
+      "x": "يؤلمني رأسي من القراءة طوال اليوم.",
+      "xr": "Yu’limunī ra’sī min al-qirā’ah ṭiwāla al-yawm."
+    },
+    "c122": {
+      "t": "يد",
+      "r": "Yad",
+      "x": "اغسل يديك قبل الأكل.",
+      "xr": "Ighsil yadayk qabla al-akl."
+    },
+    "c123": {
+      "t": "عين",
+      "r": "‘Ayn",
+      "x": "أرِح عينيك بعيداً عن الشاشات.",
+      "xr": "Ariḥ ‘aynayk ba‘īdan ‘an ash-shāshāt."
+    },
+    "c124": {
+      "t": "قلب",
+      "r": "Qalb",
+      "x": "الرياضة تحافظ على قوة قلبك.",
+      "xr": "Ar-riyāḍah tuḥāfiẓu ‘alā quwwat qalbik."
+    },
+    "c125": {
+      "t": "معدة",
+      "r": "Ma‘idah",
+      "x": "اشرب ماءً دافئاً إذا آلمتك معدتك.",
+      "xr": "Ishrab mā’an dāfi’an idhā ālamatka ma‘idatuk."
+    },
+    "c126": {
+      "t": "طبيب",
+      "r": "Ṭabīb",
+      "x": "ينبغي أن تزور الطبيب اليوم.",
+      "xr": "Yanbaghī an tazūra aṭ-ṭabīb al-yawm."
+    },
+    "c127": {
+      "t": "مستشفى",
+      "r": "Mustashfā",
+      "x": "يعمل المستشفى على مدار أربعٍ وعشرين ساعة.",
+      "xr": "Ya‘malu al-mustashfā ‘alā madār arba‘in wa-‘ishrīn sā‘ah."
+    },
+    "c128": {
+      "t": "دواء",
+      "r": "Dawā’",
+      "x": "تناول هذا الدواء بعد الوجبات.",
+      "xr": "Tanāwal hādhā ad-dawā’ ba‘da al-wajabāt."
+    },
+    "c129": {
+      "t": "ألم",
+      "r": "Alam",
+      "x": "أخبر الممرّضة بمكان الألم.",
+      "xr": "Akhbir al-mumarriḍah bi-makān al-alam."
+    },
+    "c130": {
+      "t": "حمّى",
+      "r": "Ḥummā",
+      "x": "بقي في البيت بسبب حمّى خفيفة.",
+      "xr": "Baqiya fī al-bayt bi-sabab ḥummā khafīfah."
+    },
+    "c131": {
+      "t": "مساعدة",
+      "r": "Musā‘adah",
+      "x": "من فضلك ساعدني في حمل هذا الصندوق.",
+      "xr": "Min faḍlik sā‘idnī fī ḥaml hādhā aṣ-ṣundūq."
+    },
+    "c132": {
+      "t": "شرطة",
+      "r": "Shurṭah",
+      "x": "اتّصل بالشرطة في حالة الطوارئ.",
+      "xr": "Ittaṣil bish-shurṭah fī ḥālat aṭ-ṭawāri’."
+    },
+    "c133": {
+      "t": "طوارئ",
+      "r": "Ṭawāri’",
+      "x": "احتفظ بأرقام الطوارئ محفوظةً في هاتفك.",
+      "xr": "Iḥtafiẓ bi-arqām aṭ-ṭawāri’ maḥfūẓatan fī hātifik."
+    },
+    "c134": {
+      "t": "راحة",
+      "r": "Rāḥah",
+      "x": "احصل على قسطٍ وافر من الراحة لتتعافى سريعاً.",
+      "xr": "Iḥṣul ‘alā qisṭin wāfir min ar-rāḥah li-tata‘āfā sarī‘an."
+    },
+    "c135": {
+      "t": "صحّي",
+      "r": "Ṣiḥḥī",
+      "x": "النظام الغذائي المتوازن يبقيك بصحةٍ جيدة.",
+      "xr": "An-niẓām al-ghidhā’ī al-mutawāzin yubqīka bi-ṣiḥḥatin jayyidah."
+    },
+    "c136": {
+      "t": "مدرسة",
+      "r": "Madrasah",
+      "x": "يمشي الأطفال إلى المدرسة معاً.",
+      "xr": "Yamshī al-aṭfāl ilā al-madrasah ma‘an."
+    },
+    "c137": {
+      "t": "جامعة",
+      "r": "Jāmi‘ah",
+      "x": "تدرس الهندسة في الجامعة.",
+      "xr": "Tadrusu al-handasah fī al-jāmi‘ah."
+    },
+    "c138": {
+      "t": "امتحان",
+      "r": "Imtiḥān",
+      "x": "استعددتُ بعنايةٍ للامتحان النهائي.",
+      "xr": "Ista‘dadtu bi-‘ināyatin lil-imtiḥān an-nihā’ī."
+    },
+    "c139": {
+      "t": "لغة",
+      "r": "Lughah",
+      "x": "تعلّم لغةٍ يفتح عوالم جديدة.",
+      "xr": "Ta‘allumu lughatin yaftaḥu ‘awālima jadīdah."
+    },
+    "c140": {
+      "t": "سؤال",
+      "r": "Su’āl",
+      "x": "هذا سؤالٌ عميق ومدروس.",
+      "xr": "Hādhā su’ālun ‘amīq wa-madrūs."
+    },
+    "c141": {
+      "t": "عمل",
+      "r": "‘Amal",
+      "x": "ينهي عمله في الساعة السادسة.",
+      "xr": "Yunhī ‘amalahu fī as-sā‘ah as-sādisah."
+    },
+    "c142": {
+      "t": "مكتب",
+      "r": "Maktab",
+      "x": "يقع مكتبنا في الطابق الرابع.",
+      "xr": "Yaqa‘u maktabunā fī aṭ-ṭābiq ar-rābi‘."
+    },
+    "c143": {
+      "t": "اجتماع",
+      "r": "Ijtimā‘",
+      "x": "يبدأ اجتماع الفريق في الساعة العاشرة.",
+      "xr": "Yabda’u ijtimā‘ al-farīq fī as-sā‘ah al-‘āshirah."
+    },
+    "c144": {
+      "t": "زميل",
+      "r": "Zamīl",
+      "x": "ساعدني زميلي في إصلاح الخلل البرمجي.",
+      "xr": "Sā‘adanī zamīlī fī iṣlāḥ al-khalal al-barmajī."
+    },
+    "c145": {
+      "t": "مشغول",
+      "r": "Mashghūl",
+      "x": "أنا مشغولٌ جداً حتى يوم الجمعة.",
+      "xr": "Anā mashghūlun jiddan ḥattā yawm al-jumu‘ah."
+    },
+    "c146": {
+      "t": "موسيقى",
+      "r": "Mūsīqā",
+      "x": "الاستماع إلى الموسيقى يساعدني على الاسترخاء.",
+      "xr": "Al-istimā‘ ilā al-mūsīqā yusā‘idunī ‘alā al-istirkhā’."
+    },
+    "c147": {
+      "t": "فيلم",
+      "r": "Fīlm",
+      "x": "شاهدنا فيلماً ملهماً الليلة الماضية.",
+      "xr": "Shāhadnā fīlman mulhiman al-laylah al-māḍiyah."
+    },
+    "c148": {
+      "t": "رياضة",
+      "r": "Riyāḍah",
+      "x": "أيّ رياضةٍ تستمتع بمشاهدتها؟",
+      "xr": "Ayyu riyāḍatin tastamti‘u bi-mushāhadatihā?"
+    },
+    "c149": {
+      "t": "سفر",
+      "r": "Safar",
+      "x": "أحبّ السفر بالقطار.",
+      "xr": "Uḥibbu as-safar bil-qiṭār."
+    },
+    "c150": {
+      "t": "هواية",
+      "r": "Hiwāyah",
+      "x": "التصوير الفوتوغرافي هوايتي المفضّلة في عطلة نهاية الأسبوع.",
+      "xr": "At-taṣwīr al-fūtūghrāfī hiwāyatī al-mufaḍḍalah fī ‘uṭlat nihāyat al-usbū‘."
+    },
+    "c151": {
+      "t": "سعيد",
+      "r": "Sa‘īd",
+      "x": "أنا سعيدٌ حقاً بسماع أخبارك.",
+      "xr": "Anā sa‘īdun ḥaqqan bi-samā‘ akhbārik."
+    },
+    "c152": {
+      "t": "حزين",
+      "r": "Ḥazīn",
+      "x": "من الطبيعي أن نشعر بالحزن أحياناً.",
+      "xr": "Min aṭ-ṭabī‘ī an nash‘ura bil-ḥuzn aḥyānan."
+    },
+    "c153": {
+      "t": "غاضب",
+      "r": "Ghāḍib",
+      "x": "خذ نفساً عميقاً قبل التحدّث حين تكون غاضباً.",
+      "xr": "Khudh nafasan ‘amīqan qabla at-taḥadduth ḥīna takūnu ghāḍiban."
+    },
+    "c154": {
+      "t": "متفاجئ",
+      "r": "Mutafāji’",
+      "x": "تفاجأ الجميع بالإعلان المفاجئ.",
+      "xr": "Tafāja’a al-jamī‘ bil-i‘lān al-mufāji’."
+    },
+    "c155": {
+      "t": "قلق",
+      "r": "Qaliq",
+      "x": "لا تقلق؛ كل شيءٍ سيسير على ما يرام.",
+      "xr": "Lā taqlaq; kull shay’in sayasīru ‘alā mā yurām."
+    },
+    "c156": {
+      "t": "لطيف",
+      "r": "Laṭīf",
+      "x": "لفتةٌ لطيفة يمكن أن تبهج يوم أحدهم.",
+      "xr": "Laftatun laṭīfah yumkinu an tubhija yawma aḥadihim."
+    },
+    "c157": {
+      "t": "صادق",
+      "r": "Ṣādiq",
+      "x": "أقدّر ملاحظاتك الصادقة.",
+      "xr": "Uqaddiru mulāḥaẓātik aṣ-ṣādiqah."
+    },
+    "c158": {
+      "t": "صبور",
+      "r": "Ṣabūr",
+      "x": "إتقان الطلاقة يتطلّب التحلّي بالصبر.",
+      "xr": "Itqān aṭ-ṭalāqah yataṭallabu at-taḥallī biṣ-ṣabr."
+    },
+    "c159": {
+      "t": "شجاع",
+      "r": "Shujā‘",
+      "x": "كان من الشجاعة التحدّث بصراحةٍ أمام الملأ.",
+      "xr": "Kāna min ash-shajā‘ah at-taḥadduth bi-ṣarāḥatin amāma al-mala’."
+    },
+    "c160": {
+      "t": "فضولي",
+      "r": "Fuḍūlī",
+      "x": "العقول الفضولية لا تتوقف أبداً عن الاكتشاف.",
+      "xr": "Al-‘uqūl al-fuḍūliyyah lā tatawaqqafu abadan ‘an al-iktishāf."
+    },
+    "c161": {
+      "t": "أعتقد",
+      "r": "A‘taqidu",
+      "x": "أعتقد أن هذا الحل عمليّ.",
+      "xr": "A‘taqidu anna hādhā al-ḥall ‘amaliyy."
+    },
+    "c162": {
+      "t": "أوافق",
+      "r": "Uwāfiqu",
+      "x": "أوافق على نقطتك الأساسية.",
+      "xr": "Uwāfiqu ‘alā nuqṭatik al-asāsiyyah."
+    },
+    "c163": {
+      "t": "رأي",
+      "r": "Ra’y",
+      "x": "لكل شخصٍ الحق في إبداء رأيه.",
+      "xr": "Li-kull shakhṣin al-ḥaqq fī ibdā’ ra’yih."
+    },
+    "c164": {
+      "t": "مهمّ",
+      "r": "Muhimm",
+      "x": "التواصل الواضح مهمٌ جداً.",
+      "xr": "At-tawāṣul al-wāḍiḥ muhimmun jiddan."
+    },
+    "c165": {
+      "t": "ممكن",
+      "r": "Mumkin",
+      "x": "كل شيءٍ ممكن مع الجهد المستمر.",
+      "xr": "Kull shay’in mumkin ma‘a al-juhd al-mustamirr."
+    },
+    "c166": {
+      "t": "دعوة",
+      "r": "Da‘wah",
+      "x": "شكراً لك على هذه الدعوة الكريمة.",
+      "xr": "Shukran laka ‘alā hādhihi ad-da‘wah al-karīmah."
+    },
+    "c167": {
+      "t": "احتفال",
+      "r": "Iḥtifāl",
+      "x": "شارك الحيّ بأكمله في الاحتفال.",
+      "xr": "Shāraka al-ḥayy bi-akmalih fī al-iḥtifāl."
+    },
+    "c168": {
+      "t": "وعد",
+      "r": "Wa‘d",
+      "x": "أوفِ دائماً بكل وعدٍ تقطعه.",
+      "xr": "Awfi dā’iman bi-kull wa‘din taqṭa‘uh."
+    },
+    "c169": {
+      "t": "موعد",
+      "r": "Maw‘id",
+      "x": "لديّ موعدٌ عند طبيب الأسنان في الثالثة.",
+      "xr": "Ladayya maw‘idun ‘inda ṭabīb al-asnān fī ath-thālithah."
+    },
+    "c170": {
+      "t": "مفاجأة",
+      "r": "Mufāja’ah",
+      "x": "خطّطنا لمفاجأةٍ جميلة في عيد ميلادها.",
+      "xr": "Khaṭṭaṭnā li-mufāja’atin jamīlah fī ‘īd mīlādihā."
+    },
+    "c171": {
+      "t": "ذكرى",
+      "r": "Dhikrā",
+      "x": "تبقى تلك الرحلة أعزّ ذكرى في قلبي.",
+      "xr": "Tabqā tilka ar-riḥlah a‘azz dhikrā fī qalbī."
+    },
+    "c172": {
+      "t": "تجربة",
+      "r": "Tajribah",
+      "x": "كان العيش في الخارج تجربةً غيّرت حياتي.",
+      "xr": "Kāna al-‘aysh fī al-khārij tajribatan ghayyarat ḥayātī."
+    },
+    "c173": {
+      "t": "قصة",
+      "r": "Qiṣṣah",
+      "x": "روى جدّي قصةً آسرة.",
+      "xr": "Rawā jaddī qiṣṣatan āsirah."
+    },
+    "c174": {
+      "t": "حلم",
+      "r": "Ḥulm",
+      "x": "لا تتخلَّ أبداً عن أكبر أحلامك.",
+      "xr": "Lā tatakhalla abadan ‘an akbar aḥlāmik."
+    },
+    "c175": {
+      "t": "رحلة",
+      "r": "Riḥlah",
+      "x": "كل رحلةٍ طويلة تبدأ بخطوةٍ واحدة.",
+      "xr": "Kull riḥlatin ṭawīlah tabda’u bi-khuṭwatin wāḥidah."
+    },
+    "c176": {
+      "t": "ثقة",
+      "r": "Thiqah",
+      "x": "بناء الثقة يستغرق سنوات.",
+      "xr": "Binā’ ath-thiqah yastaghriqu sanawāt."
+    },
+    "c177": {
+      "t": "احترام",
+      "r": "Iḥtirām",
+      "x": "عامل كل إنسانٍ باحترامٍ صادق.",
+      "xr": "‘Āmil kull insānin bi-iḥtirāmin ṣādiq."
+    },
+    "c178": {
+      "t": "نصيحة",
+      "r": "Naṣīḥah",
+      "x": "هل يمكنك إعطائي بعض النصائح المهنية؟",
+      "xr": "Hal yumkinuka i‘ṭā’ī ba‘ḍ an-naṣā’iḥ al-mihaniyyah?"
+    },
+    "c179": {
+      "t": "دعم",
+      "r": "Da‘m",
+      "x": "شكراً لك على دعمك الثابت.",
+      "xr": "Shukran laka ‘alā da‘mik ath-thābit."
+    },
+    "c180": {
+      "t": "سامح",
+      "r": "Sāmaḥa",
+      "x": "يتطلّب التسامح والمضيّ قدماً قوةً نفسية.",
+      "xr": "Yataṭallabu at-tasāmuḥ wal-muḍiyy quduman quwwatan nafsiyyah."
+    },
+    "c181": {
+      "t": "حاسوب",
+      "r": "Ḥāsūb",
+      "x": "حدّث حاسوبي نظامه أثناء الليل.",
+      "xr": "Ḥaddatha ḥāsūbī niẓāmahu athnā’a al-layl."
+    },
+    "c182": {
+      "t": "إنترنت",
+      "r": "Intarnit",
+      "x": "الإنترنت السريع يربط القرى النائية.",
+      "xr": "Al-intarnit as-sarī‘ yarbiṭu al-qurā an-nā’iyah."
+    },
+    "c183": {
+      "t": "هاتف",
+      "r": "Hātif",
+      "x": "يرجى وضع هاتفك على الصامت أثناء المحاضرات.",
+      "xr": "Yurjā waḍ‘ hātifik ‘alā aṣ-ṣāmit athnā’a al-muḥāḍarāt."
+    },
+    "c184": {
+      "t": "كلمة مرور",
+      "r": "Kalimat murūr",
+      "x": "استخدم كلمة مرورٍ قوية وفريدة لكل حساب.",
+      "xr": "Istakhdim kalimat murūrin qawiyyah wa-farīdah li-kull ḥisāb."
+    },
+    "c185": {
+      "t": "تحميل",
+      "r": "Taḥmīl",
+      "x": "يمكنك تحميل الحزمة غير المتّصلة مجاناً.",
+      "xr": "Yumkinuka taḥmīl al-ḥuzmah ghayr al-muttaṣilah majjānan."
+    },
+    "c186": {
+      "t": "رسالة",
+      "r": "Risālah",
+      "x": "أرسلتُ لك رسالةً في وقتٍ سابق اليوم.",
+      "xr": "Arsaltu laka risālatan fī waqtin sābiq al-yawm."
+    },
+    "c187": {
+      "t": "بحث",
+      "r": "Baḥth",
+      "x": "دعنا نبحث عن توثيقٍ موثوق.",
+      "xr": "Da‘nā nabḥath ‘an tawthīqin mawthūq."
+    },
+    "c188": {
+      "t": "تطبيق",
+      "r": "Taṭbīq",
+      "x": "يعمل هذا التطبيق مفتوح المصدر دون إنترنت.",
+      "xr": "Ya‘malu hādhā at-taṭbīq maftūḥ al-maṣdar dūna intarnit."
+    },
+    "c189": {
+      "t": "خصوصية",
+      "r": "Khuṣūṣiyyah",
+      "x": "يجب أن تأتي حماية خصوصية المستخدم أولاً.",
+      "xr": "Yajibu an ta’tiya ḥimāyat khuṣūṣiyyat al-mustakhdim awwalan."
+    },
+    "c190": {
+      "t": "تحديث",
+      "r": "Taḥdīth",
+      "x": "حسّن التحديث الأخير السرعة بشكلٍ ملحوظ.",
+      "xr": "Ḥassana at-taḥdīth al-akhīr as-sur‘ah bi-shaklin malḥūẓ."
+    },
+    "c191": {
+      "t": "أخبار",
+      "r": "Akhbār",
+      "x": "تحقّق دائماً من الأخبار من مصادر متعدّدة.",
+      "xr": "Taḥaqqaq dā’iman min al-akhbār min maṣādir muta‘addidah."
+    },
+    "c192": {
+      "t": "مقال",
+      "r": "Maqāl",
+      "x": "قرأتُ مقالاً شيّقاً عن علم اللسانيات.",
+      "xr": "Qara’tu maqālan shayyiqan ‘an ‘ilm al-lisāniyyāt."
+    },
+    "c193": {
+      "t": "معلومات",
+      "r": "Ma‘lūmāt",
+      "x": "المعلومات الدقيقة تساعد الناس على اتخاذ قراراتٍ حكيمة.",
+      "xr": "Al-ma‘lūmāt ad-daqīqah tusā‘idu an-nās ‘alā ittikhādh qarārātin ḥakīmah."
+    },
+    "c194": {
+      "t": "كاميرا",
+      "r": "Kāmīrā",
+      "x": "أحضرت كاميرتها معها إلى المهرجان.",
+      "xr": "Aḥḍarat kāmīratahā ma‘ahā ilā al-mihrajān."
+    },
+    "c195": {
+      "t": "شاشة",
+      "r": "Shāshah",
+      "x": "اضبط سطوع الشاشة في الليل.",
+      "xr": "Iḍbiṭ suṭū‘ ash-shāshah fī al-layl."
+    },
+    "c196": {
+      "t": "ثقافة",
+      "r": "Thaqāfah",
+      "x": "اللغة هي القلب النابض للثقافة.",
+      "xr": "Al-lughah hiya al-qalb an-nābiḍ lith-thaqāfah."
+    },
+    "c197": {
+      "t": "تقليد",
+      "r": "Taqlīd",
+      "x": "تحافظ كل منطقةٍ على تقاليدها الخاصة في الحصاد.",
+      "xr": "Tuḥāfiẓu kull minṭaqatin ‘alā taqālīdihā al-khāṣṣah fī al-ḥaṣād."
+    },
+    "c198": {
+      "t": "مهرجان",
+      "r": "Mihrajān",
+      "x": "أضاءت الفوانيس المدينة بأكملها خلال المهرجان.",
+      "xr": "Aḍā’at al-fawānīs al-madīnah bi-akmalihā khilāla al-mihrajān."
+    },
+    "c199": {
+      "t": "تاريخ",
+      "r": "Tārīkh",
+      "x": "يتتبّع المتحف خمسة آلاف عامٍ من التاريخ.",
+      "xr": "Yatatabba‘u al-matḥaf khamsat ālāf ‘āmin min at-tārīkh."
+    },
+    "c200": {
+      "t": "تراث",
+      "r": "Turāth",
+      "x": "يجب أن نصون تراثنا الثقافي المشترك.",
+      "xr": "Yajibu an naṣūna turāthanā ath-thaqāfī al-mushtarak."
+    },
+    "c201": {
+      "t": "فنّ",
+      "r": "Fann",
+      "x": "الفنّ العظيم يتجاوز الحدود والقرون.",
+      "xr": "Al-fann al-‘aẓīm yatajāwazu al-ḥudūd wal-qurūn."
+    },
+    "c202": {
+      "t": "رقص",
+      "r": "Raqṣ",
+      "x": "يروي الرقص الكلاسيكي قصصاً من خلال الحركة.",
+      "xr": "Yarwī ar-raqṣ al-klāsīkī qiṣaṣan min khilāl al-ḥarakah."
+    },
+    "c203": {
+      "t": "أغنية",
+      "r": "Ughniyah",
+      "x": "تُغنّى هذه الأغنية الشعبية منذ أجيال.",
+      "xr": "Tughannā hādhihi al-ughniyah ash-sha‘biyyah mundhu ajyāl."
+    },
+    "c204": {
+      "t": "عمارة",
+      "r": "‘Imārah",
+      "x": "تتميّز عمارة المعبد بدقّةٍ مذهلة.",
+      "xr": "Tatamayyazu ‘imārat al-ma‘bad bi-diqqatin mudhhilah."
+    },
+    "c205": {
+      "t": "شِعر",
+      "r": "Shi‘r",
+      "x": "يلتقط الشِعر أعمق المشاعر في بضعة أبيات.",
+      "xr": "Yaltaqiṭu ash-shi‘r a‘maqa al-mashā‘ir fī biḍ‘at abyāt."
+    },
+    "c206": {
+      "t": "ضيف",
+      "r": "Ḍayf",
+      "x": "يُرحَّب بكل ضيفٍ بحفاوةٍ ودفء.",
+      "xr": "Yuraḥḥabu bi-kull ḍayfin bi-ḥafāwatin wa-dif’."
+    },
+    "c207": {
+      "t": "هدية",
+      "r": "Hadiyyah",
+      "x": "إحضار هديةٍ صغيرة يعكس اللطف والاهتمام.",
+      "xr": "Iḥḍār hadiyyatin ṣaghīrah ya‘kisu al-luṭf wal-ihtimām."
+    },
+    "c208": {
+      "t": "عادة",
+      "r": "‘Ādah",
+      "x": "تعرّف على العادات المحلية قبل زيارة بلدٍ جديد.",
+      "xr": "Ta‘arraf ‘alā al-‘ādāt al-maḥalliyyah qabla ziyārat baladin jadīd."
+    },
+    "c209": {
+      "t": "مراسم",
+      "r": "Marāsim",
+      "x": "استغرقت مراسم التخرّج ساعتين.",
+      "xr": "Istaghraqat marāsim at-takharruj sā‘atayn."
+    },
+    "c210": {
+      "t": "بركة",
+      "r": "Barakah",
+      "x": "قدّم الكبار بركاتهم ودعواتهم للعروسين.",
+      "xr": "Qaddama al-kibār barakātihim wa-da‘awātihim lil-‘arūsayn."
+    },
+    "c211": {
+      "t": "لأنّ",
+      "r": "Li-anna",
+      "x": "بقينا في الداخل لأنّ عاصفةً كانت تقترب.",
+      "xr": "Baqīnā fī ad-dākhil li-anna ‘āṣifatan kānat taqtarib."
+    },
+    "c212": {
+      "t": "مع ذلك",
+      "r": "Ma‘a dhālik",
+      "x": "كانت المهمة صعبة؛ ومع ذلك نجحنا.",
+      "xr": "Kānat al-muhimmah ṣa‘bah; wa-ma‘a dhālik najaḥnā."
+    },
+    "c213": {
+      "t": "على الرغم من أن",
+      "r": "‘Alā ar-raghm min an",
+      "x": "على الرغم من تأخّر الوقت، أنهى الفصل كاملاً.",
+      "xr": "‘Alā ar-raghm min ta’akhkhur al-waqt, anhā al-faṣl kāmilan."
+    },
+    "c214": {
+      "t": "لذلك",
+      "r": "Li-dhālik",
+      "x": "البيانات واضحة؛ لذلك يجب أن نتحرّك.",
+      "xr": "Al-bayānāt wāḍiḥah; li-dhālik yajibu an nataḥarrak."
+    },
+    "c215": {
+      "t": "في الأثناء",
+      "r": "Fī al-athnā’",
+      "x": "سأطبخ العشاء؛ وفي الأثناء يرجى تجهيز الطاولة.",
+      "xr": "Sa-aṭbukhu al-‘ashā’; wa-fī al-athnā’ yurjā tajhīz aṭ-ṭāwilah."
+    },
+    "c216": {
+      "t": "مشكلة",
+      "r": "Mushkilah",
+      "x": "دعنا نحدّد السبب الجذري للمشكلة.",
+      "xr": "Da‘nā nuḥaddid as-sabab al-jadhrī lil-mushkilah."
+    },
+    "c217": {
+      "t": "حلّ",
+      "r": "Ḥall",
+      "x": "غالباً ما تكون الحلول البسيطة أكثرها موثوقية.",
+      "xr": "Ghāliban mā takūnu al-ḥulūl al-basīṭah aktharahā mawthūqiyyah."
+    },
+    "c218": {
+      "t": "قرار",
+      "r": "Qarār",
+      "x": "فكّر بهدوءٍ قبل اتخاذ قرارٍ مصيري.",
+      "xr": "Fakkir bi-hudū’in qabla ittikhādh qarārin maṣīrī."
+    },
+    "c219": {
+      "t": "خطأ",
+      "r": "Khaṭa’",
+      "x": "كل خطأٍ يعلّمنا درساً قيّماً.",
+      "xr": "Kull khaṭa’in yu‘allimunā darsan qayyiman."
+    },
+    "c220": {
+      "t": "نجاح",
+      "r": "Najāḥ",
+      "x": "كان العمل الجماعي مفتاح نجاحنا.",
+      "xr": "Kāna al-‘amal al-jamā‘ī miftāḥ najāḥinā."
+    },
+    "c221": {
+      "t": "إذا",
+      "r": "Idhā",
+      "x": "إذا تدرّبتَ يومياً فسوف تتحسّن بسرعة.",
+      "xr": "Idhā tadarrabta yawmiyyan fa-sawfa tataḥassanu bi-sur‘ah."
+    },
+    "c222": {
+      "t": "بدلاً من",
+      "r": "Badalan min",
+      "x": "امشِ إلى المتجر بدلاً من القيادة.",
+      "xr": "Imshi ilā al-matjar badalan min al-qiyādah."
+    },
+    "c223": {
+      "t": "قارن",
+      "r": "Qārana",
+      "x": "قارن بين المقترحين بعنايةٍ قبل التصويت.",
+      "xr": "Qārin bayna al-muqtaraḥayn bi-‘ināyatin qabla at-taṣwīt."
+    },
+    "c224": {
+      "t": "فرق",
+      "r": "Farq",
+      "x": "العادات الصغيرة تصنع فرقاً كبيراً مع مرور الوقت.",
+      "xr": "Al-‘ādāt aṣ-ṣaghīrah taṣna‘u farqan kabīran ma‘a murūr al-waqt."
+    },
+    "c225": {
+      "t": "سبب",
+      "r": "Sabab",
+      "x": "اشرح السبب الكامن وراء اختيارك.",
+      "xr": "Ishraḥ as-sabab al-kāmin warā’a ikhtiyārik."
+    },
+    "c226": {
+      "t": "استراتيجية",
+      "r": "Istirātījiyyah",
+      "x": "راجعنا استراتيجيتنا طويلة الأمد للمنتج.",
+      "xr": "Rāja‘nā istirātījiyyatanā ṭawīlat al-amad lil-muntaj."
+    },
+    "c227": {
+      "t": "مشروع",
+      "r": "Mashrū‘",
+      "x": "انطلق المشروع الهندسي قبل الموعد المحدّد.",
+      "xr": "Inṭalaqa al-mashrū‘ al-handasī qabla al-maw‘id al-muḥaddad."
+    },
+    "c228": {
+      "t": "موعد نهائي",
+      "r": "Maw‘id nihā’ī",
+      "x": "أنجزنا كل مرحلةٍ قبل الموعد النهائي.",
+      "xr": "Anjaznā kull marḥalatin qabla al-maw‘id an-nihā’ī."
+    },
+    "c229": {
+      "t": "مسؤولية",
+      "r": "Mas’ūliyyah",
+      "x": "تعني القيادة تحمّل المسؤولية الكاملة.",
+      "xr": "Ta‘nī al-qiyādah taḥammul al-mas’ūliyyah al-kāmilah."
+    },
+    "c230": {
+      "t": "تعاون",
+      "r": "Ta‘āwun",
+      "x": "التعاون المفتوح يسرّع وتيرة الابتكار.",
+      "xr": "At-ta‘āwun al-maftūḥ yusarri‘u watīrat al-ibtikār."
+    },
+    "c231": {
+      "t": "اقتصاد",
+      "r": "Iqtiṣād",
+      "x": "تشكّل الشركات الصغيرة العمود الفقري للاقتصاد.",
+      "xr": "Tushakkilu ash-sharikāt aṣ-ṣaghīrah al-‘amūd al-fiqarī lil-iqtiṣād."
+    },
+    "c232": {
+      "t": "ميزانية",
+      "r": "Mīzāniyyah",
+      "x": "أقرّت البلدية ميزانية التعليم للعام القادم.",
+      "xr": "Aqarrat al-baladiyyah mīzāniyyat at-ta‘līm lil-‘ām al-qādim."
+    },
+    "c233": {
+      "t": "استثمار",
+      "r": "Istithmār",
+      "x": "التعليم هو أحكم استثمارٍ طويل الأمد.",
+      "xr": "At-ta‘līm huwa aḥkamu istithmārin ṭawīl al-amad."
+    },
+    "c234": {
+      "t": "عقد",
+      "r": "‘Aqd",
+      "x": "اقرأ كل بندٍ من بنود العقد بعناية.",
+      "xr": "Iqra’ kull bandin min bunūd al-‘aqd bi-‘ināyah."
+    },
+    "c235": {
+      "t": "ربح",
+      "r": "Ribḥ",
+      "x": "النموّ المستدام أهمّ من الربح قصير الأمد.",
+      "xr": "An-numuww al-mustadām ahammu min ar-ribḥ qaṣīr al-amad."
+    },
+    "c236": {
+      "t": "مقترح",
+      "r": "Muqtaraḥ",
+      "x": "استعرضت اللجنة مقترحنا المفصّل.",
+      "xr": "Ista‘raḍat al-lajnah muqtaraḥanā al-mufaṣṣal."
+    },
+    "c237": {
+      "t": "تفاوض",
+      "r": "Tafāwuḍ",
+      "x": "دخل الطرفان المفاوضات بحسن نيّة.",
+      "xr": "Dakhala aṭ-ṭarafān al-mufāwaḍāt bi-ḥusn niyyah."
+    },
+    "c238": {
+      "t": "اتفاقية",
+      "r": "Ittifāqiyyah",
+      "x": "وقّعا اتفاقيةً تجاريةً ذات منفعةٍ متبادلة.",
+      "xr": "Waqqa‘ā ittifāqiyyatan tijāriyyatan dhāta manfa‘atin mutabādalah."
+    },
+    "c239": {
+      "t": "تسوية",
+      "r": "Taswiyah",
+      "x": "أنهت تسويةٌ عادلة النزاع القائم.",
+      "xr": "Anhat taswiyatun ‘ādilah an-nizā‘ al-qā’im."
+    },
+    "c240": {
+      "t": "فرصة",
+      "r": "Furṣah",
+      "x": "يحمل كل تحدٍّ في طيّاته فرصةً خفية.",
+      "xr": "Yaḥmilu kull taḥaddin fī ṭayyātih furṣatan khafiyyah."
+    },
+    "c241": {
+      "t": "بحث علمي",
+      "r": "Baḥth ‘ilmī",
+      "x": "توجّه الأبحاث المحكّمة مسيرة الطب الحديث.",
+      "xr": "Tuwajjihu al-abḥāth al-muḥakkamah masīrat aṭ-ṭibb al-ḥadīth."
+    },
+    "c242": {
+      "t": "تجربة علمية",
+      "r": "Tajribah ‘ilmiyyah",
+      "x": "أكّدت التجربة المخبرية توقّعاتنا.",
+      "xr": "Akkadat at-tajribah al-makhbariyyah tawaqqu‘ātinā."
+    },
+    "c243": {
+      "t": "دليل",
+      "r": "Dalīl",
+      "x": "يجب أن تستند الاستنتاجات القوية إلى أدلةٍ راسخة.",
+      "xr": "Yajibu an tastanida al-istintājāt al-qawiyyah ilā adillatin rāsikhah."
+    },
+    "c244": {
+      "t": "نظرية",
+      "r": "Naẓariyyah",
+      "x": "تشرح النظرية كيف تحني الجاذبية مسار الضوء.",
+      "xr": "Tashraḥu an-naẓariyyah kayfa taḥnī al-jādhibiyyah masār aḍ-ḍaw’."
+    },
+    "c245": {
+      "t": "اكتشاف",
+      "r": "Iktishāf",
+      "x": "غيّر ذلك الاكتشاف مجال تخزين الطاقة النظيفة.",
+      "xr": "Ghayyara dhālika al-iktishāf majāl takhzīn aṭ-ṭāqah an-naẓīfah."
+    },
+    "c246": {
+      "t": "ابتكار",
+      "r": "Ibtikār",
+      "x": "الابتكار المجتمعي يحلّ احتياجاتٍ حقيقية.",
+      "xr": "Al-ibtikār al-mujtama‘ī yaḥullu iḥtiyājātin ḥaqīqiyyah."
+    },
+    "c247": {
+      "t": "خوارزمية",
+      "r": "Khawārizmiyyah",
+      "x": "الخوارزمية الكفؤة توفّر الطاقة والوقت معاً.",
+      "xr": "Al-khawārizmiyyah al-kaf’ah tuwaffiru aṭ-ṭāqah wal-waqt ma‘an."
+    },
+    "c248": {
+      "t": "طاقة",
+      "r": "Ṭāqah",
+      "x": "تحوّل الألواح الشمسية ضوء الشمس مباشرةً إلى طاقة.",
+      "xr": "Tuḥawwilu al-alwāḥ ash-shamsiyyah ḍaw’ ash-shams mubāsharatan ilā ṭāqah."
+    },
+    "c249": {
+      "t": "مختبر",
+      "r": "Mukhtabar",
+      "x": "عاير العلماء المستشعرات في المختبر.",
+      "xr": "‘Āyara al-‘ulamā’ al-mustash‘irāt fī al-mukhtabar."
+    },
+    "c250": {
+      "t": "دقّة",
+      "r": "Diqqah",
+      "x": "تتطلّب الجراحة المجهرية دقّةً فائقة.",
+      "xr": "Tataṭallabu al-jirāḥah al-majhariyyah diqqatan fā’iqah."
+    },
+    "c251": {
+      "t": "كون",
+      "r": "Kawn",
+      "x": "تكشف التلسكوبات أقدم المجرات في الكون.",
+      "xr": "Takshifu at-tiliskūbāt aqdam al-majarrāt fī al-kawn."
+    },
+    "c252": {
+      "t": "كوكب",
+      "r": "Kawkab",
+      "x": "الماء أساسيٌ للحياة على أيّ كوكب.",
+      "xr": "Al-mā’ asāsiyyun lil-ḥayāh ‘alā ayyi kawkab."
+    },
+    "c253": {
+      "t": "جاذبية",
+      "r": "Jādhibiyyah",
+      "x": "تحافظ الجاذبية على بقاء القمر في مداره حول الأرض.",
+      "xr": "Tuḥāfiẓu al-jādhibiyyah ‘alā baqā’ al-qamar fī madārih ḥawla al-arḍ."
+    },
+    "c254": {
+      "t": "تطوّر",
+      "r": "Taṭawwur",
+      "x": "يشكّل التطوّر الكائنات الحية عبر ملايين السنين.",
+      "xr": "Yushakkilu at-taṭawwur al-kā’ināt al-ḥayyah ‘abra malāyīn as-sinīn."
+    },
+    "c255": {
+      "t": "فضول علمي",
+      "r": "Fuḍūl ‘ilmī",
+      "x": "الفضول العلمي يدفع البشرية إلى الأمام.",
+      "xr": "Al-fuḍūl al-‘ilmī yadfa‘u al-bashariyyah ilā al-amām."
+    },
+    "c256": {
+      "t": "بيئة",
+      "r": "Bī’ah",
+      "x": "حماية البيئة تحمي الأجيال القادمة.",
+      "xr": "Ḥimāyat al-bī’ah taḥmī al-ajyāl al-qādimah."
+    },
+    "c257": {
+      "t": "مناخ",
+      "r": "Munākh",
+      "x": "تؤثّر أنماط المناخ المتغيّرة في المحاصيل العالمية.",
+      "xr": "Tu’aththiru anmāṭ al-munākh al-mutaghayyirah fī al-maḥāṣīl al-‘ālamiyyah."
+    },
+    "c258": {
+      "t": "نظام بيئي",
+      "r": "Niẓām bī’ī",
+      "x": "الأراضي الرطبة حيويةٌ للنظام البيئي الساحلي.",
+      "xr": "Al-arāḍī ar-raṭbah ḥayawiyyatun lin-niẓām al-bī’ī as-sāḥilī."
+    },
+    "c259": {
+      "t": "تنوّع حيوي",
+      "r": "Tanawwu‘ ḥayawī",
+      "x": "تؤوي الغابات المطيرة تنوّعاً حيوياً استثنائياً.",
+      "xr": "Tu’wī al-ghābāt al-maṭīrah tanawwu‘an ḥayawiyyan istithnā’iyyan."
+    },
+    "c260": {
+      "t": "تلوّث",
+      "r": "Talawwuth",
+      "x": "يقلّل النقل الكهربائي تلوّث الهواء الحضري بشكلٍ كبير.",
+      "xr": "Yuqallilu an-naql al-kahrabā’ī talawwuth al-hawā’ al-ḥaḍarī bi-shaklin kabīr."
+    },
+    "c261": {
+      "t": "متجدّد",
+      "r": "Mutajaddid",
+      "x": "الرياح والشمس مصدران وفيران للطاقة المتجدّدة.",
+      "xr": "Ar-riyāḥ wash-shams maṣdarān wafīrān liṭ-ṭāqah al-mutajaddidah."
+    },
+    "c262": {
+      "t": "استدامة",
+      "r": "Istidāmah",
+      "x": "الاستدامة الحقيقية توازن بين الطبيعة والازدهار.",
+      "xr": "Al-istidāmah al-ḥaqīqiyyah tuwāzinu bayna aṭ-ṭabī‘ah wal-izdihār."
+    },
+    "c263": {
+      "t": "حفاظ بيئي",
+      "r": "Ḥifāẓ bī’ī",
+      "x": "أحيا الحفاظ البيئي بقيادة المجتمع الغابةَ من جديد.",
+      "xr": "Aḥyā al-ḥifāẓ al-bī’ī bi-qiyādat al-mujtama‘ al-ghābata min jadīd."
+    },
+    "c264": {
+      "t": "إعادة تدوير",
+      "r": "I‘ādat tadwīr",
+      "x": "افرز الزجاج والورق والمعادن لتتمكّن المدن من إعادة تدويرها.",
+      "xr": "Ifriz az-zujāj wal-waraq wal-ma‘ādin li-tatamakkana al-mudun min i‘ādat tadwīrihā."
+    },
+    "c265": {
+      "t": "مورد",
+      "r": "Mawrid",
+      "x": "المياه العذبة موردٌ مشترك وثمين.",
+      "xr": "Al-miyāh al-‘adhbah mawridun mushtarak wa-thamīn."
+    },
+    "c266": {
+      "t": "غابة",
+      "r": "Ghābah",
+      "x": "استعادة الغابات الأصلية تلطّف حرارة البلدات المجاورة.",
+      "xr": "Isti‘ādat al-ghābāt al-aṣliyyah tulaṭṭifu ḥarārat al-baladāt al-mujāwirah."
+    },
+    "c267": {
+      "t": "محيط",
+      "r": "Muḥīṭ",
+      "x": "تمتصّ المحيطات السليمة كمياتٍ هائلة من الكربون.",
+      "xr": "Tamtaṣṣu al-muḥīṭāt as-salīmah kammiyyātin hā’ilah min al-karbūn."
+    },
+    "c268": {
+      "t": "جفاف",
+      "r": "Jafāf",
+      "x": "يساعد الريّ الذكي المزارعين على الصمود أمام الجفاف.",
+      "xr": "Yusā‘idu ar-rayy adh-dhakī al-muzāri‘īn ‘alā aṣ-ṣumūd amāma al-jafāf."
+    },
+    "c269": {
+      "t": "انسجام",
+      "r": "Insijām",
+      "x": "يجب أن يقوم التقدّم البشري على الانسجام مع الطبيعة.",
+      "xr": "Yajibu an yaqūma at-taqaddum al-basharī ‘alā al-insijām ma‘a aṭ-ṭabī‘ah."
+    },
+    "c270": {
+      "t": "مستقبل",
+      "r": "Mustaqbal",
+      "x": "الخيارات التي نتّخذها اليوم ترسم ملامح المستقبل.",
+      "xr": "Al-khiyārāt allatī nattakhidhuhā al-yawm tarsumu malāmiḥ al-mustaqbal."
+    },
+    "c271": {
+      "t": "عدالة",
+      "r": "‘Adālah",
+      "x": "العدالة المتساوية أمام القانون تقوّي المجتمع.",
+      "xr": "Al-‘adālah al-mutasāwiyah amāma al-qānūn tuqawwī al-mujtama‘."
+    },
+    "c272": {
+      "t": "حرية",
+      "r": "Ḥurriyyah",
+      "x": "تتطلّب حرية التعبير مسؤوليةً متبادلة.",
+      "xr": "Tataṭallabu ḥurriyyat at-ta‘bīr mas’ūliyyatan mutabādalah."
+    },
+    "c273": {
+      "t": "مساواة",
+      "r": "Musāwāh",
+      "x": "يعزّز التعليم المساواة الاجتماعية والاقتصادية.",
+      "xr": "Yu‘azzizu at-ta‘līm al-musāwāh al-ijtimā‘iyyah wal-iqtiṣādiyyah."
+    },
+    "c274": {
+      "t": "دستور",
+      "r": "Dustūr",
+      "x": "يصون الدستور حقوق الإنسان الأساسية.",
+      "xr": "Yaṣūnu ad-dustūr ḥuqūq al-insān al-asāsiyyah."
+    },
+    "c275": {
+      "t": "مواطن",
+      "r": "Muwāṭin",
+      "x": "يسهم كل مواطنٍ فاعل في إثراء الحياة المدنية.",
+      "xr": "Yushimu kull muwāṭinin fā‘il fī ithrā’ al-ḥayāh al-madaniyyah."
+    },
+    "c276": {
+      "t": "ديمقراطية",
+      "r": "Dīmuqrāṭiyyah",
+      "x": "تقوم الديمقراطية السليمة على ناخبين واعين.",
+      "xr": "Taqūmu ad-dīmuqrāṭiyyah as-salīmah ‘alā nākhibīn wā‘īn."
+    },
+    "c277": {
+      "t": "حكومة",
+      "r": "Ḥukūmah",
+      "x": "تتولّى الحكومة المحلية صيانة الطرق والحدائق والمدارس.",
+      "xr": "Tatawallā al-ḥukūmah al-maḥalliyyah ṣiyānat aṭ-ṭuruq wal-ḥadā’iq wal-madāris."
+    },
+    "c278": {
+      "t": "سياسة عامة",
+      "r": "Siyāsah ‘āmmah",
+      "x": "أنقذت سياسات الصحة العامة أرواح الملايين.",
+      "xr": "Anqadhat siyāsāt aṣ-ṣiḥḥah al-‘āmmah arwāḥ al-malāyīn."
+    },
+    "c279": {
+      "t": "قانون",
+      "r": "Qānūn",
+      "x": "تبني القوانين الشفافة الثقة في أرجاء المجتمع.",
+      "xr": "Tabnī al-qawānīn ash-shaffāfah ath-thiqah fī arjā’ al-mujtama‘."
+    },
+    "c280": {
+      "t": "شفافية",
+      "r": "Shafāfiyyah",
+      "x": "الشفافية المالية تمنع الفساد.",
+      "xr": "Ash-shafāfiyyah al-māliyyah tamna‘u al-fasād."
+    },
+    "c281": {
+      "t": "مجتمع",
+      "r": "Mujtama‘",
+      "x": "ترعى المجتمعات المتماسكة الفئاتِ الأكثر هشاشة.",
+      "xr": "Tar‘ā al-mujtama‘āt al-mutamāsikah al-fi’āti al-akthar hashāshah."
+    },
+    "c282": {
+      "t": "سلام",
+      "r": "Salām",
+      "x": "يتطلّب السلام الدائم الحوار والتعاطف.",
+      "xr": "Yataṭallabu as-salām ad-dā’im al-ḥiwār wat-ta‘āṭuf."
+    },
+    "c283": {
+      "t": "تعليم",
+      "r": "Ta‘līm",
+      "x": "التعليم الشامل ينهض بأممٍ بأكملها.",
+      "xr": "At-ta‘līm ash-shāmil yanhaḍu bi-umamin bi-akmalihā."
+    },
+    "c284": {
+      "t": "متطوّع",
+      "r": "Mutaṭawwi‘",
+      "x": "ساعد مئات المتطوّعين في إعادة الإعمار بعد الفيضان.",
+      "xr": "Sā‘ada mi’āt al-mutaṭawwi‘īn fī i‘ādat al-i‘mār ba‘da al-fayaḍān."
+    },
+    "c285": {
+      "t": "تضامن",
+      "r": "Taḍāmun",
+      "x": "يتجاوز التضامن العالمي الأزمات بشكلٍ أسرع.",
+      "xr": "Yatajāwazu at-taḍāmun al-‘ālamī al-azamāt bi-shaklin asra‘."
+    },
+    "c286": {
+      "t": "حجّة",
+      "r": "Ḥujjah",
+      "x": "ادعم كل حجّةٍ بحقائق قابلةٍ للتحقّق.",
+      "xr": "Id‘am kull ḥujjatin bi-ḥaqā’iq qābilatin lit-taḥaqquq."
+    },
+    "c287": {
+      "t": "منظور",
+      "r": "Manẓūr",
+      "x": "رؤية الأمور من منظورٍ آخر تعمّق الفهم.",
+      "xr": "Ru’yat al-umūr min manẓūrin ākhar tu‘ammiqu al-fahm."
+    },
+    "c288": {
+      "t": "تحليل",
+      "r": "Taḥlīl",
+      "x": "أبرز تحليلها الاقتصادي ثلاثة مخاطر خفية.",
+      "xr": "Abraza taḥlīluhā al-iqtiṣādī thalāthat makhāṭir khafiyyah."
+    },
+    "c289": {
+      "t": "افتراض",
+      "r": "Iftirāḍ",
+      "x": "اخضِع دائماً افتراضاتك الضمنية للتساؤل.",
+      "xr": "Akhḍi‘ dā’iman iftirāḍātik aḍ-ḍimniyyah lit-tasā’ul."
+    },
+    "c290": {
+      "t": "استنتاج",
+      "r": "Istintāj",
+      "x": "انتظر اكتمال الحقائق قبل القفز إلى استنتاج.",
+      "xr": "Intaẓir iktimāl al-ḥaqā’iq qabla al-qafz ilā istintāj."
+    },
+    "c291": {
+      "t": "موضوعي",
+      "r": "Mawḍū‘ī",
+      "x": "يسعى الصحفي النزيه إلى البقاء موضوعياً.",
+      "xr": "Yas‘ā aṣ-ṣaḥafī an-nazīh ilā al-baqā’ mawḍū‘iyyan."
+    },
+    "c292": {
+      "t": "انحياز",
+      "r": "Inḥiyāz",
+      "x": "إدراك انحيازاتنا الذاتية يقود إلى أحكامٍ أسلم.",
+      "xr": "Idrāk inḥiyāzātinā adh-dhātiyyah yaqūdu ilā aḥkāmin aslam."
+    },
+    "c293": {
+      "t": "معيار",
+      "r": "Mi‘yār",
+      "x": "الموثوقية هي معيار التقييم الأساسي لدينا.",
+      "xr": "Al-mawthūqiyyah hiya mi‘yār at-taqyīm al-asāsī ladaynā."
+    },
+    "c294": {
+      "t": "تناقض",
+      "r": "Tanāquḍ",
+      "x": "لاحظ الشاهد تناقضاً في التسلسل الزمني.",
+      "xr": "Lāḥaẓa ash-shāhid tanāquḍan fī at-tasalsul az-zamanī."
+    },
+    "c295": {
+      "t": "إجماع",
+      "r": "Ijmā‘",
+      "x": "بعد نقاشٍ حيوي، توصّلت اللجنة إلى إجماع.",
+      "xr": "Ba‘da niqāshin ḥayawī, tawaṣṣalat al-lajnah ilā ijmā‘."
+    },
+    "c296": {
+      "t": "وضّح",
+      "r": "Waḍḍaḥa",
+      "x": "هل يمكنك أن توضّح ما قصدته بتلك العبارة؟",
+      "xr": "Hal yumkinuka an tuwaḍḍiḥa mā qaṣadtahu bi-tilka al-‘ibārah?"
+    },
+    "c297": {
+      "t": "أكّد على",
+      "r": "Akkada ‘alā",
+      "x": "أودّ أن أؤكّد على أهمية إتاحة الوصول للجميع.",
+      "xr": "Awaddu an u’akkida ‘alā ahammiyyat itāḥat al-wuṣūl lil-jamī‘."
+    },
+    "c298": {
+      "t": "رغم ذلك",
+      "r": "Raghma dhālik",
+      "x": "كان الطريق شديد الانحدار؛ ورغم ذلك بلغنا القمة.",
+      "xr": "Kāna aṭ-ṭarīq shadīd al-inḥidār; wa-raghma dhālik balaghnā al-qimmah."
+    },
+    "c299": {
+      "t": "عاقبة",
+      "r": "‘Āqibah",
+      "x": "تأمّل كل عاقبةٍ بعيدة المدى قبل اتخاذ القرار.",
+      "xr": "Ta’ammal kull ‘āqibatin ba‘īdat al-madā qabla ittikhādh al-qarār."
+    },
+    "c300": {
+      "t": "بصيرة",
+      "r": "Baṣīrah",
+      "x": "قدّمت ملاحظتها بصيرةً لافتة.",
+      "xr": "Qaddamat mulāḥaẓatuhā baṣīratan lāfitah."
+    },
+    "c301": {
+      "t": "استعارة",
+      "r": "Isti‘ārah",
+      "x": "يمثّل النهر استعارةً لمرور الزمن.",
+      "xr": "Yumaththilu an-nahr isti‘āratan li-murūr az-zaman."
+    },
+    "c302": {
+      "t": "رمزية",
+      "r": "Ramziyyah",
+      "x": "تزخر الرواية برمزيةٍ متعدّدة الطبقات.",
+      "xr": "Tazkharu ar-riwāyah bi-ramziyyatin muta‘addidat aṭ-ṭabaqāt."
+    },
+    "c303": {
+      "t": "سرد",
+      "r": "Sard",
+      "x": "ينسج الكاتب ثلاث حكاياتٍ متشابكة ببراعة.",
+      "xr": "Yansiju al-kātib thalātha ḥikāyātin mutashābikah bi-barā‘ah."
+    },
+    "c304": {
+      "t": "تحفة فنية",
+      "r": "Tuḥfah fanniyyah",
+      "x": "يُحتفى بتلك السيمفونية بوصفها تحفةً فنيةً خالدة.",
+      "xr": "Yuḥtafā bi-tilka as-sīmfūniyyah bi-waṣfihā tuḥfatan fanniyyatan khālidah."
+    },
+    "c305": {
+      "t": "جماليات",
+      "r": "Jamāliyyāt",
+      "x": "يفضّل التصميم التبسيطي انسجاماً جمالياً هادئاً.",
+      "xr": "Yufaḍḍilu at-taṣmīm at-tabsīṭī insijāman jamāliyyan hādi’an."
+    },
+    "c306": {
+      "t": "فارق دقيق",
+      "r": "Fāriq daqīq",
+      "x": "تكمن الطلاقة الحقيقية في إدراك الفوارق الثقافية الدقيقة.",
+      "xr": "Takmunu aṭ-ṭalāqah al-ḥaqīqiyyah fī idrāk al-fawāriq ath-thaqāfiyyah ad-daqīqah."
+    },
+    "c307": {
+      "t": "غموض",
+      "r": "Ghumūḍ",
+      "x": "تنتهي القصيدة بغموضٍ مقصودٍ يأسر الوجدان.",
+      "xr": "Tantahī al-qaṣīdah bi-ghumūḍin maqṣūdin ya’siru al-wijdān."
+    },
+    "c308": {
+      "t": "مفارقة ساخرة",
+      "r": "Mufāraqah sākhirah",
+      "x": "استخدم الكاتب المسرحي سخريةً لاذعة لنقد الغرور.",
+      "xr": "Istakhdama al-kātib al-masraḥī sukhriyatan lādhi‘ah li-naqd al-ghurūr."
+    },
+    "c309": {
+      "t": "بلاغة",
+      "r": "Balāghah",
+      "x": "تحدّثت برزانةٍ وبلاغةٍ لافتتين.",
+      "xr": "Taḥaddathat bi-razānatin wa-balāghatin lāfitatayn."
+    },
+    "c310": {
+      "t": "إرث فكري",
+      "r": "Irth fikrī",
+      "x": "يترك الأدب الرفيع إرثاً فكرياً خالداً.",
+      "xr": "Yatruku al-adab ar-rafī‘ irthan fikriyyan khālidan."
+    },
+    "c311": {
+      "t": "حنين",
+      "r": "Ḥanīn",
+      "x": "أثارت رائحة المطر على التراب الدافئ حنيناً عميقاً.",
+      "xr": "Athārat rā’iḥat al-maṭar ‘alā at-turāb ad-dāfi’ ḥanīnan ‘amīqan."
+    },
+    "c312": {
+      "t": "صدى وجداني",
+      "r": "Ṣadā wijdānī",
+      "x": "حمل اللحن صدىً وجدانياً عميقاً.",
+      "xr": "Ḥamala al-laḥn ṣadan wijdāniyyan ‘amīqan."
+    },
+    "c313": {
+      "t": "سامٍ",
+      "r": "Sāmin",
+      "x": "كان الوقوف تحت الشفق القطبي شعوراً سامياً بحق.",
+      "xr": "Kāna al-wuqūf taḥta ash-shafaq al-quṭbī shu‘ūran sāmiyan bi-ḥaqq."
+    },
+    "c314": {
+      "t": "سما فوق",
+      "r": "Samā fawqa",
+      "x": "يمكن للرحمة أن تسمو فوق اللغة والتاريخ.",
+      "xr": "Yumkinu lir-raḥmah an tasmū fawqa al-lughah wat-tārīkh."
+    },
+    "c315": {
+      "t": "أصالة",
+      "r": "Aṣālah",
+      "x": "يستشعر القرّاء الأصالة الصادقة على الفور.",
+      "xr": "Yastash‘iru al-qurrā’ al-aṣālah aṣ-ṣādiqah ‘alā al-fawr."
+    },
+    "c316": {
+      "t": "ضمير",
+      "r": "Ḍamīr",
+      "x": "تصرّف دائماً بما يمليه عليك الضمير الحيّ.",
+      "xr": "Taṣarraf dā’iman bi-mā yumlīhi ‘alayka aḍ-ḍamīr al-ḥayy."
+    },
+    "c317": {
+      "t": "نزاهة",
+      "r": "Nazāhah",
+      "x": "النزاهة تعني فعل الصواب حين لا يراك أحد.",
+      "xr": "An-nazāhah ta‘nī fi‘l aṣ-ṣawāb ḥīna lā yarāka aḥad."
+    },
+    "c318": {
+      "t": "تعاطف",
+      "r": "Ta‘āṭuf",
+      "x": "يمدّ التعاطف جسوراً فوق أعمق الفجوات.",
+      "xr": "Yamuddu at-ta‘āṭuf jusūran fawqa a‘maq al-fajawāt."
+    },
+    "c319": {
+      "t": "معضلة",
+      "r": "Mu‘ḍilah",
+      "x": "واجهت اللجنة معضلةً أخلاقيةً شائكة.",
+      "xr": "Wājahat al-lajnah mu‘ḍilatan akhlāqiyyatan shā’ikah."
+    },
+    "c320": {
+      "t": "حكمة",
+      "r": "Ḥikmah",
+      "x": "المعرفة تتكلّم، أما الحكمة فتصغي.",
+      "xr": "Al-ma‘rifah tatakallamu, ammā al-ḥikmah fa-tuṣghī."
+    },
+    "c321": {
+      "t": "وعي",
+      "r": "Wa‘y",
+      "x": "لا يزال الفلاسفة يتناقشون حول ماهية الوعي.",
+      "xr": "Lā yazālu al-falāsifah yatanāqashūna ḥawla māhiyyat al-wa‘y."
+    },
+    "c322": {
+      "t": "إدراك",
+      "r": "Idrāk",
+      "x": "تشكّل اللغة إدراكنا للزمن بشكلٍ خفيّ.",
+      "xr": "Tushakkilu al-lughah idrākanā liz-zaman bi-shaklin khafiyy."
+    },
+    "c323": {
+      "t": "مرونة نفسية",
+      "r": "Murūnah nafsiyyah",
+      "x": "تنمو المرونة النفسية من خلال تجاوز الشدائد.",
+      "xr": "Tanmū al-murūnah an-nafsiyyah min khilāl tajāwuz ash-shadā’id."
+    },
+    "c324": {
+      "t": "استبطان",
+      "r": "Istibṭān",
+      "x": "يجلب الاستبطان الهادئ صفاءً في أوقات الاضطراب.",
+      "xr": "Yajlibu al-istibṭān al-hādi’ ṣafā’an fī awqāt al-iḍṭirāb."
+    },
+    "c325": {
+      "t": "مفارقة",
+      "r": "Mufāraqah",
+      "x": "تُظهر مفارقة الاختيار أن كثرة الخيارات قد تربك الإنسان.",
+      "xr": "Tuẓhiru mufāraqat al-ikhtiyār anna kathrat al-khiyārāt qad turbiku al-insān."
+    },
+    "c326": {
+      "t": "زوال",
+      "r": "Zawāl",
+      "x": "تقبّل سنّة الزوال يعلّمنا أن نثمن لحظة اليوم.",
+      "xr": "Taqabbul sunnat az-zawāl yu‘allimunā an nuthammina laḥẓat al-yawm."
+    },
+    "c327": {
+      "t": "رباطة جأش",
+      "r": "Rabāṭat ja’sh",
+      "x": "استقبلت النصر والإخفاق معاً برباطة جأش.",
+      "xr": "Istaqbalat an-naṣr wal-ikhfāq ma‘an bi-rabāṭat ja’sh."
+    },
+    "c328": {
+      "t": "غاية",
+      "r": "Ghāyah",
+      "x": "الغاية المشتركة تحوّل الجهد اليومي إلى بهجة.",
+      "xr": "Al-ghāyah al-mushtarakah tuḥawwilu al-juhd al-yawmī ilā bahjah."
+    },
+    "c329": {
+      "t": "استقلالية",
+      "r": "Istiqlāliyyah",
+      "x": "تبدأ الاستقلالية الفكرية بالتفكير المستقلّ.",
+      "xr": "Tabda’u al-istiqlāliyyah al-fikriyyah bit-tafkīr al-mustaqill."
+    },
+    "c330": {
+      "t": "تواضع",
+      "r": "Tawāḍu‘",
+      "x": "الإتقان الحقيقي يقترن دائماً بالتواضع.",
+      "xr": "Al-itqān al-ḥaqīqī yaqtarinu dā’iman bit-tawāḍu‘."
+    },
+    "c331": {
+      "t": "الأفعال أبلغ من الأقوال",
+      "r": "Al-af‘āl ablagh min al-aqwāl",
+      "x": "أوفِ بالتزاماتك؛ فالأفعال أبلغ من الأقوال.",
+      "xr": "Awfi bil-tizāmātik; fal-af‘āl ablagh min al-aqwāl."
+    },
+    "c332": {
+      "t": "الممارسة تصنع الإتقان",
+      "r": "Al-mumārasah taṣna‘ al-itqān",
+      "x": "لا تخشَ الأخطاء؛ فالممارسة تصنع الإتقان.",
+      "xr": "Lā takhsha al-akhṭā’; fal-mumārasah taṣna‘ al-itqān."
+    },
+    "c333": {
+      "t": "رُبَّ ضارّةٍ نافعة",
+      "r": "Rubba ḍārratin nāfi‘ah",
+      "x": "تمسّك بالأمل؛ فرُبَّ ضارّةٍ نافعة.",
+      "xr": "Tamassak bil-amal; fa-rubba ḍārratin nāfi‘ah."
+    },
+    "c334": {
+      "t": "الزمن يداوي كل الجراح",
+      "r": "Az-zaman yudāwī kull al-jirāḥ",
+      "x": "كُن رفيقاً بنفسك؛ فالزمن يداوي كل الجراح.",
+      "xr": "Kun rafīqan bi-nafsik; faz-zaman yudāwī kull al-jirāḥ."
+    },
+    "c335": {
+      "t": "في الاتحاد قوة",
+      "r": "Fī al-ittiḥād quwwah",
+      "x": "العمل معاً يثبت أن في الاتحاد قوة.",
+      "xr": "Al-‘amal ma‘an yuthbitu anna fī al-ittiḥād quwwah."
+    },
+    "c336": {
+      "t": "كسر الجليد",
+      "r": "Kasr al-jalīd",
+      "x": "ساعدت طرفةٌ لطيفة على كسر الجليد أثناء العشاء.",
+      "xr": "Sā‘adat ṭurfatun laṭīfah ‘alā kasr al-jalīd athnā’a al-‘ashā’."
+    },
+    "c337": {
+      "t": "سهلٌ كشرب الماء",
+      "r": "Sahlun ka-shurb al-mā’",
+      "x": "بعد أسابيع من التدريب، كان الامتحان سهلاً كشرب الماء.",
+      "xr": "Ba‘da asābī‘ min at-tadrīb, kāna al-imtiḥān sahlan ka-shurb al-mā’."
+    },
+    "c338": {
+      "t": "مرّةً كل دهر",
+      "r": "Marratan kull dahr",
+      "x": "لا نرى الثلج في هذا الوادي إلا مرّةً كل دهر.",
+      "xr": "Lā narā ath-thalj fī hādhā al-wādī illā marratan kull dahr."
+    },
+    "c339": {
+      "t": "أصاب كبد الحقيقة",
+      "r": "Aṣāba kabid al-ḥaqīqah",
+      "x": "لقد أصاب تشخيصك كبد الحقيقة تماماً.",
+      "xr": "Laqad aṣāba tashkhīṣuka kabid al-ḥaqīqah tamāman."
+    },
+    "c340": {
+      "t": "سهر الليالي",
+      "r": "Sahira al-layālī",
+      "x": "سهر الفريق الليالي لإنجاز العمل في موعده.",
+      "xr": "Sahira al-farīq al-layālī li-injāz al-‘amal fī maw‘idih."
+    },
+    "c341": {
+      "t": "قراءة ما بين السطور",
+      "r": "Qirā’at mā bayna as-suṭūr",
+      "x": "في الدبلوماسية، لا بدّ من قراءة ما بين السطور.",
+      "xr": "Fī ad-diblūmāsiyyah, lā budda min qirā’at mā bayna as-suṭūr."
+    },
+    "c342": {
+      "t": "فتح صفحة جديدة",
+      "r": "Fatḥ ṣafḥah jadīdah",
+      "x": "قرّرت أن تفتح صفحةً جديدةً هذا الربيع.",
+      "xr": "Qarrarat an taftaḥa ṣafḥatan jadīdatan hādhā ar-rabī‘."
+    },
+    "c343": {
+      "t": "نعمة في ثوب محنة",
+      "r": "Ni‘mah fī thawb miḥnah",
+      "x": "تبيّن أن فقدان تلك الوظيفة كان نعمةً في ثوب محنة.",
+      "xr": "Tabayyana anna fiqdān tilka al-waẓīfah kāna ni‘matan fī thawb miḥnah."
+    },
+    "c344": {
+      "t": "بذل جهدٍ إضافي",
+      "r": "Badhl juhdin iḍāfī",
+      "x": "المعلّمون العظماء يبذلون دائماً جهداً إضافياً.",
+      "xr": "Al-mu‘allimūn al-‘uẓamā’ yabdhulūna dā’iman juhdan iḍāfiyyan."
+    },
+    "c345": {
+      "t": "رؤية الصورة الكبرى",
+      "r": "Ru’yat aṣ-ṣūrah al-kubrā",
+      "x": "ابتعد قليلاً عن التفاصيل لترى الصورة الكبرى.",
+      "xr": "Ibta‘id qalīlan ‘an at-tafāṣīl li-tarā aṣ-ṣūrah al-kubrā."
+    },
+    "c346": {
+      "t": "سيادة",
+      "r": "Siyādah",
+      "x": "يؤكّد القانون الدولي الاحترام المتبادل للسيادة.",
+      "xr": "Yu’akkidu al-qānūn ad-duwalī al-iḥtirām al-mutabādal lis-siyādah."
+    },
+    "c347": {
+      "t": "دبلوماسية",
+      "r": "Diblūmāsiyyah",
+      "x": "حالت الدبلوماسية الصبورة دون تصعيد الأزمة.",
+      "xr": "Ḥālat ad-diblūmāsiyyah aṣ-ṣabūrah dūna taṣ‘īd al-azmah."
+    },
+    "c348": {
+      "t": "معاهدة",
+      "r": "Mu‘āhadah",
+      "x": "صادقت أربعون دولةً على المعاهدة البيئية.",
+      "xr": "Ṣādaqat arba‘ūna dawlatan ‘alā al-mu‘āhadah al-bī’iyyah."
+    },
+    "c349": {
+      "t": "متعدّد الأطراف",
+      "r": "Muta‘addid al-aṭrāf",
+      "x": "يعالج التعاون متعدّد الأطراف المخاطر العالمية المشتركة.",
+      "xr": "Yu‘āliju at-ta‘āwun muta‘addid al-aṭrāf al-makhāṭir al-‘ālamiyyah al-mushtarakah."
+    },
+    "c350": {
+      "t": "ولاية قضائية",
+      "r": "Wilāyah qaḍā’iyyah",
+      "x": "تتمتّع تلك المحكمة بولايةٍ قضائية على النزاعات البحرية.",
+      "xr": "Tatamatta‘u tilka al-maḥkamah bi-wilāyatin qaḍā’iyyah ‘alā an-nizā‘āt al-baḥriyyah."
+    },
+    "c351": {
+      "t": "فرضية",
+      "r": "Faraḍiyyah",
+      "x": "تختبر الورقة البحثية فرضيةً لغويةً مبتكرة.",
+      "xr": "Takhtabiru al-waraqah al-baḥthiyyah faraḍiyyatan lughawiyyatan mubtakarah."
+    },
+    "c352": {
+      "t": "منهجية",
+      "r": "Manhajiyyah",
+      "x": "تتيح المنهجية الشفافة إمكانية التكرار المستقلّ للتجربة.",
+      "xr": "Tutīḥu al-manhajiyyah ash-shaffāfah imkāniyyat at-takrār al-mustaqill lit-tajribah."
+    },
+    "c353": {
+      "t": "توليف علمي",
+      "r": "Tawlīf ‘ilmī",
+      "x": "قدّمت محاضرتها توليفاً رائعاً بين المجالين.",
+      "xr": "Qaddamat muḥāḍaratuhā tawlīfan rā’i‘an bayna al-majālayn."
+    },
+    "c354": {
+      "t": "سابقة قضائية",
+      "r": "Sābiqah qaḍā’iyyah",
+      "x": "أرسى الحكم سابقةً قضائيةً مهمة.",
+      "xr": "Arsā al-ḥukm sābiqatan qaḍā’iyyatan muhimmah."
+    },
+    "c355": {
+      "t": "تنفيذ",
+      "r": "Tanfīdh",
+      "x": "التنفيذ الدقيق هو الذي يحدّد مدى نجاح أيّ إصلاح.",
+      "xr": "At-tanfīdh ad-daqīq huwa alladhī yuḥaddidu madā najāḥ ayyi iṣlāḥ."
+    },
+    "c356": {
+      "t": "بغضّ النظر عن",
+      "r": "Bi-ghaḍḍ an-naẓar ‘an",
+      "x": "بغضّ النظر عن التأخيرات الأولية، افتُتح الجسر بأمان.",
+      "xr": "Bi-ghaḍḍ an-naẓar ‘an at-ta’khīrāt al-awwaliyyah, uftutiḥa al-jisr bi-amān."
+    },
+    "c357": {
+      "t": "وبالتالي",
+      "r": "Wa-bit-tālī",
+      "x": "ارتفع التمويل؛ وبالتالي توسّعت العيادات الريفية.",
+      "xr": "Irtafa‘a at-tamwīl; wa-bit-tālī tawassa‘at al-‘iyādāt ar-rīfiyyah."
+    },
+    "c358": {
+      "t": "علاوةً على ذلك",
+      "r": "‘Ilāwatan ‘alā dhālik",
+      "x": "علاوةً على ذلك، تفيد البيانات المفتوحة الباحثين المستقلين.",
+      "xr": "‘Ilāwatan ‘alā dhālik, tufīdu al-bayānāt al-maftūḥah al-bāḥithīn al-mustaqillīn."
+    },
+    "c359": {
+      "t": "في ضوء",
+      "r": "Fī ḍaw’",
+      "x": "في ضوء الأدلة الجديدة، قمنا بتعديل الدليل الإرشادي.",
+      "xr": "Fī ḍaw’ al-adillah al-jadīdah, qumnā bi-ta‘dīl ad-dalīl al-irshādī."
+    },
+    "c360": {
+      "t": "مع بالغ الاحترام",
+      "r": "Ma‘a bāligh al-iḥtirām",
+      "x": "مع بالغ الاحترام، أقترح مقاربةً بديلة.",
+      "xr": "Ma‘a bāligh al-iḥtirām, aqtariḥu muqārabatan badīlah."
+    },
+    "c361": {
+      "t": "عبّر بفصاحة",
+      "r": "‘Abbara bi-faṣāḥah",
+      "x": "تستطيع أن تعبّر عن الأفكار المعقّدة بسلاسةٍ وفصاحة.",
+      "xr": "Tastaṭī‘u an tu‘abbira ‘an al-afkār al-mu‘aqqadah bi-salāsatin wa-faṣāḥah."
+    },
+    "c362": {
+      "t": "موجز",
+      "r": "Mūjaz",
+      "x": "الشرح الموجز أوضح من خطبةٍ مطوّلة.",
+      "xr": "Ash-sharḥ al-mūjaz awḍaḥu min khuṭbatin muṭawwalah."
+    },
+    "c363": {
+      "t": "متماسك",
+      "r": "Mutamāsik",
+      "x": "ابنِ سرداً متماسكاً من البداية حتى النهاية.",
+      "xr": "Ibni sardan mutamāsikan min al-bidāyah ḥattā an-nihāyah."
+    },
+    "c364": {
+      "t": "مقنع",
+      "r": "Muqni‘",
+      "x": "القصص الواقعية تجعل الحجّة أكثر إقناعاً بكثير.",
+      "xr": "Al-qiṣaṣ al-wāqi‘iyyah taj‘alu al-ḥujjah akthara iqnā‘an bi-kathīr."
+    },
+    "c365": {
+      "t": "عملي وواقعي",
+      "r": "‘Amalī wa-wāqi‘ī",
+      "x": "اعتمدنا خارطة طريقٍ واقعيةً وعمليةً للتنفيذ.",
+      "xr": "I‘tamadnā khāriṭat ṭarīqin wāqi‘iyyatan wa-‘amaliyyatan lit-tanfīdh."
+    },
+    "c366": {
+      "t": "غير مسبوق",
+      "r": "Ghayr masbūq",
+      "x": "التقط المرصد صوراً بوضوحٍ غير مسبوق.",
+      "xr": "Iltaqaṭa al-marṣad ṣuwaran bi-wuḍūḥin ghayr masbūq."
+    },
+    "c367": {
+      "t": "حتمي",
+      "r": "Ḥatmī",
+      "x": "التغيّر التدريجي في اللغة أمرٌ حتميّ تماماً.",
+      "xr": "At-taghayyur at-tadrījī fī al-lughah amrun ḥatmiyyun tamāman."
+    },
+    "c368": {
+      "t": "لا غنى عنه",
+      "r": "Lā ghinā ‘anh",
+      "x": "الاستماع الفعّال أمرٌ لا غنى عنه لتحقيق الطلاقة العميقة.",
+      "xr": "Al-istimā‘ al-fa‘‘āl amrun lā ghinā ‘anhu li-taḥqīq aṭ-ṭalāqah al-‘amīqah."
+    },
+    "c369": {
+      "t": "عميق الأثر",
+      "r": "‘Amīq al-athar",
+      "x": "تترك قراءة الكلاسيكيات انطباعاً عميق الأثر.",
+      "xr": "Tatruku qirā’at al-klāsīkiyyāt inṭibā‘an ‘amīq al-athar."
+    },
+    "c370": {
+      "t": "سلس",
+      "r": "Salis",
+      "x": "هدفنا تقديم تجربةٍ سلسةٍ عبر كل جهاز.",
+      "xr": "Hadafunā taqdīm tajribatin salisatin ‘abra kull jihāz."
+    },
+    "c371": {
+      "t": "بلا أدنى شك",
+      "r": "Bi-lā adnā shakk",
+      "x": "بلا أدنى شك، الاستمرارية هي التي تنتصر في النهاية.",
+      "xr": "Bi-lā adnā shakk, al-istimrāriyyah hiya allatī tantaṣiru fī an-nihāyah."
+    },
+    "c372": {
+      "t": "وبالقدر نفسه",
+      "r": "Wa-bil-qadr nafsih",
+      "x": "نقدّر السرعة؛ وبالقدر نفسه لا نساوم أبداً على الجودة.",
+      "xr": "Nuqaddiru as-sur‘ah; wa-bil-qadr nafsih lā nusāwimu abadan ‘alā al-jawdah."
+    },
+    "c373": {
+      "t": "بأخذ كل شيء في الاعتبار",
+      "r": "Bi-akhdh kull shay’ fī al-i‘tibār",
+      "x": "بأخذ كل شيء في الاعتبار، كان هذا أفضل أعوامنا.",
+      "xr": "Bi-akhdh kull shay’ fī al-i‘tibār, kāna hādhā afḍala a‘wāminā."
+    },
+    "c374": {
+      "t": "صمد أمام اختبار الزمن",
+      "r": "Ṣamada amāma ikhtibār az-zaman",
+      "x": "المعرفة المفتوحة المبنية بعنايةٍ ستصمد أمام اختبار الزمن.",
+      "xr": "Al-ma‘rifah al-maftūḥah al-mabniyyah bi-‘ināyatin sa-taṣmudu amāma ikhtibār az-zaman."
+    },
+    "c375": {
+      "t": "التعلّم مدى الحياة",
+      "r": "At-ta‘allum madā al-ḥayāh",
+      "x": "إتقان اللغات مغامرةٌ مبهجة في رحاب التعلّم مدى الحياة.",
+      "xr": "Itqān al-lughāt mughāmaratun mubhijah fī riḥāb at-ta‘allum madā al-ḥayāh."
+    }
+  }
+}
