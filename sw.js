@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v17';
+const CACHE_NAME = 'openlingo-v18';
 const ASSETS = [
   './',
   './index.html',
@@ -56,8 +56,12 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) {
-    return; // Let GitHub catalog & Google OAuth/Drive requests pass straight through
+  if (
+    event.request.method !== 'GET' ||
+    url.origin !== self.location.origin ||
+    url.pathname.startsWith('/__desktop/')
+  ) {
+    return; // Let API, desktop OAuth bridge, GitHub catalog & Google requests pass straight through
   }
   event.respondWith(
     fetch(event.request)

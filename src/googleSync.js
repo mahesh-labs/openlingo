@@ -70,6 +70,48 @@ export function getGoogleSession() {
   return { accessToken, user: userProfile };
 }
 
+async function detectDesktopBridge() {
+  try {
+    const res = await fetch('/__desktop/info', { cache: 'no-store' });
+    if (!res.ok) return false;
+    const data = await res.json();
+    return Boolean(data && data.desktop);
+  } catch {
+    return false;
+  }
+}
+
+async function signInViaDesktopDefaultBrowser(webClientId) {
+  const startRes = await fetch('/__desktop/auth/start', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ clientId: webClientId })
+  });
+  if (!startRes.ok) {
+    throw new Error('Could not launch default browser for Google Sign-In.');
+  }
+  const { state: authState } = await startRes.json();
+  const deadline = Date.now() + 180000; // 3 minute timeout
+
+  while (Date.now() < deadline) {
+    await new Promise((r) => setTimeout(r, 600));
+    const pollRes = await fetch(`/__desktop/auth/poll?state=${encodeURIComponent(authState)}`, {
+      cache: 'no-store'
+    });
+    if (!pollRes.ok) {
+      throw new Error('Sign-in session expired. Please try again.');
+    }
+    const poll = await pollRes.json();
+    if (poll.status === 'done' && poll.access_token) {
+      return { access_token: poll.access_token, expires_in: Number(poll.expires_in || 3500) };
+    }
+    if (poll.status === 'error' || poll.status === 'cancelled') {
+      throw new Error(poll.error || 'Google Sign-In was cancelled.');
+    }
+  }
+  throw new Error('Timed out waiting for sign-in in your default browser.');
+}
+
 export async function signInWithGoogle(webClientId, androidClientId = '') {
   // Native Android APK path: RFC 8252 system-browser OAuth 2.0 + PKCE (avoids WebView disallowed_useragent)
   if (window.AndroidGoogleAuth && typeof window.AndroidGoogleAuth.signIn === 'function') {
@@ -100,28 +142,35 @@ export async function signInWithGoogle(webClientId, androidClientId = '') {
     return getGoogleSession();
   }
 
-  // Web / Desktop PWA path: Google Identity Services OAuth2 Token Client
   const cleanId = String(webClientId || '').trim();
   if (!cleanId) {
     throw new Error('Google Web Client ID is not configured.');
   }
 
-  await loadGisScript();
+  // Linux Desktop app path: delegate Sign in with Google to the system default browser
+  // so the user reuses their existing Google session without re-entering credentials!
+  let tokenResp;
+  if (await detectDesktopBridge()) {
+    tokenResp = await signInViaDesktopDefaultBrowser(cleanId);
+  } else {
+    // Web PWA path: Google Identity Services OAuth2 Token Client directly in current browser
+    await loadGisScript();
 
-  const tokenResp = await new Promise((resolve, reject) => {
-    const tokenClient = window.google.accounts.oauth2.initTokenClient({
-      client_id: cleanId,
-      scope: DRIVE_SCOPE,
-      callback: (resp) => {
-        if (resp.error) reject(new Error(resp.error_description || resp.error));
-        else resolve(resp);
-      },
-      error_callback: (err) => {
-        reject(new Error(err?.message || 'Google Sign-In popup closed or blocked.'));
-      }
+    tokenResp = await new Promise((resolve, reject) => {
+      const tokenClient = window.google.accounts.oauth2.initTokenClient({
+        client_id: cleanId,
+        scope: DRIVE_SCOPE,
+        callback: (resp) => {
+          if (resp.error) reject(new Error(resp.error_description || resp.error));
+          else resolve(resp);
+        },
+        error_callback: (err) => {
+          reject(new Error(err?.message || 'Google Sign-In popup closed or blocked.'));
+        }
+      });
+      tokenClient.requestAccessToken({ prompt: 'select_account' });
     });
-    tokenClient.requestAccessToken({ prompt: 'consent' });
-  });
+  }
 
   accessToken = tokenResp.access_token;
   tokenExpiresAt = Date.now() + (Number(tokenResp.expires_in || 3500) * 1000) - 30000;
