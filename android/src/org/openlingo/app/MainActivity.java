@@ -14,6 +14,8 @@ import android.util.Base64;
 import android.view.View;
 import android.view.WindowInsets;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -42,11 +44,13 @@ public class MainActivity extends Activity {
     private static final String START_URL = "https://" + VIRTUAL_HOST + "/index.html";
     private static final int REQ_SAVE_BACKUP = 4101;
     private static final int REQ_OPEN_BACKUP = 4102;
+    private static final int REQ_FILE_CHOOSER = 4103;
 
     private WebView webView;
     private TextToSpeech tts;
     private volatile boolean ttsReady = false;
     private String pendingExportContent = null;
+    private ValueCallback<Uri[]> fileChooserCallback = null;
 
     // Pending PKCE OAuth state for Android system-browser Sign in with Google
     private String pendingOAuthClientId = null;
@@ -205,6 +209,24 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new BackupBridge(), "AndroidBackup");
         webView.addJavascriptInterface(new GoogleAuthBridge(), "AndroidGoogleAuth");
 
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+                if (fileChooserCallback != null) {
+                    fileChooserCallback.onReceiveValue(null);
+                }
+                fileChooserCallback = filePathCallback;
+                try {
+                    Intent intent = fileChooserParams.createIntent();
+                    startActivityForResult(intent, REQ_FILE_CHOOSER);
+                    return true;
+                } catch (Exception e) {
+                    fileChooserCallback = null;
+                    return false;
+                }
+            }
+        });
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
@@ -251,6 +273,15 @@ public class MainActivity extends Activity {
     @SuppressWarnings("deprecation")
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQ_FILE_CHOOSER) {
+            if (fileChooserCallback != null) {
+                Uri[] results = WebChromeClient.FileChooserParams.parseResult(resultCode, data);
+                fileChooserCallback.onReceiveValue(results);
+                fileChooserCallback = null;
+            }
+            return;
+        }
 
         if (requestCode == REQ_SAVE_BACKUP) {
             if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null && pendingExportContent != null) {

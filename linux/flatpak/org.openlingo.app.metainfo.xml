@@ -22,6 +22,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.0.5-beta" date="2026-11-26">
+      <description>
+        <p>Dedicated Profile and Settings pages with custom profile photo upload, Light/Dark/System theme selector, audio speed, transliteration and unlimited hearts toggles, and unified backup/logout controls.</p>
+      </description>
+    </release>
     <release version="0.0.4-beta" date="2026-11-26">
       <description>
         <p>Unified cross-platform icon and theme, last-synced indicator, GitHub Pages web app, and Linux desktop packages.</p>

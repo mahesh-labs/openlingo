@@ -5,6 +5,7 @@
  */
 
 export const APP_CONFIG = {
+  appVersion: '0.0.5-beta',
   githubRepo: 'mahesh-labs/openlingo',
   githubBranch: 'main',
   googleClientId: '864103807022-hujf3ribsg6hact7erk1c3csv8i9u13a.apps.googleusercontent.com',

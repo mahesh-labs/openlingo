@@ -20,11 +20,15 @@ const STORAGE_KEYS = {
   THEME: 'openlingo_theme_v1',
   SETTINGS: 'openlingo_sync_settings_v1',
   GUEST: 'openlingo_guest_mode_v1',
-  SYNC_META: 'openlingo_sync_meta_v1'
+  SYNC_META: 'openlingo_sync_meta_v1',
+  PROFILE: 'openlingo_profile_v1',
+  PREFS: 'openlingo_prefs_v1'
 };
 
+const AVATAR_PRESETS = ['🦊', '🐼', '🦉', '🐱', '🌸', '🗻', '🚀', '🎯'];
+
 const state = {
-  view: 'syllabus', // 'syllabus' | 'characters' | 'lesson' | 'placement' | 'guidebook' | 'flashcards' | 'studio' | 'backup'
+  view: 'syllabus', // 'syllabus' | 'characters' | 'lesson' | 'placement' | 'guidebook' | 'flashcards' | 'studio' | 'profile' | 'settings' | 'backup'
   courses: [],
   activeCourseId: 'en-ja',
   selectedSectionId: 'sec-n5',
@@ -33,7 +37,7 @@ const state = {
   drawSession: null, // { tabId, chars, index, guideMode, strokes, result }
   drawController: null,
   flashcardFilter: 'ALL',
-  theme: 'dark',
+  theme: 'dark', // 'dark' | 'light' | 'system'
   progress: {
     completedLessons: {},
     unlockedUnits: {},
@@ -44,8 +48,17 @@ const state = {
     hearts: 5,
     chillMode: false
   },
+  profile: {
+    displayName: '',
+    bio: '',
+    avatarDataUrl: '',
+    avatarEmoji: '',
+    dailyGoalXp: 50
+  },
   srs: {},
   showRomaji: true,
+  audioRate: 0.9,
+  autoSync: true,
   guidebookUnit: null,
   lessonSheet: null,
   lessonSession: null,
@@ -53,6 +66,7 @@ const state = {
   flashcardSession: { queue: [], index: 0, flipped: false },
   studioMessage: '',
   backupMessage: '',
+  profileMessage: '',
   backupCodePreview: '',
   syncSettings: {
     githubRepo: APP_CONFIG.githubRepo,
@@ -133,15 +147,117 @@ function getAllItems(course) {
   );
 }
 
+const systemLightQuery =
+  typeof window !== 'undefined' && window.matchMedia
+    ? window.matchMedia('(prefers-color-scheme: light)')
+    : null;
+
+function getEffectiveTheme() {
+  if (state.theme === 'system') {
+    return systemLightQuery && systemLightQuery.matches ? 'light' : 'dark';
+  }
+  return state.theme === 'light' ? 'light' : 'dark';
+}
+
 function applyTheme() {
-  document.body.classList.toggle('theme-light', state.theme === 'light');
+  const effective = getEffectiveTheme();
+  document.body.classList.toggle('theme-light', effective === 'light');
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) metaTheme.setAttribute('content', effective === 'light' ? '#f8fafc' : '#0b1120');
+}
+
+function setTheme(mode) {
+  if (!['dark', 'light', 'system'].includes(mode)) return;
+  state.theme = mode;
+  localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
+  applyTheme();
+  autoBackupToGoogleDrive(false);
+  render();
 }
 
 function toggleTheme() {
-  state.theme = state.theme === 'light' ? 'dark' : 'light';
-  localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
-  applyTheme();
-  render();
+  const order = ['dark', 'light', 'system'];
+  const next = order[(order.indexOf(state.theme) + 1) % order.length];
+  setTheme(next);
+}
+
+if (systemLightQuery && typeof systemLightQuery.addEventListener === 'function') {
+  systemLightQuery.addEventListener('change', () => {
+    if (state.theme === 'system') applyTheme();
+  });
+}
+
+function getThemeIcon(mode = state.theme) {
+  if (mode === 'light') return '☀️';
+  if (mode === 'system') return '💻';
+  return '🌙';
+}
+
+function getDisplayName() {
+  const custom = (state.profile?.displayName || '').trim();
+  if (custom) return custom;
+  const gUser = getGoogleSession()?.user;
+  if (gUser?.name) return gUser.name;
+  if (gUser?.email) return gUser.email.split('@')[0];
+  return 'OpenLingo Learner';
+}
+
+function renderAvatarMarkup(sizeClass = 'sm') {
+  const customPic = state.profile?.avatarDataUrl;
+  const customEmoji = state.profile?.avatarEmoji;
+  const googlePic = getGoogleSession()?.user?.picture;
+  const name = getDisplayName();
+  const initials = name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join('') || 'OL';
+
+  if (customPic) {
+    return `<div class="avatar-circle ${sizeClass}"><img src="${escapeHtml(customPic)}" alt="${escapeHtml(name)}" /></div>`;
+  }
+  if (customEmoji) {
+    return `<div class="avatar-circle ${sizeClass}">${escapeHtml(customEmoji)}</div>`;
+  }
+  if (googlePic) {
+    return `<div class="avatar-circle ${sizeClass}"><img src="${escapeHtml(googlePic)}" alt="${escapeHtml(name)}" referrerpolicy="no-referrer" /></div>`;
+  }
+  return `<div class="avatar-circle ${sizeClass}">${escapeHtml(initials)}</div>`;
+}
+
+function compressAvatarFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Could not read image file.'));
+    reader.onload = () => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('Unsupported or corrupted image file.'));
+      img.onload = () => {
+        const size = 160;
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        const minSide = Math.min(img.width, img.height);
+        const sx = (img.width - minSide) / 2;
+        const sy = (img.height - minSide) / 2;
+        ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
+        resolve(canvas.toDataURL('image/jpeg', 0.82));
+      };
+      img.src = String(reader.result || '');
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function getPlatformLabel() {
+  if (window.AndroidBackup || window.AndroidGoogleAuth) return 'Android App';
+  const ua = navigator.userAgent || '';
+  if (/Linux/i.test(ua) && !/Android/i.test(ua) && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return 'Linux Desktop';
+  }
+  return 'Web PWA';
 }
 
 function loadLocalState() {
@@ -157,7 +273,17 @@ function loadLocalState() {
     const savedSrs = JSON.parse(localStorage.getItem(STORAGE_KEYS.SRS) || 'null');
     if (savedSrs) state.srs = savedSrs;
     const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
-    if (savedTheme === 'light' || savedTheme === 'dark') state.theme = savedTheme;
+    if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system') state.theme = savedTheme;
+    const savedProfile = JSON.parse(localStorage.getItem(STORAGE_KEYS.PROFILE) || 'null');
+    if (savedProfile && typeof savedProfile === 'object') {
+      state.profile = { ...state.profile, ...savedProfile };
+    }
+    const savedPrefs = JSON.parse(localStorage.getItem(STORAGE_KEYS.PREFS) || 'null');
+    if (savedPrefs && typeof savedPrefs === 'object') {
+      if (typeof savedPrefs.showRomaji === 'boolean') state.showRomaji = savedPrefs.showRomaji;
+      if (typeof savedPrefs.audioRate === 'number') state.audioRate = savedPrefs.audioRate;
+      if (typeof savedPrefs.autoSync === 'boolean') state.autoSync = savedPrefs.autoSync;
+    }
     const savedSettings = JSON.parse(localStorage.getItem(STORAGE_KEYS.SETTINGS) || 'null');
     if (savedSettings) {
       state.syncSettings = {
@@ -178,6 +304,15 @@ function loadLocalState() {
 function saveLocalState() {
   localStorage.setItem(STORAGE_KEYS.PROGRESS, JSON.stringify(state.progress));
   localStorage.setItem(STORAGE_KEYS.SRS, JSON.stringify(state.srs));
+  localStorage.setItem(STORAGE_KEYS.PROFILE, JSON.stringify(state.profile));
+  localStorage.setItem(
+    STORAGE_KEYS.PREFS,
+    JSON.stringify({
+      showRomaji: state.showRomaji,
+      audioRate: state.audioRate,
+      autoSync: state.autoSync
+    })
+  );
   const custom = state.courses.filter((c) => c._custom);
   localStorage.setItem(STORAGE_KEYS.COURSES, JSON.stringify(custom));
   const ghSynced = state.courses.filter((c) => c._source === 'github');
@@ -245,6 +380,7 @@ function playOnlineTtsFallback(text, langCode) {
   const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${encodeURIComponent(langCode)}&q=${encodeURIComponent(text)}`;
   const audio = new Audio();
   audio.referrerPolicy = 'no-referrer';
+  audio.playbackRate = state.audioRate || 0.9;
   audio.src = url;
   currentAudioEl = audio;
   audio.play().catch(() => {
@@ -281,7 +417,7 @@ function speakText(text, locale) {
       const utter = new SpeechSynthesisUtterance(clean);
       utter.voice = match;
       utter.lang = match.lang;
-      utter.rate = 0.9;
+      utter.rate = state.audioRate || 0.9;
       window.speechSynthesis.speak(utter);
       return;
     }
@@ -504,10 +640,15 @@ function rateCurrentFlashcard(rating) {
 function buildBackupPayload() {
   return {
     app: 'OpenLingo',
-    schemaVersion: 1,
+    schemaVersion: 2,
+    appVersion: APP_CONFIG.appVersion,
     exportedAt: new Date().toISOString(),
     activeCourseId: state.activeCourseId,
     theme: state.theme,
+    showRomaji: state.showRomaji,
+    audioRate: state.audioRate,
+    autoSync: state.autoSync,
+    profile: state.profile,
     progress: state.progress,
     srs: state.srs,
     customCourses: state.courses.filter((c) => c._custom)
@@ -564,11 +705,17 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
     });
   }
 
-  if (data.theme === 'light' || data.theme === 'dark') {
+  if (data.theme === 'light' || data.theme === 'dark' || data.theme === 'system') {
     state.theme = data.theme;
     localStorage.setItem(STORAGE_KEYS.THEME, state.theme);
     applyTheme();
   }
+  if (data.profile && typeof data.profile === 'object') {
+    state.profile = { ...state.profile, ...data.profile };
+  }
+  if (typeof data.showRomaji === 'boolean') state.showRomaji = data.showRomaji;
+  if (typeof data.audioRate === 'number') state.audioRate = data.audioRate;
+  if (typeof data.autoSync === 'boolean') state.autoSync = data.autoSync;
   if (data.activeCourseId && state.courses.some((c) => c.id === data.activeCourseId)) {
     state.activeCourseId = data.activeCourseId;
   }
@@ -674,7 +821,7 @@ function formatLastSynced(shortMode = false) {
 let autoBackupTimer = null;
 
 function autoBackupToGoogleDrive(immediate = false) {
-  if (!getGoogleSession()) return;
+  if (!state.autoSync || !getGoogleSession()) return;
   clearTimeout(autoBackupTimer);
   const run = () => {
     backupToGoogleDrive(buildBackupPayload())
@@ -789,7 +936,7 @@ function renderSidebar(course) {
   const ordered = getOrderedLessons(course);
   const doneCount = ordered.filter((e) => state.progress.completedLessons[e.key]).length;
   const dueCount = getDueCount(course);
-  const hintLabel = course.targetLang?.usesTransliteration === false ? 'Show pronunciation guide' : 'Show transliteration';
+  const googleSession = getGoogleSession();
 
   return `
     <aside class="sidebar">
@@ -798,10 +945,10 @@ function renderSidebar(course) {
           <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:38px;height:38px;border-radius:10px;display:block;" />
           <div>
             <div class="brand-name">OpenLingo</div>
-            <div class="brand-tag">FOSS Cross-Platform</div>
+            <div class="brand-tag">v${escapeHtml(APP_CONFIG.appVersion)} · FOSS</div>
           </div>
         </div>
-        <button class="icon-btn" data-toggle-theme title="Toggle Light/Dark theme">${state.theme === 'light' ? '🌙' : '☀️'}</button>
+        <button class="icon-btn" data-toggle-theme title="Cycle theme (${escapeHtml(state.theme)})">${getThemeIcon()}</button>
       </div>
 
       <select id="course-select" class="course-picker" aria-label="Select course">
@@ -825,33 +972,34 @@ function renderSidebar(course) {
         <button class="nav-btn ${state.view === 'studio' ? 'active' : ''}" data-nav="studio">
           🛠️ Course Studio
         </button>
-        <button class="nav-btn ${state.view === 'backup' ? 'active' : ''}" data-nav="backup">
-          💾 Backup &amp; Restore
+        <button class="nav-btn ${state.view === 'profile' ? 'active' : ''}" data-nav="profile">
+          👤 Profile
+        </button>
+        <button class="nav-btn ${state.view === 'settings' || state.view === 'backup' ? 'active' : ''}" data-nav="settings">
+          ⚙️ Settings
         </button>
       </nav>
 
       <div class="sidebar-stats">
+        <button class="sidebar-profile-btn" data-nav="profile" title="Open Profile">
+          ${renderAvatarMarkup('sm')}
+          <div style="min-width:0;flex:1;">
+            <div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
+            <div style="font-size:11px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+              ${googleSession ? `☁️ ${escapeHtml(googleSession.user?.email || 'Google Sync')}` : 'Offline Guest Mode'}
+            </div>
+          </div>
+        </button>
         ${
-          getGoogleSession()
-            ? `<div class="account-chip">
-                 <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;">☁️ ${escapeHtml(getGoogleSession().user?.name || 'Google Sync')}</span>
-                 <button class="btn btn-sm" id="sidebar-signout-btn" style="padding:3px 7px;font-size:11px;">Out</button>
-               </div>`
-            : `<button class="btn btn-primary btn-sm" id="sidebar-signin-btn" style="width:100%;">🔐 Sign in with Google</button>`
+          !googleSession
+            ? `<button class="btn btn-primary btn-sm" id="sidebar-signin-btn" style="width:100%;">🔐 Sign in with Google</button>`
+            : ''
         }
         <div id="sync-status-label" style="font-size:11px;color:var(--text-muted);text-align:center;">☁️ Last synced: ${escapeHtml(formatLastSynced(true))}</div>
         <div class="stat-row"><span>Streak</span><strong>🔥 ${state.progress.streak}d</strong></div>
         <div class="stat-row"><span>Total XP</span><strong>⚡ ${state.progress.xp} XP</strong></div>
         <div class="stat-row"><span>Lessons Done</span><strong>${doneCount}/${ordered.length}</strong></div>
         <div class="stat-row"><span>Cards Due</span><strong>${dueCount}</strong></div>
-        <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);cursor:pointer;margin-top:4px;">
-          <input type="checkbox" id="toggle-romaji" ${state.showRomaji ? 'checked' : ''} />
-          ${escapeHtml(hintLabel)}
-        </label>
-        <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);cursor:pointer;">
-          <input type="checkbox" id="toggle-chill" ${state.progress.chillMode ? 'checked' : ''} />
-          Unlimited Hearts
-        </label>
       </div>
     </aside>
   `;
@@ -876,12 +1024,14 @@ function renderMobileTopbar(course) {
         <span style="color:#eab308;">⚡ ${state.progress.xp}</span>
         <span style="color:#f43f5e;">❤️ ${state.progress.chillMode ? '∞' : state.progress.hearts}</span>
       </div>
-      <div style="display:flex;align-items:center;gap:5px;">
-        <button class="icon-btn" data-nav="backup" title="Backup & Restore" style="width:30px;height:30px;font-size:13px;">💾</button>
-        <button class="icon-btn" data-toggle-theme title="Toggle theme" style="width:30px;height:30px;font-size:13px;">${state.theme === 'light' ? '🌙' : '☀️'}</button>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button class="mobile-avatar-btn" data-nav="profile" title="Profile" aria-label="Profile">
+          ${renderAvatarMarkup('xs')}
+        </button>
+        <button class="icon-btn" data-nav="settings" title="Settings" aria-label="Settings" style="width:30px;height:30px;font-size:14px;">⚙️</button>
       </div>
     </header>
-    <button id="mobile-sync-strip" class="mobile-sync-strip" data-nav="backup">
+    <button id="mobile-sync-strip" class="mobile-sync-strip" data-nav="settings">
       ☁️ Last synced: ${escapeHtml(formatLastSynced(false))}
     </button>
   `;
@@ -902,6 +1052,9 @@ function renderMobileNav(course) {
       </button>
       <button class="nav-btn ${state.view === 'studio' ? 'active' : ''}" data-nav="studio">
         <span>🛠️</span><span>Studio</span>
+      </button>
+      <button class="nav-btn ${state.view === 'profile' ? 'active' : ''}" data-nav="profile">
+        <span>👤</span><span>Profile</span>
       </button>
     </nav>
   `;
@@ -1935,128 +2088,394 @@ function renderStudioView(course) {
   `;
 }
 
-function renderBackupView(course) {
+function renderProfileView(course) {
+  const googleSession = getGoogleSession();
+  const displayName = getDisplayName();
   const completedLessonsCount = Object.keys(state.progress.completedLessons || {}).length;
+  const totalLessonsAll = state.courses.reduce((sum, c) => sum + getOrderedLessons(c).length, 0);
   const srsCount = Object.keys(state.srs || {}).length;
   const masteredChars = Object.values(state.progress.charMastery || {}).filter((v) => v >= 3).length;
-  const customCount = state.courses.filter((c) => c._custom).length;
-  const isAndroidNative = Boolean(window.AndroidBackup);
-  const googleSession = getGoogleSession();
+  const goalXp = Number(state.profile.dailyGoalXp) || 50;
 
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
-        <h1 class="page-title">Backup &amp; Restore Progress</h1>
-        <p class="page-sub">☁️ Last synced: <strong>${escapeHtml(formatLastSynced(false))}</strong></p>
+        <h1 class="page-title">Your Profile</h1>
+        <p class="page-sub">Customize your learner profile, avatar, daily goals, and view progress across all languages.</p>
       </div>
-      <span class="pill accent">${isAndroidNative ? 'Android Ready' : 'Web / Desktop Ready'}</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-sm" data-nav="settings">⚙️ Settings</button>
+      </div>
+    </div>
+
+    ${state.profileMessage ? `<div class="grammar-box">${escapeHtml(state.profileMessage)}</div>` : ''}
+
+    <section class="card">
+      <div class="profile-hero">
+        <div class="avatar-upload-wrap">
+          ${renderAvatarMarkup('lg')}
+          <button type="button" class="avatar-cam-btn" id="profile-avatar-upload-btn" title="Upload custom profile picture" aria-label="Upload custom profile picture">📷</button>
+          <input type="file" id="profile-avatar-input" accept="image/*" style="display:none;" />
+        </div>
+        <div class="profile-hero-info">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <h2 style="margin:0;font-size:22px;font-weight:800;">${escapeHtml(displayName)}</h2>
+            <span class="pill accent">${googleSession ? '☁️ Synced Account' : 'Offline Mode'}</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
+            ${googleSession ? escapeHtml(googleSession.user?.email || 'Connected to Google Drive') : 'Sign in with Google to sync your profile & progress across all devices.'}
+          </div>
+          ${state.profile.bio ? `<div style="font-size:13px;margin-top:6px;">${escapeHtml(state.profile.bio)}</div>` : ''}
+          <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">
+            ☁️ Last synced: <strong>${escapeHtml(formatLastSynced(false))}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+        <div class="field-label" style="margin-bottom:6px;">Custom Profile Picture or Avatar Preset</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <button type="button" class="btn btn-primary btn-sm" id="profile-avatar-pick-btn">📷 Upload Custom Photo</button>
+          ${
+            state.profile.avatarDataUrl || state.profile.avatarEmoji
+              ? `<button type="button" class="btn btn-sm" id="profile-avatar-reset-btn">↺ ${googleSession?.user?.picture ? 'Use Google Photo' : 'Reset Avatar'}</button>`
+              : ''
+          }
+        </div>
+        <div class="avatar-presets">
+          ${AVATAR_PRESETS.map(
+            (em) =>
+              `<button type="button" class="avatar-preset-btn ${!state.profile.avatarDataUrl && state.profile.avatarEmoji === em ? 'active' : ''}" data-avatar-emoji="${escapeHtml(em)}" title="Use ${escapeHtml(em)} avatar">${escapeHtml(em)}</button>`
+          ).join('')}
+        </div>
+      </div>
+
+      <form id="profile-edit-form" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+        <div class="form-grid">
+          <div>
+            <label class="field-label">Display Name</label>
+            <input class="input" name="displayName" value="${escapeHtml(state.profile.displayName || googleSession?.user?.name || '')}" placeholder="Your name" maxlength="40" />
+          </div>
+          <div>
+            <label class="field-label">Learning Goal / Bio</label>
+            <input class="input" name="bio" value="${escapeHtml(state.profile.bio || '')}" placeholder="e.g. Preparing for JLPT N5 & Spanish A2" maxlength="90" />
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <div class="field-label">Daily XP Goal</div>
+          <div class="segmented-control">
+            ${[20, 50, 100, 150]
+              .map(
+                (xp) =>
+                  `<button type="button" class="seg-btn ${goalXp === xp ? 'active' : ''}" data-daily-goal="${xp}">${xp} XP</button>`
+              )
+              .join('')}
+          </div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">💾 Save Profile</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div>
+          <h3 style="margin:0;">Current Account</h3>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+            ${googleSession ? `Signed in as ${escapeHtml(googleSession.user?.email || googleSession.user?.name || 'Google User')}` : 'Using local device storage only'}
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          ${
+            googleSession
+              ? `
+                <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>☁️ Sync Now</button>
+                <button class="btn btn-danger btn-sm" id="profile-logout-btn">🚪 Log Out</button>
+              `
+              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>🔐 Sign in with Google</button>`
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">Learning Overview</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-label">Current Streak</div>
+          <div class="stat-card-value" style="color:#f97316;">🔥 ${state.progress.streak} days</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Total XP</div>
+          <div class="stat-card-value" style="color:#eab308;">⚡ ${state.progress.xp} XP</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Lessons Done</div>
+          <div class="stat-card-value">${completedLessonsCount} / ${totalLessonsAll}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Flashcards</div>
+          <div class="stat-card-value">${srsCount} tracked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Characters</div>
+          <div class="stat-card-value">${masteredChars} mastered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Hearts Mode</div>
+          <div class="stat-card-value" style="color:#f43f5e;">❤️ ${state.progress.chillMode ? 'Unlimited' : `${state.progress.hearts}/5`}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">Courses Progress</h3>
+      <div style="display:grid;gap:10px;">
+        ${state.courses
+          .map((c) => {
+            const ordered = getOrderedLessons(c);
+            const done = ordered.filter((e) => state.progress.completedLessons[e.key]).length;
+            const pct = ordered.length ? Math.round((done / ordered.length) * 100) : 0;
+            return `
+              <div class="course-progress-item">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <div>
+                    <strong>${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</strong>
+                    <span style="font-size:12px;color:var(--text-muted);margin-left:6px;">${done}/${ordered.length} lessons (${pct}%)</span>
+                  </div>
+                  <button class="btn btn-sm" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : 'Continue →'}</button>
+                </div>
+                <div class="mini-progress-track">
+                  <div class="mini-progress-fill" style="width:${pct}%;"></div>
+                </div>
+              </div>
+            `;
+          })
+          .join('')}
+      </div>
+    </section>
+  `;
+}
+
+function renderSettingsView(course) {
+  const completedLessonsCount = Object.keys(state.progress.completedLessons || {}).length;
+  const srsCount = Object.keys(state.srs || {}).length;
+  const masteredChars = Object.values(state.progress.charMastery || {}).filter((v) => v >= 3).length;
+  const customCount = state.courses.filter((c) => c._custom).length;
+  const googleSession = getGoogleSession();
+  const platformLabel = getPlatformLabel();
+  const hintLabel = course.targetLang?.usesTransliteration === false ? 'Show Pronunciation Guide' : 'Show Transliteration (Romaji / Phonetics)';
+
+  return `
+    ${renderHudBar(course)}
+    <div class="header-bar">
+      <div>
+        <h1 class="page-title">Settings</h1>
+        <p class="page-sub">Account, appearance, learning preferences, cloud sync &amp; backup data.</p>
+      </div>
+      <span class="pill accent">v${escapeHtml(APP_CONFIG.appVersion)} · ${escapeHtml(platformLabel)}</span>
     </div>
 
     ${state.backupMessage ? `<div class="grammar-box">${escapeHtml(state.backupMessage)}</div>` : ''}
 
     <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px;">
-        <div>
-          <h3 style="margin:0;">☁️ Sign in with Google (Personal Drive Backup)</h3>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
-            Saves <code>openlingo-backup.json</code> privately inside your own Google account's hidden AppData folder.
+      <h3 style="margin-top:0;">👤 Account &amp; Session</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:12px;border-radius:12px;background:var(--surface-elevated);border:1px solid var(--border);margin-bottom:12px;">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+          ${renderAvatarMarkup('md')}
+          <div style="min-width:0;">
+            <div style="font-weight:800;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
+            <div style="font-size:12px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+              ${googleSession ? escapeHtml(googleSession.user?.email || 'Signed in with Google') : 'Not signed in · Local Guest Mode'}
+            </div>
+            <div style="font-size:11px;color:var(--accent);margin-top:2px;">
+              ☁️ Last synced: ${escapeHtml(formatLastSynced(false))}
+            </div>
           </div>
         </div>
-        ${googleSession ? `<span class="pill accent">Signed in</span>` : `<span class="pill">Zero-server OAuth</span>`}
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-sm" data-nav="profile">Edit Profile</button>
+          ${
+            googleSession
+              ? `<button class="btn btn-danger btn-sm" id="google-signout-btn">🚪 Log Out</button>`
+              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${state.googleBusy ? '⏳ Signing in...' : '🔐 Sign in with Google'}</button>`
+          }
+        </div>
       </div>
-
       ${
         googleSession
           ? `
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:12px;border-radius:12px;background:var(--surface-elevated);border:1px solid var(--border);margin-bottom:12px;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>☁️ Backup to Google Drive</button>
+              <button class="btn btn-sm" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>⬇️ Restore from Google Drive</button>
+            </div>
+          `
+          : !APP_CONFIG.googleClientId
+            ? `
+              <form id="google-client-form" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:10px;">
+                <div style="flex:1;min-width:220px;">
+                  <label class="field-label">Google OAuth 2.0 Web Client ID</label>
+                  <input class="input" name="googleClientId" value="${escapeHtml(state.syncSettings.googleClientId)}" placeholder="123456789-xxxx.apps.googleusercontent.com" />
+                </div>
+                <button class="btn btn-sm" type="submit">Save Client ID</button>
+              </form>
+            `
+            : ''
+      }
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">🎨 Appearance</h3>
+      <div class="settings-list">
+        <div class="settings-row">
           <div>
-            <strong>${escapeHtml(googleSession.user?.name || 'Google Account')}</strong>
-            <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(googleSession.user?.email || '')}</div>
+            <div class="settings-row-title">Theme</div>
+            <div class="settings-row-desc">Choose Light, Dark, or automatically match your device's system theme.</div>
           </div>
-          <button class="btn btn-sm" id="google-signout-btn">Sign Out</button>
+          <div class="segmented-control" role="group" aria-label="Theme mode">
+            <button type="button" class="seg-btn ${state.theme === 'light' ? 'active' : ''}" data-set-theme="light">☀️ Light</button>
+            <button type="button" class="seg-btn ${state.theme === 'dark' ? 'active' : ''}" data-set-theme="dark">🌙 Dark</button>
+            <button type="button" class="seg-btn ${state.theme === 'system' ? 'active' : ''}" data-set-theme="system">💻 System</button>
+          </div>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <button class="btn btn-primary" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>☁️ Backup to Google Drive</button>
-          <button class="btn" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>⬇️ Restore from Google Drive</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">🎓 Learning &amp; Audio Preferences</h3>
+      <div class="settings-list">
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">${escapeHtml(hintLabel)}</div>
+            <div class="settings-row-desc">Display reading/romanization hints beneath foreign scripts in lessons and flashcards.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settings-toggle-romaji" ${state.showRomaji ? 'checked' : ''} />
+            <span class="toggle-slider"></span>
+          </label>
         </div>
-      `
-          : `
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Unlimited Hearts (Chill Mode)</div>
+            <div class="settings-row-desc">Practice freely without losing hearts on mistakes during lessons.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settings-toggle-chill" ${state.progress.chillMode ? 'checked' : ''} />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Auto-Sync to Google Drive</div>
+            <div class="settings-row-desc">Automatically back up progress to your private Drive AppData after lessons, flashcards, and profile changes.</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="settings-toggle-autosync" ${state.autoSync ? 'checked' : ''} />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Audio Playback Speed</div>
+            <div class="settings-row-desc">Adjust pronunciation speed for flashcards, lessons, and character drills.</div>
+          </div>
+          <div class="segmented-control" role="group" aria-label="Audio playback speed">
+            <button type="button" class="seg-btn ${state.audioRate === 0.75 ? 'active' : ''}" data-set-audio-rate="0.75">0.75× Slow</button>
+            <button type="button" class="seg-btn ${state.audioRate === 0.9 ? 'active' : ''}" data-set-audio-rate="0.9">0.9× Normal</button>
+            <button type="button" class="seg-btn ${state.audioRate === 1.1 ? 'active' : ''}" data-set-audio-rate="1.1">1.1× Fast</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="settings-backup-section">
+      <h3 style="margin-top:0;">💾 Backup &amp; Restore Data</h3>
+      <div class="stats-grid" style="margin-bottom:14px;">
+        <div class="stat-card">
+          <div class="stat-card-label">Lessons Done</div>
+          <div class="stat-card-value">${completedLessonsCount}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">XP / Streak</div>
+          <div class="stat-card-value">${state.progress.xp} XP · ${state.progress.streak}d</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Flashcards</div>
+          <div class="stat-card-value">${srsCount}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Chars / Custom</div>
+          <div class="stat-card-value">${masteredChars} / ${customCount}</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <div class="settings-row-title" style="margin-bottom:4px;">1. Portable Backup File (.json)</div>
+        <div class="settings-row-desc" style="margin-bottom:10px;">
+          Includes your progress, flashcards, profile picture, theme, and custom courses. Works 100% offline.
+        </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-          <button class="btn btn-primary" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>
-            ${state.googleBusy ? '⏳ Signing in...' : '🔐 Sign in with Google'}
-          </button>
+          <button class="btn btn-primary btn-sm" id="save-backup-file-btn">⬇ Export Backup File</button>
+          <button class="btn btn-sm" id="open-backup-file-btn">⬆ Restore from File</button>
+          <input type="file" id="web-backup-file-input" accept=".json,.txt,application/json,text/plain" style="display:none;" />
+        </div>
+      </div>
+
+      <div style="padding-top:14px;border-top:1px solid var(--border);">
+        <div class="settings-row-title" style="margin-bottom:4px;">2. Copy &amp; Paste Backup Code (<code>OL1:...</code>)</div>
+        <div class="settings-row-desc" style="margin-bottom:10px;">
+          Move progress between devices quickly by pasting a single-line backup code.
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+          <button class="btn btn-primary btn-sm" id="copy-backup-code-btn">📋 Generate &amp; Copy Code</button>
+          <button class="btn btn-sm" id="show-backup-code-btn">👁 Show Code Below</button>
         </div>
         ${
-          !APP_CONFIG.googleClientId
-            ? `
-          <form id="google-client-form" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:12px;">
-            <div style="flex:1;min-width:220px;">
-              <label class="field-label">Google OAuth 2.0 Web Client ID (or set in src/config.js)</label>
-              <input class="input" name="googleClientId" value="${escapeHtml(state.syncSettings.googleClientId)}" placeholder="123456789-xxxx.apps.googleusercontent.com" />
-            </div>
-            <button class="btn btn-sm" type="submit">Save Client ID</button>
-          </form>
-        `
+          state.backupCodePreview
+            ? `<textarea id="backup-code-output" rows="3" readonly style="margin-bottom:12px;font-family:monospace;font-size:12px;">${escapeHtml(state.backupCodePreview)}</textarea>`
             : ''
         }
-      `
-      }
-    </section>
-
-    <section class="card">
-      <h3 style="margin-top:0;">Current Device Progress</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;">
-        <div style="padding:12px;border-radius:10px;background:var(--surface-elevated);border:1px solid var(--border);">
-          <div style="font-size:12px;color:var(--text-muted);">Completed Lessons</div>
-          <div style="font-size:20px;font-weight:800;">${completedLessonsCount}</div>
-        </div>
-        <div style="padding:12px;border-radius:10px;background:var(--surface-elevated);border:1px solid var(--border);">
-          <div style="font-size:12px;color:var(--text-muted);">Total XP / Streak</div>
-          <div style="font-size:20px;font-weight:800;">${state.progress.xp} XP · ${state.progress.streak}d</div>
-        </div>
-        <div style="padding:12px;border-radius:10px;background:var(--surface-elevated);border:1px solid var(--border);">
-          <div style="font-size:12px;color:var(--text-muted);">Flashcards Tracked</div>
-          <div style="font-size:20px;font-weight:800;">${srsCount}</div>
-        </div>
-        <div style="padding:12px;border-radius:10px;background:var(--surface-elevated);border:1px solid var(--border);">
-          <div style="font-size:12px;color:var(--text-muted);">Characters / Custom</div>
-          <div style="font-size:20px;font-weight:800;">${masteredChars} / ${customCount}</div>
+        <label class="field-label">Paste Backup Code (OL1:...) or JSON to Restore</label>
+        <textarea id="restore-code-input" rows="3" placeholder="Paste your OL1:... backup code or openlingo-backup.json contents here..." style="font-family:monospace;font-size:12px;"></textarea>
+        <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+          <button class="btn btn-primary btn-sm" id="restore-code-btn">🔄 Restore from Pasted Text</button>
+          <button class="btn btn-danger btn-sm" id="reset-progress-btn">🗑 Reset Local Progress</button>
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h3 style="margin-top:0;">1. Document File Backup (.json)</h3>
-      <p style="font-size:13px;color:var(--text-muted);margin-top:0;">
-        Save a portable JSON file to your phone's Downloads, Google Drive, or computer—and restore it anytime with zero internet or account required.
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-        <button class="btn btn-primary" id="save-backup-file-btn">⬇ Save Backup File</button>
-        <button class="btn" id="open-backup-file-btn">⬆ Restore from File</button>
-        <input type="file" id="web-backup-file-input" accept=".json,.txt,application/json,text/plain" style="display:none;" />
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:42px;height:42px;border-radius:11px;display:block;" />
+        <div>
+          <h3 style="margin:0;">About OpenLingo</h3>
+          <div style="font-size:12px;color:var(--text-muted);">Free &amp; Open-Source Cross-Platform Language Learning</div>
+        </div>
       </div>
-    </section>
-
-    <section class="card">
-      <h3 style="margin-top:0;">2. Copy &amp; Paste Backup Code</h3>
-      <p style="font-size:13px;color:var(--text-muted);margin-top:0;">
-        Generate a compact single-line backup code (<code>OL1:...</code>) to move progress between your phone and desktop browser via notes or chat.
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
-        <button class="btn btn-primary btn-sm" id="copy-backup-code-btn">📋 Generate &amp; Copy Backup Code</button>
-        <button class="btn btn-sm" id="show-backup-code-btn">👁 Show Code Below</button>
-      </div>
-      ${
-        state.backupCodePreview
-          ? `<textarea id="backup-code-output" rows="3" readonly style="margin-bottom:14px;font-family:monospace;font-size:12px;">${escapeHtml(state.backupCodePreview)}</textarea>`
-          : ''
-      }
-      <label class="field-label">Paste Backup Code (OL1:...) or JSON to Restore</label>
-      <textarea id="restore-code-input" rows="3" placeholder="Paste your OL1:... backup code or openlingo-backup.json contents here..." style="font-family:monospace;font-size:12px;"></textarea>
-      <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-        <button class="btn btn-primary btn-sm" id="restore-code-btn">🔄 Restore from Pasted Text</button>
-        <button class="btn btn-sm" id="reset-progress-btn" style="color:var(--danger);">🗑 Reset Local Progress</button>
+      <div class="settings-list">
+        <div class="settings-row">
+          <div class="settings-row-title">App Version</div>
+          <span class="pill accent">v${escapeHtml(APP_CONFIG.appVersion)}</span>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-title">Platform</div>
+          <span class="pill">${escapeHtml(platformLabel)}</span>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-title">App Origin / Sync Mode</div>
+          <span class="pill">${escapeHtml(window.location.origin)}</span>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-title">Links</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">GitHub</a>
+            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}/releases" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Releases</a>
+            <a class="btn btn-sm" href="./privacy.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Privacy Policy</a>
+          </div>
+        </div>
       </div>
     </section>
   `;
@@ -2104,19 +2523,119 @@ function attachEvents(course) {
   const mSelect = document.getElementById('mobile-course-select');
   if (mSelect) mSelect.addEventListener('change', (e) => switchCourse(e.target.value));
 
-  const romajiToggle = document.getElementById('toggle-romaji');
+  const romajiToggle = document.getElementById('settings-toggle-romaji') || document.getElementById('toggle-romaji');
   if (romajiToggle) {
     romajiToggle.addEventListener('change', (e) => {
       state.showRomaji = e.target.checked;
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
       render();
     });
   }
 
-  const chillToggle = document.getElementById('toggle-chill');
+  const chillToggle = document.getElementById('settings-toggle-chill') || document.getElementById('toggle-chill');
   if (chillToggle) {
     chillToggle.addEventListener('change', (e) => {
       state.progress.chillMode = e.target.checked;
       saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  }
+
+  const autoSyncToggle = document.getElementById('settings-toggle-autosync');
+  if (autoSyncToggle) {
+    autoSyncToggle.addEventListener('change', (e) => {
+      state.autoSync = e.target.checked;
+      saveLocalState();
+      render();
+    });
+  }
+
+  document.querySelectorAll('[data-set-theme]').forEach((btn) => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.setTheme));
+  });
+
+  document.querySelectorAll('[data-set-audio-rate]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.audioRate = Number(btn.dataset.setAudioRate) || 0.9;
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  });
+
+  /* Profile Events */
+  const avatarInput = document.getElementById('profile-avatar-input');
+  const avatarUploadBtn = document.getElementById('profile-avatar-upload-btn');
+  const avatarPickBtn = document.getElementById('profile-avatar-pick-btn');
+  if (avatarUploadBtn && avatarInput) {
+    avatarUploadBtn.addEventListener('click', () => avatarInput.click());
+  }
+  if (avatarPickBtn && avatarInput) {
+    avatarPickBtn.addEventListener('click', () => avatarInput.click());
+  }
+  if (avatarInput) {
+    avatarInput.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const dataUrl = await compressAvatarFile(file);
+        state.profile.avatarDataUrl = dataUrl;
+        state.profile.avatarEmoji = '';
+        state.profileMessage = 'Updated custom profile picture!';
+        saveLocalState();
+        autoBackupToGoogleDrive(false);
+        render();
+      } catch (err) {
+        state.profileMessage = `Could not update photo: ${err.message}`;
+        render();
+      }
+    });
+  }
+
+  const avatarResetBtn = document.getElementById('profile-avatar-reset-btn');
+  if (avatarResetBtn) {
+    avatarResetBtn.addEventListener('click', () => {
+      state.profile.avatarDataUrl = '';
+      state.profile.avatarEmoji = '';
+      state.profileMessage = 'Avatar reset.';
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  }
+
+  document.querySelectorAll('[data-avatar-emoji]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.profile.avatarDataUrl = '';
+      state.profile.avatarEmoji = btn.dataset.avatarEmoji;
+      state.profileMessage = `Avatar updated to ${btn.dataset.avatarEmoji}`;
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-daily-goal]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.profile.dailyGoalXp = Number(btn.dataset.dailyGoal) || 50;
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
+      render();
+    });
+  });
+
+  const profileForm = document.getElementById('profile-edit-form');
+  if (profileForm) {
+    profileForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(profileForm);
+      state.profile.displayName = String(fd.get('displayName') || '').trim();
+      state.profile.bio = String(fd.get('bio') || '').trim();
+      state.profileMessage = 'Profile saved!';
+      saveLocalState();
+      autoBackupToGoogleDrive(false);
       render();
     });
   }
@@ -2666,6 +3185,9 @@ function attachEvents(course) {
   const googleSignOutBtn = document.getElementById('google-signout-btn');
   if (googleSignOutBtn) googleSignOutBtn.addEventListener('click', doSignOut);
 
+  const profileLogoutBtn = document.getElementById('profile-logout-btn');
+  if (profileLogoutBtn) profileLogoutBtn.addEventListener('click', doSignOut);
+
   const sidebarSignOutBtn = document.getElementById('sidebar-signout-btn');
   if (sidebarSignOutBtn) sidebarSignOutBtn.addEventListener('click', doSignOut);
 
@@ -2993,7 +3515,8 @@ function render() {
   else if (state.view === 'lesson') mainContent = renderLessonView(course);
   else if (state.view === 'flashcards') mainContent = renderFlashcardsView(course);
   else if (state.view === 'studio') mainContent = renderStudioView(course);
-  else if (state.view === 'backup') mainContent = renderBackupView(course);
+  else if (state.view === 'profile') mainContent = renderProfileView(course);
+  else if (state.view === 'settings' || state.view === 'backup') mainContent = renderSettingsView(course);
 
   document.getElementById('app').innerHTML = `
     ${renderSidebar(course)}
