@@ -30,15 +30,26 @@ DATA_DIR = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share"
 PROFILE_DIR = DATA_DIR / "profile"
 
 
+class ReusableHTTPServer(http.server.ThreadingHTTPServer):
+    allow_reuse_address = True
+
+
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
 
 
-def pick_port(preferred=8080):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        if s.connect_ex(("127.0.0.1", preferred)) != 0:
-            return preferred
+def pick_port(preferred_ports=(8080, 18420, 18421)):
+    env_port = os.environ.get("OPENLINGO_PORT")
+    candidates = [int(env_port)] if (env_port and env_port.isdigit()) else list(preferred_ports)
+    for port in candidates:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            try:
+                s.bind(("127.0.0.1", port))
+                return port
+            except OSError:
+                continue
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind(("127.0.0.1", 0))
         return s.getsockname()[1]
@@ -63,9 +74,9 @@ def find_app_browser():
 
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    port = pick_port(8080)
+    port = pick_port()
     handler = functools.partial(QuietHandler, directory=str(WWW_DIR))
-    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", port), handler)
+    httpd = ReusableHTTPServer(("127.0.0.1", port), handler)
 
     server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     server_thread.start()
