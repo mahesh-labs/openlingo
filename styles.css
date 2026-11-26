@@ -2123,3 +2123,566 @@ select.input {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+/* ==========================================================================
+   Custom Themed Option Selector (Matches Dark & Light Theme on All OSes)
+   ========================================================================== */
+.ol-select-wrap {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+}
+
+.sidebar .ol-select-wrap,
+.onboarding-card .ol-select-wrap,
+.form-grid .ol-select-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.ol-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+  background-image: none !important;
+  padding-right: 12px !important;
+}
+
+.ol-select-trigger.course-picker {
+  width: 100%;
+}
+
+.ol-select-trigger.mobile-course-picker {
+  width: auto;
+  min-height: 36px;
+  padding: 5px 10px !important;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 6px;
+}
+
+.ol-select-trigger.profile-lang-select {
+  min-width: 170px;
+  min-height: 40px;
+  padding: 7px 12px !important;
+  font-size: 13px;
+}
+
+.ol-select-trigger.studio-lesson-select {
+  width: 100%;
+  min-width: 0;
+  font-size: 14px;
+}
+
+.ol-select-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+}
+
+.ol-select-chevron {
+  color: var(--accent-text);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ol-select-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 18, 0.72);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 120;
+  animation: olFadeIn 0.14s ease;
+}
+
+.ol-select-modal {
+  width: 100%;
+  max-width: 420px;
+  max-height: 78vh;
+  background: var(--surface);
+  border: 3px solid var(--accent-border);
+  border-radius: 24px;
+  box-shadow: 0 10px 0 var(--accent-lip), 0 24px 48px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: olPopIn 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ol-select-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--surface-elevated);
+  border-bottom: 2.5px solid var(--border);
+}
+
+.ol-select-modal-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ol-select-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.ol-select-close:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.ol-select-list {
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ol-select-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border-radius: 15px;
+  border: 2px solid var(--border);
+  background: var(--surface-elevated);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.08s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.ol-select-option:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.ol-select-option.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  box-shadow: 0 3px 0 var(--accent-lip);
+}
+
+.ol-select-opt-label {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  line-height: 1.3;
+}
+
+.ol-select-opt-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.ol-select-option.selected .ol-select-opt-check {
+  background: var(--accent);
+  border-color: var(--accent-border);
+}
+
+@keyframes olFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes olPopIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   Floating Jump-to-Active-Lesson Pill & Pulse
+   ========================================================================== */
+.jump-lesson-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 2.5px solid var(--accent-border);
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--accent-lip), 0 12px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px) scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jump-lesson-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.jump-lesson-btn:active {
+  transform: translateY(4px) scale(0.98);
+  box-shadow: 0 2px 0 var(--accent-lip);
+}
+
+.lesson-node.pulse-highlight {
+  animation: lessonNodePulse 0.85s ease;
+}
+
+@keyframes lessonNodePulse {
+  0% { box-shadow: 0 9px 0 var(--accent-lip), 0 0 0 0 rgba(124, 58, 237, 0.75); }
+  50% { box-shadow: 0 9px 0 var(--accent-lip), 0 0 0 18px rgba(124, 58, 237, 0); }
+  100% { box-shadow: 0 9px 0 var(--accent-lip), 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+/* ==========================================================================
+   Non-Blocking Top Toast Notification
+   ========================================================================== */
+.app-toast {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-elevated);
+  color: var(--text);
+  border: 2.5px solid var(--accent);
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  z-index: 90;
+  box-shadow: 0 5px 0 var(--accent-lip), 0 10px 24px rgba(0, 0, 0, 0.35);
+  max-width: min(92vw, 480px);
+  cursor: pointer;
+}
+
+.app-toast .toast-text {
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.app-toast .toast-dismiss {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Compact, Unclipped Exercise & Placement Drill Runner
+   ========================================================================== */
+.drill-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.drill-exit-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  flex-shrink: 0;
+}
+
+.progress-track.drill-progress {
+  flex: 1;
+  margin-bottom: 0;
+  height: 14px;
+}
+
+.drill-meta-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.drill-prompt-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.prompt-main {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prompt-sub {
+  overflow-wrap: anywhere;
+}
+
+.prompt-hint {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+.option-btn {
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.option-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.drill-feedback {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 2.5px solid var(--accent);
+  background: var(--accent-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.drill-feedback.is-wrong {
+  border-color: var(--danger-solid);
+  background: rgba(225, 29, 72, 0.16);
+}
+
+.drill-feedback-text {
+  min-width: 0;
+  flex: 1 1 200px;
+}
+
+.drill-feedback-detail {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================================
+   True 3D Animated Flashcard Flip
+   ========================================================================== */
+.flashcard-stage {
+  perspective: 1200px;
+  margin-bottom: 18px;
+}
+
+.flashcard-3d {
+  position: relative;
+  width: 100%;
+  min-height: 310px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.56s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+
+.flashcard-3d.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 26px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 0 var(--card-lip);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  border-color: var(--accent);
+  box-shadow: 0 10px 0 var(--accent-lip);
+}
+
+.flashcard-answer {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 5vw, 34px);
+  font-weight: 700;
+  color: var(--accent-text);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.flashcard-term-recap {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.flashcard-example {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--surface-elevated);
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 480px;
+  width: 100%;
+  display: grid;
+  gap: 3px;
+}
+
+.flashcard-tap-hint {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rating-row-wrap {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.3s ease;
+}
+
+.rating-row-wrap.visible {
+  opacity: 1;
+  max-height: 240px;
+  transform: translateY(0);
+  pointer-events: auto;
+  overflow: visible;
+}
+
+@media (max-width: 780px) {
+  .main.in-drill {
+    padding: 10px 12px 26px;
+  }
+
+  .drill-card {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .drill-card .prompt-main {
+    font-size: clamp(24px, 6.2vw, 32px);
+    margin: 8px 0 4px;
+    line-height: 1.3;
+  }
+
+  .drill-card .options-grid {
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .drill-card .option-btn {
+    min-height: 50px;
+    padding: 11px 14px;
+    font-size: 16px;
+    border-radius: 15px;
+    box-shadow: 0 4px 0 var(--card-lip);
+  }
+
+  .drill-feedback {
+    margin-top: 12px;
+    padding: 12px 14px;
+  }
+
+  .drill-feedback .btn {
+    width: 100%;
+  }
+
+  .jump-lesson-btn {
+    right: 14px;
+    bottom: 84px;
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+
+  .app-toast {
+    top: 64px;
+    font-size: 12px;
+    padding: 8px 13px;
+  }
+
+  .flashcard-3d {
+    min-height: 290px;
+  }
+
+  .flashcard-face {
+    padding: 22px 16px;
+  }
+
+  .ol-select-overlay {
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  .ol-select-modal {
+    max-width: 100%;
+    max-height: 74vh;
+    border-radius: 22px;
+  }
+}

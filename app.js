@@ -100,8 +100,115 @@ const state = {
   authError: '',
   guestMode: false,
   syncMeta: { lastSyncedAt: null, source: '' },
-  audioToast: ''
+  audioToast: '',
+  shouldScrollToActiveLesson: true
 };
+
+const customSelectRegistry = new Map();
+
+function closeCustomSelectOverlay() {
+  const existing = document.getElementById('ol-select-overlay');
+  if (existing) existing.remove();
+  if (window._olSelectEscHandler) {
+    window.removeEventListener('keydown', window._olSelectEscHandler);
+    window._olSelectEscHandler = null;
+  }
+}
+
+function renderCustomSelect({ id = '', name = '', className = '', style = '', ariaLabel = 'Select option', value = '', options = [] }) {
+  const key = id || name || `sel_${customSelectRegistry.size}`;
+  const selected = options.find((o) => String(o.value) === String(value)) || options[0] || { value: '', label: '' };
+  customSelectRegistry.set(key, { id, name, ariaLabel, value: selected.value, options });
+  return `
+    <span class="ol-select-wrap" ${style ? `style="${escapeHtml(style)}"` : ''}>
+      ${name ? `<input type="hidden" name="${escapeHtml(name)}" value="${escapeHtml(selected.value)}" data-ol-select-input="${escapeHtml(key)}" />` : ''}
+      <button
+        type="button"
+        ${id ? `id="${escapeHtml(id)}"` : ''}
+        class="ol-select-trigger ${escapeHtml(className)}"
+        data-ol-select="${escapeHtml(key)}"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-label="${escapeHtml(ariaLabel)}"
+      >
+        <span class="ol-select-label">${escapeHtml(selected.label)}</span>
+        <span class="ol-select-chevron" aria-hidden="true">${uiIcon('chevronDown', 16)}</span>
+      </button>
+    </span>
+  `;
+}
+
+function openCustomSelectOverlay(key, onSelect) {
+  const cfg = customSelectRegistry.get(key);
+  if (!cfg) return;
+  closeCustomSelectOverlay();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'ol-select-overlay';
+  overlay.className = 'ol-select-overlay';
+  overlay.innerHTML = `
+    <div class="ol-select-modal" role="listbox" aria-label="${escapeHtml(cfg.ariaLabel)}">
+      <div class="ol-select-modal-header">
+        <span class="ol-select-modal-title">${escapeHtml(cfg.ariaLabel)}</span>
+        <button type="button" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
+      </div>
+      <div class="ol-select-list">
+        ${cfg.options
+          .map((opt) => {
+            const isSel = String(opt.value) === String(cfg.value);
+            return `
+              <button
+                type="button"
+                role="option"
+                aria-selected="${isSel ? 'true' : 'false'}"
+                class="ol-select-option ${isSel ? 'selected' : ''}"
+                data-ol-opt-value="${escapeHtml(opt.value)}"
+              >
+                <span class="ol-select-opt-label">${escapeHtml(opt.label)}</span>
+                <span class="ol-select-opt-check" aria-hidden="true">${isSel ? uiIcon('check', 15) : ''}</span>
+              </button>
+            `;
+          })
+          .join('')}
+      </div>
+    </div>
+  `;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.closest('.ol-select-close')) {
+      closeCustomSelectOverlay();
+      return;
+    }
+    const optBtn = e.target.closest('[data-ol-opt-value]');
+    if (!optBtn) return;
+    const nextVal = optBtn.dataset.olOptValue;
+    cfg.value = nextVal;
+    const chosen = cfg.options.find((o) => String(o.value) === String(nextVal));
+    const hiddenInput = document.querySelector(`[data-ol-select-input="${CSS.escape(key)}"]`);
+    if (hiddenInput) hiddenInput.value = nextVal;
+    const trigger = document.querySelector(`[data-ol-select="${CSS.escape(key)}"] .ol-select-label`);
+    if (trigger && chosen) trigger.textContent = chosen.label;
+    closeCustomSelectOverlay();
+    if (typeof onSelect === 'function') onSelect(nextVal);
+  });
+
+  window._olSelectEscHandler = (e) => {
+    if (e.key === 'Escape') closeCustomSelectOverlay();
+  };
+  window.addEventListener('keydown', window._olSelectEscHandler);
+
+  document.body.appendChild(overlay);
+  const selectedEl = overlay.querySelector('.ol-select-option.selected');
+  if (selectedEl) {
+    requestAnimationFrame(() => selectedEl.scrollIntoView({ block: 'nearest' }));
+  }
+}
+
+function bindCustomSelect(key, onSelect) {
+  const trigger = document.querySelector(`[data-ol-select="${CSS.escape(key)}"]`);
+  if (!trigger) return;
+  trigger.addEventListener('click', () => openCustomSelectOverlay(key, onSelect));
+}
 
 function escapeHtml(str) {
   return String(str ?? '')
@@ -508,8 +615,10 @@ function showAudioToast(msg) {
   clearTimeout(toastTimer);
   const existing = document.getElementById('audio-toast');
   if (existing) {
-    existing.textContent = msg;
-    existing.style.display = 'block';
+    const txt = existing.querySelector('.toast-text');
+    if (txt) txt.textContent = msg;
+    else existing.textContent = msg;
+    existing.style.display = 'inline-flex';
   } else {
     render();
   }
@@ -517,7 +626,7 @@ function showAudioToast(msg) {
     state.audioToast = '';
     const el = document.getElementById('audio-toast');
     if (el) el.style.display = 'none';
-  }, 4000);
+  }, 2600);
 }
 
 function cleanSpeechText(text) {
@@ -732,7 +841,7 @@ function startLesson(unitId, lessonId) {
     ? unit._section.units.flatMap((u) => u.lessons.flatMap((l) => l.items))
     : getAllItems(course);
 
-  const exercises = generateLessonExercises(lesson, sameTierItems);
+  const exercises = generateLessonExercises(lesson, sameTierItems, course.sourceLang?.name || 'English');
   state.lessonSession = {
     unit,
     lesson,
@@ -1139,14 +1248,13 @@ function renderCourseOnboarding() {
 
         <div style="margin-bottom:14px;">
           <label class="field-label" for="onboarding-source-lang">I speak</label>
-          <select id="onboarding-source-lang" class="course-picker" aria-label="Language you speak">
-            ${langs
-              .map(
-                (l) =>
-                  `<option value="${escapeHtml(l.code)}" ${l.code === srcMeta?.code ? 'selected' : ''}>${escapeHtml(l.name)} (${escapeHtml(l.nativeName)})</option>`
-              )
-              .join('')}
-          </select>
+          ${renderCustomSelect({
+            id: 'onboarding-source-lang',
+            className: 'course-picker',
+            ariaLabel: 'Language you speak',
+            value: srcMeta?.code || 'en',
+            options: langs.map((l) => ({ value: l.code, label: `${l.name} (${l.nativeName})` }))
+          })}
         </div>
 
         <label class="field-label">I want to learn</label>
@@ -1209,14 +1317,19 @@ function renderSidebar(course) {
         <button class="icon-btn" data-toggle-theme title="Cycle theme (${escapeHtml(state.theme)})">${getThemeIcon()}</button>
       </div>
 
-      <select id="course-select" class="course-picker" aria-label="Select active course">
-        ${getEnrolledCourses()
-          .map(
-            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
-          )
-          .join('')}
-        <option value="__add__">+ Add course (Profile)...</option>
-      </select>
+      ${renderCustomSelect({
+        id: 'course-select',
+        className: 'course-picker',
+        ariaLabel: 'Select active course',
+        value: course.id,
+        options: [
+          ...getEnrolledCourses().map((c) => ({
+            value: c.id,
+            label: `${c.sourceLang.name} → ${c.targetLang.name}`
+          })),
+          { value: '__add__', label: '+ Add course (Profile)...' }
+        ]
+      })}
 
       <nav class="nav-list">
         <button class="nav-btn ${['syllabus', 'lesson', 'placement', 'guidebook'].includes(state.view) ? 'active' : ''}" data-nav="syllabus">
@@ -1269,14 +1382,19 @@ function renderMobileTopbar(course) {
     <header class="mobile-topbar">
       <div style="display:flex;align-items:center;gap:6px;">
         <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:28px;height:28px;border-radius:50%;display:block;" />
-        <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 8px;font-size:13px;font-weight:700;" aria-label="Select active course">
-          ${getEnrolledCourses()
-            .map(
-              (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(getCourseFlag(c))}</option>`
-            )
-            .join('')}
-          <option value="__add__">+ Add...</option>
-        </select>
+        ${renderCustomSelect({
+          id: 'mobile-course-select',
+          className: 'course-picker mobile-course-picker',
+          ariaLabel: 'Select active course',
+          value: course.id,
+          options: [
+            ...getEnrolledCourses().map((c) => ({
+              value: c.id,
+              label: getCourseFlag(c)
+            })),
+            { value: '__add__', label: '+ Add Course...' }
+          ]
+        })}
       </div>
       <div class="mobile-hud-inline">
         <span style="color:#f97316;">${uiIcon('flame', 16)} ${state.progress.streak}</span>
@@ -1359,18 +1477,26 @@ function renderSyllabusView(course) {
     <div class="syllabus-top-bar">
       ${
         sections.length > 1
-          ? `
-            <select id="section-select" class="level-select" aria-label="Select level">
-              ${sections
-                .map((sec) => {
+          ? renderCustomSelect({
+              id: 'section-select',
+              className: 'level-select',
+              ariaLabel: 'Select level',
+              value: state.selectedSectionId,
+              options: [
+                ...sections.map((sec) => {
                   const secLessons = sec.units.flatMap((u) => u.lessons);
                   const secDone = secLessons.filter((l) => state.progress.completedLessons[`${course.id}:${l.id}`]).length;
-                  return `<option value="${escapeHtml(sec.id)}" ${state.selectedSectionId === sec.id ? 'selected' : ''}>${escapeHtml(sec.jlptLevel)} · ${escapeHtml(sec.tier)} (${secDone}/${secLessons.length})</option>`;
-                })
-                .join('')}
-              <option value="all" ${state.selectedSectionId === 'all' ? 'selected' : ''}>All Levels (${escapeHtml(sections[0].jlptLevel)} → ${escapeHtml(sections[sections.length - 1].jlptLevel)})</option>
-            </select>
-          `
+                  return {
+                    value: sec.id,
+                    label: `${sec.jlptLevel} · ${sec.tier} (${secDone}/${secLessons.length})`
+                  };
+                }),
+                {
+                  value: 'all',
+                  label: `All Levels (${sections[0].jlptLevel} → ${sections[sections.length - 1].jlptLevel})`
+                }
+              ]
+            })
           : ''
       }
       <div class="hud-metrics" style="margin-left:auto;">
@@ -1420,7 +1546,7 @@ function renderSyllabusView(course) {
                           ? uiIcon('lock', 30)
                           : uiIcon('play', 34);
                     return `
-                    <div class="path-node-wrap ${offsetClass}">
+                    <div class="path-node-wrap ${offsetClass}" ${status === 'current' ? 'id="active-lesson-node" data-active-lesson="true"' : ''}>
                       ${status === 'current' ? `<div class="path-start-bubble">START</div>` : ''}
                       <button
                         class="lesson-node status-${status}"
@@ -1449,6 +1575,7 @@ function renderSyllabusView(course) {
           .join('');
       })
       .join('')}
+    <button type="button" id="jump-active-lesson-btn" class="jump-lesson-btn" aria-label="Jump to active lesson"></button>
   `;
 }
 
@@ -1829,23 +1956,27 @@ function renderPlacementView(course) {
 
   const q = p.questions[p.index];
   const pct = Math.round((p.index / p.questions.length) * 100);
+  const tDir = course.targetLang?.dir === 'rtl' ? 'rtl' : 'ltr';
+  const sDir = course.sourceLang?.dir === 'rtl' ? 'rtl' : 'ltr';
 
   return `
-    <div class="header-bar" style="margin-bottom:12px;">
-      <div>
-        <h1 class="page-title" style="font-size:20px;">Placement Test: ${escapeHtml(p.unit.title)}</h1>
-        <p class="page-sub">Question ${p.index + 1} of ${p.questions.length} · Score 80%+ to unlock</p>
-      </div>
-      <button class="btn btn-sm" data-nav="syllabus">✕ Cancel</button>
+    <div class="drill-topbar">
+      <button class="icon-btn drill-exit-btn" data-nav="syllabus" title="Cancel" aria-label="Cancel">${uiIcon('x', 18)}</button>
+      <div class="progress-track drill-progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <span class="hud-chip" style="color:var(--accent-text);">${p.index + 1}/${p.questions.length}</span>
     </div>
-    <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-    <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
+    <div class="drill-meta-line">
+      <span>Placement: ${escapeHtml(p.unit.title)}</span>
+      <span>Score 80%+ to unlock</span>
+    </div>
+
+    <section class="card drill-card">
+      <div class="drill-prompt-head">
         <span class="pill">${escapeHtml(q.promptLabel)}</span>
-        ${!q.reverse ? `<button class="btn btn-sm" data-speak="${escapeHtml(q.item.term)}">🔊 Audio</button>` : ''}
+        ${!q.reverse ? `<button class="btn btn-sm" data-speak="${escapeHtml(q.item.term)}">${uiIcon('volume', 16)} Audio</button>` : ''}
       </div>
-      <div class="prompt-main">${escapeHtml(q.promptMain)}</div>
-      ${q.promptSub ? `<div class="prompt-sub">${escapeHtml(q.promptSub)}</div>` : ''}
+      <div class="prompt-main" dir="${q.reverse ? sDir : tDir}">${escapeHtml(q.promptMain)}</div>
+      ${q.promptSub ? `<div class="prompt-sub" dir="${q.reverse ? sDir : tDir}">${escapeHtml(q.promptSub)}</div>` : ''}
 
       <div class="options-grid">
         ${q.options
@@ -1856,9 +1987,9 @@ function renderPlacementView(course) {
               else if (opt.id === p.selectedId) cls += ' wrong';
             }
             return `
-            <button class="${cls}" data-place-opt="${escapeHtml(opt.id)}" ${p.answered ? 'disabled' : ''}>
+            <button class="${cls}" dir="${q.reverse ? tDir : sDir}" data-place-opt="${escapeHtml(opt.id)}" ${p.answered ? 'disabled' : ''}>
               <span>${escapeHtml(opt.label)}</span>
-              ${state.showRomaji && opt.sub ? `<span style="font-size:12px;color:var(--text-muted);font-weight:500;">${escapeHtml(opt.sub)}</span>` : ''}
+              ${state.showRomaji && opt.sub ? `<span class="option-sub">${escapeHtml(opt.sub)}</span>` : ''}
             </button>
           `;
           })
@@ -1868,12 +1999,12 @@ function renderPlacementView(course) {
       ${
         p.answered
           ? `
-        <div style="margin-top:18px;padding:14px;border-radius:12px;background:${p.wasCorrect ? 'var(--accent-soft)' : 'rgba(244,63,94,0.14)'};display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div>
+        <div id="drill-feedback-box" class="drill-feedback ${p.wasCorrect ? 'is-correct' : 'is-wrong'}">
+          <div class="drill-feedback-text">
             <strong>${p.wasCorrect ? 'Correct!' : 'Incorrect'}</strong>
-            <div style="font-size:13px;color:var(--text-muted);">${escapeHtml(q.item.term)} — ${escapeHtml(q.item.translation)}</div>
+            <div class="drill-feedback-detail"><span dir="${tDir}">${escapeHtml(q.item.term)}</span> — <span dir="${sDir}">${escapeHtml(q.item.translation)}</span></div>
           </div>
-          <button class="btn btn-primary btn-sm" id="next-place-btn">Continue →</button>
+          <button class="btn btn-primary btn-sm" id="next-place-btn">Continue ${uiIcon('arrowRight', 16)}</button>
         </div>
       `
           : ''
@@ -1999,33 +2130,30 @@ function renderLessonView(course) {
   const optionDir = ex.type === 'mc-to-source' ? sDir : tDir;
 
   return `
-    <div class="header-bar" style="margin-bottom:12px;">
-      <div>
-        <h1 class="page-title" style="font-size:22px;">${escapeHtml(session.lesson.title)}</h1>
-        <p class="page-sub">Exercise ${session.index + 1} of ${session.exercises.length}</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 17)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
-        <button class="btn btn-sm" data-nav="syllabus">${uiIcon('x', 16)} Exit</button>
-      </div>
+    <div class="drill-topbar">
+      <button class="icon-btn drill-exit-btn" data-nav="syllabus" title="Exit lesson" aria-label="Exit lesson">${uiIcon('x', 18)}</button>
+      <div class="progress-track drill-progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 16)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
+    </div>
+    <div class="drill-meta-line">
+      <span>${escapeHtml(session.lesson.title)}</span>
+      <span>Exercise ${session.index + 1} of ${session.exercises.length}</span>
     </div>
 
-    <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-
-    <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+    <section class="card drill-card">
+      <div class="drill-prompt-head">
         <span class="pill">${escapeHtml(ex.promptLabel)}</span>
         ${ex.type === 'mc-to-source' ? `<button class="btn btn-sm" data-speak="${escapeHtml(ex.item.term)}">${uiIcon('volume', 16)} Audio</button>` : ''}
       </div>
 
       <div class="prompt-main" dir="${promptDir}">${escapeHtml(ex.promptMain)}</div>
       ${ex.promptSub ? `<div class="prompt-sub" dir="${promptDir}">${escapeHtml(ex.promptSub)}</div>` : ''}
-      ${state.showRomaji && ex.type === 'mc-to-source' && ex.promptHint ? `<div style="font-size:15px;color:var(--text-muted);">${escapeHtml(ex.promptHint)}</div>` : ''}
+      ${state.showRomaji && ex.type === 'mc-to-source' && ex.promptHint ? `<div class="prompt-hint">${escapeHtml(ex.promptHint)}</div>` : ''}
 
       ${
         ex.type === 'type-recall'
           ? `
-        <form id="type-answer-form" style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+        <form id="type-answer-form" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
           <input class="input" id="type-answer-input" dir="${tDir}" placeholder="Type your answer in ${escapeHtml(course.targetLang.name)}..." value="${escapeHtml(session.typedValue)}" ${session.answered ? 'disabled' : ''} autocomplete="off" />
           ${!session.answered ? `<button class="btn btn-primary" type="submit">Check Answer</button>` : ''}
         </form>
@@ -2042,7 +2170,7 @@ function renderLessonView(course) {
               return `
               <button class="${cls}" dir="${optionDir}" data-option-id="${escapeHtml(opt.id)}" ${session.answered ? 'disabled' : ''}>
                 <span>${escapeHtml(opt.label)}</span>
-                ${state.showRomaji && opt.sub ? `<span style="font-size:13px;color:var(--text-muted);font-weight:600;">${escapeHtml(opt.sub)}</span>` : ''}
+                ${state.showRomaji && opt.sub ? `<span class="option-sub">${escapeHtml(opt.sub)}</span>` : ''}
               </button>
             `;
             })
@@ -2054,10 +2182,10 @@ function renderLessonView(course) {
       ${
         session.answered
           ? `
-        <div style="margin-top:18px;padding:14px;border-radius:14px;background:${session.wasCorrect ? 'var(--accent-soft)' : 'rgba(225,29,72,0.16)'};display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <div>
+        <div id="drill-feedback-box" class="drill-feedback ${session.wasCorrect ? 'is-correct' : 'is-wrong'}">
+          <div class="drill-feedback-text">
             <strong>${session.wasCorrect ? 'Nicely done!' : 'Keep practicing!'}</strong>
-            <div style="font-size:14px;color:var(--text-muted);">
+            <div class="drill-feedback-detail">
               <span dir="${tDir}">${escapeHtml(ex.item.term)}</span> ${ex.item.transliteration ? `(${escapeHtml(ex.item.transliteration)})` : ''} — <span dir="${sDir}">${escapeHtml(ex.item.translation)}</span>
             </div>
           </div>
@@ -2098,7 +2226,7 @@ function renderFlashcardsView(course) {
       </div>
       ${filterBar}
       <section class="card" style="text-align:center;padding:36px 24px;">
-        <div style="font-size:40px;margin-bottom:8px;">✅</div>
+        <div style="color:var(--accent-text);margin-bottom:10px;">${uiIcon('trophy', 48)}</div>
         <h2>Review Session Complete</h2>
         <p class="page-sub">All queued flashcards reviewed and scheduled by permanent item ID.</p>
         <div style="margin-top:18px;">
@@ -2109,58 +2237,65 @@ function renderFlashcardsView(course) {
   }
 
   const cardState = state.srs[item.id] || createCardState(item.id);
+  const tDir = course.targetLang?.dir === 'rtl' ? 'rtl' : 'ltr';
+  const sDir = course.sourceLang?.dir === 'rtl' ? 'rtl' : 'ltr';
 
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
         <h1 class="page-title">Spaced Repetition Flashcards</h1>
-        <p class="page-sub">Card ${index + 1} of ${queue.length} · Tap card to reveal meaning</p>
+        <p class="page-sub">Card ${index + 1} of ${queue.length} · Tap card to flip</p>
       </div>
-      <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">🔊 Pronounce</button>
+      <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} Pronounce</button>
     </div>
 
     ${filterBar}
 
-    <section class="card flashcard" id="flashcard-box">
-      <div style="display:flex;gap:8px;margin-bottom:12px;">
-        <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
-        <span class="pill">${flipped ? 'Meaning' : escapeHtml(course.targetLang.name)}</span>
+    <div class="flashcard-stage">
+      <div class="flashcard-3d ${flipped ? 'is-flipped' : ''}" id="flashcard-box" role="button" tabindex="0" aria-label="Flip flashcard">
+        <div class="flashcard-face flashcard-front">
+          <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;justify-content:center;">
+            <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
+            <span class="pill">${escapeHtml(course.targetLang.name)}</span>
+          </div>
+          <div class="prompt-main" dir="${tDir}">${escapeHtml(item.term)}</div>
+          ${item.reading && item.reading !== item.term ? `<div class="prompt-sub" dir="${tDir}">${escapeHtml(item.reading)}</div>` : ''}
+          ${state.showRomaji && item.transliteration ? `<div class="prompt-hint">${escapeHtml(item.transliteration)}</div>` : ''}
+          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} Tap card to flip</div>
+        </div>
+
+        <div class="flashcard-face flashcard-back">
+          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;justify-content:center;">
+            <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
+            <span class="pill">${escapeHtml(course.sourceLang.name)} Meaning</span>
+          </div>
+          <div class="flashcard-answer" dir="${sDir}">${escapeHtml(item.translation)}</div>
+          <div class="flashcard-term-recap" dir="${tDir}">
+            ${escapeHtml(item.term)}${state.showRomaji && item.transliteration ? ` · <span>${escapeHtml(item.transliteration)}</span>` : ''}
+          </div>
+          ${
+            item.example && (item.example.term || item.example.translation)
+              ? `<div class="flashcard-example">
+                  ${item.example.term ? `<div dir="${tDir}" style="font-weight:700;color:var(--text);">${escapeHtml(item.example.term)}</div>` : ''}
+                  ${state.showRomaji && item.example.transliteration ? `<div style="color:var(--accent-text);font-size:12px;">${escapeHtml(item.example.transliteration)}</div>` : ''}
+                  ${item.example.translation ? `<div dir="${sDir}">${escapeHtml(item.example.translation)}</div>` : ''}
+                </div>`
+              : ''
+          }
+          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} Tap to flip back</div>
+        </div>
       </div>
-      <div class="prompt-main">${escapeHtml(item.term)}</div>
-      ${item.reading && item.reading !== item.term ? `<div class="prompt-sub">${escapeHtml(item.reading)}</div>` : ''}
-      ${state.showRomaji && item.transliteration ? `<div style="color:var(--text-muted);font-size:15px;">${escapeHtml(item.transliteration)}</div>` : ''}
+    </div>
 
-      ${
-        flipped
-          ? `
-        <hr style="width:60%;border:none;border-top:1px solid var(--border);margin:18px 0;" />
-        <div style="font-size:22px;font-weight:800;color:var(--accent);">${escapeHtml(item.translation)}</div>
-        ${
-          item.example
-            ? `<div style="margin-top:12px;font-size:13px;color:var(--text-muted);max-width:480px;">
-                <div>${escapeHtml(item.example.term)}</div>
-                <div>${escapeHtml(item.example.translation)}</div>
-              </div>`
-            : ''
-        }
-      `
-          : `<p style="margin-top:24px;font-size:13px;color:var(--text-muted);">Click anywhere on this card to flip</p>`
-      }
-    </section>
-
-    ${
-      flipped
-        ? `
+    <div id="flashcard-ratings" class="rating-row-wrap ${flipped ? 'visible' : ''}">
       <div class="rating-row">
         <button class="rating-btn" data-rate="${RATINGS.AGAIN}">Again<span>${formatIntervalLabel(cardState, RATINGS.AGAIN)}</span></button>
         <button class="rating-btn" data-rate="${RATINGS.HARD}">Hard<span>${formatIntervalLabel(cardState, RATINGS.HARD)}</span></button>
         <button class="rating-btn" data-rate="${RATINGS.GOOD}" style="border-color:var(--accent);">Good<span>${formatIntervalLabel(cardState, RATINGS.GOOD)}</span></button>
         <button class="rating-btn" data-rate="${RATINGS.EASY}">Easy<span>${formatIntervalLabel(cardState, RATINGS.EASY)}</span></button>
       </div>
-    `
-        : ''
-    }
+    </div>
   `;
 }
 
@@ -2288,15 +2423,19 @@ function renderStudioView(course) {
         <div class="form-grid">
           <div>
             <label class="field-label">Target Lesson</label>
-            <select class="input" name="lessonRef">
-              ${allUnits
-                .flatMap((u) =>
-                  u.lessons.map(
-                    (l) => `<option value="${escapeHtml(u.id)}|${escapeHtml(l.id)}">[${escapeHtml(u._section.jlptLevel)}] ${escapeHtml(u.title)} — ${escapeHtml(l.title)}</option>`
-                  )
-                )
-                .join('')}
-            </select>
+            ${renderCustomSelect({
+              id: 'studio-lesson-ref',
+              name: 'lessonRef',
+              className: 'level-select studio-lesson-select',
+              ariaLabel: 'Target Lesson',
+              value: `${allUnits[0]?.id || ''}|${allUnits[0]?.lessons?.[0]?.id || ''}`,
+              options: allUnits.flatMap((u) =>
+                u.lessons.map((l) => ({
+                  value: `${u.id}|${l.id}`,
+                  label: `[${u._section.jlptLevel}] ${u.title} — ${l.title}`
+                }))
+              )
+            })}
           </div>
           <div>
             <label class="field-label">Term (Target Script)</label>
@@ -2522,14 +2661,13 @@ function renderProfileView(course) {
                 <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-text);">Add Any Language Pair (156 Courses)</div>
                 <div style="display:flex;align-items:center;gap:8px;">
                   <span style="font-size:13px;color:var(--text-muted);white-space:nowrap;">I speak:</span>
-                  <select id="profile-source-lang" class="level-select" style="min-width:160px;padding:7px 10px;font-size:13px;" aria-label="Source language">
-                    ${langs
-                      .map(
-                        (l) =>
-                          `<option value="${escapeHtml(l.code)}" ${l.code === srcMeta?.code ? 'selected' : ''}>${escapeHtml(l.name)} (${escapeHtml(l.nativeName)})</option>`
-                      )
-                      .join('')}
-                  </select>
+                  ${renderCustomSelect({
+                    id: 'profile-source-lang',
+                    className: 'level-select profile-lang-select',
+                    ariaLabel: 'Language you speak',
+                    value: srcMeta?.code || 'en',
+                    options: langs.map((l) => ({ value: l.code, label: `${l.name} (${l.nativeName})` }))
+                  })}
                 </div>
               </div>
               <div style="display:grid;gap:10px;max-height:320px;overflow-y:auto;padding-right:4px;">
@@ -2866,7 +3004,77 @@ async function switchCourse(newId) {
   state.placementSession = null;
   state.lessonSession = null;
   state.view = 'syllabus';
+  state.shouldScrollToActiveLesson = true;
   render();
+}
+
+function attachActiveLessonTracker() {
+  if (window._openlingoLessonScrollCleanup) {
+    window._openlingoLessonScrollCleanup();
+    window._openlingoLessonScrollCleanup = null;
+  }
+
+  const activeNode = document.getElementById('active-lesson-node');
+  const jumpBtn = document.getElementById('jump-active-lesson-btn');
+  if (!activeNode || !jumpBtn) return;
+
+  const updateJumpButton = () => {
+    const rect = activeNode.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const topThreshold = 68;
+    const bottomThreshold = vh - 108;
+
+    if (rect.bottom < topThreshold) {
+      jumpBtn.innerHTML = `${uiIcon('arrowUp', 16)} <span>Back to Lesson</span>`;
+      jumpBtn.classList.add('visible');
+    } else if (rect.top > bottomThreshold) {
+      jumpBtn.innerHTML = `${uiIcon('arrowDown', 16)} <span>Jump to Lesson</span>`;
+      jumpBtn.classList.add('visible');
+    } else {
+      jumpBtn.classList.remove('visible');
+    }
+  };
+
+  jumpBtn.addEventListener('click', () => {
+    activeNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const circle = activeNode.querySelector('.lesson-node');
+    if (circle) {
+      circle.classList.remove('pulse-highlight');
+      void circle.offsetWidth;
+      circle.classList.add('pulse-highlight');
+    }
+  });
+
+  if (state.shouldScrollToActiveLesson) {
+    state.shouldScrollToActiveLesson = false;
+    requestAnimationFrame(() => {
+      const rect = activeNode.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < 72 || rect.bottom > vh - 96) {
+        activeNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      updateJumpButton();
+    });
+  } else {
+    requestAnimationFrame(updateJumpButton);
+  }
+
+  let rafId = null;
+  const onScrollOrResize = () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      updateJumpButton();
+    });
+  };
+
+  window.addEventListener('scroll', onScrollOrResize, { passive: true });
+  window.addEventListener('resize', onScrollOrResize, { passive: true });
+  window._openlingoLessonScrollCleanup = () => {
+    window.removeEventListener('scroll', onScrollOrResize);
+    window.removeEventListener('resize', onScrollOrResize);
+    if (rafId) cancelAnimationFrame(rafId);
+  };
 }
 
 function attachEvents(course) {
@@ -2882,6 +3090,9 @@ function attachEvents(course) {
       state.drawController = null;
       if (target === 'flashcards') openFlashcards();
       else {
+        if (target === 'syllabus' && state.view !== 'syllabus') {
+          state.shouldScrollToActiveLesson = true;
+        }
         state.view = target;
         state.studioMessage = '';
         render();
@@ -2889,10 +3100,32 @@ function attachEvents(course) {
     });
   });
 
-  const select = document.getElementById('course-select');
-  if (select) select.addEventListener('change', (e) => switchCourse(e.target.value));
-  const mSelect = document.getElementById('mobile-course-select');
-  if (mSelect) mSelect.addEventListener('change', (e) => switchCourse(e.target.value));
+  bindCustomSelect('course-select', (val) => switchCourse(val));
+  bindCustomSelect('mobile-course-select', (val) => switchCourse(val));
+  bindCustomSelect('studio-lesson-ref');
+
+  const audioToastEl = document.getElementById('audio-toast');
+  if (audioToastEl) {
+    audioToastEl.addEventListener('click', () => {
+      state.audioToast = '';
+      clearTimeout(toastTimer);
+      audioToastEl.style.display = 'none';
+    });
+  }
+
+  const drillFeedback = document.getElementById('drill-feedback-box');
+  if (drillFeedback) {
+    requestAnimationFrame(() => {
+      drillFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
+  if (state.view === 'syllabus') {
+    attachActiveLessonTracker();
+  } else if (window._openlingoLessonScrollCleanup) {
+    window._openlingoLessonScrollCleanup();
+    window._openlingoLessonScrollCleanup = null;
+  }
 
   const romajiToggle = document.getElementById('settings-toggle-romaji') || document.getElementById('toggle-romaji');
   if (romajiToggle) {
@@ -3050,13 +3283,10 @@ function attachEvents(course) {
     });
   }
 
-  const profileSourceLang = document.getElementById('profile-source-lang');
-  if (profileSourceLang) {
-    profileSourceLang.addEventListener('change', (e) => {
-      state.pickerSourceLang = e.target.value;
-      render();
-    });
-  }
+  bindCustomSelect('profile-source-lang', (val) => {
+    state.pickerSourceLang = val;
+    render();
+  });
 
   document.querySelectorAll('[data-enroll-course]').forEach((btn) => {
     btn.addEventListener('click', async () => {
@@ -3081,13 +3311,11 @@ function attachEvents(course) {
     });
   });
 
-  const sectionSelect = document.getElementById('section-select');
-  if (sectionSelect) {
-    sectionSelect.addEventListener('change', (e) => {
-      state.selectedSectionId = e.target.value;
-      render();
-    });
-  }
+  bindCustomSelect('section-select', (val) => {
+    state.selectedSectionId = val;
+    state.shouldScrollToActiveLesson = true;
+    render();
+  });
 
   document.querySelectorAll('[data-select-section]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -3509,9 +3737,20 @@ function attachEvents(course) {
 
   const flashcardBox = document.getElementById('flashcard-box');
   if (flashcardBox) {
-    flashcardBox.addEventListener('click', () => {
+    const toggleCardFlip = () => {
       state.flashcardSession.flipped = !state.flashcardSession.flipped;
-      render();
+      flashcardBox.classList.toggle('is-flipped', state.flashcardSession.flipped);
+      const ratingsWrap = document.getElementById('flashcard-ratings');
+      if (ratingsWrap) {
+        ratingsWrap.classList.toggle('visible', state.flashcardSession.flipped);
+      }
+    };
+    flashcardBox.addEventListener('click', toggleCardFlip);
+    flashcardBox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleCardFlip();
+      }
     });
   }
 
@@ -3933,6 +4172,8 @@ function renderLessonSheet(course) {
 
 function render() {
   if (!getMatrixLanguages().length && !state.courses.length) return;
+  customSelectRegistry.clear();
+  closeCustomSelectOverlay();
 
   // Cloud pre-sync screen: pull latest Google Drive progress BEFORE loading main UI
   if (state.syncingCloud) {
@@ -3969,13 +4210,10 @@ function render() {
   // New user onboarding: start with 0 courses and ask which course to begin
   if (getEnrolledCourses().length === 0) {
     document.getElementById('app').innerHTML = renderCourseOnboarding();
-    const onbSrc = document.getElementById('onboarding-source-lang');
-    if (onbSrc) {
-      onbSrc.addEventListener('change', (e) => {
-        state.pickerSourceLang = e.target.value;
-        render();
-      });
-    }
+    bindCustomSelect('onboarding-source-lang', (val) => {
+      state.pickerSourceLang = val;
+      render();
+    });
     document.querySelectorAll('[data-onboarding-pick]').forEach((btn) => {
       btn.addEventListener('click', () => {
         enrollCourse(btn.dataset.onboardingPick, true);
@@ -3998,6 +4236,16 @@ function render() {
   const course = getActiveCourse();
   if (!course) return;
 
+  const isActiveDrill =
+    (state.view === 'lesson' &&
+      state.lessonSession &&
+      !state.lessonSession.showIntro &&
+      state.lessonSession.index < state.lessonSession.exercises.length) ||
+    (state.view === 'placement' &&
+      state.placementSession &&
+      !state.placementSession.showIntro &&
+      state.placementSession.index < state.placementSession.questions.length);
+
   let mainContent = '';
   if (state.view === 'syllabus') mainContent = renderSyllabusView(course);
   else if (state.view === 'characters') mainContent = renderCharactersView(course);
@@ -4012,10 +4260,13 @@ function render() {
   document.getElementById('app').innerHTML = `
     ${renderSidebar(course)}
     ${renderMobileTopbar(course)}
-    <main class="main">${mainContent}</main>
-    ${renderMobileNav(course)}
+    <main class="main ${isActiveDrill ? 'in-drill' : ''}">${mainContent}</main>
+    ${isActiveDrill ? '' : renderMobileNav(course)}
     ${renderLessonSheet(course)}
-    <div id="audio-toast" style="display:${state.audioToast ? 'block' : 'none'};position:fixed;bottom:78px;left:50%;transform:translateX(-50%);background:var(--surface-elevated);color:var(--text);border:1px solid var(--border);padding:10px 16px;border-radius:12px;font-size:12px;font-weight:600;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,0.4);max-width:90vw;text-align:center;">${escapeHtml(state.audioToast)}</div>
+    <div id="audio-toast" class="app-toast" role="status" aria-live="polite" style="display:${state.audioToast ? 'inline-flex' : 'none'};" title="Tap to dismiss">
+      <span class="toast-text">${escapeHtml(state.audioToast)}</span>
+      <span class="toast-dismiss" aria-hidden="true">${uiIcon('x', 14)}</span>
+    </div>
   `;
   attachEvents(course);
 }

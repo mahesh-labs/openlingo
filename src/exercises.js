@@ -18,7 +18,7 @@ function pickDistractors(target, pool, count = 3) {
   return shuffle(candidates).slice(0, Math.min(count, candidates.length));
 }
 
-export function generateLessonExercises(lesson, allCourseItems) {
+export function generateLessonExercises(lesson, allCourseItems, sourceLangName = 'English') {
   const pool = allCourseItems.length >= 4 ? allCourseItems : lesson.items;
   const exercises = [];
 
@@ -33,7 +33,7 @@ export function generateLessonExercises(lesson, allCourseItems) {
     exercises.push({
       type: 'mc-to-source',
       item,
-      promptLabel: 'Choose the English meaning',
+      promptLabel: `Choose the ${sourceLangName} meaning`,
       promptMain: item.term,
       promptSub: item.reading && item.reading !== item.term ? item.reading : '',
       promptHint: item.transliteration || '',
