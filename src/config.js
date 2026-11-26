@@ -7,8 +7,7 @@
 export const APP_CONFIG = {
   githubRepo: 'mahesh-labs/openlingo',
   githubBranch: 'main',
-  // Paste your Google OAuth 2.0 Web Client ID here (or enter it in Backup & Restore > Google Sync Setup)
-  googleClientId: ''
+  googleClientId: '864103807022-ij4kc1nsdahpq4qvhi66v1nuern4on1h.apps.googleusercontent.com'
 };
 
 export function getGitHubRawBase(repo = APP_CONFIG.githubRepo, branch = APP_CONFIG.githubBranch) {

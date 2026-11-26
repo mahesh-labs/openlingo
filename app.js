@@ -156,7 +156,7 @@ function loadLocalState() {
       state.syncSettings = {
         githubRepo: savedSettings.githubRepo || APP_CONFIG.githubRepo,
         githubBranch: savedSettings.githubBranch || APP_CONFIG.githubBranch,
-        googleClientId: savedSettings.googleClientId || APP_CONFIG.googleClientId
+        googleClientId: APP_CONFIG.googleClientId || savedSettings.googleClientId || ''
       };
     }
   } catch {
@@ -1736,21 +1736,24 @@ function renderBackupView(course) {
         </div>
       `
           : `
-        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
           <button class="btn btn-primary" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>
             ${state.googleBusy ? '⏳ Signing in...' : '🔐 Sign in with Google'}
           </button>
         </div>
-        <form id="google-client-form" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
-          <div style="flex:1;min-width:220px;">
-            <label class="field-label">Google OAuth 2.0 Web Client ID (or set in src/config.js)</label>
-            <input class="input" name="googleClientId" value="${escapeHtml(state.syncSettings.googleClientId)}" placeholder="123456789-xxxx.apps.googleusercontent.com" />
-          </div>
-          <button class="btn btn-sm" type="submit">Save Client ID</button>
-        </form>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">
-          One-time free setup: Google Cloud Console → Enable <strong>Google Drive API</strong> → Create <strong>OAuth Web Client ID</strong> (add <code>http://localhost:8080</code> &amp; your GitHub Pages URL as authorized JS origins) → paste above or in <code>src/config.js</code>.
-        </div>
+        ${
+          !APP_CONFIG.googleClientId
+            ? `
+          <form id="google-client-form" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:12px;">
+            <div style="flex:1;min-width:220px;">
+              <label class="field-label">Google OAuth 2.0 Web Client ID (or set in src/config.js)</label>
+              <input class="input" name="googleClientId" value="${escapeHtml(state.syncSettings.googleClientId)}" placeholder="123456789-xxxx.apps.googleusercontent.com" />
+            </div>
+            <button class="btn btn-sm" type="submit">Save Client ID</button>
+          </form>
+        `
+            : ''
+        }
       `
       }
     </section>
