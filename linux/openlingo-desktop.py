@@ -76,27 +76,27 @@ def render_desktop_auth_page(state_nonce, client_id):
       display: grid;
       place-items: center;
       padding: 24px;
-      background: radial-gradient(circle at top, #13213c 0%, #0b1120 60%);
-      color: #f8fafc;
+      background: #121024;
+      color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }}
     .card {{
       width: 100%;
       max-width: 420px;
-      background: #111827;
-      border: 1px solid #263248;
-      border-radius: 20px;
+      background: #1b1736;
+      border: 3px solid #3d3573;
+      border-radius: 24px;
       padding: 28px 24px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      box-shadow: 0 10px 0 #0a0817;
     }}
     .logo {{
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
       margin: 0 auto 14px;
       display: block;
-      box-shadow: 0 8px 20px rgba(16,185,129,0.28);
+      box-shadow: 0 6px 0 #4c1d95;
     }}
     h1 {{ margin: 0; font-size: 22px; font-weight: 800; }}
     p {{ margin: 8px 0 0; font-size: 13px; color: #94a3b8; line-height: 1.5; }}

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v19';
+const CACHE_NAME = 'openlingo-v20';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,7 @@ const ASSETS = [
   './assets/icons/openlingo-icon.svg',
   './assets/icons/openlingo-192.png',
   './assets/icons/openlingo-512.png',
+  './src/icons.js',
   './src/srs.js',
   './src/exercises.js',
   './src/scripts.js',

@@ -4,8 +4,8 @@
   "description": "Community-driven, cross-platform language learning app with structured syllabi, handwriting canvas, spaced-repetition flashcards, and private Google Drive sync.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0b1120",
-  "theme_color": "#10b981",
+  "background_color": "#121024",
+  "theme_color": "#7c3aed",
   "icons": [
     {
       "src": "./assets/icons/openlingo-icon.svg",

@@ -3,6 +3,7 @@ import { generateLessonExercises, normalizeAnswer } from './src/exercises.js';
 import { getScriptSetForCourse } from './src/scripts.js';
 import { mountDrawBoard } from './src/drawboard.js';
 import { APP_CONFIG } from './src/config.js';
+import { uiIcon } from './src/icons.js';
 import { normalizeRegistryEntries, fetchGitHubCatalog, fetchCourseFromGitHub } from './src/catalog.js';
 import {
   getGoogleSession,
@@ -26,7 +27,7 @@ const STORAGE_KEYS = {
   ENROLLED: 'openlingo_enrolled_courses_v1'
 };
 
-const AVATAR_PRESETS = ['🦊', '🐼', '🦉', '🐱', '🌸', '🗻', '🚀', '🎯'];
+const AVATAR_PRESETS = ['あ', '語', 'Ñ', 'അ', 'A', '★', '◆', '▲'];
 
 const state = {
   view: 'syllabus', // 'syllabus' | 'characters' | 'lesson' | 'placement' | 'guidebook' | 'flashcards' | 'studio' | 'profile' | 'settings' | 'backup'
@@ -106,8 +107,16 @@ function shuffle(list) {
 }
 
 function getCourseFlag(course) {
-  const map = { ja: '🇯🇵', es: '🇪🇸', ml: '🇮🇳', ko: '🇰🇷', fr: '🇫🇷', de: '🇩🇪', zh: '🇨🇳' };
-  return map[course?.targetLang?.code] || '🌐';
+  const code = (course?.targetLang?.code || 'LN').toUpperCase();
+  return code;
+}
+
+function getUnitSolidColor(unitColor) {
+  // Keep Rich Purple as primary brand accent instead of legacy green course defaults
+  if (!unitColor || unitColor.toLowerCase() === '#10b981' || unitColor.toLowerCase() === '#059669') {
+    return '#7c3aed';
+  }
+  return unitColor;
 }
 
 function getEnrolledCourses() {
@@ -214,7 +223,7 @@ function applyTheme() {
   const effective = getEffectiveTheme();
   document.body.classList.toggle('theme-light', effective === 'light');
   const metaTheme = document.querySelector('meta[name="theme-color"]');
-  if (metaTheme) metaTheme.setAttribute('content', effective === 'light' ? '#f8fafc' : '#0b1120');
+  if (metaTheme) metaTheme.setAttribute('content', effective === 'light' ? '#f5f3ff' : '#121024');
 }
 
 function setTheme(mode) {
@@ -239,9 +248,9 @@ if (systemLightQuery && typeof systemLightQuery.addEventListener === 'function')
 }
 
 function getThemeIcon(mode = state.theme) {
-  if (mode === 'light') return '☀️';
-  if (mode === 'system') return '💻';
-  return '🌙';
+  if (mode === 'light') return uiIcon('sun', 20);
+  if (mode === 'system') return uiIcon('monitor', 20);
+  return uiIcon('moon', 20);
 }
 
 function getDisplayName() {
@@ -985,16 +994,16 @@ function renderAuthGate() {
   return `
     <div class="auth-screen">
       <div class="auth-card">
-        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:72px;height:72px;border-radius:18px;margin:0 auto 14px;display:block;box-shadow:0 8px 20px rgba(16,185,129,0.28);" />
-        <h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.02em;">OpenLingo</h1>
-        <p style="margin:8px 0 0;font-size:14px;color:var(--text-muted);">
+        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:76px;height:76px;border-radius:20px;margin:0 auto 14px;display:block;box-shadow:0 6px 0 var(--accent-lip);" />
+        <h1 style="margin:0;font-size:32px;font-weight:700;">OpenLingo</h1>
+        <p style="margin:8px 0 0;font-size:15px;color:var(--text-muted);">
           Free &amp; open-source language learning. Sign in with Google to sync your progress privately across desktop, web, and Android via your own Google Drive.
         </p>
 
         <div class="auth-pills">
-          <span class="pill accent">🇯🇵 Japanese N5–N1</span>
-          <span class="pill accent">🇪🇸 Spanish A1–C1</span>
-          <span class="pill accent">🇮🇳 Malayalam S1–S5</span>
+          <span class="pill accent">JA · Japanese N5–N1</span>
+          <span class="pill accent">ES · Spanish A1–C1</span>
+          <span class="pill accent">ML · Malayalam S1–S5</span>
         </div>
 
         ${state.authError ? `<div class="draw-feedback retry" style="max-width:none;margin-bottom:14px;">${escapeHtml(state.authError)}</div>` : ''}
@@ -1045,30 +1054,30 @@ function renderCourseOnboarding() {
               return `
                 <button type="button" class="onboarding-course-btn" data-onboarding-pick="${escapeHtml(c.id)}">
                   <div style="display:flex;align-items:center;gap:14px;min-width:0;">
-                    <span style="font-size:32px;line-height:1;">${getCourseFlag(c)}</span>
+                    <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
                     <div style="min-width:0;">
-                      <div style="font-size:16px;font-weight:800;">
+                      <div style="font-size:17px;font-weight:700;font-family:var(--font-display);">
                         ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}
-                        ${c.targetLang.nativeName ? `<span style="color:var(--accent);font-weight:700;margin-left:4px;">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
+                        ${c.targetLang.nativeName ? `<span style="color:var(--accent-text);margin-left:4px;">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
                       </div>
-                      <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
+                      <div style="font-size:13px;color:var(--text-muted);margin-top:3px;">
                         ${escapeHtml(lvlRange)} · ${unitsCount} units · ${itemsCount} items
                       </div>
                     </div>
                   </div>
-                  <span class="pill accent">Start →</span>
+                  <span class="pill accent">Start ${uiIcon('arrowRight', 15)}</span>
                 </button>
               `;
             })
             .join('')}
         </div>
 
-        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--text-muted);">
-          <span>${googleSession ? `☁️ Signed in as ${escapeHtml(googleSession.user?.email || googleSession.user?.name || 'Google')}` : 'Offline Guest Mode'}</span>
+        <div style="margin-top:18px;padding-top:14px;border-top:2px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--text-muted);">
+          <span style="display:inline-flex;align-items:center;gap:6px;">${googleSession ? `${uiIcon('cloud', 16)} Signed in as ${escapeHtml(googleSession.user?.email || googleSession.user?.name || 'Google')}` : 'Offline Guest Mode'}</span>
           ${
             googleSession
-              ? `<button type="button" class="btn btn-sm" id="onboarding-logout-btn">🚪 Log Out</button>`
-              : `<button type="button" class="btn btn-sm" id="onboarding-signin-btn">🔐 Sign in with Google</button>`
+              ? `<button type="button" class="btn btn-sm" id="onboarding-logout-btn">${uiIcon('logout', 16)} Log Out</button>`
+              : `<button type="button" class="btn btn-sm" id="onboarding-signin-btn">${uiIcon('shield', 16)} Sign in with Google</button>`
           }
         </div>
       </div>
@@ -1099,30 +1108,30 @@ function renderSidebar(course) {
       <select id="course-select" class="course-picker" aria-label="Select active course">
         ${getEnrolledCourses()
           .map(
-            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${getCourseFlag(c)} ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
+            (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>[${escapeHtml(getCourseFlag(c))}] ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</option>`
           )
           .join('')}
-        <option value="__add__">➕ Add course (Profile)...</option>
+        <option value="__add__">+ Add course (Profile)...</option>
       </select>
 
       <nav class="nav-list">
         <button class="nav-btn ${['syllabus', 'lesson', 'placement', 'guidebook'].includes(state.view) ? 'active' : ''}" data-nav="syllabus">
-          🗺️ Learning Path
+          ${uiIcon('map', 22)} <span>Learning Path</span>
         </button>
         <button class="nav-btn ${state.view === 'characters' ? 'active' : ''}" data-nav="characters">
-          あ Characters
+          ${uiIcon('type', 22)} <span>Characters</span>
         </button>
         <button class="nav-btn ${state.view === 'flashcards' ? 'active' : ''}" data-nav="flashcards">
-          🗂️ Flashcards (${dueCount})
+          ${uiIcon('layers', 22)} <span>Flashcards (${dueCount})</span>
         </button>
         <button class="nav-btn ${state.view === 'studio' ? 'active' : ''}" data-nav="studio">
-          🛠️ Course Studio
+          ${uiIcon('wrench', 22)} <span>Course Studio</span>
         </button>
         <button class="nav-btn ${state.view === 'profile' ? 'active' : ''}" data-nav="profile">
-          👤 Profile
+          ${uiIcon('user', 22)} <span>Profile</span>
         </button>
         <button class="nav-btn ${state.view === 'settings' || state.view === 'backup' ? 'active' : ''}" data-nav="settings">
-          ⚙️ Settings
+          ${uiIcon('settings', 22)} <span>Settings</span>
         </button>
       </nav>
 
@@ -1130,20 +1139,20 @@ function renderSidebar(course) {
         <button class="sidebar-profile-btn" data-nav="profile" title="Open Profile">
           ${renderAvatarMarkup('sm')}
           <div style="min-width:0;flex:1;">
-            <div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
+            <div style="font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
             <div style="font-size:11px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-              ${googleSession ? `☁️ ${escapeHtml(googleSession.user?.email || 'Google Sync')}` : 'Offline Guest Mode'}
+              ${googleSession ? escapeHtml(googleSession.user?.email || 'Google Sync') : 'Offline Guest Mode'}
             </div>
           </div>
         </button>
         ${
           !googleSession
-            ? `<button class="btn btn-primary btn-sm" id="sidebar-signin-btn" style="width:100%;">🔐 Sign in with Google</button>`
+            ? `<button class="btn btn-primary btn-sm" id="sidebar-signin-btn" style="width:100%;">${uiIcon('shield', 16)} Sign in with Google</button>`
             : ''
         }
-        <div id="sync-status-label" style="font-size:11px;color:var(--text-muted);text-align:center;">☁️ Last synced: ${escapeHtml(formatLastSynced(true))}</div>
-        <div class="stat-row"><span>Streak</span><strong>🔥 ${state.progress.streak}d</strong></div>
-        <div class="stat-row"><span>Total XP</span><strong>⚡ ${state.progress.xp} XP</strong></div>
+        <div id="sync-status-label" style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:5px;">${uiIcon('cloud', 14)} Last synced: ${escapeHtml(formatLastSynced(true))}</div>
+        <div class="stat-row"><span>Streak</span><strong style="color:#f97316;">${uiIcon('flame', 16)} ${state.progress.streak}d</strong></div>
+        <div class="stat-row"><span>Total XP</span><strong style="color:#eab308;">${uiIcon('zap', 16)} ${state.progress.xp} XP</strong></div>
         <div class="stat-row"><span>Lessons Done</span><strong>${doneCount}/${ordered.length}</strong></div>
         <div class="stat-row"><span>Cards Due</span><strong>${dueCount}</strong></div>
       </div>
@@ -1152,34 +1161,33 @@ function renderSidebar(course) {
 }
 
 function renderMobileTopbar(course) {
-  const shortCodes = { ja: '🇯🇵 JA', es: '🇪🇸 ES', ml: '🇮🇳 ML' };
   return `
     <header class="mobile-topbar">
       <div style="display:flex;align-items:center;gap:6px;">
-        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:26px;height:26px;border-radius:7px;display:block;" />
-        <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 7px;font-size:12px;font-weight:800;" aria-label="Select active course">
+        <img src="./assets/icons/openlingo-icon.svg" alt="OpenLingo" style="width:28px;height:28px;border-radius:8px;display:block;" />
+        <select id="mobile-course-select" class="course-picker" style="width:auto;padding:5px 8px;font-size:13px;font-weight:700;" aria-label="Select active course">
           ${getEnrolledCourses()
             .map(
-              (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(shortCodes[c.targetLang.code] || c.targetLang.name)}</option>`
+              (c) => `<option value="${escapeHtml(c.id)}" ${c.id === course.id ? 'selected' : ''}>${escapeHtml(getCourseFlag(c))}</option>`
             )
             .join('')}
-          <option value="__add__">➕ Add...</option>
+          <option value="__add__">+ Add...</option>
         </select>
       </div>
       <div class="mobile-hud-inline">
-        <span style="color:#f97316;">🔥 ${state.progress.streak}</span>
-        <span style="color:#eab308;">⚡ ${state.progress.xp}</span>
-        <span style="color:#f43f5e;">❤️ ${state.progress.chillMode ? '∞' : state.progress.hearts}</span>
+        <span style="color:#f97316;">${uiIcon('flame', 16)} ${state.progress.streak}</span>
+        <span style="color:#eab308;">${uiIcon('zap', 16)} ${state.progress.xp}</span>
+        <span style="color:#f43f5e;">${uiIcon('heart', 16)} ${state.progress.chillMode ? '∞' : state.progress.hearts}</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <button class="mobile-avatar-btn" data-nav="profile" title="Profile" aria-label="Profile">
           ${renderAvatarMarkup('xs')}
         </button>
-        <button class="icon-btn" data-nav="settings" title="Settings" aria-label="Settings" style="width:30px;height:30px;font-size:14px;">⚙️</button>
+        <button class="icon-btn" data-nav="settings" title="Settings" aria-label="Settings">${uiIcon('settings', 19)}</button>
       </div>
     </header>
     <button id="mobile-sync-strip" class="mobile-sync-strip" data-nav="settings">
-      ☁️ Last synced: ${escapeHtml(formatLastSynced(false))}
+      ${uiIcon('cloud', 14)} Last synced: ${escapeHtml(formatLastSynced(false))}
     </button>
   `;
 }
@@ -1189,19 +1197,19 @@ function renderMobileNav(course) {
   return `
     <nav class="mobile-nav">
       <button class="nav-btn ${['syllabus', 'lesson', 'placement', 'guidebook'].includes(state.view) ? 'active' : ''}" data-nav="syllabus">
-        <span>🗺️</span><span>Path</span>
+        ${uiIcon('map', 22)}<span>Path</span>
       </button>
       <button class="nav-btn ${state.view === 'characters' ? 'active' : ''}" data-nav="characters">
-        <span>あ</span><span>Script</span>
+        ${uiIcon('type', 22)}<span>Script</span>
       </button>
       <button class="nav-btn ${state.view === 'flashcards' ? 'active' : ''}" data-nav="flashcards">
-        <span>🗂️</span><span>Cards (${dueCount})</span>
+        ${uiIcon('layers', 22)}<span>Cards (${dueCount})</span>
       </button>
       <button class="nav-btn ${state.view === 'studio' ? 'active' : ''}" data-nav="studio">
-        <span>🛠️</span><span>Studio</span>
+        ${uiIcon('wrench', 22)}<span>Studio</span>
       </button>
       <button class="nav-btn ${state.view === 'profile' ? 'active' : ''}" data-nav="profile">
-        <span>👤</span><span>Profile</span>
+        ${uiIcon('user', 22)}<span>Profile</span>
       </button>
     </nav>
   `;
@@ -1215,13 +1223,13 @@ function renderHudBar(course) {
   return `
     <div class="hud-bar">
       <div class="hud-metrics">
-        <span class="hud-chip" style="color:#f97316;">🔥 ${state.progress.streak} day streak</span>
-        <span class="hud-chip" style="color:#eab308;">⚡ ${state.progress.xp} XP</span>
-        <span class="hud-chip" style="color:#f43f5e;">❤️ ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
+        <span class="hud-chip" style="color:#f97316;">${uiIcon('flame', 18)} ${state.progress.streak}d</span>
+        <span class="hud-chip" style="color:#eab308;">${uiIcon('zap', 18)} ${state.progress.xp} XP</span>
+        <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 18)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
       </div>
       <div class="hud-progress-wrap">
         <div class="hud-progress-track"><div class="hud-progress-fill" style="width:${pct}%"></div></div>
-        <span style="font-size:12px;font-weight:700;color:var(--text-muted);white-space:nowrap;">${doneCount}/${ordered.length} (${pct}%)</span>
+        <span style="font-size:13px;font-weight:700;color:var(--text-muted);white-space:nowrap;">${doneCount}/${ordered.length} (${pct}%)</span>
       </div>
     </div>
   `;
@@ -1244,68 +1252,37 @@ function renderSyllabusView(course) {
   const offsets = ['center', 'offset-left', 'center', 'offset-right'];
 
   return `
-    ${renderHudBar(course)}
-
-    <div class="header-bar syllabus-desktop-header" style="margin-bottom:14px;">
-      <div>
-        <h1 class="page-title">${escapeHtml(course.title)}</h1>
-        <p class="page-sub">${escapeHtml(course.description || '')}</p>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <span class="pill accent">${escapeHtml(course.targetLang.nativeName || course.targetLang.name)}</span>
-        <span class="pill">${getAllItems(course).length} items</span>
+    <div class="syllabus-top-bar">
+      ${
+        sections.length > 1
+          ? `
+            <select id="section-select" class="level-select" aria-label="Select level">
+              ${sections
+                .map((sec) => {
+                  const secLessons = sec.units.flatMap((u) => u.lessons);
+                  const secDone = secLessons.filter((l) => state.progress.completedLessons[`${course.id}:${l.id}`]).length;
+                  return `<option value="${escapeHtml(sec.id)}" ${state.selectedSectionId === sec.id ? 'selected' : ''}>${escapeHtml(sec.jlptLevel)} · ${escapeHtml(sec.tier)} (${secDone}/${secLessons.length})</option>`;
+                })
+                .join('')}
+              <option value="all" ${state.selectedSectionId === 'all' ? 'selected' : ''}>All Levels (${escapeHtml(sections[0].jlptLevel)} → ${escapeHtml(sections[sections.length - 1].jlptLevel)})</option>
+            </select>
+          `
+          : ''
+      }
+      <div class="hud-metrics" style="margin-left:auto;">
+        <span class="hud-chip" style="color:#f97316;">${uiIcon('flame', 17)} ${state.progress.streak}d</span>
+        <span class="hud-chip" style="color:#eab308;">${uiIcon('zap', 17)} ${state.progress.xp} XP</span>
+        <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 17)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
       </div>
     </div>
 
-    ${
-      sections.length > 1
-        ? `
-      <div class="tier-bar">
-        ${sections
-          .map((sec) => {
-            const secLessons = sec.units.flatMap((u) => u.lessons);
-            const secDone = secLessons.filter((l) => state.progress.completedLessons[`${course.id}:${l.id}`]).length;
-            const secPct = secLessons.length ? Math.round((secDone / secLessons.length) * 100) : 0;
-            const isActive = state.selectedSectionId === sec.id;
-            return `
-              <button class="tier-pill ${isActive ? 'active' : ''}" style="--tier-color:${escapeHtml(sec.color || '#10b981')}" data-select-section="${escapeHtml(sec.id)}">
-                <div class="tier-pill-top">
-                  <span>${escapeHtml(sec.jlptLevel)}</span>
-                  <span style="font-size:11px;color:var(--text-muted);">${secDone}/${secLessons.length}</span>
-                </div>
-                <div class="tier-pill-sub">${escapeHtml(sec.tier)}</div>
-                <div class="tier-mini-bar"><div class="tier-mini-fill" style="width:${secPct}%;background:${escapeHtml(sec.color || '#10b981')};"></div></div>
-              </button>
-            `;
-          })
-          .join('')}
-        <button class="tier-pill ${state.selectedSectionId === 'all' ? 'active' : ''}" style="--tier-color:#38bdf8" data-select-section="all">
-          <div class="tier-pill-top"><span>ALL</span><span>${escapeHtml(sections[0].jlptLevel)}→${escapeHtml(sections[sections.length - 1].jlptLevel)}</span></div>
-          <div class="tier-pill-sub">Full Path</div>
-          <div class="tier-mini-bar"><div class="tier-mini-fill" style="width:100%;background:#38bdf8;"></div></div>
-        </button>
-      </div>
-    `
-        : ''
-    }
-
     ${visibleSections
       .map((sec) => {
-        const secIndex = sections.findIndex((s) => s.id === sec.id) + 1;
-        return `
-        <div class="section-header" style="--sec-color:${escapeHtml(sec.color || '#10b981')}">
-          <div>
-            <h2>Section ${secIndex}: ${escapeHtml(sec.title)}</h2>
-            <p>${escapeHtml(sec.description || '')}</p>
-          </div>
-          <span class="pill" style="border-color:${escapeHtml(sec.color || '#10b981')};color:${escapeHtml(sec.color || '#10b981')};">${escapeHtml(sec.tier)} · ${escapeHtml(sec.jlptLevel)}</span>
-        </div>
-
-        ${sec.units
+        return sec.units
           .map((unit, uIdx) => {
             const unlocked = isUnitUnlocked(course, unit, statusByKey);
             const completed = isUnitCompleted(course, unit);
-            const unitColor = unit.color || sec.color || '#10b981';
+            const unitColor = getUnitSolidColor(unit.color || sec.color);
             const doneInUnit = unit.lessons.filter((l) => state.progress.completedLessons[`${course.id}:${l.id}`]).length;
 
             return `
@@ -1317,10 +1294,10 @@ function renderSyllabusView(course) {
                   <p class="unit-banner-sub">${escapeHtml(unit.subtitle || '')}</p>
                 </div>
                 <div class="unit-banner-actions">
-                  <button class="banner-btn" data-guidebook="${escapeHtml(unit.id)}">📖 Guidebook</button>
+                  <button class="banner-btn" data-guidebook="${escapeHtml(unit.id)}">${uiIcon('book', 18)} Guidebook</button>
                   ${
                     !unlocked
-                      ? `<button class="banner-btn" data-jump-quiz="${escapeHtml(unit.id)}">🎯 Jump Here</button>`
+                      ? `<button class="banner-btn" data-jump-quiz="${escapeHtml(unit.id)}">${uiIcon('target', 18)} Jump Here</button>`
                       : ''
                   }
                 </div>
@@ -1332,7 +1309,12 @@ function renderSyllabusView(course) {
                     const key = `${course.id}:${lesson.id}`;
                     const status = statusByKey[key] || 'locked';
                     const offsetClass = offsets[(uIdx * 2 + lIdx) % offsets.length];
-                    const icon = status === 'completed' ? '✓' : status === 'locked' ? '🔒' : '★';
+                    const icon =
+                      status === 'completed'
+                        ? uiIcon('check', 34)
+                        : status === 'locked'
+                          ? uiIcon('lock', 30)
+                          : uiIcon('play', 34);
                     return `
                     <div class="path-node-wrap ${offsetClass}">
                       ${status === 'current' ? `<div class="path-start-bubble">START</div>` : ''}
@@ -1351,7 +1333,7 @@ function renderSyllabusView(course) {
                   .join('')}
 
                 <div class="path-node-wrap">
-                  <div class="trophy-node ${completed ? 'earned' : ''}" title="Complete all lessons in this unit to earn the trophy">🏆</div>
+                  <div class="trophy-node ${completed ? 'earned' : ''}" title="Complete all lessons in this unit to earn the trophy">${uiIcon('trophy', 36)}</div>
                   <div class="node-label">
                     <div class="node-meta">${completed ? 'Unit Mastered!' : 'Unit Trophy'}</div>
                   </div>
@@ -1360,8 +1342,7 @@ function renderSyllabusView(course) {
             </section>
           `;
           })
-          .join('')}
-      `;
+          .join('');
       })
       .join('')}
   `;
@@ -2254,7 +2235,7 @@ function renderProfileView(course) {
         <p class="page-sub">Customize your learner profile, avatar, daily goals, and view progress across all languages.</p>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-sm" data-nav="settings">⚙️ Settings</button>
+        <button class="btn btn-sm" data-nav="settings">${uiIcon('settings', 17)} Settings</button>
       </div>
     </div>
 
@@ -2264,43 +2245,43 @@ function renderProfileView(course) {
       <div class="profile-hero">
         <div class="avatar-upload-wrap">
           ${renderAvatarMarkup('lg')}
-          <button type="button" class="avatar-cam-btn" id="profile-avatar-upload-btn" title="Upload custom profile picture" aria-label="Upload custom profile picture">📷</button>
+          <button type="button" class="avatar-cam-btn" id="profile-avatar-upload-btn" title="Upload custom profile picture" aria-label="Upload custom profile picture">${uiIcon('camera', 17)}</button>
           <input type="file" id="profile-avatar-input" accept="image/*" style="display:none;" />
         </div>
         <div class="profile-hero-info">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <h2 style="margin:0;font-size:22px;font-weight:800;">${escapeHtml(displayName)}</h2>
-            <span class="pill accent">${googleSession ? '☁️ Synced Account' : 'Offline Mode'}</span>
+            <h2 style="margin:0;font-size:24px;font-weight:700;">${escapeHtml(displayName)}</h2>
+            <span class="pill accent">${googleSession ? `${uiIcon('cloud', 15)} Synced Account` : 'Offline Mode'}</span>
           </div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
+          <div style="font-size:14px;color:var(--text-muted);margin-top:4px;">
             ${googleSession ? escapeHtml(googleSession.user?.email || 'Connected to Google Drive') : 'Sign in with Google to sync your profile & progress across all devices.'}
           </div>
-          ${state.profile.bio ? `<div style="font-size:13px;margin-top:6px;">${escapeHtml(state.profile.bio)}</div>` : ''}
-          <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">
-            ☁️ Last synced: <strong>${escapeHtml(formatLastSynced(false))}</strong>
+          ${state.profile.bio ? `<div style="font-size:14px;margin-top:6px;">${escapeHtml(state.profile.bio)}</div>` : ''}
+          <div style="font-size:13px;color:var(--text-muted);margin-top:8px;display:inline-flex;align-items:center;gap:6px;">
+            ${uiIcon('cloud', 15)} Last synced: <strong>${escapeHtml(formatLastSynced(false))}</strong>
           </div>
         </div>
       </div>
 
-      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
-        <div class="field-label" style="margin-bottom:6px;">Custom Profile Picture or Avatar Preset</div>
+      <div style="margin-top:16px;padding-top:14px;border-top:2px solid var(--border);">
+        <div class="field-label" style="margin-bottom:6px;">Custom Profile Picture or Emblem</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-          <button type="button" class="btn btn-primary btn-sm" id="profile-avatar-pick-btn">📷 Upload Custom Photo</button>
+          <button type="button" class="btn btn-primary btn-sm" id="profile-avatar-pick-btn">${uiIcon('camera', 16)} Upload Custom Photo</button>
           ${
             state.profile.avatarDataUrl || state.profile.avatarEmoji
-              ? `<button type="button" class="btn btn-sm" id="profile-avatar-reset-btn">↺ ${googleSession?.user?.picture ? 'Use Google Photo' : 'Reset Avatar'}</button>`
+              ? `<button type="button" class="btn btn-sm" id="profile-avatar-reset-btn">${uiIcon('refresh', 15)} ${googleSession?.user?.picture ? 'Use Google Photo' : 'Reset Avatar'}</button>`
               : ''
           }
         </div>
         <div class="avatar-presets">
           ${AVATAR_PRESETS.map(
             (em) =>
-              `<button type="button" class="avatar-preset-btn ${!state.profile.avatarDataUrl && state.profile.avatarEmoji === em ? 'active' : ''}" data-avatar-emoji="${escapeHtml(em)}" title="Use ${escapeHtml(em)} avatar">${escapeHtml(em)}</button>`
+              `<button type="button" class="avatar-preset-btn ${!state.profile.avatarDataUrl && state.profile.avatarEmoji === em ? 'active' : ''}" data-avatar-emoji="${escapeHtml(em)}" title="Use ${escapeHtml(em)} emblem">${escapeHtml(em)}</button>`
           ).join('')}
         </div>
       </div>
 
-      <form id="profile-edit-form" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+      <form id="profile-edit-form" style="margin-top:16px;padding-top:14px;border-top:2px solid var(--border);">
         <div class="form-grid">
           <div>
             <label class="field-label">Display Name</label>
@@ -2322,15 +2303,15 @@ function renderProfileView(course) {
               .join('')}
           </div>
         </div>
-        <button class="btn btn-primary btn-sm" type="submit">💾 Save Profile</button>
+        <button class="btn btn-primary btn-sm" type="submit">${uiIcon('save', 16)} Save Profile</button>
       </form>
     </section>
 
     <section class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
         <div>
-          <h3 style="margin:0;">Current Account</h3>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+          <h3 style="margin:0;">${uiIcon('user', 20)} Current Account</h3>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">
             ${googleSession ? `Signed in as ${escapeHtml(googleSession.user?.email || googleSession.user?.name || 'Google User')}` : 'Using local device storage only'}
           </div>
         </div>
@@ -2338,25 +2319,25 @@ function renderProfileView(course) {
           ${
             googleSession
               ? `
-                <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>☁️ Sync Now</button>
-                <button class="btn btn-danger btn-sm" id="profile-logout-btn">🚪 Log Out</button>
+                <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('cloud', 16)} Sync Now</button>
+                <button class="btn btn-danger btn-sm" id="profile-logout-btn">${uiIcon('logout', 16)} Log Out</button>
               `
-              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>🔐 Sign in with Google</button>`
+              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('shield', 16)} Sign in with Google</button>`
           }
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h3 style="margin-top:0;">Learning Overview</h3>
+      <h3 style="margin-top:0;">${uiIcon('trophy', 20)} Learning Overview</h3>
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-card-label">Current Streak</div>
-          <div class="stat-card-value" style="color:#f97316;">🔥 ${state.progress.streak} days</div>
+          <div class="stat-card-value" style="color:#f97316;">${uiIcon('flame', 22)} ${state.progress.streak} days</div>
         </div>
         <div class="stat-card">
           <div class="stat-card-label">Total XP</div>
-          <div class="stat-card-value" style="color:#eab308;">⚡ ${state.progress.xp} XP</div>
+          <div class="stat-card-value" style="color:#eab308;">${uiIcon('zap', 22)} ${state.progress.xp} XP</div>
         </div>
         <div class="stat-card">
           <div class="stat-card-label">Lessons Done</div>
@@ -2372,7 +2353,7 @@ function renderProfileView(course) {
         </div>
         <div class="stat-card">
           <div class="stat-card-label">Hearts Mode</div>
-          <div class="stat-card-value" style="color:#f43f5e;">❤️ ${state.progress.chillMode ? 'Unlimited' : `${state.progress.hearts}/5`}</div>
+          <div class="stat-card-value" style="color:#f43f5e;">${uiIcon('heart', 22)} ${state.progress.chillMode ? 'Unlimited' : `${state.progress.hearts}/5`}</div>
         </div>
       </div>
     </section>
@@ -2380,13 +2361,13 @@ function renderProfileView(course) {
     <section class="card" id="profile-courses-section">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
         <div>
-          <h3 style="margin:0;">📚 Active Courses (${enrolledCourses.length})</h3>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+          <h3 style="margin:0;">${uiIcon('book', 20)} Active Courses (${enrolledCourses.length})</h3>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">
             Switch between your active courses or add new languages to learn.
           </div>
         </div>
         <button type="button" class="btn btn-primary btn-sm" id="toggle-add-course-btn">
-          ${state.showAddCoursePicker ? '✕ Close' : '+ Add Course'}
+          ${state.showAddCoursePicker ? `${uiIcon('x', 16)} Close` : `${uiIcon('plus', 16)} Add Course`}
         </button>
       </div>
 
@@ -2394,7 +2375,7 @@ function renderProfileView(course) {
         state.showAddCoursePicker
           ? `
             <div class="add-course-panel" style="margin-bottom:14px;">
-              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);">Available Courses to Add</div>
+              <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-text);">Available Courses to Add</div>
               ${
                 availableCourses.length
                   ? availableCourses
@@ -2403,25 +2384,25 @@ function renderProfileView(course) {
                         const itemsCount = getAllItems(c).length;
                         return `
                           <div class="add-course-row">
-                            <div style="display:flex;align-items:center;gap:10px;min-width:0;">
-                              <span style="font-size:24px;line-height:1;">${getCourseFlag(c)}</span>
+                            <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+                              <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
                               <div>
-                                <div style="font-weight:700;font-size:14px;">
+                                <div style="font-weight:700;font-size:15px;font-family:var(--font-display);">
                                   ${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}
-                                  ${c.targetLang.nativeName ? `<span style="color:var(--accent);font-weight:600;">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
+                                  ${c.targetLang.nativeName ? `<span style="color:var(--accent-text);">(${escapeHtml(c.targetLang.nativeName)})</span>` : ''}
                                 </div>
                                 <div style="font-size:12px;color:var(--text-muted);">${unitsCount} units · ${itemsCount} items</div>
                               </div>
                             </div>
-                            <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(c.id)}">+ Add</button>
+                            <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(c.id)}">${uiIcon('plus', 15)} Add</button>
                           </div>
                         `;
                       })
                       .join('')
                   : `
-                    <div style="font-size:13px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+                    <div style="font-size:14px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
                       <span>You've added all built-in courses! Want more languages?</span>
-                      <button type="button" class="btn btn-sm" data-nav="studio">🛠️ Open Course Studio</button>
+                      <button type="button" class="btn btn-sm" data-nav="studio">${uiIcon('wrench', 15)} Open Course Studio</button>
                     </div>
                   `
               }
@@ -2439,13 +2420,13 @@ function renderProfileView(course) {
             return `
               <div class="course-progress-item">
                 <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                    <span style="font-size:18px;">${getCourseFlag(c)}</span>
-                    <strong>${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</strong>
-                    <span style="font-size:12px;color:var(--text-muted);">${done}/${ordered.length} lessons (${pct}%)</span>
+                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                    <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
+                    <strong style="font-family:var(--font-display);font-size:16px;">${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</strong>
+                    <span style="font-size:13px;color:var(--text-muted);">${done}/${ordered.length} lessons (${pct}%)</span>
                   </div>
-                  <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                    <button class="btn btn-sm ${c.id === course.id ? 'btn-primary' : ''}" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : 'Continue →'}</button>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <button class="btn btn-sm ${c.id === course.id ? 'btn-primary' : ''}" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : `Continue ${uiIcon('arrowRight', 14)}`}</button>
                     <button type="button" class="btn btn-sm" data-unenroll-course="${escapeHtml(c.id)}" title="Remove from active courses">Remove</button>
                   </div>
                 </div>
@@ -2483,17 +2464,17 @@ function renderSettingsView(course) {
     ${state.backupMessage ? `<div class="grammar-box">${escapeHtml(state.backupMessage)}</div>` : ''}
 
     <section class="card">
-      <h3 style="margin-top:0;">👤 Account &amp; Session</h3>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:12px;border-radius:12px;background:var(--surface-elevated);border:1px solid var(--border);margin-bottom:12px;">
+      <h3 style="margin-top:0;">${uiIcon('user', 20)} Account &amp; Session</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px;border-radius:16px;background:var(--surface-elevated);border:2px solid var(--border);margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:12px;min-width:0;">
           ${renderAvatarMarkup('md')}
           <div style="min-width:0;">
-            <div style="font-weight:800;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
-            <div style="font-size:12px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+            <div style="font-weight:700;font-size:16px;font-family:var(--font-display);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
+            <div style="font-size:13px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
               ${googleSession ? escapeHtml(googleSession.user?.email || 'Signed in with Google') : 'Not signed in · Local Guest Mode'}
             </div>
-            <div style="font-size:11px;color:var(--accent);margin-top:2px;">
-              ☁️ Last synced: ${escapeHtml(formatLastSynced(false))}
+            <div style="font-size:12px;color:var(--accent-text);margin-top:3px;display:inline-flex;align-items:center;gap:5px;">
+              ${uiIcon('cloud', 14)} Last synced: ${escapeHtml(formatLastSynced(false))}
             </div>
           </div>
         </div>
@@ -2501,8 +2482,8 @@ function renderSettingsView(course) {
           <button class="btn btn-sm" data-nav="profile">Edit Profile</button>
           ${
             googleSession
-              ? `<button class="btn btn-danger btn-sm" id="google-signout-btn">🚪 Log Out</button>`
-              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${state.googleBusy ? '⏳ Signing in...' : '🔐 Sign in with Google'}</button>`
+              ? `<button class="btn btn-danger btn-sm" id="google-signout-btn">${uiIcon('logout', 16)} Log Out</button>`
+              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('shield', 16)} ${state.googleBusy ? 'Signing in...' : 'Sign in with Google'}</button>`
           }
         </div>
       </div>
@@ -2510,8 +2491,8 @@ function renderSettingsView(course) {
         googleSession
           ? `
             <div style="display:flex;gap:10px;flex-wrap:wrap;">
-              <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>☁️ Backup to Google Drive</button>
-              <button class="btn btn-sm" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>⬇️ Restore from Google Drive</button>
+              <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('cloud', 16)} Backup to Google Drive</button>
+              <button class="btn btn-sm" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('download', 16)} Restore from Google Drive</button>
             </div>
           `
           : !APP_CONFIG.googleClientId
@@ -2529,7 +2510,7 @@ function renderSettingsView(course) {
     </section>
 
     <section class="card">
-      <h3 style="margin-top:0;">🎨 Appearance</h3>
+      <h3 style="margin-top:0;">${uiIcon('palette', 20)} Appearance</h3>
       <div class="settings-list">
         <div class="settings-row">
           <div>
@@ -2537,16 +2518,16 @@ function renderSettingsView(course) {
             <div class="settings-row-desc">Choose Light, Dark, or automatically match your device's system theme.</div>
           </div>
           <div class="segmented-control" role="group" aria-label="Theme mode">
-            <button type="button" class="seg-btn ${state.theme === 'light' ? 'active' : ''}" data-set-theme="light">☀️ Light</button>
-            <button type="button" class="seg-btn ${state.theme === 'dark' ? 'active' : ''}" data-set-theme="dark">🌙 Dark</button>
-            <button type="button" class="seg-btn ${state.theme === 'system' ? 'active' : ''}" data-set-theme="system">💻 System</button>
+            <button type="button" class="seg-btn ${state.theme === 'light' ? 'active' : ''}" data-set-theme="light">${uiIcon('sun', 15)} Light</button>
+            <button type="button" class="seg-btn ${state.theme === 'dark' ? 'active' : ''}" data-set-theme="dark">${uiIcon('moon', 15)} Dark</button>
+            <button type="button" class="seg-btn ${state.theme === 'system' ? 'active' : ''}" data-set-theme="system">${uiIcon('monitor', 15)} System</button>
           </div>
         </div>
       </div>
     </section>
 
     <section class="card">
-      <h3 style="margin-top:0;">🎓 Learning &amp; Audio Preferences</h3>
+      <h3 style="margin-top:0;">${uiIcon('sliders', 20)} Learning &amp; Audio Preferences</h3>
       <div class="settings-list">
         <div class="settings-row">
           <div>
@@ -2596,7 +2577,7 @@ function renderSettingsView(course) {
     </section>
 
     <section class="card" id="settings-backup-section">
-      <h3 style="margin-top:0;">💾 Backup &amp; Restore Data</h3>
+      <h3 style="margin-top:0;">${uiIcon('save', 20)} Backup &amp; Restore Data</h3>
       <div class="stats-grid" style="margin-bottom:14px;">
         <div class="stat-card">
           <div class="stat-card-label">Lessons Done</div>
@@ -2622,20 +2603,20 @@ function renderSettingsView(course) {
           Includes your progress, flashcards, profile picture, theme, and custom courses. Works 100% offline.
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-          <button class="btn btn-primary btn-sm" id="save-backup-file-btn">⬇ Export Backup File</button>
-          <button class="btn btn-sm" id="open-backup-file-btn">⬆ Restore from File</button>
+          <button class="btn btn-primary btn-sm" id="save-backup-file-btn">${uiIcon('download', 16)} Export Backup File</button>
+          <button class="btn btn-sm" id="open-backup-file-btn">${uiIcon('upload', 16)} Restore from File</button>
           <input type="file" id="web-backup-file-input" accept=".json,.txt,application/json,text/plain" style="display:none;" />
         </div>
       </div>
 
-      <div style="padding-top:14px;border-top:1px solid var(--border);">
+      <div style="padding-top:14px;border-top:2px solid var(--border);">
         <div class="settings-row-title" style="margin-bottom:4px;">2. Copy &amp; Paste Backup Code (<code>OL1:...</code>)</div>
         <div class="settings-row-desc" style="margin-bottom:10px;">
           Move progress between devices quickly by pasting a single-line backup code.
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
-          <button class="btn btn-primary btn-sm" id="copy-backup-code-btn">📋 Generate &amp; Copy Code</button>
-          <button class="btn btn-sm" id="show-backup-code-btn">👁 Show Code Below</button>
+          <button class="btn btn-primary btn-sm" id="copy-backup-code-btn">${uiIcon('copy', 16)} Generate &amp; Copy Code</button>
+          <button class="btn btn-sm" id="show-backup-code-btn">${uiIcon('eye', 16)} Show Code Below</button>
         </div>
         ${
           state.backupCodePreview
@@ -2645,8 +2626,8 @@ function renderSettingsView(course) {
         <label class="field-label">Paste Backup Code (OL1:...) or JSON to Restore</label>
         <textarea id="restore-code-input" rows="3" placeholder="Paste your OL1:... backup code or openlingo-backup.json contents here..." style="font-family:monospace;font-size:12px;"></textarea>
         <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-          <button class="btn btn-primary btn-sm" id="restore-code-btn">🔄 Restore from Pasted Text</button>
-          <button class="btn btn-danger btn-sm" id="reset-progress-btn">🗑 Reset Local Progress</button>
+          <button class="btn btn-primary btn-sm" id="restore-code-btn">${uiIcon('refresh', 16)} Restore from Pasted Text</button>
+          <button class="btn btn-danger btn-sm" id="reset-progress-btn">${uiIcon('trash', 16)} Reset Local Progress</button>
         </div>
       </div>
     </section>
@@ -2883,6 +2864,14 @@ function attachEvents(course) {
       unenrollCourse(cid);
     });
   });
+
+  const sectionSelect = document.getElementById('section-select');
+  if (sectionSelect) {
+    sectionSelect.addEventListener('change', (e) => {
+      state.selectedSectionId = e.target.value;
+      render();
+    });
+  }
 
   document.querySelectorAll('[data-select-section]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -3704,22 +3693,22 @@ function renderLessonSheet(course) {
   const sheet = state.lessonSheet;
   if (!sheet) return '';
   const done = Boolean(state.progress.completedLessons[`${course.id}:${sheet.lesson.id}`]);
-  const accent = sheet.unit.color || sheet.unit._section?.color || '#10b981';
+  const accent = getUnitSolidColor(sheet.unit.color || sheet.unit._section?.color);
   return `
     <div id="sheet-backdrop" class="sheet-backdrop">
       <div class="lesson-sheet">
         <div class="sheet-handle"></div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;">
-          <span class="pill accent" style="border-color:${escapeHtml(accent)};color:${escapeHtml(accent)};">${escapeHtml(sheet.unit.cefrLevel || 'Lesson')} · ${escapeHtml(sheet.unit.title)}</span>
+          <span class="pill accent">${escapeHtml(sheet.unit.cefrLevel || 'Lesson')} · ${escapeHtml(sheet.unit.title)}</span>
           <span class="pill">${sheet.lesson.items.length} items</span>
         </div>
-        <h2 style="margin:6px 0 4px;font-size:20px;">${escapeHtml(sheet.lesson.title)}</h2>
-        <p style="margin:0 0 16px;font-size:13px;color:var(--text-muted);">${escapeHtml(sheet.lesson.objective || '')}</p>
+        <h2 style="margin:6px 0 4px;font-size:22px;">${escapeHtml(sheet.lesson.title)}</h2>
+        <p style="margin:0 0 16px;font-size:14px;color:var(--text-muted);">${escapeHtml(sheet.lesson.objective || '')}</p>
         <div style="display:grid;gap:10px;">
-          <button class="btn btn-primary" style="width:100%;padding:13px;background:${escapeHtml(accent)};border-color:${escapeHtml(accent)};" data-start-lesson="${escapeHtml(sheet.unit.id)}|${escapeHtml(sheet.lesson.id)}">
-            ${done ? 'PRACTICE AGAIN (+25 XP)' : 'START LESSON (+25 XP)'}
+          <button class="btn btn-primary" style="width:100%;padding:14px;" data-start-lesson="${escapeHtml(sheet.unit.id)}|${escapeHtml(sheet.lesson.id)}">
+            ${uiIcon('play', 18)} ${done ? 'PRACTICE AGAIN (+25 XP)' : 'START LESSON (+25 XP)'}
           </button>
-          <button class="btn" style="width:100%;" data-guidebook="${escapeHtml(sheet.unit.id)}">📖 Open Unit Guidebook</button>
+          <button class="btn" style="width:100%;" data-guidebook="${escapeHtml(sheet.unit.id)}">${uiIcon('book', 18)} Open Unit Guidebook</button>
         </div>
       </div>
     </div>
