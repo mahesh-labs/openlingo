@@ -21,11 +21,18 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -41,6 +48,11 @@ public class MainActivity extends Activity {
     private volatile boolean ttsReady = false;
     private String pendingExportContent = null;
 
+    // Pending PKCE OAuth state for Android system-browser Sign in with Google
+    private String pendingOAuthClientId = null;
+    private String pendingOAuthRedirectUri = null;
+    private String pendingCodeVerifier = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +66,6 @@ public class MainActivity extends Activity {
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
 
-        // Handle Android 15+ edge-to-edge insets cleanly so header/nav bars never overlap system bars
         root.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
             @Override
             public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
@@ -77,6 +88,99 @@ public class MainActivity extends Activity {
         initTts();
         configureWebView();
         webView.loadUrl(START_URL);
+        handleOAuthIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleOAuthIntent(intent);
+    }
+
+    private void handleOAuthIntent(Intent intent) {
+        if (intent == null || intent.getData() == null) return;
+        Uri data = intent.getData();
+        String scheme = data.getScheme();
+        if (scheme == null || !scheme.startsWith("com.googleusercontent.apps.")) return;
+
+        String error = data.getQueryParameter("error");
+        if (error != null) {
+            deliverOAuthResult(null, 0, "Google Sign-In error: " + error);
+            return;
+        }
+        final String code = data.getQueryParameter("code");
+        if (code == null || pendingOAuthClientId == null || pendingCodeVerifier == null || pendingOAuthRedirectUri == null) {
+            return;
+        }
+
+        final String clientId = pendingOAuthClientId;
+        final String redirectUri = pendingOAuthRedirectUri;
+        final String verifier = pendingCodeVerifier;
+        pendingCodeVerifier = null;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String form = "client_id=" + URLEncoder.encode(clientId, "UTF-8")
+                            + "&code=" + URLEncoder.encode(code, "UTF-8")
+                            + "&code_verifier=" + URLEncoder.encode(verifier, "UTF-8")
+                            + "&redirect_uri=" + URLEncoder.encode(redirectUri, "UTF-8")
+                            + "&grant_type=authorization_code";
+
+                    HttpURLConnection conn = (HttpURLConnection) new URL("https://oauth2.googleapis.com/token").openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setDoOutput(true);
+                    conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                    try (OutputStream out = conn.getOutputStream()) {
+                        out.write(form.getBytes(StandardCharsets.UTF_8));
+                    }
+
+                    int status = conn.getResponseCode();
+                    InputStream stream = (status >= 200 && status < 300) ? conn.getInputStream() : conn.getErrorStream();
+                    String body = readStreamUtf8(stream);
+                    JSONObject json = new JSONObject(body);
+
+                    if (status >= 200 && status < 300 && json.has("access_token")) {
+                        deliverOAuthResult(json.getString("access_token"), json.optInt("expires_in", 3500), null);
+                    } else {
+                        String desc = json.optString("error_description", json.optString("error", "Token exchange failed"));
+                        deliverOAuthResult(null, 0, desc);
+                    }
+                } catch (Exception e) {
+                    deliverOAuthResult(null, 0, "Token exchange error: " + e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    private void deliverOAuthResult(final String token, final int expiresIn, final String errorMsg) {
+        final String jsToken = token == null ? "null" : "'" + escapeJs(token) + "'";
+        final String jsErr = errorMsg == null ? "null" : "'" + escapeJs(errorMsg) + "'";
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (webView != null) {
+                    webView.evaluateJavascript(
+                            "window.onAndroidGoogleAuth && window.onAndroidGoogleAuth(" + jsToken + ", " + expiresIn + ", " + jsErr + ")",
+                            null);
+                }
+            }
+        });
+    }
+
+    private String readStreamUtf8(InputStream in) throws IOException {
+        if (in == null) return "{}";
+        ByteArrayOutputStream buf = new ByteArrayOutputStream();
+        byte[] chunk = new byte[4096];
+        int n;
+        while ((n = in.read(chunk)) != -1) buf.write(chunk, 0, n);
+        return new String(buf.toByteArray(), StandardCharsets.UTF_8);
+    }
+
+    private String escapeJs(String s) {
+        return s.replace("\\", "\\\\").replace("'", "\\'").replace("\n", " ").replace("\r", "");
     }
 
     private void initTts() {
@@ -99,6 +203,7 @@ public class MainActivity extends Activity {
 
         webView.addJavascriptInterface(new TtsBridge(), "AndroidTTS");
         webView.addJavascriptInterface(new BackupBridge(), "AndroidBackup");
+        webView.addJavascriptInterface(new GoogleAuthBridge(), "AndroidGoogleAuth");
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -203,10 +308,7 @@ public class MainActivity extends Activity {
     }
 
     private void notifyJsBackupStatus(final boolean ok, final String message) {
-        final String safeMsg = (message == null ? "" : message)
-                .replace("\\", "\\\\")
-                .replace("'", "\\'")
-                .replace("\n", " ");
+        final String safeMsg = escapeJs(message == null ? "" : message);
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -300,6 +402,46 @@ public class MainActivity extends Activity {
                     ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                     if (cm != null && text != null) {
                         cm.setPrimaryClip(ClipData.newPlainText("OpenLingo Backup", text));
+                    }
+                }
+            });
+        }
+    }
+
+    private final class GoogleAuthBridge {
+        @JavascriptInterface
+        public void signIn(final String androidClientId) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        byte[] rand = new byte[32];
+                        new SecureRandom().nextBytes(rand);
+                        String verifier = Base64.encodeToString(rand, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+                        byte[] digest = MessageDigest.getInstance("SHA-256").digest(verifier.getBytes(StandardCharsets.US_ASCII));
+                        String challenge = Base64.encodeToString(digest, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+
+                        String prefix = androidClientId.replace(".apps.googleusercontent.com", "");
+                        String redirectUri = "com.googleusercontent.apps." + prefix + ":/oauth2redirect";
+
+                        pendingOAuthClientId = androidClientId;
+                        pendingOAuthRedirectUri = redirectUri;
+                        pendingCodeVerifier = verifier;
+
+                        Uri authUri = Uri.parse("https://accounts.google.com/o/oauth2/v2/auth")
+                                .buildUpon()
+                                .appendQueryParameter("client_id", androidClientId)
+                                .appendQueryParameter("redirect_uri", redirectUri)
+                                .appendQueryParameter("response_type", "code")
+                                .appendQueryParameter("scope", "https://www.googleapis.com/auth/drive.appdata openid email profile")
+                                .appendQueryParameter("code_challenge", challenge)
+                                .appendQueryParameter("code_challenge_method", "S256")
+                                .build();
+
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, authUri);
+                        startActivity(browserIntent);
+                    } catch (Exception e) {
+                        deliverOAuthResult(null, 0, "Could not launch browser sign-in: " + e.getMessage());
                     }
                 }
             });

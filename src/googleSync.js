@@ -39,10 +39,39 @@ export function getGoogleSession() {
   return { accessToken, user: userProfile };
 }
 
-export async function signInWithGoogle(clientId) {
-  const cleanId = String(clientId || '').trim();
+export async function signInWithGoogle(webClientId, androidClientId = '') {
+  // Native Android APK path: RFC 8252 system-browser OAuth 2.0 + PKCE (avoids WebView disallowed_useragent)
+  if (window.AndroidGoogleAuth && typeof window.AndroidGoogleAuth.signIn === 'function') {
+    const aId = String(androidClientId || '').trim();
+    if (!aId) throw new Error('Android Google Client ID is not configured.');
+
+    const tokenResp = await new Promise((resolve, reject) => {
+      window.onAndroidGoogleAuth = (token, expiresIn, errMsg) => {
+        delete window.onAndroidGoogleAuth;
+        if (errMsg) reject(new Error(errMsg));
+        else if (!token) reject(new Error('Google Sign-In was cancelled.'));
+        else resolve({ access_token: token, expires_in: Number(expiresIn || 3500) });
+      };
+      window.AndroidGoogleAuth.signIn(aId);
+    });
+
+    accessToken = tokenResp.access_token;
+    tokenExpiresAt = Date.now() + (tokenResp.expires_in * 1000) - 30000;
+    try {
+      const profRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      });
+      if (profRes.ok) userProfile = await profRes.json();
+    } catch {
+      userProfile = { name: 'Google User', email: '' };
+    }
+    return getGoogleSession();
+  }
+
+  // Web / Desktop PWA path: Google Identity Services OAuth2 Token Client
+  const cleanId = String(webClientId || '').trim();
   if (!cleanId) {
-    throw new Error('Add your Google OAuth 2.0 Web Client ID first (see 3-step setup below).');
+    throw new Error('Google Web Client ID is not configured.');
   }
 
   await loadGisScript();

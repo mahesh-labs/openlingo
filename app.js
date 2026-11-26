@@ -2403,7 +2403,10 @@ function attachEvents(course) {
       state.backupMessage = 'Opening Google Sign-In...';
       render();
       try {
-        const session = await signInWithGoogle(state.syncSettings.googleClientId);
+        const session = await signInWithGoogle(
+          state.syncSettings.googleClientId,
+          APP_CONFIG.googleAndroidClientId
+        );
         state.backupMessage = `Signed in as ${session.user?.email || session.user?.name || 'Google user'}. Ready to back up or restore from Google Drive!`;
       } catch (err) {
         state.backupMessage = `Google Sign-In: ${err.message}`;
