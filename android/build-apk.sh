@@ -4,6 +4,7 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 ANDROID_DIR="$PROJECT_DIR/android"
 BUILD_DIR="$ANDROID_DIR/build"
+VERSION_NAME="${APP_VERSION:-0.0.1-beta}"
 
 SDK_DIR="${ANDROID_HOME:-/home/mahesh/Android/Sdk}"
 BUILD_TOOLS="$SDK_DIR/build-tools/36.0.0"
@@ -32,18 +33,19 @@ cp -r "$PROJECT_DIR/courses" "$BUILD_DIR/assets/www/"
   -o "$BUILD_DIR/unaligned.apk" \
   "$BUILD_DIR/res_flat/resources.zip"
 
-# 4. Compile Java sources (targeting bytecode v11 for d8 compatibility)
+# 4. Compile Java sources (release mode, no debug symbols, bytecode v11 for d8)
 "$JAVA_HOME/bin/javac" \
   --release 11 \
+  -g:none \
   -classpath "$PLATFORM_JAR" \
   -d "$BUILD_DIR/classes" \
   "$BUILD_DIR/gen/org/openlingo/app/R.java" \
   "$ANDROID_DIR/src/org/openlingo/app/MainActivity.java"
 
-# 5. Convert .class files to Dalvik DEX bytecode with d8
+# 5. Convert .class files to optimized release Dalvik DEX bytecode with d8
 CLASS_FILES=()
 while IFS= read -r -d '' f; do CLASS_FILES+=("$f"); done < <(find "$BUILD_DIR/classes" -name "*.class" -print0)
-"$BUILD_TOOLS/d8" --min-api 24 --lib "$PLATFORM_JAR" --output "$BUILD_DIR/dex" "${CLASS_FILES[@]}"
+"$BUILD_TOOLS/d8" --release --min-api 24 --lib "$PLATFORM_JAR" --output "$BUILD_DIR/dex" "${CLASS_FILES[@]}"
 
 # 6. Inject classes.dex into APK
 python3 - "$BUILD_DIR/unaligned.apk" "$BUILD_DIR/dex/classes.dex" <<'PY'
@@ -56,23 +58,26 @@ PY
 # 7. Zipalign APK
 "$BUILD_TOOLS/zipalign" -f -p 4 "$BUILD_DIR/unaligned.apk" "$BUILD_DIR/aligned.apk"
 
-# 8. Generate local debug keystore (if not present) and sign APK with apksigner
-KEYSTORE="$ANDROID_DIR/debug.keystore"
+# 8. Sign release APK with local private release keystore (gitignored; back up safely!)
+KEYSTORE="${RELEASE_KEYSTORE:-$ANDROID_DIR/release.keystore}"
+KEY_ALIAS="${RELEASE_KEY_ALIAS:-openlingo-release}"
+KEY_PASS="${RELEASE_STORE_PASS:-openlingo-release-key}"
+
 if [ ! -f "$KEYSTORE" ]; then
   "$JAVA_HOME/bin/keytool" -genkeypair -v \
     -keystore "$KEYSTORE" \
-    -storepass android -keypass android \
-    -alias openlingo-debug \
-    -keyalg RSA -keysize 2048 -validity 10000 \
-    -dname "CN=OpenLingo Debug,O=OpenLingo,C=US" >/dev/null 2>&1
+    -storepass "$KEY_PASS" -keypass "$KEY_PASS" \
+    -alias "$KEY_ALIAS" \
+    -keyalg RSA -keysize 4096 -validity 10000 \
+    -dname "CN=OpenLingo Release,O=OpenLingo,C=IN" >/dev/null 2>&1
 fi
 
-FINAL_APK="$BUILD_DIR/out/OpenLingo-debug.apk"
+FINAL_APK="$BUILD_DIR/out/OpenLingo-v${VERSION_NAME}.apk"
 "$BUILD_TOOLS/apksigner" sign \
   --ks "$KEYSTORE" \
-  --ks-pass pass:android \
-  --key-pass pass:android \
-  --ks-key-alias openlingo-debug \
+  --ks-pass "pass:$KEY_PASS" \
+  --key-pass "pass:$KEY_PASS" \
+  --ks-key-alias "$KEY_ALIAS" \
   --out "$FINAL_APK" \
   "$BUILD_DIR/aligned.apk"
 
