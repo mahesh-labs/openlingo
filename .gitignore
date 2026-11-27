@@ -4,6 +4,7 @@ android/libs/
 android/debug.keystore
 linux/dist/
 linux/build/
+windows/dist/
 build-flatpak/
 flatpak-repo/
 *.apk
@@ -11,6 +12,8 @@ flatpak-repo/
 *.deb
 *.AppImage
 *.flatpak
+*.msi
+*.exe
 *.keystore
 *.jks
 

@@ -53,7 +53,11 @@ export function detectRuntimePlatform() {
   }
   const ua = typeof navigator !== 'undefined' ? navigator.userAgent || '' : '';
   const host = typeof window !== 'undefined' ? window.location.hostname : '';
-  if (/Linux/i.test(ua) && !/Android/i.test(ua) && (host === 'localhost' || host === '127.0.0.1')) {
+  const isLocalhost = host === 'localhost' || host === '127.0.0.1';
+  if (isLocalhost && /Windows/i.test(ua)) {
+    return 'windows';
+  }
+  if (isLocalhost && /Linux/i.test(ua) && !/Android/i.test(ua)) {
     return 'linux';
   }
   return 'web';
@@ -65,7 +69,8 @@ export function openExternalLink(url) {
     window.AndroidUpdater.openExternalUrl(url);
     return;
   }
-  if (detectRuntimePlatform() === 'linux') {
+  const platform = detectRuntimePlatform();
+  if (platform === 'linux' || platform === 'windows') {
     fetch('/__desktop/open-url', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -107,11 +112,16 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
   const archPkgAsset = assets.find((a) => /\.pkg\.tar\.zst$/i.test(a.name || ''));
   const flatpakAsset = assets.find((a) => /\.flatpak$/i.test(a.name || ''));
   const tarGzAsset = assets.find((a) => /\.tar\.gz$/i.test(a.name || ''));
+  const winExeAsset = assets.find((a) => /windows-setup\.exe$/i.test(a.name || ''));
+  const winMsiAsset = assets.find((a) => /\.msi$/i.test(a.name || ''));
+  const winPortableAsset = assets.find((a) => /windows-portable\.zip$/i.test(a.name || ''));
   const platform = detectRuntimePlatform();
 
   let downloadUrl = latest.html_url || `https://github.com/${repo}/releases/tag/${latest.tag_name}`;
   if (platform === 'android' && apkAsset?.browser_download_url) {
     downloadUrl = apkAsset.browser_download_url;
+  } else if (platform === 'windows' && winExeAsset?.browser_download_url) {
+    downloadUrl = latest.html_url || winExeAsset.browser_download_url;
   } else if (platform === 'linux' && appImageAsset?.browser_download_url) {
     downloadUrl = latest.html_url || appImageAsset.browser_download_url;
   }
@@ -135,6 +145,9 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
     flatpakUrl: flatpakAsset?.browser_download_url || '',
     tarGzUrl: tarGzAsset?.browser_download_url || '',
     appImageUrl: appImageAsset?.browser_download_url || '',
+    winExeUrl: winExeAsset?.browser_download_url || '',
+    winMsiUrl: winMsiAsset?.browser_download_url || '',
+    winPortableUrl: winPortableAsset?.browser_download_url || '',
     publishedAt: latest.published_at || '',
     summary: summaryLine.slice(0, 160),
     platform,
@@ -198,8 +211,8 @@ export async function performAppUpdate(updateInfo, onProgress = null) {
     return;
   }
 
-  // Linux Desktop: trigger direct in-app download + package install when running as an installed desktop app
-  if (platform === 'linux') {
+  // Linux / Windows Desktop: trigger direct in-app download + package install when running as an installed desktop app
+  if (platform === 'linux' || platform === 'windows') {
     try {
       emit({ active: true, stage: 'downloading', percent: 0, message: 'Preparing direct update...' });
       const res = await fetch('/__desktop/update/install', {
@@ -211,7 +224,10 @@ export async function performAppUpdate(updateInfo, onProgress = null) {
           rpmUrl: updateInfo?.rpmUrl || '',
           archPkgUrl: updateInfo?.archPkgUrl || '',
           flatpakUrl: updateInfo?.flatpakUrl || '',
-          tarGzUrl: updateInfo?.tarGzUrl || ''
+          tarGzUrl: updateInfo?.tarGzUrl || '',
+          winExeUrl: updateInfo?.winExeUrl || '',
+          winMsiUrl: updateInfo?.winMsiUrl || '',
+          winPortableUrl: updateInfo?.winPortableUrl || ''
         })
       });
       if (res.ok) {

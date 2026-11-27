@@ -1,0 +1,55 @@
+name: Build & Attach Windows Release Packages (EXE Setup, MSI, Portable ZIP)
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to attach Windows packages to (e.g. v0.0.10-beta)'
+        required: true
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine release tag
+        id: meta
+        shell: pwsh
+        run: |
+          $tag = "${{ github.event.release.tag_name }}"
+          if (-not $tag) { $tag = "${{ inputs.tag }}" }
+          $ver = $tag -replace '^v', ''
+          "tag=$tag" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "version=$ver" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Install Inno Setup & WiX Toolset v5
+        shell: pwsh
+        run: |
+          choco install innosetup -y --no-progress
+          dotnet tool install --global wix --version 5.0.2
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Build Windows EXE Setup, MSI, and Portable ZIP
+        shell: pwsh
+        env:
+          APP_VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          .\windows\build-windows.ps1 -Version "${{ steps.meta.outputs.version }}"
+
+      - name: Upload Windows packages to GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $ver = "${{ steps.meta.outputs.version }}"
+          $tag = "${{ steps.meta.outputs.tag }}"
+          gh release upload "$tag" `
+            "windows/dist/OpenLingo-v${ver}-windows-setup.exe" `
+            "windows/dist/OpenLingo-v${ver}-windows.msi" `
+            "windows/dist/OpenLingo-v${ver}-windows-portable.zip" `
+            --clobber

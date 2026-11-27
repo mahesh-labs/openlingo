@@ -554,9 +554,9 @@ function compressAvatarFile(file) {
 function getPlatformLabel() {
   if (window.AndroidBackup || window.AndroidGoogleAuth) return 'Android App';
   const ua = navigator.userAgent || '';
-  if (/Linux/i.test(ua) && !/Android/i.test(ua) && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-    return 'Linux Desktop';
-  }
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  if (isLocal && /Windows/i.test(ua)) return 'Windows Desktop';
+  if (isLocal && /Linux/i.test(ua) && !/Android/i.test(ua)) return 'Linux Desktop';
   return 'Web PWA';
 }
 
