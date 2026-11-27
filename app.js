@@ -1316,8 +1316,13 @@ function renderAuthGate() {
           Continue offline without signing in →
         </button>
 
-        <div style="margin-top:18px;font-size:11px;color:var(--text-muted);">
-          Zero servers · Your progress stays privately in your own Google Drive AppData &amp; device.
+        <div style="margin-top:18px;font-size:11px;color:var(--text-muted);line-height:1.6;">
+          Zero servers · Your progress stays privately in your own Google Drive AppData &amp; device.<br />
+          <a href="./privacy.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent-text);text-decoration:underline;">Privacy Policy</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);text-decoration:underline;">GitHub</a>
+          &nbsp;·&nbsp;
+          <a href="${escapeHtml(APP_CONFIG.discordUrl)}" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);text-decoration:underline;">Discord</a>
         </div>
       </div>
     </div>
