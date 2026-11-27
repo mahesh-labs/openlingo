@@ -1,4 +1,4 @@
-name: Build & Attach Windows Release Packages (EXE Setup, MSI, Portable ZIP)
+name: Build & Attach Windows Release Packages (EXE Setup, Portable EXE, MSI, Portable ZIP)
 
 on:
   release:
@@ -50,6 +50,7 @@ jobs:
           $tag = "${{ steps.meta.outputs.tag }}"
           gh release upload "$tag" `
             "windows/dist/OpenLingo-v${ver}-windows-setup.exe" `
+            "windows/dist/OpenLingo-v${ver}-windows-portable.exe" `
             "windows/dist/OpenLingo-v${ver}-windows.msi" `
             "windows/dist/OpenLingo-v${ver}-windows-portable.zip" `
             --clobber

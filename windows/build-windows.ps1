@@ -49,6 +49,24 @@ $CsSrc = Join-Path $WinDir "OpenLingo.cs"
 if ($LASTEXITCODE -ne 0) { throw "csc.exe failed compiling OpenLingo.cs" }
 Write-Host "Built $ExeOut"
 
+# 2b. Compile single-file self-contained Portable EXE (embeds www.zip directly inside OpenLingo.exe!)
+$WwwZip = Join-Path $DistDir "www.zip"
+Compress-Archive -Path "$WwwDir\*" -DestinationPath $WwwZip -CompressionLevel Optimal -Force
+$PortableExeOut = Join-Path $DistDir "OpenLingo-v$Version-windows-portable.exe"
+& $Csc /nologo /optimize+ /target:winexe /platform:anycpu `
+  "/win32icon:$IconPath" `
+  "/resource:$WwwZip,OpenLingo.www.zip" `
+  "/out:$PortableExeOut" `
+  /r:System.dll `
+  /r:System.Core.dll `
+  /r:System.Web.Extensions.dll `
+  /r:System.IO.Compression.dll `
+  /r:System.IO.Compression.FileSystem.dll `
+  $CsSrc
+if ($LASTEXITCODE -ne 0) { throw "csc.exe failed compiling single-file portable OpenLingo.exe" }
+Remove-Item -Force $WwwZip
+Write-Host "Built $PortableExeOut"
+
 # 3. Build Portable ZIP (OpenLingo-v<Version>-windows-portable.zip)
 $PortableFolder = Join-Path $DistDir "OpenLingo-v$Version-windows-portable"
 Copy-Item $StageDir -Destination $PortableFolder -Recurse -Force

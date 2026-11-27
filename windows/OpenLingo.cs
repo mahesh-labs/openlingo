@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -30,6 +31,7 @@ namespace OpenLingoWindows
         private static string DataDir;
         private static string ProfileDir;
         private static string UpdateCacheDir;
+        private static Dictionary<string, byte[]> EmbeddedWww;
         private static int ServerPort = 8080;
         private static bool UsingAppWindow = false;
         private static volatile bool Running = true;
@@ -44,7 +46,8 @@ namespace OpenLingoWindows
 
             BaseDir = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\', '/');
             WwwDir = Path.Combine(BaseDir, "www");
-            if (!Directory.Exists(WwwDir))
+            LoadEmbeddedBundle();
+            if (EmbeddedWww == null && !Directory.Exists(WwwDir))
             {
                 string parent = Directory.GetParent(BaseDir) != null ? Directory.GetParent(BaseDir).FullName : BaseDir;
                 if (File.Exists(Path.Combine(parent, "index.html")))
@@ -479,6 +482,7 @@ namespace OpenLingoWindows
                 string assetUrl = "";
                 if (mode == "exe") assetUrl = GetString(data, "winExeUrl").Trim();
                 else if (mode == "msi") assetUrl = GetString(data, "winMsiUrl").Trim();
+                else if (mode == "portable-exe") assetUrl = GetString(data, "winPortableExeUrl").Trim();
                 else if (mode == "portable") assetUrl = GetString(data, "winPortableUrl").Trim();
 
                 if (mode == "dev" || !IsTrustedReleaseUrl(assetUrl))
@@ -520,8 +524,46 @@ namespace OpenLingoWindows
             WriteText(stream, 404, "Not Found", "Not Found");
         }
 
+        private static void LoadEmbeddedBundle()
+        {
+            try
+            {
+                using (Stream res = Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenLingo.www.zip"))
+                {
+                    if (res == null) return;
+                    Dictionary<string, byte[]> files = new Dictionary<string, byte[]>(StringComparer.OrdinalIgnoreCase);
+                    using (ZipArchive zip = new ZipArchive(res, ZipArchiveMode.Read))
+                    {
+                        foreach (ZipArchiveEntry entry in zip.Entries)
+                        {
+                            if (string.IsNullOrEmpty(entry.Name)) continue;
+                            string norm = entry.FullName.Replace('\\', '/').TrimStart('/');
+                            using (Stream es = entry.Open())
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                es.CopyTo(ms);
+                                files[norm] = ms.ToArray();
+                            }
+                        }
+                    }
+                    if (files.Count > 0)
+                    {
+                        EmbeddedWww = files;
+                    }
+                }
+            }
+            catch
+            {
+                EmbeddedWww = null;
+            }
+        }
+
         private static string DetectInstallMode()
         {
+            if (EmbeddedWww != null)
+            {
+                return "portable-exe";
+            }
             if (File.Exists(Path.Combine(BaseDir, "unins000.exe")))
             {
                 return "exe";
@@ -584,6 +626,34 @@ namespace OpenLingoWindows
                     SetUpdateState(false, "done", 100, "Launching Windows MSI updater...", "");
                     ProcessStartInfo psi = new ProcessStartInfo("msiexec.exe", "/i \"" + dlPath + "\" /passive");
                     psi.UseShellExecute = true;
+                    Process.Start(psi);
+                    ScheduleSelfExit();
+                    return;
+                }
+
+                if (mode == "portable-exe")
+                {
+                    SetUpdateState(true, "installing", 100, "Replacing portable executable...", "");
+                    string currentExe = Assembly.GetExecutingAssembly().Location;
+                    string stagedExe = currentExe + ".new";
+                    File.Copy(dlPath, stagedExe, true);
+
+                    string scriptPath = Path.Combine(Path.GetTempPath(), "openlingo-swap-" + Guid.NewGuid().ToString("N") + ".cmd");
+                    string batch = string.Format(
+                        "@echo off\r\n" +
+                        "timeout /t 2 /nobreak >nul\r\n" +
+                        "move /Y \"{0}\" \"{1}\" >nul\r\n" +
+                        "start \"\" \"{1}\"\r\n" +
+                        "del \"%~f0\" >nul 2>&1\r\n",
+                        stagedExe, currentExe
+                    );
+                    File.WriteAllText(scriptPath, batch, Encoding.Default);
+
+                    SetUpdateState(false, "done", 100, "Updated! Restarting OpenLingo...", "");
+                    ProcessStartInfo psi = new ProcessStartInfo("cmd.exe", "/C \"" + scriptPath + "\"");
+                    psi.WindowStyle = ProcessWindowStyle.Hidden;
+                    psi.CreateNoWindow = true;
+                    psi.UseShellExecute = false;
                     Process.Start(psi);
                     ScheduleSelfExit();
                     return;
@@ -684,6 +754,21 @@ namespace OpenLingoWindows
         {
             string decoded = Uri.UnescapeDataString(urlPath ?? "/");
             if (decoded == "/" || string.IsNullOrEmpty(decoded)) decoded = "/index.html";
+
+            if (EmbeddedWww != null)
+            {
+                string key = decoded.TrimStart('/');
+                if (key.EndsWith("/")) key += "index.html";
+                byte[] embeddedBytes;
+                if (EmbeddedWww.TryGetValue(key, out embeddedBytes))
+                {
+                    WriteResponse(stream, 200, "OK", GuessMimeType(key), embeddedBytes, false);
+                    return;
+                }
+                WriteText(stream, 404, "Not Found", "Not Found");
+                return;
+            }
+
             string rel = decoded.TrimStart('/').Replace('/', Path.DirectorySeparatorChar);
             string fullRoot = Path.GetFullPath(WwwDir);
             string fullPath = Path.GetFullPath(Path.Combine(fullRoot, rel));

@@ -113,6 +113,7 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
   const flatpakAsset = assets.find((a) => /\.flatpak$/i.test(a.name || ''));
   const tarGzAsset = assets.find((a) => /\.tar\.gz$/i.test(a.name || ''));
   const winExeAsset = assets.find((a) => /windows-setup\.exe$/i.test(a.name || ''));
+  const winPortableExeAsset = assets.find((a) => /windows-portable\.exe$/i.test(a.name || ''));
   const winMsiAsset = assets.find((a) => /\.msi$/i.test(a.name || ''));
   const winPortableAsset = assets.find((a) => /windows-portable\.zip$/i.test(a.name || ''));
   const platform = detectRuntimePlatform();
@@ -146,6 +147,7 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
     tarGzUrl: tarGzAsset?.browser_download_url || '',
     appImageUrl: appImageAsset?.browser_download_url || '',
     winExeUrl: winExeAsset?.browser_download_url || '',
+    winPortableExeUrl: winPortableExeAsset?.browser_download_url || '',
     winMsiUrl: winMsiAsset?.browser_download_url || '',
     winPortableUrl: winPortableAsset?.browser_download_url || '',
     publishedAt: latest.published_at || '',
@@ -226,6 +228,7 @@ export async function performAppUpdate(updateInfo, onProgress = null) {
           flatpakUrl: updateInfo?.flatpakUrl || '',
           tarGzUrl: updateInfo?.tarGzUrl || '',
           winExeUrl: updateInfo?.winExeUrl || '',
+          winPortableExeUrl: updateInfo?.winPortableExeUrl || '',
           winMsiUrl: updateInfo?.winMsiUrl || '',
           winPortableUrl: updateInfo?.winPortableUrl || ''
         })
