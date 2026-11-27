@@ -22,6 +22,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.0.9-beta" date="2026-11-27">
+      <description>
+        <p>Immediate launch update checker with modal prompt, decluttered single-bar Characters view with All Characters selected first, full Tamil Uyirmei (216 + 48 Grantha) and complete Malayalam/Kannada/Telugu/Hindi consonant-vowel grids, global Add Course popup modal with source-language picker and search, and updated Support OpenLingo roadmap copy.</p>
+      </description>
+    </release>
     <release version="0.0.8-beta" date="2026-11-26">
       <description>
         <p>Full-bleed Android Adaptive Icons (zero white border) with non-crashing background launcher icon switching, custom Rich Purple themed option selector across all OSes, floating active lesson jump button, non-blocking top toasts, unclipped mobile exercises, true 3D animated flashcard flips, Course Studio moved inside Settings, legacy course cleanup, automated course &amp; icon pipeline, and full CONTRIBUTING_COURSES.md documentation.</p>
