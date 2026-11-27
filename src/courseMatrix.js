@@ -8,6 +8,7 @@ import { getGitHubRawBase } from './config.js';
 
 let syllabusCache = null;
 const langPackCache = new Map();
+const i18nPackCache = new Map();
 let remoteMatrixSource = null; // { repo, branch } when synced live from GitHub
 
 export async function loadMatrixSyllabus() {
@@ -30,6 +31,7 @@ export async function syncMatrixFromGitHub(repo, branch) {
   }
   syllabusCache = remoteSyllabus;
   langPackCache.clear();
+  i18nPackCache.clear();
   remoteMatrixSource = { repo, branch };
   return remoteSyllabus;
 }
@@ -74,6 +76,34 @@ export async function loadLanguagePack(code) {
   return pack;
 }
 
+export async function loadLanguageI18n(code) {
+  if (i18nPackCache.has(code)) return i18nPackCache.get(code);
+  if (remoteMatrixSource) {
+    try {
+      const base = getGitHubRawBase(remoteMatrixSource.repo, remoteMatrixSource.branch);
+      const rRes = await fetch(`${base}/courses/i18n/${encodeURIComponent(code)}.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (rRes.ok) {
+        const pack = await rRes.json();
+        i18nPackCache.set(code, pack);
+        return pack;
+      }
+    } catch {
+      // Fall back to local i18n pack
+    }
+  }
+  try {
+    const res = await fetch(`./courses/i18n/${encodeURIComponent(code)}.json`);
+    if (res.ok) {
+      const pack = await res.json();
+      i18nPackCache.set(code, pack);
+      return pack;
+    }
+  } catch {
+    // Fall back to null
+  }
+  return null;
+}
+
 export async function buildMatrixCourse(sourceCode, targetCode) {
   const syllabus = await loadMatrixSyllabus();
   const srcMeta = syllabus.languages.find((l) => l.code === sourceCode);
@@ -82,38 +112,47 @@ export async function buildMatrixCourse(sourceCode, targetCode) {
     throw new Error(`Invalid course pair: ${sourceCode}-${targetCode}`);
   }
 
-  const [srcPack, tgtPack] = await Promise.all([
+  const [srcPack, tgtPack, srcI18n] = await Promise.all([
     loadLanguagePack(sourceCode),
-    loadLanguagePack(targetCode)
+    loadLanguagePack(targetCode),
+    loadLanguageI18n(sourceCode)
   ]);
 
   const labels = Array.isArray(tgtMeta.levelLabels) && tgtMeta.levelLabels.length === 5
     ? tgtMeta.levelLabels
     : ['Stage 1', 'Stage 2', 'Stage 3', 'Stage 4', 'Stage 5'];
 
+  const localizedSrcName = srcI18n?.langNames?.[sourceCode] || srcMeta.nativeName || srcMeta.name;
+  const localizedTgtName = srcI18n?.langNames?.[targetCode] || tgtMeta.nativeName || tgtMeta.name;
+
   const sections = syllabus.tiers.map((tier, tIdx) => {
     const levelTag = labels[tIdx] || `Tier ${tIdx + 1}`;
+    const localizedTier = srcI18n?.tiers?.[tier.id] || tier.tier;
     return {
       id: `sec-${tier.id}`,
       jlptLevel: levelTag,
-      tier: tier.tier,
-      title: `${levelTag} — ${tier.title}`,
+      tier: localizedTier,
+      title: `${levelTag} — ${localizedTier}`,
       description: tier.description,
       color: '#7c3aed',
       units: tier.units.map((unit) => {
+        const locUnit = srcI18n?.units?.[unit.id];
+        const unitTitle = locUnit?.title || unit.title;
+        const unitSubtitle = locUnit?.subtitle || unit.subtitle;
         const unitGrammar =
+          (sourceCode !== 'en' && srcI18n?.grammarNotes?.[unit.id]) ||
           tgtPack.grammarNotes?.[unit.id] ||
-          `${unit.title}: ${unit.subtitle}`;
+          `${unitTitle}: ${unitSubtitle}`;
         return {
           id: unit.id,
-          title: unit.title,
-          subtitle: unit.subtitle,
+          title: unitTitle,
+          subtitle: unitSubtitle,
           cefrLevel: levelTag,
           color: '#7c3aed',
           lessons: unit.lessons.map((lesson) => ({
             id: lesson.id,
-            title: lesson.title,
-            objective: lesson.objective,
+            title: srcI18n?.lessons?.[lesson.id] || lesson.title,
+            objective: unitSubtitle,
             grammarNote: unitGrammar,
             items: lesson.concepts
               .map((cid) => {
@@ -145,18 +184,26 @@ export async function buildMatrixCourse(sourceCode, targetCode) {
 
   const firstLvl = labels[0];
   const lastLvl = labels[labels.length - 1];
+  const courseTitleTpl = srcI18n?.ui?.courseTitle || '{target} for {source} Speakers ({first} → {last})';
+  const courseTitle = courseTitleTpl
+    .replace('{target}', localizedTgtName)
+    .replace('{source}', localizedSrcName)
+    .replace('{first}', firstLvl)
+    .replace('{last}', lastLvl);
 
   return {
     id: `${sourceCode}-${targetCode}`,
     version: syllabus.version || '3.0.0',
     _matrix: true,
+    i18n: srcI18n || null,
     standardName: tgtMeta.standardName || 'Level',
-    title: `${tgtMeta.name} for ${srcMeta.name} Speakers (${firstLvl} → ${lastLvl})`,
-    description: `Complete ${srcMeta.name} → ${tgtMeta.name} curriculum from absolute beginner (${firstLvl}) to super advanced mastery (${lastLvl}).`,
+    title: courseTitle,
+    description: `${localizedSrcName} → ${localizedTgtName} (${firstLvl} → ${lastLvl})`,
     license: 'CC-BY-SA-4.0',
     sourceLang: {
       code: srcMeta.code,
       name: srcMeta.name,
+      localizedName: localizedSrcName,
       nativeName: srcMeta.nativeName,
       speechLocale: srcMeta.speechLocale,
       dir: srcMeta.dir || 'ltr'
@@ -164,6 +211,7 @@ export async function buildMatrixCourse(sourceCode, targetCode) {
     targetLang: {
       code: tgtMeta.code,
       name: tgtMeta.name,
+      localizedName: localizedTgtName,
       nativeName: tgtMeta.nativeName,
       speechLocale: tgtMeta.speechLocale,
       dir: tgtMeta.dir || 'ltr',

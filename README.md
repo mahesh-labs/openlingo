@@ -12,6 +12,7 @@
 <p align="center">
   <a href="https://mahesh-labs.github.io/openlingo/"><strong>🌐 Launch Live Web App</strong></a> &nbsp;·&nbsp;
   <a href="https://github.com/mahesh-labs/openlingo/releases"><strong>📦 Download Android &amp; Linux Builds</strong></a> &nbsp;·&nbsp;
+  <a href="https://discord.gg/pYMKxY4jE"><strong>💬 Join Discord</strong></a> &nbsp;·&nbsp;
   <a href="https://mahesh-labs.github.io/openlingo/privacy.html"><strong>🔒 Privacy Policy</strong></a> &nbsp;·&nbsp;
   <a href="CONTRIBUTING_COURSES.md"><strong>🌍 Contribute Courses</strong></a>
 </p>

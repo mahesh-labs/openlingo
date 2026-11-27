@@ -133,8 +133,7 @@ h1, h2, h3, .brand-name, .page-title, .unit-banner-title, .prompt-main, .stat-ca
 }
 
 .ui-icon {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   flex-shrink: 0;
 }
 
@@ -397,10 +396,11 @@ select option:checked {
   background: var(--surface-elevated);
   border: 2.5px solid var(--border);
   border-radius: 18px;
-  padding: 14px;
+  padding: 12px;
   font-size: 14px;
   font-weight: 800;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
   box-shadow: 0 5px 0 var(--card-lip);
 }
@@ -409,17 +409,28 @@ select option:checked {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  padding: 0 2px;
   color: var(--text-muted);
   font-size: 14px;
+  line-height: 1.2;
 }
 
 .stat-row strong {
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1;
   display: inline-flex;
   align-items: center;
   gap: 5px;
+}
+
+#sync-status-label {
+  justify-content: flex-start !important;
+  padding: 2px 2px 4px;
+  border-bottom: 1.5px solid var(--border);
+  line-height: 1.2;
 }
 
 .mobile-topbar {
@@ -1647,18 +1658,24 @@ select.input {
 
 .sidebar-profile-btn {
   width: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 10px;
-  border-radius: 15px;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 14px;
   border: 2px solid var(--border);
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
   text-align: left;
-  box-shadow: 0 4px 0 var(--card-lip);
+  overflow: hidden;
+  box-shadow: 0 3px 0 var(--card-lip);
   transition: transform 0.08s ease, border-color 0.15s ease;
+}
+
+.sidebar-profile-btn .avatar-circle.sm {
+  box-shadow: 0 2px 0 var(--accent-lip);
 }
 
 .sidebar-profile-btn:hover {
@@ -2685,4 +2702,44 @@ select.input {
     max-height: 74vh;
     border-radius: 22px;
   }
+}
+
+
+/* ==========================================================================
+   In-App Update Banner
+   ========================================================================== */
+.update-banner {
+  margin-bottom: 16px;
+  padding: 13px 16px;
+  border-radius: 18px;
+  border: 2.5px solid var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 5px 0 var(--accent-lip);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.update-banner-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+  flex: 1 1 240px;
+}
+
+.update-banner-text {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.update-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }

@@ -1,0 +1,274 @@
+{
+  "code": "es",
+  "ui": {
+    "start": "EMPEZAR",
+    "guidebook": "Guía",
+    "jumpHere": "Saltar aquí",
+    "unit": "Unidad",
+    "complete": "completado",
+    "completedTap": "Completado · Toca para practicar",
+    "locked": "Bloqueado",
+    "itemsReady": "{n} elementos · Listo",
+    "unitTrophy": "Trofeo de unidad",
+    "unitMastered": "¡Unidad dominada!",
+    "allLevels": "Todos los niveles",
+    "backToPath": "← Volver al recorrido",
+    "keyVocab": "Vocabulario y expresiones clave",
+    "grammarNote": "Nota gramatical",
+    "listen": "Escuchar",
+    "audio": "Audio",
+    "beginDrills": "Comenzar ejercicios interactivos ({n})",
+    "exerciseOf": "Ejercicio {i} de {n}",
+    "chooseMeaning": "Elige el significado en {lang}",
+    "selectMatching": "Selecciona la expresión correspondiente",
+    "typeExpression": "Escribe la expresión para",
+    "typePlaceholder": "Escribe tu respuesta en {lang}...",
+    "checkAnswer": "Comprobar",
+    "nicelyDone": "¡Muy bien!",
+    "keepPracticing": "¡Sigue practicando!",
+    "continueBtn": "Continuar",
+    "lessonComplete": "¡Lección completada!",
+    "accuracyXp": "{acc}% de precisión · +25 XP",
+    "continuePath": "Continuar con el recorrido",
+    "reviewFlashcards": "Repasar tarjetas",
+    "tapToFlip": "Toca la tarjeta para voltear",
+    "tapToFlipBack": "Toca para volver",
+    "meaning": "Significado en {lang}",
+    "again": "Otra vez",
+    "hard": "Difícil",
+    "good": "Bien",
+    "easy": "Fácil",
+    "backToLesson": "Volver a la lección",
+    "jumpToLesson": "Ir a la lección",
+    "courseTitle": "{target} para hablantes de {source} ({first} → {last})",
+    "pronounce": "Pronunciar"
+  },
+  "langNames": {
+    "en": "Inglés",
+    "ml": "Malayalam",
+    "ta": "Tamil",
+    "kn": "Canarés",
+    "te": "Telugu",
+    "hi": "Hindi",
+    "ja": "Japonés",
+    "zh": "Chino (mandarín)",
+    "ko": "Coreano",
+    "ar": "Árabe",
+    "es": "Español",
+    "fr": "Francés",
+    "ru": "Ruso"
+  },
+  "tiers": {
+    "sec-t1": "Principiante",
+    "sec-t2": "Elemental",
+    "sec-t3": "Intermedio",
+    "sec-t4": "Intermedio alto",
+    "sec-t5": "Maestría"
+  },
+  "units": {
+    "u1": {
+      "title": "Primeros pasos y saludos",
+      "subtitle": "Saludos corteses, gratitud, disculpas y presentaciones"
+    },
+    "u2": {
+      "title": "Personas, familia y pronombres",
+      "subtitle": "Pronombres, familiares, amigos e identidades básicas"
+    },
+    "u3": {
+      "title": "Números, hora y calendario",
+      "subtitle": "Contar, decir la hora, días y horarios"
+    },
+    "u4": {
+      "title": "Comida, bebida y gastronomía",
+      "subtitle": "Comidas esenciales, ingredientes y frases de restaurante"
+    },
+    "u5": {
+      "title": "Hogar, colores y acciones diarias",
+      "subtitle": "Habitaciones, objetos cotidianos, colores y verbos básicos"
+    },
+    "u6": {
+      "title": "Viajes, transporte y direcciones",
+      "subtitle": "Moverse por ciudades, estaciones y aeropuertos"
+    },
+    "u7": {
+      "title": "Compras, dinero y números",
+      "subtitle": "Precios, tiendas, pagos y ropa"
+    },
+    "u8": {
+      "title": "Clima, estaciones y naturaleza",
+      "subtitle": "Pronósticos, paisajes y vida al aire libre"
+    },
+    "u9": {
+      "title": "Salud, cuerpo y emergencias",
+      "subtitle": "Partes del cuerpo, síntomas, clínicas y ayuda urgente"
+    },
+    "u10": {
+      "title": "Trabajo, estudios y pasatiempos",
+      "subtitle": "Profesiones, estudio, música y tiempo libre"
+    },
+    "u11": {
+      "title": "Emociones, personalidad y opiniones",
+      "subtitle": "Expresar sentimientos, rasgos y puntos de vista"
+    },
+    "u12": {
+      "title": "Vida social y narración",
+      "subtitle": "Planes, invitaciones, recuerdos y experiencias"
+    },
+    "u13": {
+      "title": "Tecnología, internet y medios",
+      "subtitle": "Vida digital, software, privacidad y noticias"
+    },
+    "u14": {
+      "title": "Cultura, festivales y tradiciones",
+      "subtitle": "Patrimonio, artes, cocina y hospitalidad"
+    },
+    "u15": {
+      "title": "Resolución de problemas y conectores",
+      "subtitle": "Enlazar ideas con causa, contraste y condición"
+    },
+    "u16": {
+      "title": "Carrera, negocios y negociaciones",
+      "subtitle": "Estrategia, contratos, liderazgo y finanzas"
+    },
+    "u17": {
+      "title": "Ciencia, innovación y espacio",
+      "subtitle": "Investigación, hipótesis, medicina y descubrimientos"
+    },
+    "u18": {
+      "title": "Medio ambiente, clima y sostenibilidad",
+      "subtitle": "Ecología, conservación y transición ecológica"
+    },
+    "u19": {
+      "title": "Sociedad, derecho y gobernanza",
+      "subtitle": "Derechos, justicia, democracia y políticas públicas"
+    },
+    "u20": {
+      "title": "Pensamiento crítico y debate",
+      "subtitle": "Argumentos, perspectiva, matices y análisis"
+    },
+    "u21": {
+      "title": "Literatura, arte y estética",
+      "subtitle": "Analizar narrativas, simbolismo y belleza"
+    },
+    "u22": {
+      "title": "Filosofía, ética y psicología",
+      "subtitle": "Explorar la conciencia, la virtud y el sentido"
+    },
+    "u23": {
+      "title": "Modismos, refranes y sabiduría cultural",
+      "subtitle": "Hablar con expresiones figuradas auténticas"
+    },
+    "u24": {
+      "title": "Discurso formal, diplomático y jurídico",
+      "subtitle": "Discursos solemnes, tratados y ámbito académico"
+    },
+    "u25": {
+      "title": "Matices, retórica y dominio nativo",
+      "subtitle": "Dominar el tono sutil, la persuasión y la precisión"
+    }
+  },
+  "lessons": {
+    "u1-l1": "Saludos de la mañana a la noche",
+    "u1-l2": "Gratitud y cortesía",
+    "u1-l3": "Sí, no y presentaciones",
+    "u2-l1": "Pronombres personales",
+    "u2-l2": "Familia cercana",
+    "u2-l3": "Amigos y comunidad",
+    "u3-l1": "Números básicos",
+    "u3-l2": "Días y tiempo relativo",
+    "u3-l3": "Reloj y calendario",
+    "u4-l1": "Alimentos básicos",
+    "u4-l2": "Comidas y bebidas",
+    "u4-l3": "En el restaurante",
+    "u5-l1": "Por la casa",
+    "u5-l2": "Colores y cualidades esenciales",
+    "u5-l3": "Verbos cotidianos clave",
+    "u6-l1": "Transporte público",
+    "u6-l2": "Direcciones y orientación",
+    "u6-l3": "Moverse por distintos lugares",
+    "u7-l1": "Dinero y precios",
+    "u7-l2": "En el mercado",
+    "u7-l3": "Ropa y tallas",
+    "u8-l1": "Condiciones climáticas",
+    "u8-l2": "Estaciones y cielo",
+    "u8-l3": "Paisajes y naturaleza",
+    "u9-l1": "Partes del cuerpo",
+    "u9-l2": "Sentirse mal",
+    "u9-l3": "Seguridad y ayuda",
+    "u10-l1": "Educación y estudio",
+    "u10-l2": "Bases del entorno laboral",
+    "u10-l3": "Pasatiempos y ocio",
+    "u11-l1": "Sentimientos fundamentales",
+    "u11-l2": "Rasgos de personalidad",
+    "u11-l3": "Compartir opiniones",
+    "u12-l1": "Invitaciones y planes",
+    "u12-l2": "Experiencias y recuerdos",
+    "u12-l3": "Relaciones y consejos",
+    "u13-l1": "Dispositivos y conectividad",
+    "u13-l2": "Software y comunicación",
+    "u13-l3": "Noticias y medios digitales",
+    "u14-l1": "Patrimonio y costumbres",
+    "u14-l2": "Artes y oficios",
+    "u14-l3": "Hospitalidad y etiqueta",
+    "u15-l1": "Conectores lógicos",
+    "u15-l2": "Soluciones y decisiones",
+    "u15-l3": "Condicionales y comparación",
+    "u16-l1": "Liderazgo en el trabajo",
+    "u16-l2": "Economía y finanzas",
+    "u16-l3": "Negociaciones y acuerdos",
+    "u17-l1": "Método científico",
+    "u17-l2": "Ingeniería e innovación",
+    "u17-l3": "Astronomía y universo",
+    "u18-l1": "Clima y ecología",
+    "u18-l2": "Sostenibilidad y conservación",
+    "u18-l3": "Acción global",
+    "u19-l1": "Derechos y justicia",
+    "u19-l2": "Gobernanza y políticas",
+    "u19-l3": "Comunidad y asuntos globales",
+    "u20-l1": "Argumentación estructurada",
+    "u20-l2": "Evaluación de ideas",
+    "u20-l3": "Persuasión y claridad",
+    "u21-l1": "Oficio literario",
+    "u21-l2": "Interpretación y crítica",
+    "u21-l3": "La emoción en el arte",
+    "u22-l1": "Ética y virtud",
+    "u22-l2": "Mente y percepción",
+    "u22-l3": "Ideas existenciales y estoicas",
+    "u23-l1": "Refranes atemporales",
+    "u23-l2": "Modismos cotidianos",
+    "u23-l3": "Metáforas estratégicas y de vida",
+    "u24-l1": "Diplomacia y tratados",
+    "u24-l2": "Registro académico y ejecutivo",
+    "u24-l3": "Transiciones de registro culto",
+    "u25-l1": "Precisión retórica",
+    "u25-l2": "Matices, modificadores y tono",
+    "u25-l3": "Expresiones de maestría final"
+  },
+  "grammarNotes": {
+    "u1": "Primeros pasos y saludos: distingue entre el trato formal e informal al saludar, agradecer, disculparte y presentarte. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u2": "Personas, familia y pronombres: observa cómo los pronombres personales y los términos de parentesco marcan el número, el género y el nivel de cercanía. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u3": "Números, hora y calendario: combina los numerales cardinales con las expresiones de tiempo, los días de la semana y las fechas para situar acciones con precisión. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u4": "Comida, bebida y gastronomía: aprende sustantivos contables e incontables junto con fórmulas corteses para pedir en un restaurante y expresar preferencias. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u5": "Hogar, colores y acciones diarias: asocia sustantivos cotidianos con adjetivos de color o cualidad y conjuga verbos básicos para describir rutinas en casa. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u6": "Viajes, transporte y direcciones: utiliza preposiciones de lugar, imperativos suaves y preguntas directas para orientarte en estaciones, calles y aeropuertos. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u7": "Compras, dinero y números: integra cifras, monedas, tallas y demostrativos para preguntar precios, comparar prendas y pagar con naturalidad. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u8": "Clima, estaciones y naturaleza: diferencia verbos impersonales y expresiones descriptivas para hablar del tiempo atmosférico, las estaciones y el entorno natural. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u9": "Salud, cuerpo y emergencias: emplea estructuras claras para señalar molestias, localizar partes del cuerpo y solicitar asistencia médica o urgente. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u10": "Trabajo, estudios y pasatiempos: expresa actividades habituales, intereses y ocupaciones evitando artículos innecesarios o usando las preposiciones adecuadas. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u11": "Emociones, personalidad y opiniones: distingue estados anímicos pasajeros de rasgos estables y construye oraciones subordinadas para opinar con matices. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u12": "Vida social y narración: alterna tiempos del pasado para relatar anécdotas y usa fórmulas de invitación, sugerencia y consejo en conversaciones reales. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u13": "Tecnología, internet y medios: incorpora léxico técnico cotidiano y estructuras pasivas o impersonales habituales en noticias y entornos digitales. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u14": "Cultura, festivales y tradiciones: describe costumbres, celebraciones y normas de cortesía mediante expresiones temporales y vocabulario cultural específico. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u15": "Resolución de problemas y conectores: enlaza proposiciones con nexos causales, concesivos y condicionales, además de formas comparativas para proponer soluciones. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u16": "Carrera, negocios y negociaciones: adopta un registro profesional con verbos modales de propuesta, condicionales de cortesía y terminología financiera. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u17": "Ciencia, innovación y espacio: formula hipótesis, relaciones de causa-efecto y explicaciones objetivas con vocabulario científico preciso. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u18": "Medio ambiente, clima y sostenibilidad: articula propuestas, obligaciones y consecuencias ecológicas mediante conectores complejos y lenguaje técnico-divulgativo. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u19": "Sociedad, derecho y gobernanza: maneja nominalizaciones y estructuras impersonales propias del ámbito cívico, jurídico y político. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u20": "Pensamiento crítico y debate: organiza tesis, objeciones y matices con marcadores discursivos que refuercen la coherencia y la fuerza persuasiva. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u21": "Literatura, arte y estética: analiza recursos estilísticos, simbolismo y valoraciones estéticas usando adjetivos precisos y subordinadas explicativas. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u22": "Filosofía, ética y psicología: expresa conceptos abstractos, dilemas morales y matices sobre la percepción con rigor conceptual. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u23": "Modismos, refranes y sabiduría cultural: comprende el sentido figurado frente al literal y aprende en qué contexto social conviene cada expresión idiomática. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u24": "Discurso formal, diplomático y jurídico: domina fórmulas protocolarias, conectores elevados y construcciones sintácticas propias de documentos oficiales y académicos. Practica el recuerdo activo y lee cada ejemplo en voz alta.",
+    "u25": "Matices, retórica y dominio nativo: ajusta el énfasis, la ironía, la atenuación y la cadencia rítmica para expresarte con precisión y naturalidad nativa. Practica el recuerdo activo y lee cada ejemplo en voz alta."
+  }
+}

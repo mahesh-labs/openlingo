@@ -367,9 +367,15 @@ def main() -> int:
         }
         sync_file(REGISTRY_PATH, json.dumps(new_registry, ensure_ascii=False, indent=2) + "\n", args.check, errors)
 
-        # 2. Sync sw.js matrix language precache list
+        # 2. Sync sw.js matrix language + i18n precache list
         sw_text = open(SW_PATH, "r", encoding="utf-8").read()
-        lang_lines = ",\n".join(f"  './courses/langs/{l['code']}.json'" for l in langs)
+        entries = [f"  './courses/langs/{l['code']}.json'" for l in langs]
+        for l in langs:
+            i18n_path = os.path.join(ROOT, "courses", "i18n", f"{l['code']}.json")
+            if os.path.exists(i18n_path):
+                json.load(open(i18n_path, "r", encoding="utf-8"))
+                entries.append(f"  './courses/i18n/{l['code']}.json'")
+        lang_lines = ",\n".join(entries)
         new_sw = replace_block(
             sw_text,
             "// AUTO-GENERATED MATRIX LANGS START",

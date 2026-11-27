@@ -28,6 +28,13 @@ import {
   backupToGoogleDrive,
   restoreFromGoogleDrive
 } from './src/googleSync.js';
+import {
+  checkForAppUpdate,
+  performAppUpdate,
+  getDismissedUpdateVersion,
+  dismissUpdateVersion,
+  openExternalLink
+} from './src/updater.js';
 
 const STORAGE_KEYS = {
   COURSES: 'openlingo_custom_courses_v2',
@@ -103,8 +110,65 @@ const state = {
   guestMode: false,
   syncMeta: { lastSyncedAt: null, source: '' },
   audioToast: '',
-  shouldScrollToActiveLesson: true
+  shouldScrollToActiveLesson: true,
+  updateInfo: null,
+  updateChecking: false,
+  updateError: '',
+  updateBannerDismissed: false
 };
+
+function tCourse(course, key, vars = {}) {
+  let str = course?.i18n?.ui?.[key];
+  if (!str) {
+    const fallback = {
+      start: 'START',
+      guidebook: 'Guidebook',
+      jumpHere: 'Jump Here',
+      unit: 'Unit',
+      complete: 'complete',
+      completedTap: 'Completed · Tap to practice',
+      locked: 'Locked',
+      itemsReady: '{n} items · Ready',
+      unitTrophy: 'Unit Trophy',
+      unitMastered: 'Unit Mastered!',
+      allLevels: 'All Levels',
+      backToPath: '← Back to Path',
+      keyVocab: 'Key Vocabulary & Expressions',
+      grammarNote: 'Grammar Note',
+      listen: 'Listen',
+      audio: 'Audio',
+      beginDrills: 'Begin Interactive Drills ({n})',
+      exerciseOf: 'Exercise {i} of {n}',
+      chooseMeaning: 'Choose the {lang} meaning',
+      selectMatching: 'Select the matching expression',
+      typeExpression: 'Type the expression for',
+      typePlaceholder: 'Type your answer in {lang}...',
+      checkAnswer: 'Check Answer',
+      nicelyDone: 'Nicely done!',
+      keepPracticing: 'Keep practicing!',
+      continueBtn: 'Continue',
+      lessonComplete: 'Lesson Complete!',
+      accuracyXp: '{acc}% accuracy · +25 XP',
+      continuePath: 'Continue Learning Path',
+      reviewFlashcards: 'Review Flashcards',
+      tapToFlip: 'Tap card to flip',
+      tapToFlipBack: 'Tap to flip back',
+      meaning: '{lang} Meaning',
+      again: 'Again',
+      hard: 'Hard',
+      good: 'Good',
+      easy: 'Easy',
+      backToLesson: 'Back to Lesson',
+      jumpToLesson: 'Jump to Lesson',
+      pronounce: 'Pronounce'
+    };
+    str = fallback[key] || key;
+  }
+  Object.entries(vars).forEach(([k, v]) => {
+    str = str.replaceAll(`{${k}}`, String(v ?? ''));
+  });
+  return str;
+}
 
 const customSelectRegistry = new Map();
 
@@ -843,7 +907,12 @@ function startLesson(unitId, lessonId) {
     ? unit._section.units.flatMap((u) => u.lessons.flatMap((l) => l.items))
     : getAllItems(course);
 
-  const exercises = generateLessonExercises(lesson, sameTierItems, course.sourceLang?.name || 'English');
+  const exercises = generateLessonExercises(
+    lesson,
+    sameTierItems,
+    course.sourceLang?.localizedName || course.sourceLang?.name || 'English',
+    course.i18n?.ui || {}
+  );
   state.lessonSession = {
     unit,
     lesson,
@@ -1123,14 +1192,13 @@ function autoBackupToGoogleDrive(immediate = false) {
     backupToGoogleDrive(buildBackupPayload())
       .then((res) => {
         recordSyncTimestamp('Google Drive', res?.savedAt);
-        showAudioToast(`☁️ Synced to Google Drive (${formatLastSynced(true)})`);
         const syncEl = document.getElementById('sync-status-label');
-        if (syncEl) syncEl.textContent = `☁️ Last synced: ${formatLastSynced(true)}`;
+        if (syncEl) syncEl.innerHTML = `${uiIcon('cloud', 14)} Last synced: ${escapeHtml(formatLastSynced(true))}`;
         const mobSyncEl = document.getElementById('mobile-sync-strip');
-        if (mobSyncEl) mobSyncEl.textContent = `☁️ Last synced: ${formatLastSynced(false)}`;
+        if (mobSyncEl) mobSyncEl.innerHTML = `${uiIcon('cloud', 14)} Last synced: ${escapeHtml(formatLastSynced(false))}`;
       })
       .catch(() => {
-        // Silent fallback if temporarily offline; local progress is safe
+        // Silent background fallback if temporarily offline; local progress is safe
       });
   };
   if (immediate) run();
@@ -1171,14 +1239,12 @@ async function handleGoogleSignInAndSync() {
     try {
       const { text, modifiedTime } = await restoreFromGoogleDrive();
       restoreBackupPayload(text, 'Google Drive', modifiedTime);
-      showAudioToast(`Welcome back, ${session.user?.name || 'Learner'}! Synced from Google Drive.`);
     } catch {
       if (state.progress.xp > 0 || Object.keys(state.progress.completedLessons || {}).length > 0) {
         const res = await backupToGoogleDrive(buildBackupPayload()).catch(() => null);
         if (res) recordSyncTimestamp('Google Drive', res.savedAt);
       }
       state.backupMessage = `Signed in as ${session.user?.email || session.user?.name || 'Google user'}. Auto-sync to Google Drive is active!`;
-      showAudioToast(`Welcome, ${session.user?.name || 'Learner'}! Auto-sync active.`);
     }
   } catch (err) {
     state.authError = err.message || 'Sign in failed.';
@@ -1313,7 +1379,7 @@ function renderSidebar(course) {
           <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:38px;height:38px;border-radius:50%;display:block;" />
           <div>
             <div class="brand-name">OpenLingo</div>
-            <div class="brand-tag">v${escapeHtml(APP_CONFIG.appVersion)} · FOSS</div>
+            <div class="brand-tag">v${escapeHtml(APP_CONFIG.appVersion)}</div>
           </div>
         </div>
         <button class="icon-btn" data-toggle-theme title="Cycle theme (${escapeHtml(state.theme)})">${getThemeIcon()}</button>
@@ -1489,7 +1555,7 @@ function renderSyllabusView(course) {
                 }),
                 {
                   value: 'all',
-                  label: `All Levels (${sections[0].jlptLevel} → ${sections[sections.length - 1].jlptLevel})`
+                  label: `${tCourse(course, 'allLevels')} (${sections[0].jlptLevel} → ${sections[sections.length - 1].jlptLevel})`
                 }
               ]
             })
@@ -1511,19 +1577,20 @@ function renderSyllabusView(course) {
             const unitColor = getUnitSolidColor(unit.color || sec.color);
             const doneInUnit = unit.lessons.filter((l) => state.progress.completedLessons[`${course.id}:${l.id}`]).length;
 
+            const sDir = course.sourceLang?.dir === 'rtl' ? 'rtl' : 'ltr';
             return `
-            <section class="unit-section">
+            <section class="unit-section" dir="${sDir}">
               <div class="unit-banner ${unlocked ? '' : 'locked-banner'}" style="background:${escapeHtml(unitColor)};">
                 <div>
-                  <div class="unit-kicker">${escapeHtml(sec.jlptLevel)} · Unit ${uIdx + 1} · ${doneInUnit}/${unit.lessons.length} complete</div>
+                  <div class="unit-kicker">${escapeHtml(sec.jlptLevel)} · ${escapeHtml(tCourse(course, 'unit'))} ${uIdx + 1} · ${doneInUnit}/${unit.lessons.length} ${escapeHtml(tCourse(course, 'complete'))}</div>
                   <h3 class="unit-banner-title">${escapeHtml(unit.title)}</h3>
                   <p class="unit-banner-sub">${escapeHtml(unit.subtitle || '')}</p>
                 </div>
                 <div class="unit-banner-actions">
-                  <button class="banner-btn" data-guidebook="${escapeHtml(unit.id)}">${uiIcon('book', 18)} Guidebook</button>
+                  <button class="banner-btn" data-guidebook="${escapeHtml(unit.id)}">${uiIcon('book', 18)} ${escapeHtml(tCourse(course, 'guidebook'))}</button>
                   ${
                     !unlocked
-                      ? `<button class="banner-btn" data-jump-quiz="${escapeHtml(unit.id)}">${uiIcon('target', 18)} Jump Here</button>`
+                      ? `<button class="banner-btn" data-jump-quiz="${escapeHtml(unit.id)}">${uiIcon('target', 18)} ${escapeHtml(tCourse(course, 'jumpHere'))}</button>`
                       : ''
                   }
                 </div>
@@ -1543,15 +1610,15 @@ function renderSyllabusView(course) {
                           : uiIcon('play', 34);
                     return `
                     <div class="path-node-wrap ${offsetClass}" ${status === 'current' ? 'id="active-lesson-node" data-active-lesson="true"' : ''}>
-                      ${status === 'current' ? `<div class="path-start-bubble">START</div>` : ''}
+                      ${status === 'current' ? `<div class="path-start-bubble">${escapeHtml(tCourse(course, 'start'))}</div>` : ''}
                       <button
                         class="lesson-node status-${status}"
                         style="--node-color:${escapeHtml(unitColor)}"
-                        ${status === 'locked' ? `disabled title="Complete previous lesson or take the Jump Here placement quiz"` : `data-open-sheet="${escapeHtml(unit.id)}|${escapeHtml(lesson.id)}"`}
+                        ${status === 'locked' ? `disabled title="${escapeHtml(tCourse(course, 'locked'))}"` : `data-open-sheet="${escapeHtml(unit.id)}|${escapeHtml(lesson.id)}"`}
                       >${icon}</button>
                       <div class="node-label">
                         <div class="node-title">${escapeHtml(lesson.title)}</div>
-                        <div class="node-meta">${status === 'completed' ? 'Completed · Tap to practice' : status === 'locked' ? 'Locked' : `${lesson.items.length} items · Ready`}</div>
+                        <div class="node-meta">${status === 'completed' ? escapeHtml(tCourse(course, 'completedTap')) : status === 'locked' ? escapeHtml(tCourse(course, 'locked')) : escapeHtml(tCourse(course, 'itemsReady', { n: lesson.items.length }))}</div>
                       </div>
                     </div>
                   `;
@@ -1559,9 +1626,9 @@ function renderSyllabusView(course) {
                   .join('')}
 
                 <div class="path-node-wrap">
-                  <div class="trophy-node ${completed ? 'earned' : ''}" title="Complete all lessons in this unit to earn the trophy">${uiIcon('trophy', 36)}</div>
+                  <div class="trophy-node ${completed ? 'earned' : ''}" title="${escapeHtml(tCourse(course, 'unitTrophy'))}">${uiIcon('trophy', 36)}</div>
                   <div class="node-label">
-                    <div class="node-meta">${completed ? 'Unit Mastered!' : 'Unit Trophy'}</div>
+                    <div class="node-meta">${completed ? escapeHtml(tCourse(course, 'unitMastered')) : escapeHtml(tCourse(course, 'unitTrophy'))}</div>
                   </div>
                 </div>
               </div>
@@ -2067,19 +2134,19 @@ function renderLessonView(course) {
   if (session.showIntro) {
     return `
       ${renderHudBar(course)}
-      <div class="header-bar">
+      <div class="header-bar" dir="${sDir}">
         <div>
           <span class="pill accent">${escapeHtml(session.unit.cefrLevel || 'Lesson')}</span>
           <h1 class="page-title" style="margin-top:6px;">${escapeHtml(session.lesson.title)}</h1>
-          <p class="page-sub">${escapeHtml(session.unit.title)} · ${session.lesson.items.length} items</p>
+          <p class="page-sub">${escapeHtml(session.unit.title)} · ${escapeHtml(tCourse(course, 'itemsReady', { n: session.lesson.items.length }))}</p>
         </div>
-        <button class="btn btn-sm" data-nav="syllabus">← Back to Path</button>
+        <button class="btn btn-sm" data-nav="syllabus">${escapeHtml(tCourse(course, 'backToPath'))}</button>
       </div>
 
-      ${session.lesson.grammarNote ? `<div class="grammar-box"><strong>Grammar Note:</strong> ${escapeHtml(session.lesson.grammarNote)}</div>` : ''}
+      ${session.lesson.grammarNote ? `<div class="grammar-box" dir="${sDir}"><strong>${escapeHtml(tCourse(course, 'grammarNote'))}:</strong> ${escapeHtml(session.lesson.grammarNote)}</div>` : ''}
 
       <section class="card">
-        <h3 style="margin-top:0;">Key Vocabulary &amp; Expressions</h3>
+        <h3 style="margin-top:0;" dir="${sDir}">${escapeHtml(tCourse(course, 'keyVocab'))}</h3>
         <div style="display:grid;gap:10px;margin-bottom:18px;">
           ${session.lesson.items
             .map(
@@ -2090,13 +2157,13 @@ function renderLessonView(course) {
                 ${state.showRomaji && item.transliteration ? `<div style="font-size:13px;color:var(--accent-text);">${escapeHtml(item.transliteration)}</div>` : ''}
                 <div dir="${sDir}" style="font-size:14px;color:var(--text-muted);">${escapeHtml(item.translation)}</div>
               </div>
-              <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} Listen</button>
+              <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} ${escapeHtml(tCourse(course, 'listen'))}</button>
             </div>
           `
             )
             .join('')}
         </div>
-        <button class="btn btn-primary" id="begin-drills-btn">Begin Interactive Drills (${session.exercises.length}) ${uiIcon('arrowRight', 18)}</button>
+        <button class="btn btn-primary" id="begin-drills-btn">${escapeHtml(tCourse(course, 'beginDrills', { n: session.exercises.length }))} ${uiIcon('arrowRight', 18)}</button>
       </section>
     `;
   }
@@ -2105,16 +2172,13 @@ function renderLessonView(course) {
     const accuracy = Math.round((session.correctCount / session.exercises.length) * 100);
     return `
       ${renderHudBar(course)}
-      <section class="card" style="text-align:center;padding:40px 24px;">
+      <section class="card" style="text-align:center;padding:40px 24px;" dir="${sDir}">
         <div style="color:var(--gold);margin-bottom:10px;">${uiIcon('trophy', 56)}</div>
-        <h1 class="page-title">Lesson Complete!</h1>
-        <p class="page-sub">${escapeHtml(session.lesson.title)} · ${accuracy}% accuracy · +25 XP</p>
-        <p style="font-size:14px;color:var(--text-muted);max-width:460px;margin:12px auto 22px;">
-          The next lesson on your path is now unlocked, and all ${session.lesson.items.length} items are synced to your Spaced Repetition flashcards.
-        </p>
-        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-          <button class="btn btn-primary" data-nav="syllabus">Continue Learning Path ${uiIcon('arrowRight', 18)}</button>
-          <button class="btn" data-nav="flashcards">Review Flashcards</button>
+        <h1 class="page-title">${escapeHtml(tCourse(course, 'lessonComplete'))}</h1>
+        <p class="page-sub">${escapeHtml(session.lesson.title)} · ${escapeHtml(tCourse(course, 'accuracyXp', { acc: accuracy }))}</p>
+        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px;">
+          <button class="btn btn-primary" data-nav="syllabus">${escapeHtml(tCourse(course, 'continuePath'))} ${uiIcon('arrowRight', 18)}</button>
+          <button class="btn" data-nav="flashcards">${escapeHtml(tCourse(course, 'reviewFlashcards'))}</button>
         </div>
       </section>
     `;
@@ -2127,19 +2191,19 @@ function renderLessonView(course) {
 
   return `
     <div class="drill-topbar">
-      <button class="icon-btn drill-exit-btn" data-nav="syllabus" title="Exit lesson" aria-label="Exit lesson">${uiIcon('x', 18)}</button>
+      <button class="icon-btn drill-exit-btn" data-nav="syllabus" title="Exit" aria-label="Exit">${uiIcon('x', 18)}</button>
       <div class="progress-track drill-progress"><div class="progress-fill" style="width:${pct}%"></div></div>
       <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 16)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
     </div>
-    <div class="drill-meta-line">
+    <div class="drill-meta-line" dir="${sDir}">
       <span>${escapeHtml(session.lesson.title)}</span>
-      <span>Exercise ${session.index + 1} of ${session.exercises.length}</span>
+      <span>${escapeHtml(tCourse(course, 'exerciseOf', { i: session.index + 1, n: session.exercises.length }))}</span>
     </div>
 
     <section class="card drill-card">
       <div class="drill-prompt-head">
-        <span class="pill">${escapeHtml(ex.promptLabel)}</span>
-        ${ex.type === 'mc-to-source' ? `<button class="btn btn-sm" data-speak="${escapeHtml(ex.item.term)}">${uiIcon('volume', 16)} Audio</button>` : ''}
+        <span class="pill" dir="${sDir}">${escapeHtml(ex.promptLabel)}</span>
+        ${ex.type === 'mc-to-source' ? `<button class="btn btn-sm" data-speak="${escapeHtml(ex.item.term)}">${uiIcon('volume', 16)} ${escapeHtml(tCourse(course, 'audio'))}</button>` : ''}
       </div>
 
       <div class="prompt-main" dir="${promptDir}">${escapeHtml(ex.promptMain)}</div>
@@ -2150,8 +2214,8 @@ function renderLessonView(course) {
         ex.type === 'type-recall'
           ? `
         <form id="type-answer-form" style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
-          <input class="input" id="type-answer-input" dir="${tDir}" placeholder="Type your answer in ${escapeHtml(course.targetLang.name)}..." value="${escapeHtml(session.typedValue)}" ${session.answered ? 'disabled' : ''} autocomplete="off" />
-          ${!session.answered ? `<button class="btn btn-primary" type="submit">Check Answer</button>` : ''}
+          <input class="input" id="type-answer-input" dir="${tDir}" placeholder="${escapeHtml(tCourse(course, 'typePlaceholder', { lang: course.targetLang.localizedName || course.targetLang.name }))}" value="${escapeHtml(session.typedValue)}" ${session.answered ? 'disabled' : ''} autocomplete="off" />
+          ${!session.answered ? `<button class="btn btn-primary" type="submit">${escapeHtml(tCourse(course, 'checkAnswer'))}</button>` : ''}
         </form>
       `
           : `
@@ -2178,14 +2242,14 @@ function renderLessonView(course) {
       ${
         session.answered
           ? `
-        <div id="drill-feedback-box" class="drill-feedback ${session.wasCorrect ? 'is-correct' : 'is-wrong'}">
+        <div id="drill-feedback-box" class="drill-feedback ${session.wasCorrect ? 'is-correct' : 'is-wrong'}" dir="${sDir}">
           <div class="drill-feedback-text">
-            <strong>${session.wasCorrect ? 'Nicely done!' : 'Keep practicing!'}</strong>
+            <strong>${escapeHtml(session.wasCorrect ? tCourse(course, 'nicelyDone') : tCourse(course, 'keepPracticing'))}</strong>
             <div class="drill-feedback-detail">
               <span dir="${tDir}">${escapeHtml(ex.item.term)}</span> ${ex.item.transliteration ? `(${escapeHtml(ex.item.transliteration)})` : ''} — <span dir="${sDir}">${escapeHtml(ex.item.translation)}</span>
             </div>
           </div>
-          <button class="btn btn-primary btn-sm" id="next-exercise-btn">Continue ${uiIcon('arrowRight', 16)}</button>
+          <button class="btn btn-primary btn-sm" id="next-exercise-btn">${escapeHtml(tCourse(course, 'continueBtn'))} ${uiIcon('arrowRight', 16)}</button>
         </div>
       `
           : ''
@@ -2240,10 +2304,10 @@ function renderFlashcardsView(course) {
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
-        <h1 class="page-title">Spaced Repetition Flashcards</h1>
-        <p class="page-sub">Card ${index + 1} of ${queue.length} · Tap card to flip</p>
+        <h1 class="page-title">${escapeHtml(tCourse(course, 'reviewFlashcards'))}</h1>
+        <p class="page-sub">${index + 1} / ${queue.length} · ${escapeHtml(tCourse(course, 'tapToFlip'))}</p>
       </div>
-      <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} Pronounce</button>
+      <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} ${escapeHtml(tCourse(course, 'pronounce'))}</button>
     </div>
 
     ${filterBar}
@@ -2253,18 +2317,18 @@ function renderFlashcardsView(course) {
         <div class="flashcard-face flashcard-front">
           <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;justify-content:center;">
             <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
-            <span class="pill">${escapeHtml(course.targetLang.name)}</span>
+            <span class="pill">${escapeHtml(course.targetLang.localizedName || course.targetLang.name)}</span>
           </div>
           <div class="prompt-main" dir="${tDir}">${escapeHtml(item.term)}</div>
           ${item.reading && item.reading !== item.term ? `<div class="prompt-sub" dir="${tDir}">${escapeHtml(item.reading)}</div>` : ''}
           ${state.showRomaji && item.transliteration ? `<div class="prompt-hint">${escapeHtml(item.transliteration)}</div>` : ''}
-          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} Tap card to flip</div>
+          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} ${escapeHtml(tCourse(course, 'tapToFlip'))}</div>
         </div>
 
         <div class="flashcard-face flashcard-back">
           <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;justify-content:center;">
             <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
-            <span class="pill">${escapeHtml(course.sourceLang.name)} Meaning</span>
+            <span class="pill">${escapeHtml(tCourse(course, 'meaning', { lang: course.sourceLang.localizedName || course.sourceLang.name }))}</span>
           </div>
           <div class="flashcard-answer" dir="${sDir}">${escapeHtml(item.translation)}</div>
           <div class="flashcard-term-recap" dir="${tDir}">
@@ -2279,17 +2343,17 @@ function renderFlashcardsView(course) {
                 </div>`
               : ''
           }
-          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} Tap to flip back</div>
+          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} ${escapeHtml(tCourse(course, 'tapToFlipBack'))}</div>
         </div>
       </div>
     </div>
 
     <div id="flashcard-ratings" class="rating-row-wrap ${flipped ? 'visible' : ''}">
       <div class="rating-row">
-        <button class="rating-btn" data-rate="${RATINGS.AGAIN}">Again<span>${formatIntervalLabel(cardState, RATINGS.AGAIN)}</span></button>
-        <button class="rating-btn" data-rate="${RATINGS.HARD}">Hard<span>${formatIntervalLabel(cardState, RATINGS.HARD)}</span></button>
-        <button class="rating-btn" data-rate="${RATINGS.GOOD}" style="border-color:var(--accent);">Good<span>${formatIntervalLabel(cardState, RATINGS.GOOD)}</span></button>
-        <button class="rating-btn" data-rate="${RATINGS.EASY}">Easy<span>${formatIntervalLabel(cardState, RATINGS.EASY)}</span></button>
+        <button class="rating-btn" data-rate="${RATINGS.AGAIN}">${escapeHtml(tCourse(course, 'again'))}<span>${formatIntervalLabel(cardState, RATINGS.AGAIN)}</span></button>
+        <button class="rating-btn" data-rate="${RATINGS.HARD}">${escapeHtml(tCourse(course, 'hard'))}<span>${formatIntervalLabel(cardState, RATINGS.HARD)}</span></button>
+        <button class="rating-btn" data-rate="${RATINGS.GOOD}" style="border-color:var(--accent);">${escapeHtml(tCourse(course, 'good'))}<span>${formatIntervalLabel(cardState, RATINGS.GOOD)}</span></button>
+        <button class="rating-btn" data-rate="${RATINGS.EASY}">${escapeHtml(tCourse(course, 'easy'))}<span>${formatIntervalLabel(cardState, RATINGS.EASY)}</span></button>
       </div>
     </div>
   `;
@@ -2331,7 +2395,8 @@ function renderStudioView(course) {
             ${uiIcon('refresh', 15)} ${state.catalogLoading ? 'Syncing...' : 'Sync from GitHub'}
           </button>
           <a class="btn btn-sm" href="${escapeHtml(guideUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('book', 15)} Contribution Guide ↗</a>
-          <a class="btn btn-sm" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Browse Courses ↗</a>
+          <a class="btn btn-sm" href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('github', 15)} GitHub ↗</a>
+          <a class="btn btn-sm" href="${escapeHtml(APP_CONFIG.discordUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('discord', 15)} Discord ↗</a>
         </div>
       </div>
 
@@ -2978,6 +3043,70 @@ function renderSettingsView(course) {
       </div>
     </section>
 
+    <section class="card" id="settings-updates-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h3 style="margin:0;">${uiIcon('download', 20)} App Updates</h3>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
+            ${
+              state.updateChecking
+                ? 'Checking GitHub Releases for a newer version...'
+                : state.updateError
+                  ? escapeHtml(state.updateError)
+                  : state.updateInfo?.hasUpdate
+                    ? `New version <strong>v${escapeHtml(state.updateInfo.latestVersion)}</strong> is ready! (You are on v${escapeHtml(APP_CONFIG.appVersion)})`
+                    : state.updateInfo
+                      ? `You are up to date on <strong>v${escapeHtml(APP_CONFIG.appVersion)}</strong>.`
+                      : `Current version: <strong>v${escapeHtml(APP_CONFIG.appVersion)}</strong> · Checks automatically on startup.`
+            }
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          ${
+            state.updateInfo?.hasUpdate
+              ? `<button type="button" class="btn btn-primary btn-sm" id="settings-apply-update-btn">${uiIcon('download', 15)} Update to v${escapeHtml(state.updateInfo.latestVersion)}</button>`
+              : ''
+          }
+          <button type="button" class="btn btn-sm" id="settings-check-update-btn" ${state.updateChecking ? 'disabled' : ''}>
+            ${uiIcon('refresh', 15)} ${state.updateChecking ? 'Checking...' : 'Check for Updates'}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="settings-support-section">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h3 style="margin:0;">${uiIcon('gift', 20)} Support OpenLingo</h3>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
+            OpenLingo is 100% free with zero ads, zero paywalls, and zero tracking. Donations help cover development and keep all 156 courses free forever.
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          ${
+            APP_CONFIG.donations?.githubSponsors
+              ? `<button type="button" class="btn btn-primary btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.githubSponsors)}">${uiIcon('heart', 15)} GitHub Sponsors</button>`
+              : ''
+          }
+          ${
+            APP_CONFIG.donations?.kofi
+              ? `<button type="button" class="btn btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.kofi)}">${uiIcon('gift', 15)} Ko-fi</button>`
+              : ''
+          }
+          ${
+            APP_CONFIG.donations?.buyMeACoffee
+              ? `<button type="button" class="btn btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.buyMeACoffee)}">${uiIcon('gift', 15)} Buy Me a Coffee</button>`
+              : ''
+          }
+          ${
+            APP_CONFIG.donations?.upiId
+              ? `<button type="button" class="btn btn-sm" id="copy-upi-btn" data-upi="${escapeHtml(APP_CONFIG.donations.upiId)}">${uiIcon('copy', 15)} Copy UPI ID</button>`
+              : ''
+          }
+        </div>
+      </div>
+    </section>
+
     <section class="card">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
         <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:42px;height:42px;border-radius:50%;display:block;" />
@@ -3000,10 +3129,11 @@ function renderSettingsView(course) {
           <span class="pill">${escapeHtml(window.location.origin)}</span>
         </div>
         <div class="settings-row">
-          <div class="settings-row-title">Links</div>
+          <div class="settings-row-title">Community &amp; Links</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">GitHub</a>
-            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}/releases" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Releases</a>
+            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('github', 15)} GitHub</a>
+            <a class="btn btn-sm" href="${escapeHtml(APP_CONFIG.discordUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('discord', 15)} Discord</a>
+            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}/releases" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('download', 15)} Releases</a>
             <a class="btn btn-sm" href="./privacy.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Privacy Policy</a>
           </div>
         </div>
@@ -3043,7 +3173,7 @@ async function switchCourse(newId) {
   render();
 }
 
-function attachActiveLessonTracker() {
+function attachActiveLessonTracker(course) {
   if (window._openlingoLessonScrollCleanup) {
     window._openlingoLessonScrollCleanup();
     window._openlingoLessonScrollCleanup = null;
@@ -3060,10 +3190,10 @@ function attachActiveLessonTracker() {
     const bottomThreshold = vh - 108;
 
     if (rect.bottom < topThreshold) {
-      jumpBtn.innerHTML = `${uiIcon('arrowUp', 16)} <span>Back to Lesson</span>`;
+      jumpBtn.innerHTML = `${uiIcon('arrowUp', 16)} <span>${escapeHtml(tCourse(course, 'backToLesson'))}</span>`;
       jumpBtn.classList.add('visible');
     } else if (rect.top > bottomThreshold) {
-      jumpBtn.innerHTML = `${uiIcon('arrowDown', 16)} <span>Jump to Lesson</span>`;
+      jumpBtn.innerHTML = `${uiIcon('arrowDown', 16)} <span>${escapeHtml(tCourse(course, 'jumpToLesson'))}</span>`;
       jumpBtn.classList.add('visible');
     } else {
       jumpBtn.classList.remove('visible');
@@ -3156,10 +3286,52 @@ function attachEvents(course) {
   }
 
   if (state.view === 'syllabus') {
-    attachActiveLessonTracker();
+    attachActiveLessonTracker(course);
   } else if (window._openlingoLessonScrollCleanup) {
     window._openlingoLessonScrollCleanup();
     window._openlingoLessonScrollCleanup = null;
+  }
+
+  /* Update & External Link Handlers */
+  const checkUpdateBtn = document.getElementById('settings-check-update-btn');
+  if (checkUpdateBtn) {
+    checkUpdateBtn.addEventListener('click', () => runUpdateCheck(true));
+  }
+  const applyUpdateBtns = [
+    document.getElementById('settings-apply-update-btn'),
+    document.getElementById('banner-apply-update-btn')
+  ].filter(Boolean);
+  applyUpdateBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (state.updateInfo) performAppUpdate(state.updateInfo);
+    });
+  });
+  const dismissUpdateBtn = document.getElementById('banner-dismiss-update-btn');
+  if (dismissUpdateBtn) {
+    dismissUpdateBtn.addEventListener('click', () => {
+      state.updateBannerDismissed = true;
+      if (state.updateInfo?.latestVersion) {
+        dismissUpdateVersion(state.updateInfo.latestVersion);
+      }
+      render();
+    });
+  }
+  document.querySelectorAll('[data-open-external]').forEach((btn) => {
+    btn.addEventListener('click', () => openExternalLink(btn.dataset.openExternal));
+  });
+  const copyUpiBtn = document.getElementById('copy-upi-btn');
+  if (copyUpiBtn) {
+    copyUpiBtn.addEventListener('click', async () => {
+      const upi = copyUpiBtn.dataset.upi || '';
+      if (!upi) return;
+      try {
+        if (window.AndroidBackup?.copyToClipboard) window.AndroidBackup.copyToClipboard(upi);
+        else await navigator.clipboard.writeText(upi);
+        showAudioToast(`Copied UPI ID: ${upi}`);
+      } catch {
+        showAudioToast(`UPI ID: ${upi}`);
+      }
+    });
   }
 
   const romajiToggle = document.getElementById('settings-toggle-romaji') || document.getElementById('toggle-romaji');
@@ -4190,23 +4362,62 @@ function renderLessonSheet(course) {
   const sheet = state.lessonSheet;
   if (!sheet) return '';
   const done = Boolean(state.progress.completedLessons[`${course.id}:${sheet.lesson.id}`]);
-  const accent = getUnitSolidColor(sheet.unit.color || sheet.unit._section?.color);
+  const sDir = course.sourceLang?.dir === 'rtl' ? 'rtl' : 'ltr';
   return `
     <div id="sheet-backdrop" class="sheet-backdrop">
-      <div class="lesson-sheet">
+      <div class="lesson-sheet" dir="${sDir}">
         <div class="sheet-handle"></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;">
-          <span class="pill accent">${escapeHtml(sheet.unit.cefrLevel || 'Lesson')} · ${escapeHtml(sheet.unit.title)}</span>
-          <span class="pill">${sheet.lesson.items.length} items</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+          <span class="pill accent">${escapeHtml(sheet.unit.cefrLevel || tCourse(course, 'unit'))} · ${escapeHtml(sheet.unit.title)}</span>
+          <span class="pill">${escapeHtml(tCourse(course, 'itemsReady', { n: sheet.lesson.items.length }))}</span>
         </div>
         <h2 style="margin:6px 0 4px;font-size:22px;">${escapeHtml(sheet.lesson.title)}</h2>
         <p style="margin:0 0 16px;font-size:14px;color:var(--text-muted);">${escapeHtml(sheet.lesson.objective || '')}</p>
         <div style="display:grid;gap:10px;">
           <button class="btn btn-primary" style="width:100%;padding:14px;" data-start-lesson="${escapeHtml(sheet.unit.id)}|${escapeHtml(sheet.lesson.id)}">
-            ${uiIcon('play', 18)} ${done ? 'PRACTICE AGAIN (+25 XP)' : 'START LESSON (+25 XP)'}
+            ${uiIcon('play', 18)} ${escapeHtml(tCourse(course, 'start'))} (+25 XP)
           </button>
-          <button class="btn" style="width:100%;" data-guidebook="${escapeHtml(sheet.unit.id)}">${uiIcon('book', 18)} Open Unit Guidebook</button>
+          <button class="btn" style="width:100%;" data-guidebook="${escapeHtml(sheet.unit.id)}">${uiIcon('book', 18)} ${escapeHtml(tCourse(course, 'guidebook'))}</button>
         </div>
+      </div>
+    </div>
+  `;
+}
+
+async function runUpdateCheck(manual = false) {
+  if (state.updateChecking) return;
+  state.updateChecking = true;
+  state.updateError = '';
+  if (manual) render();
+  try {
+    const info = await checkForAppUpdate(APP_CONFIG.githubRepo, APP_CONFIG.appVersion);
+    state.updateInfo = info;
+    if (info.hasUpdate) {
+      const dismissed = getDismissedUpdateVersion();
+      state.updateBannerDismissed = !manual && dismissed === info.latestVersion;
+    }
+  } catch (err) {
+    if (manual) state.updateError = err.message || 'Could not check for updates.';
+  } finally {
+    state.updateChecking = false;
+    if (manual || state.updateInfo?.hasUpdate) render();
+  }
+}
+
+function renderUpdateBanner() {
+  if (!state.updateInfo?.hasUpdate || state.updateBannerDismissed) return '';
+  return `
+    <div class="update-banner" role="region" aria-label="App Update Available">
+      <div class="update-banner-info">
+        <span class="pill accent">${uiIcon('sparkles', 14)} Update Available</span>
+        <div class="update-banner-text">
+          <strong>OpenLingo v${escapeHtml(state.updateInfo.latestVersion)}</strong> is out!
+          ${state.updateInfo.summary ? `<span style="color:var(--text-muted);"> ${escapeHtml(state.updateInfo.summary)}</span>` : ''}
+        </div>
+      </div>
+      <div class="update-banner-actions">
+        <button type="button" class="btn btn-primary btn-sm" id="banner-apply-update-btn">${uiIcon('download', 15)} Update Now</button>
+        <button type="button" class="btn btn-sm" id="banner-dismiss-update-btn">Later</button>
       </div>
     </div>
   `;
@@ -4302,7 +4513,7 @@ function render() {
   document.getElementById('app').innerHTML = `
     ${renderSidebar(course)}
     ${renderMobileTopbar(course)}
-    <main class="main ${isActiveDrill ? 'in-drill' : ''}">${mainContent}</main>
+    <main class="main ${isActiveDrill ? 'in-drill' : ''}">${isActiveDrill ? '' : renderUpdateBanner()}${mainContent}</main>
     ${isActiveDrill ? '' : renderMobileNav(course)}
     ${renderLessonSheet(course)}
     <div id="audio-toast" class="app-toast" role="status" aria-live="polite" style="display:${state.audioToast ? 'inline-flex' : 'none'};" title="Tap to dismiss">
@@ -4378,6 +4589,9 @@ async function init() {
   } else {
     render();
   }
+
+  // Silently check GitHub Releases for a newer app version after startup
+  setTimeout(() => runUpdateCheck(false), 2500);
 }
 
 init();

@@ -213,8 +213,10 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new TtsBridge(), "AndroidTTS");
         webView.addJavascriptInterface(new BackupBridge(), "AndroidBackup");
         webView.addJavascriptInterface(new GoogleAuthBridge(), "AndroidGoogleAuth");
+        webView.addJavascriptInterface(new UpdaterBridge(), "AndroidUpdater");
         appIconBridge = new AppIconBridge();
         webView.addJavascriptInterface(appIconBridge, "AndroidAppIcon");
+        appIconBridge.reconcileAliases();
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -588,17 +590,21 @@ public class MainActivity extends Activity {
                 PackageManager pm = getPackageManager();
                 String pkg = getPackageName();
 
+                // Enable chosen alias FIRST so launcher always has a valid entry
                 pm.setComponentEnabledSetting(
                         new ComponentName(pkg, pkg + targetAlias),
                         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                         PackageManager.DONT_KILL_APP
                 );
 
+                // Strictly disable EVERY other alias (including default .IconAliasMl when in DEFAULT state)
+                // so launchers like Samsung One UI NEVER display two OpenLingo icons.
                 for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
                     if (entry.getKey().equals(pendingId)) continue;
                     ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
                     int st = pm.getComponentEnabledSetting(cn);
-                    if (entry.getKey().equals(activeId) || st == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
+                    boolean isDefaultEnabledAlias = "ml".equals(entry.getKey()) && st == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
+                    if (isDefaultEnabledAlias || entry.getKey().equals(activeId) || st == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
                         pm.setComponentEnabledSetting(
                                 cn,
                                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
@@ -608,6 +614,55 @@ public class MainActivity extends Activity {
                 }
             } catch (Exception ignored) {
             }
+        }
+
+        void reconcileAliases() {
+            // Self-heal if an earlier crash left two aliases enabled (e.g. .IconAliasMl in DEFAULT + another ENABLED).
+            try {
+                PackageManager pm = getPackageManager();
+                String pkg = getPackageName();
+                String enabledNonDefault = null;
+                for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
+                    if ("ml".equals(entry.getKey())) continue;
+                    ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
+                    if (pm.getComponentEnabledSetting(cn) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
+                        enabledNonDefault = entry.getKey();
+                        break;
+                    }
+                }
+                if (enabledNonDefault != null) {
+                    ComponentName mlCn = new ComponentName(pkg, pkg + aliasMap.get("ml"));
+                    if (pm.getComponentEnabledSetting(mlCn) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+                        pm.setComponentEnabledSetting(
+                                mlCn,
+                                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                                PackageManager.DONT_KILL_APP
+                        );
+                    }
+                    getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE)
+                            .edit()
+                            .putString(KEY_ACTIVE_ICON, enabledNonDefault)
+                            .commit();
+                }
+            } catch (Exception ignored) {
+            }
+        }
+    }
+
+    private final class UpdaterBridge {
+        @JavascriptInterface
+        public void openExternalUrl(final String url) {
+            if (url == null || (!url.startsWith("https://") && !url.startsWith("http://"))) return;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } catch (Exception ignored) {
+                    }
+                }
+            });
         }
     }
 }

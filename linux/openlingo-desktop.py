@@ -309,6 +309,16 @@ class DesktopHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/__desktop/open-url":
+            data = self._read_json()
+            url = str(data.get("url") or "").strip()
+            if not (url.startswith("https://") or url.startswith("http://")):
+                self._send_json(400, {"error": "Invalid URL"})
+                return
+            open_system_browser(url)
+            self._send_json(200, {"ok": True})
+            return
+
         if parsed.path == "/__desktop/auth/start":
             data = self._read_json()
             client_id = str(data.get("clientId") or "").strip()

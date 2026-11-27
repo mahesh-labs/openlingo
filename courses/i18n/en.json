@@ -1,0 +1,274 @@
+{
+  "code": "en",
+  "ui": {
+    "start": "START",
+    "guidebook": "Guidebook",
+    "jumpHere": "Jump Here",
+    "unit": "Unit",
+    "complete": "complete",
+    "completedTap": "Completed · Tap to practice",
+    "locked": "Locked",
+    "itemsReady": "{n} items · Ready",
+    "unitTrophy": "Unit Trophy",
+    "unitMastered": "Unit Mastered!",
+    "allLevels": "All Levels",
+    "backToPath": "← Back to Path",
+    "keyVocab": "Key Vocabulary & Expressions",
+    "grammarNote": "Grammar Note",
+    "listen": "Listen",
+    "audio": "Audio",
+    "beginDrills": "Begin Interactive Drills ({n})",
+    "exerciseOf": "Exercise {i} of {n}",
+    "chooseMeaning": "Choose the {lang} meaning",
+    "selectMatching": "Select the matching expression",
+    "typeExpression": "Type the expression for",
+    "typePlaceholder": "Type your answer in {lang}...",
+    "checkAnswer": "Check Answer",
+    "nicelyDone": "Nicely done!",
+    "keepPracticing": "Keep practicing!",
+    "continueBtn": "Continue",
+    "lessonComplete": "Lesson Complete!",
+    "accuracyXp": "{acc}% accuracy · +25 XP",
+    "continuePath": "Continue Learning Path",
+    "reviewFlashcards": "Review Flashcards",
+    "tapToFlip": "Tap card to flip",
+    "tapToFlipBack": "Tap to flip back",
+    "meaning": "{lang} Meaning",
+    "again": "Again",
+    "hard": "Hard",
+    "good": "Good",
+    "easy": "Easy",
+    "backToLesson": "Back to Lesson",
+    "jumpToLesson": "Jump to Lesson",
+    "courseTitle": "{target} for {source} Speakers ({first} → {last})",
+    "pronounce": "Pronounce"
+  },
+  "langNames": {
+    "en": "English",
+    "ml": "Malayalam",
+    "ta": "Tamil",
+    "kn": "Kannada",
+    "te": "Telugu",
+    "hi": "Hindi",
+    "ja": "Japanese",
+    "zh": "Chinese (Mandarin)",
+    "ko": "Korean",
+    "ar": "Arabic",
+    "es": "Spanish",
+    "fr": "French",
+    "ru": "Russian"
+  },
+  "tiers": {
+    "sec-t1": "Beginner",
+    "sec-t2": "Elementary",
+    "sec-t3": "Intermediate",
+    "sec-t4": "Upper-Intermediate",
+    "sec-t5": "Mastery"
+  },
+  "units": {
+    "u1": {
+      "title": "First Steps & Greetings",
+      "subtitle": "Polite greetings, gratitude, apologies & introductions"
+    },
+    "u2": {
+      "title": "People, Family & Pronouns",
+      "subtitle": "Pronouns, relatives, friends, and basic identities"
+    },
+    "u3": {
+      "title": "Numbers, Time & Calendar",
+      "subtitle": "Counting, telling time, days, and schedules"
+    },
+    "u4": {
+      "title": "Food, Drink & Dining",
+      "subtitle": "Essential meals, ingredients, and restaurant phrases"
+    },
+    "u5": {
+      "title": "Home, Colors & Daily Actions",
+      "subtitle": "Rooms, everyday objects, colors, and core verbs"
+    },
+    "u6": {
+      "title": "Travel, Transport & Directions",
+      "subtitle": "Getting around cities, stations, and airports"
+    },
+    "u7": {
+      "title": "Shopping, Money & Numbers",
+      "subtitle": "Prices, stores, payments, and clothing"
+    },
+    "u8": {
+      "title": "Weather, Seasons & Nature",
+      "subtitle": "Forecasts, landscapes, and outdoor life"
+    },
+    "u9": {
+      "title": "Health, Body & Emergencies",
+      "subtitle": "Body parts, symptoms, clinics, and urgent help"
+    },
+    "u10": {
+      "title": "Work, School & Hobbies",
+      "subtitle": "Occupations, studying, music, and free time"
+    },
+    "u11": {
+      "title": "Emotions, Personality & Opinions",
+      "subtitle": "Express feelings, traits, and viewpoints"
+    },
+    "u12": {
+      "title": "Social Life & Storytelling",
+      "subtitle": "Plans, invitations, memories, and experiences"
+    },
+    "u13": {
+      "title": "Technology, Internet & Media",
+      "subtitle": "Digital life, software, privacy, and news"
+    },
+    "u14": {
+      "title": "Culture, Festivals & Traditions",
+      "subtitle": "Heritage, arts, cuisine, and hospitality"
+    },
+    "u15": {
+      "title": "Problem Solving & Connectors",
+      "subtitle": "Link ideas with cause, contrast, and condition"
+    },
+    "u16": {
+      "title": "Career, Business & Negotiations",
+      "subtitle": "Strategy, contracts, leadership, and finance"
+    },
+    "u17": {
+      "title": "Science, Innovation & Space",
+      "subtitle": "Research, hypotheses, medicine, and discovery"
+    },
+    "u18": {
+      "title": "Environment, Climate & Sustainability",
+      "subtitle": "Ecology, conservation, and green transition"
+    },
+    "u19": {
+      "title": "Society, Law & Governance",
+      "subtitle": "Rights, justice, democracy, and public policy"
+    },
+    "u20": {
+      "title": "Critical Thinking & Debate",
+      "subtitle": "Arguments, perspective, nuance, and analysis"
+    },
+    "u21": {
+      "title": "Literature, Art & Aesthetics",
+      "subtitle": "Critique narratives, symbolism, and beauty"
+    },
+    "u22": {
+      "title": "Philosophy, Ethics & Psychology",
+      "subtitle": "Explore consciousness, virtue, and meaning"
+    },
+    "u23": {
+      "title": "Idioms, Proverbs & Cultural Wisdom",
+      "subtitle": "Speak with authentic figurative expressions"
+    },
+    "u24": {
+      "title": "Formal, Diplomatic & Legal Discourse",
+      "subtitle": "High-register speeches, treaties, and academia"
+    },
+    "u25": {
+      "title": "Nuance, Rhetoric & Native Mastery",
+      "subtitle": "Master subtle tone, persuasion, and precision"
+    }
+  },
+  "lessons": {
+    "u1-l1": "Morning to Night Greetings",
+    "u1-l2": "Gratitude & Politeness",
+    "u1-l3": "Yes, No & Introductions",
+    "u2-l1": "Personal Pronouns",
+    "u2-l2": "Immediate Family",
+    "u2-l3": "Friends & Community",
+    "u3-l1": "Core Numbers",
+    "u3-l2": "Days & Relative Time",
+    "u3-l3": "Clock & Calendar",
+    "u4-l1": "Staple Foods",
+    "u4-l2": "Meals & Beverages",
+    "u4-l3": "At the Restaurant",
+    "u5-l1": "Around the House",
+    "u5-l2": "Essential Colors & Qualities",
+    "u5-l3": "Core Daily Verbs",
+    "u6-l1": "Public Transport",
+    "u6-l2": "Directions & Orientation",
+    "u6-l3": "Navigating Places",
+    "u7-l1": "Money & Prices",
+    "u7-l2": "At the Market",
+    "u7-l3": "Clothing & Sizes",
+    "u8-l1": "Weather Conditions",
+    "u8-l2": "Seasons & Sky",
+    "u8-l3": "Landscapes & Nature",
+    "u9-l1": "Body Parts",
+    "u9-l2": "Feeling Unwell",
+    "u9-l3": "Safety & Help",
+    "u10-l1": "Education & Study",
+    "u10-l2": "Workplace Basics",
+    "u10-l3": "Hobbies & Leisure",
+    "u11-l1": "Core Feelings",
+    "u11-l2": "Personality Traits",
+    "u11-l3": "Sharing Opinions",
+    "u12-l1": "Invitations & Plans",
+    "u12-l2": "Experiences & Memories",
+    "u12-l3": "Relationships & Advice",
+    "u13-l1": "Devices & Connectivity",
+    "u13-l2": "Software & Communication",
+    "u13-l3": "News & Digital Media",
+    "u14-l1": "Heritage & Customs",
+    "u14-l2": "Arts & Crafts",
+    "u14-l3": "Hospitality & Etiquette",
+    "u15-l1": "Logical Connectors",
+    "u15-l2": "Solutions & Decisions",
+    "u15-l3": "Conditionals & Comparison",
+    "u16-l1": "Workplace Leadership",
+    "u16-l2": "Economics & Finance",
+    "u16-l3": "Negotiations & Agreements",
+    "u17-l1": "Scientific Method",
+    "u17-l2": "Engineering & Innovation",
+    "u17-l3": "Astronomy & Universe",
+    "u18-l1": "Climate & Ecology",
+    "u18-l2": "Sustainability & Conservation",
+    "u18-l3": "Global Action",
+    "u19-l1": "Rights & Justice",
+    "u19-l2": "Governance & Policy",
+    "u19-l3": "Community & Global Issues",
+    "u20-l1": "Structured Argumentation",
+    "u20-l2": "Evaluating Ideas",
+    "u20-l3": "Persuasion & Clarity",
+    "u21-l1": "Literary Craft",
+    "u21-l2": "Interpretation & Critique",
+    "u21-l3": "Emotion in Art",
+    "u22-l1": "Ethics & Virtue",
+    "u22-l2": "Mind & Perception",
+    "u22-l3": "Existential & Stoic Ideas",
+    "u23-l1": "Timeless Proverbs",
+    "u23-l2": "Everyday Figurative Idioms",
+    "u23-l3": "Strategic & Life Metaphors",
+    "u24-l1": "Diplomacy & Treaties",
+    "u24-l2": "Academic & Executive Register",
+    "u24-l3": "High-Register Transitions",
+    "u25-l1": "Rhetorical Precision",
+    "u25-l2": "Subtle Modifiers & Tone",
+    "u25-l3": "Capstone Mastery Expressions"
+  },
+  "grammarNotes": {
+    "u1": "First Steps & Greetings: Polite greetings, gratitude, apologies & introductions. Practice active recall and read each example aloud.",
+    "u2": "People, Family & Pronouns: Pronouns, relatives, friends, and basic identities. Practice active recall and read each example aloud.",
+    "u3": "Numbers, Time & Calendar: Counting, telling time, days, and schedules. Practice active recall and read each example aloud.",
+    "u4": "Food, Drink & Dining: Essential meals, ingredients, and restaurant phrases. Practice active recall and read each example aloud.",
+    "u5": "Home, Colors & Daily Actions: Rooms, everyday objects, colors, and core verbs. Practice active recall and read each example aloud.",
+    "u6": "Travel, Transport & Directions: Getting around cities, stations, and airports. Practice active recall and read each example aloud.",
+    "u7": "Shopping, Money & Numbers: Prices, stores, payments, and clothing. Practice active recall and read each example aloud.",
+    "u8": "Weather, Seasons & Nature: Forecasts, landscapes, and outdoor life. Practice active recall and read each example aloud.",
+    "u9": "Health, Body & Emergencies: Body parts, symptoms, clinics, and urgent help. Practice active recall and read each example aloud.",
+    "u10": "Work, School & Hobbies: Occupations, studying, music, and free time. Practice active recall and read each example aloud.",
+    "u11": "Emotions, Personality & Opinions: Express feelings, traits, and viewpoints. Practice active recall and read each example aloud.",
+    "u12": "Social Life & Storytelling: Plans, invitations, memories, and experiences. Practice active recall and read each example aloud.",
+    "u13": "Technology, Internet & Media: Digital life, software, privacy, and news. Practice active recall and read each example aloud.",
+    "u14": "Culture, Festivals & Traditions: Heritage, arts, cuisine, and hospitality. Practice active recall and read each example aloud.",
+    "u15": "Problem Solving & Connectors: Link ideas with cause, contrast, and condition. Practice active recall and read each example aloud.",
+    "u16": "Career, Business & Negotiations: Strategy, contracts, leadership, and finance. Practice active recall and read each example aloud.",
+    "u17": "Science, Innovation & Space: Research, hypotheses, medicine, and discovery. Practice active recall and read each example aloud.",
+    "u18": "Environment, Climate & Sustainability: Ecology, conservation, and green transition. Practice active recall and read each example aloud.",
+    "u19": "Society, Law & Governance: Rights, justice, democracy, and public policy. Practice active recall and read each example aloud.",
+    "u20": "Critical Thinking & Debate: Arguments, perspective, nuance, and analysis. Practice active recall and read each example aloud.",
+    "u21": "Literature, Art & Aesthetics: Critique narratives, symbolism, and beauty. Practice active recall and read each example aloud.",
+    "u22": "Philosophy, Ethics & Psychology: Explore consciousness, virtue, and meaning. Practice active recall and read each example aloud.",
+    "u23": "Idioms, Proverbs & Cultural Wisdom: Speak with authentic figurative expressions. Practice active recall and read each example aloud.",
+    "u24": "Formal, Diplomatic & Legal Discourse: High-register speeches, treaties, and academia. Practice active recall and read each example aloud.",
+    "u25": "Nuance, Rhetoric & Native Mastery: Master subtle tone, persuasion, and precision. Practice active recall and read each example aloud."
+  }
+}

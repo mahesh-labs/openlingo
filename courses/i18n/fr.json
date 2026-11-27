@@ -1,0 +1,274 @@
+{
+  "code": "fr",
+  "ui": {
+    "start": "COMMENCER",
+    "guidebook": "Guide",
+    "jumpHere": "Aller ici",
+    "unit": "Unité",
+    "complete": "terminé",
+    "completedTap": "Terminé · Appuyez pour pratiquer",
+    "locked": "Verrouillé",
+    "itemsReady": "{n} éléments · Prêt",
+    "unitTrophy": "Trophée de l'unité",
+    "unitMastered": "Unité maîtrisée !",
+    "allLevels": "Tous les niveaux",
+    "backToPath": "← Retour au parcours",
+    "keyVocab": "Vocabulaire et expressions clés",
+    "grammarNote": "Note de grammaire",
+    "listen": "Écouter",
+    "audio": "Audio",
+    "beginDrills": "Commencer les exercices ({n})",
+    "exerciseOf": "Exercice {i} sur {n}",
+    "chooseMeaning": "Choisissez le sens en {lang}",
+    "selectMatching": "Sélectionnez l'expression correspondante",
+    "typeExpression": "Saisissez l'expression pour",
+    "typePlaceholder": "Saisissez votre réponse en {lang}...",
+    "checkAnswer": "Vérifier",
+    "nicelyDone": "Bien joué !",
+    "keepPracticing": "Continuez à pratiquer !",
+    "continueBtn": "Continuer",
+    "lessonComplete": "Leçon terminée !",
+    "accuracyXp": "{acc} % de précision · +25 XP",
+    "continuePath": "Continuer le parcours",
+    "reviewFlashcards": "Réviser les cartes",
+    "tapToFlip": "Appuyez pour retourner la carte",
+    "tapToFlipBack": "Appuyez pour revenir",
+    "meaning": "Sens en {lang}",
+    "again": "À revoir",
+    "hard": "Difficile",
+    "good": "Bien",
+    "easy": "Facile",
+    "backToLesson": "Retour à la leçon",
+    "jumpToLesson": "Aller à la leçon",
+    "courseTitle": "{target} pour les locuteurs de {source} ({first} → {last})",
+    "pronounce": "Prononcer"
+  },
+  "langNames": {
+    "en": "Anglais",
+    "ml": "Malayalam",
+    "ta": "Tamoul",
+    "kn": "Kannada",
+    "te": "Télougou",
+    "hi": "Hindi",
+    "ja": "Japonais",
+    "zh": "Chinois (mandarin)",
+    "ko": "Coréen",
+    "ar": "Arabe",
+    "es": "Espagnol",
+    "fr": "Français",
+    "ru": "Russe"
+  },
+  "tiers": {
+    "sec-t1": "Débutant",
+    "sec-t2": "Élémentaire",
+    "sec-t3": "Intermédiaire",
+    "sec-t4": "Intermédiaire avancé",
+    "sec-t5": "Maîtrise"
+  },
+  "units": {
+    "u1": {
+      "title": "Premiers pas et salutations",
+      "subtitle": "Salutations polies, gratitude, excuses et présentations"
+    },
+    "u2": {
+      "title": "Personnes, famille et pronoms",
+      "subtitle": "Pronoms, proches, amis et identités de base"
+    },
+    "u3": {
+      "title": "Nombres, heure et calendrier",
+      "subtitle": "Compter, dire l'heure, les jours et les emplois du temps"
+    },
+    "u4": {
+      "title": "Cuisine, boissons et repas",
+      "subtitle": "Aliments essentiels, ingrédients et phrases au restaurant"
+    },
+    "u5": {
+      "title": "Maison, couleurs et actions quotidiennes",
+      "subtitle": "Pièces, objets courants, couleurs et verbes essentiels"
+    },
+    "u6": {
+      "title": "Voyages, transports et directions",
+      "subtitle": "Se déplacer en ville, dans les gares et les aéroports"
+    },
+    "u7": {
+      "title": "Achats, argent et nombres",
+      "subtitle": "Prix, magasins, paiements et vêtements"
+    },
+    "u8": {
+      "title": "Météo, saisons et nature",
+      "subtitle": "Prévisions, paysages et vie en plein air"
+    },
+    "u9": {
+      "title": "Santé, corps et urgences",
+      "subtitle": "Parties du corps, symptômes, cliniques et aide urgente"
+    },
+    "u10": {
+      "title": "Travail, études et loisirs",
+      "subtitle": "Métiers, études, musique et temps libre"
+    },
+    "u11": {
+      "title": "Émotions, personnalité et opinions",
+      "subtitle": "Exprimer ses sentiments, traits de caractère et avis"
+    },
+    "u12": {
+      "title": "Vie sociale et récits",
+      "subtitle": "Projets, invitations, souvenirs et expériences"
+    },
+    "u13": {
+      "title": "Technologie, Internet et médias",
+      "subtitle": "Vie numérique, logiciels, confidentialité et actualités"
+    },
+    "u14": {
+      "title": "Culture, festivals et traditions",
+      "subtitle": "Patrimoine, arts, gastronomie et hospitalité"
+    },
+    "u15": {
+      "title": "Résolution de problèmes et connecteurs",
+      "subtitle": "Relier ses idées par la cause, l'opposition et la condition"
+    },
+    "u16": {
+      "title": "Carrière, affaires et négociations",
+      "subtitle": "Stratégie, contrats, leadership et finance"
+    },
+    "u17": {
+      "title": "Science, innovation et espace",
+      "subtitle": "Recherche, hypothèses, médecine et découvertes"
+    },
+    "u18": {
+      "title": "Environnement, climat et durabilité",
+      "subtitle": "Écologie, préservation et transition écologique"
+    },
+    "u19": {
+      "title": "Société, droit et gouvernance",
+      "subtitle": "Droits, justice, démocratie et politiques publiques"
+    },
+    "u20": {
+      "title": "Esprit critique et débat",
+      "subtitle": "Arguments, perspectives, nuances et analyse"
+    },
+    "u21": {
+      "title": "Littérature, art et esthétique",
+      "subtitle": "Analyser les récits, le symbolisme et la beauté"
+    },
+    "u22": {
+      "title": "Philosophie, éthique et psychologie",
+      "subtitle": "Explorer la conscience, la vertu et le sens"
+    },
+    "u23": {
+      "title": "Idiomes, proverbes et sagesse culturelle",
+      "subtitle": "S'exprimer avec des tournures imagées authentiques"
+    },
+    "u24": {
+      "title": "Discours formel, diplomatique et juridique",
+      "subtitle": "Discours soutenus, traités et milieu universitaire"
+    },
+    "u25": {
+      "title": "Nuances, rhétorique et maîtrise native",
+      "subtitle": "Maîtriser le ton subtil, la persuasion et la précision"
+    }
+  },
+  "lessons": {
+    "u1-l1": "Salutations du matin au soir",
+    "u1-l2": "Gratitude et politesse",
+    "u1-l3": "Oui, non et présentations",
+    "u2-l1": "Pronoms personnels",
+    "u2-l2": "Famille proche",
+    "u2-l3": "Amis et communauté",
+    "u3-l1": "Nombres essentiels",
+    "u3-l2": "Jours et repères temporels",
+    "u3-l3": "Heure et calendrier",
+    "u4-l1": "Aliments de base",
+    "u4-l2": "Repas et boissons",
+    "u4-l3": "Au restaurant",
+    "u5-l1": "Dans la maison",
+    "u5-l2": "Couleurs et qualités essentielles",
+    "u5-l3": "Verbes du quotidien",
+    "u6-l1": "Transports en commun",
+    "u6-l2": "Directions et orientation",
+    "u6-l3": "Se repérer dans les lieux",
+    "u7-l1": "Argent et prix",
+    "u7-l2": "Au marché",
+    "u7-l3": "Vêtements et tailles",
+    "u8-l1": "Conditions météorologiques",
+    "u8-l2": "Saisons et ciel",
+    "u8-l3": "Paysages et nature",
+    "u9-l1": "Parties du corps",
+    "u9-l2": "Ne pas se sentir bien",
+    "u9-l3": "Sécurité et secours",
+    "u10-l1": "Éducation et études",
+    "u10-l2": "Bases du milieu professionnel",
+    "u10-l3": "Loisirs et temps libre",
+    "u11-l1": "Émotions fondamentales",
+    "u11-l2": "Traits de personnalité",
+    "u11-l3": "Partager son avis",
+    "u12-l1": "Invitations et projets",
+    "u12-l2": "Expériences et souvenirs",
+    "u12-l3": "Relations et conseils",
+    "u13-l1": "Appareils et connectivité",
+    "u13-l2": "Logiciels et communication",
+    "u13-l3": "Actualités et médias numériques",
+    "u14-l1": "Patrimoine et coutumes",
+    "u14-l2": "Arts et artisanat",
+    "u14-l3": "Hospitalité et savoir-vivre",
+    "u15-l1": "Connecteurs logiques",
+    "u15-l2": "Solutions et décisions",
+    "u15-l3": "Conditionnelles et comparaisons",
+    "u16-l1": "Leadership au travail",
+    "u16-l2": "Économie et finance",
+    "u16-l3": "Négociations et accords",
+    "u17-l1": "Méthode scientifique",
+    "u17-l2": "Ingénierie et innovation",
+    "u17-l3": "Astronomie et univers",
+    "u18-l1": "Climat et écologie",
+    "u18-l2": "Durabilité et préservation",
+    "u18-l3": "Action mondiale",
+    "u19-l1": "Droits et justice",
+    "u19-l2": "Gouvernance et politiques",
+    "u19-l3": "Société et enjeux mondiaux",
+    "u20-l1": "Argumentation structurée",
+    "u20-l2": "Évaluer les idées",
+    "u20-l3": "Persuasion et clarté",
+    "u21-l1": "Art littéraire",
+    "u21-l2": "Interprétation et critique",
+    "u21-l3": "L'émotion dans l'art",
+    "u22-l1": "Éthique et vertu",
+    "u22-l2": "Esprit et perception",
+    "u22-l3": "Idées existentialistes et stoïciennes",
+    "u23-l1": "Proverbes intemporels",
+    "u23-l2": "Expressions figurées courantes",
+    "u23-l3": "Métaphores stratégiques et de vie",
+    "u24-l1": "Diplomatie et traités",
+    "u24-l2": "Registre académique et dirigeant",
+    "u24-l3": "Transitions de registre soutenu",
+    "u25-l1": "Précision rhétorique",
+    "u25-l2": "Modulateurs subtils et ton",
+    "u25-l3": "Expressions de maîtrise finale"
+  },
+  "grammarNotes": {
+    "u1": "Premiers pas et salutations : distinguez les registres familier et formel pour saluer, remercier, présenter vos excuses et vous présenter. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u2": "Personnes, famille et pronoms : observez comment les pronoms personnels et les termes de parenté marquent le nombre, le genre et le degré de proximité. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u3": "Nombres, heure et calendrier : associez les nombres cardinaux aux repères horaires, aux jours de la semaine et aux dates pour situer vos rendez-vous avec précision. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u4": "Cuisine, boissons et repas : maîtrisez les noms comptables et indénombrables ainsi que les formules polies pour commander au restaurant et exprimer vos goûts. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u5": "Maison, couleurs et actions quotidiennes : accordez les noms du quotidien avec les adjectifs de couleur ou de qualité et conjuguez les verbes usuels pour décrire votre routine. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u6": "Voyages, transports et directions : employez les prépositions de lieu, l'impératif poli et les questions directes pour vous orienter dans les gares, les rues et les aéroports. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u7": "Achats, argent et nombres : combinez chiffres, devises, tailles et démonstratifs pour demander un prix, comparer des articles et régler vos achats naturellement. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u8": "Météo, saisons et nature : distinguez les tournures impersonnelles des verbes descriptifs pour parler du temps qu'il fait, des saisons et des paysages. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u9": "Santé, corps et urgences : utilisez des structures simples et précises pour localiser une douleur, décrire des symptômes et demander une assistance médicale rapide. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u10": "Travail, études et loisirs : exprimez votre profession, vos études et vos passe-temps en choisissant les prépositions et déterminants adaptés. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u11": "Émotions, personnalité et opinions : différenciez un état passager d'un trait durable et introduisez votre point de vue à l'aide de propositions subordonnées nuancées. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u12": "Vie sociale et récits : alternez les temps du passé pour raconter des souvenirs et utilisez des formules adaptées pour inviter, proposer et conseiller. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u13": "Technologie, Internet et médias : intégrez le vocabulaire numérique courant ainsi que les tournures passives ou impersonnelles fréquentes dans l'actualité. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u14": "Culture, festivals et traditions : décrivez les coutumes, célébrations et usages de politesse grâce aux marqueurs temporels et au lexique culturel dédié. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u15": "Résolution de problèmes et connecteurs : articulez vos phrases avec des liens de cause, d'opposition et de condition, ainsi que des structures comparatives pour proposer des solutions. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u16": "Carrière, affaires et négociations : adoptez un registre professionnel fondé sur les verbes modaux de proposition, le conditionnel de politesse et le lexique financier. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u17": "Science, innovation et espace : formulez des hypothèses, des relations de cause à effet et des explications objectives avec une terminologie scientifique rigoureuse. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u18": "Environnement, climat et durabilité : exprimez des enjeux écologiques, des obligations et des solutions durables grâce à des connecteurs complexes et un lexique précis. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u19": "Société, droit et gouvernance : maniez les nominalisations et les tournures impersonnelles propres aux textes civiques, juridiques et institutionnels. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u20": "Esprit critique et débat : structurez une thèse, des contre-arguments et des concessions à l'aide de marqueurs logiques qui renforcent la clarté et la force de conviction. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u21": "Littérature, art et esthétique : analysez les procédés stylistiques, le symbolisme et la portée esthétique d'une œuvre avec des adjectifs choisis et des subordonnées explicatives. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u22": "Philosophie, éthique et psychologie : exprimez des notions abstraites, des dilemmes moraux et des nuances sur la conscience avec justesse conceptuelle. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u23": "Idiomes, proverbes et sagesse culturelle : distinguez le sens figuré du sens littéral et repérez le contexte social approprié pour chaque expression idiomatique. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u24": "Discours formel, diplomatique et juridique : maîtrisez les formules protocolaires, les articulations soutenues et la syntaxe des documents officiels et académiques. Pratiquez le rappel actif et lisez chaque exemple à voix haute.",
+    "u25": "Nuances, rhétorique et maîtrise native : ajustez l'emphase, l'atténuation, l'ironie et le rythme de la phrase pour atteindre une expression précise et naturelle. Pratiquez le rappel actif et lisez chaque exemple à voix haute."
+  }
+}

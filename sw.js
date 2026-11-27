@@ -1,4 +1,4 @@
-const CACHE_NAME = 'openlingo-v31';
+const CACHE_NAME = 'openlingo-v32';
 const ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS = [
   './assets/icons/openlingo-512.png',
   './src/icons.js',
   './src/appIcons.js',
+  './src/updater.js',
   './src/courseMatrix.js',
   './src/srs.js',
   './src/exercises.js',
@@ -35,7 +36,20 @@ const ASSETS = [
   './courses/langs/ar.json',
   './courses/langs/es.json',
   './courses/langs/fr.json',
-  './courses/langs/ru.json'
+  './courses/langs/ru.json',
+  './courses/i18n/en.json',
+  './courses/i18n/ml.json',
+  './courses/i18n/ta.json',
+  './courses/i18n/kn.json',
+  './courses/i18n/te.json',
+  './courses/i18n/hi.json',
+  './courses/i18n/ja.json',
+  './courses/i18n/zh.json',
+  './courses/i18n/ko.json',
+  './courses/i18n/ar.json',
+  './courses/i18n/es.json',
+  './courses/i18n/fr.json',
+  './courses/i18n/ru.json'
   // AUTO-GENERATED MATRIX LANGS END
 ];
 

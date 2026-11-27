@@ -18,9 +18,12 @@ function pickDistractors(target, pool, count = 3) {
   return shuffle(candidates).slice(0, Math.min(count, candidates.length));
 }
 
-export function generateLessonExercises(lesson, allCourseItems, sourceLangName = 'English') {
+export function generateLessonExercises(lesson, allCourseItems, sourceLangName = 'English', ui = {}) {
   const pool = allCourseItems.length >= 4 ? allCourseItems : lesson.items;
   const exercises = [];
+  const chooseLabel = (ui.chooseMeaning || 'Choose the {lang} meaning').replace('{lang}', sourceLangName);
+  const selectLabel = ui.selectMatching || 'Select the matching expression';
+  const typeLabel = ui.typeExpression || 'Type the expression for';
 
   // 1. Target -> Source multiple choice for every item
   lesson.items.forEach((item) => {
@@ -33,7 +36,7 @@ export function generateLessonExercises(lesson, allCourseItems, sourceLangName =
     exercises.push({
       type: 'mc-to-source',
       item,
-      promptLabel: `Choose the ${sourceLangName} meaning`,
+      promptLabel: chooseLabel,
       promptMain: item.term,
       promptSub: item.reading && item.reading !== item.term ? item.reading : '',
       promptHint: item.transliteration || '',
@@ -54,7 +57,7 @@ export function generateLessonExercises(lesson, allCourseItems, sourceLangName =
     exercises.push({
       type: 'mc-to-target',
       item,
-      promptLabel: 'Select the matching expression',
+      promptLabel: selectLabel,
       promptMain: item.translation,
       promptSub: '',
       promptHint: '',
@@ -69,9 +72,9 @@ export function generateLessonExercises(lesson, allCourseItems, sourceLangName =
     exercises.push({
       type: 'type-recall',
       item,
-      promptLabel: 'Type the expression for',
+      promptLabel: typeLabel,
       promptMain: item.translation,
-      promptSub: item.tags?.length ? `Tag: ${item.tags.join(', ')}` : '',
+      promptSub: '',
       promptHint: item.transliteration || item.term,
       acceptedAnswers: [item.term, item.reading, item.transliteration]
         .filter(Boolean)
