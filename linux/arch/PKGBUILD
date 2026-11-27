@@ -1,6 +1,6 @@
 # Maintainer: mahesh-labs <mahesh.makes.it@gmail.com>
 pkgname=openlingo
-pkgver=0.0.9.beta
+pkgver=0.0.10.beta
 pkgrel=1
 pkgdesc="Free and open-source cross-platform language learning app (13 languages · 156 courses)"
 arch=('any')

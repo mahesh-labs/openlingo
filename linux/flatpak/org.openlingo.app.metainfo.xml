@@ -22,6 +22,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.0.10-beta" date="2026-11-27">
+      <description>
+        <p>Native Android Google account picker popup with Google Play Services AuthorizationClient (no browser needed), direct in-app Android APK updates via PackageInstaller with live progress bar, and direct in-app Linux desktop self-updates across AppImage, Portable, Flatpak, Arch, Debian/Ubuntu, and Fedora/RHEL.</p>
+      </description>
+    </release>
     <release version="0.0.9-beta" date="2026-11-27">
       <description>
         <p>Immediate launch update checker with modal prompt, decluttered single-bar Characters view with All Characters selected first, full Tamil Uyirmei (216 + 48 Grantha) and complete Malayalam/Kannada/Telugu/Hindi consonant-vowel grids, global Add Course popup modal with source-language picker and search, and updated Support OpenLingo roadmap copy.</p>
