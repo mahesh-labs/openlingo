@@ -132,6 +132,50 @@ ROLES = [
     ("Contributor", 0x3B82F6),
 ]
 
+LAUNCH_POSTS = {
+    "rules": (
+        "# 📜 OpenLingo Community Rules\n\n"
+        "Welcome! Help us keep OpenLingo a welcoming, focused, and fun space for language learners and open-source contributors:\n\n"
+        "**1. Be Kind & Encouraging** — Everyone starts from zero. Never mock someone's pronunciation, handwriting, or beginner mistakes.\n"
+        "**2. Use the Right Channels** — Language questions go in `#course-*`, bugs in `#bug-reports`, ideas in `#feature-suggestions`, and translation tweaks in `#translation-fixes`.\n"
+        "**3. Respectful Course & Feedback Etiquette** — When giving feedback on a course or translation, include the language pair (e.g. `ML→TA`), unit/lesson, and a constructive suggestion.\n"
+        "**4. Sharing Courses is Encouraged!** — Share your OpenLingo course links (`?course=...`) in `#community-courses` so learners can try, rate, and review them. No unrelated spam or self-promotion.\n"
+        "**5. Zero Hate Speech, Harassment, or NSFW** — Keep all text, voice rooms, usernames, and shared handwriting screenshots safe for everyone.\n"
+        "**6. Protect Privacy & Security** — Never post API tokens, Google OAuth secrets, `OL1:` backup codes containing private data, or personal info.\n"
+        "**7. Good-Faith Bug Reports** — In `#bug-reports`, please include your platform (**Web / Android / Windows / Linux**), app version, and a screenshot if possible.\n"
+        "**8. Follow Discord's Terms of Service & Community Guidelines.**\n\n"
+        "Thank you for helping grow free, open-source language education! 💜"
+    ),
+    "downloads-and-links": (
+        "# 📦 OpenLingo Downloads & Official Links\n\n"
+        "🌐 **Live Web App (No Install — Works Offline as PWA):**\n"
+        "https://mahesh-labs.github.io/openlingo/\n\n"
+        "📥 **Latest Release (v0.0.11-beta — All 12 Platform Builds):**\n"
+        "https://github.com/mahesh-labs/openlingo/releases/tag/v0.0.11-beta\n"
+        "• **Android:** `OpenLingo-v0.0.11-beta.apk`\n"
+        "• **Windows:** Installer (`setup.exe`), Single-File Portable (`portable.exe`), MSI (`.msi`), Portable `.zip`\n"
+        "• **Linux:** `.AppImage`, `.flatpak`, `.deb`, `.rpm`, Arch `.pkg.tar.zst`, `.tar.gz`, `.zip`\n\n"
+        "💻 **Source Code (GitHub):** https://github.com/mahesh-labs/openlingo\n"
+        "🌍 **Create & Contribute a Course:** https://github.com/mahesh-labs/openlingo/blob/main/CONTRIBUTING_COURSES.md\n"
+        "🔒 **Privacy Policy:** https://mahesh-labs.github.io/openlingo/privacy.html"
+    ),
+    "announcements": (
+        "# 🚀 OpenLingo v0.0.11-beta — First Public Cross-Platform Release!\n\n"
+        "@everyone **OpenLingo v0.0.11-beta** is now officially live for **Web, Android, Windows, and Linux** — completely free, open-source, offline-first, and zero-server!\n\n"
+        "### ✨ What's Inside\n"
+        "• **13 Languages · 156 Any-to-Any Courses** (Beginner → Mastery, fully localized in your chosen source language): English, Malayalam, Tamil, Kannada, Telugu, Hindi, Japanese, Chinese (Mandarin), Korean, Arabic (RTL), Spanish, French, and Russian.\n"
+        "• **Complete Script & Handwriting Boards**: Decluttered Characters screen with `All Characters` first, full **Tamil Uyirmei (297 chars)**, **Malayalam Kagunitham (540)**, **Kannada**, **Telugu**, **Hindi Barakhadi**, **Hiragana/Katakana/Kanji**, **Hangul**, **Arabic**, and **Cyrillic**.\n"
+        "• **Brand-New Windows Desktop Builds**: Installer (`.exe`), **Single-File Portable `.exe`** (double-click, zero install), `.msi`, and Portable `.zip` — zero Python or Electron bloat.\n"
+        "• **Native Android Sign in with Google**: Opens Android's native account picker popup directly inside the app (no browser redirect!) with full-bleed customizable language app icons.\n"
+        "• **Direct In-App Updates**: Install future updates directly from inside OpenLingo on Android, Windows, Linux, and Web.\n"
+        "• **Course Ratings, Feedback, Shareable Links & Linked Discord Channels**: Every course now has an Author, shareable `?course=` link, 1–5★ ratings & comments, and a direct link to its `#course-*` channel right here!\n\n"
+        "### 🔗 Try It Now\n"
+        "🌐 **Web App:** https://mahesh-labs.github.io/openlingo/\n"
+        "📦 **Download (Android / Windows / Linux):** https://github.com/mahesh-labs/openlingo/releases/tag/v0.0.11-beta\n\n"
+        "Drop your feedback in `#bug-reports` or `#feature-suggestions`, share your streak in `#daily-streaks-and-wins`, and let us know which language you're starting in `#introductions`! 💜"
+    ),
+}
+
 
 def discord_req(method, path, token, payload=None):
     url = f"{API_BASE}{path}"
@@ -195,6 +239,26 @@ def main():
         sys.exit(1)
 
     existing_channels = discord_req("GET", f"/guilds/{guild_id}/channels", token)
+
+    if "--post-launch" in sys.argv:
+        by_name = {c["name"].lower(): c for c in existing_channels if c.get("type") == 0}
+        for ch_name, content in LAUNCH_POSTS.items():
+            target = by_name.get(ch_name)
+            if not target:
+                print(f"Skipping #{ch_name} (channel not found)")
+                continue
+            msg = discord_req("POST", f"/channels/{target['id']}/messages", token, {"content": content})
+            print(f"Posted to #{ch_name} (message id: {msg.get('id')})")
+            if msg.get("id") and ch_name in ("rules", "downloads-and-links"):
+                try:
+                    discord_req("PUT", f"/channels/{target['id']}/pins/{msg['id']}", token)
+                    print(f"  Pinned in #{ch_name}")
+                except Exception:
+                    pass
+            time.sleep(0.5)
+        print("\nLaunch rules, downloads, and v0.0.11-beta announcement posted!")
+        return
+
     existing_cats = {c["name"].lower(): c for c in existing_channels if c.get("type") == 4}
     existing_by_key = {(c.get("parent_id"), c["name"].lower()): c for c in existing_channels if c.get("type") != 4}
 
