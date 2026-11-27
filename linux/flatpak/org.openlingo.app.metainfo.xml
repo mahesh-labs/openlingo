@@ -22,6 +22,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.0.11-beta" date="2026-11-27">
+      <description>
+        <p>First public release across Web, Android, Windows (EXE setup, single-file Portable EXE, MSI, Portable ZIP), and Linux (AppImage, Flatpak, Deb, RPM, Arch, Tar, Zip) with native Android Google account picker, direct in-app updates on all platforms, updated Privacy Policy &amp; Open Graph social cards, and refreshed README.</p>
+      </description>
+    </release>
     <release version="0.0.10-beta" date="2026-11-27">
       <description>
         <p>Native Android Google account picker popup with Google Play Services AuthorizationClient (no browser needed), direct in-app Android APK updates via PackageInstaller with live progress bar, and direct in-app Linux desktop self-updates across AppImage, Portable, Flatpak, Arch, Debian/Ubuntu, and Fedora/RHEL.</p>

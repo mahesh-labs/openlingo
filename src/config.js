@@ -5,7 +5,7 @@
  */
 
 export const APP_CONFIG = {
-  appVersion: '0.0.10-beta',
+  appVersion: '0.0.11-beta',
   githubRepo: 'mahesh-labs/openlingo',
   githubBranch: 'main',
   discordUrl: 'https://discord.gg/pYMKxY4jE',

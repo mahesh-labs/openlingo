@@ -1,5 +1,5 @@
 param(
-  [string]$Version = $(if ($env:APP_VERSION) { $env:APP_VERSION } else { "0.0.10-beta" })
+  [string]$Version = $(if ($env:APP_VERSION) { $env:APP_VERSION } else { "0.0.11-beta" })
 )
 
 $ErrorActionPreference = "Stop"
