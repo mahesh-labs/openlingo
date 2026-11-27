@@ -5,7 +5,7 @@
  */
 
 export const APP_CONFIG = {
-  appVersion: '0.0.11-beta',
+  appVersion: '0.0.12-beta',
   publicWebUrl: 'https://mahesh-labs.github.io/openlingo/',
   githubRepo: 'mahesh-labs/openlingo',
   githubBranch: 'main',

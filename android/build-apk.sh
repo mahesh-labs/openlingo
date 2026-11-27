@@ -5,7 +5,7 @@ PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 ANDROID_DIR="$PROJECT_DIR/android"
 BUILD_DIR="$ANDROID_DIR/build"
 LIBS_DIR="$ANDROID_DIR/libs"
-VERSION_NAME="${APP_VERSION:-0.0.11-beta}"
+VERSION_NAME="${APP_VERSION:-0.0.12-beta}"
 
 SDK_DIR="${ANDROID_HOME:-/home/mahesh/Android/Sdk}"
 BUILD_TOOLS="$SDK_DIR/build-tools/36.0.0"
