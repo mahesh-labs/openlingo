@@ -1824,7 +1824,7 @@ function renderCharactersView(course) {
 
         ${
           ds.result
-            ? `<div class="draw-feedback ${ds.result.passed ? 'pass' : 'retry'}">${escapeHtml(ds.result.feedback)}</div>`
+            ? `<div class="draw-feedback ${ds.result.passed ? 'pass' : (ds.result.score >= 45 ? 'warn' : 'retry')}">${escapeHtml(ds.result.feedback)}</div>`
             : `<div style="font-size:12px;color:var(--text-muted);">${isWordMode ? 'Write across the ruled lines with your finger or mouse' : 'Draw inside the square with your finger or mouse'}</div>`
         }
 
@@ -1856,7 +1856,7 @@ function renderCharactersView(course) {
       return `
         ${renderHudBar(course)}
         <section class="card" style="text-align:center;padding:38px 24px;">
-          <div style="font-size:48px;margin-bottom:8px;">✨</div>
+          <div style="color:var(--gold);margin-bottom:10px;">${uiIcon('trophy', 52)}</div>
           <h1 class="page-title">Script Drill Complete!</h1>
           <p class="page-sub">${escapeHtml(d.tabLabel)} · ${d.correctCount}/${d.questions.length} (${pct}%) · +20 XP</p>
           <div style="display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap;">
@@ -1870,18 +1870,19 @@ function renderCharactersView(course) {
     const q = d.questions[d.index];
     const pct = Math.round((d.index / d.questions.length) * 100);
     return `
-      <div class="header-bar" style="margin-bottom:12px;">
-        <div>
-          <h1 class="page-title" style="font-size:20px;">${escapeHtml(d.tabLabel)} Drill</h1>
-          <p class="page-sub">Question ${d.index + 1} of ${d.questions.length}</p>
-        </div>
-        <button class="btn btn-sm" id="close-script-drill">✕ Exit Drill</button>
+      <div class="drill-topbar">
+        <button class="icon-btn drill-exit-btn" id="close-script-drill" title="Exit drill" aria-label="Exit drill">${uiIcon('x', 18)}</button>
+        <div class="progress-track drill-progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <span class="hud-chip" style="color:var(--accent-text);">${d.index + 1}/${d.questions.length}</span>
       </div>
-      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-      <section class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div class="drill-meta-line">
+        <span>${escapeHtml(d.tabLabel)}</span>
+        <span>${d.index + 1} / ${d.questions.length}</span>
+      </div>
+      <section class="card drill-card">
+        <div class="drill-prompt-head">
           <span class="pill">${escapeHtml(q.promptLabel)}</span>
-          <button class="btn btn-sm" data-speak-locale="${escapeHtml(d.speechLocale)}" data-speak="${escapeHtml(q.ch.glyph)}">🔊 Listen</button>
+          <button class="btn btn-sm" data-speak-locale="${escapeHtml(d.speechLocale)}" data-speak="${escapeHtml(q.ch.glyph)}">${uiIcon('volume', 16)} ${escapeHtml(tCourse(course, 'listen'))}</button>
         </div>
         <div class="prompt-main" style="font-size:46px;margin:16px 0;">${escapeHtml(q.promptMain)}</div>
         <div class="options-grid">
@@ -1903,9 +1904,14 @@ function renderCharactersView(course) {
         ${
           d.answered
             ? `
-          <div style="margin-top:18px;padding:14px;border-radius:12px;background:${d.wasCorrect ? 'var(--accent-soft)' : 'rgba(244,63,94,0.14)'};display:flex;justify-content:space-between;align-items:center;gap:12px;">
-            <div><strong>${d.wasCorrect ? 'Correct!' : 'Review:'}</strong> ${escapeHtml(q.ch.glyph)} = ${escapeHtml(q.ch.romaji)}</div>
-            <button class="btn btn-primary btn-sm" id="next-script-q">Continue →</button>
+          <div id="drill-feedback-box" class="drill-feedback ${d.wasCorrect ? 'is-correct' : 'is-wrong'}">
+            <div class="drill-feedback-row">
+              <span class="drill-feedback-badge" aria-hidden="true">${uiIcon(d.wasCorrect ? 'check' : 'x', 16)}</span>
+              <div class="drill-feedback-text">
+                <div class="drill-feedback-main">${escapeHtml(q.ch.glyph)} = ${escapeHtml(q.ch.romaji)}</div>
+              </div>
+            </div>
+            <button class="btn ${d.wasCorrect ? 'btn-success' : 'btn-danger'} btn-sm" id="next-script-q">${escapeHtml(tCourse(course, 'continueBtn'))} ${uiIcon('arrowRight', 16)}</button>
           </div>
         `
             : ''
@@ -2063,11 +2069,13 @@ function renderPlacementView(course) {
         p.answered
           ? `
         <div id="drill-feedback-box" class="drill-feedback ${p.wasCorrect ? 'is-correct' : 'is-wrong'}">
-          <div class="drill-feedback-text">
-            <strong>${p.wasCorrect ? 'Correct!' : 'Incorrect'}</strong>
-            <div class="drill-feedback-detail"><span dir="${tDir}">${escapeHtml(q.item.term)}</span> — <span dir="${sDir}">${escapeHtml(q.item.translation)}</span></div>
+          <div class="drill-feedback-row">
+            <span class="drill-feedback-badge" aria-hidden="true">${uiIcon(p.wasCorrect ? 'check' : 'x', 16)}</span>
+            <div class="drill-feedback-text">
+              <div class="drill-feedback-main"><span dir="${tDir}">${escapeHtml(q.item.term)}</span> — <span dir="${sDir}">${escapeHtml(q.item.translation)}</span></div>
+            </div>
           </div>
-          <button class="btn btn-primary btn-sm" id="next-place-btn">Continue ${uiIcon('arrowRight', 16)}</button>
+          <button class="btn ${p.wasCorrect ? 'btn-success' : 'btn-danger'} btn-sm" id="next-place-btn">${escapeHtml(tCourse(course, 'continueBtn'))} ${uiIcon('arrowRight', 16)}</button>
         </div>
       `
           : ''
@@ -2243,13 +2251,15 @@ function renderLessonView(course) {
         session.answered
           ? `
         <div id="drill-feedback-box" class="drill-feedback ${session.wasCorrect ? 'is-correct' : 'is-wrong'}" dir="${sDir}">
-          <div class="drill-feedback-text">
-            <strong>${escapeHtml(session.wasCorrect ? tCourse(course, 'nicelyDone') : tCourse(course, 'keepPracticing'))}</strong>
-            <div class="drill-feedback-detail">
-              <span dir="${tDir}">${escapeHtml(ex.item.term)}</span> ${ex.item.transliteration ? `(${escapeHtml(ex.item.transliteration)})` : ''} — <span dir="${sDir}">${escapeHtml(ex.item.translation)}</span>
+          <div class="drill-feedback-row">
+            <span class="drill-feedback-badge" aria-hidden="true">${uiIcon(session.wasCorrect ? 'check' : 'x', 16)}</span>
+            <div class="drill-feedback-text">
+              <div class="drill-feedback-main">
+                <span dir="${tDir}">${escapeHtml(ex.item.term)}</span> ${ex.item.transliteration ? `<span style="opacity:0.8;">(${escapeHtml(ex.item.transliteration)})</span>` : ''} — <span dir="${sDir}">${escapeHtml(ex.item.translation)}</span>
+              </div>
             </div>
           </div>
-          <button class="btn btn-primary btn-sm" id="next-exercise-btn">${escapeHtml(tCourse(course, 'continueBtn'))} ${uiIcon('arrowRight', 16)}</button>
+          <button class="btn ${session.wasCorrect ? 'btn-success' : 'btn-danger'} btn-sm" id="next-exercise-btn">${escapeHtml(tCourse(course, 'continueBtn'))} ${uiIcon('arrowRight', 16)}</button>
         </div>
       `
           : ''
