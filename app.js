@@ -35,6 +35,18 @@ import {
   dismissUpdateVersion,
   openExternalLink
 } from './src/updater.js';
+import {
+  fetchPublicCourseReviews,
+  getCourseReviews,
+  getCourseRatingSummary,
+  saveLocalCourseReview,
+  getCourseMeta,
+  buildCourseShareUrl,
+  buildPublicReviewIssueUrl,
+  shareOrCopyCourseLink,
+  getLocalCourseReviews,
+  mergeReviewsFromCloud
+} from './src/courseSocial.js';
 
 const STORAGE_KEYS = {
   COURSES: 'openlingo_custom_courses_v2',
@@ -60,6 +72,10 @@ const state = {
   showAddCoursePicker: false,
   showAddCourseModal: false,
   addCourseSearch: '',
+  addCourseSort: 'default', // 'default' | 'rating' | 'popular'
+  courseInfoModalId: null,
+  courseReviewDraft: { rating: 5, comment: '' },
+  courseReviewNotice: '',
   selectedSectionId: 'sec-n5',
   activeScriptTab: null,
   scriptDrill: null,
@@ -1019,6 +1035,7 @@ function buildBackupPayload() {
     profile: state.profile,
     progress: state.progress,
     srs: state.srs,
+    courseReviews: getLocalCourseReviews(),
     customCourses: state.courses.filter((c) => c._custom)
   };
 }
@@ -1049,6 +1066,10 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
   const data = decodeBackupInput(rawText);
   if (!data || typeof data !== 'object' || (!data.progress && !data.srs)) {
     throw new Error('Not a valid OpenLingo backup file or code.');
+  }
+
+  if (data.courseReviews && typeof data.courseReviews === 'object') {
+    mergeReviewsFromCloud(data.courseReviews);
   }
 
   state.progress = {
@@ -1570,6 +1591,7 @@ function renderSyllabusView(course) {
       : sections.filter((s) => s.id === state.selectedSectionId);
 
   const offsets = ['center', 'offset-left', 'center', 'offset-right'];
+  const ratingInfo = getCourseRatingSummary(course.id);
 
   return `
     <div class="syllabus-top-bar">
@@ -1597,6 +1619,10 @@ function renderSyllabusView(course) {
             })
           : ''
       }
+      <button type="button" class="btn btn-sm course-social-pill" data-open-course-info="${escapeHtml(course.id)}" title="Course author, ratings, share link & Discord">
+        <span style="color:var(--gold);display:inline-flex;">${uiIcon('star', 14)}</span>
+        <span>${ratingInfo.count ? `${ratingInfo.average.toFixed(1)} (${ratingInfo.count})` : 'Rate & Share'}</span>
+      </button>
       <div class="hud-metrics" style="margin-left:auto;">
         <span class="hud-chip" style="color:#f97316;">${uiIcon('flame', 17)} ${state.progress.streak}d</span>
         <span class="hud-chip" style="color:#eab308;">${uiIcon('zap', 17)} ${state.progress.xp} XP</span>
@@ -2431,11 +2457,39 @@ function renderStudioView(course) {
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn btn-sm" data-nav="settings">← Back to Settings</button>
+        <button class="btn btn-sm" data-open-course-info="${escapeHtml(course.id)}">${uiIcon('star', 15)} Rate &amp; Reviews</button>
+        <button class="btn btn-sm" data-share-course="${escapeHtml(course.id)}">${uiIcon('share', 15)} Share Course</button>
         <button class="btn btn-sm" id="export-course-btn">${uiIcon('download', 15)} Export Current JSON</button>
       </div>
     </div>
 
     ${state.studioMessage ? `<div class="grammar-box">${escapeHtml(state.studioMessage)}</div>` : ''}
+
+    ${(() => {
+      const meta = getCourseMeta(course);
+      const rSum = getCourseRatingSummary(course.id);
+      return `
+        <section class="card" style="padding:14px 16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+            <div style="min-width:0;flex:1;">
+              <div style="font-size:12px;font-weight:800;color:var(--accent-text);text-transform:uppercase;letter-spacing:0.04em;">Active Course · Share &amp; Community</div>
+              <div style="font-weight:800;font-size:16px;margin-top:2px;">${escapeHtml(course.title)}</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
+                Author: <strong>${escapeHtml(meta.author)}</strong>
+                · Rating: <strong>${rSum.count ? `★ ${rSum.average.toFixed(1)} (${rSum.count})` : 'No ratings yet'}</strong>
+              </div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:6px;word-break:break-all;">
+                Share link: <code style="color:var(--accent-text);">${escapeHtml(meta.shareUrl)}</code>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" data-share-course="${escapeHtml(course.id)}">${uiIcon('copy', 14)} Copy Share Link</button>
+              <button type="button" class="btn btn-sm" data-open-external="${escapeHtml(meta.discordChannelUrl)}">${uiIcon('discord', 15)} ${meta.hasDedicatedDiscord ? 'Course Channel' : 'Discord'}</button>
+            </div>
+          </div>
+        </section>
+      `;
+    })()}
 
     <section class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
@@ -2511,10 +2565,12 @@ function renderStudioView(course) {
                 <div>
                   <div style="font-weight:700;font-size:14px;">${escapeHtml(entry.title || entry.id)} ${entry.nativeName ? `<span style="color:var(--accent-text);font-weight:600;">(${escapeHtml(entry.nativeName)})</span>` : ''}</div>
                   <div style="font-size:12px;color:var(--text-muted);">
-                    <code>${escapeHtml(entry.path)}</code>${entry.items ? ` · ${entry.items} items` : ''} · ${escapeHtml(badge)}
+                    ${entry.author ? `by <strong>${escapeHtml(entry.author)}</strong> · ` : ''}<code>${escapeHtml(entry.path)}</code>${entry.items ? ` · ${entry.items} items` : ''} · ${escapeHtml(badge)}
                   </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button class="btn btn-sm" data-open-course-info="${escapeHtml(entry.id)}" title="Ratings, reviews &amp; Discord">${uiIcon('star', 14)}</button>
+                  <button class="btn btn-sm" data-share-course="${escapeHtml(entry.id)}" title="Copy share link">${uiIcon('share', 14)}</button>
                   ${installed ? `<button class="btn btn-sm" data-switch-course="${escapeHtml(entry.id)}">Open</button>` : ''}
                   <button class="btn btn-primary btn-sm" data-install-github="${escapeHtml(entry.id)}" ${state.catalogLoading ? 'disabled' : ''}>
                     ${uiIcon('download', 14)} ${installed ? (hasUpdate ? 'Update' : 'Pull Latest') : 'Install'}
@@ -2551,6 +2607,18 @@ function renderStudioView(course) {
           <div>
             <label class="field-label">Speech Locale (BCP-47)</label>
             <input class="input" name="speechLocale" placeholder="ko-KR" required />
+          </div>
+          <div>
+            <label class="field-label">Author Name</label>
+            <input class="input" name="author" value="${escapeHtml(getDisplayName() !== 'Learner' ? getDisplayName() : '')}" placeholder="Your name or @github" />
+          </div>
+          <div>
+            <label class="field-label">Author Profile URL (optional)</label>
+            <input class="input" name="authorUrl" placeholder="https://github.com/yourname" />
+          </div>
+          <div style="grid-column:1 / -1;">
+            <label class="field-label">Linked Discord Channel URL (optional)</label>
+            <input class="input" name="discordChannelUrl" placeholder="https://discord.com/channels/... (defaults to OpenLingo Discord)" />
           </div>
         </div>
         <button class="btn btn-primary btn-sm" type="submit">+ Create Course</button>
@@ -3565,6 +3633,132 @@ function attachEvents(course) {
     render();
   });
 
+  bindCustomSelect('modal-course-sort', (val) => {
+    state.addCourseSort = val;
+    render();
+  });
+
+  /* Course Info, Ratings, Comments & Share Handlers */
+  document.querySelectorAll('[data-open-course-info]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const cid = btn.dataset.openCourseInfo;
+      state.courseInfoModalId = cid;
+      state.courseReviewNotice = '';
+      const existingMine = getCourseReviews(cid).find((r) => r.isMine);
+      state.courseReviewDraft = {
+        rating: existingMine?.rating || 5,
+        comment: existingMine?.comment || ''
+      };
+      render();
+      fetchPublicCourseReviews(state.syncSettings.githubRepo, false).then(() => {
+        if (state.courseInfoModalId === cid) render();
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-share-course]').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const cid = btn.dataset.shareCourse;
+      const loaded = state.courses.find((c) => c.id === cid);
+      const url = buildCourseShareUrl({ id: cid, importUrl: loaded?._importUrl || '' });
+      const res = await shareOrCopyCourseLink(url, loaded?.title || cid);
+      showToast(res === 'shared' ? 'Shared course link!' : `Course link copied: ${url}`);
+    });
+  });
+
+  const courseInfoBackdrop = document.getElementById('course-info-modal-backdrop');
+  if (courseInfoBackdrop) {
+    courseInfoBackdrop.addEventListener('click', (e) => {
+      if (e.target === courseInfoBackdrop || e.target.closest('#close-course-info-modal')) {
+        state.courseInfoModalId = null;
+        state.courseReviewNotice = '';
+        render();
+      }
+    });
+  }
+
+  const courseInfoStartBtn = document.getElementById('course-info-start-btn');
+  if (courseInfoStartBtn) {
+    courseInfoStartBtn.addEventListener('click', async () => {
+      const cid = courseInfoStartBtn.dataset.courseId;
+      state.courseInfoModalId = null;
+      state.showAddCourseModal = false;
+      await enrollCourse(cid, true);
+    });
+  }
+
+  document.querySelectorAll('[data-pick-star]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const stars = parseInt(btn.dataset.pickStar, 10) || 5;
+      const ta = document.getElementById('course-review-comment');
+      state.courseReviewDraft = {
+        rating: stars,
+        comment: ta ? ta.value : state.courseReviewDraft?.comment || ''
+      };
+      render();
+    });
+  });
+
+  const courseReviewForm = document.getElementById('course-review-form');
+  if (courseReviewForm) {
+    courseReviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cid = state.courseInfoModalId;
+      if (!cid) return;
+      const ta = document.getElementById('course-review-comment');
+      const comment = ta ? ta.value.trim() : '';
+      const rating = state.courseReviewDraft?.rating || 5;
+      state.courseReviewDraft = { rating, comment };
+      saveLocalCourseReview(cid, {
+        rating,
+        comment,
+        authorName: getDisplayName()
+      });
+      state.courseReviewNotice = 'Saved your rating & feedback! Tap "Publish Publicly" to share it with all OpenLingo learners.';
+      autoBackupToGoogleDrive();
+      render();
+    });
+  }
+
+  const publishPublicReviewBtn = document.getElementById('publish-public-review-btn');
+  if (publishPublicReviewBtn) {
+    publishPublicReviewBtn.addEventListener('click', () => {
+      const cid = state.courseInfoModalId;
+      if (!cid) return;
+      const ta = document.getElementById('course-review-comment');
+      const comment = ta ? ta.value.trim() : '';
+      const rating = state.courseReviewDraft?.rating || 5;
+      state.courseReviewDraft = { rating, comment };
+      saveLocalCourseReview(cid, {
+        rating,
+        comment,
+        authorName: getDisplayName()
+      });
+      const loaded = state.courses.find((c) => c.id === cid);
+      const issueUrl = buildPublicReviewIssueUrl({
+        courseId: cid,
+        courseTitle: loaded?.title || cid,
+        rating,
+        comment,
+        repo: state.syncSettings.githubRepo
+      });
+      openExternalLink(issueUrl);
+      state.courseReviewNotice = 'Opened GitHub to publish your review publicly — once submitted, everyone on OpenLingo will see it!';
+      render();
+    });
+  }
+
+  const refreshCourseReviewsBtn = document.getElementById('refresh-course-reviews-btn');
+  if (refreshCourseReviewsBtn) {
+    refreshCourseReviewsBtn.addEventListener('click', async () => {
+      await fetchPublicCourseReviews(state.syncSettings.githubRepo, true);
+      showToast('Refreshed community course reviews.');
+      render();
+    });
+  }
+
   const modalSearchInput = document.getElementById('modal-course-search');
   if (modalSearchInput) {
     modalSearchInput.addEventListener('input', (e) => {
@@ -4262,12 +4456,18 @@ function attachEvents(course) {
       const targetName = String(fd.get('targetName')).trim();
       const nativeName = String(fd.get('nativeName')).trim() || targetName;
       const speechLocale = String(fd.get('speechLocale')).trim();
+      const author = String(fd.get('author') || '').trim() || getDisplayName() || 'Community Author';
+      const authorUrl = String(fd.get('authorUrl') || '').trim();
+      const discordChannelUrl = String(fd.get('discordChannelUrl') || '').trim();
 
       const newCourse = {
         id,
         version: '0.1.0',
         title: `${targetName} for English Speakers`,
         description: `Community-created open-source syllabus for learning ${targetName}.`,
+        author,
+        authorUrl,
+        discordChannelUrl,
         license: 'CC-BY-SA-4.0',
         _custom: true,
         sourceLang: { code: 'en', name: 'English', dir: 'ltr' },
@@ -4531,6 +4731,26 @@ function renderAddCourseModal() {
   const enrolledSet = new Set(state.enrolledCourseIds);
   const query = (state.addCourseSearch || '').trim().toLowerCase();
 
+  // Combine matrix targets with their rating summaries so users can sort by Popularity or Rating
+  const rows = targets.map((t) => {
+    const pairId = `${srcMeta.code}-${t.code}`;
+    const existingCourse = state.courses.find((c) => c.id === pairId);
+    const meta = getCourseMeta(existingCourse, {
+      id: pairId,
+      targetCode: t.code,
+      title: `${srcMeta.name} → ${t.name}`,
+      author: t.author || 'OpenLingo Core Team'
+    });
+    const rating = getCourseRatingSummary(pairId);
+    return { t, pairId, isEnrolled: enrolledSet.has(pairId), meta, rating };
+  });
+
+  if (state.addCourseSort === 'rating') {
+    rows.sort((a, b) => (b.rating.average - a.rating.average) || (b.rating.count - a.rating.count));
+  } else if (state.addCourseSort === 'popular') {
+    rows.sort((a, b) => (b.rating.popularityScore - a.rating.popularityScore) || (b.rating.count - a.rating.count));
+  }
+
   return `
     <div id="add-course-modal-backdrop" class="ol-select-overlay" role="dialog" aria-modal="true" aria-label="Add a Course">
       <div class="ol-select-modal add-course-modal">
@@ -4543,33 +4763,44 @@ function renderAddCourseModal() {
         </div>
 
         <div class="add-course-modal-controls">
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <span style="font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap;">I speak:</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap;">I speak:</span>
+              ${renderCustomSelect({
+                id: 'modal-source-lang',
+                className: 'level-select profile-lang-select',
+                ariaLabel: 'Language you speak',
+                value: srcMeta?.code || 'en',
+                options: langs.map((l) => ({ value: l.code, label: `${l.name} (${l.nativeName})` }))
+              })}
+            </div>
             ${renderCustomSelect({
-              id: 'modal-source-lang',
-              className: 'level-select profile-lang-select',
-              ariaLabel: 'Language you speak',
-              value: srcMeta?.code || 'en',
-              options: langs.map((l) => ({ value: l.code, label: `${l.name} (${l.nativeName})` }))
+              id: 'modal-course-sort',
+              className: 'level-select',
+              ariaLabel: 'Sort courses',
+              value: state.addCourseSort || 'default',
+              options: [
+                { value: 'default', label: 'Sort: Default' },
+                { value: 'popular', label: 'Most Popular' },
+                { value: 'rating', label: 'Highest Rated' }
+              ]
             })}
           </div>
           <input
             type="search"
             id="modal-course-search"
             class="input"
-            placeholder="Filter languages (e.g. Tamil, Japanese, Korean)..."
+            placeholder="Filter languages or authors (e.g. Tamil, Japanese, Korean)..."
             value="${escapeHtml(state.addCourseSearch)}"
             style="padding:9px 13px;font-size:14px;"
           />
         </div>
 
         <div class="ol-select-list" style="max-height:54vh;">
-          ${targets
-            .map((t) => {
-              const pairId = `${srcMeta.code}-${t.code}`;
-              const isEnrolled = enrolledSet.has(pairId);
+          ${rows
+            .map(({ t, pairId, isEnrolled, meta, rating }) => {
               const lvlRange = `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`;
-              const hay = `${srcMeta.name} ${srcMeta.nativeName} ${t.name} ${t.nativeName} ${t.code} ${pairId}`;
+              const hay = `${srcMeta.name} ${srcMeta.nativeName} ${t.name} ${t.nativeName} ${t.code} ${pairId} ${meta.author}`;
               const hidden = query && !hay.toLowerCase().includes(query);
               return `
                 <div class="add-course-modal-row" data-modal-course-item="${escapeHtml(hay)}" style="${hidden ? 'display:none;' : ''}">
@@ -4580,18 +4811,173 @@ function renderAddCourseModal() {
                         ${escapeHtml(srcMeta.name)} → ${escapeHtml(t.name)}
                         <span style="color:var(--accent-text);margin-left:3px;">(${escapeHtml(t.nativeName)})</span>
                       </div>
-                      <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(lvlRange)} · 25 units · 375 items</div>
+                      <div style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px;">
+                        <span>${escapeHtml(lvlRange)}</span>
+                        <span>·</span>
+                        <span>by ${escapeHtml(meta.author)}</span>
+                        ${
+                          rating.count
+                            ? `<span class="course-rating-badge">${uiIcon('star', 11)} ${rating.average.toFixed(1)} (${rating.count})</span>`
+                            : ''
+                        }
+                      </div>
                     </div>
                   </div>
-                  ${
-                    isEnrolled
-                      ? `<button type="button" class="btn btn-sm" data-modal-enroll-course="${escapeHtml(pairId)}">${uiIcon('check', 14)} Open</button>`
-                      : `<button type="button" class="btn btn-primary btn-sm" data-modal-enroll-course="${escapeHtml(pairId)}" ${state.loadingCourse ? 'disabled' : ''}>${uiIcon('plus', 14)} Add</button>`
-                  }
+                  <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                    <button type="button" class="icon-btn course-row-mini-btn" data-open-course-info="${escapeHtml(pairId)}" title="Author, ratings, comments &amp; Discord" aria-label="Course info and reviews">${uiIcon('star', 15)}</button>
+                    <button type="button" class="icon-btn course-row-mini-btn" data-share-course="${escapeHtml(pairId)}" title="Copy shareable course link" aria-label="Share course link">${uiIcon('share', 15)}</button>
+                    ${
+                      isEnrolled
+                        ? `<button type="button" class="btn btn-sm" data-modal-enroll-course="${escapeHtml(pairId)}">${uiIcon('check', 14)} Open</button>`
+                        : `<button type="button" class="btn btn-primary btn-sm" data-modal-enroll-course="${escapeHtml(pairId)}" ${state.loadingCourse ? 'disabled' : ''}>${uiIcon('plus', 14)} Add</button>`
+                    }
+                  </div>
                 </div>
               `;
             })
             .join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCourseInfoModal() {
+  if (!state.courseInfoModalId) return '';
+  const cid = state.courseInfoModalId;
+  const loadedCourse = state.courses.find((c) => c.id === cid);
+  const catalogEntry = (state.catalogEntries || []).find((e) => e.id === cid);
+  const pair = parseMatrixCourseId(cid);
+  const langs = getMatrixLanguages();
+  const srcMeta = pair ? langs.find((l) => l.code === pair.sourceCode) : null;
+  const tgtMeta = pair ? langs.find((l) => l.code === pair.targetCode) : null;
+
+  const title =
+    loadedCourse?.title ||
+    catalogEntry?.title ||
+    (srcMeta && tgtMeta ? `${srcMeta.name} → ${tgtMeta.name} (${tgtMeta.nativeName})` : cid);
+  const glyph =
+    tgtMeta?.icon?.glyph ||
+    loadedCourse?.targetLang?.nativeName?.slice(0, 1) ||
+    (cid.split('-')[1] || cid).slice(0, 2).toUpperCase();
+  const meta = getCourseMeta(loadedCourse, {
+    id: cid,
+    targetCode: tgtMeta?.code || cid.split('-')[1] || '',
+    title,
+    author: catalogEntry?.author || tgtMeta?.author || 'OpenLingo Core Team',
+    authorUrl: catalogEntry?.authorUrl || ''
+  });
+  const ratingSum = getCourseRatingSummary(cid);
+  const reviews = getCourseReviews(cid);
+  const isEnrolled = state.enrolledCourseIds.includes(cid);
+  const draftStars = Math.max(1, Math.min(5, Number(state.courseReviewDraft?.rating) || 5));
+
+  return `
+    <div id="course-info-modal-backdrop" class="ol-select-overlay" role="dialog" aria-modal="true" aria-label="Course Info, Ratings &amp; Share">
+      <div class="ol-select-modal course-info-modal">
+        <div class="ol-select-modal-header">
+          <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+            <span class="modal-lang-glyph" style="width:40px;height:40px;font-size:19px;">${escapeHtml(glyph)}</span>
+            <div style="min-width:0;">
+              <div class="ol-select-modal-title" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(title)}</div>
+              <div style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px;">
+                <span>Author: ${
+                  meta.authorUrl
+                    ? `<a href="${escapeHtml(meta.authorUrl)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-text);font-weight:700;text-decoration:underline;">${escapeHtml(meta.author)}</a>`
+                    : `<strong>${escapeHtml(meta.author)}</strong>`
+                }</span>
+                <span>·</span>
+                <span style="color:var(--gold);font-weight:800;">★ ${ratingSum.count ? `${ratingSum.average.toFixed(1)} (${ratingSum.count})` : 'New'}</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="close-course-info-modal" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
+        </div>
+
+        <div class="course-info-body">
+          <div class="course-info-actions">
+            <button type="button" class="btn btn-primary btn-sm" id="course-info-start-btn" data-course-id="${escapeHtml(cid)}">
+              ${uiIcon(isEnrolled ? 'play' : 'plus', 15)} ${isEnrolled ? 'Open Course' : 'Add & Start Course'}
+            </button>
+            <button type="button" class="btn btn-sm" data-share-course="${escapeHtml(cid)}">
+              ${uiIcon('share', 15)} Share Link
+            </button>
+            <button type="button" class="btn btn-sm" data-open-external="${escapeHtml(meta.discordChannelUrl)}">
+              ${uiIcon('discord', 15)} ${meta.hasDedicatedDiscord ? 'Course Discord' : 'OpenLingo Discord'}
+            </button>
+          </div>
+
+          <div class="course-share-link-box">
+            <span style="font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Shareable Course Link</span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+              <input type="text" class="input" readonly value="${escapeHtml(meta.shareUrl)}" style="padding:7px 10px;font-size:12px;font-family:monospace;" onclick="this.select()" />
+              <button type="button" class="btn btn-sm" data-share-course="${escapeHtml(cid)}" style="white-space:nowrap;">${uiIcon('copy', 14)} Copy</button>
+            </div>
+          </div>
+
+          <form id="course-review-form" class="course-review-form">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:13px;font-weight:800;">Rate &amp; Leave Feedback</span>
+              <div class="star-picker" role="radiogroup" aria-label="Course star rating">
+                ${[1, 2, 3, 4, 5]
+                  .map(
+                    (n) => `
+                  <button type="button" class="star-pick-btn ${n <= draftStars ? 'active' : ''}" data-pick-star="${n}" aria-label="${n} star${n > 1 ? 's' : ''}">
+                    ${uiIcon(n <= draftStars ? 'star' : 'starOutline', 20)}
+                  </button>
+                `
+                  )
+                  .join('')}
+              </div>
+            </div>
+            <textarea
+              id="course-review-comment"
+              class="input"
+              rows="2"
+              placeholder="Share what you liked, tips for learners, or suggestions for the author..."
+              style="resize:vertical;font-size:13px;padding:9px 11px;"
+            >${escapeHtml(state.courseReviewDraft?.comment || '')}</textarea>
+            ${state.courseReviewNotice ? `<div style="font-size:12px;font-weight:700;color:var(--success);">${escapeHtml(state.courseReviewNotice)}</div>` : ''}
+            <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+              <button type="submit" class="btn btn-primary btn-sm">${uiIcon('check', 14)} Save Review</button>
+              <button type="button" class="btn btn-sm" id="publish-public-review-btn">${uiIcon('github', 14)} Publish Publicly</button>
+            </div>
+          </form>
+
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;font-weight:800;">Community Reviews &amp; Comments (${reviews.length})</span>
+              <button type="button" class="btn btn-sm" id="refresh-course-reviews-btn" style="padding:4px 9px;font-size:11px;">${uiIcon('refresh', 12)} Refresh</button>
+            </div>
+            ${
+              reviews.length
+                ? `<div class="course-reviews-list">
+                    ${reviews
+                      .map((r) => {
+                        const dateStr = r.createdAt ? new Date(r.createdAt).toLocaleDateString() : '';
+                        return `
+                        <div class="course-review-item">
+                          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+                            <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:800;">
+                              <span>${escapeHtml(r.author)}</span>
+                              <span class="pill" style="font-size:10px;padding:2px 6px;">${r.source === 'github' ? 'Public' : 'Yours'}</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:6px;font-size:12px;">
+                              <span style="color:var(--gold);letter-spacing:1px;">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+                              ${dateStr ? `<span style="color:var(--text-muted);">${escapeHtml(dateStr)}</span>` : ''}
+                            </div>
+                          </div>
+                          ${r.comment ? `<div style="font-size:13px;color:var(--text-muted);margin-top:5px;line-height:1.45;white-space:pre-wrap;">${escapeHtml(r.comment)}</div>` : ''}
+                        </div>
+                      `;
+                      })
+                      .join('')}
+                  </div>`
+                : `<div style="font-size:13px;color:var(--text-muted);padding:12px;border-radius:12px;background:var(--surface-elevated);border:2px solid var(--border);text-align:center;">
+                    No reviews yet — be the first to rate and comment on this course!
+                  </div>`
+            }
+          </div>
         </div>
       </div>
     </div>
@@ -4720,7 +5106,14 @@ function render() {
 
   // New user onboarding: start with 0 courses and ask which course to begin
   if (getEnrolledCourses().length === 0) {
-    document.getElementById('app').innerHTML = renderCourseOnboarding();
+    document.getElementById('app').innerHTML = `
+      ${renderCourseOnboarding()}
+      ${renderCourseInfoModal()}
+      <div id="audio-toast" class="app-toast" role="status" aria-live="polite" style="display:${state.audioToast ? 'inline-flex' : 'none'};" title="Tap to dismiss">
+        <span class="toast-text">${escapeHtml(state.audioToast)}</span>
+        <span class="toast-dismiss" aria-hidden="true">${uiIcon('x', 14)}</span>
+      </div>
+    `;
     bindCustomSelect('onboarding-source-lang', (val) => {
       state.pickerSourceLang = val;
       render();
@@ -4741,6 +5134,34 @@ function render() {
         render();
       });
     }
+    const onbCourseInfoBackdrop = document.getElementById('course-info-modal-backdrop');
+    if (onbCourseInfoBackdrop) {
+      onbCourseInfoBackdrop.addEventListener('click', (e) => {
+        if (e.target === onbCourseInfoBackdrop || e.target.closest('#close-course-info-modal')) {
+          state.courseInfoModalId = null;
+          render();
+        }
+      });
+    }
+    const onbStartBtn = document.getElementById('course-info-start-btn');
+    if (onbStartBtn) {
+      onbStartBtn.addEventListener('click', async () => {
+        const cid = onbStartBtn.dataset.courseId;
+        state.courseInfoModalId = null;
+        await enrollCourse(cid, true);
+      });
+    }
+    document.querySelectorAll('[data-share-course]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const cid = btn.dataset.shareCourse;
+        const url = buildCourseShareUrl({ id: cid });
+        const res = await shareOrCopyCourseLink(url, cid);
+        showToast(res === 'shared' ? 'Shared course link!' : `Course link copied: ${url}`);
+      });
+    });
+    document.querySelectorAll('[data-open-external]').forEach((btn) => {
+      btn.addEventListener('click', () => openExternalLink(btn.dataset.openExternal));
+    });
     return;
   }
 
@@ -4775,6 +5196,7 @@ function render() {
     ${isActiveDrill ? '' : renderMobileNav(course)}
     ${renderLessonSheet(course)}
     ${renderAddCourseModal()}
+    ${renderCourseInfoModal()}
     ${isActiveDrill ? '' : renderUpdateModal()}
     <div id="audio-toast" class="app-toast" role="status" aria-live="polite" style="display:${state.audioToast ? 'inline-flex' : 'none'};" title="Tap to dismiss">
       <span class="toast-text">${escapeHtml(state.audioToast)}</span>
@@ -4837,6 +5259,35 @@ async function init() {
   // Synthesize any already-enrolled matrix courses before rendering
   await Promise.all(state.enrolledCourseIds.map((id) => ensureCourseLoaded(id).catch(() => null)));
 
+  // Handle shareable course deep-link (?course=<id> and optional &import=<https-url>)
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const sharedCourseId = (params.get('course') || '').trim().toLowerCase();
+    const sharedImportUrl = (params.get('import') || '').trim();
+    if (sharedImportUrl && /^https:\/\//i.test(sharedImportUrl)) {
+      const impRes = await fetch(sharedImportUrl);
+      if (impRes.ok) {
+        const impCourse = await impRes.json();
+        if (impCourse && impCourse.id) {
+          impCourse._source = 'github';
+          impCourse._importUrl = sharedImportUrl;
+          const idx = state.courses.findIndex((c) => c.id === impCourse.id);
+          if (idx >= 0) state.courses[idx] = impCourse;
+          else state.courses.push(impCourse);
+          state.courseInfoModalId = impCourse.id;
+        }
+      }
+    } else if (sharedCourseId) {
+      await ensureCourseLoaded(sharedCourseId).catch(() => null);
+      state.courseInfoModalId = sharedCourseId;
+    }
+    if (state.courseInfoModalId) {
+      state.guestMode = true;
+    }
+  } catch {
+    // Ignore malformed share query params
+  }
+
   const active = getActiveCourse();
   state.selectedSectionId = active?.sections?.[0]?.id || 'all';
 
@@ -4850,8 +5301,13 @@ async function init() {
     render();
   }
 
-  // Immediately check GitHub Releases for a newer version on app launch
+  // Immediately check GitHub Releases for a newer version & prefetch public course ratings
   runUpdateCheck(false);
+  fetchPublicCourseReviews(state.syncSettings.githubRepo, false).then(() => {
+    if (state.showAddCourseModal || state.courseInfoModalId || state.view === 'syllabus') {
+      render();
+    }
+  });
 }
 
 init();

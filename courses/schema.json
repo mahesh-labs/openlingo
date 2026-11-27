@@ -21,6 +21,23 @@
     "description": {
       "type": "string"
     },
+    "author": {
+      "type": "string",
+      "description": "Course creator or maintainer name, e.g. 'OpenLingo Core Team' or '@username'."
+    },
+    "authorUrl": {
+      "type": "string",
+      "description": "Optional URL to the course author's GitHub profile or website."
+    },
+    "discordChannelUrl": {
+      "type": "string",
+      "description": "Optional direct link to the course's dedicated Discord channel in the OpenLingo server."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional discovery tags, e.g. ['beginner', 'travel', 'script']."
+    },
     "license": {
       "type": "string",
       "default": "CC-BY-SA-4.0"

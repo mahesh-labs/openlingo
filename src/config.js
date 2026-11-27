@@ -6,9 +6,26 @@
 
 export const APP_CONFIG = {
   appVersion: '0.0.11-beta',
+  publicWebUrl: 'https://mahesh-labs.github.io/openlingo/',
   githubRepo: 'mahesh-labs/openlingo',
   githubBranch: 'main',
   discordUrl: 'https://discord.gg/pYMKxY4jE',
+  // Map language code or course ID -> direct Discord channel URL (auto-populated by scripts/setup-discord-server.py)
+  courseDiscordChannels: {
+    en: '',
+    ml: '',
+    ta: '',
+    kn: '',
+    te: '',
+    hi: '',
+    ja: '',
+    zh: '',
+    ko: '',
+    ar: '',
+    es: '',
+    fr: '',
+    ru: ''
+  },
   donations: {
     githubSponsors: 'https://github.com/sponsors/mahesh-labs',
     kofi: '',

@@ -2893,6 +2893,102 @@ select.input {
   z-index: 140;
 }
 
+#course-info-modal-backdrop {
+  z-index: 125;
+}
+
+.course-social-pill {
+  padding: 7px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.course-rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.course-row-mini-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+}
+
+.course-info-modal {
+  max-width: 520px;
+}
+
+.course-info-body {
+  padding: 16px;
+  display: grid;
+  gap: 14px;
+  max-height: 74vh;
+  overflow-y: auto;
+}
+
+.course-info-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.course-share-link-box {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface-elevated);
+  border: 2px solid var(--border);
+}
+
+.course-review-form {
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--surface-elevated);
+  border: 2px solid var(--border);
+  display: grid;
+  gap: 10px;
+}
+
+.star-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-pick-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+
+.star-pick-btn.active {
+  color: var(--gold);
+}
+
+.star-pick-btn:hover {
+  transform: scale(1.15);
+}
+
+.course-reviews-list {
+  display: grid;
+  gap: 8px;
+}
+
+.course-review-item {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface-elevated);
+  border: 2px solid var(--border);
+}
+
 .add-course-modal {
   max-width: 520px;
 }
