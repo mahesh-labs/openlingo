@@ -2831,3 +2831,129 @@ select.input {
   gap: 8px;
   flex-wrap: wrap;
 }
+
+
+/* ==========================================================================
+   Decluttered Characters Top Bar & Global Add-Course Modal
+   ========================================================================== */
+.char-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.char-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.char-tab-select {
+  min-width: 195px;
+  max-width: 100%;
+  min-height: 42px;
+  padding: 8px 12px !important;
+  font-size: 14px;
+}
+
+.char-practice-select {
+  min-width: 118px;
+  min-height: 42px;
+  padding: 8px 12px !important;
+  font-size: 14px;
+  border-color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent-text) !important;
+}
+
+.char-mastery-pill {
+  padding: 6px 11px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.char-chart-card {
+  padding-top: 16px;
+}
+
+.char-chart-card .char-group-title:first-child {
+  margin-top: 0;
+}
+
+#add-course-modal-backdrop,
+#update-modal-backdrop {
+  z-index: 110;
+}
+
+#ol-select-overlay {
+  z-index: 140;
+}
+
+.add-course-modal {
+  max-width: 520px;
+}
+
+.add-course-modal-controls {
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--border);
+  background: var(--surface-elevated);
+  display: grid;
+  gap: 10px;
+}
+
+.add-course-modal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: 2px solid var(--border);
+  background: var(--surface-elevated);
+}
+
+.modal-lang-glyph {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2.5px solid var(--accent-border);
+  box-shadow: 0 3px 0 var(--accent-lip);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 780px) {
+  .char-top-bar {
+    gap: 8px;
+  }
+
+  .char-top-bar > .ol-select-wrap {
+    flex: 1 1 170px;
+    min-width: 0;
+  }
+
+  .char-tab-select {
+    width: 100%;
+    min-width: 0;
+    min-height: 38px;
+    padding: 7px 10px !important;
+    font-size: 13px;
+  }
+
+  .char-practice-select {
+    min-width: 98px;
+    min-height: 38px;
+    padding: 7px 10px !important;
+    font-size: 13px;
+  }
+}

@@ -58,6 +58,8 @@ const state = {
   pickerSourceLang: 'en',
   loadingCourse: false,
   showAddCoursePicker: false,
+  showAddCourseModal: false,
+  addCourseSearch: '',
   selectedSectionId: 'sec-n5',
   activeScriptTab: null,
   scriptDrill: null,
@@ -220,6 +222,7 @@ function openCustomSelectOverlay(key, onSelect) {
       </div>
       <div class="ol-select-list">
         ${cfg.options
+          .filter((opt) => !opt.hidden)
           .map((opt) => {
             const isSel = String(opt.value) === String(cfg.value);
             return `
@@ -860,10 +863,37 @@ function unlockUnitDirectly(course, unitId) {
   render();
 }
 
+function resolveScriptTab(scriptSet, tabId) {
+  if (!tabId || tabId === '__all__') {
+    const rows = scriptSet.tabs.flatMap((t) => t.rows);
+    return {
+      id: '__all__',
+      label: 'All Characters',
+      note: scriptSet.subtitle || '',
+      rows
+    };
+  }
+  return scriptSet.tabs.find((t) => t.id === tabId) || scriptSet.tabs[0];
+}
+
+function getUniqueTabChars(tab) {
+  const seen = new Set();
+  const out = [];
+  for (const row of tab.rows || []) {
+    for (const ch of row.chars || []) {
+      if (!seen.has(ch.glyph)) {
+        seen.add(ch.glyph);
+        out.push(ch);
+      }
+    }
+  }
+  return out;
+}
+
 /* ---------- Script / Character Drill ---------- */
 function startScriptDrill(scriptSet, tabId) {
-  const tab = scriptSet.tabs.find((t) => t.id === tabId) || scriptSet.tabs[0];
-  const allChars = tab.rows.flatMap((r) => r.chars);
+  const tab = resolveScriptTab(scriptSet, tabId);
+  const allChars = getUniqueTabChars(tab);
   const picked = shuffle(allChars).slice(0, Math.min(8, allChars.length));
 
   const questions = picked.map((ch, idx) => {
@@ -1643,8 +1673,8 @@ function renderSyllabusView(course) {
 }
 
 function openDrawSession(scriptSet, tabId, startGlyph = null) {
-  const tab = scriptSet.tabs.find((t) => t.id === tabId) || scriptSet.tabs[0];
-  const chars = tab.rows.flatMap((r) => r.chars);
+  const tab = resolveScriptTab(scriptSet, tabId);
+  const chars = getUniqueTabChars(tab);
   const idx = startGlyph ? Math.max(0, chars.findIndex((c) => c.glyph === startGlyph)) : 0;
   const target = chars[idx];
   const mastery = state.progress.charMastery[target.glyph] || 0;
@@ -1669,8 +1699,8 @@ function openDrawSession(scriptSet, tabId, startGlyph = null) {
 }
 
 function openRandomWriteTest(scriptSet, tabId) {
-  const tab = scriptSet.tabs.find((t) => t.id === tabId) || scriptSet.tabs[0];
-  const chars = tab.rows.flatMap((r) => r.chars);
+  const tab = resolveScriptTab(scriptSet, tabId);
+  const chars = getUniqueTabChars(tab);
   const sample = shuffle(chars).slice(0, Math.min(5, chars.length));
 
   state.scriptDrill = null;
@@ -1733,10 +1763,13 @@ function openWordWriteSession(course) {
 
 function renderCharactersView(course) {
   const scriptSet = getScriptSetForCourse(course);
-  if (!state.activeScriptTab || !scriptSet.tabs.some((t) => t.id === state.activeScriptTab)) {
-    state.activeScriptTab = scriptSet.tabs[0].id;
+  if (
+    !state.activeScriptTab ||
+    (state.activeScriptTab !== '__all__' && !scriptSet.tabs.some((t) => t.id === state.activeScriptTab))
+  ) {
+    state.activeScriptTab = '__all__';
   }
-  const activeTab = scriptSet.tabs.find((t) => t.id === state.activeScriptTab) || scriptSet.tabs[0];
+  const activeTab = resolveScriptTab(scriptSet, state.activeScriptTab);
 
   /* Duolingo-Style Character, Random Test & Word/Sentence Drawing Board */
   if (state.drawSession) {
@@ -1920,38 +1953,44 @@ function renderCharactersView(course) {
     `;
   }
 
-  const allTabChars = activeTab.rows.flatMap((r) => r.chars);
+  const allTabChars = getUniqueTabChars(activeTab);
+  const allScriptChars = getUniqueTabChars(resolveScriptTab(scriptSet, '__all__'));
   const masteredCount = allTabChars.filter((c) => (state.progress.charMastery[c.glyph] || 0) >= 3).length;
 
   return `
-    ${renderHudBar(course)}
-    <div class="header-bar">
-      <div>
-        <h1 class="page-title">${escapeHtml(scriptSet.title)}</h1>
-        <p class="page-sub">Tap any character to draw &amp; master it in 3 passes, take a random Write Test, or write full words &amp; sentences.</p>
+    <div class="char-top-bar">
+      ${renderCustomSelect({
+        id: 'script-tab-select',
+        className: 'level-select char-tab-select',
+        ariaLabel: 'Select character set',
+        value: activeTab.id,
+        options: [
+          { value: '__all__', label: `All Characters (${allScriptChars.length})` },
+          ...scriptSet.tabs.map((t) => ({
+            value: t.id,
+            label: t.label
+          }))
+        ]
+      })}
+      <div class="char-top-actions">
+        <span class="pill accent char-mastery-pill">${masteredCount}/${allTabChars.length}</span>
+        ${renderCustomSelect({
+          id: 'script-practice-select',
+          className: 'level-select char-practice-select',
+          ariaLabel: 'Practice options',
+          value: '__prompt__',
+          options: [
+            { value: '__prompt__', label: 'Practice', hidden: true },
+            { value: 'trace', label: 'Trace & Draw Characters' },
+            { value: 'write-test', label: 'Random Write Test (5)' },
+            { value: 'word-write', label: 'Words & Sentences Pad' },
+            { value: 'quiz', label: 'Quick Recognition Quiz' }
+          ]
+        })}
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-primary btn-sm" id="start-draw-mode-btn">✏️ Trace ${escapeHtml(activeTab.label.split(' ')[0])}</button>
-        <button class="btn btn-sm" id="start-write-test-btn">🎲 Write Test (5)</button>
-        <button class="btn btn-sm" id="start-word-write-btn">📝 Words &amp; Sentences</button>
-        <button class="btn btn-sm" id="start-script-drill-btn">🎯 Quiz</button>
-      </div>
     </div>
 
-    <div class="filter-row">
-      ${scriptSet.tabs
-        .map(
-          (t) => `<button class="filter-chip ${t.id === activeTab.id ? 'active' : ''}" data-script-tab="${escapeHtml(t.id)}">${escapeHtml(t.label)}</button>`
-        )
-        .join('')}
-    </div>
-
-    <div class="grammar-box" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-      <span>${escapeHtml(activeTab.note)}</span>
-      <span class="pill accent">${masteredCount}/${allTabChars.length} mastered</span>
-    </div>
-
-    <section class="card">
+    <section class="card char-chart-card">
       ${activeTab.rows
         .map(
           (row) => `
@@ -2441,7 +2480,7 @@ function renderStudioView(course) {
             .join('')}
         </div>
         <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">
-          Enroll in any of the ${pairCount} pairs from <button type="button" class="btn btn-sm" data-nav="profile" style="padding:3px 9px;font-size:12px;margin-left:4px;">Profile → + Add Course</button>
+          Enroll in any of the ${pairCount} pairs anytime: <button type="button" class="btn btn-sm" data-open-add-course="true" style="padding:3px 9px;font-size:12px;margin-left:4px;">${uiIcon('plus', 13)} Add Course</button>
         </div>
       </div>
 
@@ -3088,8 +3127,8 @@ function renderSettingsView(course) {
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
         <div>
           <h3 style="margin:0;">${uiIcon('gift', 20)} Support OpenLingo</h3>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
-            OpenLingo is 100% free with zero ads, zero paywalls, and zero tracking. Donations help cover development and keep all 156 courses free forever.
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.45;">
+            Exciting updates are on the way — interactive story dialogues, offline high-clarity audio voices, deeper grammar mastery challenges, new community languages, and faster cross-device sync. OpenLingo will always stay 100% free with zero ads or paywalls — your support helps us ship these updates faster!
           </div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -3155,8 +3194,8 @@ function renderSettingsView(course) {
 /* ---------- Events ---------- */
 async function switchCourse(newId) {
   if (newId === '__add__') {
-    state.view = 'profile';
-    state.showAddCoursePicker = true;
+    state.showAddCourseModal = true;
+    state.addCourseSearch = '';
     render();
     return;
   }
@@ -3316,16 +3355,19 @@ function attachEvents(course) {
       if (state.updateInfo) performAppUpdate(state.updateInfo);
     });
   });
-  const dismissUpdateBtn = document.getElementById('banner-dismiss-update-btn');
-  if (dismissUpdateBtn) {
-    dismissUpdateBtn.addEventListener('click', () => {
+  const dismissUpdateBtns = [
+    document.getElementById('banner-dismiss-update-btn'),
+    document.getElementById('banner-later-update-btn')
+  ].filter(Boolean);
+  dismissUpdateBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
       state.updateBannerDismissed = true;
       if (state.updateInfo?.latestVersion) {
         dismissUpdateVersion(state.updateInfo.latestVersion);
       }
       render();
     });
-  }
+  });
   document.querySelectorAll('[data-open-external]').forEach((btn) => {
     btn.addEventListener('click', () => openExternalLink(btn.dataset.openExternal));
   });
@@ -3495,10 +3537,68 @@ function attachEvents(course) {
   const toggleAddCourseBtn = document.getElementById('toggle-add-course-btn');
   if (toggleAddCourseBtn) {
     toggleAddCourseBtn.addEventListener('click', () => {
-      state.showAddCoursePicker = !state.showAddCoursePicker;
+      state.showAddCourseModal = true;
+      state.addCourseSearch = '';
       render();
     });
   }
+
+  document.querySelectorAll('[data-open-add-course]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.showAddCourseModal = true;
+      state.addCourseSearch = '';
+      render();
+    });
+  });
+
+  bindCustomSelect('modal-source-lang', (val) => {
+    state.pickerSourceLang = val;
+    render();
+  });
+
+  const modalSearchInput = document.getElementById('modal-course-search');
+  if (modalSearchInput) {
+    modalSearchInput.addEventListener('input', (e) => {
+      state.addCourseSearch = e.target.value;
+      const q = state.addCourseSearch.trim().toLowerCase();
+      document.querySelectorAll('[data-modal-course-item]').forEach((row) => {
+        const hay = (row.dataset.modalCourseItem || '').toLowerCase();
+        row.style.display = !q || hay.includes(q) ? '' : 'none';
+      });
+    });
+  }
+
+  const addCourseModalBackdrop = document.getElementById('add-course-modal-backdrop');
+  if (addCourseModalBackdrop) {
+    addCourseModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === addCourseModalBackdrop || e.target.closest('#close-add-course-modal')) {
+        state.showAddCourseModal = false;
+        render();
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-modal-enroll-course]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const cid = btn.dataset.modalEnrollCourse;
+      state.showAddCourseModal = false;
+      await enrollCourse(cid, true);
+    });
+  });
+
+  bindCustomSelect('script-tab-select', (val) => {
+    state.activeScriptTab = val;
+    state.scriptDrill = null;
+    state.drawSession = null;
+    render();
+  });
+
+  bindCustomSelect('script-practice-select', (val) => {
+    if (val === 'trace') openDrawSession(getScriptSetForCourse(course), state.activeScriptTab, null);
+    else if (val === 'write-test') openRandomWriteTest(getScriptSetForCourse(course), state.activeScriptTab);
+    else if (val === 'word-write') openWordWriteSession(course);
+    else if (val === 'quiz') startScriptDrill(getScriptSetForCourse(course), state.activeScriptTab);
+  });
 
   bindCustomSelect('profile-source-lang', (val) => {
     state.pickerSourceLang = val;
@@ -4414,23 +4514,114 @@ async function runUpdateCheck(manual = false) {
   }
 }
 
-function renderUpdateBanner() {
-  if (!state.updateInfo?.hasUpdate || state.updateBannerDismissed) return '';
+function renderAddCourseModal() {
+  if (!state.showAddCourseModal) return '';
+  const langs = getMatrixLanguages();
+  const srcMeta = langs.find((l) => l.code === state.pickerSourceLang) || langs[0];
+  const targets = srcMeta ? getAvailableMatrixTargets(srcMeta.code, false) : [];
+  const enrolledSet = new Set(state.enrolledCourseIds);
+  const query = (state.addCourseSearch || '').trim().toLowerCase();
+
   return `
-    <div class="update-banner" role="region" aria-label="App Update Available">
-      <div class="update-banner-info">
-        <span class="pill accent">${uiIcon('sparkles', 14)} Update Available</span>
-        <div class="update-banner-text">
-          <strong>OpenLingo v${escapeHtml(state.updateInfo.latestVersion)}</strong> is out!
-          ${state.updateInfo.summary ? `<span style="color:var(--text-muted);"> ${escapeHtml(state.updateInfo.summary)}</span>` : ''}
+    <div id="add-course-modal-backdrop" class="ol-select-overlay" role="dialog" aria-modal="true" aria-label="Add a Course">
+      <div class="ol-select-modal add-course-modal">
+        <div class="ol-select-modal-header">
+          <div>
+            <div class="ol-select-modal-title">${uiIcon('plus', 17)} Add a Course</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${langs.length} languages · ${langs.length * Math.max(langs.length - 1, 0)} pairs · Beginner to Mastery</div>
+          </div>
+          <button type="button" id="close-add-course-modal" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
         </div>
-      </div>
-      <div class="update-banner-actions">
-        <button type="button" class="btn btn-primary btn-sm" id="banner-apply-update-btn">${uiIcon('download', 15)} Update Now</button>
-        <button type="button" class="btn btn-sm" id="banner-dismiss-update-btn">Later</button>
+
+        <div class="add-course-modal-controls">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span style="font-size:13px;font-weight:800;color:var(--text-muted);white-space:nowrap;">I speak:</span>
+            ${renderCustomSelect({
+              id: 'modal-source-lang',
+              className: 'level-select profile-lang-select',
+              ariaLabel: 'Language you speak',
+              value: srcMeta?.code || 'en',
+              options: langs.map((l) => ({ value: l.code, label: `${l.name} (${l.nativeName})` }))
+            })}
+          </div>
+          <input
+            type="search"
+            id="modal-course-search"
+            class="input"
+            placeholder="Filter languages (e.g. Tamil, Japanese, Korean)..."
+            value="${escapeHtml(state.addCourseSearch)}"
+            style="padding:9px 13px;font-size:14px;"
+          />
+        </div>
+
+        <div class="ol-select-list" style="max-height:54vh;">
+          ${targets
+            .map((t) => {
+              const pairId = `${srcMeta.code}-${t.code}`;
+              const isEnrolled = enrolledSet.has(pairId);
+              const lvlRange = `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`;
+              const hay = `${srcMeta.name} ${srcMeta.nativeName} ${t.name} ${t.nativeName} ${t.code} ${pairId}`;
+              const hidden = query && !hay.toLowerCase().includes(query);
+              return `
+                <div class="add-course-modal-row" data-modal-course-item="${escapeHtml(hay)}" style="${hidden ? 'display:none;' : ''}">
+                  <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
+                    <span class="modal-lang-glyph">${escapeHtml(t.icon?.glyph || t.code.toUpperCase())}</span>
+                    <div style="min-width:0;">
+                      <div style="font-weight:800;font-size:15px;font-family:var(--font-display);line-height:1.25;">
+                        ${escapeHtml(srcMeta.name)} → ${escapeHtml(t.name)}
+                        <span style="color:var(--accent-text);margin-left:3px;">(${escapeHtml(t.nativeName)})</span>
+                      </div>
+                      <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(lvlRange)} · 25 units · 375 items</div>
+                    </div>
+                  </div>
+                  ${
+                    isEnrolled
+                      ? `<button type="button" class="btn btn-sm" data-modal-enroll-course="${escapeHtml(pairId)}">${uiIcon('check', 14)} Open</button>`
+                      : `<button type="button" class="btn btn-primary btn-sm" data-modal-enroll-course="${escapeHtml(pairId)}" ${state.loadingCourse ? 'disabled' : ''}>${uiIcon('plus', 14)} Add</button>`
+                  }
+                </div>
+              `;
+            })
+            .join('')}
+        </div>
       </div>
     </div>
   `;
+}
+
+function renderUpdateModal() {
+  if (!state.updateInfo?.hasUpdate || state.updateBannerDismissed) return '';
+  return `
+    <div id="update-modal-backdrop" class="ol-select-overlay" role="dialog" aria-modal="true" aria-label="App Update Available">
+      <div class="ol-select-modal" style="max-width:440px;">
+        <div class="ol-select-modal-header">
+          <div class="ol-select-modal-title" style="display:flex;align-items:center;gap:8px;">
+            <span style="color:var(--accent-text);">${uiIcon('sparkles', 18)}</span>
+            Update Available
+          </div>
+          <button type="button" id="banner-dismiss-update-btn" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
+        </div>
+        <div style="padding:18px;display:grid;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:48px;height:48px;border-radius:50%;flex-shrink:0;" />
+            <div>
+              <div style="font-family:var(--font-display);font-size:19px;font-weight:700;">OpenLingo v${escapeHtml(state.updateInfo.latestVersion)}</div>
+              <div style="font-size:12px;color:var(--text-muted);">Installed: v${escapeHtml(APP_CONFIG.appVersion)}</div>
+            </div>
+          </div>
+          ${state.updateInfo.summary ? `<div style="font-size:13px;color:var(--text-muted);line-height:1.45;padding:10px 12px;border-radius:12px;background:var(--surface-elevated);border:2px solid var(--border);">${escapeHtml(state.updateInfo.summary)}</div>` : ''}
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;">
+            <button type="button" class="btn btn-sm" id="banner-later-update-btn">Later</button>
+            <button type="button" class="btn btn-primary btn-sm" id="banner-apply-update-btn">${uiIcon('download', 15)} Update Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderUpdateBanner() {
+  return '';
 }
 
 function render() {
@@ -4526,6 +4717,8 @@ function render() {
     <main class="main ${isActiveDrill ? 'in-drill' : ''}">${isActiveDrill ? '' : renderUpdateBanner()}${mainContent}</main>
     ${isActiveDrill ? '' : renderMobileNav(course)}
     ${renderLessonSheet(course)}
+    ${renderAddCourseModal()}
+    ${isActiveDrill ? '' : renderUpdateModal()}
     <div id="audio-toast" class="app-toast" role="status" aria-live="polite" style="display:${state.audioToast ? 'inline-flex' : 'none'};" title="Tap to dismiss">
       <span class="toast-text">${escapeHtml(state.audioToast)}</span>
       <span class="toast-dismiss" aria-hidden="true">${uiIcon('x', 14)}</span>
@@ -4600,8 +4793,8 @@ async function init() {
     render();
   }
 
-  // Silently check GitHub Releases for a newer app version after startup
-  setTimeout(() => runUpdateCheck(false), 2500);
+  // Immediately check GitHub Releases for a newer version on app launch
+  runUpdateCheck(false);
 }
 
 init();

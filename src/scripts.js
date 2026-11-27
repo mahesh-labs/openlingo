@@ -1,8 +1,109 @@
 /**
  * Complete Script & Character Mastery Datasets for All 13 Languages.
- * Covers every vowel, consonant, diacritic/matra, conjunct, chillu, grantha, dakuten,
- * yoon, compound jamo, harakat, radical, and kanji/hanzi from absolute beginner to mastery.
+ * Covers every vowel, consonant, diacritic/matra, full consonant×vowel syllabary
+ * (Tamil 216 Uyirmei + Grantha, Malayalam Kagunitham, Kannada Kagunita, Telugu Gunintalu,
+ * Hindi Barakhadi), conjunct, chillu, dakuten, yoon, jamo, harakat, radical, and kanji/hanzi.
  */
+
+function buildAbugidaRows(consonants, vowelMarks) {
+  return consonants.map(([base, stem, rowTitle]) => ({
+    group: rowTitle || `${base}-row (${stem}a)`,
+    chars: vowelMarks.map(([mark, vRom]) => ({
+      glyph: base + mark,
+      romaji: stem + vRom
+    }))
+  }));
+}
+
+const TA_VOWEL_MARKS = [
+  ['', 'a'], ['ா', 'aa'], ['ி', 'i'], ['ீ', 'ee'], ['ு', 'u'], ['ூ', 'oo'],
+  ['ெ', 'e'], ['ே', 'ae'], ['ை', 'ai'], ['ொ', 'o'], ['ோ', 'oo'], ['ௌ', 'au']
+];
+
+const TA_UYIRMEI_CONSONANTS = [
+  ['க', 'k', 'க-வரிசை (ka – kau)'],
+  ['ங', 'ng', 'ங-வரிசை (nga – ngau)'],
+  ['ச', 'ch', 'ச-வரிசை (cha – chau)'],
+  ['ஞ', 'ny', 'ஞ-வரிசை (nya – nyau)'],
+  ['ட', 't', 'ட-வரிசை (ta – tau)'],
+  ['ண', 'n', 'ண-வரிசை (na – nau · retroflex)'],
+  ['த', 'th', 'த-வரிசை (tha – thau)'],
+  ['ந', 'n', 'ந-வரிசை (na – nau · dental)'],
+  ['ப', 'p', 'ப-வரிசை (pa – pau)'],
+  ['ம', 'm', 'ம-வரிசை (ma – mau)'],
+  ['ய', 'y', 'ய-வரிசை (ya – yau)'],
+  ['ர', 'r', 'ர-வரிசை (ra – rau)'],
+  ['ல', 'l', 'ல-வரிசை (la – lau)'],
+  ['வ', 'v', 'வ-வரிசை (va – vau)'],
+  ['ழ', 'zh', 'ழ-வரிசை (zha – zhau)'],
+  ['ள', 'l', 'ள-வரிசை (la – lau · retroflex)'],
+  ['ற', 'rr', 'ற-வரிசை (rra – rrau)'],
+  ['ன', 'n', 'ன-வரிசை (na – nau · alveolar)']
+];
+
+const TA_GRANTHA_CONSONANTS = [
+  ['ஜ', 'j', 'ஜ-வரிசை (ja – jau · Grantha)'],
+  ['ஷ', 'sh', 'ஷ-வரிசை (sha – shau · Grantha)'],
+  ['ஸ', 's', 'ஸ-வரிசை (sa – sau · Grantha)'],
+  ['ஹ', 'h', 'ஹ-வரிசை (ha – hau · Grantha)']
+];
+
+const ML_VOWEL_MARKS = [
+  ['', 'a'], ['ാ', 'aa'], ['ി', 'i'], ['ീ', 'ee'], ['ു', 'u'], ['ൂ', 'oo'], ['ൃ', 'ru'],
+  ['െ', 'e'], ['േ', 'ae'], ['ൈ', 'ai'], ['ൊ', 'o'], ['ോ', 'oo'], ['ൗ', 'au'], ['ം', 'am'], ['്', '']
+];
+
+const ML_CONSONANTS_FULL = [
+  ['ക', 'k'], ['ഖ', 'kh'], ['ഗ', 'g'], ['ഘ', 'gh'], ['ങ', 'ng'],
+  ['ച', 'ch'], ['ഛ', 'chh'], ['ജ', 'j'], ['ഝ', 'jh'], ['ഞ', 'ny'],
+  ['ട', 't'], ['ഠ', 'th'], ['ഡ', 'd'], ['ഢ', 'dh'], ['ണ', 'n'],
+  ['ത', 'th'], ['ഥ', 'thh'], ['ദ', 'd'], ['ധ', 'dh'], ['ന', 'n'],
+  ['പ', 'p'], ['ഫ', 'ph'], ['ബ', 'b'], ['ഭ', 'bh'], ['മ', 'm'],
+  ['യ', 'y'], ['ര', 'r'], ['ല', 'l'], ['വ', 'v'],
+  ['ശ', 'sh'], ['ഷ', 'ssh'], ['സ', 's'], ['ഹ', 'h'], ['ള', 'l'], ['ഴ', 'zh'], ['റ', 'rr']
+];
+
+const KN_VOWEL_MARKS = [
+  ['', 'a'], ['ಾ', 'aa'], ['ಿ', 'i'], ['ೀ', 'ee'], ['ು', 'u'], ['ೂ', 'oo'], ['ೃ', 'ru'],
+  ['ೆ', 'e'], ['ೇ', 'ae'], ['ೈ', 'ai'], ['ೊ', 'o'], ['ೋ', 'oo'], ['ೌ', 'au'], ['ಂ', 'am'], ['್', '']
+];
+
+const KN_CONSONANTS_FULL = [
+  ['ಕ', 'k'], ['ಖ', 'kh'], ['ಗ', 'g'], ['ಘ', 'gh'], ['ಙ', 'ng'],
+  ['ಚ', 'ch'], ['ಛ', 'chh'], ['ಜ', 'j'], ['ಝ', 'jh'], ['ಞ', 'ny'],
+  ['ಟ', 't'], ['ಠ', 'th'], ['ಡ', 'd'], ['ಢ', 'dh'], ['ಣ', 'n'],
+  ['ತ', 'th'], ['ಥ', 'thh'], ['ದ', 'd'], ['ಧ', 'dh'], ['ನ', 'n'],
+  ['ಪ', 'p'], ['ಫ', 'ph'], ['ಬ', 'b'], ['ಭ', 'bh'], ['ಮ', 'm'],
+  ['ಯ', 'y'], ['ರ', 'r'], ['ಲ', 'l'], ['ವ', 'v'], ['ಶ', 'sh'], ['ಷ', 'ssh'], ['ಸ', 's'], ['ಹ', 'h'], ['ಳ', 'l']
+];
+
+const TE_VOWEL_MARKS = [
+  ['', 'a'], ['ా', 'aa'], ['ి', 'i'], ['ీ', 'ee'], ['ు', 'u'], ['ూ', 'oo'], ['ృ', 'ru'],
+  ['ె', 'e'], ['ే', 'ae'], ['ై', 'ai'], ['ొ', 'o'], ['ో', 'oo'], ['ౌ', 'au'], ['ం', 'am'], ['్', '']
+];
+
+const TE_CONSONANTS_FULL = [
+  ['క', 'k'], ['ఖ', 'kh'], ['గ', 'g'], ['ఘ', 'gh'], ['ఙ', 'ng'],
+  ['చ', 'ch'], ['ఛ', 'chh'], ['జ', 'j'], ['ఝ', 'jh'], ['ఞ', 'ny'],
+  ['ట', 't'], ['ఠ', 'th'], ['డ', 'd'], ['ఢ', 'dh'], ['ణ', 'n'],
+  ['త', 'th'], ['థ', 'thh'], ['ద', 'd'], ['ధ', 'dh'], ['న', 'n'],
+  ['ప', 'p'], ['ఫ', 'ph'], ['బ', 'b'], ['భ', 'bh'], ['మ', 'm'],
+  ['య', 'y'], ['ర', 'r'], ['ల', 'l'], ['వ', 'v'], ['శ', 'sh'], ['ష', 'ssh'], ['స', 's'], ['హ', 'h'], ['ళ', 'l'], ['క్ష', 'ksh'], ['ఱ', 'rr']
+];
+
+const HI_VOWEL_MARKS = [
+  ['', 'a'], ['ा', 'aa'], ['ि', 'i'], ['ी', 'ee'], ['ु', 'u'], ['ू', 'oo'], ['ृ', 'ri'],
+  ['े', 'e'], ['ै', 'ai'], ['ो', 'o'], ['ौ', 'au'], ['ं', 'am'], ['ः', 'ah'], ['्', '']
+];
+
+const HI_CONSONANTS_FULL = [
+  ['क', 'k'], ['ख', 'kh'], ['ग', 'g'], ['घ', 'gh'], ['ङ', 'ng'],
+  ['च', 'ch'], ['छ', 'chh'], ['ज', 'j'], ['झ', 'jh'], ['ञ', 'ny'],
+  ['ट', 't'], ['ठ', 'th'], ['ड', 'd'], ['ढ', 'dh'], ['ण', 'n'],
+  ['त', 't'], ['थ', 'th'], ['द', 'd'], ['ध', 'dh'], ['न', 'n'],
+  ['प', 'p'], ['फ', 'ph'], ['ब', 'b'], ['भ', 'bh'], ['म', 'm'],
+  ['य', 'y'], ['र', 'r'], ['ल', 'l'], ['व', 'v'], ['श', 'sh'], ['ष', 'ssh'], ['स', 's'], ['ह', 'h']
+];
 
 export const SCRIPT_SETS = {
   ml: {
@@ -89,6 +190,12 @@ export const SCRIPT_SETS = {
             { glyph: 'ജ്ഞ', romaji: 'jna' }, { glyph: 'ശ്ര', romaji: 'shra' }
           ]}
         ]
+      },
+      {
+        id: 'ml-kagunitham',
+        label: 'All Vowel Combos (കാഗുണിതം · 540)',
+        note: 'Every Malayalam consonant combined with all vowel signs (ക..ക്, പ..പ്, മ..മ്, etc.).',
+        rows: buildAbugidaRows(ML_CONSONANTS_FULL, ML_VOWEL_MARKS)
       }
     ]
   },
@@ -138,8 +245,8 @@ export const SCRIPT_SETS = {
       },
       {
         id: 'ta-mei-uyirmei',
-        label: 'Pure Mei & Vowel Signs',
-        note: 'All 18 pure dotted Mei consonants (மெய்யெழுத்துகள்) and the complete 12-vowel Uyirmei series on க.',
+        label: 'Pure Mei (மெய் · 18)',
+        note: 'All 18 pure dotted Mei consonants (மெய்யெழுத்துகள்).',
         rows: [
           { group: 'Pure Mei Consonants (மெய்யெழுத்துகள் · 18)', chars: [
             { glyph: 'க்', romaji: 'k' }, { glyph: 'ங்', romaji: 'ng' }, { glyph: 'ச்', romaji: 'ch' }, { glyph: 'ஞ்', romaji: 'ny' },
@@ -147,12 +254,16 @@ export const SCRIPT_SETS = {
             { glyph: 'ப்', romaji: 'p' }, { glyph: 'ம்', romaji: 'm' }, { glyph: 'ய்', romaji: 'y' }, { glyph: 'ர்', romaji: 'r' },
             { glyph: 'ல்', romaji: 'l' }, { glyph: 'வ்', romaji: 'v' }, { glyph: 'ழ்', romaji: 'zh' }, { glyph: 'ள்', romaji: 'l' },
             { glyph: 'ற்', romaji: 'rr' }, { glyph: 'ன்', romaji: 'n' }
-          ]},
-          { group: 'Uyirmei Vowel Modifiers on க (உயிர்மெய்)', chars: [
-            { glyph: 'க', romaji: 'ka' }, { glyph: 'கா', romaji: 'kaa' }, { glyph: 'கி', romaji: 'ki' }, { glyph: 'கீ', romaji: 'kee' },
-            { glyph: 'கு', romaji: 'ku' }, { glyph: 'கூ', romaji: 'koo' }, { glyph: 'கெ', romaji: 'ke' }, { glyph: 'கே', romaji: 'kae' },
-            { glyph: 'கை', romaji: 'kai' }, { glyph: 'கொ', romaji: 'ko' }, { glyph: 'கோ', romaji: 'koo' }, { glyph: 'கௌ', romaji: 'kau' }
           ]}
+        ]
+      },
+      {
+        id: 'ta-all-uyirmei',
+        label: 'All Uyirmei (உயிர்மெய் · 216 + Grantha)',
+        note: 'All 18 Tamil consonants × 12 vowels (216 Uyirmei: க..கௌ, ப..பௌ, ம..மௌ, …) plus Grantha vowel series.',
+        rows: [
+          ...buildAbugidaRows(TA_UYIRMEI_CONSONANTS, TA_VOWEL_MARKS),
+          ...buildAbugidaRows(TA_GRANTHA_CONSONANTS, TA_VOWEL_MARKS)
         ]
       }
     ]
@@ -207,19 +318,14 @@ export const SCRIPT_SETS = {
       },
       {
         id: 'kn-kagunita',
-        label: 'Kagunita & Ottakshara',
-        note: 'Complete Kagunita vowel signs on ಕ and high-frequency Kannada Ottakshara subscript conjuncts.',
+        label: 'All Kagunita & Ottakshara',
+        note: 'Complete Kagunita vowel combinations for all 34 Kannada consonants plus essential Ottakshara conjuncts.',
         rows: [
-          { group: 'Kagunita Vowel Signs (ಕಾಗುಣಿತ)', chars: [
-            { glyph: 'ಕ', romaji: 'ka' }, { glyph: 'ಕಾ', romaji: 'kaa' }, { glyph: 'ಕಿ', romaji: 'ki' }, { glyph: 'ಕೀ', romaji: 'kee' },
-            { glyph: 'ಕು', romaji: 'ku' }, { glyph: 'ಕೂ', romaji: 'koo' }, { glyph: 'ಕೃ', romaji: 'kru' }, { glyph: 'ಕೆ', romaji: 'ke' },
-            { glyph: 'ಕೇ', romaji: 'kae' }, { glyph: 'ಕೈ', romaji: 'kai' }, { glyph: 'ಕೊ', romaji: 'ko' }, { glyph: 'ಕೋ', romaji: 'koo' },
-            { glyph: 'ಕೌ', romaji: 'kau' }, { glyph: 'ಕಂ', romaji: 'kam' }, { glyph: 'ಕಃ', romaji: 'kah' }, { glyph: 'ಕ್', romaji: 'k (halant)' }
-          ]},
           { group: 'Essential Ottakshara Conjuncts', chars: [
             { glyph: 'ಕ್ಕ', romaji: 'kka' }, { glyph: 'ತ್ತ', romaji: 'ttha' }, { glyph: 'ನ್ನ', romaji: 'nna' }, { glyph: 'ಮ್ಮ', romaji: 'mma' },
             { glyph: 'ಲ್ಲ', romaji: 'lla' }, { glyph: 'ಷ್ಟ', romaji: 'shta' }, { glyph: 'ಕ್ಷ', romaji: 'ksha' }, { glyph: 'ಜ್ಞ', romaji: 'jna' }
-          ]}
+          ]},
+          ...buildAbugidaRows(KN_CONSONANTS_FULL, KN_VOWEL_MARKS)
         ]
       }
     ]
@@ -275,19 +381,14 @@ export const SCRIPT_SETS = {
       },
       {
         id: 'te-gunintalu',
-        label: 'Gunintalu & Vattulu',
-        note: 'Complete Gunintalu vowel signs on క and essential Telugu Vattulu conjuncts.',
+        label: 'All Gunintalu & Vattulu',
+        note: 'Complete Gunintalu vowel combinations for all 36 Telugu consonants plus essential Vattulu conjuncts.',
         rows: [
-          { group: 'Gunintalu Vowel Signs (గుణింతాలు)', chars: [
-            { glyph: 'క', romaji: 'ka' }, { glyph: 'కా', romaji: 'kaa' }, { glyph: 'కి', romaji: 'ki' }, { glyph: 'కీ', romaji: 'kee' },
-            { glyph: 'కు', romaji: 'ku' }, { glyph: 'కూ', romaji: 'koo' }, { glyph: 'కృ', romaji: 'kru' }, { glyph: 'కె', romaji: 'ke' },
-            { glyph: 'కే', romaji: 'kae' }, { glyph: 'కై', romaji: 'kai' }, { glyph: 'కొ', romaji: 'ko' }, { glyph: 'కో', romaji: 'koo' },
-            { glyph: 'కౌ', romaji: 'kau' }, { glyph: 'కం', romaji: 'kam' }, { glyph: 'కః', romaji: 'kah' }, { glyph: 'క్', romaji: 'k (pollu)' }
-          ]},
           { group: 'Essential Vattulu Conjuncts (ఒత్తులు)', chars: [
             { glyph: 'క్క', romaji: 'kka' }, { glyph: 'త్త', romaji: 'ttha' }, { glyph: 'న్న', romaji: 'nna' }, { glyph: 'మ్మ', romaji: 'mma' },
             { glyph: 'ల్ల', romaji: 'lla' }, { glyph: 'ష్ట', romaji: 'shta' }, { glyph: 'జ్ఞ', romaji: 'jna' }, { glyph: 'శ్ర', romaji: 'shra' }
-          ]}
+          ]},
+          ...buildAbugidaRows(TE_CONSONANTS_FULL, TE_VOWEL_MARKS)
         ]
       }
     ]
@@ -346,16 +447,9 @@ export const SCRIPT_SETS = {
       },
       {
         id: 'hi-matras',
-        label: 'Barakhadi & Matras (मात्राएँ)',
-        note: 'All Devanagari vowel signs, Chandrabindu (ँ), and Halant (्) demonstrated on क.',
-        rows: [
-          { group: 'Barakhadi on क (बारहखड़ी)', chars: [
-            { glyph: 'क', romaji: 'ka' }, { glyph: 'का', romaji: 'kaa' }, { glyph: 'कि', romaji: 'ki' }, { glyph: 'की', romaji: 'kee' },
-            { glyph: 'कु', romaji: 'ku' }, { glyph: 'कू', romaji: 'koo' }, { glyph: 'कृ', romaji: 'kri' }, { glyph: 'के', romaji: 'ke' },
-            { glyph: 'कै', romaji: 'kai' }, { glyph: 'को', romaji: 'ko' }, { glyph: 'कौ', romaji: 'kau' }, { glyph: 'कं', romaji: 'kam' },
-            { glyph: 'कः', romaji: 'kah' }, { glyph: 'कँ', romaji: 'kan (nasal)' }, { glyph: 'क्', romaji: 'k (halant)' }
-          ]}
-        ]
+        label: 'All Barakhadi (बारहखड़ी · 462)',
+        note: 'Complete Barakhadi vowel combinations for all 33 Hindi consonants (क..क्, प..प्, म..म्, …).',
+        rows: buildAbugidaRows(HI_CONSONANTS_FULL, HI_VOWEL_MARKS)
       }
     ]
   },
