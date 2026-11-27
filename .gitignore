@@ -1,5 +1,6 @@
 # Build artifacts & local signing keys
 android/build/
+android/libs/
 android/debug.keystore
 linux/dist/
 linux/build/

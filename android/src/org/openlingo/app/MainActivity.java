@@ -1,17 +1,22 @@
 package org.openlingo.app;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInstaller;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.util.Base64;
 import android.view.View;
@@ -26,6 +31,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
+import com.google.android.gms.auth.api.identity.AuthorizationRequest;
+import com.google.android.gms.auth.api.identity.AuthorizationResult;
+import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.Scope;
+
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
@@ -38,8 +50,10 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -49,6 +63,10 @@ public class MainActivity extends Activity {
     private static final int REQ_SAVE_BACKUP = 4101;
     private static final int REQ_OPEN_BACKUP = 4102;
     private static final int REQ_FILE_CHOOSER = 4103;
+    private static final int REQ_PICK_GOOGLE_ACCOUNT = 4104;
+    private static final int REQ_GMS_AUTHORIZE = 4105;
+    private static final int REQ_UNKNOWN_SOURCES = 4106;
+    private static final String ACTION_INSTALL_STATUS = "org.openlingo.app.ACTION_INSTALL_STATUS";
 
     private WebView webView;
     private TextToSpeech tts;
@@ -57,10 +75,15 @@ public class MainActivity extends Activity {
     private ValueCallback<Uri[]> fileChooserCallback = null;
     private AppIconBridge appIconBridge = null;
 
-    // Pending PKCE OAuth state for Android system-browser Sign in with Google
+    // Pending OAuth state for Android native Google Sign-In & browser fallback
     private String pendingOAuthClientId = null;
     private String pendingOAuthRedirectUri = null;
     private String pendingCodeVerifier = null;
+    private String pendingPickedAccountEmail = null;
+
+    // Pending direct in-app APK update state
+    private String pendingInstallApkUrl = null;
+    private volatile boolean isInstallingUpdate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +127,59 @@ public class MainActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        if (handlePackageInstallStatus(intent)) {
+            return;
+        }
         handleOAuthIntent(intent);
+    }
+
+    @SuppressWarnings("deprecation")
+    private boolean handlePackageInstallStatus(Intent intent) {
+        if (intent == null || !ACTION_INSTALL_STATUS.equals(intent.getAction())) {
+            return false;
+        }
+        int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, PackageInstaller.STATUS_FAILURE);
+        if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
+            Intent confirmIntent = intent.getParcelableExtra(Intent.EXTRA_INTENT);
+            if (confirmIntent != null) {
+                confirmIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                try {
+                    startActivity(confirmIntent);
+                    deliverUpdateProgress("confirm", 100, "Tap Update in the Android prompt to finish installing.");
+                } catch (Exception e) {
+                    isInstallingUpdate = false;
+                    pendingInstallApkUrl = null;
+                    deliverUpdateProgress("error", 0, "Could not launch Android installer: " + e.getMessage());
+                }
+            }
+            return true;
+        }
+        isInstallingUpdate = false;
+        pendingInstallApkUrl = null;
+        if (status == PackageInstaller.STATUS_SUCCESS) {
+            deliverUpdateProgress("done", 100, "Update installed!");
+        } else if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
+            deliverUpdateProgress("cancelled", 0, "Update cancelled.");
+        } else {
+            String msg = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE);
+            deliverUpdateProgress("error", 0, (msg != null && !msg.isEmpty()) ? msg : "Install failed (code " + status + ").");
+        }
+        return true;
+    }
+
+    private void deliverUpdateProgress(final String stage, final int percent, final String message) {
+        final String jsStage = escapeJs(stage == null ? "" : stage);
+        final String jsMsg = escapeJs(message == null ? "" : message);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (webView != null) {
+                    webView.evaluateJavascript(
+                            "window.onAppUpdateProgress && window.onAppUpdateProgress('" + jsStage + "', " + percent + ", '" + jsMsg + "')",
+                            null);
+                }
+            }
+        });
     }
 
     private void handleOAuthIntent(Intent intent) {
@@ -165,6 +240,8 @@ public class MainActivity extends Activity {
     }
 
     private void deliverOAuthResult(final String token, final int expiresIn, final String errorMsg) {
+        pendingOAuthClientId = null;
+        pendingPickedAccountEmail = null;
         final String jsToken = token == null ? "null" : "'" + escapeJs(token) + "'";
         final String jsErr = errorMsg == null ? "null" : "'" + escapeJs(errorMsg) + "'";
         runOnUiThread(new Runnable() {
@@ -283,6 +360,56 @@ public class MainActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == REQ_PICK_GOOGLE_ACCOUNT) {
+            final String clientId = pendingOAuthClientId;
+            if (resultCode != Activity.RESULT_OK || data == null) {
+                deliverOAuthResult(null, 0, "Google Sign-In was cancelled.");
+                return;
+            }
+            final String accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+            final String accountType = data.getStringExtra(AccountManager.KEY_ACCOUNT_TYPE);
+            if (accountName == null || accountName.isEmpty()) {
+                launchBrowserOAuth(clientId, null);
+                return;
+            }
+            pendingPickedAccountEmail = accountName;
+            authorizePickedGoogleAccount(clientId, new Account(accountName, accountType != null ? accountType : "com.google"));
+            return;
+        }
+
+        if (requestCode == REQ_GMS_AUTHORIZE) {
+            final String clientId = pendingOAuthClientId;
+            final String emailHint = pendingPickedAccountEmail;
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                try {
+                    AuthorizationResult authResult = Identity.getAuthorizationClient(this)
+                            .getAuthorizationResultFromIntent(data);
+                    String token = authResult != null ? authResult.getAccessToken() : null;
+                    if (token != null && !token.isEmpty()) {
+                        deliverOAuthResult(token, 3500, null);
+                        return;
+                    }
+                } catch (Exception ignored) {
+                }
+                launchBrowserOAuth(clientId, emailHint);
+            } else {
+                deliverOAuthResult(null, 0, "Google Sign-In was cancelled.");
+            }
+            return;
+        }
+
+        if (requestCode == REQ_UNKNOWN_SOURCES) {
+            final String apkUrl = pendingInstallApkUrl;
+            if (apkUrl != null && (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || getPackageManager().canRequestPackageInstalls())) {
+                startDirectApkInstall(apkUrl);
+            } else {
+                pendingInstallApkUrl = null;
+                isInstallingUpdate = false;
+                deliverUpdateProgress("error", 0, "Install permission not enabled. Enable 'Allow from this source' for OpenLingo and tap Update again.");
+            }
+            return;
+        }
+
         if (requestCode == REQ_FILE_CHOOSER) {
             if (fileChooserCallback != null) {
                 Uri[] results = WebChromeClient.FileChooserParams.parseResult(resultCode, data);
@@ -377,6 +504,8 @@ public class MainActivity extends Activity {
         if (appIconBridge != null
                 && !isChangingConfigurations()
                 && pendingOAuthClientId == null
+                && pendingInstallApkUrl == null
+                && !isInstallingUpdate
                 && fileChooserCallback == null) {
             appIconBridge.applyPendingAppIcon();
         }
@@ -467,40 +596,112 @@ public class MainActivity extends Activity {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    private void authorizePickedGoogleAccount(final String androidClientId, final Account chosenAccount) {
+        try {
+            int gmsStatus = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
+            if (gmsStatus != ConnectionResult.SUCCESS) {
+                launchBrowserOAuth(androidClientId, chosenAccount.name);
+                return;
+            }
+            List<Scope> requestedScopes = Arrays.asList(
+                    new Scope("https://www.googleapis.com/auth/drive.appdata"),
+                    new Scope("openid"),
+                    new Scope("email"),
+                    new Scope("profile")
+            );
+            AuthorizationRequest authRequest = AuthorizationRequest.builder()
+                    .setRequestedScopes(requestedScopes)
+                    .setAccount(chosenAccount)
+                    .build();
+
+            Identity.getAuthorizationClient(MainActivity.this)
+                    .authorize(authRequest)
+                    .addOnSuccessListener(MainActivity.this, result -> {
+                        if (result != null && result.hasResolution() && result.getPendingIntent() != null) {
+                            try {
+                                startIntentSenderForResult(
+                                        result.getPendingIntent().getIntentSender(),
+                                        REQ_GMS_AUTHORIZE,
+                                        null, 0, 0, 0);
+                            } catch (Exception e) {
+                                launchBrowserOAuth(androidClientId, chosenAccount.name);
+                            }
+                        } else if (result != null && result.getAccessToken() != null && !result.getAccessToken().isEmpty()) {
+                            deliverOAuthResult(result.getAccessToken(), 3500, null);
+                        } else {
+                            launchBrowserOAuth(androidClientId, chosenAccount.name);
+                        }
+                    })
+                    .addOnFailureListener(MainActivity.this, e -> {
+                        launchBrowserOAuth(androidClientId, chosenAccount.name);
+                    });
+        } catch (Throwable t) {
+            launchBrowserOAuth(androidClientId, chosenAccount.name);
+        }
+    }
+
+    private void launchBrowserOAuth(final String androidClientId, final String loginHint) {
+        if (androidClientId == null || androidClientId.isEmpty()) {
+            deliverOAuthResult(null, 0, "Missing Android OAuth Client ID.");
+            return;
+        }
+        try {
+            byte[] rand = new byte[32];
+            new SecureRandom().nextBytes(rand);
+            String verifier = Base64.encodeToString(rand, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+            byte[] digest = MessageDigest.getInstance("SHA-256").digest(verifier.getBytes(StandardCharsets.US_ASCII));
+            String challenge = Base64.encodeToString(digest, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+
+            String prefix = androidClientId.replace(".apps.googleusercontent.com", "");
+            String redirectUri = "com.googleusercontent.apps." + prefix + ":/oauth2redirect";
+
+            pendingOAuthClientId = androidClientId;
+            pendingOAuthRedirectUri = redirectUri;
+            pendingCodeVerifier = verifier;
+
+            Uri.Builder uriBuilder = Uri.parse("https://accounts.google.com/o/oauth2/v2/auth")
+                    .buildUpon()
+                    .appendQueryParameter("client_id", androidClientId)
+                    .appendQueryParameter("redirect_uri", redirectUri)
+                    .appendQueryParameter("response_type", "code")
+                    .appendQueryParameter("scope", "https://www.googleapis.com/auth/drive.appdata openid email profile")
+                    .appendQueryParameter("code_challenge", challenge)
+                    .appendQueryParameter("code_challenge_method", "S256");
+
+            if (loginHint != null && !loginHint.isEmpty()) {
+                uriBuilder.appendQueryParameter("login_hint", loginHint);
+            }
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, uriBuilder.build());
+            startActivity(browserIntent);
+        } catch (Exception e) {
+            deliverOAuthResult(null, 0, "Could not launch sign-in: " + e.getMessage());
+        }
+    }
+
     private final class GoogleAuthBridge {
         @JavascriptInterface
+        @SuppressWarnings("deprecation")
         public void signIn(final String androidClientId) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    pendingOAuthClientId = androidClientId;
+                    pendingPickedAccountEmail = null;
                     try {
-                        byte[] rand = new byte[32];
-                        new SecureRandom().nextBytes(rand);
-                        String verifier = Base64.encodeToString(rand, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
-                        byte[] digest = MessageDigest.getInstance("SHA-256").digest(verifier.getBytes(StandardCharsets.US_ASCII));
-                        String challenge = Base64.encodeToString(digest, Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
-
-                        String prefix = androidClientId.replace(".apps.googleusercontent.com", "");
-                        String redirectUri = "com.googleusercontent.apps." + prefix + ":/oauth2redirect";
-
-                        pendingOAuthClientId = androidClientId;
-                        pendingOAuthRedirectUri = redirectUri;
-                        pendingCodeVerifier = verifier;
-
-                        Uri authUri = Uri.parse("https://accounts.google.com/o/oauth2/v2/auth")
-                                .buildUpon()
-                                .appendQueryParameter("client_id", androidClientId)
-                                .appendQueryParameter("redirect_uri", redirectUri)
-                                .appendQueryParameter("response_type", "code")
-                                .appendQueryParameter("scope", "https://www.googleapis.com/auth/drive.appdata openid email profile")
-                                .appendQueryParameter("code_challenge", challenge)
-                                .appendQueryParameter("code_challenge_method", "S256")
-                                .build();
-
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, authUri);
-                        startActivity(browserIntent);
+                        Intent pickIntent = AccountManager.newChooseAccountIntent(
+                                null,
+                                null,
+                                new String[]{"com.google"},
+                                null,
+                                null,
+                                null,
+                                null
+                        );
+                        startActivityForResult(pickIntent, REQ_PICK_GOOGLE_ACCOUNT);
                     } catch (Exception e) {
-                        deliverOAuthResult(null, 0, "Could not launch browser sign-in: " + e.getMessage());
+                        launchBrowserOAuth(androidClientId, null);
                     }
                 }
             });
@@ -649,7 +850,153 @@ public class MainActivity extends Activity {
         }
     }
 
+    private boolean isTrustedUpdateUrl(String url) {
+        if (url == null) return false;
+        return url.startsWith("https://github.com/mahesh-labs/openlingo/releases/download/")
+                || url.startsWith("https://objects.githubusercontent.com/");
+    }
+
+    private void startDirectApkInstall(final String apkUrl) {
+        if (isInstallingUpdate) return;
+        isInstallingUpdate = true;
+        deliverUpdateProgress("downloading", 0, "Connecting to GitHub Releases...");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                PackageInstaller.Session session = null;
+                HttpURLConnection conn = null;
+                try {
+                    String currentUrl = apkUrl;
+                    int redirects = 0;
+                    while (redirects < 6) {
+                        conn = (HttpURLConnection) new URL(currentUrl).openConnection();
+                        conn.setInstanceFollowRedirects(false);
+                        conn.setConnectTimeout(15000);
+                        conn.setReadTimeout(30000);
+                        conn.setRequestProperty("User-Agent", "OpenLingo-Android");
+                        int code = conn.getResponseCode();
+                        if (code == HttpURLConnection.HTTP_MOVED_TEMP
+                                || code == HttpURLConnection.HTTP_MOVED_PERM
+                                || code == HttpURLConnection.HTTP_SEE_OTHER
+                                || code == 307 || code == 308) {
+                            String next = conn.getHeaderField("Location");
+                            conn.disconnect();
+                            if (next == null || !next.startsWith("https://")) {
+                                throw new IOException("Invalid redirect during update download.");
+                            }
+                            currentUrl = next;
+                            redirects++;
+                            continue;
+                        }
+                        if (code < 200 || code >= 300) {
+                            throw new IOException("Download failed (HTTP " + code + ").");
+                        }
+                        break;
+                    }
+                    if (conn == null) throw new IOException("Could not open update connection.");
+
+                    long totalBytes = conn.getContentLengthLong();
+                    PackageInstaller installer = getPackageManager().getPackageInstaller();
+                    PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(
+                            PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+                    params.setAppPackageName(getPackageName());
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED);
+                    }
+                    int sessionId = installer.createSession(params);
+                    session = installer.openSession(sessionId);
+
+                    try (InputStream in = conn.getInputStream();
+                         OutputStream out = session.openWrite("openlingo-update.apk", 0, totalBytes > 0 ? totalBytes : -1)) {
+                        byte[] buf = new byte[16384];
+                        long downloaded = 0;
+                        int lastReportedPct = -1;
+                        int n;
+                        while ((n = in.read(buf)) != -1) {
+                            out.write(buf, 0, n);
+                            downloaded += n;
+                            if (totalBytes > 0) {
+                                int pct = (int) Math.min(99, (downloaded * 100L) / totalBytes);
+                                if (pct >= lastReportedPct + 2 || pct == 99) {
+                                    lastReportedPct = pct;
+                                    deliverUpdateProgress("downloading", pct, "Downloading update... " + pct + "%");
+                                }
+                            } else if (lastReportedPct < 0) {
+                                lastReportedPct = 10;
+                                deliverUpdateProgress("downloading", 10, "Downloading update...");
+                            }
+                        }
+                        session.fsync(out);
+                    }
+
+                    deliverUpdateProgress("installing", 100, "Opening Android installer...");
+
+                    Intent callbackIntent = new Intent(MainActivity.this, MainActivity.class);
+                    callbackIntent.setAction(ACTION_INSTALL_STATUS);
+                    int piFlags = PendingIntent.FLAG_UPDATE_CURRENT;
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        piFlags |= PendingIntent.FLAG_MUTABLE;
+                    }
+                    PendingIntent pi = PendingIntent.getActivity(MainActivity.this, sessionId, callbackIntent, piFlags);
+                    session.commit(pi.getIntentSender());
+                    session.close();
+                    session = null;
+                } catch (Exception e) {
+                    if (session != null) {
+                        try {
+                            session.abandon();
+                        } catch (Exception ignored) {
+                        }
+                    }
+                    isInstallingUpdate = false;
+                    pendingInstallApkUrl = null;
+                    deliverUpdateProgress("error", 0, "Update failed: " + e.getMessage());
+                } finally {
+                    if (conn != null) {
+                        conn.disconnect();
+                    }
+                }
+            }
+        }).start();
+    }
+
     private final class UpdaterBridge {
+        @JavascriptInterface
+        public boolean supportsDirectInstall() {
+            return true;
+        }
+
+        @JavascriptInterface
+        @SuppressWarnings("deprecation")
+        public void installApkUpdate(final String apkUrl) {
+            if (!isTrustedUpdateUrl(apkUrl)) {
+                deliverUpdateProgress("error", 0, "Untrusted update download URL.");
+                return;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !getPackageManager().canRequestPackageInstalls()) {
+                        pendingInstallApkUrl = apkUrl;
+                        deliverUpdateProgress("permission", 0, "Allow 'Install unknown apps' for OpenLingo, then press Back to finish updating.");
+                        try {
+                            Intent settingsIntent = new Intent(
+                                    Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                                    Uri.parse("package:" + getPackageName()));
+                            startActivityForResult(settingsIntent, REQ_UNKNOWN_SOURCES);
+                        } catch (Exception e) {
+                            pendingInstallApkUrl = null;
+                            deliverUpdateProgress("error", 0, "Could not open install permission settings: " + e.getMessage());
+                        }
+                        return;
+                    }
+                    pendingInstallApkUrl = apkUrl;
+                    startDirectApkInstall(apkUrl);
+                }
+            });
+        }
+
         @JavascriptInterface
         public void openExternalUrl(final String url) {
             if (url == null || (!url.startsWith("https://") && !url.startsWith("http://"))) return;

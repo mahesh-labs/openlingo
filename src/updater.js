@@ -103,6 +103,10 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
   const apkAsset = assets.find((a) => /\.apk$/i.test(a.name || ''));
   const appImageAsset = assets.find((a) => /\.AppImage$/i.test(a.name || ''));
   const debAsset = assets.find((a) => /\.deb$/i.test(a.name || ''));
+  const rpmAsset = assets.find((a) => /\.rpm$/i.test(a.name || ''));
+  const archPkgAsset = assets.find((a) => /\.pkg\.tar\.zst$/i.test(a.name || ''));
+  const flatpakAsset = assets.find((a) => /\.flatpak$/i.test(a.name || ''));
+  const tarGzAsset = assets.find((a) => /\.tar\.gz$/i.test(a.name || ''));
   const platform = detectRuntimePlatform();
 
   let downloadUrl = latest.html_url || `https://github.com/${repo}/releases/tag/${latest.tag_name}`;
@@ -115,7 +119,7 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
   const summaryLine = String(latest.body || '')
     .split('\n')
     .map((l) => l.replace(/^[-*#\s]+/, '').trim())
-    .find((l) => l && !/^OpenLingo v/i.test(l) && !/^Highlights$/i.test(l)) || '';
+    .find((l) => l && !/^OpenLingo v/i.test(l) && !/^Highlights$/i.test(l) && !/^What's New/i.test(l)) || '';
 
   return {
     hasUpdate: isNewerVersion(latestVersion, currentVersion),
@@ -126,6 +130,10 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
     downloadUrl,
     apkUrl: apkAsset?.browser_download_url || '',
     debUrl: debAsset?.browser_download_url || '',
+    rpmUrl: rpmAsset?.browser_download_url || '',
+    archPkgUrl: archPkgAsset?.browser_download_url || '',
+    flatpakUrl: flatpakAsset?.browser_download_url || '',
+    tarGzUrl: tarGzAsset?.browser_download_url || '',
     appImageUrl: appImageAsset?.browser_download_url || '',
     publishedAt: latest.published_at || '',
     summary: summaryLine.slice(0, 160),
@@ -134,9 +142,20 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
   };
 }
 
-export async function performAppUpdate(updateInfo) {
+export async function performAppUpdate(updateInfo, onProgress = null) {
+  const emit = (payload) => {
+    if (typeof onProgress === 'function') {
+      try {
+        onProgress(payload);
+      } catch {
+        // Ignore UI callback error
+      }
+    }
+  };
+
   const platform = detectRuntimePlatform();
   if (platform === 'web') {
+    emit({ active: true, stage: 'installing', percent: 60, message: 'Refreshing OpenLingo web app...' });
     try {
       if ('serviceWorker' in navigator) {
         const regs = await navigator.serviceWorker.getRegistrations();
@@ -154,7 +173,23 @@ export async function performAppUpdate(updateInfo) {
   }
 
   if (platform === 'android') {
-    const targetUrl = updateInfo?.apkUrl || updateInfo?.downloadUrl || updateInfo?.releaseUrl;
+    const apkUrl = updateInfo?.apkUrl || '';
+    if (apkUrl && window.AndroidUpdater && typeof window.AndroidUpdater.installApkUpdate === 'function') {
+      window.onAppUpdateProgress = (stage, percent, message) => {
+        const st = String(stage || '');
+        const active = st === 'downloading' || st === 'installing' || st === 'permission' || st === 'confirm';
+        emit({
+          active,
+          stage: st,
+          percent: Number(percent) || 0,
+          message: String(message || '')
+        });
+      };
+      emit({ active: true, stage: 'downloading', percent: 0, message: 'Starting direct update...' });
+      window.AndroidUpdater.installApkUpdate(apkUrl);
+      return;
+    }
+    const targetUrl = apkUrl || updateInfo?.downloadUrl || updateInfo?.releaseUrl;
     if (window.AndroidUpdater && typeof window.AndroidUpdater.openExternalUrl === 'function') {
       window.AndroidUpdater.openExternalUrl(targetUrl);
     } else {
@@ -163,7 +198,54 @@ export async function performAppUpdate(updateInfo) {
     return;
   }
 
-  // Linux Desktop: open Release page (or direct package download) in default browser
+  // Linux Desktop: trigger direct in-app download + package install when running as an installed desktop app
+  if (platform === 'linux') {
+    try {
+      emit({ active: true, stage: 'downloading', percent: 0, message: 'Preparing direct update...' });
+      const res = await fetch('/__desktop/update/install', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          appImageUrl: updateInfo?.appImageUrl || '',
+          debUrl: updateInfo?.debUrl || '',
+          rpmUrl: updateInfo?.rpmUrl || '',
+          archPkgUrl: updateInfo?.archPkgUrl || '',
+          flatpakUrl: updateInfo?.flatpakUrl || '',
+          tarGzUrl: updateInfo?.tarGzUrl || ''
+        })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.ok) {
+          const poll = async () => {
+            try {
+              const sRes = await fetch('/__desktop/update/status', { cache: 'no-store' });
+              if (!sRes.ok) return;
+              const st = await sRes.json();
+              emit({
+                active: Boolean(st.active),
+                stage: String(st.stage || ''),
+                percent: Number(st.percent) || 0,
+                message: String(st.message || '')
+              });
+              if (st.active) {
+                setTimeout(poll, 350);
+              }
+            } catch {
+              // Desktop launcher likely restarting into the updated version
+              emit({ active: false, stage: 'done', percent: 100, message: 'Restarting OpenLingo...' });
+            }
+          };
+          setTimeout(poll, 250);
+          return;
+        }
+      }
+    } catch {
+      // Fallback to release page below if desktop helper is not active
+    }
+    emit({ active: false, stage: 'idle', percent: 0, message: '' });
+  }
+
   const targetUrl = updateInfo?.releaseUrl || updateInfo?.downloadUrl;
   openExternalLink(targetUrl);
 }

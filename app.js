@@ -116,7 +116,8 @@ const state = {
   updateInfo: null,
   updateChecking: false,
   updateError: '',
-  updateBannerDismissed: false
+  updateBannerDismissed: false,
+  updateInstall: null
 };
 
 function tCourse(course, key, vars = {}) {
@@ -3113,14 +3114,15 @@ function renderSettingsView(course) {
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           ${
             state.updateInfo?.hasUpdate
-              ? `<button type="button" class="btn btn-primary btn-sm" id="settings-apply-update-btn">${uiIcon('download', 15)} Update to v${escapeHtml(state.updateInfo.latestVersion)}</button>`
+              ? `<button type="button" class="btn btn-primary btn-sm" id="settings-apply-update-btn" ${state.updateInstall?.active ? 'disabled' : ''}>${uiIcon('download', 15)} ${state.updateInstall?.active ? 'Installing...' : `Install v${escapeHtml(state.updateInfo.latestVersion)}`}</button>`
               : ''
           }
-          <button type="button" class="btn btn-sm" id="settings-check-update-btn" ${state.updateChecking ? 'disabled' : ''}>
+          <button type="button" class="btn btn-sm" id="settings-check-update-btn" ${state.updateChecking || state.updateInstall?.active ? 'disabled' : ''}>
             ${uiIcon('refresh', 15)} ${state.updateChecking ? 'Checking...' : 'Check for Updates'}
           </button>
         </div>
       </div>
+      ${renderUpdateProgressBlock('settings')}
     </section>
 
     <section class="card" id="settings-support-section">
@@ -3352,7 +3354,9 @@ function attachEvents(course) {
   ].filter(Boolean);
   applyUpdateBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (state.updateInfo) performAppUpdate(state.updateInfo);
+      if (state.updateInfo && !state.updateInstall?.active) {
+        startAppUpdate();
+      }
     });
   });
   const dismissUpdateBtns = [
@@ -4589,8 +4593,55 @@ function renderAddCourseModal() {
   `;
 }
 
+function renderUpdateProgressBlock(scope = 'modal') {
+  const upd = state.updateInstall;
+  if (!upd || (!upd.active && !upd.message)) return '';
+  const pct = Math.max(0, Math.min(100, Number(upd.percent) || 0));
+  const isError = upd.stage === 'error';
+  const isDone = upd.stage === 'done';
+  return `
+    <div class="update-progress-box" data-update-progress-box="${scope}" style="margin-top:${scope === 'settings' ? '12px' : '0'};padding:10px 12px;border-radius:12px;background:var(--surface-elevated);border:2px solid ${isError ? 'var(--danger)' : isDone ? 'var(--success)' : 'var(--border)'};display:grid;gap:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:700;color:${isError ? 'var(--danger)' : isDone ? 'var(--success)' : 'var(--text)'};">
+        <span data-update-progress-msg="${scope}">${escapeHtml(upd.message || 'Updating...')}</span>
+        ${upd.active && pct > 0 ? `<span data-update-progress-pct="${scope}">${pct}%</span>` : ''}
+      </div>
+      ${
+        upd.active
+          ? `<div class="progress-track" style="height:8px;"><div class="progress-fill" data-update-progress-bar="${scope}" style="width:${Math.max(4, pct)}%;"></div></div>`
+          : ''
+      }
+    </div>
+  `;
+}
+
+function startAppUpdate() {
+  if (!state.updateInfo || state.updateInstall?.active) return;
+  let lastStage = '';
+  performAppUpdate(state.updateInfo, (prog) => {
+    const prevActive = Boolean(state.updateInstall?.active);
+    state.updateInstall = prog;
+    const stageChanged = prog.stage !== lastStage || Boolean(prog.active) !== prevActive;
+    lastStage = prog.stage;
+
+    if (!stageChanged && prog.stage === 'downloading') {
+      document.querySelectorAll('[data-update-progress-msg]').forEach((el) => {
+        el.textContent = prog.message || 'Downloading update...';
+      });
+      document.querySelectorAll('[data-update-progress-pct]').forEach((el) => {
+        el.textContent = `${Math.max(0, Math.min(100, Number(prog.percent) || 0))}%`;
+      });
+      document.querySelectorAll('[data-update-progress-bar]').forEach((el) => {
+        el.style.width = `${Math.max(4, Math.min(100, Number(prog.percent) || 0))}%`;
+      });
+      return;
+    }
+    render();
+  });
+}
+
 function renderUpdateModal() {
   if (!state.updateInfo?.hasUpdate || state.updateBannerDismissed) return '';
+  const isUpdating = Boolean(state.updateInstall?.active);
   return `
     <div id="update-modal-backdrop" class="ol-select-overlay" role="dialog" aria-modal="true" aria-label="App Update Available">
       <div class="ol-select-modal" style="max-width:440px;">
@@ -4599,7 +4650,7 @@ function renderUpdateModal() {
             <span style="color:var(--accent-text);">${uiIcon('sparkles', 18)}</span>
             Update Available
           </div>
-          <button type="button" id="banner-dismiss-update-btn" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
+          <button type="button" id="banner-dismiss-update-btn" class="ol-select-close" aria-label="Close" ${isUpdating ? 'disabled' : ''}>${uiIcon('x', 18)}</button>
         </div>
         <div style="padding:18px;display:grid;gap:12px;">
           <div style="display:flex;align-items:center;gap:12px;">
@@ -4610,9 +4661,10 @@ function renderUpdateModal() {
             </div>
           </div>
           ${state.updateInfo.summary ? `<div style="font-size:13px;color:var(--text-muted);line-height:1.45;padding:10px 12px;border-radius:12px;background:var(--surface-elevated);border:2px solid var(--border);">${escapeHtml(state.updateInfo.summary)}</div>` : ''}
+          ${renderUpdateProgressBlock('modal')}
           <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px;">
-            <button type="button" class="btn btn-sm" id="banner-later-update-btn">Later</button>
-            <button type="button" class="btn btn-primary btn-sm" id="banner-apply-update-btn">${uiIcon('download', 15)} Update Now</button>
+            <button type="button" class="btn btn-sm" id="banner-later-update-btn" ${isUpdating ? 'disabled' : ''}>Later</button>
+            <button type="button" class="btn btn-primary btn-sm" id="banner-apply-update-btn" ${isUpdating ? 'disabled' : ''}>${uiIcon('download', 15)} ${isUpdating ? 'Installing...' : 'Install Update'}</button>
           </div>
         </div>
       </div>

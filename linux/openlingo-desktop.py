@@ -20,9 +20,12 @@ import signal
 import socket
 import subprocess
 import sys
+import tarfile
+import tempfile
 import threading
 import time
 import urllib.parse
+import urllib.request
 import webbrowser
 from pathlib import Path
 
@@ -34,12 +37,182 @@ if not WWW_DIR.exists():
     WWW_DIR = BASE_DIR.parent
 
 DATA_DIR = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share")) / "openlingo"
+CACHE_DIR = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "openlingo" / "updates"
 PROFILE_DIR = DATA_DIR / "profile"
 
 AUTH_LOCK = threading.Lock()
 AUTH_SESSIONS = {}
+UPDATE_LOCK = threading.Lock()
+UPDATE_STATE = {"active": False, "stage": "idle", "percent": 0, "message": "", "error": ""}
 SERVER_PORT = 8080
 USING_APP_WINDOW = False
+BROWSER_PROC = None
+HTTPD_SERVER = None
+
+
+def set_update_state(active, stage, percent, message, error=""):
+    with UPDATE_LOCK:
+        UPDATE_STATE.update({
+            "active": bool(active),
+            "stage": str(stage),
+            "percent": int(percent),
+            "message": str(message),
+            "error": str(error),
+        })
+
+
+def detect_install_mode():
+    appimage = os.environ.get("APPIMAGE")
+    if appimage and os.path.isfile(appimage) and os.access(os.path.dirname(appimage) or ".", os.W_OK):
+        return "appimage"
+    if os.environ.get("FLATPAK_ID"):
+        return "flatpak"
+    user_app_dir = str((Path.home() / ".local" / "share" / "openlingo-app").resolve())
+    if str(BASE_DIR).startswith(user_app_dir):
+        return "user"
+    if str(BASE_DIR).startswith("/usr/share/openlingo"):
+        if shutil.which("pacman"):
+            return "arch"
+        if shutil.which("apt-get") or shutil.which("dpkg"):
+            return "deb"
+        if shutil.which("dnf") or shutil.which("rpm"):
+            return "rpm"
+    return "dev"
+
+
+def is_trusted_release_url(url):
+    return isinstance(url, str) and (
+        url.startswith("https://github.com/mahesh-labs/openlingo/releases/download/")
+        or url.startswith("https://objects.githubusercontent.com/")
+    )
+
+
+def download_with_progress(url, dest_path, label="Downloading update"):
+    req = urllib.request.Request(url, headers={"User-Agent": "OpenLingo-Linux"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        total = int(resp.headers.get("Content-Length") or 0)
+        downloaded = 0
+        last_pct = -1
+        with open(dest_path, "wb") as out:
+            while True:
+                chunk = resp.read(32768)
+                if not chunk:
+                    break
+                out.write(chunk)
+                downloaded += len(chunk)
+                if total > 0:
+                    pct = min(99, int((downloaded * 100) / total))
+                    if pct >= last_pct + 2 or pct == 99:
+                        last_pct = pct
+                        set_update_state(True, "downloading", pct, f"{label}... {pct}%")
+                elif last_pct < 0:
+                    last_pct = 15
+                    set_update_state(True, "downloading", 15, f"{label}...")
+
+
+def schedule_relaunch(cmd):
+    def _relaunch():
+        time.sleep(1.2)
+        try:
+            subprocess.Popen(
+                cmd,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                start_new_session=True,
+            )
+        except Exception:
+            pass
+        try:
+            if BROWSER_PROC and BROWSER_PROC.poll() is None:
+                BROWSER_PROC.terminate()
+        except Exception:
+            pass
+        os._exit(0)
+
+    threading.Thread(target=_relaunch, daemon=True).start()
+
+
+def run_linux_direct_update(mode, asset_url):
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        filename = os.path.basename(urllib.parse.urlparse(asset_url).path) or "openlingo-update.bin"
+        dl_path = CACHE_DIR / filename
+
+        set_update_state(True, "downloading", 0, "Connecting to GitHub Releases...")
+        download_with_progress(asset_url, dl_path)
+
+        if mode == "appimage":
+            appimage_path = Path(os.environ["APPIMAGE"]).resolve()
+            tmp_target = appimage_path.with_suffix(appimage_path.suffix + ".new")
+            shutil.copy2(dl_path, tmp_target)
+            os.chmod(tmp_target, 0o755)
+            os.replace(tmp_target, appimage_path)
+            try:
+                dl_path.unlink(missing_ok=True)
+            except Exception:
+                pass
+            set_update_state(False, "done", 100, "Updated! Restarting OpenLingo...")
+            schedule_relaunch([str(appimage_path)])
+            return
+
+        if mode == "user":
+            set_update_state(True, "installing", 100, "Extracting update files...")
+            app_home = Path.home() / ".local" / "share" / "openlingo-app"
+            with tempfile.TemporaryDirectory(prefix="openlingo-upd-") as tmpdir:
+                with tarfile.open(dl_path, "r:gz") as tf:
+                    tf.extractall(tmpdir)
+                extracted_roots = [p for p in Path(tmpdir).iterdir() if p.is_dir()]
+                if not extracted_roots:
+                    raise RuntimeError("Invalid update archive structure.")
+                src_root = extracted_roots[0]
+                if (src_root / "www").is_dir():
+                    if (app_home / "www").exists():
+                        shutil.rmtree(app_home / "www")
+                    shutil.copytree(src_root / "www", app_home / "www")
+                if (src_root / "openlingo-desktop.py").is_file():
+                    shutil.copy2(src_root / "openlingo-desktop.py", app_home / "openlingo-desktop.py")
+                    os.chmod(app_home / "openlingo-desktop.py", 0o755)
+            set_update_state(False, "done", 100, "Updated! Restarting OpenLingo...")
+            bin_cmd = str(Path.home() / ".local" / "bin" / "openlingo")
+            schedule_relaunch([bin_cmd if os.path.exists(bin_cmd) else sys.executable, str(app_home / "openlingo-desktop.py")] if not os.path.exists(bin_cmd) else [bin_cmd])
+            return
+
+        if mode == "flatpak":
+            set_update_state(True, "installing", 100, "Installing Flatpak update...")
+            cmd = (["flatpak-spawn", "--host", "flatpak", "install", "--user", "-y", str(dl_path)]
+                   if shutil.which("flatpak-spawn")
+                   else ["flatpak", "install", "--user", "-y", str(dl_path)])
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            if res.returncode != 0:
+                raise RuntimeError((res.stderr or res.stdout or "Flatpak install failed.").strip()[:200])
+            set_update_state(False, "done", 100, "Flatpak updated! Restart OpenLingo to use the new version.")
+            return
+
+        if mode in ("arch", "deb", "rpm"):
+            pkexec = shutil.which("pkexec")
+            if not pkexec:
+                raise RuntimeError("pkexec is not installed; please install the downloaded package manually.")
+            set_update_state(True, "installing", 100, "Waiting for administrator approval to install update...")
+            if mode == "arch":
+                cmd = [pkexec, "pacman", "-U", "--noconfirm", str(dl_path)]
+            elif mode == "deb":
+                cmd = [pkexec, "apt-get", "install", "-y", str(dl_path)] if shutil.which("apt-get") else [pkexec, "dpkg", "-i", str(dl_path)]
+            else:
+                cmd = [pkexec, "dnf", "install", "-y", str(dl_path)] if shutil.which("dnf") else [pkexec, "rpm", "-Uvh", str(dl_path)]
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            if res.returncode != 0:
+                err_txt = (res.stderr or res.stdout or "").strip()
+                if res.returncode in (126, 127) or "dismissed" in err_txt.lower():
+                    set_update_state(False, "cancelled", 0, "Update cancelled.")
+                    return
+                raise RuntimeError(err_txt[:220] or f"Package installer exited with code {res.returncode}.")
+            set_update_state(False, "done", 100, "Package updated! Restarting OpenLingo...")
+            schedule_relaunch([shutil.which("openlingo") or "/usr/bin/openlingo"])
+            return
+
+        raise RuntimeError("Direct self-update is not available in development mode.")
+    except Exception as e:
+        set_update_state(False, "error", 0, f"Update failed: {e}", str(e))
 
 
 def open_system_browser(url):
@@ -267,7 +440,18 @@ class DesktopHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         if parsed.path == "/__desktop/info":
-            self._send_json(200, {"desktop": USING_APP_WINDOW, "port": SERVER_PORT})
+            mode = detect_install_mode()
+            self._send_json(200, {
+                "desktop": USING_APP_WINDOW,
+                "port": SERVER_PORT,
+                "installMode": mode,
+                "canDirectUpdate": mode != "dev",
+            })
+            return
+
+        if parsed.path == "/__desktop/update/status":
+            with UPDATE_LOCK:
+                self._send_json(200, dict(UPDATE_STATE))
             return
 
         if parsed.path == "/__desktop/auth":
@@ -317,6 +501,35 @@ class DesktopHandler(http.server.SimpleHTTPRequestHandler):
                 return
             open_system_browser(url)
             self._send_json(200, {"ok": True})
+            return
+
+        if parsed.path == "/__desktop/update/install":
+            data = self._read_json()
+            mode = detect_install_mode()
+            asset_map = {
+                "appimage": data.get("appImageUrl"),
+                "user": data.get("tarGzUrl"),
+                "flatpak": data.get("flatpakUrl"),
+                "arch": data.get("archPkgUrl"),
+                "deb": data.get("debUrl"),
+                "rpm": data.get("rpmUrl"),
+            }
+            asset_url = str(asset_map.get(mode) or "").strip()
+            if mode == "dev" or not is_trusted_release_url(asset_url):
+                self._send_json(200, {
+                    "ok": False,
+                    "fallback": True,
+                    "installMode": mode,
+                    "error": "No matching direct-install asset for this Linux install mode.",
+                })
+                return
+            with UPDATE_LOCK:
+                if UPDATE_STATE.get("active"):
+                    self._send_json(200, {"ok": True, "installMode": mode, "alreadyRunning": True})
+                    return
+            set_update_state(True, "downloading", 0, "Starting update...")
+            threading.Thread(target=run_linux_direct_update, args=(mode, asset_url), daemon=True).start()
+            self._send_json(200, {"ok": True, "installMode": mode})
             return
 
         if parsed.path == "/__desktop/auth/start":
@@ -405,7 +618,7 @@ def find_app_browser():
 
 
 def main():
-    global SERVER_PORT, USING_APP_WINDOW
+    global SERVER_PORT, USING_APP_WINDOW, BROWSER_PROC, HTTPD_SERVER
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     port = pick_port()
     SERVER_PORT = port
@@ -414,6 +627,7 @@ def main():
 
     handler = functools.partial(DesktopHandler, directory=str(WWW_DIR))
     httpd = ReusableHTTPServer(("127.0.0.1", port), handler)
+    HTTPD_SERVER = httpd
 
     server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     server_thread.start()
@@ -440,6 +654,7 @@ def main():
         ]
         try:
             proc = subprocess.Popen(cmd)
+            BROWSER_PROC = proc
             proc.wait()
         finally:
             httpd.shutdown()
