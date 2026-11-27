@@ -1,0 +1,97 @@
+name: Announce New Release on Discord
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to announce (e.g. v0.0.12-beta)'
+        required: true
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post Rich Release Embed to Discord #announcements
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_ANNOUNCEMENTS_WEBHOOK }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_TAG: ${{ github.event.release.tag_name }}
+          INPUT_TAG: ${{ inputs.tag }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "DISCORD_ANNOUNCEMENTS_WEBHOOK secret is not configured; skipping Discord announcement."
+            exit 0
+          fi
+
+          TAG="${EVENT_TAG:-$INPUT_TAG}"
+          python3 - "$TAG" "$REPO" <<'PY'
+          import json, os, sys, urllib.request
+
+          tag, repo = sys.argv[1], sys.argv[2]
+          webhook = os.environ["DISCORD_WEBHOOK"].strip()
+          gh_token = os.environ.get("GH_TOKEN", "")
+
+          rel_req = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/releases/tags/{tag}",
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  "Authorization": f"Bearer {gh_token}",
+                  "User-Agent": "OpenLingo-Release-Bot",
+              },
+          )
+          with urllib.request.urlopen(rel_req, timeout=20) as r:
+              rel = json.loads(r.read().decode("utf-8"))
+
+          title = rel.get("name") or f"OpenLingo {tag}"
+          url = rel.get("html_url") or f"https://github.com/{repo}/releases/tag/{tag}"
+          body = (rel.get("body") or "A new OpenLingo update is live!").strip()
+          if len(body) > 3200:
+              body = body[:3190].rstrip() + "\n..."
+
+          payload = {
+              "username": "OpenLingo Releases",
+              "avatar_url": "https://mahesh-labs.github.io/openlingo/assets/icons/openlingo-256.png",
+              "content": f"@everyone 🚀 **{title}** is now live across **Web, Android, Windows, and Linux**!",
+              "embeds": [
+                  {
+                      "title": f"✨ {title}",
+                      "url": url,
+                      "description": body,
+                      "color": 0x7C3AED,
+                      "thumbnail": {
+                          "url": "https://mahesh-labs.github.io/openlingo/assets/icons/openlingo-256.png"
+                      },
+                      "fields": [
+                          {
+                              "name": "🌐 Web App (PWA)",
+                              "value": "[Launch OpenLingo](https://mahesh-labs.github.io/openlingo/)",
+                              "inline": True,
+                          },
+                          {
+                              "name": "📦 All Downloads",
+                              "value": f"[Android / Windows / Linux]({url})",
+                              "inline": True,
+                          },
+                      ],
+                      "footer": {
+                          "text": "OpenLingo · Existing installs update directly inside the app!"
+                      },
+                  }
+              ],
+          }
+
+          req = urllib.request.Request(
+              webhook,
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "Content-Type": "application/json",
+                  "User-Agent": "OpenLingo-Release-Bot",
+              },
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=20) as resp:
+              print("Discord webhook posted cleanly, HTTP", resp.status)
+          PY
