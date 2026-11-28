@@ -39,21 +39,21 @@ jobs:
               headers={
                   "Accept": "application/vnd.github+json",
                   "Authorization": f"Bearer {gh_token}",
-                  "User-Agent": "OpenLingo-Release-Bot",
+                  "User-Agent": "Polygot-Release-Bot",
               },
           )
           with urllib.request.urlopen(rel_req, timeout=20) as r:
               rel = json.loads(r.read().decode("utf-8"))
 
-          title = rel.get("name") or f"OpenLingo {tag}"
+          title = rel.get("name") or f"Polygot {tag}"
           url = rel.get("html_url") or f"https://github.com/{repo}/releases/tag/{tag}"
-          body = (rel.get("body") or "A new OpenLingo update is live!").strip()
+          body = (rel.get("body") or "A new Polygot update is live!").strip()
           if len(body) > 3200:
               body = body[:3190].rstrip() + "\n..."
 
           payload = {
-              "username": "OpenLingo Releases",
-              "avatar_url": "https://mahesh-labs.github.io/openlingo/assets/icons/openlingo-256.png",
+              "username": "Polygot Releases",
+              "avatar_url": "https://mahesh-labs.github.io/polygot/assets/icons/polygot-256.png",
               "content": f"@everyone 🚀 **{title}** is now live across **Web, Android, Windows, and Linux**!",
               "embeds": [
                   {
@@ -62,12 +62,12 @@ jobs:
                       "description": body,
                       "color": 0x7C3AED,
                       "thumbnail": {
-                          "url": "https://mahesh-labs.github.io/openlingo/assets/icons/openlingo-256.png"
+                          "url": "https://mahesh-labs.github.io/polygot/assets/icons/polygot-256.png"
                       },
                       "fields": [
                           {
                               "name": "🌐 Web App (PWA)",
-                              "value": "[Launch OpenLingo](https://mahesh-labs.github.io/openlingo/)",
+                              "value": "[Launch Polygot](https://mahesh-labs.github.io/polygot/)",
                               "inline": True,
                           },
                           {
@@ -77,7 +77,7 @@ jobs:
                           },
                       ],
                       "footer": {
-                          "text": "OpenLingo · Existing installs update directly inside the app!"
+                          "text": "Polygot · Existing installs update directly inside the app!"
                       },
                   }
               ],
@@ -88,7 +88,7 @@ jobs:
               data=json.dumps(payload).encode("utf-8"),
               headers={
                   "Content-Type": "application/json",
-                  "User-Agent": "OpenLingo-Release-Bot",
+                  "User-Agent": "Polygot-Release-Bot",
               },
               method="POST",
           )

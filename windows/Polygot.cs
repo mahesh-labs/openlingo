@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Web.Script.Serialization;
 
-namespace OpenLingoWindows
+namespace PolygotWindows
 {
     internal static class Program
     {
@@ -57,7 +57,7 @@ namespace OpenLingoWindows
             }
 
             string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            DataDir = Path.Combine(localAppData, "OpenLingo");
+            DataDir = Path.Combine(localAppData, "Polygot");
             ProfileDir = Path.Combine(DataDir, "profile");
             UpdateCacheDir = Path.Combine(DataDir, "updates");
             Directory.CreateDirectory(DataDir);
@@ -105,7 +105,7 @@ namespace OpenLingoWindows
         private static int StartHttpServer()
         {
             int[] preferred = new int[] { 8080, 18420, 18421, 0 };
-            string envPort = Environment.GetEnvironmentVariable("OPENLINGO_PORT");
+            string envPort = Environment.GetEnvironmentVariable("POLYGOT_PORT");
             int customPort;
             if (!string.IsNullOrEmpty(envPort) && int.TryParse(envPort, out customPort) && customPort > 0)
             {
@@ -130,7 +130,7 @@ namespace OpenLingoWindows
                     // Try next candidate port
                 }
             }
-            throw new InvalidOperationException("Could not bind local OpenLingo HTTP port.");
+            throw new InvalidOperationException("Could not bind local Polygot HTTP port.");
         }
 
         private static void AcceptLoop()
@@ -528,7 +528,7 @@ namespace OpenLingoWindows
         {
             try
             {
-                using (Stream res = Assembly.GetExecutingAssembly().GetManifestResourceStream("OpenLingo.www.zip"))
+                using (Stream res = Assembly.GetExecutingAssembly().GetManifestResourceStream("Polygot.www.zip"))
                 {
                     if (res == null) return;
                     Dictionary<string, byte[]> files = new Dictionary<string, byte[]>(StringComparer.OrdinalIgnoreCase);
@@ -582,7 +582,7 @@ namespace OpenLingoWindows
         private static bool IsTrustedReleaseUrl(string url)
         {
             if (string.IsNullOrEmpty(url)) return false;
-            return url.StartsWith("https://github.com/mahesh-labs/openlingo/releases/download/", StringComparison.OrdinalIgnoreCase)
+            return url.StartsWith("https://github.com/mahesh-labs/polygot/releases/download/", StringComparison.OrdinalIgnoreCase)
                 || url.StartsWith("https://objects.githubusercontent.com/", StringComparison.OrdinalIgnoreCase);
         }
 
@@ -605,7 +605,7 @@ namespace OpenLingoWindows
                 Directory.CreateDirectory(UpdateCacheDir);
                 Uri u = new Uri(assetUrl);
                 string fileName = Path.GetFileName(u.LocalPath);
-                if (string.IsNullOrEmpty(fileName)) fileName = "openlingo-update.bin";
+                if (string.IsNullOrEmpty(fileName)) fileName = "polygot-update.bin";
                 string dlPath = Path.Combine(UpdateCacheDir, fileName);
 
                 SetUpdateState(true, "downloading", 0, "Connecting to GitHub Releases...", "");
@@ -638,7 +638,7 @@ namespace OpenLingoWindows
                     string stagedExe = currentExe + ".new";
                     File.Copy(dlPath, stagedExe, true);
 
-                    string scriptPath = Path.Combine(Path.GetTempPath(), "openlingo-swap-" + Guid.NewGuid().ToString("N") + ".cmd");
+                    string scriptPath = Path.Combine(Path.GetTempPath(), "polygot-swap-" + Guid.NewGuid().ToString("N") + ".cmd");
                     string batch = string.Format(
                         "@echo off\r\n" +
                         "timeout /t 2 /nobreak >nul\r\n" +
@@ -649,7 +649,7 @@ namespace OpenLingoWindows
                     );
                     File.WriteAllText(scriptPath, batch, Encoding.Default);
 
-                    SetUpdateState(false, "done", 100, "Updated! Restarting OpenLingo...", "");
+                    SetUpdateState(false, "done", 100, "Updated! Restarting Polygot...", "");
                     ProcessStartInfo psi = new ProcessStartInfo("cmd.exe", "/C \"" + scriptPath + "\"");
                     psi.WindowStyle = ProcessWindowStyle.Hidden;
                     psi.CreateNoWindow = true;
@@ -662,18 +662,18 @@ namespace OpenLingoWindows
                 if (mode == "portable")
                 {
                     SetUpdateState(true, "installing", 100, "Extracting portable update...", "");
-                    string extractDir = Path.Combine(Path.GetTempPath(), "openlingo-upd-" + Guid.NewGuid().ToString("N"));
+                    string extractDir = Path.Combine(Path.GetTempPath(), "polygot-upd-" + Guid.NewGuid().ToString("N"));
                     ZipFile.ExtractToDirectory(dlPath, extractDir);
 
                     string srcDir = extractDir;
                     string[] subDirs = Directory.GetDirectories(extractDir);
-                    if (!File.Exists(Path.Combine(srcDir, "OpenLingo.exe")) && subDirs.Length == 1)
+                    if (!File.Exists(Path.Combine(srcDir, "Polygot.exe")) && subDirs.Length == 1)
                     {
                         srcDir = subDirs[0];
                     }
 
-                    string scriptPath = Path.Combine(Path.GetTempPath(), "openlingo-apply-" + Guid.NewGuid().ToString("N") + ".cmd");
-                    string exePath = Path.Combine(BaseDir, "OpenLingo.exe");
+                    string scriptPath = Path.Combine(Path.GetTempPath(), "polygot-apply-" + Guid.NewGuid().ToString("N") + ".cmd");
+                    string exePath = Path.Combine(BaseDir, "Polygot.exe");
                     string batch = string.Format(
                         "@echo off\r\n" +
                         "timeout /t 2 /nobreak >nul\r\n" +
@@ -685,7 +685,7 @@ namespace OpenLingoWindows
                     );
                     File.WriteAllText(scriptPath, batch, Encoding.Default);
 
-                    SetUpdateState(false, "done", 100, "Updated! Restarting OpenLingo...", "");
+                    SetUpdateState(false, "done", 100, "Updated! Restarting Polygot...", "");
                     ProcessStartInfo psi = new ProcessStartInfo("cmd.exe", "/C \"" + scriptPath + "\"");
                     psi.WindowStyle = ProcessWindowStyle.Hidden;
                     psi.CreateNoWindow = true;
@@ -704,7 +704,7 @@ namespace OpenLingoWindows
         private static void DownloadFileWithProgress(string url, string destPath)
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-            req.UserAgent = "OpenLingo-Windows";
+            req.UserAgent = "Polygot-Windows";
             req.AllowAutoRedirect = true;
             req.Timeout = 30000;
             using (HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
@@ -947,8 +947,8 @@ namespace OpenLingoWindows
 
             return "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"/>"
                 + "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\"/>"
-                + "<title>Sign in to OpenLingo</title>"
-                + "<link rel=\"icon\" type=\"image/svg+xml\" href=\"/assets/icons/openlingo-icon.svg\"/>"
+                + "<title>Sign in to Polygot</title>"
+                + "<link rel=\"icon\" type=\"image/svg+xml\" href=\"/assets/icons/polygot-icon.svg\"/>"
                 + "<style>*{box-sizing:border-box;}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#121024;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}"
                 + ".card{width:100%;max-width:420px;background:#1b1736;border:3px solid #3d3573;border-radius:24px;padding:28px 24px;text-align:center;box-shadow:0 10px 0 #0a0817;}"
                 + ".logo{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;display:block;}"
@@ -959,8 +959,8 @@ namespace OpenLingoWindows
                 + ".status.ok{display:block;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.45);color:#34d399;}"
                 + ".status.err{display:block;background:rgba(244,63,94,0.14);border:1px solid rgba(244,63,94,0.45);color:#fb7185;}</style>"
                 + "<script src=\"https://accounts.google.com/gsi/client\" async defer></script></head><body>"
-                + "<div class=\"card\"><img class=\"logo\" src=\"/assets/icons/openlingo-icon.svg\" alt=\"OpenLingo\"/>"
-                + "<h1>Sign in to OpenLingo Desktop</h1>"
+                + "<div class=\"card\"><img class=\"logo\" src=\"/assets/icons/polygot-icon.svg\" alt=\"Polygot\"/>"
+                + "<h1>Sign in to Polygot Desktop</h1>"
                 + "<p>Using your default browser so you can continue with your existing Google account without logging in again.</p>"
                 + "<button id=\"signin-btn\" class=\"gbtn\" type=\"button\"><span>Continue with Google</span></button>"
                 + "<div id=\"status\" class=\"status\"></div></div>"
@@ -972,7 +972,7 @@ namespace OpenLingoWindows
                 + "function showStatus(m,ok){statusEl.textContent=m;statusEl.className='status '+(ok?'ok':'err');}"
                 + "async function sendResult(p){await fetch('/__desktop/auth/complete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({state:STATE},p))});}"
                 + "function ensureClient(){if(tokenClient)return tokenClient;if(!window.google||!window.google.accounts||!window.google.accounts.oauth2)return null;"
-                + "tokenClient=window.google.accounts.oauth2.initTokenClient({client_id:CLIENT_ID,scope:SCOPE,callback:async(r)=>{if(r.error){btn.disabled=false;showStatus('Sign-in failed: '+(r.error_description||r.error),false);await sendResult({error:r.error_description||r.error});return;}completed=true;btn.style.display='none';showStatus('Signed in! You can close this tab and return to OpenLingo.',true);await sendResult({access_token:r.access_token,expires_in:Number(r.expires_in||3500)});setTimeout(()=>{try{window.close();}catch(e){}},1200);},error_callback:(e)=>{btn.disabled=false;showStatus((e&&e.message)||'Popup blocked or closed. Click Continue with Google to retry.',false);}});return tokenClient;}"
+                + "tokenClient=window.google.accounts.oauth2.initTokenClient({client_id:CLIENT_ID,scope:SCOPE,callback:async(r)=>{if(r.error){btn.disabled=false;showStatus('Sign-in failed: '+(r.error_description||r.error),false);await sendResult({error:r.error_description||r.error});return;}completed=true;btn.style.display='none';showStatus('Signed in! You can close this tab and return to Polygot.',true);await sendResult({access_token:r.access_token,expires_in:Number(r.expires_in||3500)});setTimeout(()=>{try{window.close();}catch(e){}},1200);},error_callback:(e)=>{btn.disabled=false;showStatus((e&&e.message)||'Popup blocked or closed. Click Continue with Google to retry.',false);}});return tokenClient;}"
                 + "btn.addEventListener('click',()=>{const tc=ensureClient();if(!tc){showStatus('Google Sign-In is still loading — click again in a moment.',false);return;}btn.disabled=true;statusEl.className='status';tc.requestAccessToken({prompt:'select_account'});});"
                 + "window.addEventListener('pagehide',()=>{if(!completed&&navigator.sendBeacon){navigator.sendBeacon('/__desktop/auth/cancel',new Blob([JSON.stringify({state:STATE})],{type:'application/json'}));}});"
                 + "</script></body></html>";

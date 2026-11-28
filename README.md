@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/icons/openlingo-icon.svg" alt="OpenLingo Icon" width="88" height="88" />
+  <img src="assets/icons/polygot-icon.svg" alt="Polygot Icon" width="88" height="88" />
 </p>
 
-<h1 align="center">OpenLingo</h1>
+<h1 align="center">Polygot</h1>
 
 <p align="center">
   <strong>Free, open-source, cross-platform language learning app for Web, Android, Windows, and Linux.</strong><br/>
@@ -10,10 +10,10 @@
 </p>
 
 <p align="center">
-  <a href="https://mahesh-labs.github.io/openlingo/"><strong>🌐 Launch Live Web App</strong></a> &nbsp;·&nbsp;
-  <a href="https://github.com/mahesh-labs/openlingo/releases"><strong>📦 Download (Android / Windows / Linux)</strong></a> &nbsp;·&nbsp;
+  <a href="https://mahesh-labs.github.io/polygot/"><strong>🌐 Launch Live Web App</strong></a> &nbsp;·&nbsp;
+  <a href="https://github.com/mahesh-labs/polygot/releases"><strong>📦 Download (Android / Windows / Linux)</strong></a> &nbsp;·&nbsp;
   <a href="https://discord.gg/pYMKxY4jE"><strong>💬 Join Discord</strong></a> &nbsp;·&nbsp;
-  <a href="https://mahesh-labs.github.io/openlingo/privacy.html"><strong>🔒 Privacy Policy</strong></a> &nbsp;·&nbsp;
+  <a href="https://mahesh-labs.github.io/polygot/privacy.html"><strong>🔒 Privacy Policy</strong></a> &nbsp;·&nbsp;
   <a href="CONTRIBUTING_COURSES.md"><strong>🌍 Contribute Courses</strong></a>
 </p>
 
@@ -23,7 +23,7 @@
 
 Start learning immediately in any desktop or mobile browser — no installation required:
 
-👉 **https://mahesh-labs.github.io/openlingo/**
+👉 **https://mahesh-labs.github.io/polygot/**
 
 - Installable as a **Progressive Web App (PWA)** on Chrome, Edge, Brave, Safari, iOS, and Android.
 - Works **100% offline** after the first visit via Service Worker caching.
@@ -67,36 +67,36 @@ Every language below can teach **every other language** (`13 × 12 = 156` comple
 
 ## 📦 Downloads & Installation
 
-All 12 prebuilt cross-platform packages are published on [**GitHub Releases**](https://github.com/mahesh-labs/openlingo/releases):
+All 12 prebuilt cross-platform packages are published on [**GitHub Releases**](https://github.com/mahesh-labs/polygot/releases):
 
 ### 1. Android
-- **`OpenLingo-v*-beta.apk`** — Signed native Android APK with full-bleed Adaptive Icons, native Google Account Picker (`AuthorizationClient`), native Android TTS, Storage Access Framework backups, and direct in-app updates.
+- **`Polygot-v*-beta.apk`** — Signed native Android APK with full-bleed Adaptive Icons, native Google Account Picker (`AuthorizationClient`), native Android TTS, Storage Access Framework backups, and direct in-app updates.
 - Build from source: `bash android/build-apk.sh`
 
 ### 2. Windows (Zero Dependencies — Windows 10 & 11)
 | Format | Artifact | Notes |
 | :--- | :--- | :--- |
-| **Installer (`.exe`)** | `OpenLingo-v*-windows-setup.exe` | Inno Setup wizard, Start Menu & Desktop shortcuts, uninstaller |
-| **Single-File Portable (`.exe`)** | `OpenLingo-v*-windows-portable.exe` | Double-click to run — zero extraction, zero install, self-updating |
-| **MSI Installer (`.msi`)** | `OpenLingo-v*-windows.msi` | Per-user WiX v5 Windows Installer (no admin UAC required) |
-| **Portable Folder (`.zip`)** | `OpenLingo-v*-windows-portable.zip` | Extract and launch `OpenLingo.exe` |
+| **Installer (`.exe`)** | `Polygot-v*-windows-setup.exe` | Inno Setup wizard, Start Menu & Desktop shortcuts, uninstaller |
+| **Single-File Portable (`.exe`)** | `Polygot-v*-windows-portable.exe` | Double-click to run — zero extraction, zero install, self-updating |
+| **MSI Installer (`.msi`)** | `Polygot-v*-windows.msi` | Per-user WiX v5 Windows Installer (no admin UAC required) |
+| **Portable Folder (`.zip`)** | `Polygot-v*-windows-portable.zip` | Extract and launch `Polygot.exe` |
 
 ### 3. Linux Desktop (All Formats)
 | Format | Artifact / Source | How to Run / Install |
 | :--- | :--- | :--- |
-| **AppImage (Universal)** | `OpenLingo-v*-x86_64.AppImage` | `chmod +x OpenLingo-*.AppImage && ./OpenLingo-*.AppImage` |
-| **Flatpak** | `OpenLingo-v*.flatpak` | `flatpak install --user OpenLingo-v*.flatpak && flatpak run org.openlingo.app` |
-| **Debian / Ubuntu (`.deb`)** | `OpenLingo-v*-linux_all.deb` | `sudo apt install ./OpenLingo-v*-linux_all.deb` |
-| **Fedora / RHEL (`.rpm`)** | `OpenLingo-v*-linux.noarch.rpm` | `sudo dnf install ./OpenLingo-v*-linux.noarch.rpm` |
-| **Arch Linux (`.pkg.tar.zst`)** | `openlingo-*.pkg.tar.zst` | `sudo pacman -U ./openlingo-*.pkg.tar.zst` |
-| **Portable (`.tar.gz` / `.zip`)** | `OpenLingo-v*-linux.tar.gz` / `.zip` | Extract and run `./openlingo` (or `./install.sh`) |
+| **AppImage (Universal)** | `Polygot-v*-x86_64.AppImage` | `chmod +x Polygot-*.AppImage && ./Polygot-*.AppImage` |
+| **Flatpak** | `Polygot-v*.flatpak` | `flatpak install --user Polygot-v*.flatpak && flatpak run org.polygot.app` |
+| **Debian / Ubuntu (`.deb`)** | `Polygot-v*-linux_all.deb` | `sudo apt install ./Polygot-v*-linux_all.deb` |
+| **Fedora / RHEL (`.rpm`)** | `Polygot-v*-linux.noarch.rpm` | `sudo dnf install ./Polygot-v*-linux.noarch.rpm` |
+| **Arch Linux (`.pkg.tar.zst`)** | `polygot-*.pkg.tar.zst` | `sudo pacman -U ./polygot-*.pkg.tar.zst` |
+| **Portable (`.tar.gz` / `.zip`)** | `Polygot-v*-linux.tar.gz` / `.zip` | Extract and run `./polygot` (or `./install.sh`) |
 
 ---
 
 ## 🗂️ Project Structure
 
 ```text
-openlingo/
+polygot/
 ├── index.html                  # App shell, PWA meta, Open Graph & Search Console tags
 ├── styles.css                  # Rich Purple Dark/Light theme & responsive mobile/desktop UI
 ├── app.js                      # Learning path, exercises, characters, flashcards, settings & studio
@@ -118,4 +118,4 @@ openlingo/
 
 ## 🔒 Privacy & Security
 
-OpenLingo runs **zero backend servers**, zero ads, and zero trackers. All progress is stored locally on your device, and optional Google Sign-In writes only a single `openlingo-backup.json` file into your private Google Drive `appDataFolder` (`drive.appdata` non-sensitive scope) — OpenLingo cannot read any other files in your Drive. See the full [Privacy Policy](https://mahesh-labs.github.io/openlingo/privacy.html).
+Polygot runs **zero backend servers**, zero ads, and zero trackers. All progress is stored locally on your device, and optional Google Sign-In writes only a single `polygot-backup.json` file into your private Google Drive `appDataFolder` (`drive.appdata` non-sensitive scope) — Polygot cannot read any other files in your Drive. See the full [Privacy Policy](https://mahesh-labs.github.io/polygot/privacy.html).

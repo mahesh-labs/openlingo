@@ -6,8 +6,8 @@
 
 const GIS_SCRIPT_URL = 'https://accounts.google.com/gsi/client';
 const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.appdata openid email profile';
-const BACKUP_FILENAME = 'openlingo-backup.json';
-const SESSION_STORAGE_KEY = 'openlingo_google_session_v1';
+const BACKUP_FILENAME = 'polygot-backup.json';
+const SESSION_STORAGE_KEY = 'polygot_google_session_v1';
 
 let gisLoadPromise = null;
 let accessToken = null;
@@ -238,7 +238,7 @@ export async function backupToGoogleDrive(backupPayload) {
   }
 
   // Create new file inside private appDataFolder using multipart upload
-  const boundary = 'openlingo_boundary_' + Date.now();
+  const boundary = 'polygot_boundary_' + Date.now();
   const metadata = JSON.stringify({
     name: BACKUP_FILENAME,
     parents: ['appDataFolder']
@@ -271,7 +271,7 @@ export async function restoreFromGoogleDrive() {
 
   const existing = await findExistingBackupFile(session.accessToken);
   if (!existing) {
-    throw new Error('No OpenLingo backup found in your Google Drive yet. Save a backup first!');
+    throw new Error('No Polygot backup found in your Google Drive yet. Save a backup first!');
   }
 
   const downloadUrl = `https://www.googleapis.com/drive/v3/files/${existing.id}?alt=media`;

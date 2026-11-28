@@ -1,10 +1,10 @@
-# Contributing Languages & Courses to OpenLingo
+# Contributing Languages & Courses to Polygot
 
-OpenLingo is 100% open-source and community-driven. Learners on **Web PWA**, **Linux Desktop**, and **Android** can sync newly merged languages and community courses directly from **Settings → Course Studio → Sync from GitHub**!
+Polygot is 100% open-source and community-driven. Learners on **Web PWA**, **Linux Desktop**, and **Android** can sync newly merged languages and community courses directly from **Settings → Course Studio → Sync from GitHub**!
 
-There are **two ways** to contribute courses to OpenLingo:
+There are **two ways** to contribute courses to Polygot:
 
-1. **[Option A (Recommended): Add a New Language to the Universal Matrix](#option-a-add-a-new-language-to-the-universal-matrix)** — Contribute **one** language pack (`courses/langs/<code>.json`) and automatically unlock Beginner → Super Advanced courses **to and from every other language** in OpenLingo, plus a dedicated customizable **App Icon** across all devices!
+1. **[Option A (Recommended): Add a New Language to the Universal Matrix](#option-a-add-a-new-language-to-the-universal-matrix)** — Contribute **one** language pack (`courses/langs/<code>.json`) and automatically unlock Beginner → Super Advanced courses **to and from every other language** in Polygot, plus a dedicated customizable **App Icon** across all devices!
 2. **[Option B: Add a Standalone / Specialized Community Course](#option-b-add-a-standalone--specialized-community-course)** — Contribute a focused or custom-structured course (e.g. *Travel Japanese*, *Business German*, *Medical Spanish*, or a regional dialect) under `courses/<id>/course.json` registered in `courses/registry.json`.
 
 ---
@@ -12,7 +12,7 @@ There are **two ways** to contribute courses to OpenLingo:
 ## Repository Structure
 
 ```text
-openlingo/
+polygot/
 ├── courses/
 │   ├── matrix/
 │   │   └── syllabus.json        # Master 5-tier, 25-unit, 75-lesson, 375-concept syllabus + language metadata & icons
@@ -129,7 +129,7 @@ This single command automatically completes the **entire cross-platform pipeline
 2. Updates **`courses/registry.json`** with the new language count, pair count, and language entry.
 3. Updates **`sw.js`** offline PWA precache list to include `./courses/langs/<code>.json`.
 4. Generates your language's **Android mipmap icon** (`android/res/mipmap-xxxhdpi/ic_launcher_<code>.png`), **Android adaptive foreground** (`android/res/drawable-xxxhdpi/ic_launcher_fg_<code>.png`), and **Android adaptive XML** (`android/res/mipmap-anydpi-v26/ic_launcher_<code>.xml`) *(requires `rsvg-convert` from `librsvg` — on Ubuntu/Debian: `sudo apt install librsvg2-bin`; on Arch: `sudo pacman -S librsvg`)*.
-5. Syncs the native Android `<activity-alias>` entry in **`android/AndroidManifest.xml`** and `aliasMap` in **`android/src/org/openlingo/app/MainActivity.java`**.
+5. Syncs the native Android `<activity-alias>` entry in **`android/AndroidManifest.xml`** and `aliasMap` in **`android/src/org/polygot/app/MainActivity.java`**.
 
 > Note: On **Web PWA** and **Linux Desktop**, `src/appIcons.js` reads `icon` straight from `courses/matrix/syllabus.json` automatically — zero extra JavaScript edits required!
 
@@ -234,7 +234,7 @@ python3 scripts/sync-course-pipeline.py --check
 3. **Keep Transliterations Beginner-Friendly & Consistent:**
    Use standard, readable romanization (Hepburn for Japanese, Pinyin with tone marks for Mandarin, Revised Romanization for Korean, ISO/common phonetic spelling for Indic and Arabic scripts).
 4. **Right-to-Left (RTL) Scripts:**
-   Always set `"dir": "rtl"` on RTL languages. OpenLingo automatically sets `dir="rtl"` on prompts, options, flashcards, and example sentences.
+   Always set `"dir": "rtl"` on RTL languages. Polygot automatically sets `dir="rtl"` on prompts, options, flashcards, and example sentences.
 5. **Respect File Encoding & JSON Formatting:**
    Always save files as **UTF-8 without BOM** and format with 2-space indentation.
 6. **Licensing:**

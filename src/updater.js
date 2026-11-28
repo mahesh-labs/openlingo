@@ -1,11 +1,11 @@
 /**
- * Cross-Platform In-App Update Checker for OpenLingo (Web PWA, Linux Desktop, Android APK).
+ * Cross-Platform In-App Update Checker for Polygot (Web PWA, Linux Desktop, Android APK).
  * Checks GitHub Releases API (including prereleases) and triggers the best platform update flow.
  */
 
 import { APP_CONFIG } from './config.js';
 
-const DISMISSED_KEY = 'openlingo_dismissed_update_v1';
+const DISMISSED_KEY = 'polygot_dismissed_update_v1';
 
 function parseSemver(raw) {
   const clean = String(raw || '').trim().replace(/^v/i, '');
@@ -130,7 +130,7 @@ export async function checkForAppUpdate(repo = APP_CONFIG.githubRepo, currentVer
   const summaryLine = String(latest.body || '')
     .split('\n')
     .map((l) => l.replace(/^[-*#\s]+/, '').trim())
-    .find((l) => l && !/^OpenLingo v/i.test(l) && !/^Highlights$/i.test(l) && !/^What's New/i.test(l)) || '';
+    .find((l) => l && !/^Polygot v/i.test(l) && !/^Highlights$/i.test(l) && !/^What's New/i.test(l)) || '';
 
   return {
     hasUpdate: isNewerVersion(latestVersion, currentVersion),
@@ -170,7 +170,7 @@ export async function performAppUpdate(updateInfo, onProgress = null) {
 
   const platform = detectRuntimePlatform();
   if (platform === 'web') {
-    emit({ active: true, stage: 'installing', percent: 60, message: 'Refreshing OpenLingo web app...' });
+    emit({ active: true, stage: 'installing', percent: 60, message: 'Refreshing Polygot web app...' });
     try {
       if ('serviceWorker' in navigator) {
         const regs = await navigator.serviceWorker.getRegistrations();
@@ -252,7 +252,7 @@ export async function performAppUpdate(updateInfo, onProgress = null) {
               }
             } catch {
               // Desktop launcher likely restarting into the updated version
-              emit({ active: false, stage: 'done', percent: 100, message: 'Restarting OpenLingo...' });
+              emit({ active: false, stage: 'done', percent: 100, message: 'Restarting Polygot...' });
             }
           };
           setTimeout(poll, 250);

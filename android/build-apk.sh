@@ -76,7 +76,7 @@ done
 # 4. Compile Java sources (app + generated R.java files, release mode, bytecode v11 for d8)
 JAVA_SRCS=()
 while IFS= read -r -d '' f; do JAVA_SRCS+=("$f"); done < <(find "$BUILD_DIR/gen" -name "R.java" -print0)
-JAVA_SRCS+=("$ANDROID_DIR/src/org/openlingo/app/MainActivity.java")
+JAVA_SRCS+=("$ANDROID_DIR/src/org/polygot/app/MainActivity.java")
 
 "$JAVA_HOME/bin/javac" \
   --release 11 \
@@ -117,10 +117,10 @@ if [ ! -f "$KEYSTORE" ]; then
     -storepass "$KEY_PASS" -keypass "$KEY_PASS" \
     -alias "$KEY_ALIAS" \
     -keyalg RSA -keysize 4096 -validity 10000 \
-    -dname "CN=OpenLingo Release,O=OpenLingo,C=IN" >/dev/null 2>&1
+    -dname "CN=Polygot Release,O=Polygot,C=IN" >/dev/null 2>&1
 fi
 
-FINAL_APK="$BUILD_DIR/out/OpenLingo-v${VERSION_NAME}.apk"
+FINAL_APK="$BUILD_DIR/out/Polygot-v${VERSION_NAME}.apk"
 "$BUILD_TOOLS/apksigner" sign \
   --ks "$KEYSTORE" \
   --ks-pass "pass:$KEY_PASS" \

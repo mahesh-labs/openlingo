@@ -1,0 +1,32 @@
+app-id: org.polygot.app
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: polygot
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=dri
+  - --talk-name=org.freedesktop.portal.Desktop
+
+modules:
+  - name: polygot
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/bin /app/share/polygot/www
+      - cp index.html privacy.html styles.css app.js sw.js manifest.webmanifest /app/share/polygot/www/
+      - cp -r src courses assets /app/share/polygot/www/
+      - install -Dm755 linux/polygot-desktop.py /app/share/polygot/polygot-desktop.py
+      - printf '#!/bin/sh\nexec python3 /app/share/polygot/polygot-desktop.py "$@"\n' > /app/bin/polygot
+      - chmod +x /app/bin/polygot
+      - install -Dm644 linux/org.polygot.app.desktop /app/share/applications/org.polygot.app.desktop
+      - install -Dm644 linux/flatpak/org.polygot.app.metainfo.xml /app/share/metainfo/org.polygot.app.metainfo.xml
+      - install -Dm644 assets/icons/polygot-icon.svg /app/share/icons/hicolor/scalable/apps/org.polygot.app.svg
+      - install -Dm644 assets/icons/polygot-256.png /app/share/icons/hicolor/256x256/apps/org.polygot.app.png
+      - install -Dm644 assets/icons/polygot-512.png /app/share/icons/hicolor/512x512/apps/org.polygot.app.png
+    sources:
+      - type: dir
+        path: ../..

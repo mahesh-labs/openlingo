@@ -199,7 +199,7 @@ export async function buildMatrixCourse(sourceCode, targetCode) {
     standardName: tgtMeta.standardName || 'Level',
     title: courseTitle,
     description: `${localizedSrcName} → ${localizedTgtName} (${firstLvl} → ${lastLvl})`,
-    author: tgtPack.author || tgtMeta.author || 'OpenLingo Core Team',
+    author: tgtPack.author || tgtMeta.author || 'Polygot Core Team',
     authorUrl: tgtPack.authorUrl || tgtMeta.authorUrl || '',
     discordChannelUrl: tgtPack.discordChannelUrl || tgtMeta.discordChannelUrl || '',
     license: 'CC-BY-SA-4.0',

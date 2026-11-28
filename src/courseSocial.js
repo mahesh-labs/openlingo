@@ -8,8 +8,8 @@
 
 import { APP_CONFIG } from './config.js';
 
-const LOCAL_REVIEWS_KEY = 'openlingo_course_reviews_v1';
-const PUBLIC_CACHE_KEY = 'openlingo_public_course_reviews_cache_v1';
+const LOCAL_REVIEWS_KEY = 'polygot_course_reviews_v1';
+const PUBLIC_CACHE_KEY = 'polygot_public_course_reviews_cache_v1';
 const PUBLIC_CACHE_TTL_MS = 5 * 60 * 1000;
 
 let publicReviewsByCourse = {};
@@ -44,7 +44,7 @@ export function saveLocalCourseReview(courseId, { rating, comment, authorName })
 
   const all = getLocalCourseReviews();
   const list = Array.isArray(all[id]) ? [...all[id]] : [];
-  const reviewer = String(authorName || 'OpenLingo Learner').trim().slice(0, 60);
+  const reviewer = String(authorName || 'Polygot Learner').trim().slice(0, 60);
   const text = String(comment || '').trim().slice(0, 600);
   const nowIso = new Date().toISOString();
 
@@ -226,11 +226,11 @@ export function getCourseMeta(course, fallback = {}) {
   const author =
     course?.author ||
     fallback.author ||
-    (course?._source === 'custom' ? 'Local Draft Author' : 'OpenLingo Core Team');
+    (course?._source === 'custom' ? 'Local Draft Author' : 'Polygot Core Team');
   const authorUrl =
     course?.authorUrl ||
     fallback.authorUrl ||
-    (author === 'OpenLingo Core Team' ? `https://github.com/${APP_CONFIG.githubRepo}` : '');
+    (author === 'Polygot Core Team' ? `https://github.com/${APP_CONFIG.githubRepo}` : '');
   const discordChannelUrl = getCourseDiscordUrl(course || targetCode, id);
   const shareUrl = buildCourseShareUrl({
     id,
@@ -248,7 +248,7 @@ export function getCourseMeta(course, fallback = {}) {
 }
 
 export function buildCourseShareUrl({ id, importUrl = '' }) {
-  const base = (APP_CONFIG.publicWebUrl || 'https://mahesh-labs.github.io/openlingo/').replace(/\/?$/, '/');
+  const base = (APP_CONFIG.publicWebUrl || 'https://mahesh-labs.github.io/polygot/').replace(/\/?$/, '/');
   const params = new URLSearchParams();
   if (id) params.set('course', String(id));
   if (importUrl && /^https:\/\//i.test(importUrl)) {
@@ -278,12 +278,12 @@ export function buildPublicReviewIssueUrl({ courseId, courseTitle, rating, comme
   return `https://github.com/${repo}/issues/new?${params.toString()}`;
 }
 
-export async function shareOrCopyCourseLink(shareUrl, courseTitle = 'OpenLingo Course') {
+export async function shareOrCopyCourseLink(shareUrl, courseTitle = 'Polygot Course') {
   if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
     try {
       await navigator.share({
-        title: `${courseTitle} — OpenLingo`,
-        text: `Learn ${courseTitle} for free on OpenLingo!`,
+        title: `${courseTitle} — Polygot`,
+        text: `Learn ${courseTitle} for free on Polygot!`,
         url: shareUrl
       });
       return 'shared';

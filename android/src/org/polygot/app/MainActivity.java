@@ -1,4 +1,4 @@
-package org.openlingo.app;
+package org.polygot.app;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -58,7 +58,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends Activity {
-    private static final String VIRTUAL_HOST = "appassets.openlingo.local";
+    private static final String VIRTUAL_HOST = "appassets.polygot.local";
     private static final String START_URL = "https://" + VIRTUAL_HOST + "/index.html";
     private static final int REQ_SAVE_BACKUP = 4101;
     private static final int REQ_OPEN_BACKUP = 4102;
@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
     private static final int REQ_PICK_GOOGLE_ACCOUNT = 4104;
     private static final int REQ_GMS_AUTHORIZE = 4105;
     private static final int REQ_UNKNOWN_SOURCES = 4106;
-    private static final String ACTION_INSTALL_STATUS = "org.openlingo.app.ACTION_INSTALL_STATUS";
+    private static final String ACTION_INSTALL_STATUS = "org.polygot.app.ACTION_INSTALL_STATUS";
 
     private WebView webView;
     private TextToSpeech tts;
@@ -405,7 +405,7 @@ public class MainActivity extends Activity {
             } else {
                 pendingInstallApkUrl = null;
                 isInstallingUpdate = false;
-                deliverUpdateProgress("error", 0, "Install permission not enabled. Enable 'Allow from this source' for OpenLingo and tap Update again.");
+                deliverUpdateProgress("error", 0, "Install permission not enabled. Enable 'Allow from this source' for Polygot and tap Update again.");
             }
             return;
         }
@@ -541,7 +541,7 @@ public class MainActivity extends Activity {
                     try {
                         tts.setLanguage(loc);
                         tts.setSpeechRate(0.9f);
-                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "openlingo_tts");
+                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "polygot_tts");
                     } catch (Exception ignored) {
                     }
                 }
@@ -561,7 +561,7 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
                     intent.setType("application/json");
-                    intent.putExtra(Intent.EXTRA_TITLE, filename != null && !filename.isEmpty() ? filename : "openlingo-backup.json");
+                    intent.putExtra(Intent.EXTRA_TITLE, filename != null && !filename.isEmpty() ? filename : "polygot-backup.json");
                     startActivityForResult(intent, REQ_SAVE_BACKUP);
                 }
             });
@@ -589,7 +589,7 @@ public class MainActivity extends Activity {
                 public void run() {
                     ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                     if (cm != null && text != null) {
-                        cm.setPrimaryClip(ClipData.newPlainText("OpenLingo Backup", text));
+                        cm.setPrimaryClip(ClipData.newPlainText("Polygot Backup", text));
                     }
                 }
             });
@@ -709,7 +709,7 @@ public class MainActivity extends Activity {
     }
 
     private final class AppIconBridge {
-        private static final String ICON_PREFS = "openlingo_icon_prefs";
+        private static final String ICON_PREFS = "polygot_icon_prefs";
         private static final String KEY_ACTIVE_ICON = "active_icon";
         private static final String KEY_PENDING_ICON = "pending_icon";
         private final Map<String, String> aliasMap = new LinkedHashMap<>();
@@ -799,7 +799,7 @@ public class MainActivity extends Activity {
                 );
 
                 // Strictly disable EVERY other alias (including default .IconAliasMl when in DEFAULT state)
-                // so launchers like Samsung One UI NEVER display two OpenLingo icons.
+                // so launchers like Samsung One UI NEVER display two Polygot icons.
                 for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
                     if (entry.getKey().equals(pendingId)) continue;
                     ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
@@ -852,7 +852,7 @@ public class MainActivity extends Activity {
 
     private boolean isTrustedUpdateUrl(String url) {
         if (url == null) return false;
-        return url.startsWith("https://github.com/mahesh-labs/openlingo/releases/download/")
+        return url.startsWith("https://github.com/mahesh-labs/polygot/releases/download/")
                 || url.startsWith("https://objects.githubusercontent.com/");
     }
 
@@ -874,7 +874,7 @@ public class MainActivity extends Activity {
                         conn.setInstanceFollowRedirects(false);
                         conn.setConnectTimeout(15000);
                         conn.setReadTimeout(30000);
-                        conn.setRequestProperty("User-Agent", "OpenLingo-Android");
+                        conn.setRequestProperty("User-Agent", "Polygot-Android");
                         int code = conn.getResponseCode();
                         if (code == HttpURLConnection.HTTP_MOVED_TEMP
                                 || code == HttpURLConnection.HTTP_MOVED_PERM
@@ -908,7 +908,7 @@ public class MainActivity extends Activity {
                     session = installer.openSession(sessionId);
 
                     try (InputStream in = conn.getInputStream();
-                         OutputStream out = session.openWrite("openlingo-update.apk", 0, totalBytes > 0 ? totalBytes : -1)) {
+                         OutputStream out = session.openWrite("polygot-update.apk", 0, totalBytes > 0 ? totalBytes : -1)) {
                         byte[] buf = new byte[16384];
                         long downloaded = 0;
                         int lastReportedPct = -1;
@@ -979,7 +979,7 @@ public class MainActivity extends Activity {
                 public void run() {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !getPackageManager().canRequestPackageInstalls()) {
                         pendingInstallApkUrl = apkUrl;
-                        deliverUpdateProgress("permission", 0, "Allow 'Install unknown apps' for OpenLingo, then press Back to finish updating.");
+                        deliverUpdateProgress("permission", 0, "Allow 'Install unknown apps' for Polygot, then press Back to finish updating.");
                         try {
                             Intent settingsIntent = new Intent(
                                     Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,

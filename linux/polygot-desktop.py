@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-OpenLingo Linux Desktop Launcher
-Serves the bundled offline OpenLingo web app locally and opens a dedicated
+Polygot Linux Desktop Launcher
+Serves the bundled offline Polygot web app locally and opens a dedicated
 desktop app window (Chromium/Chrome/Brave/Edge --app mode with persistent profile,
 or graceful system browser fallback).
 
@@ -29,15 +29,15 @@ import urllib.request
 import webbrowser
 from pathlib import Path
 
-APP_ID = "org.openlingo.app"
+APP_ID = "org.polygot.app"
 BASE_DIR = Path(__file__).resolve().parent
 WWW_DIR = BASE_DIR / "www"
 if not WWW_DIR.exists():
     # Support running directly from repo root linux/ folder during development
     WWW_DIR = BASE_DIR.parent
 
-DATA_DIR = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share")) / "openlingo"
-CACHE_DIR = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "openlingo" / "updates"
+DATA_DIR = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share")) / "polygot"
+CACHE_DIR = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "polygot" / "updates"
 PROFILE_DIR = DATA_DIR / "profile"
 
 AUTH_LOCK = threading.Lock()
@@ -67,10 +67,10 @@ def detect_install_mode():
         return "appimage"
     if os.environ.get("FLATPAK_ID"):
         return "flatpak"
-    user_app_dir = str((Path.home() / ".local" / "share" / "openlingo-app").resolve())
+    user_app_dir = str((Path.home() / ".local" / "share" / "polygot-app").resolve())
     if str(BASE_DIR).startswith(user_app_dir):
         return "user"
-    if str(BASE_DIR).startswith("/usr/share/openlingo"):
+    if str(BASE_DIR).startswith("/usr/share/polygot"):
         if shutil.which("pacman"):
             return "arch"
         if shutil.which("apt-get") or shutil.which("dpkg"):
@@ -82,13 +82,13 @@ def detect_install_mode():
 
 def is_trusted_release_url(url):
     return isinstance(url, str) and (
-        url.startswith("https://github.com/mahesh-labs/openlingo/releases/download/")
+        url.startswith("https://github.com/mahesh-labs/polygot/releases/download/")
         or url.startswith("https://objects.githubusercontent.com/")
     )
 
 
 def download_with_progress(url, dest_path, label="Downloading update"):
-    req = urllib.request.Request(url, headers={"User-Agent": "OpenLingo-Linux"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Polygot-Linux"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         total = int(resp.headers.get("Content-Length") or 0)
         downloaded = 0
@@ -135,7 +135,7 @@ def schedule_relaunch(cmd):
 def run_linux_direct_update(mode, asset_url):
     try:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        filename = os.path.basename(urllib.parse.urlparse(asset_url).path) or "openlingo-update.bin"
+        filename = os.path.basename(urllib.parse.urlparse(asset_url).path) or "polygot-update.bin"
         dl_path = CACHE_DIR / filename
 
         set_update_state(True, "downloading", 0, "Connecting to GitHub Releases...")
@@ -151,14 +151,14 @@ def run_linux_direct_update(mode, asset_url):
                 dl_path.unlink(missing_ok=True)
             except Exception:
                 pass
-            set_update_state(False, "done", 100, "Updated! Restarting OpenLingo...")
+            set_update_state(False, "done", 100, "Updated! Restarting Polygot...")
             schedule_relaunch([str(appimage_path)])
             return
 
         if mode == "user":
             set_update_state(True, "installing", 100, "Extracting update files...")
-            app_home = Path.home() / ".local" / "share" / "openlingo-app"
-            with tempfile.TemporaryDirectory(prefix="openlingo-upd-") as tmpdir:
+            app_home = Path.home() / ".local" / "share" / "polygot-app"
+            with tempfile.TemporaryDirectory(prefix="polygot-upd-") as tmpdir:
                 with tarfile.open(dl_path, "r:gz") as tf:
                     tf.extractall(tmpdir)
                 extracted_roots = [p for p in Path(tmpdir).iterdir() if p.is_dir()]
@@ -169,12 +169,12 @@ def run_linux_direct_update(mode, asset_url):
                     if (app_home / "www").exists():
                         shutil.rmtree(app_home / "www")
                     shutil.copytree(src_root / "www", app_home / "www")
-                if (src_root / "openlingo-desktop.py").is_file():
-                    shutil.copy2(src_root / "openlingo-desktop.py", app_home / "openlingo-desktop.py")
-                    os.chmod(app_home / "openlingo-desktop.py", 0o755)
-            set_update_state(False, "done", 100, "Updated! Restarting OpenLingo...")
-            bin_cmd = str(Path.home() / ".local" / "bin" / "openlingo")
-            schedule_relaunch([bin_cmd if os.path.exists(bin_cmd) else sys.executable, str(app_home / "openlingo-desktop.py")] if not os.path.exists(bin_cmd) else [bin_cmd])
+                if (src_root / "polygot-desktop.py").is_file():
+                    shutil.copy2(src_root / "polygot-desktop.py", app_home / "polygot-desktop.py")
+                    os.chmod(app_home / "polygot-desktop.py", 0o755)
+            set_update_state(False, "done", 100, "Updated! Restarting Polygot...")
+            bin_cmd = str(Path.home() / ".local" / "bin" / "polygot")
+            schedule_relaunch([bin_cmd if os.path.exists(bin_cmd) else sys.executable, str(app_home / "polygot-desktop.py")] if not os.path.exists(bin_cmd) else [bin_cmd])
             return
 
         if mode == "flatpak":
@@ -185,7 +185,7 @@ def run_linux_direct_update(mode, asset_url):
             res = subprocess.run(cmd, capture_output=True, text=True)
             if res.returncode != 0:
                 raise RuntimeError((res.stderr or res.stdout or "Flatpak install failed.").strip()[:200])
-            set_update_state(False, "done", 100, "Flatpak updated! Restart OpenLingo to use the new version.")
+            set_update_state(False, "done", 100, "Flatpak updated! Restart Polygot to use the new version.")
             return
 
         if mode in ("arch", "deb", "rpm"):
@@ -206,8 +206,8 @@ def run_linux_direct_update(mode, asset_url):
                     set_update_state(False, "cancelled", 0, "Update cancelled.")
                     return
                 raise RuntimeError(err_txt[:220] or f"Package installer exited with code {res.returncode}.")
-            set_update_state(False, "done", 100, "Package updated! Restarting OpenLingo...")
-            schedule_relaunch([shutil.which("openlingo") or "/usr/bin/openlingo"])
+            set_update_state(False, "done", 100, "Package updated! Restarting Polygot...")
+            schedule_relaunch([shutil.which("polygot") or "/usr/bin/polygot"])
             return
 
         raise RuntimeError("Direct self-update is not available in development mode.")
@@ -239,8 +239,8 @@ def render_desktop_auth_page(state_nonce, client_id):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign in to OpenLingo</title>
-  <link rel="icon" type="image/svg+xml" href="/assets/icons/openlingo-icon.svg" />
+  <title>Sign in to Polygot</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/polygot-icon.svg" />
   <style>
     * {{ box-sizing: border-box; }}
     body {{
@@ -316,8 +316,8 @@ def render_desktop_auth_page(state_nonce, client_id):
 </head>
 <body>
   <div class="card">
-    <img class="logo" src="/assets/icons/openlingo-icon.svg" alt="OpenLingo" />
-    <h1>Sign in to OpenLingo Desktop</h1>
+    <img class="logo" src="/assets/icons/polygot-icon.svg" alt="Polygot" />
+    <h1>Sign in to Polygot Desktop</h1>
     <p>Using your default browser so you can continue with your existing Google account without logging in again.</p>
     <button id="signin-btn" class="gbtn" type="button">
       <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
@@ -369,7 +369,7 @@ def render_desktop_auth_page(state_nonce, client_id):
           }}
           completed = true;
           btn.style.display = 'none';
-          showStatus('✅ Signed in! You can close this tab and return to OpenLingo.', true);
+          showStatus('✅ Signed in! You can close this tab and return to Polygot.', true);
           await sendResult({{
             access_token: resp.access_token,
             expires_in: Number(resp.expires_in || 3500)
@@ -585,7 +585,7 @@ class DesktopHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def pick_port(preferred_ports=(8080, 18420, 18421)):
-    env_port = os.environ.get("OPENLINGO_PORT")
+    env_port = os.environ.get("POLYGOT_PORT")
     candidates = [int(env_port)] if (env_port and env_port.isdigit()) else list(preferred_ports)
     for port in candidates:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -659,7 +659,7 @@ def main():
         finally:
             httpd.shutdown()
     else:
-        print(f"OpenLingo running at {url} (press Ctrl+C to quit)")
+        print(f"Polygot running at {url} (press Ctrl+C to quit)")
         open_system_browser(url)
         try:
             while True:

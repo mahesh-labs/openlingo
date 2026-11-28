@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-One-Command OpenLingo Discord Server Setup Script.
+One-Command Polygot Discord Server Setup Script.
 
-Creates the complete OpenLingo Discord category, channel, forum, and role layout
+Creates the complete Polygot Discord category, channel, forum, and role layout
 using Discord REST API v10 — AND automatically writes each language's real Discord
 channel URL (`https://discord.com/channels/<guild_id>/<channel_id>`) directly into
-`src/config.js` (`courseDiscordChannels`) so every course inside OpenLingo links
+`src/config.js` (`courseDiscordChannels`) so every course inside Polygot links
 directly to its dedicated channel!
 
 Usage:
@@ -37,15 +37,15 @@ BLUEPRINT = [
             {
                 "name": "welcome",
                 "type": 0,
-                "topic": "Welcome to OpenLingo! Free, open-source, offline-first language learning across Web, Android, Windows & Linux.",
+                "topic": "Welcome to Polygot! Free, open-source, offline-first language learning across Web, Android, Windows & Linux.",
                 "welcome_post": (
-                    "# 👋 Welcome to the OpenLingo Community!\n\n"
-                    "OpenLingo is a **100% free, open-source, zero-server** language learning app with **13 languages (156 any-to-any courses)**, "
+                    "# 👋 Welcome to the Polygot Community!\n\n"
+                    "Polygot is a **100% free, open-source, zero-server** language learning app with **13 languages (156 any-to-any courses)**, "
                     "complete character & handwriting boards, 3D flashcards, and private Google Drive sync.\n\n"
-                    "🌐 **Live Web App:** https://mahesh-labs.github.io/openlingo/\n"
-                    "📦 **Downloads (Android, Windows, Linux):** https://github.com/mahesh-labs/openlingo/releases\n"
-                    "💻 **GitHub Repo:** https://github.com/mahesh-labs/openlingo\n"
-                    "🌍 **Create & Share a Course:** https://github.com/mahesh-labs/openlingo/blob/main/CONTRIBUTING_COURSES.md\n\n"
+                    "🌐 **Live Web App:** https://mahesh-labs.github.io/polygot/\n"
+                    "📦 **Downloads (Android, Windows, Linux):** https://github.com/mahesh-labs/polygot/releases\n"
+                    "💻 **GitHub Repo:** https://github.com/mahesh-labs/polygot\n"
+                    "🌍 **Create & Share a Course:** https://github.com/mahesh-labs/polygot/blob/main/CONTRIBUTING_COURSES.md\n\n"
                     "Introduce yourself in **#introductions** and jump into your language channel under **📚 COURSES**!"
                 ),
             },
@@ -57,12 +57,12 @@ BLUEPRINT = [
                     "# 📜 Community Rules\n\n"
                     "1. **Be kind & encouraging** — everyone starts as a beginner.\n"
                     "2. **Stay on topic** — use the matching `#course-*` channel for language help and `#bug-reports` for issues.\n"
-                    "3. **No spam or self-promotion** — sharing your OpenLingo courses in `#community-courses` is always welcome!\n"
+                    "3. **No spam or self-promotion** — sharing your Polygot courses in `#community-courses` is always welcome!\n"
                     "4. **Constructive feedback** — when suggesting translation improvements, include the language pair and unit/lesson.\n"
                     "5. **Follow Discord's Terms of Service & Community Guidelines.**"
                 ),
             },
-            {"name": "announcements", "type": 0, "topic": "Official OpenLingo releases, roadmap updates, and major community news."},
+            {"name": "announcements", "type": 0, "topic": "Official Polygot releases, roadmap updates, and major community news."},
             {"name": "downloads-and-links", "type": 0, "topic": "Permanent links for Web PWA, Android APK, Windows EXE/MSI/Portable, Linux AppImage/Flatpak/Deb/RPM/Arch."},
             {"name": "roles", "type": 0, "topic": "Pick your learning language roles, native speaker badges, and Beta Tester / Course Creator roles."},
         ],
@@ -70,7 +70,7 @@ BLUEPRINT = [
     {
         "category": "💬 COMMUNITY",
         "channels": [
-            {"name": "general", "type": 0, "topic": "General chat about OpenLingo, languages, and learning tips."},
+            {"name": "general", "type": 0, "topic": "General chat about Polygot, languages, and learning tips."},
             {"name": "introductions", "type": 0, "topic": "Say hi! Tell us what languages you speak and what you're learning."},
             {"name": "daily-streaks-and-wins", "type": 0, "topic": "Share your streaks, XP milestones, finished units, and handwriting board screenshots!"},
             {"name": "study-buddies", "type": 0, "topic": "Find language exchange partners and speaking practice buddies."},
@@ -89,7 +89,7 @@ BLUEPRINT = [
     {
         "category": "📚 COURSES",
         "channels": [
-            {"name": "community-courses", "type": 0, "topic": "Share your custom OpenLingo course links, get star ratings, feedback, and discover popular community courses!"},
+            {"name": "community-courses", "type": 0, "topic": "Share your custom Polygot course links, get star ratings, feedback, and discover popular community courses!"},
             {"name": "course-english", "type": 0, "lang": "en", "topic": "English (A) — grammar questions, pronunciation, vocabulary & feedback."},
             {"name": "course-malayalam", "type": 0, "lang": "ml", "topic": "Malayalam (മലയാളം · അ) — script, Kagunitham, vocabulary & practice."},
             {"name": "course-tamil", "type": 0, "lang": "ta", "topic": "Tamil (தமிழ் · அ) — Uyir, Mei, Uyirmei combinations, grammar & practice."},
@@ -134,12 +134,12 @@ ROLES = [
 
 LAUNCH_POSTS = {
     "rules": (
-        "# 📜 OpenLingo Community Rules\n\n"
-        "Welcome! Help us keep OpenLingo a welcoming, focused, and fun space for language learners and open-source contributors:\n\n"
+        "# 📜 Polygot Community Rules\n\n"
+        "Welcome! Help us keep Polygot a welcoming, focused, and fun space for language learners and open-source contributors:\n\n"
         "**1. Be Kind & Encouraging** — Everyone starts from zero. Never mock someone's pronunciation, handwriting, or beginner mistakes.\n"
         "**2. Use the Right Channels** — Language questions go in `#course-*`, bugs in `#bug-reports`, ideas in `#feature-suggestions`, and translation tweaks in `#translation-fixes`.\n"
         "**3. Respectful Course & Feedback Etiquette** — When giving feedback on a course or translation, include the language pair (e.g. `ML→TA`), unit/lesson, and a constructive suggestion.\n"
-        "**4. Sharing Courses is Encouraged!** — Share your OpenLingo course links (`?course=...`) in `#community-courses` so learners can try, rate, and review them. No unrelated spam or self-promotion.\n"
+        "**4. Sharing Courses is Encouraged!** — Share your Polygot course links (`?course=...`) in `#community-courses` so learners can try, rate, and review them. No unrelated spam or self-promotion.\n"
         "**5. Zero Hate Speech, Harassment, or NSFW** — Keep all text, voice rooms, usernames, and shared handwriting screenshots safe for everyone.\n"
         "**6. Protect Privacy & Security** — Never post API tokens, Google OAuth secrets, `OL1:` backup codes containing private data, or personal info.\n"
         "**7. Good-Faith Bug Reports** — In `#bug-reports`, please include your platform (**Web / Android / Windows / Linux**), app version, and a screenshot if possible.\n"
@@ -147,31 +147,31 @@ LAUNCH_POSTS = {
         "Thank you for helping grow free, open-source language education! 💜"
     ),
     "downloads-and-links": (
-        "# 📦 OpenLingo Downloads & Official Links\n\n"
+        "# 📦 Polygot Downloads & Official Links\n\n"
         "🌐 **Live Web App (No Install — Works Offline as PWA):**\n"
-        "https://mahesh-labs.github.io/openlingo/\n\n"
+        "https://mahesh-labs.github.io/polygot/\n\n"
         "📥 **Latest Release (v0.0.11-beta — All 12 Platform Builds):**\n"
-        "https://github.com/mahesh-labs/openlingo/releases/tag/v0.0.11-beta\n"
-        "• **Android:** `OpenLingo-v0.0.11-beta.apk`\n"
+        "https://github.com/mahesh-labs/polygot/releases/tag/v0.0.11-beta\n"
+        "• **Android:** `Polygot-v0.0.11-beta.apk`\n"
         "• **Windows:** Installer (`setup.exe`), Single-File Portable (`portable.exe`), MSI (`.msi`), Portable `.zip`\n"
         "• **Linux:** `.AppImage`, `.flatpak`, `.deb`, `.rpm`, Arch `.pkg.tar.zst`, `.tar.gz`, `.zip`\n\n"
-        "💻 **Source Code (GitHub):** https://github.com/mahesh-labs/openlingo\n"
-        "🌍 **Create & Contribute a Course:** https://github.com/mahesh-labs/openlingo/blob/main/CONTRIBUTING_COURSES.md\n"
-        "🔒 **Privacy Policy:** https://mahesh-labs.github.io/openlingo/privacy.html"
+        "💻 **Source Code (GitHub):** https://github.com/mahesh-labs/polygot\n"
+        "🌍 **Create & Contribute a Course:** https://github.com/mahesh-labs/polygot/blob/main/CONTRIBUTING_COURSES.md\n"
+        "🔒 **Privacy Policy:** https://mahesh-labs.github.io/polygot/privacy.html"
     ),
     "announcements": (
-        "# 🚀 OpenLingo v0.0.11-beta — First Public Cross-Platform Release!\n\n"
-        "@everyone **OpenLingo v0.0.11-beta** is now officially live for **Web, Android, Windows, and Linux** — completely free, open-source, offline-first, and zero-server!\n\n"
+        "# 🚀 Polygot v0.0.11-beta — First Public Cross-Platform Release!\n\n"
+        "@everyone **Polygot v0.0.11-beta** is now officially live for **Web, Android, Windows, and Linux** — completely free, open-source, offline-first, and zero-server!\n\n"
         "### ✨ What's Inside\n"
         "• **13 Languages · 156 Any-to-Any Courses** (Beginner → Mastery, fully localized in your chosen source language): English, Malayalam, Tamil, Kannada, Telugu, Hindi, Japanese, Chinese (Mandarin), Korean, Arabic (RTL), Spanish, French, and Russian.\n"
         "• **Complete Script & Handwriting Boards**: Decluttered Characters screen with `All Characters` first, full **Tamil Uyirmei (297 chars)**, **Malayalam Kagunitham (540)**, **Kannada**, **Telugu**, **Hindi Barakhadi**, **Hiragana/Katakana/Kanji**, **Hangul**, **Arabic**, and **Cyrillic**.\n"
         "• **Brand-New Windows Desktop Builds**: Installer (`.exe`), **Single-File Portable `.exe`** (double-click, zero install), `.msi`, and Portable `.zip` — zero Python or Electron bloat.\n"
         "• **Native Android Sign in with Google**: Opens Android's native account picker popup directly inside the app (no browser redirect!) with full-bleed customizable language app icons.\n"
-        "• **Direct In-App Updates**: Install future updates directly from inside OpenLingo on Android, Windows, Linux, and Web.\n"
+        "• **Direct In-App Updates**: Install future updates directly from inside Polygot on Android, Windows, Linux, and Web.\n"
         "• **Course Ratings, Feedback, Shareable Links & Linked Discord Channels**: Every course now has an Author, shareable `?course=` link, 1–5★ ratings & comments, and a direct link to its `#course-*` channel right here!\n\n"
         "### 🔗 Try It Now\n"
-        "🌐 **Web App:** https://mahesh-labs.github.io/openlingo/\n"
-        "📦 **Download (Android / Windows / Linux):** https://github.com/mahesh-labs/openlingo/releases/tag/v0.0.11-beta\n\n"
+        "🌐 **Web App:** https://mahesh-labs.github.io/polygot/\n"
+        "📦 **Download (Android / Windows / Linux):** https://github.com/mahesh-labs/polygot/releases/tag/v0.0.11-beta\n\n"
         "Drop your feedback in `#bug-reports` or `#feature-suggestions`, share your streak in `#daily-streaks-and-wins`, and let us know which language you're starting in `#introductions`! 💜"
     ),
 }
@@ -182,7 +182,7 @@ def discord_req(method, path, token, payload=None):
     data = json.dumps(payload).encode("utf-8") if payload is not None else None
     headers = {
         "Authorization": f"Bot {token}",
-        "User-Agent": "OpenLingoDiscordSetup/1.0",
+        "User-Agent": "PolygotDiscordSetup/1.0",
     }
     if data is not None:
         headers["Content-Type"] = "application/json"
@@ -305,7 +305,7 @@ def main():
                 course_channel_urls[ch["lang"]] = f"https://discord.com/channels/{guild_id}/{existing['id']}"
 
     update_config_js(course_channel_urls)
-    print("\nAll OpenLingo Discord channels and course links are ready!")
+    print("\nAll Polygot Discord channels and course links are ready!")
 
 
 if __name__ == "__main__":

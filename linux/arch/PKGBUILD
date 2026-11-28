@@ -1,29 +1,29 @@
 # Maintainer: mahesh-labs <mahesh.makes.it@gmail.com>
-pkgname=openlingo
+pkgname=polygot
 pkgver=0.0.12.beta
 pkgrel=1
 pkgdesc="Free and open-source cross-platform language learning app (13 languages · 156 courses)"
 arch=('any')
-url="https://mahesh-labs.github.io/openlingo/"
+url="https://mahesh-labs.github.io/polygot/"
 license=('MIT' 'CC-BY-SA-4.0')
 depends=('python')
 optdepends=('chromium: native standalone app window mode')
-source=("openlingo::git+https://github.com/mahesh-labs/openlingo.git#branch=main")
+source=("polygot::git+https://github.com/mahesh-labs/polygot.git#branch=main")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/openlingo"
-  install -dm755 "$pkgdir/usr/share/openlingo/www"
-  cp index.html privacy.html styles.css app.js sw.js manifest.webmanifest "$pkgdir/usr/share/openlingo/www/"
-  cp -r src courses assets "$pkgdir/usr/share/openlingo/www/"
-  install -Dm755 linux/openlingo-desktop.py "$pkgdir/usr/share/openlingo/openlingo-desktop.py"
+  cd "$srcdir/polygot"
+  install -dm755 "$pkgdir/usr/share/polygot/www"
+  cp index.html privacy.html styles.css app.js sw.js manifest.webmanifest "$pkgdir/usr/share/polygot/www/"
+  cp -r src courses assets "$pkgdir/usr/share/polygot/www/"
+  install -Dm755 linux/polygot-desktop.py "$pkgdir/usr/share/polygot/polygot-desktop.py"
 
   install -dm755 "$pkgdir/usr/bin"
-  printf '#!/bin/sh\nexec python3 /usr/share/openlingo/openlingo-desktop.py "$@"\n' > "$pkgdir/usr/bin/openlingo"
-  chmod 755 "$pkgdir/usr/bin/openlingo"
+  printf '#!/bin/sh\nexec python3 /usr/share/polygot/polygot-desktop.py "$@"\n' > "$pkgdir/usr/bin/polygot"
+  chmod 755 "$pkgdir/usr/bin/polygot"
 
-  install -Dm644 linux/org.openlingo.app.desktop "$pkgdir/usr/share/applications/org.openlingo.app.desktop"
-  install -Dm644 assets/icons/openlingo-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.openlingo.app.svg"
-  install -Dm644 assets/icons/openlingo-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.openlingo.app.png"
+  install -Dm644 linux/org.polygot.app.desktop "$pkgdir/usr/share/applications/org.polygot.app.desktop"
+  install -Dm644 assets/icons/polygot-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.polygot.app.svg"
+  install -Dm644 assets/icons/polygot-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.polygot.app.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

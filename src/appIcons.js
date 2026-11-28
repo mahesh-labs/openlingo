@@ -201,7 +201,7 @@ export function buildAppIconSvg(preset) {
 export function getAppIconDataUrl(idOrGlyph) {
   const preset = getAppIconPreset(idOrGlyph);
   if (preset.id === DEFAULT_APP_ICON_ID) {
-    return './assets/icons/openlingo-icon.svg';
+    return './assets/icons/polygot-icon.svg';
   }
   if (iconUrlCache.has(preset.id)) {
     return iconUrlCache.get(preset.id);
@@ -270,8 +270,8 @@ export function applyDocumentAppIcon(idOrGlyph, { syncNative = false } = {}) {
     const pngLink = document.querySelector('link[rel="icon"][type="image/png"]');
     const touchLink = document.querySelector('link[rel="apple-touch-icon"]');
     if (preset.id === DEFAULT_APP_ICON_ID) {
-      if (pngLink) pngLink.href = './assets/icons/openlingo-192.png';
-      if (touchLink) touchLink.href = './assets/icons/openlingo-192.png';
+      if (pngLink) pngLink.href = './assets/icons/polygot-192.png';
+      if (touchLink) touchLink.href = './assets/icons/polygot-192.png';
     } else {
       renderIconPngDataUrl(preset, 192).then((pngDataUrl) => {
         if (!pngDataUrl) return;

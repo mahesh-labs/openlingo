@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-OpenLingo Course & Language Pipeline Tool.
+Polygot Course & Language Pipeline Tool.
 
 Validates the universal course matrix (`courses/matrix/syllabus.json` + `courses/langs/*.json`)
 and standalone community courses (`courses/registry.json`), and keeps the full cross-platform
@@ -11,7 +11,7 @@ pipeline in sync whenever a language or community course is added:
   4. Syncs `sw.js` offline precache list for all language packs
   5. Generates Android mipmap + adaptive foreground + adaptive XML icons (when `rsvg-convert` is installed)
   6. Syncs Android `<activity-alias>` entries in `android/AndroidManifest.xml`
-     and `aliasMap` in `android/src/org/openlingo/app/MainActivity.java`
+     and `aliasMap` in `android/src/org/polygot/app/MainActivity.java`
 
 Usage:
   python3 scripts/sync-course-pipeline.py          # Validate and auto-sync all pipeline files & icons
@@ -32,7 +32,7 @@ SYLLABUS_PATH = os.path.join(ROOT, "courses", "matrix", "syllabus.json")
 REGISTRY_PATH = os.path.join(ROOT, "courses", "registry.json")
 SW_PATH = os.path.join(ROOT, "sw.js")
 MANIFEST_PATH = os.path.join(ROOT, "android", "AndroidManifest.xml")
-MAIN_ACTIVITY_PATH = os.path.join(ROOT, "android", "src", "org", "openlingo", "app", "MainActivity.java")
+MAIN_ACTIVITY_PATH = os.path.join(ROOT, "android", "src", "org", "polygot", "app", "MainActivity.java")
 
 DEFAULT_ICON_ID = "ml"
 EXTRA_SYMBOL_ICONS = [
@@ -323,7 +323,7 @@ def sync_android_icons(icons: list[dict], check_only: bool, errors: list) -> Non
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate and sync OpenLingo course pipeline.")
+    parser = argparse.ArgumentParser(description="Validate and sync Polygot course pipeline.")
     parser.add_argument("--check", action="store_true", help="Check only (fail if any file is out of sync).")
     args = parser.parse_args()
 
@@ -338,7 +338,7 @@ def main() -> int:
         # 1. Sync courses/registry.json
         new_registry = {
             "catalogVersion": 3,
-            "repo": registry.get("repo", "mahesh-labs/openlingo"),
+            "repo": registry.get("repo", "mahesh-labs/polygot"),
             "branch": registry.get("branch", "main"),
             "matrix": {
                 "version": syllabus.get("version", "3.0.0"),

@@ -49,8 +49,8 @@ jobs:
           $ver = "${{ steps.meta.outputs.version }}"
           $tag = "${{ steps.meta.outputs.tag }}"
           gh release upload "$tag" `
-            "windows/dist/OpenLingo-v${ver}-windows-setup.exe" `
-            "windows/dist/OpenLingo-v${ver}-windows-portable.exe" `
-            "windows/dist/OpenLingo-v${ver}-windows.msi" `
-            "windows/dist/OpenLingo-v${ver}-windows-portable.zip" `
+            "windows/dist/Polygot-v${ver}-windows-setup.exe" `
+            "windows/dist/Polygot-v${ver}-windows-portable.exe" `
+            "windows/dist/Polygot-v${ver}-windows.msi" `
+            "windows/dist/Polygot-v${ver}-windows-portable.zip" `
             --clobber

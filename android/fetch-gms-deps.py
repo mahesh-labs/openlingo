@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Downloads and extracts Google Play Services Auth (AuthorizationClient) Maven artifacts
-into android/libs/ for OpenLingo's zero-Gradle aapt2+javac+d8 Android build pipeline.
+into android/libs/ for Polygot's zero-Gradle aapt2+javac+d8 Android build pipeline.
 """
 import os
 import shutil
@@ -23,7 +23,7 @@ OUT_DIR = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.
 
 
 def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "OpenLingo-Builder/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Polygot-Builder/1.0"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return r.read()
 

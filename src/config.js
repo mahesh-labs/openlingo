@@ -1,13 +1,13 @@
 /**
- * Central OpenLingo Configuration.
+ * Central Polygot Configuration.
  * - Course catalog syncs directly from your GitHub repository's `courses/registry.json`.
  * - Google Drive AppData backup uses public OAuth 2.0 Client IDs (never store any Client Secret here).
  */
 
 export const APP_CONFIG = {
   appVersion: '0.0.12-beta',
-  publicWebUrl: 'https://mahesh-labs.github.io/openlingo/',
-  githubRepo: 'mahesh-labs/openlingo',
+  publicWebUrl: 'https://mahesh-labs.github.io/polygot/',
+  githubRepo: 'mahesh-labs/polygot',
   githubBranch: 'main',
   discordUrl: 'https://discord.gg/pYMKxY4jE',
   // Map language code or course ID -> direct Discord channel URL (auto-populated by scripts/setup-discord-server.py)

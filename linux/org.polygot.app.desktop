@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=OpenLingo
+Name=Polygot
 GenericName=Language Learning App
 Comment=Free and open-source language learning with Japanese, Spanish, Malayalam, handwriting canvas, flashcards, and Google Drive sync
-Exec=openlingo
-Icon=org.openlingo.app
+Exec=polygot
+Icon=org.polygot.app
 Terminal=false
 Categories=Education;Languages;
 Keywords=language;japanese;spanish;malayalam;jlpt;flashcards;hiragana;katakana;kanji;
 StartupNotify=true
-StartupWMClass=org.openlingo.app
+StartupWMClass=org.polygot.app

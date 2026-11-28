@@ -1,32 +1,32 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="OpenLingo"
+  <Package Name="Polygot"
            Manufacturer="mahesh-labs"
            Version="$(var.MsiVersion)"
-           UpgradeCode="7B4E21C8-6F3A-4D92-B5C1-9E2A1F8D4C63"
+           UpgradeCode="C8E4B29A-3D71-4F62-9A14-6E8B2C5D3F91"
            Scope="perUser"
            InstallerVersion="500"
            Compressed="yes">
 
-    <MajorUpgrade DowngradeErrorMessage="A newer version of OpenLingo is already installed." AllowSameVersionUpgrades="yes" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Polygot is already installed." AllowSameVersionUpgrades="yes" />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
-    <Icon Id="OpenLingoIcon.ico" SourceFile="openlingo.ico" />
-    <Property Id="ARPPRODUCTICON" Value="OpenLingoIcon.ico" />
-    <Property Id="ARPURLINFOABOUT" Value="https://mahesh-labs.github.io/openlingo/" />
+    <Icon Id="PolygotIcon.ico" SourceFile="polygot.ico" />
+    <Property Id="ARPPRODUCTICON" Value="PolygotIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://mahesh-labs.github.io/polygot/" />
 
     <StandardDirectory Id="LocalAppDataFolder">
       <Directory Id="ProgramsDir" Name="Programs">
-        <Directory Id="INSTALLFOLDER" Name="OpenLingo" />
+        <Directory Id="INSTALLFOLDER" Name="Polygot" />
       </Directory>
     </StandardDirectory>
 
     <StandardDirectory Id="ProgramMenuFolder">
-      <Directory Id="ApplicationProgramsFolder" Name="OpenLingo" />
+      <Directory Id="ApplicationProgramsFolder" Name="Polygot" />
     </StandardDirectory>
 
     <StandardDirectory Id="DesktopFolder" />
 
-    <Feature Id="ProductFeature" Title="OpenLingo" Level="1">
+    <Feature Id="ProductFeature" Title="Polygot" Level="1">
       <ComponentGroupRef Id="AppFiles" />
       <ComponentRef Id="StartMenuShortcutComponent" />
       <ComponentRef Id="DesktopShortcutComponent" />
@@ -38,25 +38,25 @@
       <Files Include="dist\stage-msi\**" />
     </ComponentGroup>
 
-    <Component Id="StartMenuShortcutComponent" Directory="ApplicationProgramsFolder" Guid="4A7C9E12-8D3B-4F5A-9C1E-2B6D8A4F7E31">
+    <Component Id="StartMenuShortcutComponent" Directory="ApplicationProgramsFolder" Guid="D1F5A82B-4E9C-4A73-8B25-7F9C3D6E4A02">
       <Shortcut Id="ApplicationStartMenuShortcut"
-                Name="OpenLingo"
+                Name="Polygot"
                 Description="Free and open-source language learning app"
-                Target="[INSTALLFOLDER]OpenLingo.exe"
+                Target="[INSTALLFOLDER]Polygot.exe"
                 WorkingDirectory="INSTALLFOLDER"
-                Icon="OpenLingoIcon.ico" />
+                Icon="PolygotIcon.ico" />
       <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
-      <RegistryValue Root="HKCU" Key="Software\OpenLingo" Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
+      <RegistryValue Root="HKCU" Key="Software\Polygot" Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
     </Component>
 
-    <Component Id="DesktopShortcutComponent" Directory="DesktopFolder" Guid="9D2E5F84-1C7A-4B3D-8E6F-5A9C1D3E7B42">
+    <Component Id="DesktopShortcutComponent" Directory="DesktopFolder" Guid="E2A6B93C-5FAD-4B84-9C36-8A0D4E7F5B13">
       <Shortcut Id="ApplicationDesktopShortcut"
-                Name="OpenLingo"
+                Name="Polygot"
                 Description="Free and open-source language learning app"
-                Target="[INSTALLFOLDER]OpenLingo.exe"
+                Target="[INSTALLFOLDER]Polygot.exe"
                 WorkingDirectory="INSTALLFOLDER"
-                Icon="OpenLingoIcon.ico" />
-      <RegistryValue Root="HKCU" Key="Software\OpenLingo" Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+                Icon="PolygotIcon.ico" />
+      <RegistryValue Root="HKCU" Key="Software\Polygot" Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
     </Component>
   </Fragment>
 </Wix>

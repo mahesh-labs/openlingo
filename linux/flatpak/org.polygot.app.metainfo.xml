@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.openlingo.app</id>
-  <name>OpenLingo</name>
+  <id>org.polygot.app</id>
+  <name>Polygot</name>
   <summary>Free and open-source language learning app</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <description>
     <p>
-      OpenLingo is a lightweight, offline-first, community-driven language learning application
+      Polygot is a lightweight, offline-first, community-driven language learning application
       featuring 13 languages and 156 any-to-any courses from absolute beginner to super advanced mastery
       (English, Malayalam, Tamil, Kannada, Telugu, Hindi, Japanese, Chinese Mandarin, Korean, Arabic, Spanish,
       French, and Russian), interactive character charts and handwriting drawing boards, spaced-repetition
       flashcards, customizable language app icons, GitHub course catalog sync, and private zero-server Google Drive backup.
     </p>
   </description>
-  <launchable type="desktop-id">org.openlingo.app.desktop</launchable>
-  <url type="homepage">https://mahesh-labs.github.io/openlingo/</url>
-  <url type="bugtracker">https://github.com/mahesh-labs/openlingo/issues</url>
+  <launchable type="desktop-id">org.polygot.app.desktop</launchable>
+  <url type="homepage">https://mahesh-labs.github.io/polygot/</url>
+  <url type="bugtracker">https://github.com/mahesh-labs/polygot/issues</url>
   <developer id="io.github.mahesh-labs">
-    <name>OpenLingo Contributors</name>
+    <name>Polygot Contributors</name>
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
     <release version="0.0.12-beta" date="2026-11-27">
       <description>
-        <p>Course Authors, shareable course deep-links (?course=), zero-server 1-5 star ratings &amp; community feedback synced via GitHub Issues + Google Drive, Most Popular &amp; Highest Rated sorting in Add Course, and direct links from every language course straight to its dedicated OpenLingo Discord channel.</p>
+        <p>Course Authors, shareable course deep-links (?course=), zero-server 1-5 star ratings &amp; community feedback synced via GitHub Issues + Google Drive, Most Popular &amp; Highest Rated sorting in Add Course, and direct links from every language course straight to its dedicated Polygot Discord channel.</p>
       </description>
     </release>
     <release version="0.0.11-beta" date="2026-11-27">
@@ -39,7 +39,7 @@
     </release>
     <release version="0.0.9-beta" date="2026-11-27">
       <description>
-        <p>Immediate launch update checker with modal prompt, decluttered single-bar Characters view with All Characters selected first, full Tamil Uyirmei (216 + 48 Grantha) and complete Malayalam/Kannada/Telugu/Hindi consonant-vowel grids, global Add Course popup modal with source-language picker and search, and updated Support OpenLingo roadmap copy.</p>
+        <p>Immediate launch update checker with modal prompt, decluttered single-bar Characters view with All Characters selected first, full Tamil Uyirmei (216 + 48 Grantha) and complete Malayalam/Kannada/Telugu/Hindi consonant-vowel grids, global Add Course popup modal with source-language picker and search, and updated Support Polygot roadmap copy.</p>
       </description>
     </release>
     <release version="0.0.8-beta" date="2026-11-26">

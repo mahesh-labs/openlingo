@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://openlingo.dev/schemas/course.v1.json",
-  "title": "OpenLingo Course Syllabus Schema",
+  "$id": "https://polygot.dev/schemas/course.v1.json",
+  "title": "Polygot Course Syllabus Schema",
   "description": "Language-agnostic, community-editable syllabus format for free and open-source language courses.",
   "type": "object",
   "required": ["id", "version", "title", "sourceLang", "targetLang", "units"],
@@ -23,7 +23,7 @@
     },
     "author": {
       "type": "string",
-      "description": "Course creator or maintainer name, e.g. 'OpenLingo Core Team' or '@username'."
+      "description": "Course creator or maintainer name, e.g. 'Polygot Core Team' or '@username'."
     },
     "authorUrl": {
       "type": "string",
@@ -31,7 +31,7 @@
     },
     "discordChannelUrl": {
       "type": "string",
-      "description": "Optional direct link to the course's dedicated Discord channel in the OpenLingo server."
+      "description": "Optional direct link to the course's dedicated Discord channel in the Polygot server."
     },
     "tags": {
       "type": "array",

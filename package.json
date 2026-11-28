@@ -1,11 +1,11 @@
 {
-  "name": "openlingo",
+  "name": "polygot",
   "version": "1.0.0",
   "private": true,
   "description": "Free & open-source cross-platform language learning app (Web PWA + Capacitor Mobile + Tauri Desktop)",
   "scripts": {
     "web:dev": "python3 -m http.server 8080",
-    "cap:init": "npx cap init OpenLingo org.openlingo.app --web-dir .",
+    "cap:init": "npx cap init Polygot org.polygot.app --web-dir .",
     "cap:add:android": "npx cap add android",
     "cap:add:ios": "npx cap add ios",
     "cap:sync": "npx cap sync",

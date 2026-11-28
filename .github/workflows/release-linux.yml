@@ -48,62 +48,62 @@ jobs:
           RPM_VER="${APP_VERSION//-/_}"
           TOPDIR="$PWD/rpmbuild"
           mkdir -p "$TOPDIR"/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-          cat > "$TOPDIR/SPECS/openlingo.spec" <<EOF
-          Name:           openlingo
+          cat > "$TOPDIR/SPECS/polygot.spec" <<EOF
+          Name:           polygot
           Version:        ${RPM_VER}
           Release:        1
           Summary:        Free and open-source cross-platform language learning app
           License:        MIT
-          URL:            https://mahesh-labs.github.io/openlingo/
+          URL:            https://mahesh-labs.github.io/polygot/
           BuildArch:      noarch
           Requires:       python3
 
           %description
-          OpenLingo offers structured Japanese (JLPT N5-N1), Spanish (CEFR A1-C1),
+          Polygot offers structured Japanese (JLPT N5-N1), Spanish (CEFR A1-C1),
           and Malayalam (Stage 1-5) courses with interactive handwriting tracing,
           spaced-repetition flashcards, and private Google Drive sync.
 
           %install
-          mkdir -p %{buildroot}/usr/share/openlingo/www
+          mkdir -p %{buildroot}/usr/share/polygot/www
           mkdir -p %{buildroot}/usr/bin
           mkdir -p %{buildroot}/usr/share/applications
           mkdir -p %{buildroot}/usr/share/icons/hicolor/scalable/apps
           mkdir -p %{buildroot}/usr/share/icons/hicolor/256x256/apps
-          cp "$PWD/index.html" "$PWD/privacy.html" "$PWD/styles.css" "$PWD/app.js" "$PWD/sw.js" "$PWD/manifest.webmanifest" "$PWD/LICENSE" %{buildroot}/usr/share/openlingo/www/
-          cp -r "$PWD/src" "$PWD/courses" "$PWD/assets" %{buildroot}/usr/share/openlingo/www/
-          install -m 755 "$PWD/linux/openlingo-desktop.py" %{buildroot}/usr/share/openlingo/openlingo-desktop.py
-          printf '#!/bin/sh\nexec python3 /usr/share/openlingo/openlingo-desktop.py "\$@"\n' > %{buildroot}/usr/bin/openlingo
-          chmod 755 %{buildroot}/usr/bin/openlingo
-          install -m 644 "$PWD/linux/org.openlingo.app.desktop" %{buildroot}/usr/share/applications/org.openlingo.app.desktop
-          install -m 644 "$PWD/assets/icons/openlingo-icon.svg" %{buildroot}/usr/share/icons/hicolor/scalable/apps/org.openlingo.app.svg
-          install -m 644 "$PWD/assets/icons/openlingo-256.png" %{buildroot}/usr/share/icons/hicolor/256x256/apps/org.openlingo.app.png
+          cp "$PWD/index.html" "$PWD/privacy.html" "$PWD/styles.css" "$PWD/app.js" "$PWD/sw.js" "$PWD/manifest.webmanifest" "$PWD/LICENSE" %{buildroot}/usr/share/polygot/www/
+          cp -r "$PWD/src" "$PWD/courses" "$PWD/assets" %{buildroot}/usr/share/polygot/www/
+          install -m 755 "$PWD/linux/polygot-desktop.py" %{buildroot}/usr/share/polygot/polygot-desktop.py
+          printf '#!/bin/sh\nexec python3 /usr/share/polygot/polygot-desktop.py "\$@"\n' > %{buildroot}/usr/bin/polygot
+          chmod 755 %{buildroot}/usr/bin/polygot
+          install -m 644 "$PWD/linux/org.polygot.app.desktop" %{buildroot}/usr/share/applications/org.polygot.app.desktop
+          install -m 644 "$PWD/assets/icons/polygot-icon.svg" %{buildroot}/usr/share/icons/hicolor/scalable/apps/org.polygot.app.svg
+          install -m 644 "$PWD/assets/icons/polygot-256.png" %{buildroot}/usr/share/icons/hicolor/256x256/apps/org.polygot.app.png
 
           %files
-          /usr/bin/openlingo
-          /usr/share/openlingo
-          /usr/share/applications/org.openlingo.app.desktop
-          /usr/share/icons/hicolor/scalable/apps/org.openlingo.app.svg
-          /usr/share/icons/hicolor/256x256/apps/org.openlingo.app.png
+          /usr/bin/polygot
+          /usr/share/polygot
+          /usr/share/applications/org.polygot.app.desktop
+          /usr/share/icons/hicolor/scalable/apps/org.polygot.app.svg
+          /usr/share/icons/hicolor/256x256/apps/org.polygot.app.png
           EOF
-          rpmbuild --define "_topdir $TOPDIR" -bb "$TOPDIR/SPECS/openlingo.spec"
-          cp "$TOPDIR"/RPMS/noarch/*.rpm "linux/dist/OpenLingo-v${APP_VERSION}-linux.noarch.rpm"
+          rpmbuild --define "_topdir $TOPDIR" -bb "$TOPDIR/SPECS/polygot.spec"
+          cp "$TOPDIR"/RPMS/noarch/*.rpm "linux/dist/Polygot-v${APP_VERSION}-linux.noarch.rpm"
 
       - name: Build Flatpak bundle (.flatpak)
         run: |
           flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           flatpak install --user -y flathub org.freedesktop.Platform//25.08 org.freedesktop.Sdk//25.08
-          flatpak-builder --user --force-clean --repo=flatpak-repo build-flatpak linux/flatpak/org.openlingo.app.yml
-          flatpak build-bundle flatpak-repo "linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}.flatpak" org.openlingo.app
+          flatpak-builder --user --force-clean --repo=flatpak-repo build-flatpak linux/flatpak/org.polygot.app.yml
+          flatpak build-bundle flatpak-repo "linux/dist/Polygot-v${{ steps.meta.outputs.version }}.flatpak" org.polygot.app
 
       - name: Upload Linux packages to GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload "${{ steps.meta.outputs.tag }}" \
-            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux.tar.gz \
-            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux.zip \
-            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux_all.deb \
-            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-linux.noarch.rpm \
-            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}-x86_64.AppImage \
-            linux/dist/OpenLingo-v${{ steps.meta.outputs.version }}.flatpak \
+            linux/dist/Polygot-v${{ steps.meta.outputs.version }}-linux.tar.gz \
+            linux/dist/Polygot-v${{ steps.meta.outputs.version }}-linux.zip \
+            linux/dist/Polygot-v${{ steps.meta.outputs.version }}-linux_all.deb \
+            linux/dist/Polygot-v${{ steps.meta.outputs.version }}-linux.noarch.rpm \
+            linux/dist/Polygot-v${{ steps.meta.outputs.version }}-x86_64.AppImage \
+            linux/dist/Polygot-v${{ steps.meta.outputs.version }}.flatpak \
             --clobber

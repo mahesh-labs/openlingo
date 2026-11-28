@@ -1,6 +1,6 @@
 {
-  "appId": "org.openlingo.app",
-  "appName": "OpenLingo",
+  "appId": "org.polygot.app",
+  "appName": "Polygot",
   "webDir": ".",
   "bundledWebRuntime": false,
   "server": {

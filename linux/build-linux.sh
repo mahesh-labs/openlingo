@@ -11,31 +11,31 @@ rm -rf "$DIST_DIR"
 mkdir -p "$DIST_DIR"
 
 # 1. Assemble portable Linux bundle directory
-BUNDLE_NAME="OpenLingo-v${VERSION}-linux"
+BUNDLE_NAME="Polygot-v${VERSION}-linux"
 STAGE="$DIST_DIR/$BUNDLE_NAME"
 mkdir -p "$STAGE/www" "$STAGE/icons"
 
 cp "$PROJECT_DIR/index.html" "$PROJECT_DIR/privacy.html" "$PROJECT_DIR/styles.css" "$PROJECT_DIR/app.js" "$PROJECT_DIR/sw.js" "$PROJECT_DIR/manifest.webmanifest" "$PROJECT_DIR/LICENSE" "$PROJECT_DIR/README.md" "$STAGE/www/"
 cp -r "$PROJECT_DIR/src" "$PROJECT_DIR/courses" "$PROJECT_DIR/assets" "$STAGE/www/"
-cp "$LINUX_DIR/openlingo-desktop.py" "$STAGE/openlingo-desktop.py"
-chmod +x "$STAGE/openlingo-desktop.py"
+cp "$LINUX_DIR/polygot-desktop.py" "$STAGE/polygot-desktop.py"
+chmod +x "$STAGE/polygot-desktop.py"
 
-cat > "$STAGE/openlingo" <<'EOF'
+cat > "$STAGE/polygot" <<'EOF'
 #!/usr/bin/env bash
 DIR="$(cd "$(dirname "$0")" && pwd)"
-exec python3 "$DIR/openlingo-desktop.py" "$@"
+exec python3 "$DIR/polygot-desktop.py" "$@"
 EOF
-chmod +x "$STAGE/openlingo"
+chmod +x "$STAGE/polygot"
 
-cp "$LINUX_DIR/org.openlingo.app.desktop" "$STAGE/org.openlingo.app.desktop"
-cp "$PROJECT_DIR/assets/icons/openlingo-icon.svg" "$STAGE/icons/org.openlingo.app.svg"
-cp "$PROJECT_DIR/assets/icons/openlingo-256.png" "$STAGE/icons/org.openlingo.app.png"
+cp "$LINUX_DIR/org.polygot.app.desktop" "$STAGE/org.polygot.app.desktop"
+cp "$PROJECT_DIR/assets/icons/polygot-icon.svg" "$STAGE/icons/org.polygot.app.svg"
+cp "$PROJECT_DIR/assets/icons/polygot-256.png" "$STAGE/icons/org.polygot.app.png"
 
 cat > "$STAGE/install.sh" <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
 SRC="$(cd "$(dirname "$0")" && pwd)"
-APP_HOME="$HOME/.local/share/openlingo-app"
+APP_HOME="$HOME/.local/share/polygot-app"
 BIN_DIR="$HOME/.local/bin"
 DESKTOP_DIR="$HOME/.local/share/applications"
 ICON_DIR="$HOME/.local/share/icons/hicolor"
@@ -43,16 +43,16 @@ ICON_DIR="$HOME/.local/share/icons/hicolor"
 mkdir -p "$APP_HOME" "$BIN_DIR" "$DESKTOP_DIR" "$ICON_DIR/scalable/apps" "$ICON_DIR/256x256/apps"
 rm -rf "$APP_HOME/www"
 cp -r "$SRC/www" "$APP_HOME/www"
-cp "$SRC/openlingo-desktop.py" "$APP_HOME/openlingo-desktop.py"
-chmod +x "$APP_HOME/openlingo-desktop.py"
+cp "$SRC/polygot-desktop.py" "$APP_HOME/polygot-desktop.py"
+chmod +x "$APP_HOME/polygot-desktop.py"
 
-printf '#!/usr/bin/env bash\nexec python3 "%s/openlingo-desktop.py" "$@"\n' "$APP_HOME" > "$BIN_DIR/openlingo"
-chmod +x "$BIN_DIR/openlingo"
+printf '#!/usr/bin/env bash\nexec python3 "%s/polygot-desktop.py" "$@"\n' "$APP_HOME" > "$BIN_DIR/polygot"
+chmod +x "$BIN_DIR/polygot"
 
-sed "s|^Exec=openlingo|Exec=$BIN_DIR/openlingo|" "$SRC/org.openlingo.app.desktop" > "$DESKTOP_DIR/org.openlingo.app.desktop"
-cp "$SRC/icons/org.openlingo.app.svg" "$ICON_DIR/scalable/apps/org.openlingo.app.svg"
-cp "$SRC/icons/org.openlingo.app.png" "$ICON_DIR/256x256/apps/org.openlingo.app.png"
-echo "Installed OpenLingo to $BIN_DIR/openlingo and Applications menu!"
+sed "s|^Exec=polygot|Exec=$BIN_DIR/polygot|" "$SRC/org.polygot.app.desktop" > "$DESKTOP_DIR/org.polygot.app.desktop"
+cp "$SRC/icons/org.polygot.app.svg" "$ICON_DIR/scalable/apps/org.polygot.app.svg"
+cp "$SRC/icons/org.polygot.app.png" "$ICON_DIR/256x256/apps/org.polygot.app.png"
+echo "Installed Polygot to $BIN_DIR/polygot and Applications menu!"
 EOF
 chmod +x "$STAGE/install.sh"
 
@@ -78,7 +78,7 @@ with zipfile.ZipFile(out_zip, 'w', compression=zipfile.ZIP_DEFLATED) as zf:
 PY
 
 # 4. Build genuine Debian/Ubuntu .deb package (zero external dpkg dependency)
-python3 - "$PROJECT_DIR" "$DIST_DIR/OpenLingo-v${VERSION}-linux_all.deb" "$DEB_VERSION" <<'PY'
+python3 - "$PROJECT_DIR" "$DIST_DIR/Polygot-v${VERSION}-linux_all.deb" "$DEB_VERSION" <<'PY'
 import io, os, sys, tarfile, time
 
 proj, out_deb, ver = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -103,25 +103,25 @@ installed_kb = 0
 with tarfile.open(fileobj=data_buf, mode='w:gz') as tf:
     for fn in ['index.html', 'privacy.html', 'styles.css', 'app.js', 'sw.js', 'manifest.webmanifest', 'LICENSE']:
         p = os.path.join(proj, fn)
-        add_file(tf, p, f'./usr/share/openlingo/www/{fn}')
+        add_file(tf, p, f'./usr/share/polygot/www/{fn}')
         installed_kb += os.path.getsize(p)
     for d in ['src', 'courses', 'assets']:
         for dp, _, fns in os.walk(os.path.join(proj, d)):
             for fn in sorted(fns):
                 full = os.path.join(dp, fn)
                 rel = os.path.relpath(full, proj)
-                add_file(tf, full, f'./usr/share/openlingo/www/{rel}')
+                add_file(tf, full, f'./usr/share/polygot/www/{rel}')
                 installed_kb += os.path.getsize(full)
-    add_file(tf, os.path.join(proj, 'linux/openlingo-desktop.py'), './usr/share/openlingo/openlingo-desktop.py', 0o755)
-    add_bytes(tf, './usr/bin/openlingo', b'#!/bin/sh\nexec python3 /usr/share/openlingo/openlingo-desktop.py "$@"\n', 0o755)
-    add_file(tf, os.path.join(proj, 'linux/org.openlingo.app.desktop'), './usr/share/applications/org.openlingo.app.desktop', 0o644)
-    add_file(tf, os.path.join(proj, 'assets/icons/openlingo-icon.svg'), './usr/share/icons/hicolor/scalable/apps/org.openlingo.app.svg', 0o644)
-    add_file(tf, os.path.join(proj, 'assets/icons/openlingo-256.png'), './usr/share/icons/hicolor/256x256/apps/org.openlingo.app.png', 0o644)
+    add_file(tf, os.path.join(proj, 'linux/polygot-desktop.py'), './usr/share/polygot/polygot-desktop.py', 0o755)
+    add_bytes(tf, './usr/bin/polygot', b'#!/bin/sh\nexec python3 /usr/share/polygot/polygot-desktop.py "$@"\n', 0o755)
+    add_file(tf, os.path.join(proj, 'linux/org.polygot.app.desktop'), './usr/share/applications/org.polygot.app.desktop', 0o644)
+    add_file(tf, os.path.join(proj, 'assets/icons/polygot-icon.svg'), './usr/share/icons/hicolor/scalable/apps/org.polygot.app.svg', 0o644)
+    add_file(tf, os.path.join(proj, 'assets/icons/polygot-256.png'), './usr/share/icons/hicolor/256x256/apps/org.polygot.app.png', 0o644)
 
 data_bytes = data_buf.getvalue()
 
 # Build control.tar.gz
-control_txt = f"""Package: openlingo
+control_txt = f"""Package: polygot
 Version: {ver}
 Section: education
 Priority: optional
@@ -130,9 +130,9 @@ Depends: python3
 Recommends: chromium | chromium-browser | google-chrome-stable
 Installed-Size: {max(1, installed_kb // 1024)}
 Maintainer: mahesh-labs <mahesh.makes.it@gmail.com>
-Homepage: https://mahesh-labs.github.io/openlingo/
+Homepage: https://mahesh-labs.github.io/polygot/
 Description: Free and open-source cross-platform language learning app
- OpenLingo offers structured Japanese (JLPT N5-N1), Spanish (CEFR A1-C1),
+ Polygot offers structured Japanese (JLPT N5-N1), Spanish (CEFR A1-C1),
  and Malayalam (Stage 1-5) courses with interactive handwriting tracing,
  spaced-repetition flashcards, and private Google Drive sync.
 """.encode('utf-8')
@@ -155,25 +155,25 @@ with open(out_deb, 'wb') as out:
 PY
 
 # 5. Assemble AppImage AppDir (and build .AppImage if appimagetool is installed)
-APPDIR="$DIST_DIR/OpenLingo.AppDir"
-mkdir -p "$APPDIR/usr/bin" "$APPDIR/usr/share/openlingo/www" "$APPDIR/usr/share/applications" "$APPDIR/usr/share/icons/hicolor/256x256/apps"
-cp -r "$STAGE/www/." "$APPDIR/usr/share/openlingo/www/"
-cp "$LINUX_DIR/openlingo-desktop.py" "$APPDIR/usr/share/openlingo/openlingo-desktop.py"
-chmod +x "$APPDIR/usr/share/openlingo/openlingo-desktop.py"
+APPDIR="$DIST_DIR/Polygot.AppDir"
+mkdir -p "$APPDIR/usr/bin" "$APPDIR/usr/share/polygot/www" "$APPDIR/usr/share/applications" "$APPDIR/usr/share/icons/hicolor/256x256/apps"
+cp -r "$STAGE/www/." "$APPDIR/usr/share/polygot/www/"
+cp "$LINUX_DIR/polygot-desktop.py" "$APPDIR/usr/share/polygot/polygot-desktop.py"
+chmod +x "$APPDIR/usr/share/polygot/polygot-desktop.py"
 cat > "$APPDIR/AppRun" <<'EOF'
 #!/usr/bin/env bash
 HERE="$(dirname "$(readlink -f "${0}")")"
-exec python3 "$HERE/usr/share/openlingo/openlingo-desktop.py" "$@"
+exec python3 "$HERE/usr/share/polygot/polygot-desktop.py" "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
-cp "$LINUX_DIR/org.openlingo.app.desktop" "$APPDIR/org.openlingo.app.desktop"
-cp "$LINUX_DIR/org.openlingo.app.desktop" "$APPDIR/usr/share/applications/org.openlingo.app.desktop"
-cp "$PROJECT_DIR/assets/icons/openlingo-256.png" "$APPDIR/org.openlingo.app.png"
-cp "$PROJECT_DIR/assets/icons/openlingo-256.png" "$APPDIR/usr/share/icons/hicolor/256x256/apps/org.openlingo.app.png"
-ln -sf org.openlingo.app.png "$APPDIR/.DirIcon"
+cp "$LINUX_DIR/org.polygot.app.desktop" "$APPDIR/org.polygot.app.desktop"
+cp "$LINUX_DIR/org.polygot.app.desktop" "$APPDIR/usr/share/applications/org.polygot.app.desktop"
+cp "$PROJECT_DIR/assets/icons/polygot-256.png" "$APPDIR/org.polygot.app.png"
+cp "$PROJECT_DIR/assets/icons/polygot-256.png" "$APPDIR/usr/share/icons/hicolor/256x256/apps/org.polygot.app.png"
+ln -sf org.polygot.app.png "$APPDIR/.DirIcon"
 
 if command -v appimagetool >/dev/null 2>&1; then
-  ARCH=x86_64 appimagetool "$APPDIR" "$DIST_DIR/OpenLingo-v${VERSION}-x86_64.AppImage"
+  ARCH=x86_64 appimagetool "$APPDIR" "$DIST_DIR/Polygot-v${VERSION}-x86_64.AppImage"
 fi
 
 rm -rf "$STAGE"

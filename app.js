@@ -49,17 +49,17 @@ import {
 } from './src/courseSocial.js';
 
 const STORAGE_KEYS = {
-  COURSES: 'openlingo_custom_courses_v2',
-  GITHUB_COURSES: 'openlingo_github_courses_v1',
-  PROGRESS: 'openlingo_progress_v2',
-  SRS: 'openlingo_srs_v2',
-  THEME: 'openlingo_theme_v1',
-  SETTINGS: 'openlingo_sync_settings_v1',
-  GUEST: 'openlingo_guest_mode_v1',
-  SYNC_META: 'openlingo_sync_meta_v1',
-  PROFILE: 'openlingo_profile_v1',
-  PREFS: 'openlingo_prefs_v1',
-  ENROLLED: 'openlingo_enrolled_courses_v1'
+  COURSES: 'polygot_custom_courses_v2',
+  GITHUB_COURSES: 'polygot_github_courses_v1',
+  PROGRESS: 'polygot_progress_v2',
+  SRS: 'polygot_srs_v2',
+  THEME: 'polygot_theme_v1',
+  SETTINGS: 'polygot_sync_settings_v1',
+  GUEST: 'polygot_guest_mode_v1',
+  SYNC_META: 'polygot_sync_meta_v1',
+  PROFILE: 'polygot_profile_v1',
+  PREFS: 'polygot_prefs_v1',
+  ENROLLED: 'polygot_enrolled_courses_v1'
 };
 
 const state = {
@@ -515,7 +515,7 @@ function getDisplayName() {
   const gUser = getGoogleSession()?.user;
   if (gUser?.name) return gUser.name;
   if (gUser?.email) return gUser.email.split('@')[0];
-  return 'OpenLingo Learner';
+  return 'Polygot Learner';
 }
 
 function renderAvatarMarkup(sizeClass = 'sm') {
@@ -528,7 +528,7 @@ function renderAvatarMarkup(sizeClass = 'sm') {
     .filter(Boolean)
     .slice(0, 2)
     .map((w) => w[0].toUpperCase())
-    .join('') || 'OL';
+    .join('') || 'PG';
 
   if (customPic) {
     return `<div class="avatar-circle ${sizeClass}"><img src="${escapeHtml(customPic)}" alt="${escapeHtml(name)}" /></div>`;
@@ -1022,7 +1022,7 @@ function rateCurrentFlashcard(rating) {
 /* ---------- Progress Backup & Restore (Offline File + Copy/Paste Code) ---------- */
 function buildBackupPayload() {
   return {
-    app: 'OpenLingo',
+    app: 'Polygot',
     schemaVersion: 2,
     appVersion: APP_CONFIG.appVersion,
     exportedAt: new Date().toISOString(),
@@ -1047,13 +1047,13 @@ function encodeBackupCode(payload) {
   bytes.forEach((b) => {
     binary += String.fromCharCode(b);
   });
-  return 'OL1:' + btoa(binary);
+  return 'PG1:' + btoa(binary);
 }
 
 function decodeBackupInput(rawInput) {
   const trimmed = String(rawInput || '').trim();
   if (!trimmed) throw new Error('Backup text is empty.');
-  if (trimmed.startsWith('OL1:')) {
+  if (trimmed.startsWith('PG1:') || trimmed.startsWith('OL1:')) {
     const binary = atob(trimmed.slice(4).replace(/\s+/g, ''));
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
@@ -1065,7 +1065,7 @@ function decodeBackupInput(rawInput) {
 function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime = null) {
   const data = decodeBackupInput(rawText);
   if (!data || typeof data !== 'object' || (!data.progress && !data.srs)) {
-    throw new Error('Not a valid OpenLingo backup file or code.');
+    throw new Error('Not a valid Polygot backup file or code.');
   }
 
   if (data.courseReviews && typeof data.courseReviews === 'object') {
@@ -1314,8 +1314,8 @@ function renderAuthGate() {
   return `
     <div class="auth-screen">
       <div class="auth-card">
-        <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:82px;height:82px;border-radius:50%;margin:0 auto 14px;display:block;" />
-        <h1 style="margin:0;font-size:32px;font-weight:700;">OpenLingo</h1>
+        <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:82px;height:82px;border-radius:50%;margin:0 auto 14px;display:block;" />
+        <h1 style="margin:0;font-size:32px;font-weight:700;">Polygot</h1>
         <p style="margin:8px 0 0;font-size:15px;color:var(--text-muted);">
           Free &amp; open-source language learning. Sign in with Google to sync your progress privately across desktop, web, and Android via your own Google Drive.
         </p>
@@ -1361,7 +1361,7 @@ function renderCourseOnboarding() {
     <div class="auth-screen">
       <div class="onboarding-card">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:50px;height:50px;border-radius:50%;display:block;" />
+          <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:50px;height:50px;border-radius:50%;display:block;" />
           <div>
             <div style="font-size:12px;font-weight:700;color:var(--accent-text);text-transform:uppercase;letter-spacing:0.05em;">Welcome, ${escapeHtml(greetingName)}</div>
             <h1 style="margin:0;font-size:24px;font-weight:700;">Pick a course to start</h1>
@@ -1433,9 +1433,9 @@ function renderSidebar(course) {
     <aside class="sidebar">
       <div class="brand-row">
         <div class="brand">
-          <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:38px;height:38px;border-radius:50%;display:block;" />
+          <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:38px;height:38px;border-radius:50%;display:block;" />
           <div>
-            <div class="brand-name">OpenLingo</div>
+            <div class="brand-name">Polygot</div>
             <div class="brand-tag">v${escapeHtml(APP_CONFIG.appVersion)}</div>
           </div>
         </div>
@@ -1503,7 +1503,7 @@ function renderMobileTopbar(course) {
   return `
     <header class="mobile-topbar">
       <div style="display:flex;align-items:center;gap:6px;">
-        <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:28px;height:28px;border-radius:50%;display:block;" />
+        <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:28px;height:28px;border-radius:50%;display:block;" />
         ${renderCustomSelect({
           id: 'mobile-course-select',
           className: 'course-picker mobile-course-picker',
@@ -2512,7 +2512,7 @@ function renderStudioView(course) {
       <form id="github-repo-form" class="form-grid" style="margin-bottom:12px;">
         <div>
           <label class="field-label">GitHub Repository (owner/repo)</label>
-          <input class="input" name="githubRepo" value="${escapeHtml(state.syncSettings.githubRepo)}" placeholder="mahesh-labs/openlingo" required />
+          <input class="input" name="githubRepo" value="${escapeHtml(state.syncSettings.githubRepo)}" placeholder="mahesh-labs/polygot" required />
         </div>
         <div>
           <label class="field-label">Branch</label>
@@ -2618,7 +2618,7 @@ function renderStudioView(course) {
           </div>
           <div style="grid-column:1 / -1;">
             <label class="field-label">Linked Discord Channel URL (optional)</label>
-            <input class="input" name="discordChannelUrl" placeholder="https://discord.com/channels/... (defaults to OpenLingo Discord)" />
+            <input class="input" name="discordChannelUrl" placeholder="https://discord.com/channels/... (defaults to Polygot Discord)" />
           </div>
         </div>
         <button class="btn btn-primary btn-sm" type="submit">+ Create Course</button>
@@ -2664,7 +2664,7 @@ function renderStudioView(course) {
 
     <section class="card">
       <h3 style="margin-top:0;">Import Course JSON</h3>
-      <textarea id="import-json-text" rows="5" placeholder='Paste a valid OpenLingo course JSON object here...'></textarea>
+      <textarea id="import-json-text" rows="5" placeholder='Paste a valid Polygot course JSON object here...'></textarea>
       <div style="margin-top:10px;">
         <button class="btn btn-sm" id="import-course-btn">Import JSON Course</button>
       </div>
@@ -3144,7 +3144,7 @@ function renderSettingsView(course) {
       </div>
 
       <div style="padding-top:14px;border-top:2px solid var(--border);">
-        <div class="settings-row-title" style="margin-bottom:4px;">2. Copy &amp; Paste Backup Code (<code>OL1:...</code>)</div>
+        <div class="settings-row-title" style="margin-bottom:4px;">2. Copy &amp; Paste Backup Code (<code>PG1:...</code>)</div>
         <div class="settings-row-desc" style="margin-bottom:10px;">
           Move progress between devices quickly by pasting a single-line backup code.
         </div>
@@ -3157,8 +3157,8 @@ function renderSettingsView(course) {
             ? `<textarea id="backup-code-output" rows="3" readonly style="margin-bottom:12px;font-family:monospace;font-size:12px;">${escapeHtml(state.backupCodePreview)}</textarea>`
             : ''
         }
-        <label class="field-label">Paste Backup Code (OL1:...) or JSON to Restore</label>
-        <textarea id="restore-code-input" rows="3" placeholder="Paste your OL1:... backup code or openlingo-backup.json contents here..." style="font-family:monospace;font-size:12px;"></textarea>
+        <label class="field-label">Paste Backup Code (PG1:...) or JSON to Restore</label>
+        <textarea id="restore-code-input" rows="3" placeholder="Paste your PG1:... backup code or polygot-backup.json contents here..." style="font-family:monospace;font-size:12px;"></textarea>
         <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
           <button class="btn btn-primary btn-sm" id="restore-code-btn">${uiIcon('refresh', 16)} Restore from Pasted Text</button>
           <button class="btn btn-danger btn-sm" id="reset-progress-btn">${uiIcon('trash', 16)} Reset Local Progress</button>
@@ -3201,9 +3201,9 @@ function renderSettingsView(course) {
     <section class="card" id="settings-support-section">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
         <div>
-          <h3 style="margin:0;">${uiIcon('gift', 20)} Support OpenLingo</h3>
+          <h3 style="margin:0;">${uiIcon('gift', 20)} Support Polygot</h3>
           <div style="font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.45;">
-            Exciting updates are on the way — interactive story dialogues, offline high-clarity audio voices, deeper grammar mastery challenges, new community languages, and faster cross-device sync. OpenLingo will always stay 100% free with zero ads or paywalls — your support helps us ship these updates faster!
+            Exciting updates are on the way — interactive story dialogues, offline high-clarity audio voices, deeper grammar mastery challenges, new community languages, and faster cross-device sync. Polygot will always stay 100% free with zero ads or paywalls — your support helps us ship these updates faster!
           </div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -3233,9 +3233,9 @@ function renderSettingsView(course) {
 
     <section class="card">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-        <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:42px;height:42px;border-radius:50%;display:block;" />
+        <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:42px;height:42px;border-radius:50%;display:block;" />
         <div>
-          <h3 style="margin:0;">About OpenLingo</h3>
+          <h3 style="margin:0;">About Polygot</h3>
           <div style="font-size:12px;color:var(--text-muted);">Free &amp; Open-Source Cross-Platform Language Learning</div>
         </div>
       </div>
@@ -3298,9 +3298,9 @@ async function switchCourse(newId) {
 }
 
 function attachActiveLessonTracker(course) {
-  if (window._openlingoLessonScrollCleanup) {
-    window._openlingoLessonScrollCleanup();
-    window._openlingoLessonScrollCleanup = null;
+  if (window._polygotLessonScrollCleanup) {
+    window._polygotLessonScrollCleanup();
+    window._polygotLessonScrollCleanup = null;
   }
 
   const activeNode = document.getElementById('active-lesson-node');
@@ -3359,7 +3359,7 @@ function attachActiveLessonTracker(course) {
 
   window.addEventListener('scroll', onScrollOrResize, { passive: true });
   window.addEventListener('resize', onScrollOrResize, { passive: true });
-  window._openlingoLessonScrollCleanup = () => {
+  window._polygotLessonScrollCleanup = () => {
     window.removeEventListener('scroll', onScrollOrResize);
     window.removeEventListener('resize', onScrollOrResize);
     if (rafId) cancelAnimationFrame(rafId);
@@ -3411,9 +3411,9 @@ function attachEvents(course) {
 
   if (state.view === 'syllabus') {
     attachActiveLessonTracker(course);
-  } else if (window._openlingoLessonScrollCleanup) {
-    window._openlingoLessonScrollCleanup();
-    window._openlingoLessonScrollCleanup = null;
+  } else if (window._polygotLessonScrollCleanup) {
+    window._polygotLessonScrollCleanup();
+    window._polygotLessonScrollCleanup = null;
   }
 
   /* Update & External Link Handlers */
@@ -3716,7 +3716,7 @@ function attachEvents(course) {
         comment,
         authorName: getDisplayName()
       });
-      state.courseReviewNotice = 'Saved your rating & feedback! Tap "Publish Publicly" to share it with all OpenLingo learners.';
+      state.courseReviewNotice = 'Saved your rating & feedback! Tap "Publish Publicly" to share it with all Polygot learners.';
       autoBackupToGoogleDrive();
       render();
     });
@@ -3745,7 +3745,7 @@ function attachEvents(course) {
         repo: state.syncSettings.githubRepo
       });
       openExternalLink(issueUrl);
-      state.courseReviewNotice = 'Opened GitHub to publish your review publicly — once submitted, everyone on OpenLingo will see it!';
+      state.courseReviewNotice = 'Opened GitHub to publish your review publicly — once submitted, everyone on Polygot will see it!';
       render();
     });
   }
@@ -4557,7 +4557,7 @@ function attachEvents(course) {
     saveBackupFileBtn.addEventListener('click', () => {
       const dateStr = new Date().toISOString().slice(0, 10);
       const payload = JSON.stringify(buildBackupPayload(), null, 2);
-      exportJsonFile(`openlingo-backup-${dateStr}.json`, payload);
+      exportJsonFile(`polygot-backup-${dateStr}.json`, payload);
     });
   }
 
@@ -4739,7 +4739,7 @@ function renderAddCourseModal() {
       id: pairId,
       targetCode: t.code,
       title: `${srcMeta.name} → ${t.name}`,
-      author: t.author || 'OpenLingo Core Team'
+      author: t.author || 'Polygot Core Team'
     });
     const rating = getCourseRatingSummary(pairId);
     return { t, pairId, isEnrolled: enrolledSet.has(pairId), meta, rating };
@@ -4864,7 +4864,7 @@ function renderCourseInfoModal() {
     id: cid,
     targetCode: tgtMeta?.code || cid.split('-')[1] || '',
     title,
-    author: catalogEntry?.author || tgtMeta?.author || 'OpenLingo Core Team',
+    author: catalogEntry?.author || tgtMeta?.author || 'Polygot Core Team',
     authorUrl: catalogEntry?.authorUrl || ''
   });
   const ratingSum = getCourseRatingSummary(cid);
@@ -4903,7 +4903,7 @@ function renderCourseInfoModal() {
               ${uiIcon('share', 15)} Share Link
             </button>
             <button type="button" class="btn btn-sm" data-open-external="${escapeHtml(meta.discordChannelUrl)}">
-              ${uiIcon('discord', 15)} ${meta.hasDedicatedDiscord ? 'Course Discord' : 'OpenLingo Discord'}
+              ${uiIcon('discord', 15)} ${meta.hasDedicatedDiscord ? 'Course Discord' : 'Polygot Discord'}
             </button>
           </div>
 
@@ -5045,9 +5045,9 @@ function renderUpdateModal() {
         </div>
         <div style="padding:18px;display:grid;gap:12px;">
           <div style="display:flex;align-items:center;gap:12px;">
-            <img src="${escapeHtml(getAppIconSrc())}" alt="OpenLingo" style="width:48px;height:48px;border-radius:50%;flex-shrink:0;" />
+            <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:48px;height:48px;border-radius:50%;flex-shrink:0;" />
             <div>
-              <div style="font-family:var(--font-display);font-size:19px;font-weight:700;">OpenLingo v${escapeHtml(state.updateInfo.latestVersion)}</div>
+              <div style="font-family:var(--font-display);font-size:19px;font-weight:700;">Polygot v${escapeHtml(state.updateInfo.latestVersion)}</div>
               <div style="font-size:12px;color:var(--text-muted);">Installed: v${escapeHtml(APP_CONFIG.appVersion)}</div>
             </div>
           </div>

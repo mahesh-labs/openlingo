@@ -1,13 +1,13 @@
-const CACHE_NAME = 'openlingo-v44';
+const CACHE_NAME = 'polygot-v45';
 const ASSETS = [
   './',
   './index.html',
   './privacy.html',
   './styles.css',
   './app.js',
-  './assets/icons/openlingo-icon.svg',
-  './assets/icons/openlingo-192.png',
-  './assets/icons/openlingo-512.png',
+  './assets/icons/polygot-icon.svg',
+  './assets/icons/polygot-192.png',
+  './assets/icons/polygot-512.png',
   './src/icons.js',
   './src/appIcons.js',
   './src/updater.js',
