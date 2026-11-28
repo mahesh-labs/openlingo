@@ -237,7 +237,7 @@ def build_ordered_icons(langs: list[dict]) -> list[dict]:
         {
             "id": DEFAULT_ICON_ID,
             "label": "Polygot",
-            "glyph": "P",
+            "glyph": "A文",
             "fontFamily": "Fredoka, Nunito, Noto Sans, sans-serif",
             "fontSize": 248,
             "y": 332,
@@ -276,7 +276,7 @@ def sync_android_icons(icons: list[dict], check_only: bool, errors: list) -> Non
         pid = ic["id"]
         xml_name = "ic_launcher.xml" if pid == DEFAULT_ICON_ID else f"ic_launcher_{pid}.xml"
         xml_path = os.path.join(anydpi_dir, xml_name)
-        mono_ref = ic.get("monoDrawable", f"ic_launcher_fg_{pid}")
+        mono_ref = ic.get("monoDrawable", f"ic_launcher_mono_{pid}")
         expected_xml = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n'
@@ -289,33 +289,43 @@ def sync_android_icons(icons: list[dict], check_only: bool, errors: list) -> Non
 
         mipmap_png = os.path.join(mipmap_dir, "ic_launcher.png" if pid == DEFAULT_ICON_ID else f"ic_launcher_{pid}.png")
         fg_png = os.path.join(fg_dir, f"ic_launcher_fg_{pid}.png")
+        mono_png = os.path.join(fg_dir, f"{mono_ref}.png")
 
         if check_only:
             if not os.path.exists(mipmap_png):
                 errors.append(f"Missing Android mipmap icon: {os.path.relpath(mipmap_png, ROOT)}")
             if not os.path.exists(fg_png):
                 errors.append(f"Missing Android adaptive foreground icon: {os.path.relpath(fg_png, ROOT)}")
+            if not os.path.exists(mono_png):
+                errors.append(f"Missing Android monochrome icon: {os.path.relpath(mono_png, ROOT)}")
             continue
 
-        if os.path.exists(mipmap_png) and os.path.exists(fg_png):
+        if os.path.exists(mipmap_png) and os.path.exists(fg_png) and os.path.exists(mono_png):
             continue
 
         if not rsvg:
             errors.append(f"Cannot render missing icon PNGs for '{pid}': `rsvg-convert` is not installed.")
             continue
 
+        import base64
+        shell_path = os.path.join(ROOT, "assets", "icons", "polygot-shell-512.png")
+        mono_shell_path = os.path.join(ROOT, "assets", "icons", "polygot-mono-shell-432.png")
+        b64_shell = base64.b64encode(open(shell_path, "rb").read()).decode("ascii")
+        b64_mono = base64.b64encode(open(mono_shell_path, "rb").read()).decode("ascii")
         font_clean = ic["fontFamily"].replace("'", "")
+        b_size = int(ic.get("bubbleFontSize") or round(int(ic.get("fontSize", 220)) * 0.36))
+        b_y = int(ic.get("bubbleY") or 256)
+        sc = 306.0 / 512.0
         with tempfile.TemporaryDirectory() as tmp:
+            svg = (
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">\n'
+                f'  <image href="data:image/png;base64,{b64_shell}" x="0" y="0" width="512" height="512" />\n'
+                f'  <text x="298" y="{b_y}" text-anchor="middle" fill="#ffffff" font-family="{font_clean}" font-size="{b_size}" font-weight="900">{ic["glyph"]}</text>\n'
+                '</svg>'
+            )
+            svg_p = os.path.join(tmp, f"{pid}.svg")
+            open(svg_p, "w", encoding="utf-8").write(svg)
             if not os.path.exists(mipmap_png):
-                svg = (
-                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">\n'
-                    '  <circle cx="256" cy="272" r="222" fill="#4c1d95" />\n'
-                    '  <circle cx="256" cy="240" r="218" fill="#7c3aed" stroke="#a78bfa" stroke-width="26" />\n'
-                    f'  <text x="256" y="{ic["y"]}" text-anchor="middle" fill="#ffffff" font-family="{font_clean}" font-size="{ic["fontSize"]}" font-weight="900">{ic["glyph"]}</text>\n'
-                    '</svg>'
-                )
-                svg_p = os.path.join(tmp, f"{pid}.svg")
-                open(svg_p, "w", encoding="utf-8").write(svg)
                 os.makedirs(mipmap_dir, exist_ok=True)
                 subprocess.run([rsvg, "-w", "192", "-h", "192", svg_p, "-o", mipmap_png], check=True)
                 print(f"GENERATED {os.path.relpath(mipmap_png, ROOT)}")
@@ -323,7 +333,8 @@ def sync_android_icons(icons: list[dict], check_only: bool, errors: list) -> Non
             if not os.path.exists(fg_png):
                 fg_svg = (
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" width="432" height="432">\n'
-                    f'  <text x="216" y="{ic["fgY"]}" text-anchor="middle" fill="#ffffff" font-family="{font_clean}" font-size="{ic["fgSize"]}" font-weight="900">{ic["glyph"]}</text>\n'
+                    f'  <image href="data:image/png;base64,{b64_shell}" x="63" y="63" width="306" height="306" />\n'
+                    f'  <text x="{63 + 298 * sc:.1f}" y="{63 + b_y * sc:.1f}" text-anchor="middle" fill="#ffffff" font-family="{font_clean}" font-size="{b_size * sc:.1f}" font-weight="900">{ic["glyph"]}</text>\n'
                     '</svg>'
                 )
                 fg_p = os.path.join(tmp, f"fg_{pid}.svg")
@@ -331,6 +342,19 @@ def sync_android_icons(icons: list[dict], check_only: bool, errors: list) -> Non
                 os.makedirs(fg_dir, exist_ok=True)
                 subprocess.run([rsvg, "-w", "432", "-h", "432", fg_p, "-o", fg_png], check=True)
                 print(f"GENERATED {os.path.relpath(fg_png, ROOT)}")
+
+            if not os.path.exists(mono_png):
+                mono_svg = (
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" width="432" height="432">\n'
+                    f'  <image href="data:image/png;base64,{b64_mono}" x="0" y="0" width="432" height="432" />\n'
+                    f'  <text x="{63 + 298 * sc:.1f}" y="{63 + b_y * sc:.1f}" text-anchor="middle" fill="#ffffff" font-family="{font_clean}" font-size="{b_size * sc:.1f}" font-weight="900">{ic["glyph"]}</text>\n'
+                    '</svg>'
+                )
+                mono_p = os.path.join(tmp, f"mono_{pid}.svg")
+                open(mono_p, "w", encoding="utf-8").write(mono_svg)
+                os.makedirs(fg_dir, exist_ok=True)
+                subprocess.run([rsvg, "-w", "432", "-h", "432", mono_p, "-o", mono_png], check=True)
+                print(f"GENERATED {os.path.relpath(mono_png, ROOT)}")
 
 
 def main() -> int:

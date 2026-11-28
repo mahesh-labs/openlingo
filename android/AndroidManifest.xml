@@ -60,7 +60,7 @@
         </activity>
 
         <!-- AUTO-GENERATED ICON ALIASES START -->
-        <!-- Default launcher icon: Polygot (P) -->
+        <!-- Default launcher icon: Polygot (A文) -->
         <activity-alias
             android:name=".IconAliasPolygot"
             android:enabled="true"
