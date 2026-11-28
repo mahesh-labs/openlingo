@@ -22,6 +22,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.1.1-beta" date="2026-11-28">
+      <description>
+        <p>Auto-live GitHub course catalog with offline Cache API persistence (new languages and community courses appear automatically without updating the app), swipeable left/right 3D flashcards with true Prev/Next navigation and decluttered card faces, Path screen cleanup defaulting to All Levels with Rate &amp; Share moved to Settings, tabbed Profile redesign, and collapsible accordion Settings with Account &amp; Logout anchored at the bottom.</p>
+      </description>
+    </release>
     <release version="0.1.0-beta" date="2026-11-28">
       <description>
         <p>Official rebrand from OpenLingo to Polygot with a brand-new folded-P speech-bubble logo across Web PWA, Android Adaptive Icon (+ Material You monochrome), Windows, Linux, and Discord; new org.polygot.app package identity with full backward compatibility for existing OL1: backup codes; and updated Polygot default app icon preset alongside all 13 language script icons.</p>

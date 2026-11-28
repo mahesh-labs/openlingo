@@ -1,6 +1,6 @@
 # Maintainer: mahesh-labs <mahesh.makes.it@gmail.com>
 pkgname=polygot
-pkgver=0.1.0.beta
+pkgver=0.1.1.beta
 pkgrel=1
 pkgdesc="Free and open-source cross-platform language learning app (13 languages · 156 courses)"
 arch=('any')

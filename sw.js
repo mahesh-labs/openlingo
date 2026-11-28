@@ -1,4 +1,4 @@
-const CACHE_NAME = 'polygot-v50';
+const CACHE_NAME = 'polygot-v51';
 const ASSETS = [
   './',
   './index.html',

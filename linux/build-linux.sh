@@ -4,7 +4,7 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 LINUX_DIR="$PROJECT_DIR/linux"
 DIST_DIR="$LINUX_DIR/dist"
-VERSION="${APP_VERSION:-0.1.0-beta}"
+VERSION="${APP_VERSION:-0.1.1-beta}"
 DEB_VERSION="${VERSION//-/\~}"
 
 rm -rf "$DIST_DIR"
