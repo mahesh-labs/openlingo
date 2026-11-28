@@ -1,11 +1,20 @@
-export const DEFAULT_APP_ICON_ID = 'ml';
+export const DEFAULT_APP_ICON_ID = 'polygot';
 
 export const APP_ICON_PRESETS = [
+  {
+    id: 'polygot',
+    glyph: 'P',
+    label: 'Polygot',
+    isDefault: true,
+    customImage: './assets/icons/polygot-icon.svg',
+    fontFamily: "'Fredoka', 'Nunito', 'Noto Sans', sans-serif",
+    fontSize: 248,
+    y: 332
+  },
   {
     id: 'ml',
     glyph: 'അ',
     label: 'Malayalam',
-    isDefault: true,
     fontFamily: "'Noto Sans Malayalam', 'Manjari', 'Noto Sans', sans-serif",
     fontSize: 184,
     y: 298

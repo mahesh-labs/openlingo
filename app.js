@@ -534,6 +534,10 @@ function renderAvatarMarkup(sizeClass = 'sm') {
     return `<div class="avatar-circle ${sizeClass}"><img src="${escapeHtml(customPic)}" alt="${escapeHtml(name)}" /></div>`;
   }
   if (customEmoji) {
+    const emojiPreset = findPresetByGlyph(customEmoji);
+    if (emojiPreset?.customImage) {
+      return `<div class="avatar-circle ${sizeClass}"><img src="${escapeHtml(emojiPreset.customImage)}" alt="${escapeHtml(emojiPreset.label)}" /></div>`;
+    }
     return `<div class="avatar-circle ${sizeClass}">${escapeHtml(customEmoji)}</div>`;
   }
   if (googlePic) {
@@ -2733,9 +2737,12 @@ function renderProfileView(course) {
         </div>
         <div class="avatar-presets">
           ${APP_ICON_PRESETS.map((preset) => {
-            const isSelected = !state.profile.avatarDataUrl && state.profile.avatarEmoji === preset.glyph;
+            const isSelected = !state.profile.avatarDataUrl && (state.profile.avatarEmoji === preset.glyph || (preset.customImage && state.profile.avatarEmoji === preset.id));
             const isAppIcon = activeAppIcon.id === preset.id;
-            return `<button type="button" class="avatar-preset-btn ${isSelected ? 'active' : ''} ${isAppIcon ? 'is-app-icon' : ''}" data-avatar-emoji="${escapeHtml(preset.glyph)}" data-preset-id="${escapeHtml(preset.id)}" title="${escapeHtml(preset.label)} (${escapeHtml(preset.glyph)})${isAppIcon ? ' · Active App Icon' : ''}">${escapeHtml(preset.glyph)}${isAppIcon ? '<span class="app-icon-dot" aria-hidden="true"></span>' : ''}</button>`;
+            const inner = preset.customImage
+              ? `<img src="${escapeHtml(preset.customImage)}" alt="${escapeHtml(preset.label)}" style="width:26px;height:26px;border-radius:50%;display:block;" />`
+              : escapeHtml(preset.glyph);
+            return `<button type="button" class="avatar-preset-btn ${isSelected ? 'active' : ''} ${isAppIcon ? 'is-app-icon' : ''}" data-avatar-emoji="${escapeHtml(preset.glyph)}" data-preset-id="${escapeHtml(preset.id)}" title="${escapeHtml(preset.label)}${isAppIcon ? ' · Active App Icon' : ''}">${inner}${isAppIcon ? '<span class="app-icon-dot" aria-hidden="true"></span>' : ''}</button>`;
           }).join('')}
         </div>
 
@@ -2752,14 +2759,14 @@ function renderProfileView(course) {
           <div class="app-icon-bar-actions">
             ${
               selectedPreset && selectedPreset.id !== activeAppIcon.id
-                ? `<button type="button" class="btn btn-primary btn-sm" id="profile-set-app-icon-btn" data-set-app-icon="${escapeHtml(selectedPreset.id)}">${uiIcon('palette', 15)} Set "${escapeHtml(selectedPreset.glyph)}" as App Icon</button>`
+                ? `<button type="button" class="btn btn-primary btn-sm" id="profile-set-app-icon-btn" data-set-app-icon="${escapeHtml(selectedPreset.id)}">${uiIcon('palette', 15)} Set "${escapeHtml(selectedPreset.customImage ? selectedPreset.label : selectedPreset.glyph)}" as App Icon</button>`
                 : selectedPreset && selectedPreset.id === activeAppIcon.id
                   ? `<span class="pill accent">${uiIcon('check', 14)} Active App Icon</span>`
                   : `<span style="font-size:12px;color:var(--text-muted);">Select an emblem above to use as App Icon</span>`
             }
             ${
               activeAppIcon.id !== DEFAULT_APP_ICON_ID
-                ? `<button type="button" class="btn btn-sm" id="profile-reset-app-icon-btn">${uiIcon('refresh', 15)} Reset Default (അ)</button>`
+                ? `<button type="button" class="btn btn-sm" id="profile-reset-app-icon-btn">${uiIcon('refresh', 15)} Reset Default (Polygot)</button>`
                 : ''
             }
           </div>

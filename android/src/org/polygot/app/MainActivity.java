@@ -716,8 +716,9 @@ public class MainActivity extends Activity {
 
         AppIconBridge() {
             // AUTO-GENERATED ICON ALIASES START
-            aliasMap.put("ml", ".IconAliasMl");
+            aliasMap.put("polygot", ".IconAliasPolygot");
             aliasMap.put("en", ".IconAliasEn");
+            aliasMap.put("ml", ".IconAliasMl");
             aliasMap.put("ta", ".IconAliasTa");
             aliasMap.put("kn", ".IconAliasKn");
             aliasMap.put("te", ".IconAliasTe");
@@ -754,15 +755,15 @@ public class MainActivity extends Activity {
                 }
             } catch (Exception ignored) {
             }
-            String active = prefs.getString(KEY_ACTIVE_ICON, "ml");
-            return aliasMap.containsKey(active) ? active : "ml";
+            String active = prefs.getString(KEY_ACTIVE_ICON, "polygot");
+            return aliasMap.containsKey(active) ? active : "polygot";
         }
 
         @JavascriptInterface
         public boolean setAppIcon(final String rawIconId) {
-            final String targetId = (rawIconId != null && aliasMap.containsKey(rawIconId)) ? rawIconId : "ml";
+            final String targetId = (rawIconId != null && aliasMap.containsKey(rawIconId)) ? rawIconId : "polygot";
             final SharedPreferences prefs = getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE);
-            final String activeId = prefs.getString(KEY_ACTIVE_ICON, "ml");
+            final String activeId = prefs.getString(KEY_ACTIVE_ICON, "polygot");
             if (targetId.equals(activeId)) {
                 prefs.edit().remove(KEY_PENDING_ICON).commit();
             } else {
@@ -774,7 +775,7 @@ public class MainActivity extends Activity {
         void applyPendingAppIcon() {
             final SharedPreferences prefs = getSharedPreferences(ICON_PREFS, Context.MODE_PRIVATE);
             final String pendingId = prefs.getString(KEY_PENDING_ICON, null);
-            final String activeId = prefs.getString(KEY_ACTIVE_ICON, "ml");
+            final String activeId = prefs.getString(KEY_ACTIVE_ICON, "polygot");
             if (pendingId == null || !aliasMap.containsKey(pendingId) || pendingId.equals(activeId)) {
                 return;
             }
@@ -798,13 +799,13 @@ public class MainActivity extends Activity {
                         PackageManager.DONT_KILL_APP
                 );
 
-                // Strictly disable EVERY other alias (including default .IconAliasMl when in DEFAULT state)
+                // Strictly disable EVERY other alias (including default .IconAliasPolygot when in DEFAULT state)
                 // so launchers like Samsung One UI NEVER display two Polygot icons.
                 for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
                     if (entry.getKey().equals(pendingId)) continue;
                     ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
                     int st = pm.getComponentEnabledSetting(cn);
-                    boolean isDefaultEnabledAlias = "ml".equals(entry.getKey()) && st == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
+                    boolean isDefaultEnabledAlias = "polygot".equals(entry.getKey()) && st == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
                     if (isDefaultEnabledAlias || entry.getKey().equals(activeId) || st == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
                         pm.setComponentEnabledSetting(
                                 cn,
@@ -818,13 +819,13 @@ public class MainActivity extends Activity {
         }
 
         void reconcileAliases() {
-            // Self-heal if an earlier crash left two aliases enabled (e.g. .IconAliasMl in DEFAULT + another ENABLED).
+            // Self-heal if an earlier crash left two aliases enabled (e.g. .IconAliasPolygot in DEFAULT + another ENABLED).
             try {
                 PackageManager pm = getPackageManager();
                 String pkg = getPackageName();
                 String enabledNonDefault = null;
                 for (Map.Entry<String, String> entry : aliasMap.entrySet()) {
-                    if ("ml".equals(entry.getKey())) continue;
+                    if ("polygot".equals(entry.getKey())) continue;
                     ComponentName cn = new ComponentName(pkg, pkg + entry.getValue());
                     if (pm.getComponentEnabledSetting(cn) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
                         enabledNonDefault = entry.getKey();
@@ -832,10 +833,10 @@ public class MainActivity extends Activity {
                     }
                 }
                 if (enabledNonDefault != null) {
-                    ComponentName mlCn = new ComponentName(pkg, pkg + aliasMap.get("ml"));
-                    if (pm.getComponentEnabledSetting(mlCn) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+                    ComponentName defCn = new ComponentName(pkg, pkg + aliasMap.get("polygot"));
+                    if (pm.getComponentEnabledSetting(defCn) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
                         pm.setComponentEnabledSetting(
-                                mlCn,
+                                defCn,
                                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                                 PackageManager.DONT_KILL_APP
                         );

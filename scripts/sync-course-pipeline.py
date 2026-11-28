@@ -34,7 +34,7 @@ SW_PATH = os.path.join(ROOT, "sw.js")
 MANIFEST_PATH = os.path.join(ROOT, "android", "AndroidManifest.xml")
 MAIN_ACTIVITY_PATH = os.path.join(ROOT, "android", "src", "org", "polygot", "app", "MainActivity.java")
 
-DEFAULT_ICON_ID = "ml"
+DEFAULT_ICON_ID = "polygot"
 EXTRA_SYMBOL_ICONS = [
     {
         "id": "star",
@@ -231,13 +231,23 @@ def validate_standalone_courses(registry: dict, errors: list) -> list[dict]:
 
 
 def build_ordered_icons(langs: list[dict]) -> list[dict]:
-    # Keep default Malayalam ('ml') first, then all remaining languages in syllabus order, then geometric emblems
+    # Keep default Polygot emblem ('polygot') first, then all languages in syllabus order, then geometric emblems
     by_code = {l["code"]: l for l in langs}
-    ordered_codes = ([DEFAULT_ICON_ID] if DEFAULT_ICON_ID in by_code else []) + [
-        l["code"] for l in langs if l["code"] != DEFAULT_ICON_ID
+    icons = [
+        {
+            "id": DEFAULT_ICON_ID,
+            "label": "Polygot",
+            "glyph": "P",
+            "fontFamily": "Fredoka, Nunito, Noto Sans, sans-serif",
+            "fontSize": 248,
+            "y": 332,
+            "fgSize": 150,
+            "fgY": 268,
+            "monoDrawable": "ic_launcher_mono_polygot",
+        }
     ]
-    icons = []
-    for code in ordered_codes:
+    for l in langs:
+        code = l["code"]
         lang = by_code[code]
         ic = lang.get("icon") or {}
         icons.append(
@@ -266,12 +276,13 @@ def sync_android_icons(icons: list[dict], check_only: bool, errors: list) -> Non
         pid = ic["id"]
         xml_name = "ic_launcher.xml" if pid == DEFAULT_ICON_ID else f"ic_launcher_{pid}.xml"
         xml_path = os.path.join(anydpi_dir, xml_name)
+        mono_ref = ic.get("monoDrawable", f"ic_launcher_fg_{pid}")
         expected_xml = (
             '<?xml version="1.0" encoding="utf-8"?>\n'
             '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n'
             '    <background android:drawable="@color/ic_launcher_background" />\n'
             f'    <foreground android:drawable="@drawable/ic_launcher_fg_{pid}" />\n'
-            f'    <monochrome android:drawable="@drawable/ic_launcher_fg_{pid}" />\n'
+            f'    <monochrome android:drawable="@drawable/{mono_ref}" />\n'
             '</adaptive-icon>\n'
         )
         sync_file(xml_path, expected_xml, check_only, errors)
@@ -440,7 +451,7 @@ def main() -> int:
     print(
         f"\nALL COURSE PIPELINE CHECKS PASSED! "
         f"({len(langs)} matrix languages -> {len(langs) * max(len(langs) - 1, 0)} pairs, "
-        f"{len(standalone_entries)} standalone courses, {len(langs) + len(EXTRA_SYMBOL_ICONS)} app icons)"
+        f"{len(standalone_entries)} standalone courses, {len(icons)} app icons)"
     )
     return 0
 
