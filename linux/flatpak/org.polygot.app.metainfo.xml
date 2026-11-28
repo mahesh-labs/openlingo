@@ -22,6 +22,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.1.0-beta" date="2026-11-28">
+      <description>
+        <p>Official rebrand from OpenLingo to Polygot with a brand-new folded-P speech-bubble logo across Web PWA, Android Adaptive Icon (+ Material You monochrome), Windows, Linux, and Discord; new org.polygot.app package identity with full backward compatibility for existing OL1: backup codes; and updated Polygot default app icon preset alongside all 13 language script icons.</p>
+      </description>
+    </release>
     <release version="0.0.12-beta" date="2026-11-27">
       <description>
         <p>Course Authors, shareable course deep-links (?course=), zero-server 1-5 star ratings &amp; community feedback synced via GitHub Issues + Google Drive, Most Popular &amp; Highest Rated sorting in Add Course, and direct links from every language course straight to its dedicated Polygot Discord channel.</p>

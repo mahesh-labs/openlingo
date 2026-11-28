@@ -5,7 +5,7 @@
  */
 
 export const APP_CONFIG = {
-  appVersion: '0.0.12-beta',
+  appVersion: '0.1.0-beta',
   publicWebUrl: 'https://mahesh-labs.github.io/polygot/',
   githubRepo: 'mahesh-labs/polygot',
   githubBranch: 'main',

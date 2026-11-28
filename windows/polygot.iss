@@ -1,5 +1,5 @@
 #ifndef AppVersion
-  #define AppVersion "0.0.12-beta"
+  #define AppVersion "0.1.0-beta"
 #endif
 
 [Setup]
