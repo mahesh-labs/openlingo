@@ -1087,18 +1087,44 @@ function openGuidebook(unitId) {
   render();
 }
 
-function openFlashcards(filter = state.flashcardFilter) {
+function openFlashcards(filter = 'ALL') {
   const course = getActiveCourse();
-  state.flashcardFilter = filter;
-  let items = getAllItems(course);
-  if (filter !== 'ALL') {
-    items = items.filter((it) => it._level === filter);
-  }
+  state.flashcardFilter = 'ALL';
+  const items = getAllItems(course);
   const due = items.filter((item) => isDue(state.srs[item.id]));
   const queue = due.length > 0 ? due : items;
 
-  state.flashcardSession = { queue: [...queue], index: 0, flipped: false };
+  state.flashcardSession = { queue: [...queue], index: 0, flipped: false, reviewedIds: {} };
   state.view = 'flashcards';
+  render();
+}
+
+function goNextFlashcard() {
+  const { queue, index } = state.flashcardSession;
+  const item = queue[index];
+  if (!item) return;
+
+  if (!state.flashcardSession.reviewedIds) state.flashcardSession.reviewedIds = {};
+  if (!state.flashcardSession.reviewedIds[item.id]) {
+    const current = state.srs[item.id] || createCardState(item.id);
+    state.srs[item.id] = scheduleReview(current, RATINGS.GOOD);
+    state.progress.xp += 5;
+    state.flashcardSession.reviewedIds[item.id] = true;
+    recordStudyActivity();
+    saveLocalState();
+    autoBackupToGoogleDrive(false);
+  }
+
+  state.flashcardSession.flipped = false;
+  state.flashcardSession.index = Math.min(queue.length, index + 1);
+  render();
+}
+
+function goPrevFlashcard() {
+  const { index } = state.flashcardSession;
+  if (index <= 0) return;
+  state.flashcardSession.flipped = false;
+  state.flashcardSession.index = index - 1;
   render();
 }
 
@@ -2468,11 +2494,11 @@ function renderFlashcardsView(course) {
     </div>
 
     <div class="flashcard-deck-wrap">
-      <div class="flashcard-stage">
-        <div class="flashcard-swipe-wrap" id="flashcard-swipe-wrap">
-          <div class="flashcard-swipe-badge right" id="swipe-badge-right">Got it →</div>
-          <div class="flashcard-swipe-badge left" id="swipe-badge-left">← Again</div>
+      <div class="flashcard-swipe-wrap" id="flashcard-swipe-wrap">
+        <div class="flashcard-swipe-badge right" id="swipe-badge-right">Next →</div>
+        <div class="flashcard-swipe-badge left" id="swipe-badge-left">← Prev</div>
 
+        <div class="flashcard-stage">
           <div class="flashcard-3d ${flipped ? 'is-flipped' : ''}" id="flashcard-box" role="button" tabindex="0" aria-label="Flip flashcard">
             <div class="flashcard-face flashcard-front">
               <div class="prompt-main" dir="${tDir}">${escapeHtml(item.term)}</div>
@@ -2502,12 +2528,12 @@ function renderFlashcardsView(course) {
       </div>
 
       <div class="flashcard-swipe-actions">
-        <button type="button" class="swipe-act-btn left" id="flashcard-swipe-left-btn">${uiIcon('arrowLeft', 16)} Again</button>
+        <button type="button" class="swipe-act-btn left" id="flashcard-swipe-left-btn" ${index <= 0 ? 'disabled' : ''}>${uiIcon('arrowLeft', 16)} Prev</button>
         <button type="button" class="swipe-act-btn" id="flashcard-flip-btn" aria-label="Flip card">${uiIcon('rotate', 16)}</button>
         <button type="button" class="swipe-act-btn right" id="flashcard-swipe-right-btn">Next ${uiIcon('arrowRight', 16)}</button>
       </div>
       <div class="flashcard-swipe-hint-row">
-        <span>← Swipe left to review again</span>
+        <span>← Swipe left for previous</span>
         <span>Swipe right for next →</span>
       </div>
     </div>
@@ -4316,76 +4342,92 @@ function attachEvents(course) {
 
     const triggerSwipe = (dir) => {
       if (swipingOut) return;
+      if (dir === 'left' && state.flashcardSession.index <= 0) {
+        // Already on first card — gently bounce back
+        swipeWrap.style.transform = '';
+        if (badgeLeft) badgeLeft.style.opacity = '0';
+        return;
+      }
       swipingOut = true;
       swipeWrap.classList.remove('is-dragging');
       if (badgeRight) badgeRight.style.opacity = dir === 'right' ? '1' : '0';
       if (badgeLeft) badgeLeft.style.opacity = dir === 'left' ? '1' : '0';
       swipeWrap.classList.add(dir === 'right' ? 'swipe-out-right' : 'swipe-out-left');
       setTimeout(() => {
-        rateCurrentFlashcard(dir === 'right' ? RATINGS.GOOD : RATINGS.AGAIN);
-      }, 210);
+        if (dir === 'right') goNextFlashcard();
+        else goPrevFlashcard();
+      }, 200);
     };
 
     let startX = 0;
     let startY = 0;
+    let startTime = 0;
     let deltaX = 0;
     let tracking = false;
     let moved = false;
-    let lockedAxis = null; // 'x' | 'y' | null
+    let activePointerId = null;
 
-    const onStart = (clientX, clientY) => {
+    const resetTransform = () => {
+      swipeWrap.style.transform = '';
+      if (badgeRight) badgeRight.style.opacity = '0';
+      if (badgeLeft) badgeLeft.style.opacity = '0';
+    };
+
+    const onStart = (clientX, clientY, pointerId) => {
       if (swipingOut) return;
       startX = clientX;
       startY = clientY;
+      startTime = Date.now();
       deltaX = 0;
       tracking = true;
       moved = false;
-      lockedAxis = null;
+      activePointerId = pointerId;
       swipeWrap.classList.add('is-dragging');
     };
 
-    const onMove = (clientX, clientY, e) => {
+    const onMove = (clientX, clientY) => {
       if (!tracking || swipingOut) return;
       const dx = clientX - startX;
       const dy = clientY - startY;
-      if (!lockedAxis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
-        lockedAxis = Math.abs(dx) >= Math.abs(dy) ? 'x' : 'y';
-      }
-      if (lockedAxis === 'y') return;
-      if (lockedAxis === 'x') {
-        if (e && e.cancelable) e.preventDefault();
+      if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
         moved = true;
-        deltaX = dx;
-        const rot = Math.max(-16, Math.min(16, dx * 0.055));
-        swipeWrap.style.transform = `translate3d(${dx}px, ${Math.min(18, Math.abs(dx) * 0.05)}px, 0) rotate(${rot}deg)`;
-        const ratio = Math.min(1, Math.abs(dx) / 90);
+      }
+      if (Math.abs(dx) > 6) {
+        // Add rubber-band resistance if trying to swipe left on the first card
+        const canGoPrev = state.flashcardSession.index > 0;
+        const effectiveDx = dx < 0 && !canGoPrev ? dx * 0.25 : dx;
+        deltaX = effectiveDx;
+        const rot = Math.max(-14, Math.min(14, effectiveDx * 0.05));
+        swipeWrap.style.transform = `translate3d(${effectiveDx}px, ${Math.min(14, Math.abs(effectiveDx) * 0.04)}px, 0) rotate(${rot}deg)`;
+        const ratio = Math.min(1, Math.abs(effectiveDx) / 70);
         if (badgeRight) {
-          badgeRight.style.opacity = dx > 16 ? String(ratio) : '0';
+          badgeRight.style.opacity = effectiveDx > 14 ? String(ratio) : '0';
           badgeRight.style.transform = `scale(${0.92 + ratio * 0.1})`;
         }
         if (badgeLeft) {
-          badgeLeft.style.opacity = dx < -16 ? String(ratio) : '0';
+          badgeLeft.style.opacity = effectiveDx < -14 && canGoPrev ? String(ratio) : '0';
           badgeLeft.style.transform = `scale(${0.92 + ratio * 0.1})`;
         }
       }
     };
 
-    const onEnd = () => {
+    const onEnd = (wasCancel = false) => {
       if (!tracking) return;
       tracking = false;
+      activePointerId = null;
       swipeWrap.classList.remove('is-dragging');
-      if (deltaX > 72) {
+      const elapsed = Math.max(1, Date.now() - startTime);
+      const isQuickFlick = elapsed < 240 && Math.abs(deltaX) > 28;
+      if (!wasCancel && (deltaX > 54 || (isQuickFlick && deltaX > 0))) {
         triggerSwipe('right');
         return;
       }
-      if (deltaX < -72) {
+      if (!wasCancel && (deltaX < -54 || (isQuickFlick && deltaX < 0)) && state.flashcardSession.index > 0) {
         triggerSwipe('left');
         return;
       }
-      swipeWrap.style.transform = '';
-      if (badgeRight) badgeRight.style.opacity = '0';
-      if (badgeLeft) badgeLeft.style.opacity = '0';
-      if (!moved) {
+      resetTransform();
+      if (!wasCancel && !moved) {
         toggleCardFlip();
       }
     };
@@ -4393,16 +4435,22 @@ function attachEvents(course) {
     swipeWrap.addEventListener('pointerdown', (e) => {
       if (e.button && e.button !== 0) return;
       if (e.target.closest('button')) return;
-      onStart(e.clientX, e.clientY);
+      onStart(e.clientX, e.clientY, e.pointerId);
       try {
         swipeWrap.setPointerCapture(e.pointerId);
       } catch {
         // Ignore capture errors
       }
     });
-    swipeWrap.addEventListener('pointermove', (e) => onMove(e.clientX, e.clientY, e));
-    swipeWrap.addEventListener('pointerup', onEnd);
-    swipeWrap.addEventListener('pointercancel', onEnd);
+    swipeWrap.addEventListener('pointermove', (e) => {
+      if (activePointerId !== null && e.pointerId !== activePointerId) return;
+      onMove(e.clientX, e.clientY);
+    });
+    swipeWrap.addEventListener('pointerup', (e) => {
+      if (activePointerId !== null && e.pointerId !== activePointerId) return;
+      onEnd(false);
+    });
+    swipeWrap.addEventListener('pointercancel', () => onEnd(true));
 
     const flipBtn = document.getElementById('flashcard-flip-btn');
     const leftBtn = document.getElementById('flashcard-swipe-left-btn');
