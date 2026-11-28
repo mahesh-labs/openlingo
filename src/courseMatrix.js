@@ -6,16 +6,76 @@
 
 import { getGitHubRawBase } from './config.js';
 
+const LIVE_CACHE_NAME = 'polygot-live-courses-v1';
 let syllabusCache = null;
+let bundledLangCodes = new Set();
 const langPackCache = new Map();
 const i18nPackCache = new Map();
 let remoteMatrixSource = null; // { repo, branch } when synced live from GitHub
+
+async function readLiveCacheJson(cacheKey) {
+  if (typeof caches === 'undefined') return null;
+  try {
+    const cache = await caches.open(LIVE_CACHE_NAME);
+    const match = await cache.match(cacheKey);
+    if (!match) return null;
+    return await match.json();
+  } catch {
+    return null;
+  }
+}
+
+async function writeLiveCacheJson(cacheKey, data) {
+  if (typeof caches === 'undefined') return;
+  try {
+    const cache = await caches.open(LIVE_CACHE_NAME);
+    const body = JSON.stringify(data);
+    await cache.put(
+      cacheKey,
+      new Response(body, {
+        headers: { 'Content-Type': 'application/json; charset=utf-8' }
+      })
+    );
+  } catch {
+    // Ignore cache quota or private-mode errors
+  }
+}
+
+function annotateLiveLanguages(syllabus) {
+  if (!syllabus || !Array.isArray(syllabus.languages)) return syllabus;
+  syllabus.languages = syllabus.languages.map((lang) => ({
+    ...lang,
+    _isLiveNew: bundledLangCodes.size > 0 && !bundledLangCodes.has(lang.code)
+  }));
+  return syllabus;
+}
 
 export async function loadMatrixSyllabus() {
   if (syllabusCache) return syllabusCache;
   const res = await fetch('./courses/matrix/syllabus.json');
   if (!res.ok) throw new Error(`Could not load course matrix syllabus (HTTP ${res.status}).`);
-  syllabusCache = await res.json();
+  const bundled = await res.json();
+  bundledLangCodes = new Set((bundled.languages || []).map((l) => l.code));
+
+  // Prefer cached live syllabus if it has newer or additional languages from GitHub
+  const cachedLive = await readLiveCacheJson('/__live__/matrix/syllabus.json');
+  if (
+    cachedLive &&
+    Array.isArray(cachedLive.languages) &&
+    Array.isArray(cachedLive.tiers) &&
+    cachedLive.languages.length >= (bundled.languages || []).length
+  ) {
+    syllabusCache = annotateLiveLanguages(cachedLive);
+    if (cachedLive._remoteRepo) {
+      remoteMatrixSource = {
+        repo: cachedLive._remoteRepo,
+        branch: cachedLive._remoteBranch || 'main'
+      };
+    }
+    return syllabusCache;
+  }
+
+  syllabusCache = annotateLiveLanguages(bundled);
   return syllabusCache;
 }
 
@@ -29,11 +89,25 @@ export async function syncMatrixFromGitHub(repo, branch) {
   if (!Array.isArray(remoteSyllabus?.languages) || !Array.isArray(remoteSyllabus?.tiers)) {
     throw new Error('Remote syllabus.json is invalid.');
   }
-  syllabusCache = remoteSyllabus;
+
+  const prevCodes = new Set((syllabusCache?.languages || []).map((l) => l.code));
+  const newLanguages = remoteSyllabus.languages.filter((l) => !prevCodes.has(l.code));
+
+  remoteSyllabus._remoteRepo = repo;
+  remoteSyllabus._remoteBranch = branch;
+  remoteSyllabus._syncedAt = new Date().toISOString();
+
+  syllabusCache = annotateLiveLanguages(remoteSyllabus);
   langPackCache.clear();
   i18nPackCache.clear();
   remoteMatrixSource = { repo, branch };
-  return remoteSyllabus;
+
+  await writeLiveCacheJson('/__live__/matrix/syllabus.json', remoteSyllabus);
+  return {
+    syllabus: syllabusCache,
+    newLanguages,
+    totalLanguages: syllabusCache.languages.length
+  };
 }
 
 export function getMatrixLanguages() {
@@ -56,6 +130,10 @@ export function parseMatrixCourseId(courseId) {
 
 export async function loadLanguagePack(code) {
   if (langPackCache.has(code)) return langPackCache.get(code);
+  const liveKey = `/__live__/langs/${encodeURIComponent(code)}.json`;
+  const isNewRemoteLang = bundledLangCodes.size > 0 && !bundledLangCodes.has(code);
+
+  // 1. Try remote GitHub first if live sync is active (and persist to Cache API for offline use)
   if (remoteMatrixSource) {
     try {
       const base = getGitHubRawBase(remoteMatrixSource.repo, remoteMatrixSource.branch);
@@ -63,14 +141,29 @@ export async function loadLanguagePack(code) {
       if (rRes.ok) {
         const pack = await rRes.json();
         langPackCache.set(code, pack);
+        await writeLiveCacheJson(liveKey, pack);
         return pack;
       }
     } catch {
-      // Fall back to bundled local pack
+      // Offline — fall through to Cache API / bundled pack
     }
   }
+
+  // 2. Check offline Cache API snapshot (essential for live-added languages while offline!)
+  const cachedPack = await readLiveCacheJson(liveKey);
+  if (cachedPack && cachedPack.items) {
+    langPackCache.set(code, cachedPack);
+    return cachedPack;
+  }
+
+  // 3. Fall back to bundled local pack
   const res = await fetch(`./courses/langs/${encodeURIComponent(code)}.json`);
-  if (!res.ok) throw new Error(`Could not load language pack "${code}" (HTTP ${res.status}).`);
+  if (!res.ok) {
+    if (isNewRemoteLang) {
+      throw new Error(`Language pack "${code}" needs an internet connection once to download from GitHub.`);
+    }
+    throw new Error(`Could not load language pack "${code}" (HTTP ${res.status}).`);
+  }
   const pack = await res.json();
   langPackCache.set(code, pack);
   return pack;
@@ -78,6 +171,8 @@ export async function loadLanguagePack(code) {
 
 export async function loadLanguageI18n(code) {
   if (i18nPackCache.has(code)) return i18nPackCache.get(code);
+  const liveKey = `/__live__/i18n/${encodeURIComponent(code)}.json`;
+
   if (remoteMatrixSource) {
     try {
       const base = getGitHubRawBase(remoteMatrixSource.repo, remoteMatrixSource.branch);
@@ -85,12 +180,20 @@ export async function loadLanguageI18n(code) {
       if (rRes.ok) {
         const pack = await rRes.json();
         i18nPackCache.set(code, pack);
+        await writeLiveCacheJson(liveKey, pack);
         return pack;
       }
     } catch {
-      // Fall back to local i18n pack
+      // Offline — fall through
     }
   }
+
+  const cachedI18n = await readLiveCacheJson(liveKey);
+  if (cachedI18n) {
+    i18nPackCache.set(code, cachedI18n);
+    return cachedI18n;
+  }
+
   try {
     const res = await fetch(`./courses/i18n/${encodeURIComponent(code)}.json`);
     if (res.ok) {

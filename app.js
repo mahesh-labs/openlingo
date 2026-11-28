@@ -59,7 +59,8 @@ const STORAGE_KEYS = {
   SYNC_META: 'polygot_sync_meta_v1',
   PROFILE: 'polygot_profile_v1',
   PREFS: 'polygot_prefs_v1',
-  ENROLLED: 'polygot_enrolled_courses_v1'
+  ENROLLED: 'polygot_enrolled_courses_v1',
+  LIVE_CATALOG: 'polygot_live_catalog_v1'
 };
 
 const state = {
@@ -76,7 +77,12 @@ const state = {
   courseInfoModalId: null,
   courseReviewDraft: { rating: 5, comment: '' },
   courseReviewNotice: '',
-  selectedSectionId: 'sec-n5',
+  selectedSectionId: 'all',
+  profileTab: 'courses', // 'courses' | 'customize' | 'edit'
+  settingsOpenSection: 'preferences', // 'preferences' | 'course' | 'studio' | 'data' | 'about'
+  liveCatalogSyncing: false,
+  liveCatalogLastSyncedAt: 0,
+  liveCatalogNewCount: 0,
   activeScriptTab: null,
   scriptDrill: null,
   drawSession: null, // { tabId, chars, index, guideMode, strokes, result }
@@ -324,12 +330,103 @@ async function ensureCourseLoaded(courseId) {
   const existing = state.courses.find((c) => c.id === courseId);
   if (existing) return existing;
   const pair = parseMatrixCourseId(courseId);
-  if (!pair) return null;
-  const built = await buildMatrixCourse(pair.sourceCode, pair.targetCode);
-  if (!state.courses.some((c) => c.id === built.id)) {
-    state.courses.push(built);
+  if (pair) {
+    const built = await buildMatrixCourse(pair.sourceCode, pair.targetCode);
+    if (!state.courses.some((c) => c.id === built.id)) {
+      state.courses.push(built);
+    }
+    return built;
   }
-  return built;
+  // Auto-download standalone community courses listed in live registry without app updates
+  const remoteEntry = (state.catalogEntries || []).find((e) => e.id === courseId);
+  if (remoteEntry) {
+    const downloaded = await fetchCourseFromGitHub(
+      remoteEntry,
+      state.syncSettings.githubRepo,
+      state.syncSettings.githubBranch
+    );
+    if (downloaded && downloaded.id) {
+      const idx = state.courses.findIndex((c) => c.id === downloaded.id);
+      if (idx >= 0) state.courses[idx] = downloaded;
+      else state.courses.push(downloaded);
+      saveLocalState();
+      return downloaded;
+    }
+  }
+  return null;
+}
+
+const LIVE_CATALOG_TTL_MS = 5 * 60 * 1000;
+
+async function autoRefreshLiveCatalog({ force = false, silent = true } = {}) {
+  if (state.liveCatalogSyncing) return;
+  if (!force && state.liveCatalogLastSyncedAt && Date.now() - state.liveCatalogLastSyncedAt < LIVE_CATALOG_TTL_MS) {
+    return;
+  }
+  state.liveCatalogSyncing = true;
+  if (!silent) render();
+
+  const repo = state.syncSettings.githubRepo || APP_CONFIG.githubRepo;
+  const branch = state.syncSettings.githubBranch || APP_CONFIG.githubBranch;
+  let foundNew = 0;
+
+  try {
+    const [matrixRes, catRes] = await Promise.allSettled([
+      syncMatrixFromGitHub(repo, branch),
+      fetchGitHubCatalog(repo, branch)
+    ]);
+
+    if (matrixRes.status === 'fulfilled' && matrixRes.value) {
+      syncLanguageAppIcons(getMatrixLanguages());
+      foundNew += (matrixRes.value.newLanguages || []).length;
+    }
+
+    if (catRes.status === 'fulfilled' && catRes.value) {
+      const prevIds = new Set((state.catalogEntries || []).map((e) => e.id));
+      const nextEntries = catRes.value.entries || [];
+      nextEntries.forEach((e) => {
+        if (!prevIds.has(e.id)) foundNew += 1;
+      });
+      state.catalogEntries = nextEntries;
+      try {
+        localStorage.setItem(
+          STORAGE_KEYS.LIVE_CATALOG,
+          JSON.stringify({
+            syncedAt: Date.now(),
+            entries: nextEntries
+          })
+        );
+      } catch {
+        // Ignore storage errors
+      }
+    }
+
+    state.liveCatalogLastSyncedAt = Date.now();
+    if (foundNew > 0) state.liveCatalogNewCount = foundNew;
+    if (!silent) {
+      const langCount = getMatrixLanguages().length;
+      const standaloneCount = (state.catalogEntries || []).length;
+      state.catalogStatus = `Live catalog synced: ${langCount} languages (${langCount * Math.max(langCount - 1, 0)} pairs)${standaloneCount ? ` + ${standaloneCount} community courses` : ''}.`;
+      showAudioToast(foundNew > 0 ? `Synced! ${foundNew} new course(s) available.` : 'Course catalog is up to date.');
+    }
+  } catch (err) {
+    if (!silent) {
+      state.catalogStatus = `Live catalog sync failed: ${err.message}`;
+      showAudioToast('Could not reach GitHub — using offline course catalog.');
+    }
+  } finally {
+    state.liveCatalogSyncing = false;
+    if (
+      !silent ||
+      foundNew > 0 ||
+      state.showAddCourseModal ||
+      state.view === 'settings' ||
+      state.view === 'studio' ||
+      !state.enrolledCourseIds.length
+    ) {
+      render();
+    }
+  }
 }
 
 function getAvailableMatrixTargets(sourceCode, excludeEnrolled = false) {
@@ -387,7 +484,7 @@ async function enrollCourse(courseId, openPath = false) {
   }
   if (openPath || !state.activeCourseId || !state.enrolledCourseIds.includes(state.activeCourseId)) {
     state.activeCourseId = courseId;
-    state.selectedSectionId = getSections(target)[0]?.id || 'all';
+    state.selectedSectionId = 'all';
     state.flashcardFilter = 'ALL';
     state.activeScriptTab = null;
   }
@@ -403,7 +500,7 @@ function unenrollCourse(courseId) {
   if (state.activeCourseId === courseId) {
     const remaining = getEnrolledCourses();
     state.activeCourseId = remaining[0]?.id || '';
-    state.selectedSectionId = remaining[0] ? getSections(remaining[0])[0]?.id || 'all' : 'all';
+    state.selectedSectionId = 'all';
   }
   saveLocalState();
   autoBackupToGoogleDrive(false);
@@ -1137,7 +1234,7 @@ function restoreBackupPayload(rawText, sourceLabel = 'Local Backup', remoteTime 
   // Ensure any matrix courses from the backup are synthesized into memory
   Promise.all(state.enrolledCourseIds.map((id) => ensureCourseLoaded(id).catch(() => null))).then(() => {
     const act = getActiveCourse();
-    if (act) state.selectedSectionId = getSections(act)[0]?.id || 'all';
+    if (act) state.selectedSectionId = 'all';
     render();
   });
 
@@ -1586,7 +1683,7 @@ function renderSyllabusView(course) {
   const statusByKey = computeUnlockMap(course);
 
   if (state.selectedSectionId !== 'all' && !sections.some((s) => s.id === state.selectedSectionId)) {
-    state.selectedSectionId = sections[0].id;
+    state.selectedSectionId = 'all';
   }
 
   const visibleSections =
@@ -1595,7 +1692,6 @@ function renderSyllabusView(course) {
       : sections.filter((s) => s.id === state.selectedSectionId);
 
   const offsets = ['center', 'offset-left', 'center', 'offset-right'];
-  const ratingInfo = getCourseRatingSummary(course.id);
 
   return `
     <div class="syllabus-top-bar">
@@ -1607,6 +1703,10 @@ function renderSyllabusView(course) {
               ariaLabel: 'Select level',
               value: state.selectedSectionId,
               options: [
+                {
+                  value: 'all',
+                  label: `${tCourse(course, 'allLevels')} (${sections[0].jlptLevel} → ${sections[sections.length - 1].jlptLevel})`
+                },
                 ...sections.map((sec) => {
                   const secLessons = sec.units.flatMap((u) => u.lessons);
                   const secDone = secLessons.filter((l) => state.progress.completedLessons[`${course.id}:${l.id}`]).length;
@@ -1614,24 +1714,11 @@ function renderSyllabusView(course) {
                     value: sec.id,
                     label: `${sec.jlptLevel} · ${sec.tier} (${secDone}/${secLessons.length})`
                   };
-                }),
-                {
-                  value: 'all',
-                  label: `${tCourse(course, 'allLevels')} (${sections[0].jlptLevel} → ${sections[sections.length - 1].jlptLevel})`
-                }
+                })
               ]
             })
           : ''
       }
-      <button type="button" class="btn btn-sm course-social-pill" data-open-course-info="${escapeHtml(course.id)}" title="Course author, ratings, share link & Discord">
-        <span style="color:var(--gold);display:inline-flex;">${uiIcon('star', 14)}</span>
-        <span>${ratingInfo.count ? `${ratingInfo.average.toFixed(1)} (${ratingInfo.count})` : 'Rate & Share'}</span>
-      </button>
-      <div class="hud-metrics" style="margin-left:auto;">
-        <span class="hud-chip" style="color:#f97316;">${uiIcon('flame', 17)} ${state.progress.streak}d</span>
-        <span class="hud-chip" style="color:#eab308;">${uiIcon('zap', 17)} ${state.progress.xp} XP</span>
-        <span class="hud-chip" style="color:#f43f5e;">${uiIcon('heart', 17)} ${state.progress.chillMode ? '∞' : `${state.progress.hearts}/5`}</span>
-      </div>
     </div>
 
     ${visibleSections
@@ -2344,32 +2431,18 @@ function renderLessonView(course) {
 }
 
 function renderFlashcardsView(course) {
-  const sections = getSections(course);
-  const filters = ['ALL', ...sections.map((s) => s.jlptLevel).filter(Boolean)];
   const { queue, index, flipped } = state.flashcardSession;
   const item = queue[index];
-  const stdLabel = getStandardLabel(course);
-
-  const filterBar = `
-    <div class="filter-row">
-      ${filters
-        .map(
-          (f) => `<button class="filter-chip ${state.flashcardFilter === f ? 'active' : ''}" data-fc-filter="${escapeHtml(f)}">${escapeHtml(f === 'ALL' ? 'All Levels' : `${stdLabel} ${f}`)}</button>`
-        )
-        .join('')}
-    </div>
-  `;
 
   if (!item) {
     return `
       ${renderHudBar(course)}
       <div class="header-bar">
         <div>
-          <h1 class="page-title">Spaced Repetition Flashcards</h1>
+          <h1 class="page-title">${escapeHtml(tCourse(course, 'reviewFlashcards'))}</h1>
           <p class="page-sub">${escapeHtml(course.title)}</p>
         </div>
       </div>
-      ${filterBar}
       <section class="card" style="text-align:center;padding:36px 24px;">
         <div style="color:var(--accent-text);margin-bottom:10px;">${uiIcon('trophy', 48)}</div>
         <h2>Review Session Complete</h2>
@@ -2381,7 +2454,6 @@ function renderFlashcardsView(course) {
     `;
   }
 
-  const cardState = state.srs[item.id] || createCardState(item.id);
   const tDir = course.targetLang?.dir === 'rtl' ? 'rtl' : 'ltr';
   const sDir = course.sourceLang?.dir === 'rtl' ? 'rtl' : 'ltr';
 
@@ -2390,55 +2462,53 @@ function renderFlashcardsView(course) {
     <div class="header-bar">
       <div>
         <h1 class="page-title">${escapeHtml(tCourse(course, 'reviewFlashcards'))}</h1>
-        <p class="page-sub">${index + 1} / ${queue.length} · ${escapeHtml(tCourse(course, 'tapToFlip'))}</p>
+        <p class="page-sub">${index + 1} / ${queue.length} · Tap card to flip · Swipe left or right</p>
       </div>
       <button class="btn btn-sm" data-speak="${escapeHtml(item.term)}">${uiIcon('volume', 16)} ${escapeHtml(tCourse(course, 'pronounce'))}</button>
     </div>
 
-    ${filterBar}
+    <div class="flashcard-deck-wrap">
+      <div class="flashcard-stage">
+        <div class="flashcard-swipe-wrap" id="flashcard-swipe-wrap">
+          <div class="flashcard-swipe-badge right" id="swipe-badge-right">Got it →</div>
+          <div class="flashcard-swipe-badge left" id="swipe-badge-left">← Again</div>
 
-    <div class="flashcard-stage">
-      <div class="flashcard-3d ${flipped ? 'is-flipped' : ''}" id="flashcard-box" role="button" tabindex="0" aria-label="Flip flashcard">
-        <div class="flashcard-face flashcard-front">
-          <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;justify-content:center;">
-            <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
-            <span class="pill">${escapeHtml(course.targetLang.localizedName || course.targetLang.name)}</span>
-          </div>
-          <div class="prompt-main" dir="${tDir}">${escapeHtml(item.term)}</div>
-          ${item.reading && item.reading !== item.term ? `<div class="prompt-sub" dir="${tDir}">${escapeHtml(item.reading)}</div>` : ''}
-          ${state.showRomaji && item.transliteration ? `<div class="prompt-hint">${escapeHtml(item.transliteration)}</div>` : ''}
-          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} ${escapeHtml(tCourse(course, 'tapToFlip'))}</div>
-        </div>
+          <div class="flashcard-3d ${flipped ? 'is-flipped' : ''}" id="flashcard-box" role="button" tabindex="0" aria-label="Flip flashcard">
+            <div class="flashcard-face flashcard-front">
+              <div class="prompt-main" dir="${tDir}">${escapeHtml(item.term)}</div>
+              ${item.reading && item.reading !== item.term ? `<div class="prompt-sub" dir="${tDir}">${escapeHtml(item.reading)}</div>` : ''}
+              ${state.showRomaji && item.transliteration ? `<div class="prompt-hint">${escapeHtml(item.transliteration)}</div>` : ''}
+              <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} ${escapeHtml(tCourse(course, 'tapToFlip'))}</div>
+            </div>
 
-        <div class="flashcard-face flashcard-back">
-          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;justify-content:center;">
-            <span class="pill accent">${escapeHtml(item._level || 'Core')}</span>
-            <span class="pill">${escapeHtml(tCourse(course, 'meaning', { lang: course.sourceLang.localizedName || course.sourceLang.name }))}</span>
+            <div class="flashcard-face flashcard-back">
+              <div class="flashcard-answer" dir="${sDir}">${escapeHtml(item.translation)}</div>
+              <div class="flashcard-term-recap" dir="${tDir}">
+                ${escapeHtml(item.term)}${state.showRomaji && item.transliteration ? ` · <span>${escapeHtml(item.transliteration)}</span>` : ''}
+              </div>
+              ${
+                item.example && (item.example.term || item.example.translation)
+                  ? `<div class="flashcard-example">
+                      ${item.example.term ? `<div dir="${tDir}" style="font-weight:700;color:var(--text);">${escapeHtml(item.example.term)}</div>` : ''}
+                      ${state.showRomaji && item.example.transliteration ? `<div style="color:var(--accent-text);font-size:12px;">${escapeHtml(item.example.transliteration)}</div>` : ''}
+                      ${item.example.translation ? `<div dir="${sDir}">${escapeHtml(item.example.translation)}</div>` : ''}
+                    </div>`
+                  : ''
+              }
+              <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} ${escapeHtml(tCourse(course, 'tapToFlipBack'))}</div>
+            </div>
           </div>
-          <div class="flashcard-answer" dir="${sDir}">${escapeHtml(item.translation)}</div>
-          <div class="flashcard-term-recap" dir="${tDir}">
-            ${escapeHtml(item.term)}${state.showRomaji && item.transliteration ? ` · <span>${escapeHtml(item.transliteration)}</span>` : ''}
-          </div>
-          ${
-            item.example && (item.example.term || item.example.translation)
-              ? `<div class="flashcard-example">
-                  ${item.example.term ? `<div dir="${tDir}" style="font-weight:700;color:var(--text);">${escapeHtml(item.example.term)}</div>` : ''}
-                  ${state.showRomaji && item.example.transliteration ? `<div style="color:var(--accent-text);font-size:12px;">${escapeHtml(item.example.transliteration)}</div>` : ''}
-                  ${item.example.translation ? `<div dir="${sDir}">${escapeHtml(item.example.translation)}</div>` : ''}
-                </div>`
-              : ''
-          }
-          <div class="flashcard-tap-hint">${uiIcon('rotate', 15)} ${escapeHtml(tCourse(course, 'tapToFlipBack'))}</div>
         </div>
       </div>
-    </div>
 
-    <div id="flashcard-ratings" class="rating-row-wrap ${flipped ? 'visible' : ''}">
-      <div class="rating-row">
-        <button class="rating-btn" data-rate="${RATINGS.AGAIN}">${escapeHtml(tCourse(course, 'again'))}<span>${formatIntervalLabel(cardState, RATINGS.AGAIN)}</span></button>
-        <button class="rating-btn" data-rate="${RATINGS.HARD}">${escapeHtml(tCourse(course, 'hard'))}<span>${formatIntervalLabel(cardState, RATINGS.HARD)}</span></button>
-        <button class="rating-btn" data-rate="${RATINGS.GOOD}" style="border-color:var(--accent);">${escapeHtml(tCourse(course, 'good'))}<span>${formatIntervalLabel(cardState, RATINGS.GOOD)}</span></button>
-        <button class="rating-btn" data-rate="${RATINGS.EASY}">${escapeHtml(tCourse(course, 'easy'))}<span>${formatIntervalLabel(cardState, RATINGS.EASY)}</span></button>
+      <div class="flashcard-swipe-actions">
+        <button type="button" class="swipe-act-btn left" id="flashcard-swipe-left-btn">${uiIcon('arrowLeft', 16)} Again</button>
+        <button type="button" class="swipe-act-btn" id="flashcard-flip-btn" aria-label="Flip card">${uiIcon('rotate', 16)}</button>
+        <button type="button" class="swipe-act-btn right" id="flashcard-swipe-right-btn">Next ${uiIcon('arrowRight', 16)}</button>
+      </div>
+      <div class="flashcard-swipe-hint-row">
+        <span>← Swipe left to review again</span>
+        <span>Swipe right for next →</span>
       </div>
     </div>
   `;
@@ -2681,290 +2751,203 @@ function renderProfileView(course) {
   const displayName = getDisplayName();
   const completedLessonsCount = Object.keys(state.progress.completedLessons || {}).length;
   const enrolledCourses = getEnrolledCourses();
-  const availableCourses = getAvailableCoursesToAdd();
   const totalLessonsAll = enrolledCourses.reduce((sum, c) => sum + getOrderedLessons(c).length, 0);
   const srsCount = Object.keys(state.srs || {}).length;
   const masteredChars = Object.values(state.progress.charMastery || {}).filter((v) => v >= 3).length;
   const goalXp = Number(state.profile.dailyGoalXp) || 50;
   const activeAppIcon = getAppIconPreset(state.profile.appIcon);
   const selectedPreset = !state.profile.avatarDataUrl ? findPresetByGlyph(state.profile.avatarEmoji) : null;
+  const tab = state.profileTab || 'courses';
 
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
-        <h1 class="page-title">Your Profile</h1>
-        <p class="page-sub">Customize your learner profile, avatar, daily goals, and view progress across all languages.</p>
+        <h1 class="page-title">Profile</h1>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-sm" data-nav="settings">${uiIcon('settings', 17)} Settings</button>
-      </div>
+      <button class="btn btn-sm" data-nav="settings">${uiIcon('settings', 17)} Settings</button>
     </div>
 
     ${state.profileMessage ? `<div class="grammar-box">${escapeHtml(state.profileMessage)}</div>` : ''}
 
-    <section class="card">
-      <div class="profile-hero">
-        <div class="avatar-upload-wrap">
-          ${renderAvatarMarkup('lg')}
-          <button type="button" class="avatar-cam-btn" id="profile-avatar-upload-btn" title="Upload custom profile picture" aria-label="Upload custom profile picture">${uiIcon('camera', 17)}</button>
-          <input type="file" id="profile-avatar-input" accept="image/*" style="display:none;" />
-        </div>
-        <div class="profile-hero-info">
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <h2 style="margin:0;font-size:24px;font-weight:700;">${escapeHtml(displayName)}</h2>
-            <span class="pill accent">${googleSession ? `${uiIcon('cloud', 15)} Synced Account` : 'Offline Mode'}</span>
+    <section class="card" style="padding:18px;">
+      <div class="profile-hero-compact">
+        <div style="display:flex;align-items:center;gap:14px;min-width:0;flex:1;">
+          <div class="avatar-upload-wrap">
+            ${renderAvatarMarkup('lg')}
+            <button type="button" class="avatar-cam-btn" id="profile-avatar-upload-btn" title="Upload custom profile picture" aria-label="Upload custom profile picture">${uiIcon('camera', 16)}</button>
+            <input type="file" id="profile-avatar-input" accept="image/*" style="display:none;" />
           </div>
-          <div style="font-size:14px;color:var(--text-muted);margin-top:4px;">
-            ${googleSession ? escapeHtml(googleSession.user?.email || 'Connected to Google Drive') : 'Sign in with Google to sync your profile & progress across all devices.'}
-          </div>
-          ${state.profile.bio ? `<div style="font-size:14px;margin-top:6px;">${escapeHtml(state.profile.bio)}</div>` : ''}
-          <div style="font-size:13px;color:var(--text-muted);margin-top:8px;display:inline-flex;align-items:center;gap:6px;">
-            ${uiIcon('cloud', 15)} Last synced: <strong>${escapeHtml(formatLastSynced(false))}</strong>
+          <div style="min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <h2 style="margin:0;font-size:22px;font-weight:700;">${escapeHtml(displayName)}</h2>
+              <span class="pill accent">${googleSession ? `${uiIcon('cloud', 14)} Synced` : 'Offline'}</span>
+            </div>
+            ${state.profile.bio ? `<div style="font-size:13px;color:var(--text-muted);margin-top:4px;">${escapeHtml(state.profile.bio)}</div>` : ''}
+            <div style="font-size:12px;color:var(--text-muted);margin-top:6px;">Daily Goal: <strong>${goalXp} XP</strong> · ${enrolledCourses.length} course${enrolledCourses.length === 1 ? '' : 's'}</div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div style="margin-top:16px;padding-top:14px;border-top:2px solid var(--border);">
-        <div class="field-label" style="margin-bottom:6px;">Custom Profile Picture or Emblem</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-          <button type="button" class="btn btn-primary btn-sm" id="profile-avatar-pick-btn">${uiIcon('camera', 16)} Upload Custom Photo</button>
-          ${
-            state.profile.avatarDataUrl || state.profile.avatarEmoji
-              ? `<button type="button" class="btn btn-sm" id="profile-avatar-reset-btn">${uiIcon('refresh', 15)} ${googleSession?.user?.picture ? 'Use Google Photo' : 'Reset Avatar'}</button>`
-              : ''
-          }
-        </div>
-        <div class="avatar-presets">
-          ${APP_ICON_PRESETS.map((preset) => {
-            const isSelected = !state.profile.avatarDataUrl && (state.profile.avatarEmoji === preset.glyph || (preset.customImage && state.profile.avatarEmoji === preset.id));
-            const isAppIcon = activeAppIcon.id === preset.id;
-            const inner = preset.customImage
-              ? `<img src="${escapeHtml(preset.customImage)}" alt="${escapeHtml(preset.label)}" style="width:26px;height:26px;border-radius:50%;display:block;" />`
-              : escapeHtml(preset.glyph);
-            return `<button type="button" class="avatar-preset-btn ${isSelected ? 'active' : ''} ${isAppIcon ? 'is-app-icon' : ''}" data-avatar-emoji="${escapeHtml(preset.glyph)}" data-preset-id="${escapeHtml(preset.id)}" title="${escapeHtml(preset.label)}${isAppIcon ? ' · Active App Icon' : ''}">${inner}${isAppIcon ? '<span class="app-icon-dot" aria-hidden="true"></span>' : ''}</button>`;
-          }).join('')}
-        </div>
+    <div class="section-tabs" role="tablist" aria-label="Profile sections">
+      <button type="button" role="tab" aria-selected="${tab === 'courses'}" class="section-tab-btn ${tab === 'courses' ? 'active' : ''}" data-profile-tab="courses">${uiIcon('book', 15)} Overview &amp; Courses</button>
+      <button type="button" role="tab" aria-selected="${tab === 'customize'}" class="section-tab-btn ${tab === 'customize' ? 'active' : ''}" data-profile-tab="customize">${uiIcon('palette', 15)} Icon &amp; Avatar</button>
+      <button type="button" role="tab" aria-selected="${tab === 'edit'}" class="section-tab-btn ${tab === 'edit' ? 'active' : ''}" data-profile-tab="edit">${uiIcon('user', 15)} Edit Details</button>
+    </div>
 
-        <div class="app-icon-bar">
-          <div class="app-icon-bar-info">
-            <img src="${escapeHtml(getAppIconSrc(activeAppIcon.id))}" alt="${escapeHtml(activeAppIcon.label)} App Icon" class="app-icon-preview" />
-            <div>
-              <div style="font-size:14px;font-weight:800;">App Icon</div>
-              <div style="font-size:12px;color:var(--text-muted);">
-                Active: <strong>${escapeHtml(activeAppIcon.label)} (${escapeHtml(activeAppIcon.glyph)})</strong>${activeAppIcon.isDefault ? ' · Default' : ''}
-              </div>
+    ${
+      tab === 'courses'
+        ? `
+          <div class="profile-stats-compact">
+            <div class="stat-card">
+              <div class="stat-card-label">Streak</div>
+              <div class="stat-card-value" style="color:#f97316;">${uiIcon('flame', 19)} ${state.progress.streak}d</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-label">Total XP</div>
+              <div class="stat-card-value" style="color:#eab308;">${uiIcon('zap', 19)} ${state.progress.xp}</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-label">Lessons</div>
+              <div class="stat-card-value">${completedLessonsCount}/${totalLessonsAll}</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-label">Cards / Chars</div>
+              <div class="stat-card-value">${srsCount} · ${masteredChars}</div>
             </div>
           </div>
-          <div class="app-icon-bar-actions">
-            ${
-              selectedPreset && selectedPreset.id !== activeAppIcon.id
-                ? `<button type="button" class="btn btn-primary btn-sm" id="profile-set-app-icon-btn" data-set-app-icon="${escapeHtml(selectedPreset.id)}">${uiIcon('palette', 15)} Set "${escapeHtml(selectedPreset.customImage ? selectedPreset.label : selectedPreset.glyph)}" as App Icon</button>`
-                : selectedPreset && selectedPreset.id === activeAppIcon.id
-                  ? `<span class="pill accent">${uiIcon('check', 14)} Active App Icon</span>`
-                  : `<span style="font-size:12px;color:var(--text-muted);">Select an emblem above to use as App Icon</span>`
-            }
-            ${
-              activeAppIcon.id !== DEFAULT_APP_ICON_ID
-                ? `<button type="button" class="btn btn-sm" id="profile-reset-app-icon-btn">${uiIcon('refresh', 15)} Reset Default (Polygot)</button>`
-                : ''
-            }
-          </div>
-        </div>
-      </div>
 
-      <form id="profile-edit-form" style="margin-top:16px;padding-top:14px;border-top:2px solid var(--border);">
-        <div class="form-grid">
-          <div>
-            <label class="field-label">Display Name</label>
-            <input class="input" name="displayName" value="${escapeHtml(state.profile.displayName || googleSession?.user?.name || '')}" placeholder="Your name" maxlength="40" />
-          </div>
-          <div>
-            <label class="field-label">Learning Goal / Bio</label>
-            <input class="input" name="bio" value="${escapeHtml(state.profile.bio || '')}" placeholder="e.g. Preparing for JLPT N5 & Spanish A2" maxlength="90" />
-          </div>
-        </div>
-        <div style="margin-bottom:14px;">
-          <div class="field-label">Daily XP Goal</div>
-          <div class="segmented-control">
-            ${[20, 50, 100, 150]
-              .map(
-                (xp) =>
-                  `<button type="button" class="seg-btn ${goalXp === xp ? 'active' : ''}" data-daily-goal="${xp}">${xp} XP</button>`
-              )
-              .join('')}
-          </div>
-        </div>
-        <button class="btn btn-primary btn-sm" type="submit">${uiIcon('save', 16)} Save Profile</button>
-      </form>
-    </section>
-
-    <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-        <div>
-          <h3 style="margin:0;">${uiIcon('user', 20)} Current Account</h3>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">
-            ${googleSession ? `Signed in as ${escapeHtml(googleSession.user?.email || googleSession.user?.name || 'Google User')}` : 'Using local device storage only'}
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          ${
-            googleSession
-              ? `
-                <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('cloud', 16)} Sync Now</button>
-                <button class="btn btn-danger btn-sm" id="profile-logout-btn">${uiIcon('logout', 16)} Log Out</button>
-              `
-              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('shield', 16)} Sign in with Google</button>`
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h3 style="margin-top:0;">${uiIcon('trophy', 20)} Learning Overview</h3>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-card-label">Current Streak</div>
-          <div class="stat-card-value" style="color:#f97316;">${uiIcon('flame', 22)} ${state.progress.streak} days</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Total XP</div>
-          <div class="stat-card-value" style="color:#eab308;">${uiIcon('zap', 22)} ${state.progress.xp} XP</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Lessons Done</div>
-          <div class="stat-card-value">${completedLessonsCount} / ${totalLessonsAll}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Flashcards</div>
-          <div class="stat-card-value">${srsCount} tracked</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Characters</div>
-          <div class="stat-card-value">${masteredChars} mastered</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Hearts Mode</div>
-          <div class="stat-card-value" style="color:#f43f5e;">${uiIcon('heart', 22)} ${state.progress.chillMode ? 'Unlimited' : `${state.progress.hearts}/5`}</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="profile-courses-section">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
-        <div>
-          <h3 style="margin:0;">${uiIcon('book', 20)} Active Courses (${enrolledCourses.length})</h3>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">
-            Switch between your active courses or add new languages to learn.
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary btn-sm" id="toggle-add-course-btn">
-          ${state.showAddCoursePicker ? `${uiIcon('x', 16)} Close` : `${uiIcon('plus', 16)} Add Course`}
-        </button>
-      </div>
-
-      ${
-        state.showAddCoursePicker
-          ? (() => {
-              const langs = getMatrixLanguages();
-              const srcMeta = langs.find((l) => l.code === state.pickerSourceLang) || langs[0];
-              const matrixTargets = srcMeta ? getAvailableMatrixTargets(srcMeta.code, true) : [];
-              const customAvailable = availableCourses.filter((c) => !c._matrix);
-              return `
-            <div class="add-course-panel" style="margin-bottom:14px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-text);">Add Any Language Pair (156 Courses)</div>
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <span style="font-size:13px;color:var(--text-muted);white-space:nowrap;">I speak:</span>
-                  ${renderCustomSelect({
-                    id: 'profile-source-lang',
-                    className: 'level-select profile-lang-select',
-                    ariaLabel: 'Language you speak',
-                    value: srcMeta?.code || 'en',
-                    options: langs.map((l) => ({ value: l.code, label: `${l.name} (${l.nativeName})` }))
-                  })}
-                </div>
+          <section class="card" id="profile-courses-section">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+              <div>
+                <h3 style="margin:0;">${uiIcon('book', 19)} Active Courses (${enrolledCourses.length})</h3>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Switch courses or browse all live languages &amp; community packs.</div>
               </div>
-              <div style="display:grid;gap:10px;max-height:320px;overflow-y:auto;padding-right:4px;">
-                ${matrixTargets
-                  .map((t) => {
-                    const pairId = `${srcMeta.code}-${t.code}`;
-                    const lvlRange = `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`;
-                    return `
-                      <div class="add-course-row">
-                        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
-                          <span class="lang-badge">${escapeHtml(srcMeta.code.toUpperCase())}→${escapeHtml(t.code.toUpperCase())}</span>
-                          <div>
-                            <div style="font-weight:700;font-size:15px;font-family:var(--font-display);">
-                              ${escapeHtml(srcMeta.name)} → ${escapeHtml(t.name)}
-                              <span style="color:var(--accent-text);">(${escapeHtml(t.nativeName)})</span>
-                            </div>
-                            <div style="font-size:12px;color:var(--text-muted);">${escapeHtml(lvlRange)} · 25 units · 375 items</div>
-                          </div>
-                        </div>
-                        <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(pairId)}" ${state.loadingCourse ? 'disabled' : ''}>${uiIcon('plus', 15)} Add</button>
-                      </div>
-                    `;
-                  })
-                  .join('')}
-                ${customAvailable
-                  .map((c) => {
-                    const unitsCount = getAllUnits(c).length;
-                    const itemsCount = getAllItems(c).length;
-                    return `
-                      <div class="add-course-row">
-                        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+              <button type="button" class="btn btn-primary btn-sm" id="open-add-course-modal-btn">${uiIcon('plus', 15)} Add Course</button>
+            </div>
+            <div style="display:grid;gap:10px;">
+              ${enrolledCourses
+                .map((c) => {
+                  const ordered = getOrderedLessons(c);
+                  const done = ordered.filter((e) => state.progress.completedLessons[e.key]).length;
+                  const pct = ordered.length ? Math.round((done / ordered.length) * 100) : 0;
+                  return `
+                    <div class="course-progress-item">
+                      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                           <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
-                          <div>
-                            <div style="font-weight:700;font-size:15px;font-family:var(--font-display);">${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</div>
-                            <div style="font-size:12px;color:var(--text-muted);">${unitsCount} units · ${itemsCount} items · Custom</div>
-                          </div>
+                          <strong style="font-family:var(--font-display);font-size:15px;">${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</strong>
+                          <span style="font-size:12px;color:var(--text-muted);">${done}/${ordered.length} (${pct}%)</span>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" data-enroll-course="${escapeHtml(c.id)}">${uiIcon('plus', 15)} Add</button>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                          <button class="btn btn-sm ${c.id === course.id ? 'btn-primary' : ''}" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : `Continue ${uiIcon('arrowRight', 14)}`}</button>
+                          <button type="button" class="btn btn-sm" data-unenroll-course="${escapeHtml(c.id)}" title="Remove from active courses">Remove</button>
+                        </div>
                       </div>
-                    `;
-                  })
-                  .join('')}
+                      <div class="mini-progress-track">
+                        <div class="mini-progress-fill" style="width:${pct}%;"></div>
+                      </div>
+                    </div>
+                  `;
+                })
+                .join('')}
+            </div>
+          </section>
+        `
+        : ''
+    }
+
+    ${
+      tab === 'customize'
+        ? `
+          <section class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+              <h3 style="margin:0;">${uiIcon('palette', 19)} App Icon &amp; Avatar Emblem</h3>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button type="button" class="btn btn-primary btn-sm" id="profile-avatar-pick-btn">${uiIcon('camera', 15)} Upload Photo</button>
                 ${
-                  !matrixTargets.length && !customAvailable.length
-                    ? `<div style="font-size:14px;color:var(--text-muted);">All courses for ${escapeHtml(srcMeta?.name || '')} speakers are already active! Pick another "I speak" language above or open Course Studio.</div>`
+                  state.profile.avatarDataUrl || state.profile.avatarEmoji
+                    ? `<button type="button" class="btn btn-sm" id="profile-avatar-reset-btn">${uiIcon('refresh', 14)} ${googleSession?.user?.picture ? 'Use Google Photo' : 'Reset'}</button>`
                     : ''
                 }
               </div>
             </div>
-          `;
-            })()
-          : ''
-      }
 
-      <div style="display:grid;gap:10px;">
-        ${enrolledCourses
-          .map((c) => {
-            const ordered = getOrderedLessons(c);
-            const done = ordered.filter((e) => state.progress.completedLessons[e.key]).length;
-            const pct = ordered.length ? Math.round((done / ordered.length) * 100) : 0;
-            return `
-              <div class="course-progress-item">
-                <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                    <span class="lang-badge">${escapeHtml(getCourseFlag(c))}</span>
-                    <strong style="font-family:var(--font-display);font-size:16px;">${escapeHtml(c.sourceLang.name)} → ${escapeHtml(c.targetLang.name)}</strong>
-                    <span style="font-size:13px;color:var(--text-muted);">${done}/${ordered.length} lessons (${pct}%)</span>
+            <div class="avatar-presets">
+              ${APP_ICON_PRESETS.map((preset) => {
+                const isSelected = !state.profile.avatarDataUrl && (state.profile.avatarEmoji === preset.glyph || (preset.customImage && state.profile.avatarEmoji === preset.id));
+                const isAppIcon = activeAppIcon.id === preset.id;
+                const inner = preset.customImage
+                  ? `<img src="${escapeHtml(preset.customImage)}" alt="${escapeHtml(preset.label)}" style="width:26px;height:26px;border-radius:50%;display:block;" />`
+                  : escapeHtml(preset.glyph);
+                return `<button type="button" class="avatar-preset-btn ${isSelected ? 'active' : ''} ${isAppIcon ? 'is-app-icon' : ''}" data-avatar-emoji="${escapeHtml(preset.glyph)}" data-preset-id="${escapeHtml(preset.id)}" title="${escapeHtml(preset.label)}${isAppIcon ? ' · Active App Icon' : ''}">${inner}${isAppIcon ? '<span class="app-icon-dot" aria-hidden="true"></span>' : ''}</button>`;
+              }).join('')}
+            </div>
+
+            <div class="app-icon-bar">
+              <div class="app-icon-bar-info">
+                <img src="${escapeHtml(getAppIconSrc(activeAppIcon.id))}" alt="${escapeHtml(activeAppIcon.label)} App Icon" class="app-icon-preview" />
+                <div>
+                  <div style="font-size:14px;font-weight:800;">App Icon</div>
+                  <div style="font-size:12px;color:var(--text-muted);">
+                    Active: <strong>${escapeHtml(activeAppIcon.label)} (${escapeHtml(activeAppIcon.glyph)})</strong>${activeAppIcon.isDefault ? ' · Default' : ''}
                   </div>
-                  <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="btn btn-sm ${c.id === course.id ? 'btn-primary' : ''}" data-switch-course="${escapeHtml(c.id)}">${c.id === course.id ? 'Active' : `Continue ${uiIcon('arrowRight', 14)}`}</button>
-                    <button type="button" class="btn btn-sm" data-unenroll-course="${escapeHtml(c.id)}" title="Remove from active courses">Remove</button>
-                  </div>
-                </div>
-                <div class="mini-progress-track">
-                  <div class="mini-progress-fill" style="width:${pct}%;"></div>
                 </div>
               </div>
-            `;
-          })
-          .join('')}
-      </div>
-    </section>
+              <div class="app-icon-bar-actions">
+                ${
+                  selectedPreset && selectedPreset.id !== activeAppIcon.id
+                    ? `<button type="button" class="btn btn-primary btn-sm" id="profile-set-app-icon-btn" data-set-app-icon="${escapeHtml(selectedPreset.id)}">${uiIcon('palette', 15)} Set "${escapeHtml(selectedPreset.customImage ? selectedPreset.label : selectedPreset.glyph)}" as App Icon</button>`
+                    : selectedPreset && selectedPreset.id === activeAppIcon.id
+                      ? `<span class="pill accent">${uiIcon('check', 14)} Active App Icon</span>`
+                      : `<span style="font-size:12px;color:var(--text-muted);">Tap an emblem above to apply inside the Polygot icon</span>`
+                }
+                ${
+                  activeAppIcon.id !== DEFAULT_APP_ICON_ID
+                    ? `<button type="button" class="btn btn-sm" id="profile-reset-app-icon-btn">${uiIcon('refresh', 15)} Reset Default (Polygot)</button>`
+                    : ''
+                }
+              </div>
+            </div>
+          </section>
+        `
+        : ''
+    }
+
+    ${
+      tab === 'edit'
+        ? `
+          <section class="card">
+            <h3 style="margin-top:0;">${uiIcon('user', 19)} Edit Learner Details</h3>
+            <form id="profile-edit-form">
+              <div class="form-grid">
+                <div>
+                  <label class="field-label">Display Name</label>
+                  <input class="input" name="displayName" value="${escapeHtml(state.profile.displayName || googleSession?.user?.name || '')}" placeholder="Your name" maxlength="40" />
+                </div>
+                <div>
+                  <label class="field-label">Learning Goal / Bio</label>
+                  <input class="input" name="bio" value="${escapeHtml(state.profile.bio || '')}" placeholder="e.g. Preparing for JLPT N5 & Spanish A2" maxlength="90" />
+                </div>
+              </div>
+              <div style="margin-bottom:16px;">
+                <div class="field-label">Daily XP Goal</div>
+                <div class="segmented-control">
+                  ${[20, 50, 100, 150]
+                    .map(
+                      (xp) =>
+                        `<button type="button" class="seg-btn ${goalXp === xp ? 'active' : ''}" data-daily-goal="${xp}">${xp} XP</button>`
+                    )
+                    .join('')}
+                </div>
+              </div>
+              <button class="btn btn-primary btn-sm" type="submit">${uiIcon('save', 16)} Save Profile</button>
+            </form>
+          </section>
+        `
+        : ''
+    }
   `;
 }
 
@@ -2976,49 +2959,304 @@ function renderSettingsView(course) {
   const googleSession = getGoogleSession();
   const platformLabel = getPlatformLabel();
   const hintLabel = course.targetLang?.usesTransliteration === false ? 'Show Pronunciation Guide' : 'Show Transliteration (Romaji / Phonetics)';
+  const openSec = state.settingsOpenSection;
+  const ratingInfo = getCourseRatingSummary(course.id);
+  const courseMeta = getCourseMeta(course);
+  const langCount = getMatrixLanguages().length;
+  const standaloneCount = (state.catalogEntries || []).length;
+
+  const accordion = (id, icon, title, subtitle, bodyHtml) => {
+    const isOpen = openSec === id;
+    return `
+      <section class="accordion-card ${isOpen ? 'is-open' : ''}" id="settings-acc-${id}">
+        <button type="button" class="accordion-header" data-settings-accordion="${id}" aria-expanded="${isOpen}">
+          <div class="accordion-title-wrap">
+            <span class="accordion-icon-badge">${uiIcon(icon, 18)}</span>
+            <div style="min-width:0;">
+              <div class="accordion-title">${title}</div>
+              <div class="accordion-subtitle">${subtitle}</div>
+            </div>
+          </div>
+          <span class="accordion-chevron">${uiIcon('chevronDown', 18)}</span>
+        </button>
+        ${isOpen ? `<div class="accordion-body">${bodyHtml}</div>` : ''}
+      </section>
+    `;
+  };
 
   return `
     ${renderHudBar(course)}
     <div class="header-bar">
       <div>
         <h1 class="page-title">Settings</h1>
-        <p class="page-sub">Account, appearance, learning preferences, cloud sync &amp; backup data.</p>
       </div>
       <span class="pill accent">v${escapeHtml(APP_CONFIG.appVersion)} · ${escapeHtml(platformLabel)}</span>
     </div>
 
     ${state.backupMessage ? `<div class="grammar-box">${escapeHtml(state.backupMessage)}</div>` : ''}
 
-    <section class="card">
-      <h3 style="margin-top:0;">${uiIcon('user', 20)} Account &amp; Session</h3>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px;border-radius:16px;background:var(--surface-elevated);border:2px solid var(--border);margin-bottom:12px;">
+    <div class="section-tabs" role="tablist" aria-label="Settings categories">
+      <button type="button" class="section-tab-btn ${openSec === 'preferences' ? 'active' : ''}" data-settings-tab="preferences">${uiIcon('sliders', 15)} Learning</button>
+      <button type="button" class="section-tab-btn ${openSec === 'course' ? 'active' : ''}" data-settings-tab="course">${uiIcon('star', 15)} Course &amp; Share</button>
+      <button type="button" class="section-tab-btn ${openSec === 'studio' ? 'active' : ''}" data-settings-tab="studio">${uiIcon('wrench', 15)} Studio</button>
+      <button type="button" class="section-tab-btn ${openSec === 'data' ? 'active' : ''}" data-settings-tab="data">${uiIcon('save', 15)} Backup &amp; Updates</button>
+      <button type="button" class="section-tab-btn ${openSec === 'about' ? 'active' : ''}" data-settings-tab="about">${uiIcon('info', 15)} About</button>
+    </div>
+
+    <div class="accordion-stack">
+      ${accordion(
+        'preferences',
+        'sliders',
+        'Appearance &amp; Learning',
+        'Theme, pronunciation hints, hearts mode &amp; audio speed',
+        `
+          <div class="settings-list">
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">Theme</div>
+                <div class="settings-row-desc">Light, Dark, or match your device theme.</div>
+              </div>
+              <div class="segmented-control" role="group" aria-label="Theme mode">
+                <button type="button" class="seg-btn ${state.theme === 'light' ? 'active' : ''}" data-set-theme="light">${uiIcon('sun', 14)} Light</button>
+                <button type="button" class="seg-btn ${state.theme === 'dark' ? 'active' : ''}" data-set-theme="dark">${uiIcon('moon', 14)} Dark</button>
+                <button type="button" class="seg-btn ${state.theme === 'system' ? 'active' : ''}" data-set-theme="system">${uiIcon('monitor', 14)} System</button>
+              </div>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">${escapeHtml(hintLabel)}</div>
+                <div class="settings-row-desc">Show reading/romanization hints beneath foreign scripts.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="settings-toggle-romaji" ${state.showRomaji ? 'checked' : ''} />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">Unlimited Hearts (Chill Mode)</div>
+                <div class="settings-row-desc">Practice without losing hearts on mistakes.</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="settings-toggle-chill" ${state.progress.chillMode ? 'checked' : ''} />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">Audio Playback Speed</div>
+                <div class="settings-row-desc">Pronunciation speed for lessons, cards &amp; drills.</div>
+              </div>
+              <div class="segmented-control" role="group" aria-label="Audio playback speed">
+                <button type="button" class="seg-btn ${state.audioRate === 0.75 ? 'active' : ''}" data-set-audio-rate="0.75">0.75×</button>
+                <button type="button" class="seg-btn ${state.audioRate === 0.9 ? 'active' : ''}" data-set-audio-rate="0.9">0.9×</button>
+                <button type="button" class="seg-btn ${state.audioRate === 1.1 ? 'active' : ''}" data-set-audio-rate="1.1">1.1×</button>
+              </div>
+            </div>
+          </div>
+        `
+      )}
+
+      ${accordion(
+        'course',
+        'star',
+        'Active Course, Rate &amp; Live Catalog',
+        `${escapeHtml(course.sourceLang.name)} → ${escapeHtml(course.targetLang.name)} · ${langCount} live languages`,
+        `
+          <div class="settings-list">
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">${escapeHtml(course.sourceLang.name)} → ${escapeHtml(course.targetLang.name)}</div>
+                <div class="settings-row-desc">
+                  By ${escapeHtml(courseMeta.author)} · ${ratingInfo.count ? `${ratingInfo.average.toFixed(1)}★ (${ratingInfo.count} reviews)` : 'Be the first to rate this course'}
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button type="button" class="btn btn-primary btn-sm" id="settings-rate-share-btn" data-open-course-info="${escapeHtml(course.id)}">${uiIcon('star', 14)} Rate &amp; Share</button>
+                <button type="button" class="btn btn-sm" data-share-course="${escapeHtml(course.id)}">${uiIcon('share', 14)} Copy Link</button>
+                ${
+                  courseMeta.discordUrl
+                    ? `<button type="button" class="btn btn-sm" data-open-external="${escapeHtml(courseMeta.discordUrl)}">${uiIcon('discord', 14)} Discord</button>`
+                    : ''
+                }
+              </div>
+            </div>
+
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">Live Course Catalog (Auto-Updated)</div>
+                <div class="settings-row-desc">
+                  ${langCount} languages (${langCount * Math.max(langCount - 1, 0)} pairs)${standaloneCount ? ` + ${standaloneCount} community courses` : ''} · New courses appear automatically without updating the app.
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm" id="settings-refresh-catalog-btn" ${state.liveCatalogSyncing ? 'disabled' : ''}>
+                ${uiIcon('refresh', 14)} ${state.liveCatalogSyncing ? 'Syncing...' : 'Refresh Catalog'}
+              </button>
+            </div>
+          </div>
+        `
+      )}
+
+      ${accordion(
+        'studio',
+        'wrench',
+        'Course Studio &amp; Contributors',
+        'Build custom courses or publish community courses on GitHub',
+        `
+          <div style="padding-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div style="font-size:13px;color:var(--text-muted);max-width:460px;">
+              Create custom language courses locally, sync community repositories, or export JSON for Pull Requests.
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" id="open-course-studio-btn" data-nav="studio">${uiIcon('wrench', 15)} Open Course Studio ${uiIcon('arrowRight', 14)}</button>
+              <a class="btn btn-sm" href="https://github.com/${escapeHtml(state.syncSettings.githubRepo)}/blob/${escapeHtml(state.syncSettings.githubBranch)}/CONTRIBUTING_COURSES.md" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('book', 14)} Guide ↗</a>
+            </div>
+          </div>
+        `
+      )}
+
+      ${accordion(
+        'data',
+        'save',
+        'Backup, Restore &amp; App Updates',
+        state.updateInfo?.hasUpdate ? `Update v${escapeHtml(state.updateInfo.latestVersion)} available!` : `${completedLessonsCount} lessons · ${srsCount} cards · v${escapeHtml(APP_CONFIG.appVersion)}`,
+        `
+          <div class="settings-list" style="margin-bottom:14px;">
+            <div class="settings-row" id="settings-updates-section">
+              <div>
+                <div class="settings-row-title">App Updates</div>
+                <div class="settings-row-desc">
+                  ${
+                    state.updateChecking
+                      ? 'Checking GitHub Releases...'
+                      : state.updateError
+                        ? escapeHtml(state.updateError)
+                        : state.updateInfo?.hasUpdate
+                          ? `New version <strong>v${escapeHtml(state.updateInfo.latestVersion)}</strong> ready!`
+                          : `Up to date on <strong>v${escapeHtml(APP_CONFIG.appVersion)}</strong>`
+                  }
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                ${
+                  state.updateInfo?.hasUpdate
+                    ? `<button type="button" class="btn btn-primary btn-sm" id="settings-apply-update-btn" ${state.updateInstall?.active ? 'disabled' : ''}>${uiIcon('download', 14)} ${state.updateInstall?.active ? 'Installing...' : `Install v${escapeHtml(state.updateInfo.latestVersion)}`}</button>`
+                    : ''
+                }
+                <button type="button" class="btn btn-sm" id="settings-check-update-btn" ${state.updateChecking || state.updateInstall?.active ? 'disabled' : ''}>
+                  ${uiIcon('refresh', 14)} ${state.updateChecking ? 'Checking...' : 'Check'}
+                </button>
+              </div>
+            </div>
+            ${renderUpdateProgressBlock('settings')}
+
+            <div class="settings-row">
+              <div>
+                <div class="settings-row-title">Offline Backup File (.json)</div>
+                <div class="settings-row-desc">Export or restore progress, flashcards, profile &amp; ${customCount} custom course(s). (${masteredChars} mastered chars)</div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn btn-primary btn-sm" id="save-backup-file-btn">${uiIcon('download', 14)} Export</button>
+                <button class="btn btn-sm" id="open-backup-file-btn">${uiIcon('upload', 14)} Import</button>
+                <input type="file" id="web-backup-file-input" accept=".json,.txt,application/json,text/plain" style="display:none;" />
+              </div>
+            </div>
+          </div>
+
+          <div style="padding-top:12px;border-top:2px solid var(--border);">
+            <div class="settings-row-title" style="margin-bottom:6px;">Backup Code (<code>PG1:...</code>)</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+              <button class="btn btn-primary btn-sm" id="copy-backup-code-btn">${uiIcon('copy', 14)} Copy Code</button>
+              <button class="btn btn-sm" id="show-backup-code-btn">${uiIcon('eye', 14)} Show Code</button>
+            </div>
+            ${
+              state.backupCodePreview
+                ? `<textarea id="backup-code-output" rows="2" readonly style="margin-bottom:10px;font-family:monospace;font-size:12px;">${escapeHtml(state.backupCodePreview)}</textarea>`
+                : ''
+            }
+            <textarea id="restore-code-input" rows="2" placeholder="Paste PG1:... backup code or JSON here to restore..." style="font-family:monospace;font-size:12px;"></textarea>
+            <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+              <button class="btn btn-primary btn-sm" id="restore-code-btn">${uiIcon('refresh', 14)} Restore Code</button>
+              <button class="btn btn-danger btn-sm" id="reset-progress-btn">${uiIcon('trash', 14)} Reset Local Progress</button>
+            </div>
+          </div>
+        `
+      )}
+
+      ${accordion(
+        'about',
+        'info',
+        'Support &amp; About Polygot',
+        `Free &amp; open-source · v${escapeHtml(APP_CONFIG.appVersion)} · ${escapeHtml(platformLabel)}`,
+        `
+          <div style="padding-top:10px;display:grid;gap:12px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:42px;height:42px;border-radius:50%;display:block;" />
+              <div>
+                <div style="font-weight:800;font-family:var(--font-display);font-size:15px;">Polygot v${escapeHtml(APP_CONFIG.appVersion)}</div>
+                <div style="font-size:12px;color:var(--text-muted);">100% free, zero ads, offline-first language learning.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              ${
+                APP_CONFIG.donations?.githubSponsors
+                  ? `<button type="button" class="btn btn-primary btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.githubSponsors)}">${uiIcon('heart', 14)} Sponsor</button>`
+                  : ''
+              }
+              <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('github', 14)} GitHub</a>
+              <a class="btn btn-sm" href="${escapeHtml(APP_CONFIG.discordUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('discord', 14)} Discord</a>
+              <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}/releases" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('download', 14)} Releases</a>
+              <a class="btn btn-sm" href="./privacy.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Privacy Policy</a>
+            </div>
+          </div>
+        `
+      )}
+    </div>
+
+    <section class="card settings-account-card" id="settings-account-section">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;">
         <div style="display:flex;align-items:center;gap:12px;min-width:0;">
           ${renderAvatarMarkup('md')}
           <div style="min-width:0;">
             <div style="font-weight:700;font-size:16px;font-family:var(--font-display);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(getDisplayName())}</div>
             <div style="font-size:13px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
-              ${googleSession ? escapeHtml(googleSession.user?.email || 'Signed in with Google') : 'Not signed in · Local Guest Mode'}
+              ${googleSession ? escapeHtml(googleSession.user?.email || 'Signed in with Google') : 'Local Guest Mode · Not signed in'}
             </div>
-            <div style="font-size:12px;color:var(--accent-text);margin-top:3px;display:inline-flex;align-items:center;gap:5px;">
-              ${uiIcon('cloud', 14)} Last synced: ${escapeHtml(formatLastSynced(false))}
+            <div style="font-size:12px;color:var(--accent-text);margin-top:2px;display:inline-flex;align-items:center;gap:5px;">
+              ${uiIcon('cloud', 13)} Last synced: ${escapeHtml(formatLastSynced(false))}
             </div>
           </div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn btn-sm" data-nav="profile">Edit Profile</button>
           ${
             googleSession
-              ? `<button class="btn btn-danger btn-sm" id="google-signout-btn">${uiIcon('logout', 16)} Log Out</button>`
-              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('shield', 16)} ${state.googleBusy ? 'Signing in...' : 'Sign in with Google'}</button>`
+              ? `<button class="btn btn-danger btn-sm" id="google-signout-btn">${uiIcon('logout', 15)} Log Out</button>`
+              : `<button class="btn btn-primary btn-sm" id="google-signin-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('shield', 15)} ${state.googleBusy ? 'Signing in...' : 'Sign in with Google'}</button>`
           }
         </div>
       </div>
+
       ${
         googleSession
           ? `
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
-              <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('cloud', 16)} Backup to Google Drive</button>
-              <button class="btn btn-sm" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('download', 16)} Restore from Google Drive</button>
+            <div class="settings-list" style="padding-top:10px;border-top:2px solid var(--border);">
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title">Auto-Sync to Google Drive</div>
+                  <div class="settings-row-desc">Automatically back up after lessons, cards &amp; profile edits.</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="settings-toggle-autosync" ${state.autoSync ? 'checked' : ''} />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:4px;">
+                <button class="btn btn-primary btn-sm" id="google-backup-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('cloud', 15)} Backup Now</button>
+                <button class="btn btn-sm" id="google-restore-btn" ${state.googleBusy ? 'disabled' : ''}>${uiIcon('download', 15)} Restore from Drive</button>
+              </div>
             </div>
           `
           : !APP_CONFIG.googleClientId
@@ -3034,242 +3272,6 @@ function renderSettingsView(course) {
             : ''
       }
     </section>
-
-    <section class="card">
-      <h3 style="margin-top:0;">${uiIcon('palette', 20)} Appearance</h3>
-      <div class="settings-list">
-        <div class="settings-row">
-          <div>
-            <div class="settings-row-title">Theme</div>
-            <div class="settings-row-desc">Choose Light, Dark, or automatically match your device's system theme.</div>
-          </div>
-          <div class="segmented-control" role="group" aria-label="Theme mode">
-            <button type="button" class="seg-btn ${state.theme === 'light' ? 'active' : ''}" data-set-theme="light">${uiIcon('sun', 15)} Light</button>
-            <button type="button" class="seg-btn ${state.theme === 'dark' ? 'active' : ''}" data-set-theme="dark">${uiIcon('moon', 15)} Dark</button>
-            <button type="button" class="seg-btn ${state.theme === 'system' ? 'active' : ''}" data-set-theme="system">${uiIcon('monitor', 15)} System</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h3 style="margin-top:0;">${uiIcon('sliders', 20)} Learning &amp; Audio Preferences</h3>
-      <div class="settings-list">
-        <div class="settings-row">
-          <div>
-            <div class="settings-row-title">${escapeHtml(hintLabel)}</div>
-            <div class="settings-row-desc">Display reading/romanization hints beneath foreign scripts in lessons and flashcards.</div>
-          </div>
-          <label class="toggle-switch">
-            <input type="checkbox" id="settings-toggle-romaji" ${state.showRomaji ? 'checked' : ''} />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-
-        <div class="settings-row">
-          <div>
-            <div class="settings-row-title">Unlimited Hearts (Chill Mode)</div>
-            <div class="settings-row-desc">Practice freely without losing hearts on mistakes during lessons.</div>
-          </div>
-          <label class="toggle-switch">
-            <input type="checkbox" id="settings-toggle-chill" ${state.progress.chillMode ? 'checked' : ''} />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-
-        <div class="settings-row">
-          <div>
-            <div class="settings-row-title">Auto-Sync to Google Drive</div>
-            <div class="settings-row-desc">Automatically back up progress to your private Drive AppData after lessons, flashcards, and profile changes.</div>
-          </div>
-          <label class="toggle-switch">
-            <input type="checkbox" id="settings-toggle-autosync" ${state.autoSync ? 'checked' : ''} />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-
-        <div class="settings-row">
-          <div>
-            <div class="settings-row-title">Audio Playback Speed</div>
-            <div class="settings-row-desc">Adjust pronunciation speed for flashcards, lessons, and character drills.</div>
-          </div>
-          <div class="segmented-control" role="group" aria-label="Audio playback speed">
-            <button type="button" class="seg-btn ${state.audioRate === 0.75 ? 'active' : ''}" data-set-audio-rate="0.75">0.75× Slow</button>
-            <button type="button" class="seg-btn ${state.audioRate === 0.9 ? 'active' : ''}" data-set-audio-rate="0.9">0.9× Normal</button>
-            <button type="button" class="seg-btn ${state.audioRate === 1.1 ? 'active' : ''}" data-set-audio-rate="1.1">1.1× Fast</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="settings-studio-section">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <div>
-          <h3 style="margin:0;">${uiIcon('wrench', 20)} Course Studio &amp; Community Courses</h3>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
-            Sync newly contributed languages &amp; community courses live from GitHub, create local custom courses, or export syllabus JSON for Pull Requests.
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button type="button" class="btn btn-primary btn-sm" id="open-course-studio-btn" data-nav="studio">${uiIcon('wrench', 16)} Open Course Studio ${uiIcon('arrowRight', 15)}</button>
-          <a class="btn btn-sm" href="https://github.com/${escapeHtml(state.syncSettings.githubRepo)}/blob/${escapeHtml(state.syncSettings.githubBranch)}/CONTRIBUTING_COURSES.md" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('book', 15)} Course Guide ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="settings-backup-section">
-      <h3 style="margin-top:0;">${uiIcon('save', 20)} Backup &amp; Restore Data</h3>
-      <div class="stats-grid" style="margin-bottom:14px;">
-        <div class="stat-card">
-          <div class="stat-card-label">Lessons Done</div>
-          <div class="stat-card-value">${completedLessonsCount}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">XP / Streak</div>
-          <div class="stat-card-value">${state.progress.xp} XP · ${state.progress.streak}d</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Flashcards</div>
-          <div class="stat-card-value">${srsCount}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-label">Chars / Custom</div>
-          <div class="stat-card-value">${masteredChars} / ${customCount}</div>
-        </div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="settings-row-title" style="margin-bottom:4px;">1. Portable Backup File (.json)</div>
-        <div class="settings-row-desc" style="margin-bottom:10px;">
-          Includes your progress, flashcards, profile picture, theme, and custom courses. Works 100% offline.
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-          <button class="btn btn-primary btn-sm" id="save-backup-file-btn">${uiIcon('download', 16)} Export Backup File</button>
-          <button class="btn btn-sm" id="open-backup-file-btn">${uiIcon('upload', 16)} Restore from File</button>
-          <input type="file" id="web-backup-file-input" accept=".json,.txt,application/json,text/plain" style="display:none;" />
-        </div>
-      </div>
-
-      <div style="padding-top:14px;border-top:2px solid var(--border);">
-        <div class="settings-row-title" style="margin-bottom:4px;">2. Copy &amp; Paste Backup Code (<code>PG1:...</code>)</div>
-        <div class="settings-row-desc" style="margin-bottom:10px;">
-          Move progress between devices quickly by pasting a single-line backup code.
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
-          <button class="btn btn-primary btn-sm" id="copy-backup-code-btn">${uiIcon('copy', 16)} Generate &amp; Copy Code</button>
-          <button class="btn btn-sm" id="show-backup-code-btn">${uiIcon('eye', 16)} Show Code Below</button>
-        </div>
-        ${
-          state.backupCodePreview
-            ? `<textarea id="backup-code-output" rows="3" readonly style="margin-bottom:12px;font-family:monospace;font-size:12px;">${escapeHtml(state.backupCodePreview)}</textarea>`
-            : ''
-        }
-        <label class="field-label">Paste Backup Code (PG1:...) or JSON to Restore</label>
-        <textarea id="restore-code-input" rows="3" placeholder="Paste your PG1:... backup code or polygot-backup.json contents here..." style="font-family:monospace;font-size:12px;"></textarea>
-        <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-          <button class="btn btn-primary btn-sm" id="restore-code-btn">${uiIcon('refresh', 16)} Restore from Pasted Text</button>
-          <button class="btn btn-danger btn-sm" id="reset-progress-btn">${uiIcon('trash', 16)} Reset Local Progress</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="settings-updates-section">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <div>
-          <h3 style="margin:0;">${uiIcon('download', 20)} App Updates</h3>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">
-            ${
-              state.updateChecking
-                ? 'Checking GitHub Releases for a newer version...'
-                : state.updateError
-                  ? escapeHtml(state.updateError)
-                  : state.updateInfo?.hasUpdate
-                    ? `New version <strong>v${escapeHtml(state.updateInfo.latestVersion)}</strong> is ready! (You are on v${escapeHtml(APP_CONFIG.appVersion)})`
-                    : state.updateInfo
-                      ? `You are up to date on <strong>v${escapeHtml(APP_CONFIG.appVersion)}</strong>.`
-                      : `Current version: <strong>v${escapeHtml(APP_CONFIG.appVersion)}</strong> · Checks automatically on startup.`
-            }
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          ${
-            state.updateInfo?.hasUpdate
-              ? `<button type="button" class="btn btn-primary btn-sm" id="settings-apply-update-btn" ${state.updateInstall?.active ? 'disabled' : ''}>${uiIcon('download', 15)} ${state.updateInstall?.active ? 'Installing...' : `Install v${escapeHtml(state.updateInfo.latestVersion)}`}</button>`
-              : ''
-          }
-          <button type="button" class="btn btn-sm" id="settings-check-update-btn" ${state.updateChecking || state.updateInstall?.active ? 'disabled' : ''}>
-            ${uiIcon('refresh', 15)} ${state.updateChecking ? 'Checking...' : 'Check for Updates'}
-          </button>
-        </div>
-      </div>
-      ${renderUpdateProgressBlock('settings')}
-    </section>
-
-    <section class="card" id="settings-support-section">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <div>
-          <h3 style="margin:0;">${uiIcon('gift', 20)} Support Polygot</h3>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.45;">
-            Exciting updates are on the way — interactive story dialogues, offline high-clarity audio voices, deeper grammar mastery challenges, new community languages, and faster cross-device sync. Polygot will always stay 100% free with zero ads or paywalls — your support helps us ship these updates faster!
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          ${
-            APP_CONFIG.donations?.githubSponsors
-              ? `<button type="button" class="btn btn-primary btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.githubSponsors)}">${uiIcon('heart', 15)} GitHub Sponsors</button>`
-              : ''
-          }
-          ${
-            APP_CONFIG.donations?.kofi
-              ? `<button type="button" class="btn btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.kofi)}">${uiIcon('gift', 15)} Ko-fi</button>`
-              : ''
-          }
-          ${
-            APP_CONFIG.donations?.buyMeACoffee
-              ? `<button type="button" class="btn btn-sm" data-open-external="${escapeHtml(APP_CONFIG.donations.buyMeACoffee)}">${uiIcon('gift', 15)} Buy Me a Coffee</button>`
-              : ''
-          }
-          ${
-            APP_CONFIG.donations?.upiId
-              ? `<button type="button" class="btn btn-sm" id="copy-upi-btn" data-upi="${escapeHtml(APP_CONFIG.donations.upiId)}">${uiIcon('copy', 15)} Copy UPI ID</button>`
-              : ''
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-        <img src="${escapeHtml(getAppIconSrc())}" alt="Polygot" style="width:42px;height:42px;border-radius:50%;display:block;" />
-        <div>
-          <h3 style="margin:0;">About Polygot</h3>
-          <div style="font-size:12px;color:var(--text-muted);">Free &amp; Open-Source Cross-Platform Language Learning</div>
-        </div>
-      </div>
-      <div class="settings-list">
-        <div class="settings-row">
-          <div class="settings-row-title">App Version</div>
-          <span class="pill accent">v${escapeHtml(APP_CONFIG.appVersion)}</span>
-        </div>
-        <div class="settings-row">
-          <div class="settings-row-title">Platform</div>
-          <span class="pill">${escapeHtml(platformLabel)}</span>
-        </div>
-        <div class="settings-row">
-          <div class="settings-row-title">App Origin / Sync Mode</div>
-          <span class="pill">${escapeHtml(window.location.origin)}</span>
-        </div>
-        <div class="settings-row">
-          <div class="settings-row-title">Community &amp; Links</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('github', 15)} GitHub</a>
-            <a class="btn btn-sm" href="${escapeHtml(APP_CONFIG.discordUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('discord', 15)} Discord</a>
-            <a class="btn btn-sm" href="https://github.com/${escapeHtml(APP_CONFIG.githubRepo)}/releases" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">${uiIcon('download', 15)} Releases</a>
-            <a class="btn btn-sm" href="./privacy.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">Privacy Policy</a>
-          </div>
-        </div>
-      </div>
-    </section>
   `;
 }
 
@@ -3279,6 +3281,7 @@ async function switchCourse(newId) {
     state.showAddCourseModal = true;
     state.addCourseSearch = '';
     render();
+    autoRefreshLiveCatalog({ force: false, silent: true });
     return;
   }
   await ensureCourseLoaded(newId);
@@ -3290,8 +3293,7 @@ async function switchCourse(newId) {
   state.activeCourseId = newId;
   const nextCourse = getActiveCourse();
   if (!nextCourse) return;
-  const nextSections = getSections(nextCourse);
-  state.selectedSectionId = nextSections[0]?.id || 'all';
+  state.selectedSectionId = 'all';
   state.flashcardFilter = 'ALL';
   state.activeScriptTab = null;
   state.scriptDrill = null;
@@ -3618,20 +3620,52 @@ function attachEvents(course) {
     });
   }
 
-  const toggleAddCourseBtn = document.getElementById('toggle-add-course-btn');
-  if (toggleAddCourseBtn) {
-    toggleAddCourseBtn.addEventListener('click', () => {
-      state.showAddCourseModal = true;
-      state.addCourseSearch = '';
+  document.querySelectorAll('[data-profile-tab]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.profileTab = btn.dataset.profileTab || 'courses';
       render();
     });
+  });
+
+  document.querySelectorAll('[data-settings-accordion]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.settingsAccordion;
+      state.settingsOpenSection = state.settingsOpenSection === id ? '' : id;
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-settings-tab]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.settingsTab;
+      state.settingsOpenSection = id;
+      render();
+      const target = document.getElementById(`settings-acc-${id}`);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+
+  const settingsRefreshCatalogBtn = document.getElementById('settings-refresh-catalog-btn');
+  if (settingsRefreshCatalogBtn) {
+    settingsRefreshCatalogBtn.addEventListener('click', () => autoRefreshLiveCatalog({ force: true, silent: false }));
   }
 
-  document.querySelectorAll('[data-open-add-course]').forEach((btn) => {
+  const modalRefreshCatalogBtn = document.getElementById('modal-refresh-catalog-btn');
+  if (modalRefreshCatalogBtn) {
+    modalRefreshCatalogBtn.addEventListener('click', () => autoRefreshLiveCatalog({ force: true, silent: false }));
+  }
+
+  const openAddCourseBtns = [
+    document.getElementById('toggle-add-course-btn'),
+    document.getElementById('open-add-course-modal-btn'),
+    ...document.querySelectorAll('[data-open-add-course]')
+  ].filter(Boolean);
+  openAddCourseBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       state.showAddCourseModal = true;
       state.addCourseSearch = '';
       render();
+      autoRefreshLiveCatalog({ force: false, silent: true });
     });
   });
 
@@ -4263,22 +4297,135 @@ function attachEvents(course) {
   });
 
   const flashcardBox = document.getElementById('flashcard-box');
-  if (flashcardBox) {
+  const swipeWrap = document.getElementById('flashcard-swipe-wrap');
+  if (window.__polygotCardKeyHandler) {
+    window.removeEventListener('keydown', window.__polygotCardKeyHandler);
+    window.__polygotCardKeyHandler = null;
+  }
+
+  if (flashcardBox && swipeWrap) {
+    const badgeRight = document.getElementById('swipe-badge-right');
+    const badgeLeft = document.getElementById('swipe-badge-left');
+    let swipingOut = false;
+
     const toggleCardFlip = () => {
+      if (swipingOut) return;
       state.flashcardSession.flipped = !state.flashcardSession.flipped;
       flashcardBox.classList.toggle('is-flipped', state.flashcardSession.flipped);
-      const ratingsWrap = document.getElementById('flashcard-ratings');
-      if (ratingsWrap) {
-        ratingsWrap.classList.toggle('visible', state.flashcardSession.flipped);
+    };
+
+    const triggerSwipe = (dir) => {
+      if (swipingOut) return;
+      swipingOut = true;
+      swipeWrap.classList.remove('is-dragging');
+      if (badgeRight) badgeRight.style.opacity = dir === 'right' ? '1' : '0';
+      if (badgeLeft) badgeLeft.style.opacity = dir === 'left' ? '1' : '0';
+      swipeWrap.classList.add(dir === 'right' ? 'swipe-out-right' : 'swipe-out-left');
+      setTimeout(() => {
+        rateCurrentFlashcard(dir === 'right' ? RATINGS.GOOD : RATINGS.AGAIN);
+      }, 210);
+    };
+
+    let startX = 0;
+    let startY = 0;
+    let deltaX = 0;
+    let tracking = false;
+    let moved = false;
+    let lockedAxis = null; // 'x' | 'y' | null
+
+    const onStart = (clientX, clientY) => {
+      if (swipingOut) return;
+      startX = clientX;
+      startY = clientY;
+      deltaX = 0;
+      tracking = true;
+      moved = false;
+      lockedAxis = null;
+      swipeWrap.classList.add('is-dragging');
+    };
+
+    const onMove = (clientX, clientY, e) => {
+      if (!tracking || swipingOut) return;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+      if (!lockedAxis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+        lockedAxis = Math.abs(dx) >= Math.abs(dy) ? 'x' : 'y';
+      }
+      if (lockedAxis === 'y') return;
+      if (lockedAxis === 'x') {
+        if (e && e.cancelable) e.preventDefault();
+        moved = true;
+        deltaX = dx;
+        const rot = Math.max(-16, Math.min(16, dx * 0.055));
+        swipeWrap.style.transform = `translate3d(${dx}px, ${Math.min(18, Math.abs(dx) * 0.05)}px, 0) rotate(${rot}deg)`;
+        const ratio = Math.min(1, Math.abs(dx) / 90);
+        if (badgeRight) {
+          badgeRight.style.opacity = dx > 16 ? String(ratio) : '0';
+          badgeRight.style.transform = `scale(${0.92 + ratio * 0.1})`;
+        }
+        if (badgeLeft) {
+          badgeLeft.style.opacity = dx < -16 ? String(ratio) : '0';
+          badgeLeft.style.transform = `scale(${0.92 + ratio * 0.1})`;
+        }
       }
     };
-    flashcardBox.addEventListener('click', toggleCardFlip);
-    flashcardBox.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
+
+    const onEnd = () => {
+      if (!tracking) return;
+      tracking = false;
+      swipeWrap.classList.remove('is-dragging');
+      if (deltaX > 72) {
+        triggerSwipe('right');
+        return;
+      }
+      if (deltaX < -72) {
+        triggerSwipe('left');
+        return;
+      }
+      swipeWrap.style.transform = '';
+      if (badgeRight) badgeRight.style.opacity = '0';
+      if (badgeLeft) badgeLeft.style.opacity = '0';
+      if (!moved) {
+        toggleCardFlip();
+      }
+    };
+
+    swipeWrap.addEventListener('pointerdown', (e) => {
+      if (e.button && e.button !== 0) return;
+      if (e.target.closest('button')) return;
+      onStart(e.clientX, e.clientY);
+      try {
+        swipeWrap.setPointerCapture(e.pointerId);
+      } catch {
+        // Ignore capture errors
+      }
+    });
+    swipeWrap.addEventListener('pointermove', (e) => onMove(e.clientX, e.clientY, e));
+    swipeWrap.addEventListener('pointerup', onEnd);
+    swipeWrap.addEventListener('pointercancel', onEnd);
+
+    const flipBtn = document.getElementById('flashcard-flip-btn');
+    const leftBtn = document.getElementById('flashcard-swipe-left-btn');
+    const rightBtn = document.getElementById('flashcard-swipe-right-btn');
+    if (flipBtn) flipBtn.addEventListener('click', toggleCardFlip);
+    if (leftBtn) leftBtn.addEventListener('click', () => triggerSwipe('left'));
+    if (rightBtn) rightBtn.addEventListener('click', () => triggerSwipe('right'));
+
+    window.__polygotCardKeyHandler = (e) => {
+      if (state.view !== 'flashcards' || state.showAddCourseModal || state.courseInfoModalId) return;
+      if (e.target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        triggerSwipe('right');
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        triggerSwipe('left');
+      } else if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         toggleCardFlip();
       }
-    });
+    };
+    window.addEventListener('keydown', window.__polygotCardKeyHandler);
   }
 
   document.querySelectorAll('[data-rate]').forEach((btn) => {
@@ -4288,10 +4435,7 @@ function attachEvents(course) {
   const restartCards = document.getElementById('restart-flashcards-btn');
   if (restartCards) {
     restartCards.addEventListener('click', () => {
-      let items = getAllItems(course);
-      if (state.flashcardFilter !== 'ALL') {
-        items = items.filter((it) => it._level === state.flashcardFilter);
-      }
+      const items = getAllItems(course);
       state.flashcardSession = { queue: [...items], index: 0, flipped: false };
       render();
     });
@@ -4672,7 +4816,7 @@ function attachEvents(course) {
           state.enrolledCourseIds = [...state.enrolledCourseIds, parsed.id];
         }
         state.activeCourseId = parsed.id;
-        state.selectedSectionId = getSections(parsed)[0]?.id || 'all';
+        state.selectedSectionId = 'all';
         state.studioMessage = `Imported course "${parsed.title || parsed.id}" successfully.`;
         saveLocalState();
         render();
@@ -4738,7 +4882,7 @@ function renderAddCourseModal() {
   const enrolledSet = new Set(state.enrolledCourseIds);
   const query = (state.addCourseSearch || '').trim().toLowerCase();
 
-  // Combine matrix targets with their rating summaries so users can sort by Popularity or Rating
+  // Combine matrix targets with their rating summaries
   const rows = targets.map((t) => {
     const pairId = `${srcMeta.code}-${t.code}`;
     const existingCourse = state.courses.find((c) => c.id === pairId);
@@ -4749,7 +4893,56 @@ function renderAddCourseModal() {
       author: t.author || 'Polygot Core Team'
     });
     const rating = getCourseRatingSummary(pairId);
-    return { t, pairId, isEnrolled: enrolledSet.has(pairId), meta, rating };
+    return {
+      kind: 'matrix',
+      glyph: t.icon?.glyph || t.code.toUpperCase(),
+      pairId,
+      title: `${srcMeta.name} → ${t.name}`,
+      nativeLabel: t.nativeName,
+      subtitle: `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`,
+      hay: `${srcMeta.name} ${srcMeta.nativeName} ${t.name} ${t.nativeName} ${t.code} ${pairId} ${meta.author}`,
+      isEnrolled: enrolledSet.has(pairId),
+      isLiveNew: Boolean(t._isLiveNew),
+      meta,
+      rating
+    };
+  });
+
+  // Also include standalone live community courses from registry.json (auto-updated without app updates!)
+  const matrixIds = new Set(rows.map((r) => r.pairId));
+  const standaloneEntries = [
+    ...(state.catalogEntries || []),
+    ...state.courses
+      .filter((c) => !c._matrix && !(state.catalogEntries || []).some((e) => e.id === c.id))
+      .map((c) => ({
+        id: c.id,
+        title: c.title || `${c.sourceLang?.name || ''} → ${c.targetLang?.name || ''}`,
+        author: c.author || 'Community Author',
+        subtitle: c.subtitle || `${getAllUnits(c).length} units · Custom`
+      }))
+  ];
+  standaloneEntries.forEach((entry) => {
+    if (!entry?.id || matrixIds.has(entry.id)) return;
+    const loaded = state.courses.find((c) => c.id === entry.id);
+    const meta = getCourseMeta(loaded, {
+      id: entry.id,
+      title: entry.title || entry.id,
+      author: entry.author || 'Community Contributor'
+    });
+    const rating = getCourseRatingSummary(entry.id);
+    rows.push({
+      kind: 'standalone',
+      glyph: entry.iconGlyph || (entry.title || entry.id).slice(0, 2).toUpperCase(),
+      pairId: entry.id,
+      title: entry.title || entry.id,
+      nativeLabel: entry.nativeName || '',
+      subtitle: entry.subtitle || (entry.version ? `Community Course · v${entry.version}` : 'Community Course'),
+      hay: `${entry.title || ''} ${entry.id} ${meta.author} community`,
+      isEnrolled: enrolledSet.has(entry.id),
+      isLiveNew: !loaded,
+      meta,
+      rating
+    });
   });
 
   if (state.addCourseSort === 'rating') {
@@ -4758,15 +4951,22 @@ function renderAddCourseModal() {
     rows.sort((a, b) => (b.rating.popularityScore - a.rating.popularityScore) || (b.rating.count - a.rating.count));
   }
 
+  const standaloneTotal = standaloneEntries.length;
+
   return `
     <div id="add-course-modal-backdrop" class="ol-select-overlay" role="dialog" aria-modal="true" aria-label="Add a Course">
       <div class="ol-select-modal add-course-modal">
         <div class="ol-select-modal-header">
           <div>
             <div class="ol-select-modal-title">${uiIcon('plus', 17)} Add a Course</div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${langs.length} languages · ${langs.length * Math.max(langs.length - 1, 0)} pairs · Beginner to Mastery</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+              ${langs.length} languages · ${langs.length * Math.max(langs.length - 1, 0)} pairs${standaloneTotal ? ` + ${standaloneTotal} community` : ''} · ${state.liveCatalogSyncing ? 'Checking for new courses...' : 'Auto-synced live'}
+            </div>
           </div>
-          <button type="button" id="close-add-course-modal" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <button type="button" id="modal-refresh-catalog-btn" class="ol-select-close" title="Check GitHub for newly added courses" aria-label="Refresh live course catalog" ${state.liveCatalogSyncing ? 'disabled' : ''}>${uiIcon('refresh', 16)}</button>
+            <button type="button" id="close-add-course-modal" class="ol-select-close" aria-label="Close">${uiIcon('x', 18)}</button>
+          </div>
         </div>
 
         <div class="add-course-modal-controls">
@@ -4805,21 +5005,19 @@ function renderAddCourseModal() {
 
         <div class="ol-select-list" style="max-height:54vh;">
           ${rows
-            .map(({ t, pairId, isEnrolled, meta, rating }) => {
-              const lvlRange = `${t.levelLabels[0]} → ${t.levelLabels[t.levelLabels.length - 1]}`;
-              const hay = `${srcMeta.name} ${srcMeta.nativeName} ${t.name} ${t.nativeName} ${t.code} ${pairId} ${meta.author}`;
+            .map(({ glyph, pairId, title, nativeLabel, subtitle, hay, isEnrolled, isLiveNew, meta, rating }) => {
               const hidden = query && !hay.toLowerCase().includes(query);
               return `
                 <div class="add-course-modal-row" data-modal-course-item="${escapeHtml(hay)}" style="${hidden ? 'display:none;' : ''}">
                   <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
-                    <span class="modal-lang-glyph">${escapeHtml(t.icon?.glyph || t.code.toUpperCase())}</span>
+                    <span class="modal-lang-glyph">${escapeHtml(glyph)}</span>
                     <div style="min-width:0;">
-                      <div style="font-weight:800;font-size:15px;font-family:var(--font-display);line-height:1.25;">
-                        ${escapeHtml(srcMeta.name)} → ${escapeHtml(t.name)}
-                        <span style="color:var(--accent-text);margin-left:3px;">(${escapeHtml(t.nativeName)})</span>
+                      <div style="font-weight:800;font-size:15px;font-family:var(--font-display);line-height:1.25;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                        <span>${escapeHtml(title)}${nativeLabel ? ` <span style="color:var(--accent-text);">(${escapeHtml(nativeLabel)})</span>` : ''}</span>
+                        ${isLiveNew ? `<span class="live-new-pill">New</span>` : ''}
                       </div>
                       <div style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px;">
-                        <span>${escapeHtml(lvlRange)}</span>
+                        <span>${escapeHtml(subtitle)}</span>
                         <span>·</span>
                         <span>by ${escapeHtml(meta.author)}</span>
                         ${
@@ -5236,11 +5434,16 @@ async function init() {
   }
 
   try {
+    const cachedLiveCat = JSON.parse(localStorage.getItem(STORAGE_KEYS.LIVE_CATALOG) || 'null');
+    if (cachedLiveCat && Array.isArray(cachedLiveCat.entries) && cachedLiveCat.entries.length) {
+      state.catalogEntries = cachedLiveCat.entries;
+      state.liveCatalogLastSyncedAt = Number(cachedLiveCat.syncedAt) || 0;
+    }
     const regRes = await fetch('./courses/registry.json');
     if (regRes.ok) {
       const reg = await regRes.json();
       const normalized = normalizeRegistryEntries(reg);
-      if (normalized.length) state.catalogEntries = normalized;
+      if (normalized.length && !state.catalogEntries.length) state.catalogEntries = normalized;
     }
   } catch {
     // Ignore optional catalog fetch errors
@@ -5295,8 +5498,7 @@ async function init() {
     // Ignore malformed share query params
   }
 
-  const active = getActiveCourse();
-  state.selectedSectionId = active?.sections?.[0]?.id || 'all';
+  state.selectedSectionId = 'all';
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
@@ -5308,10 +5510,11 @@ async function init() {
     render();
   }
 
-  // Immediately check GitHub Releases for a newer version & prefetch public course ratings
+  // Immediately check GitHub Releases for a newer version, auto-sync live course catalog, & prefetch public course ratings
   runUpdateCheck(false);
+  autoRefreshLiveCatalog({ force: false, silent: true });
   fetchPublicCourseReviews(state.syncSettings.githubRepo, false).then(() => {
-    if (state.showAddCourseModal || state.courseInfoModalId || state.view === 'syllabus') {
+    if (state.showAddCourseModal || state.courseInfoModalId || state.view === 'syllabus' || state.view === 'settings') {
       render();
     }
   });
